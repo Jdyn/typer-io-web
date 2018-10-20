@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Fragment } from 'react';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux'
+import { BrowserRouter } from "react-router-dom";
 
 import App from './containers/App';
 import configureStore from './store/ConfigureStore'
 
 const store = configureStore()
 
-function render(Component) {
-  ReactDOM.render(
+const app = (
+  <Fragment>
     <Provider store={store}>
-      <Component/>
-    </Provider>,
-  document.getElementById('root'));
-}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </Fragment>
+)
 
-render(App)
+render(app, document.getElementById("root"))

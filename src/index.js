@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router-dom";
+import configureStore from './store/ConfigureStore'
 
 import App from './containers/App';
-import configureStore from './store/ConfigureStore'
 
 const store = configureStore()
 

@@ -1,22 +1,27 @@
-import { FETCH_MOVIES } from '../constants/ActionTypes'
+import { GET_MOVIES_SUCCESS, GET_MOVIES_ERRORED, GET_MOVIES_LOADING } from '../constants/ActionTypes'
 
-const initialState = {
-  movies: [
-    {
-      name: "movie 1",
-      id: 1
-    },
-    {
-      name: " movie 2",
-      id: 2
-    }
-  ]
+export function movies(state = [], action) {
+  switch (action.type) {
+    case GET_MOVIES_SUCCESS:
+      return action.movies
+    default:
+      return state
+  }
 }
 
-export default function movies(state = initialState, action) {
+export function moviesHasErrored(state = false, action) {
   switch (action.type) {
-    case FETCH_MOVIES:
+    case GET_MOVIES_ERRORED:
+      return action.hasErrored
+    default:
       return state
+  }
+}
+
+export function moviesIsLoading(state = false, action) {
+  switch (action.type) {
+    case GET_MOVIES_LOADING:
+      return action.isLoading
     default:
       return state
   }

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import movies from './MoviesReducers'
+import { movies, moviesHasErrored, moviesIsLoading } from './MoviesReducers'
 
 export default combineReducers({
-    movies
+    movies,
+    moviesHasErrored,
+    moviesIsLoading
 })

@@ -1,0 +1,1 @@
+export const MOVIES = 'MOVIES'

@@ -1,11 +1,8 @@
 import * as types from '../constants/ActionTypes'
-
-export const getMoviesLoading = isLoading => {
-  return {
-    type: types.GET_MOVIES_LOADING,
-    isLoading: isLoading
-  }
-}
+import { API_KEY } from '../constants/Keys'
+import { MOVIES_SEARCH_URL } from '../constants/ApiConstants'
+import * as requestTypes from '../constants/RequestTypes'
+import { setRequestInProgress } from '../actions/Requests';
 
 export const getMoviesErrored = hasErrored => {
   return {
@@ -21,21 +18,20 @@ export const getMoviesSuccess = movies => {
   }
 }
 
-export const getMovies = () => {
-  return (dispatch) => {
-    dispatch(getMoviesLoading(true))
+export const fetchMoviesBySearch = (query) => (dispatch, getState) => {
+  const requestType = requestTypes.MOVIES;
+  const url = `${MOVIES_SEARCH_URL}?api_key=${API_KEY}&query=${query}`
+  const requestInProcess = getState().request[requestType];
 
-    fetch('https://api.themoviedb.org/3/search/movie?api_key=9c212cbba31e0658488dfb77d0493257&language=en-US&query=bat&page=1')
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText)
-      }
-      dispatch(getMoviesLoading(false))
+  if (requestInProcess) { return; }
 
-      return response
-    })
-    .then((response) => response.json())
-    .then((movies) => dispatch(getMoviesSuccess(movies)))
-    // .catch(() => dispatch(getMoviesErrored(true)))
-  }
+  dispatch(setRequestInProgress(true, requestType));
+
+  fetch(url)
+  .then(response => response.json())
+  .then(movies => {
+    dispatch(getMoviesSuccess(movies))
+    dispatch(setRequestInProgress(false, requestType));
+  })
+  .catch(() => dispatch(getMoviesErrored(true)))
 }

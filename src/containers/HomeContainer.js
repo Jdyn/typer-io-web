@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import Home from '../components/Home'
 import { connect } from 'react-redux'
-import { fetchMoviesBySearch } from '../actions/MoviesActions'
+import { fetchMovies } from '../actions/MoviesActions'
 
 class HomeContainer extends Component {
-  componentWillMount() {
-    this.props.fetchMovies()
-  }
-  
   render() {
     return (
       <div>
@@ -19,15 +15,15 @@ class HomeContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movies.movies.results,
+    movies: state.movies.movies,
     hasErrored: state.movies.hasErrored,
-    inProgress: state.request.inProgress
+    isLoading: state.movies.isLoading
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetchMovies: () => dispatch(fetchMoviesBySearch('super'))
+      fetchMovies: () => dispatch(fetchMovies('super'))
   };
 };
 

@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import * as route from '../constants/RouterConstants'
 
 import HomeContainer from '../containers/HomeContainer'
-import AboutContainer from '../containers/About'
+import AboutContainer from '../containers/AboutContainer'
 
 const Router = () => (
   <Switch>

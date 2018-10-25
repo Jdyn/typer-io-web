@@ -1,37 +1,32 @@
 import * as types from '../constants/ActionTypes'
 import { API_KEY } from '../constants/Keys'
 import { MOVIES_SEARCH_URL } from '../constants/ApiConstants'
-import * as requestTypes from '../constants/RequestTypes'
-import { setRequestInProgress } from '../actions/Requests';
 
-export const getMoviesErrored = hasErrored => {
-  return {
-      type: types.GET_MOVIES_ERRORED,
-      hasErrored: hasErrored
-  };
-}
+export const fetchMoviesRequest = isLoading => ({
+  type: types.FETCH_MOVIES_REQUEST,
+  isLoading
+})
 
-export const getMoviesSuccess = movies => {
+export const fetchMoviesErrored = hasErrored => ({
+  type: types.FETCH_MOVIES_ERRORED,
+  hasErrored
+})
+
+export const fetchMoviesSuccess = movies => {
   return {
-    type: types.GET_MOVIES_SUCCESS,
+    type: types.FETCH_MOVIES_SUCCESS,
     movies
   }
 }
 
-export const fetchMoviesBySearch = (query) => (dispatch, getState) => {
-  const requestType = requestTypes.MOVIES;
+export const fetchMovies = (query) => (dispatch, getState) => {
+  dispatch(fetchMoviesRequest(true))
   const url = `${MOVIES_SEARCH_URL}?api_key=${API_KEY}&query=${query}`
-  const requestInProcess = getState().request[requestType];
-
-  if (requestInProcess) { return; }
-
-  dispatch(setRequestInProgress(true, requestType));
 
   fetch(url)
   .then(response => response.json())
   .then(movies => {
-    dispatch(getMoviesSuccess(movies))
-    dispatch(setRequestInProgress(false, requestType));
+    dispatch(fetchMoviesSuccess(movies))
   })
-  .catch(() => dispatch(getMoviesErrored(true)))
+  .catch(() => dispatch(fetchMoviesErrored(true)))
 }

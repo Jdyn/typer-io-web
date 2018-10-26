@@ -21,7 +21,7 @@ class Home extends Component {
     const { movies, isLoading } = this.props
     return (
       <div>
-        <Link to='/about'> Go to About </Link>
+        <Link to='/about'> Go to About -> </Link>
         {movies.map(movie => (
           <div>{movie.title}</div>
         ))}

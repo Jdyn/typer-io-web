@@ -15,9 +15,12 @@ class HomeContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movies.movies,
     hasErrored: state.movies.hasErrored,
-    isLoading: state.movies.isLoading
+    isLoading: state.movies.isLoading,
+    movies: state.movies.movies,
+    page: state.movies.page,
+    totalResults: state.movies.totalResults,
+    totalPages: state.movies.totalPages,
   }
 }
 

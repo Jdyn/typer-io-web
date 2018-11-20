@@ -1,39 +1,26 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Loader from './Loader'
 
-const defaultProps = {
-  page: null,
-  totalResults: null,
-  totalPages: null,
-}
+const defaultProps = {}
 
-const propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  hasErrored: PropTypes.bool.isRequired,
-  page: PropTypes.number,
-  totalResults: PropTypes.number,
-  totalPages: PropTypes.number,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-}
+const propTypes = {}
 
 class Home extends Component {
-  componentWillMount() {
-    this.props.fetchMovies('super')
-  }
-  
+  componentWillMount() {}
+
   render() {
-    const { movies, isLoading, totalResults } = this.props
+    const text = ['Play Multiplayer', 'Play Solo', 'Play Invitational']
+
     return (
-      <div>
-        <Link to='/about'> Go to About -> </Link>
-        <h3>{totalResults} Results </h3>
-        {movies.map(movie => (
-          <div key={movie.id}>{movie.title}</div>
+      <Fragment>
+        {text.map(element => (
+          <Link to="/play" key={element}>
+            <p>{element}</p>
+          </Link>
         ))}
-      <Loader isLoading={isLoading} />
-      </div>
+      </Fragment>
     )
   }
 }

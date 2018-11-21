@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router-dom";
 import configureStore from './store/ConfigureStore'
 import { loadState, saveState } from './store/LocalStorage'
-import App from './containers/App';
+import App from './containers/AppContainer';
 
 const persistedStore = loadState()
 const store = configureStore(persistedStore)

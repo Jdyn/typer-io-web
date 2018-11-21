@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import movies from './MoviesReducers'
+import game from './PlayReducers'
 export default combineReducers({
-    movies,
+    game,
 })

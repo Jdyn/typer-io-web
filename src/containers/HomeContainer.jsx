@@ -13,23 +13,23 @@ class HomeContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    hasErrored: state.movies.hasErrored,
-    isLoading: state.movies.isLoading,
-    movies: state.movies.movies,
-    page: state.movies.page,
-    totalResults: state.movies.totalResults,
-    totalPages: state.movies.totalPages,
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     hasErrored: state.movies.hasErrored,
+//     isLoading: state.movies.isLoading,
+//     movies: state.movies.movies,
+//     page: state.movies.page,
+//     totalResults: state.movies.totalResults,
+//     totalPages: state.movies.totalPages,
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-      fetchMovies: () => dispatch(fetchMovies('super'))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       fetchMovies: () => dispatch(fetchMovies('super'))
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
+export default HomeContainer//connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
 
 

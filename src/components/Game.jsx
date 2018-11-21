@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Play extends Component {
+export default class Game extends Component {
+  componentWillMount() {
+    this.props.establishSocket()
+  }
+
   render() {
     return (
       <div>

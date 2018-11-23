@@ -14,9 +14,11 @@ class PlayContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.game.socket)
   return {
     hasErrored: state.game.hasErrored,
     inProgress: state.game.inProgress,
+    socket: state.game.socket,
     client: state.game.client
   }
 }

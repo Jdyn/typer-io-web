@@ -5,10 +5,18 @@ export default class Game extends Component {
     this.props.establishSocket()
   }
 
+  handleClick = () => {
+    console.log(this.props.socket)
+    this.props.socket.emit('log info', {})
+  }
+
   render() {
     return (
       <div>
         This is the play component
+        <button onClick={this.handleClick}>
+          log counts on server
+        </button>
       </div>
     )
   }

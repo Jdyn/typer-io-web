@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Game from '../components/Game'
-import {establishSocket} from '../actions/PlayActions'
-import {connect } from 'react-redux'
+import { establishSocket } from '../actions/PlayActions'
+import { connect } from 'react-redux'
 
 class PlayContainer extends Component {
   render() {
@@ -25,8 +25,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      establishSocket: (username) => dispatch(establishSocket('localhost:8000', username))
-  };
-};
+    establishSocket: username =>
+      dispatch(establishSocket('localhost:8000', username))
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayContainer)

@@ -8,7 +8,16 @@ const defaultProps = {}
 const propTypes = {}
 
 class Home extends Component {
-  componentWillMount() {}
+  constructor(props) {
+    super(props)
+    this.input = null
+  }
+
+  handleSubmit = event => {
+    if (event) event.preventDefault()
+    const username = this.input.value
+    // this.props.establishSocket(username)
+  }
 
   render() {
     const text = ['Play Multiplayer', 'Play Solo', 'Play Invitational']
@@ -20,6 +29,17 @@ class Home extends Component {
             <p>{element}</p>
           </Link>
         ))}
+        <a>{this.props.client.username}</a>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="Your name"
+            type="text"
+            ref={element => {
+              this.input = element
+            }}
+          />
+          <button>Submit!</button>
+        </form>
       </Fragment>
     )
   }

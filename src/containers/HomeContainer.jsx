@@ -1,35 +1,33 @@
 import React, { Component } from 'react'
 import Home from '../components/Home'
 import { connect } from 'react-redux'
-import { fetchMovies } from '../actions/MoviesActions'
+import { registerSocket } from '../actions/HomeActions'
 
 class HomeContainer extends Component {
   render() {
     return (
       <div>
-        <Home {...this.props}/>
+        <Home {...this.props} />
       </div>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     hasErrored: state.movies.hasErrored,
-//     isLoading: state.movies.isLoading,
-//     movies: state.movies.movies,
-//     page: state.movies.page,
-//     totalResults: state.movies.totalResults,
-//     totalPages: state.movies.totalPages,
-//   }
-// }
+const mapStateToProps = state => {
+  console.log(state.game.socket)
+  return {
+    hasErrored: state.game.hasErrored,
+    inProgress: state.game.inProgress,
+    socket: state.game.socket,
+    client: state.game.client
+  }
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       fetchMovies: () => dispatch(fetchMovies('super'))
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    registerSocket: username => dispatch(establishSocket('localhost:8000', username)),
+    establishSocket: socket =>
+  }
+}
 
-export default HomeContainer//connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
-
-
+export default connect(mapStateToProps)(HomeContainer)

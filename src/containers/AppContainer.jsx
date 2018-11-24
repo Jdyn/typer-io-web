@@ -5,12 +5,12 @@ import TopHeader from '../components/topHeader'
 class App extends Component {
   render() {
     return (
-        <Fragment>
-          <TopHeader />
-          <Router />
-        </Fragment>
-    );
+      <Fragment>
+        <TopHeader />
+        <Router />
+      </Fragment>
+    )
   }
 }
 
-export default App;
+export default App

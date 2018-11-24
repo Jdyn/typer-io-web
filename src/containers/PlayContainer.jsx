@@ -25,7 +25,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      establishSocket: () => dispatch(establishSocket('localhost:8000', 'billy'))
+      establishSocket: (username) => dispatch(establishSocket('localhost:8000', username))
   };
 };
 

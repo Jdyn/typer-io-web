@@ -21,7 +21,7 @@ export const establishSocket = (serverUrl, username) => (dispatch, getState) => 
     dispatch(establishSocketRequest(true))
     const socket = io(serverUrl)
 
-    socket.emit('register', {name: username})
+    socket.emit('register', {username: username})
 
     // reserved Socket.io string
     socket.on('connect_error', () => {

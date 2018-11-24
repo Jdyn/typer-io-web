@@ -1,23 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 export default class Game extends Component {
-  componentWillMount() {
-    this.props.establishSocket()
+  constructor(props) {
+    super(props)
+    this.input = null
   }
 
-  handleClick = () => {
-    console.log(this.props.socket)
-    this.props.socket.emit('log info', {})
+  handleSubmit = event => {
+    if(event) event.preventDefault()
+    const username = this.input.value
+    this.props.establishSocket(username)
   }
 
   render() {
     return (
-      <div>
-        This is the play component
-        <button onClick={this.handleClick}>
-          log counts on server
-        </button>
-      </div>
+      <Fragment>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="Your name"
+            type="text"
+            ref={element => {
+              this.input = element
+            }}
+          />
+          <button>Submit!</button>
+        </form>
+      </Fragment>
     )
   }
 }

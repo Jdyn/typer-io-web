@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-export default class Game extends Component {
+export default class Play extends Component {
   constructor(props) {
     super(props)
     this.input = null
@@ -14,3 +14,4 @@ export default class Game extends Component {
     )
   }
 }
+

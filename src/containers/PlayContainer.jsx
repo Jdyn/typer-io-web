@@ -1,32 +1,27 @@
 import React, { Component } from 'react'
-import Game from '../components/Game'
-import { establishSocket } from '../actions/PlayActions'
+import Play from '../components/Play'
 import { connect } from 'react-redux'
 
 class PlayContainer extends Component {
   render() {
     return (
       <div>
-        <Game {...this.props} />
+        <Play {...this.props} />
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state.game.socket)
+  // console.log(state.home.socket)
   return {
-    hasErrored: state.game.hasErrored,
-    inProgress: state.game.inProgress,
-    socket: state.game.socket,
-    client: state.game.client
+    socket: state.home.socket,
+    client: state.home.client
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    establishSocket: username =>
-      dispatch(establishSocket('localhost:8000', username))
   }
 }
 

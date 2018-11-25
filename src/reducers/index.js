@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux'
-import game from './PlayReducers'
+import home from './HomeReducers'
+import app from './AppReducers'
+
 export default combineReducers({
-    game,
+    app,
+    home,
 })

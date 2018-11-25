@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import Play from '../components/Play'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import Play from "../components/Play/Play";
+import { connect } from "react-redux";
+import { establishSocket } from "../actions/HomeActions";
 
 class PlayContainer extends Component {
   render() {
@@ -8,24 +9,25 @@ class PlayContainer extends Component {
       <div>
         <Play {...this.props} />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state.home.socket)
   return {
     socket: state.home.socket,
-    client: state.home.client
-  }
-}
+    client: state.app.client
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-  }
-}
+    establishSocket: client =>
+      dispatch(establishSocket("localhost:8000", client))
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlayContainer)
+)(PlayContainer);

@@ -2,7 +2,10 @@ import * as types from '../constants/ActionTypes'
 
 const initialState = {
   socket: null,
-  hasErrored: false,
+  error: {
+    hasErrored: false,
+    error: null
+  },
   inProgress: false
 }
 
@@ -18,12 +21,19 @@ export default (state = initialState, action) => {
     case types.ESTABLISH_SOCKET_ERRORED:
       return {
         ...state,
-        hasErrored: action.hasErrored
+        error: {
+          hasErrored: action.hasErrored,
+          error: action.error
+        }
       }
-
+    
     case types.ESTABLISH_SOCKET_SUCCESS:
     return {
       ...state,
+      client: {
+        ...state.client,
+        id: action.client.id
+      },
       inProgress: false
     }
 

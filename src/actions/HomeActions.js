@@ -6,9 +6,10 @@ export const establishSocketRequest = inProgress => ({
   inProgress
 });
 
-export const establishSocketErrored = hasErrored => ({
+export const establishSocketErrored = (hasErrored, error) => ({
   type: types.ESTABLISH_SOCKET_ERRORED,
-  hasErrored
+  hasErrored,
+  error
 });
 
 export const establishSocketSuccess = (client, socket) => ({
@@ -17,22 +18,21 @@ export const establishSocketSuccess = (client, socket) => ({
   socket
 });
 
-export const establishSocket = (serverUrl, client) => dispatch => {
+export const establishSocket = (serverUrl, username) => dispatch => {
   dispatch(establishSocketRequest(true));
   const socket = io(serverUrl);
 
-  socket.emit("register", client.username, data => {
-    console.log(data);
-    socket.on("connect", () => {
-      socket.on("connected", client => {
-        dispatch(establishSocketSuccess(client, socket));
-      });
+  socket.emit("register", username);
+
+  socket.on("connect", () => {
+    socket.on("connected", client => {
+      dispatch(establishSocketSuccess(client, socket));
     });
   });
 
   // reserved Socket.io param
-  socket.on("connect_error", () => {
-    dispatch(establishSocketErrored(true));
+  socket.on("connect_error", error => {
+    dispatch(establishSocketErrored(true, error));
     socket.close();
   });
 };

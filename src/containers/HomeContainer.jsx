@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Home from "../components/Home";
+import Home from "../components/Home/Home";
 import { connect } from "react-redux";
 import { establishSocket } from "../actions/HomeActions";
 import { initClient } from "../actions/AppActions";

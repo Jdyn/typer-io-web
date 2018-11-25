@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import Loader from "./Loader";
+import Loader from "../Loader";
+import ModeSelect from "./ModeSelect";
 
 const defaultProps = {};
 
@@ -21,13 +22,9 @@ class Home extends Component {
   };
 
   render() {
-    const options = ["Play Multiplayer", "Play Solo", "Play Invitational"];
-
     return (
       <Fragment>
-        
-
-
+        <ModeSelect username={this.props.client.username} establishSocket={this.props.establishSocket} />
         <h1>{this.props.client.username}</h1>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -37,7 +34,7 @@ class Home extends Component {
               this.input = element;
             }}
           />
-          <button>Submit!</button>
+          <button>Submit</button>
         </form>
       </Fragment>
     );

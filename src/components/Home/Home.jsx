@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import Loader from "../Loader";
 import ModeSelect from "./ModeSelect";
 
 const defaultProps = {};
@@ -17,14 +15,16 @@ class Home extends Component {
   handleSubmit = event => {
     if (event) event.preventDefault();
     const username = this.input.value;
-    console.log(username);
     this.props.initClient(username);
   };
 
   render() {
     return (
       <Fragment>
-        <ModeSelect username={this.props.client.username} establishSocket={this.props.establishSocket} />
+        <ModeSelect
+          username={this.props.client.username}
+          establishSocket={this.props.establishSocket}
+        />
         <h1>{this.props.client.username}</h1>
         <form onSubmit={this.handleSubmit}>
           <input

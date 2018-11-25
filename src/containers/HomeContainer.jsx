@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Home from "../components/Home/Home";
 import { connect } from "react-redux";
-import { establishSocket } from "../actions/HomeActions";
+import { establishSocket } from "../actions/AppActions";
 import { initClient } from "../actions/AppActions";
 
 class HomeContainer extends Component {
@@ -15,19 +15,14 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.home.socket);
   return {
-    hasErrored: state.home.hasErrored,
-    inProgress: state.home.inProgress,
-    socket: state.home.socket,
+    socket: state.app.socket,
     client: state.app.client
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    establishSocket: client =>
-      dispatch(establishSocket("localhost:8000", client)),
     initClient: username => dispatch(initClient(username))
   };
 };

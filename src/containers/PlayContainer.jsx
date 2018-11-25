@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Play from "../components/Play/Play";
 import { connect } from "react-redux";
-import { establishSocket } from "../actions/HomeActions";
+import { establishSocket } from "../actions/AppActions";
 
 class PlayContainer extends Component {
   render() {
@@ -15,15 +15,15 @@ class PlayContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    socket: state.home.socket,
+    socket: state.app.socket,
     client: state.app.client
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    establishSocket: client =>
-      dispatch(establishSocket("localhost:8000", client))
+    establishSocket: username =>
+      dispatch(establishSocket("localhost:8000", username))
   };
 };
 

@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import Home from "../components/Home/Home";
+import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
-import { establishSocket } from "../actions/AppActions";
 import { initClient } from "../actions/AppActions";
 
-class HomeContainer extends Component {
+class DashboardContainer extends Component {
   render() {
     return (
       <div>
-        <Home {...this.props} />
+        <Dashboard {...this.props} />
       </div>
     );
   }
@@ -30,4 +29,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeContainer);
+)(DashboardContainer);

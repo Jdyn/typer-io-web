@@ -2,12 +2,18 @@ import * as types from "../constants/ActionTypes";
 
 const initalState = {
   isLoggedIn: false,
+  isInRoom: false,
   client: {
     username: null,
     id: null,
     email: null,
     CPM: 0, // Characters per Minute
-    WPM: 0 // Words per Minute
+    WPM: 0, // Words per Minute
+    room: {
+      id: null,
+      size: null,
+      clients: []
+    }
   },
   socket: {
     io: null, // The actual socket object

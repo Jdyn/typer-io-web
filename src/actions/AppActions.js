@@ -31,10 +31,13 @@ export const establishSocket = (serverUrl, username) => dispatch => {
 
   socket.on("connect", () => {
     socket.on("connected", id => {
-      console.log(id);
-      dispatch(establishSocketSuccess(id, socket));
+      dispatch(establishSocketSuccess(id, socket))
     });
   });
+
+  socket.on('disconnect', () => {
+      console.log('Disconnected from server')
+  })
 
   // reserved Socket.io param
   socket.on("connect_error", error => {

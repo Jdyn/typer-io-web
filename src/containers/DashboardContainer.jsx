@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/Dashboard/Dashboard";
 import { connect } from "react-redux";
 import { initClient } from "../actions/AppActions";
 
@@ -13,18 +13,14 @@ class DashboardContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    socket: state.app.socket,
-    client: state.app.client
-  };
-};
+const mapStateToProps = state => ({
+  socket: state.app.socket,
+  client: state.app.client
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    initClient: username => dispatch(initClient(username))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  initClient: username => dispatch(initClient(username))
+});
 
 export default connect(
   mapStateToProps,

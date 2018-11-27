@@ -5,6 +5,7 @@ import * as route from '../constants/RouterConstants'
 import DashBoardContainer from '../containers/DashboardContainer'
 import AboutContainer from '../containers/AboutContainer'
 import PlayContainer from '../containers/PlayContainer'
+
 const Router = () => (
   <Switch>
     <Route exact path={route.HOME_PATH} component={DashBoardContainer}/>

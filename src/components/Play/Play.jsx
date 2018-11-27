@@ -6,10 +6,6 @@ export default class Play extends Component {
     this.input = null
   }
 
-  componentWillMount() {
-    this.props.establishSocket(this.props.client.username)
-  }
-
   render() {
     return (
       <Fragment>

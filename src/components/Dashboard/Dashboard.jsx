@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React from "react";
 import DashboardSelect from "./DashboardSelect";
+import injectSheet from 'react-jss'
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
@@ -8,8 +9,8 @@ const propTypes = {
   initClient: PropTypes.func.isRequired
 };
 
-export const Dashboard = props => {
-  const { socket, client, initClient } = props;
+export const Dashboard = (props) => {
+  const { socket, client, initClient, classes } = props;
   var input = null;
 
   const handleSubmit = event => {
@@ -19,10 +20,10 @@ export const Dashboard = props => {
   };
 
   return (
-    <Fragment>
+    <div className={classes.dashboard}>
       <DashboardSelect username={client.username} />
-      <h1>{client.username}</h1>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <div>{client.username}</div>
+      <form onSubmit={event => handleSubmit(event)}>
         <input
           placeholder="Enter Username"
           type="text"
@@ -32,8 +33,16 @@ export const Dashboard = props => {
         />
         <button>Submit</button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
 Dashboard.propTypes = propTypes;
+
+const styles = {
+  dashboard: {
+    backgroundColor: 'green'
+  }
+}
+
+export default injectSheet(styles)(Dashboard)

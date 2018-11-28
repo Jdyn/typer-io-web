@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Router from "../components/Router";
-import TopHeader from "../components/Header";
+import Nav from "../components/Nav/Nav";
 import CssBaseline from "../components/CssBaseline";
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Fragment>
         <CssBaseline />
-        <TopHeader />
+        <Nav />
         <Router />
       </Fragment>
     );

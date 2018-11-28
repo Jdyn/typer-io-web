@@ -31,7 +31,13 @@ const styles = theme => ({
     },
     body: {
       margin: 0, // Remove the margin in all browsers.
-      backgroundColor: theme.primaryWhite
+      backgroundColor: theme.primaryWhite,
+      fontSize: '100%',
+      fontFamily: ['Camphor', 'Open Sans', 'Segoe UI', 'sans-serif'],
+      fontWeight: 400,
+      fontStyle: 'normal',
+      webkitTextSizeAdjust: '100%',
+      textRendering: 'optimizeLegibility'
     }
   }
 });

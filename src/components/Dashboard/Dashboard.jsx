@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
-import DashboardSelect from "./DashboardSelect";
-import injectSheet from 'react-jss'
-
+import DashboardPlay from "./DashboardPlay";
+import injectSheet from "react-jss";
+import { Link } from "react-router-dom";
 const propTypes = {
   socket: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   initClient: PropTypes.func.isRequired
 };
 
-export const Dashboard = (props) => {
+export const Dashboard = props => {
   const { socket, client, initClient, classes } = props;
   var input = null;
 
@@ -20,29 +20,28 @@ export const Dashboard = (props) => {
   };
 
   return (
-    <div className={classes.dashboard}>
-      <DashboardSelect username={client.username} />
-      <div>{client.username}</div>
-      <form onSubmit={event => handleSubmit(event)}>
-        <input
-          placeholder="Enter Username"
-          type="text"
-          ref={element => {
-            input = element;
-          }}
-        />
-        <button>Submit</button>
-      </form>
-    </div>
+
+    // <div className={classes.dashboard}>
+    //   <DashboardSelect username={client.username} />
+    //   <div>{client.username}</div>
+    //   <form onSubmit={event => handleSubmit(event)}>
+    //     <input
+    //       placeholder="Enter Username"
+    //       type="text"
+    //       ref={element => {
+    //         input = element;
+    //       }}
+    //     />
+    //     <button>Submit</button>
+    //   </form>
+    // </div>
   );
 };
 
 Dashboard.propTypes = propTypes;
 
-const styles = {
-  dashboard: {
-    backgroundColor: 'green'
-  }
-}
+const styles = theme => ({
+  
+});
 
-export default injectSheet(styles)(Dashboard)
+export default injectSheet(styles)(Dashboard);

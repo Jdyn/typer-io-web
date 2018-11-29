@@ -8,23 +8,28 @@ const DashboardProfileHeader = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const username = input.value;
-    initClient(username);
+
+    if (input.value !== username) {
+      const name = input.value;
+      initClient(name);
+    }
   };
 
   return (
     <Fragment>
-      <form onSubmit={event => handleSubmit(event)} className={classes.container}>
-        <h2 className={classes.title}>{username}</h2>
+      <form
+        onSubmit={event => handleSubmit(event)}
+        className={classes.container}
+      >
         <input
-          className={classes.input}
-          placeholder="Enter Username"
+          className={classes.nameInput}
+          placeholder="name"
           type="text"
           ref={element => {
             input = element;
           }}
         />
-        <button>Submit</button>
+        {/* <button>Submit</button> */}
       </form>
     </Fragment>
   );
@@ -32,18 +37,39 @@ const DashboardProfileHeader = props => {
 
 DashboardProfileHeader.propTypes = {};
 
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: "275px",
-    },
-    title: {
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    width: "275px",
+    height: "100%",
+    maxWidth: "275px"
+  },
+  nameInput: {
+    flex: "100px",
+    textAlign: "center",
+    backgroundColor: theme.primaryWhite,
+    margin: "0 25px 0 25px",
+    height: "40px",
+    padding: "10px",
+    transition: "background-color .1s ease-in,color .1s ease-in",
+    fontWeight: 400,
+    fontSize: 17,
+    borderRadius: 8,
+    borderStyle: "solid",
+    borderColor: theme.primaryWhite,
+    fontWeight: 400,
+    fontSize: 17,
+    lineHeight: 26,
+    border: "none",
+    outline: "none",
 
-    },
-  input: {
-
+    "&:focus": {
+      backgroundColor: "#f6f9fc",
+      borderColor: "#e4effa",
+      borderStyle: "solid"
+    }
   }
-};
+});
 
 export default injectSheet(styles)(DashboardProfileHeader);

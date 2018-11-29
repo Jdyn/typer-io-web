@@ -41,15 +41,16 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    width: "275px",
     height: "100%",
-    maxWidth: "275px"
+    maxWidth: "275px",
+    width: '275px',
   },
   nameInput: {
     flex: "100px",
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
-    margin: "0 25px 0 25px",
+    maxWidth: '165px',
+    margin: "25px auto 0 auto",
     height: "40px",
     padding: "10px",
     transition: "background-color .1s ease-in,color .1s ease-in",

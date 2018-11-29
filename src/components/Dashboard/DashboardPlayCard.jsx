@@ -10,13 +10,13 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { navigatePath, classes, itemTitle, itemText } = props;
+  const { navPath, classes, title, text, route } = props;
 
   return (
     <Fragment>
-      <Link className={classes.card} to={navigatePath}>
-        <h2 className={classes.itemTitle}>{itemTitle}</h2>
-        <p className={classes.itemText}>{itemText}</p>
+      <Link className={classes.card} to={navPath}>
+        <h2 className={classes.itemTitle}>{title}</h2>
+        <p className={classes.itemText}>{text}</p>
       </Link>
     </Fragment>
   );
@@ -32,7 +32,7 @@ const styles = theme =>({
     cursor: "pointer",
     margin: 15,
     padding: "40px 40px 40px 40px",
-    backgroundColor: props => props.itemColor,
+    backgroundColor: props => props.color,
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",

@@ -8,14 +8,12 @@ const DashboardProfile = props => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.wrapper}>
         <DashboardPaper>
           <DashboardProfileHeader
             initClient={initClient}
             username={client.username}
           />
         </DashboardPaper>
-      </div>
     </div>
   );
 };
@@ -30,10 +28,6 @@ const styles = {
     padding: "5px 5px",
     // width: "50%"
   },
-  wrapper: {
-    display: 'flex',
-
-  }
 };
 
 export default injectSheet(styles)(DashboardProfile);

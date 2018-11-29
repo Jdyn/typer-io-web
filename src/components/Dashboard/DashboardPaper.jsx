@@ -22,7 +22,7 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     margin: 15,
-    padding: "40px 40px 40px 40px",
+    // padding: "40px 40px 40px 40px",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
     boxShadow: '0px 5px 30px 5px rgba(50,50,93,.25)',

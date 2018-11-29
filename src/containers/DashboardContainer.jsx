@@ -6,9 +6,7 @@ import { initClient } from "../actions/AppActions";
 class DashboardContainer extends Component {
   render() {
     return (
-      <div>
         <Dashboard {...this.props} />
-      </div>
     );
   }
 }

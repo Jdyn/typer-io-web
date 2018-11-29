@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import injectSheets from "react-jss";
@@ -9,37 +9,30 @@ const propTypes = {
   itemText: PropTypes.string.isRequired
 };
 
-const DashboardPlayItem = props => {
+const DashboardPlayCard = props => {
   const { navigatePath, classes, itemTitle, itemText } = props;
 
   return (
-    <div className={classes.container}>
+    <Fragment>
       <Link className={classes.card} to={navigatePath}>
         <h2 className={classes.itemTitle}>{itemTitle}</h2>
         <p className={classes.itemText}>{itemText}</p>
       </Link>
-    </div>
+    </Fragment>
   );
 };
 
-const styles = {
-  container: {
-    display: "flex",
-    margin: ["20px", "auto"],
-    padding: ["5px", "5px"],
-    maxWidth: "1160px",
-    backgroundColor: theme.primaryWhite
-  },
+const styles = theme =>({
   card: {
     display: "flex",
     flex: [1, 1, "100%"],
     flexDirection: "column",
+    justifyContent: 'right',
     position: "relative",
     cursor: "pointer",
     margin: 15,
     padding: "40px 40px 40px 40px",
-    backgroundColor: theme.primaryWhite,
-    color: "black",
+    backgroundColor: props => props.itemColor,
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
@@ -52,12 +45,26 @@ const styles = {
         "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
     }
   },
-  text: {
+  itemTitle: {
+    margin: [0, 0, "5px"],
+    whiteSpace: "normal",
+    fontSize: 18,
+    lineHeight: "15px",
+    color: '#fff',
+    fontWeight: 600,
+    textTransform: "uppercase",
+    letterSpacing: ".025em"
+  },
+  itemText: {
     margin: ["5px", 0, 0],
     fontWeight: 400,
     fontSize: 17,
-    fontFamily: ["Camphor", "Open Sans", "Segoe UI", "sans-serif"]
+    width: '240px',
+    color: '#fff',
+    lineHeight: "15px"
   }
-};
+});
 
-DashboardPlayItem.propTypes = propTypes;
+DashboardPlayCard.propTypes = propTypes;
+
+export default injectSheets(styles)(DashboardPlayCard)

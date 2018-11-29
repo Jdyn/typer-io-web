@@ -26,6 +26,7 @@ const Nav = props => {
 
 const styles = theme => ({
   root: {
+    zIndex: 2,
     position: "relative",
     top: 0,//"10px",
     left: 0,
@@ -37,6 +38,7 @@ const styles = theme => ({
   container: {
     margin: [0, "auto"],
     padding: 0,
+    backgroundColor: theme.primaryWhite,
     boxShadow: '0 5px 20px rgba(50,50,93,.25)',
     borderRadius: 0
   },
@@ -51,7 +53,7 @@ const styles = theme => ({
   listItemTitle: {
     background: "transparent",
     border: 0,
-    height: "50px",
+    height: "65px",
     fontWeight: "500",
     fontSize: 17,
     color: "black",

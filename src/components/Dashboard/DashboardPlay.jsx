@@ -1,38 +1,50 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-
+import DashboardPlayCard from "./DashboardPlayCard";
+import injectSheets from "react-jss";
+import DashboardPaper from './DashboardPaper'
 const propTypes = {
-  username: PropTypes.string.isRequired
+  username: PropTypes.string
 };
 
 const DashboardPlay = props => {
-  const { username } = props;
-  const options = ["Play", "Solo", "Friends"];
+  const { classes } = props;
+
+  const options = [
+    { title: "Play", text: "This is the Play Text", color: '#3ecf8e' },
+    { title: "Solo", text: "This is the Solo Text", color: '#6772e5'},
+    { title: "Friends", text: "This is the Friends Text", color: '#b76ac4' }
+  ];
 
   return (
+    
     <div className={classes.container}>
-
-      <Link className={classes.card} to="/">
-        <h2 className={classes.text}>Title</h2>
-        <p className={classes.text}>
-          in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum."
-        </p>
-      </Link>
+      {options.map((object, index) => {
+        return (
+          <DashboardPlayCard
+            navigatePath="/"
+            itemTitle={object.title}
+            itemText={object.text}
+            itemColor={object.color}
+            key={index}
+          />
+        );
+      })}
     </div>
-    //   <div>
-    //   {username !== null
-    //     ? options.map(option => (
-    //         <Link to="/play" key={option}>
-    //           <button>{option}</button>
-    //         </Link>
-    //       ))
-    //     : options.map(option => <button key={option}>{option}</button>)}
-    // </div>
   );
 };
 
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    margin: '20px auto 20px 0 ',
+    padding: ["5px", "5px"],
+    maxWidth: "1160px",
+    backgroundColor: theme.primaryWhite
+  }
+});
+
 DashboardPlay.propTypes = propTypes;
-export default DashboardPlay;
+export default injectSheets(styles)(DashboardPlay);

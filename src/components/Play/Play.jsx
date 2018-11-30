@@ -16,22 +16,21 @@ class Play extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.props.disconnectSocket(this.props.socket.io, this.props.client);
-    console.log('component dismounted and disconnect socket called')
+    console.log("component dismounted and disconnect socket called");
+    this.props.disconnectSocket(this.props.socket.io, this.props.client);
   }
+
 
   render() {
     const { classes, client } = this.props;
     return (
       <div className={classes.root}>
-        <DashboardPaper>
-          <h2>{client.username}</h2>
-          <h4>{client.id}</h4>
-        </DashboardPaper>
-        {console.log(client.room.clients)}
         {client.room ? (
           client.room.clients.map(client => (
-            <DashboardPaper>{client.id}</DashboardPaper>
+            <DashboardPaper key={client.id}>
+              <h2>{client.username}</h2>
+              <h4>{client.id}</h4>
+            </DashboardPaper>
           ))
         ) : (
           <div>rip </div>
@@ -44,6 +43,7 @@ class Play extends React.Component {
 const styles = {
   root: {
     display: "flex",
+    flexDirection: 'row',
     position: "relative"
   }
 };

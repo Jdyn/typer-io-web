@@ -29,8 +29,9 @@ export const connectSocket = (serverUrl, client) => dispatch => {
 
   socket.emit("register", client.username);
 
-  socket.on("connected", client => {
+  socket.on("onConnected", client => {
     dispatch(connectSocketSuccess(client, socket));
+    dispatch(handleRoomUpdates(socket));
   });
 
   socket.on("connect_error", error => {
@@ -48,17 +49,26 @@ export const disconnectSocket = (socket, client) => dispatch => {
   var room = null;
 
   socket.emit("LeaveRoom", client);
-  socket.on("ClientLeftRoom", data => {
-    room = data;
-    socket.disconnect();
-    console.log("socket is disconnected");
-  });
 
   socket.on("disconnect", () => {
-    console.log("socket disconnect called");
-    console.log("here is what the new room object is", room);
+    socket.emit("LeaveRoom", client);
     dispatch(disconnectSocketSuccess(room));
   });
 };
 
-export const updateRoom = () => dispatch => {};
+export const handleRoomUpdates = socket => dispatch => {
+  socket.on("ClientLeftRoom", room => {
+    console.log("a client left the room");
+    dispatch(updateClientRoom(room));
+  });
+
+  socket.on("ClientJoinedRoom", room => {
+    console.log("a client joined room");
+    dispatch(updateClientRoom(room));
+  });
+};
+
+export const updateClientRoom = room => ({
+  type: types.UPDATE_CLIENT_ROOM,
+  room
+});

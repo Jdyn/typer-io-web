@@ -3,7 +3,7 @@ import * as types from "../constants/ActionTypes";
 const initalState = {
   isLoggedIn: false,
   client: {
-    username: "null client",
+    username: null,
     id: null,
     email: null,
     isInRoom: false,
@@ -60,6 +60,7 @@ export default (state = initalState, action) => {
         client: {
           ...state.client,
           ...action.client
+          // room: {}
         },
         socket: {
           ...state.socket,
@@ -76,6 +77,15 @@ export default (state = initalState, action) => {
           room: action.room
         }
       };
+
+    case types.UPDATE_CLIENT_ROOM:
+    return {
+      ...state,
+      client: {
+        ...state.client,
+        room: action.room
+      }
+    }
 
     default:
       return state;

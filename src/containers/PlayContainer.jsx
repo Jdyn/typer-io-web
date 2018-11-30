@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Play from "../components/Play/Play";
 import { connect } from "react-redux";
-import { establishSocket } from "../actions/AppActions";
+import { connectSocket, disconnectSocket } from "../actions/AppActions";
 
 class PlayContainer extends Component {
   render() {
@@ -21,9 +21,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  const serverUrl = "localhost:8000";
   return {
-    establishSocket: username =>
-      dispatch(establishSocket("localhost:8000", username))
+    connectSocket: username => dispatch(connectSocket(serverUrl, username)),
+    disconnectSocket: (socket, client) =>
+      dispatch(disconnectSocket(socket, client))
   };
 };
 

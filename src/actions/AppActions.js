@@ -6,42 +6,59 @@ export const initClient = username => ({
   username
 });
 
-export const establishSocketRequest = inProgress => ({
-  type: types.ESTABLISH_SOCKET_REQUEST,
+export const connectSocketRequest = inProgress => ({
+  type: types.CONNECT_SOCKET_REQUEST,
   inProgress
 });
 
-export const establishSocketErrored = (hasErrored, error) => ({
-  type: types.ESTABLISH_SOCKET_ERRORED,
+export const connectSocketErrored = (hasErrored, error) => ({
+  type: types.CONNECT_SOCKET_ERRORED,
   hasErrored,
   error
 });
 
-export const establishSocketSuccess = (id, socket) => ({
-  type: types.ESTABLISH_SOCKET_SUCCESS,
-  id,
+export const connectSocketSuccess = (client, socket) => ({
+  type: types.CONNECT_SOCKET_SUCCESS,
+  client,
   socket
 });
 
-export const establishSocket = (serverUrl, username) => dispatch => {
-  dispatch(establishSocketRequest(true));
+export const connectSocket = (serverUrl, client) => dispatch => {
+  dispatch(connectSocketRequest(true));
   const socket = io(serverUrl);
 
-  socket.emit("register", username);
+  socket.emit("register", client.username);
 
-  socket.on("connect", () => {
-    socket.on("connected", id => {
-      dispatch(establishSocketSuccess(id, socket))
-    });
+  socket.on("connected", client => {
+    dispatch(connectSocketSuccess(client, socket));
   });
 
-  socket.on('disconnect', () => {
-      console.log('Disconnected from server')
-  })
-
-  // reserved Socket.io param
   socket.on("connect_error", error => {
-    dispatch(establishSocketErrored(true, error));
+    dispatch(connectSocketErrored(true, error));
     socket.close();
   });
 };
+
+export const disconnectSocketSuccess = room => ({
+  type: types.DISCONNECT_SOCKET,
+  room
+});
+
+export const disconnectSocket = (socket, client) => dispatch => {
+  var room = null;
+
+  socket.emit("LeaveRoom", client);
+  socket.on("ClientLeftRoom", data => {
+    room = data;
+    socket.disconnect();
+    console.log("socket is disconnected");
+  });
+
+  socket.on("disconnect", () => {
+    console.log("socket disconnect called");
+    console.log("here is what the new room object is", room);
+    dispatch(disconnectSocketSuccess(room));
+  });
+};
+
+export const updateRoom = () => dispatch => {};

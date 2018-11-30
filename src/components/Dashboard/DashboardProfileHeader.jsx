@@ -11,7 +11,12 @@ const DashboardProfileHeader = props => {
 
     if (input.value !== username) {
       const name = input.value;
-      initClient(name);
+      if (name == null) {
+        const name = "nullclient";
+        initClient(name);
+      } else {
+        initClient(name);
+      }
     }
   };
 
@@ -43,19 +48,17 @@ const styles = theme => ({
     flexDirection: "row",
     height: "100%",
     maxWidth: "275px",
-    width: '275px',
+    width: "275px"
   },
   nameInput: {
     flex: "100px",
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
-    maxWidth: '165px',
+    maxWidth: "165px",
     margin: "25px auto 0 auto",
     height: "40px",
     padding: "10px",
     transition: "background-color .1s ease-in,color .1s ease-in",
-    fontWeight: 400,
-    fontSize: 17,
     borderRadius: 8,
     borderStyle: "solid",
     borderColor: theme.primaryWhite,

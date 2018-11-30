@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import injectSheets from "react-jss";
 
 const propTypes = {
-  navigatePath: PropTypes.string.isRequired,
-  itemTitle: PropTypes.string.isRequired,
-  itemText: PropTypes.string.isRequired
+  navPath: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 const DashboardPlayCard = props => {
-  const { navPath, classes, title, text, route } = props;
+  const { navPath, classes, title, text } = props;
 
   return (
     <Fragment>

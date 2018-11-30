@@ -2,16 +2,16 @@ import * as types from "../constants/ActionTypes";
 
 const initalState = {
   isLoggedIn: false,
-  isInRoom: false,
   client: {
-    username: null,
+    username: "null client",
     id: null,
     email: null,
+    isInRoom: false,
     CPM: 0, // Characters per Minute
     WPM: 0, // Words per Minute
     room: {
       id: null,
-      size: null,
+      playerCount: null,
       clients: []
     }
   },
@@ -34,7 +34,7 @@ export default (state = initalState, action) => {
         }
       };
 
-    case types.ESTABLISH_SOCKET_REQUEST:
+    case types.CONNECT_SOCKET_REQUEST:
       return {
         ...state,
         socket: {
@@ -43,7 +43,7 @@ export default (state = initalState, action) => {
         }
       };
 
-    case types.ESTABLISH_SOCKET_ERRORED:
+    case types.CONNECT_SOCKET_ERRORED:
       return {
         ...state,
         socket: {
@@ -54,17 +54,26 @@ export default (state = initalState, action) => {
         }
       };
 
-    case types.ESTABLISH_SOCKET_SUCCESS:
+    case types.CONNECT_SOCKET_SUCCESS:
       return {
         ...state,
         client: {
           ...state.client,
-          id: action.id
+          ...action.client
         },
         socket: {
           ...state.socket,
           io: action.socket,
           inProgress: false
+        }
+      };
+
+    case types.DISCONNECT_SOCKET:
+      return {
+        ...state,
+        client: {
+          ...state.client,
+          room: action.room
         }
       };
 

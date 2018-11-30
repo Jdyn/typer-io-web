@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
 import injectSheets from "react-jss";
-import DashboardPaper from './DashboardPaper'
+
 const propTypes = {
   username: PropTypes.string
 };

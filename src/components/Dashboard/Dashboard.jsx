@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React from "react";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 export const Dashboard = props => {
-  const { socket, client, initClient, classes } = props;
+  const { client, initClient, classes } = props;
 
   return (
     <main>

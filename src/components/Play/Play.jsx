@@ -1,17 +1,53 @@
-import React, { Component, Fragment } from 'react'
+import React from "react";
+import PropTypes from "prop-types";
+import DashboardPaper from "../Dashboard/DashboardPaper";
+import injectSheet from "react-jss";
 
-export default class Play extends Component {
-  constructor(props) {
-    super(props)
-    this.input = null
+const propTypes = {
+  socket: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
+  connectSocket: PropTypes.func.isRequired,
+  disconnectSocket: PropTypes.func.isRequired
+};
+
+class Play extends React.Component {
+  componentWillMount() {
+    this.props.connectSocket(this.props.client);
+  }
+
+  componentWillUnmount() {
+    // this.props.disconnectSocket(this.props.socket.io, this.props.client);
+    console.log('component dismounted and disconnect socket called')
   }
 
   render() {
+    const { classes, client } = this.props;
     return (
-      <Fragment>
-
-      </Fragment>
-    )
+      <div className={classes.root}>
+        <DashboardPaper>
+          <h2>{client.username}</h2>
+          <h4>{client.id}</h4>
+        </DashboardPaper>
+        {console.log(client.room.clients)}
+        {client.room ? (
+          client.room.clients.map(client => (
+            <DashboardPaper>{client.id}</DashboardPaper>
+          ))
+        ) : (
+          <div>rip </div>
+        )}
+      </div>
+    );
   }
 }
 
+const styles = {
+  root: {
+    display: "flex",
+    position: "relative"
+  }
+};
+
+Play.propTypes = propTypes;
+
+export default injectSheet(styles)(Play);

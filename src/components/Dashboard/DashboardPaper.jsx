@@ -1,12 +1,5 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import injectSheets from "react-jss";
-
-const propTypes = {
-  navigatePath: PropTypes.string.isRequired,
-  itemTitle: PropTypes.string.isRequired,
-  itemText: PropTypes.string.isRequired
-};
 
 const DashboardPaper = props => {
   const { classes, children } = props;
@@ -28,7 +21,5 @@ const styles = theme => ({
     boxShadow: '0px 5px 30px 5px rgba(50,50,93,.25)',
 }
 });
-
-DashboardPaper.propTypes = propTypes;
 
 export default injectSheets(styles)(DashboardPaper);

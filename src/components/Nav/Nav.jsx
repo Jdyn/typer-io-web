@@ -9,13 +9,13 @@ const Nav = props => {
       <nav className={classes.container}>
         <ul className={classes.list}>
           <li className={classes.listItem}>
-            <button className={classes.listItemTitle}>text</button>
+            <button className={classes.listItemTitle}></button>
           </li>
           <li>
-            <button className={classes.listItemTitle}>text</button>
+            <button className={classes.listItemTitle}></button>
           </li>
           <li>
-            <button className={classes.listItemTitle}>text</button>
+            <button className={classes.listItemTitle}></button>
           </li>
         </ul>
       </nav>

@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import DashboardPaper from "../Dashboard/DashboardPaper";
 import injectSheet from "react-jss";
 
+import CommonTitle from "../CommonComponents/commonTitle";
+import CommonText from "../CommonComponents/commonText";
+
 const propTypes = {
   socket: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
@@ -11,29 +14,22 @@ const propTypes = {
 };
 
 class Play extends React.Component {
-  componentWillMount() {
-    this.props.connectSocket(this.props.client);
-  }
-
-  componentWillUnmount() {
-    console.log("component dismounted and disconnect socket called");
-    this.props.disconnectSocket(this.props.socket.io, this.props.client);
-  }
-
-
   render() {
     const { classes, client } = this.props;
     return (
       <div className={classes.root}>
+        <h2> Current Players: </h2>
         {client.room ? (
           client.room.clients.map(client => (
-            <DashboardPaper key={client.id}>
-              <h2>{client.username}</h2>
-              <h4>{client.id}</h4>
+            <DashboardPaper padding="25px" key={client.id}>
+              <CommonTitle color="black">NAME: {client.username}</CommonTitle>
+              <CommonText color="black" fontSize={14}>
+                ID: {client.id}
+              </CommonText>
             </DashboardPaper>
           ))
         ) : (
-          <div>rip </div>
+          <div>rip</div>
         )}
       </div>
     );
@@ -43,8 +39,10 @@ class Play extends React.Component {
 const styles = {
   root: {
     display: "flex",
-    flexDirection: 'row',
-    position: "relative"
+    width: "350px",
+    flexDirection: "column",
+    position: "relative",
+    margin: "0px 40px 0px auto"
   }
 };
 

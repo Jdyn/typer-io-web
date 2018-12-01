@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import injectSheets from "react-jss";
 
+import CommonTitle from "../CommonComponents/commonTitle";
+import CommonText from '../CommonComponents/commonText'
+
 const propTypes = {
   navPath: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -15,24 +18,24 @@ const DashboardPlayCard = props => {
   return (
     <Fragment>
       <Link className={classes.card} to={navPath}>
-        <h2 className={classes.itemTitle}>{title}</h2>
-        <p className={classes.itemText}>{text}</p>
+        <CommonTitle color={'#fff'}>{title}</CommonTitle>
+        <CommonText color={'#fff'} className={classes.itemText}>{text}</CommonText>
       </Link>
     </Fragment>
   );
 };
 
-const styles = theme =>({
+const styles = theme => ({
   card: {
     display: "flex",
     flex: [1, 1, "100%"],
     flexDirection: "column",
-    justifyContent: 'right',
+    justifyContent: "right",
     position: "relative",
     cursor: "pointer",
     margin: 15,
     padding: "40px 40px 40px 40px",
-    backgroundColor: props => props.color,
+    backgroundColor: props => props.backgroundColor,
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
@@ -44,27 +47,9 @@ const styles = theme =>({
       boxShadow:
         "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
     }
-  },
-  itemTitle: {
-    margin: [0, 0, "5px"],
-    whiteSpace: "normal",
-    fontSize: 18,
-    lineHeight: "15px",
-    color: '#fff',
-    fontWeight: 600,
-    textTransform: "uppercase",
-    letterSpacing: ".025em"
-  },
-  itemText: {
-    margin: ["5px", 0, 0],
-    fontWeight: 400,
-    fontSize: 17,
-    width: '240px',
-    color: '#fff',
-    lineHeight: "15px"
   }
 });
 
 DashboardPlayCard.propTypes = propTypes;
 
-export default injectSheets(styles)(DashboardPlayCard)
+export default injectSheets(styles)(DashboardPlayCard);

@@ -26,7 +26,7 @@ const DashboardPlay = props => {
             navPath={route}
             title={title}
             text={text}
-            color={color}
+            backgroundColor={color}
             route={route}
             key={index}
           />

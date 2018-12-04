@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import DashboardProfileHeader from "./DashboardProfileHeader";
-import DashboardPaper from "./DashboardPaper";
+import CommonPaper from "../CommonComponents/CommonPaper";
 
 const propTypes = {
   initClient: PropTypes.func.isRequired,
@@ -14,12 +14,12 @@ const DashboardProfile = props => {
 
   return (
     <div className={classes.container}>
-      <DashboardPaper>
+      <CommonPaper>
         <DashboardProfileHeader
           initClient={initClient}
           username={client.username}
         />
-      </DashboardPaper>
+      </CommonPaper>
     </div>
   );
 };

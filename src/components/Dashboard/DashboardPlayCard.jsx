@@ -13,11 +13,11 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { navPath, classes, title, text } = props;
+  const { navPath, classes, title, text, handleOnClick } = props;
 
   return (
     <Fragment>
-      <Link className={classes.card} to={navPath}>
+      <Link className={classes.card} to={navPath} onClick={handleOnClick}>
         <CommonTitle color={'#fff'}>{title}</CommonTitle>
         <CommonText color={'#fff'} className={classes.itemText}>{text}</CommonText>
       </Link>

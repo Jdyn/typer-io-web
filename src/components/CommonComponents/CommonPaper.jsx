@@ -1,7 +1,7 @@
 import React from "react";
 import injectSheets from "react-jss";
 
-const DashboardPaper = props => {
+const CommonPaper = props => {
   const { classes, children } = props;
 
   return <div className={classes.paper}>{children}</div>;
@@ -22,4 +22,4 @@ const styles = theme => ({
 }
 });
 
-export default injectSheets(styles)(DashboardPaper);
+export default injectSheets(styles)(CommonPaper);

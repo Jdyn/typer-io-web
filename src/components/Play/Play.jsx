@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DashboardPaper from "../Dashboard/DashboardPaper";
+import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 
 import CommonTitle from "../CommonComponents/commonTitle";
@@ -21,12 +21,12 @@ class Play extends React.Component {
         <h2> Current Players: </h2>
         {client.room ? (
           client.room.clients.map(client => (
-            <DashboardPaper padding="25px" key={client.id}>
+            <CommonPaper padding="25px" key={client.id}>
               <CommonTitle color="black">NAME: {client.username}</CommonTitle>
               <CommonText color="black" fontSize={14}>
                 ID: {client.id}
               </CommonText>
-            </DashboardPaper>
+            </CommonPaper>
           ))
         ) : (
           <div>rip</div>

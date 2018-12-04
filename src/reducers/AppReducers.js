@@ -74,7 +74,8 @@ export default (state = initalState, action) => {
         ...state,
         client: {
           ...state.client,
-          room: action.room
+          room: action.room,
+          isInRoom: false
         }
       };
 

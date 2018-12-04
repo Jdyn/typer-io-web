@@ -11,14 +11,14 @@ const propTypes = {
 };
 
 export const Dashboard = props => {
-  const { client, initClient, classes } = props;
+  const { client, initClient, classes,socket } = props;
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
         <DashboardProfile initClient={initClient} client={client} />
-        <DashboardPlay />
+        <DashboardPlay socket={socket}/>
       </div>
     </main>
   );

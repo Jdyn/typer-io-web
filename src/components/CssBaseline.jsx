@@ -47,4 +47,4 @@ CssBaseline.defaultProps = defaultProps;
 
 export default injectSheet(styles)(CssBaseline);
 
-// Inspired by Material-UI baseline CSS. - Jaden
+// Inspired by Material-UI baseline CSS. - Thanks

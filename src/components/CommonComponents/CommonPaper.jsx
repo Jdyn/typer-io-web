@@ -11,7 +11,6 @@ const styles = theme => ({
   paper: {
     display: "flex",
     width: "100%",
-    flex: [1, 1, "100%"],
     flexDirection: "column",
     position: "relative",
     margin: 15,

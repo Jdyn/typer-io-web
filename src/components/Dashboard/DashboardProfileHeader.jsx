@@ -2,6 +2,11 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 
+const propTypes = {
+  initClient: PropTypes.func.isRequired,
+  username: PropTypes.string,
+}
+
 const DashboardProfileHeader = props => {
   const { initClient, username, classes } = props;
   var input = null;
@@ -34,13 +39,12 @@ const DashboardProfileHeader = props => {
             input = element;
           }}
         />
-        {/* <button>Submit</button> */}
       </form>
     </Fragment>
   );
 };
 
-DashboardProfileHeader.propTypes = {};
+DashboardProfileHeader.propTypes = propTypes;
 
 const styles = theme => ({
   container: {

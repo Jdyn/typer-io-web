@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 import PlayMainSnippet from "./PlayMainSnippet";
@@ -7,25 +7,36 @@ import PlayMainSnippet from "./PlayMainSnippet";
 const PlayMain = props => {
   const { classes } = props;
 
-  const snippet = (
-    <div>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum."
-    </div>
-  );
+  const snippet = "This sentence's contains strings.";
 
-  return (
-    <div className={classes.container}>
-      <CommonPaper>
-        <PlayMainSnippet snippet={snippet} />
-      </CommonPaper>
-    </div>
-  );
+  const transformSnippet = snippet => {
+    var words = snippet.split(" ")
+
+    words.forEach((word, index) => {
+      if (word.includes("'") || word.includes(".")) {
+        const letters = word.split('')
+        letters.forEach((letter, index) => {
+          if (letter === "." || letter === "'") {
+            console.log(index, word)
+          }
+        })
+      }
+    })
+
+    // for (const [i, value] of words.entries()) {
+    //   console.log(i, value)
+    // }
+  };
+
+  transformSnippet(snippet);
+
+  const set = new Set([
+    <CommonPaper key="1">Hello</CommonPaper>,
+    <CommonPaper key="2">World</CommonPaper>,
+    <CommonPaper key="3">...</CommonPaper>
+  ]);
+
+  return [...set].map(element => element);
 };
 
 PlayMain.propTypes = {};

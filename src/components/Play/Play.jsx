@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 import PlayClientList from "./PlayClientList";
 import PlayMain from "./PlayMain";
@@ -18,7 +17,7 @@ class Play extends React.Component {
     return (
       <div className={classes.root}>
         <PlayMain />
-        <PlayClientList client={client} />
+        {/* <PlayClientList client={client} /> */}
       </div>
     );
   }

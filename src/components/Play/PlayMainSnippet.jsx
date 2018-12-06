@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Play from "./Play";
+// import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 
 const PlayMainSnippet = props => {

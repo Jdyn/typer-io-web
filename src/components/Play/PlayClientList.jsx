@@ -1,45 +1,31 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-
-import CommonPaper from "../CommonComponents/CommonPaper";
+import ClientListCard from "./ClientListCard";
 import CommonTitle from "../CommonComponents/commonTitle";
-import CommonText from "../CommonComponents/commonText";
+import CommonPaper from "../CommonComponents/CommonPaper";
 
 const PlayClientList = props => {
   const { client, classes } = props;
   return (
     <div className={classes.container}>
-      <h2 className={classes.listHeaderTitle}> Current Players: </h2>
-      {client.room ? (
-        client.room.clients.map(client => (
-          <CommonPaper padding="25px" key={client.id}>
-            <CommonTitle color="black">NAME: {client.username}</CommonTitle>
-            <CommonText color="black" fontSize={14}>
-              ID: {client.id}
-            </CommonText>
-          </CommonPaper>
-        ))
-      ) : (
-        <div>rip</div>
-      )}
+      <CommonPaper>
+        <CommonTitle className={classes.title} color="black" padding="10px">
+          Current Players:
+        </CommonTitle>
+        {client.room &&
+          client.room.clients.map(client => <ClientListCard client={client} />)}
+      </CommonPaper>
     </div>
   );
 };
 
-PlayClientList.propTypes = {};
-
-const styles = {
+const styles = theme => ({
   container: {
     display: "flex",
-    width: "350px",
-    flexDirection: "column",
     position: "relative",
-    margin: "0px auto 0px 0px"
-  },
-  listHeaderTitle: {
-    margin: "25px 0px 25px 15px"
+    backgroundColor: theme.primaryWhite,
+    margin: "25px auto 0px auto"
   }
-};
+});
 
 export default injectSheet(styles)(PlayClientList);

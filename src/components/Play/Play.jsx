@@ -15,15 +15,18 @@ class Play extends React.Component {
   render() {
     const { classes, client } = this.props;
     return (
-      <div className={classes.root}>
-        <PlayMain />
-        {/* <PlayClientList client={client} /> */}
-      </div>
+      <main>
+        <div className={classes.stripe} />
+        <div className={classes.root}>
+          <PlayMain />
+          <PlayClientList client={client} />
+        </div>
+      </main>
     );
   }
 }
 
-const styles = {
+const styles = theme => ({
   root: {
     display: "flex",
     maxWidth: "1040px",
@@ -31,8 +34,20 @@ const styles = {
     position: "relative",
     margin: "auto",
     height: "100%"
+  },
+  stripe: {
+    zIndex: 0,
+    width: "100%",
+    height: "85%",
+    overflow: "hidden",
+    WebkitTransform: "skwY(-12deg)",
+    transform: "skewY(-12deg)",
+    WebkitTransformOrigin: 0,
+    transformOrigin: 0,
+    backgroundColor: theme.secondaryWhite,
+    position: "absolute"
   }
-};
+});
 
 Play.propTypes = propTypes;
 

@@ -18,7 +18,8 @@ store.subscribe(() => {
 
 const theme = {
   primaryWhite: "#fafafa",
-  secondaryWhite: "#f6f9fc"
+  secondaryWhite: "#f6f9fc",
+  primaryGrey: '#d7dadc'
 };
 
 const app = (

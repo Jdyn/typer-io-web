@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheets from "react-jss";
+import injectSheet from "react-jss";
 
 const CommonPaper = props => {
   const { classes, children } = props;
@@ -21,4 +21,4 @@ const styles = theme => ({
 }
 });
 
-export default injectSheets(styles)(CommonPaper);
+export default injectSheet(styles)(CommonPaper);

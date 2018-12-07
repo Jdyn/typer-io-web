@@ -3,40 +3,34 @@ import React from "react";
 import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 import PlayMainSnippet from "./PlayMainSnippet";
+import SnippetWord from "./SnippetWord";
 
 const PlayMain = props => {
   const { classes } = props;
 
-  const snippet = "This sentence's contains strings.";
+  const snippet = "They show salary data points that can be a few years old. Also it's not really clear how they break up non-salary compensation (bonuses, stock, 401k contributions, etc), from my recollection."
 
   const transformSnippet = snippet => {
-    var words = snippet.split(" ")
+    var words = snippet.split(" ");
+    var res = new Set();
 
     words.forEach((word, index) => {
-      if (word.includes("'") || word.includes(".")) {
-        const letters = word.split('')
-        letters.forEach((letter, index) => {
-          if (letter === "." || letter === "'") {
-            console.log(index, word)
-          }
-        })
-      }
-    })
-
-    // for (const [i, value] of words.entries()) {
-    //   console.log(i, value)
-    // }
+      console.log(index);
+      const letters = word.split("");
+      res.add(<SnippetWord letters={letters} key={index} />);
+    });
+    return [...res];
   };
 
-  transformSnippet(snippet);
+  const transformedSnippet = transformSnippet(snippet);
 
-  const set = new Set([
-    <CommonPaper key="1">Hello</CommonPaper>,
-    <CommonPaper key="2">World</CommonPaper>,
-    <CommonPaper key="3">...</CommonPaper>
-  ]);
-
-  return [...set].map(element => element);
+  return (
+    <div className={classes.container}>
+      <CommonPaper>
+        <PlayMainSnippet snippet={transformedSnippet} />
+      </CommonPaper>
+    </div>
+  ); 
 };
 
 PlayMain.propTypes = {};
@@ -44,8 +38,9 @@ PlayMain.propTypes = {};
 const styles = theme => ({
   container: {
     display: "flex",
+    position: 'relative',
     backgroundColor: theme.primaryWhite,
-    margin: "25px 15px 0px auto"
+    margin: "25px auto 0px auto"
   }
 });
 

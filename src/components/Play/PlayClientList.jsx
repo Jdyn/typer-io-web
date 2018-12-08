@@ -8,8 +8,8 @@ const PlayClientList = props => {
   const { client, classes } = props;
   return (
     <div className={classes.container}>
-      <CommonPaper>
-        <CommonTitle className={classes.title} color="black" padding="10px">
+      <CommonPaper width='265px'>
+        <CommonTitle className={classes.title} color="black" padding="20px">
           Current Players:
         </CommonTitle>
         {client.room &&
@@ -23,8 +23,7 @@ const styles = theme => ({
   container: {
     display: "flex",
     position: "relative",
-    backgroundColor: theme.primaryWhite,
-    margin: "25px auto 0px auto"
+    margin: "25px auto auto auto"
   }
 });
 

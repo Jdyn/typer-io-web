@@ -12,7 +12,8 @@ const initalState = {
     room: {
       id: null,
       playerCount: null,
-      clients: []
+      clients: [],
+      snippet: ""
     }
   },
   socket: {

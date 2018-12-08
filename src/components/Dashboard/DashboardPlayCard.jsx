@@ -39,13 +39,10 @@ const styles = theme => ({
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
-    boxShadow:
-      "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
-
+    boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {
       transform: "translateY(-2px)",
-      boxShadow:
-        "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
+      boxShadow: "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
     }
   }
 });

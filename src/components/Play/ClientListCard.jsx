@@ -3,7 +3,6 @@ import injectSheet from "react-jss";
 
 import CommonTitle from "../CommonComponents/commonTitle";
 import CommonText from "../CommonComponents/commonText";
-import CommonPaper from "../CommonComponents/CommonPaper";
 
 const ClientListCard = props => {
   const { client, classes } = props;

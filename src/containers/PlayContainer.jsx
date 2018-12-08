@@ -9,7 +9,9 @@ class PlayContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.disconnectSocket(this.props.socket.io, this.props.client);
+    if (this.props.socket.io) {
+      this.props.disconnectSocket(this.props.socket.io, this.props.client);
+    }
   }
 
   render() {
@@ -20,7 +22,8 @@ class PlayContainer extends Component {
 const mapStateToProps = state => {
   return {
     socket: state.app.socket,
-    client: state.app.client
+    client: state.app.client,
+    snippet: state.app.client.room.snippet
   };
 };
 
@@ -28,7 +31,8 @@ const mapDispatchToProps = dispatch => {
   const serverUrl = "localhost:8000";
   return {
     connectSocket: username => dispatch(connectSocket(serverUrl, username)),
-    disconnectSocket: (socket, client) => dispatch(disconnectSocket(socket, client))
+    disconnectSocket: (socket, client) =>
+      dispatch(disconnectSocket(socket, client))
   };
 };
 

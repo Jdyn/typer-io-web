@@ -10,13 +10,14 @@ const CommonPaper = props => {
 const styles = theme => ({
   paper: {
     display: "flex",
-    width: "100%",
+    width: props => props.width ? props.width : "100%",
     flexDirection: "column",
     position: "relative",
     margin: 15,
     padding: props => props.padding ? props.padding : '0px',
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
+    maxWidth: props => props.maxWidth,
     boxShadow: '0px 5px 30px 5px rgba(50,50,93,.25)',
 }
 });

@@ -13,7 +13,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   socket: state.app.socket,
-  client: state.app.client
+  client: state.app.client,
 });
 
 const mapDispatchToProps = dispatch => ({

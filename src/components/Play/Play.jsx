@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import PlayClientList from "./PlayClientList";
 import PlayMain from "./PlayMain";
+import PlayInput from "./PlayInput";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
@@ -13,13 +14,14 @@ const propTypes = {
 
 class Play extends React.Component {
   render() {
-    const { classes, client } = this.props;
+    const { classes, client, snippet } = this.props;
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <PlayMain />
+          <PlayMain snippet={snippet}/>
           <PlayClientList client={client} />
+          <PlayInput />
         </div>
       </main>
     );
@@ -28,7 +30,10 @@ class Play extends React.Component {
 
 const styles = theme => ({
   root: {
-    display: "flex",
+    display: "grid",
+    gridTemplateColumns: "auto auto",
+    gridTemplateRows: "auto auto",
+
     maxWidth: "1040px",
     flexDirection: "row",
     position: "relative",

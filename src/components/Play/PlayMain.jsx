@@ -12,7 +12,6 @@ const PlayMain = props => {
     var res = new Set();
 
     words.forEach((word, index) => {
-      console.log(index);
       const letters = word.split("");
       res.add(<SnippetWord letters={letters} key={index} />);
     });

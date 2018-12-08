@@ -4,14 +4,14 @@ import PlayInputPrompt from "./PlayInputPrompt";
 import CommonPaper from "../CommonComponents/CommonPaper";
 import PlayInputContent from "./PlayInputContent";
 
-const PlayInput = ({ classes }) => {
+const PlayInput = ({ classes, snippet }) => {
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <PlayInputContent />
       </div>
       <div className={classes.wrapper}>
-        <PlayInputPrompt />
+        <PlayInputPrompt snippet={snippet}/>
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ const styles = theme => ({
     position: "relative",
     overflow: " hidden",
     flexDirection: "row",
-    margin: "0px 15px 0px 15px",
+    margin: "25px 15px 0px 15px",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
     boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",

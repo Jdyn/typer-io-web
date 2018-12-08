@@ -1,10 +1,10 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayInputPrompt = ({ classes }) => {
+const PlayInputPrompt = ({ classes, snippet }) => {
   return (
     <div className={classes.prompt}>
-    rmjkeraf eraa erkj fgkeajrer fkaerjf af ajw rfkjwe fk
+    {snippet}
     </div>
   );
 };
@@ -12,9 +12,12 @@ const PlayInputPrompt = ({ classes }) => {
 const styles = {
   prompt: {
     display: 'flex',
+    justifyContent: "flex-start",
+    alignItems: "center",
     height: '95%',
-    width: '1000px',
+    width: '10000px',
     alignItems: 'center',
+    fontSize: '28px'
   }
 };
 

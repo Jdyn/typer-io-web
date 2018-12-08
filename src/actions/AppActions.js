@@ -30,7 +30,6 @@ export const connectSocket = (serverUrl, client) => dispatch => {
   socket.emit("register", client.username);
 
   socket.on("onConnected", client => {
-    console.log(client)
     dispatch(connectSocketSuccess(client, socket));
     dispatch(handleRoomUpdates(socket));
   });

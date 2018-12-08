@@ -23,7 +23,7 @@ const mapStateToProps = state => {
   return {
     socket: state.app.socket,
     client: state.app.client,
-    snippet: state.app.client.room.snippet
+    // snippet: state.app.client.room.snippet
   };
 };
 

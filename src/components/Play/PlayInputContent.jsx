@@ -1,8 +1,14 @@
 import React from "react";
 import injectSheet from "react-jss";
+import PlayInputEditor from "./PlayInputEditor";
 
 const PlayInputContent = ({ classes }) => {
-  return <div className={classes.prompt}>0</div>;
+  return (
+    <div className={classes.prompt}>
+      <PlayInputEditor />
+      
+    </div>
+  );
 };
 
 const styles = {

@@ -14,16 +14,19 @@ const propTypes = {
 
 class Play extends React.Component {
   render() {
-    const { classes, client, snippet } = this.props;
+    const { classes, client } = this.props;
+
     return (
-      <main>
-        <div className={classes.stripe} />
-        <div className={classes.root}>
-          <PlayMain snippet={snippet}/>
-          <PlayClientList client={client} />
-          <PlayInput />
-        </div>
-      </main>
+      client.room && (
+        <main>
+          <div className={classes.stripe} />
+          <div className={classes.root}>
+            <PlayMain snippet={client.room.snippet} />
+            <PlayClientList client={client} />
+            <PlayInput snippet={client.room.snippet} />
+          </div>
+        </main>
+      )
     );
   }
 }

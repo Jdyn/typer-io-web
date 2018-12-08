@@ -33,6 +33,7 @@ const styles = theme => ({
     justifyContent: "right",
     position: "relative",
     cursor: "pointer",
+    minWidth: '300px',
     margin: 15,
     padding: "40px 40px 40px 40px",
     backgroundColor: props => props.backgroundColor,

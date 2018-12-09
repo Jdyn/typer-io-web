@@ -16,14 +16,18 @@ class Play extends React.Component {
   render() {
     const { classes, client } = this.props;
 
+    const snippet =
+      client.room &&
+      client.room.snippet.split(" ").map(element => element.split(""));
+
     return (
       client.room && (
         <main>
           <div className={classes.stripe} />
           <div className={classes.root}>
-            <PlayMain snippet={client.room.snippet} />
+            <PlayMain snippet={snippet} />
             <PlayClientList client={client} />
-            <PlayInput snippet={client.room.snippet.split(" ")}></PlayInput>
+            <PlayInput snippet={snippet} />
           </div>
         </main>
       )
@@ -37,7 +41,7 @@ const styles = theme => ({
     gridTemplateColumns: "auto auto",
     gridTemplateRows: "auto auto",
 
-    maxWidth: "1040px",
+    maxWidth: "1140px",
     flexDirection: "row",
     position: "relative",
     margin: "auto",

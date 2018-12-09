@@ -1,14 +1,28 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayInputPrompt = ({ classes, snippet }) => {
+const PlayInputPrompt = ({ classes, snippet, input }) => {
+  
+  if (input === snippet[0]) {
+    console.log("working");
+  }
+
+  const currentWordCord = () => {};
+
   return (
     <div className={classes.prompt}>
-      {snippet.map(word => <span className={classes.word}>{word}</span>)}
+      {snippet.map((word, index) => {
+        const stringWord = word.join("")
+        return (
+          <span key={index} className={classes.word}>
+            {stringWord}
+          </span>
+        );
+      })}
     </div>
   );
 };
-  
+
 const styles = {
   prompt: {
     display: "flex",
@@ -19,7 +33,11 @@ const styles = {
     fontSize: "28px"
   },
   word: {
-    margin: '0px 8px 0px 0px'
+    lineHeight: '40px',
+    padding: "0px 5px",
+    '&:first-child': {
+      paddingLeft: '0px !important'
+    }
   }
 };
 

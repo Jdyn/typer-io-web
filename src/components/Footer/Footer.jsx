@@ -19,11 +19,12 @@ const styles = {
     top: 0,
     left: 0,
     right: 0,
-    margin: "auto",
-    display: "block"
+    margin: "0px",
+    display: "block",
+    // backgroundColor: 'red'
   },
   container: {
-    height: "125px"
+    height: "500px"
   }
 };
 

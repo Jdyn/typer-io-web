@@ -5,7 +5,9 @@ import injectSheet from "react-jss";
 const PlayMainSnippet = props => {
   const { classes, snippet } = props;
   return (
-    <div className={classes.container}>{snippet.map(element => element)}</div>
+    <div className={classes.container}>
+      <div className={classes.inner}>{snippet.map(element => element)}</div>
+    </div>
   );
 };
 
@@ -13,27 +15,26 @@ PlayMainSnippet.propTypes = {};
 
 const styles = theme => ({
   container: {
+    display: "inline-block",
+    position: "relative",
+    backgroundColor: theme.primaryWhite,
+    paddingLeft: "25px",
+    height: "100%",
+    width: "100%",  
+    borderRadius: 8,
+    boxShadow: "0px 6px 40px 0px rgba(50,50,93,.25) inset",
+    overflow: "hidden"
+  },
+  inner: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     position: "relative",
-    backgroundColor: theme.secondaryWhite,
-    padding: "25px",
-    height: "375px",
-    margin: "25px 25px 25px 25px",
-    borderRadius: 8,
-    boxShadow: "0px 5px 40px 5px rgba(50,50,93,.25) inset",
-    overflow: "hidden"
-  },
-  inner: {
-    // display: "flex",
-    // flexDirection: "row",
-    // flexWrap: "wrap",
-    // position: 'relative',
-    // width: "100%",
-    // height: "100%",
-    // overflow: "auto",
-    // paddingRight: 15
+    boxSizing: "content-box",
+    width: "100%",
+    height: "100%",
+    overflow: "auto",
+    padding: "25px 25px 0px 0px"
   }
 });
 

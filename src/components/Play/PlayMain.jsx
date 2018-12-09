@@ -9,13 +9,12 @@ const PlayMain = props => {
   const { classes, snippet } = props;
 
   const transformSnippet = snippet => {
-    var words = snippet.split(" ");
     var res = new Set();
 
-    words.forEach((word, index) => {
-      const letters = word.split("");
-      res.add(<SnippetWord letters={letters} key={index} />);
-    });
+    snippet.forEach((word, index) =>
+      res.add(<SnippetWord word={word} key={index} wordIndex={index}/>)
+    );
+    //split(/\b(?![\s(.|;|:|,)])/); || RegEX for including spaces
     return [...res];
   };
 
@@ -23,9 +22,7 @@ const PlayMain = props => {
 
   return (
     <div className={classes.container}>
-      <CommonPaper>
-        <PlayMainSnippet snippet={transformedSnippet} />
-      </CommonPaper>
+      <PlayMainSnippet snippet={transformedSnippet} />
     </div>
   );
 };
@@ -36,9 +33,9 @@ const styles = theme => ({
   container: {
     display: "flex",
     position: "relative",
-    margin: "25px 0 auto 0"
-  },
-
+    margin: "25px 15px 15px 15px",
+    height: "375px" // 375px was standard. Changing to 300px to debug.
+  }
 });
 
 export default injectSheet(styles)(PlayMain);

@@ -1,28 +1,38 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayInputEditor = ({ classes }) => {
-  return (
-    <div
-      className={classes.input}
-      tabIndex="1"
-      contentEditable="true"
-      autoComplete="off"
-      autoCorrect="off"
-      autoCapitalize="off"
-      spellCheck="false"
-    />
-  );
-};
+class PlayInputEditor extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { classes, inputDidUpdate } = this.props;
+    return (
+      <div
+        id="inputDiv"
+        className={classes.input}
+        tabIndex="1"
+        contentEditable="true"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        value={"hello"}
+        onInput={(e) => inputDidUpdate(e.target.innerText)}
+      />
+    );
+  }
+}
 
 const styles = {
   input: {
-    display: 'flex',
-    lineHeight: '40px',
-    width: '15px',
+    display: "flex",
+    lineHeight: "40px",
     outline: 0,
-    paddingLeft: '5px',
-    verticalAlign: 'middle',
+    fontSize: "28px",
+    paddingLeft: "5px",
+    verticalAlign: "middle"
   }
 };
 

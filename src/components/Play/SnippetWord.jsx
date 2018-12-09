@@ -3,12 +3,16 @@ import injectSheet from "react-jss";
 import SnippetLetter from "./SnippetLetter";
 
 const SnippetWord = props => {
-  const { letters, classes } = props;
+  const { word, classes, wordIndex } = props;
+
+  const changeColor = () => {
+    
+  }
 
   return (
     <div className={classes.container}>
-      {letters.map((letter, index) => (
-        <SnippetLetter letter={letter} key={index} />
+      {word.map((letter, letterIndex) => (
+        <SnippetLetter letter={letter} key={letterIndex} cord={[wordIndex, letterIndex]} color={changeColor} />
       ))}
     </div>
   );
@@ -17,7 +21,7 @@ const SnippetWord = props => {
 const styles = theme => ({
   container: {
     display: "flex",
-    margin: "15px 0.5em 0px 0px",
+    margin: "15px 0.7em 0px 0px",
     position: "relative",
   }
 });

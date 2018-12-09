@@ -2,14 +2,13 @@ import React from "react";
 import injectSheet from "react-jss";
 
 const SnippetLetter = props => {
-  const { classes, letter } = props;
+  const { classes, letter, cord } = props;
+  
   switch (letter) {
-    // case ",",".",",":
-    //   return <div className={classes.groundedPoint} />;
-    // case "'", "’":
-    //   return <div className={classes.floatingPoint} />;
+    case "'","’",",",".",",":
+      return <div className={classes.punctuation}></div>;
     default:
-      return <div className={classes.letter}></div>;
+      return <span className={classes.letter}></span>;
   }
 };
 
@@ -20,22 +19,12 @@ const styles = theme => ({
     position: "relative",
     backgroundColor: theme.primaryGrey
   },
-  groundedPoint: {
+  punctuation: {
     width: ".5em",
-    height: ".5em",
+    height: "1em",
     position: "relative",
-    padding: "0px",
-    margin: "auto 1px 0px 1px",
     backgroundColor: theme.primaryGrey
   },
-  floatingPoint: {
-    width: ".5em",
-    height: ".5em",
-    position: "relative",
-    padding: "0px",
-    margin: "0px .1em auto .1em",
-    backgroundColor: theme.primaryGrey
-  }
 });
 
 export default injectSheet(styles)(SnippetLetter);

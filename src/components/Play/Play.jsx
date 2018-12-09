@@ -23,7 +23,7 @@ class Play extends React.Component {
           <div className={classes.root}>
             <PlayMain snippet={client.room.snippet} />
             <PlayClientList client={client} />
-            <PlayInput snippet={client.room.snippet} />
+            <PlayInput snippet={client.room.snippet.split(" ")}></PlayInput>
           </div>
         </main>
       )

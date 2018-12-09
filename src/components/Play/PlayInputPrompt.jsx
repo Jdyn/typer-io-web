@@ -4,20 +4,22 @@ import injectSheet from "react-jss";
 const PlayInputPrompt = ({ classes, snippet }) => {
   return (
     <div className={classes.prompt}>
-    {snippet}
+      {snippet.map(word => <span className={classes.word}>{word}</span>)}
     </div>
   );
 };
-
+  
 const styles = {
   prompt: {
-    display: 'flex',
+    display: "flex",
     justifyContent: "flex-start",
+    height: "95%",
+    width: "10000px",
     alignItems: "center",
-    height: '95%',
-    width: '10000px',
-    alignItems: 'center',
-    fontSize: '28px'
+    fontSize: "28px"
+  },
+  word: {
+    margin: '0px 8px 0px 0px'
   }
 };
 

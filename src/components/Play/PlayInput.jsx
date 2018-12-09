@@ -1,8 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
 import PlayInputPrompt from "./PlayInputPrompt";
-import CommonPaper from "../CommonComponents/CommonPaper";
-import PlayInputContent from "./PlayInputContent";
+  import PlayInputContent from "./PlayInputContent";
 
 const PlayInput = ({ classes, snippet }) => {
   return (

@@ -13,7 +13,7 @@ const PlayClientList = props => {
           Current Players:
         </CommonTitle>
         {client.room &&
-          client.room.clients.map(client => <ClientListCard client={client} />)}
+          client.room.clients.map((client, index) => <ClientListCard key={index} client={client} />)}
       </CommonPaper>
     </div>
   );

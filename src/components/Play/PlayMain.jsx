@@ -3,6 +3,7 @@ import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 import PlayMainSnippet from "./PlayMainSnippet";
 import SnippetWord from "./SnippetWord";
+import PlayInput from "./PlayInput";
 
 const PlayMain = props => {
   const { classes, snippet } = props;

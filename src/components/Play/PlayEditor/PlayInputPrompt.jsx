@@ -28,7 +28,7 @@ const styles = {
     display: "flex",
     justifyContent: "flex-start",
     height: "95%",
-    width: "10000px",
+    width: "auto",
     alignItems: "center",
     fontSize: "28px"
   },

@@ -15,22 +15,21 @@ const propTypes = {
 class Play extends React.Component {
   render() {
     const { classes, client } = this.props;
-
-    const snippet =
-      client.room &&
-      client.room.snippet.split(" ").map(element => element.split(""));
+    
+    // Set Snippet to an empty 2D array if we have not received the snippet yet.
+    const snippet = client.room
+      ? client.room.snippet
+      : "";
 
     return (
-      client.room && (
-        <main>
-          <div className={classes.stripe} />
-          <div className={classes.root}>
-            <PlayMain snippet={snippet} />
-            <PlayClientList client={client} />
-            <PlayInput snippet={snippet} />
-          </div>
-        </main>
-      )
+      <main>
+        <div className={classes.stripe} />
+        <div className={classes.root}>
+          <PlayMain snippet={snippet} />
+          <PlayClientList client={client} />
+          <PlayInput snippet={snippet} />
+        </div>
+      </main>
     );
   }
 }
@@ -50,10 +49,11 @@ const styles = theme => ({
   stripe: {
     zIndex: 0,
     width: "100%",
-    height: "85%",
+    height: "90%",
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",
+    // boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) ",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
     backgroundColor: theme.secondaryWhite,

@@ -46,7 +46,12 @@ export const disconnectSocketSuccess = room => ({
 });
 
 export const disconnectSocket = (socket, client) => dispatch => {
-  var room = null;
+  var room = {
+    id: null,
+    playerCount: null,
+    clients: [],
+    snippet: ""
+  };
 
   socket.emit("LeaveRoom", client);
 

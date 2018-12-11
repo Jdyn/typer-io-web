@@ -6,7 +6,7 @@ const SnippetLetter = props => {
   
   switch (letter) {
     case "'","’",",",".",",":
-      return <div className={classes.punctuation}></div>;
+      return <span className={classes.punctuation}></span>;
     default:
       return <span className={classes.letter}></span>;
   }
@@ -17,7 +17,7 @@ const styles = theme => ({
     width: "1em",
     height: "1em",
     position: "relative",
-    backgroundColor: theme.primaryGrey
+    backgroundColor: props => props.color ? props.color : theme.primaryGrey
   },
   punctuation: {
     width: ".5em",

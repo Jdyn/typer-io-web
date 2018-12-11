@@ -1,8 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
 import ClientListCard from "./ClientListCard";
-import CommonTitle from "../CommonComponents/commonTitle";
-import CommonPaper from "../CommonComponents/CommonPaper";
+import CommonTitle from "../../CommonComponents/commonTitle";
+import CommonPaper from "../../CommonComponents/CommonPaper";
 
 const PlayClientList = props => {
   const { client, classes } = props;

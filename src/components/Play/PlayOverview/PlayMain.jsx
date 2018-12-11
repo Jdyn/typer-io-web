@@ -1,24 +1,27 @@
 import React from "react";
-import CommonPaper from "../CommonComponents/CommonPaper";
 import injectSheet from "react-jss";
 import PlayMainSnippet from "./PlayMainSnippet";
 import SnippetWord from "./SnippetWord";
-import PlayInput from "./PlayInput";
 
 const PlayMain = props => {
-  const { classes, snippet } = props;
+  const { classes, snippetString } = props;
+
+  const snippetStringToArray = snippetString
+    .split(" ")
+    .map(letter => letter.split(""));
 
   const transformSnippet = snippet => {
+    //split(/\b(?![\s(.|;|:|,)])/); || RegEX for including spaces
+
     var res = new Set();
 
     snippet.forEach((word, index) =>
-      res.add(<SnippetWord word={word} key={index} wordIndex={index}/>)
+      res.add(<SnippetWord word={word} key={index} wordIndex={index} />)
     );
-    //split(/\b(?![\s(.|;|:|,)])/); || RegEX for including spaces
-    return [...res];
+    return res;
   };
 
-  const transformedSnippet = transformSnippet(snippet);
+  const transformedSnippet = transformSnippet(snippetStringToArray);
 
   return (
     <div className={classes.container}>

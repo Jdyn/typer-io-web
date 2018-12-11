@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-import PlayClientList from "./PlayClientList";
-import PlayMain from "./PlayMain";
-import PlayInput from "./PlayInput";
+import PlayClientList from "./PlayClientList/PlayClientList";
+import PlayMain from "./PlayOverview/PlayMain";
+import PlayInput from "./PlayEditor/PlayInput";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
@@ -15,19 +15,16 @@ const propTypes = {
 class Play extends React.Component {
   render() {
     const { classes, client } = this.props;
-    
-    // Set Snippet to an empty 2D array if we have not received the snippet yet.
-    const snippet = client.room
-      ? client.room.snippet
-      : "";
+    const snippet = client.room.snippet;
+    const snippetArray = client.room.snippet.split(" ");
 
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <PlayMain snippet={snippet} />
+          <PlayMain snippetString={snippet} />
           <PlayClientList client={client} />
-          <PlayInput snippet={snippet} />
+          {client.room.snippet && <PlayInput snippetArray={snippetArray} />}
         </div>
       </main>
     );

@@ -5,44 +5,44 @@ import PlayInputContent from "./PlayInputContent";
 
 class PlayInput extends React.Component {
   constructor(props) {
-    super(props);
-    this.snippet = this.props.snippet;
+    super(props)
+    this.state = {
+      input: ""
+    }
   }
 
   componentWillMount() {
-    var input = "";
-    var correctWords = [];
-    var remainingWords = [];
-    var currentWord = {
-      cords: [],
-      word: ""
-    };
+    // this.establishInputListener();
+    this.snippetWordsRemaining = this.props.snippetArray
   }
-
   focusInput = () => {
     document.getElementById("inputDiv").focus();
   };
-
-  inputDidUpdate = event => {};
+  inputDidUpdate = (input) => {
+    this.setState({input})
+  };
 
   establishInputListener = () => {
     window.addEventListener("load", () => {
       const editor = document.getElementById("inputDiv");
-      editor.addEventListener("keydown", e => {
-        console.log(e.key);
+      editor.addEventListener("keyup", e => {
+        this.inputDidUpdate(e.key, editor.innerText);
       });
     });
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, snippetArray } = this.props;
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputContent />
+          <PlayInputContent
+            snippetArray={snippetArray}
+            inputDidUpdate={this.inputDidUpdate}
+          />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputPrompt />
+          <PlayInputPrompt snippetArray={this.snippetWordsRemaining} input={this.state.input}/>
         </div>
       </div>
     );
@@ -59,13 +59,6 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
     boxShadow: "0px -6px 40px 0px rgba(50,50,93,.25) inset"
-    // "&:after": {
-    //   content: '""',
-    //   boxShadow: "0 0 35px 45px #fafafa",
-    //   position: "relative",
-    //   top: 40,
-    //   bottom: 40
-    // }
   },
   wrapper: {
     display: "inline-block",

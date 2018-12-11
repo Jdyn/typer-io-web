@@ -5,7 +5,7 @@ class PlayInputEditor extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  
   render() {
     const { classes, inputDidUpdate } = this.props;
     return (
@@ -18,7 +18,7 @@ class PlayInputEditor extends React.Component {
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
-        onInput={(e) => inputDidUpdate(e)}
+        onInput={(e) => inputDidUpdate(e.currentTarget.innerText)}
       />
     );
   }

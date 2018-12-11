@@ -1,8 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-import CommonTitle from "../CommonComponents/commonTitle";
-import CommonText from "../CommonComponents/commonText";
+import CommonTitle from "../../CommonComponents/commonTitle";
+import CommonText from "../../CommonComponents/commonText";
 
 const ClientListCard = props => {
   const { client, classes } = props;
@@ -21,7 +21,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     padding: "15px",
-    minWidth: '245px',
+    minWidth: "245px",
     margin: "10px",
     borderRadius: 8
   }

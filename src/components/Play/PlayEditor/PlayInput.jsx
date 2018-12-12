@@ -30,61 +30,79 @@ class PlayInput extends React.Component {
     const currentWord = wordsRemaining[0];
     var text = e.target.innerText;
 
-    console.log(text.substring(0, text.length) === words[0].substring(0, text.length))
-
     if (text.substring(0, text.length) === words[0].substring(0, text.length)) {
 
 
-      // Look into using indexOf(). it might be the key because it scans for the first occurance..?
-      if (key === "Backspace") {
-        console.log(oldText.charAt(oldText.length - 1), wordsRemaining[0].charAt(0) )
-        if (oldText.charAt(oldText.length - 1) === wordsRemaining[0].charAt(0)) {
-          var copy = wordsRemaining.slice();
-          var temp = copy[0].split("");
-          var target = oldText.charAt(oldText.length - 1);
-          console.log(target);
-          console.log(temp);
-          temp.unshift(target);
-          var string = temp.join("");
-          console.log(string);
-          copy[0] = string;
+
+      // console.log(oldText);
+      // console.log(text);
+      // console.log(text.substring(0, text.length), words[0].substring(0, text.length) )
+
+      if (text === words[0].substring(0, text.length)) {
+        if (text !== words[0]) {
+          let copy = wordsRemaining.slice();
+          copy[0] = words[0].substring(text.length, words[0].length);
           this.setState({
             wordsRemaining: copy
-          }); 
+          });
+        } else if (text === words[0]) {
+          let copy = wordsRemaining.slice();
+          copy[0] = "";
+          this.setState({
+            wordsRemaining: copy
+          });
         }
       }
-
-      if (currentWord.charAt(0) === key) {
-        var temp = currentWord.split("");
-        if (currentWord.charAt(0) === temp[0]) {
-          temp.shift();
-          var copy = wordsRemaining.slice();
-          copy[0] = temp.join("");
+      if (e.target.innerText === "") {
+        if (wordsRemaining[0] !== words[0]) {
+          let copy = wordsRemaining.slice();
+          copy[0] = words[0];
           this.setState({
             wordsRemaining: copy
           });
         }
       }
 
-      // console.log(oldText, wordsRemaining[0], words[0]);
-      // var copy = currentWord.split("");
-      // var target = oldText.charAt(oldText.length - 1);
-      // if (target === currentWord.charAt(0)) {
-      //   copy.unshift(target);
-      //   var tempString = copy.join("");
-      //   var temp = wordsRemaining.splice()
-      //   temp[0] = tempString
-      //   this.setState({
-      //     wordsRemaining: temp
-      //   });
-      // }
+      if (key === "Backspace") {
+
+        if (
+          oldText.charAt(oldText.length - 1) ===
+          words[0].charAt(oldText.length - 1)
+        ) {
+          console.log('still true')
+          let copy = wordsRemaining.slice();
+          // let temp = copy[0].substring()
+          copy[0] = words[0].substring(text.length, words[0].length);
+
+          // let target = words[0].charAt(oldText.length - 1);
+          // temp.unshift(target);
+          // var string = temp.join("");
+          // copy[0] = string;
+          this.setState({
+            wordsRemaining: copy
+          });
+        } else {
+          console.log("else happened");
+        }
+      }
+
+      if (currentWord.charAt(0) === key) {
+        let temp = currentWord.split("");
+        if (currentWord.charAt(0) === words[0].charAt(text.length - 1)) {
+          temp.shift();
+          let copy = wordsRemaining.slice();
+          copy[0] = temp.join("");
+          this.setState({
+            wordsRemaining: copy
+          });
+        }
+      }
     }
 
     if (key === " ") {
       if (words[0] === text.trim()) {
         var wordCopy = words.slice();
         wordCopy.shift();
-
         var completeWordCopy = wordsComplete.slice();
         completeWordCopy.push(words[0]);
         this.setState({

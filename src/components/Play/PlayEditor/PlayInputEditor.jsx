@@ -18,7 +18,7 @@ class PlayInputEditor extends React.Component {
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
-        onInput={e => inputDidUpdate(e.target.innerText)}
+        onInput={e => inputDidUpdate(e)}
       />
     );
   }

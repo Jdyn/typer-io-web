@@ -6,22 +6,6 @@ const PlayInputPrompt = ({
   wordsRemaining,
 }) => { 
 
-  // if (keyPressed === "Backspace") {
-  //   var temp = snippetArray[0].split("");
-  //   var target = inputText.charAt(inputText.length - 1);
-  //   // if (target === snippetArray[0].charAt(0)) {
-  //     temp.unshift(target);
-  //     // console.log(temp)
-  //     snippetArray[0] = temp.join("");
-  //   // }
-  // }
-
-  // console.log(inputText, keyPressed)
-  // console.log(inputText, snippetArray[0].substring(0, inputText.length))
-
-
-  // console.log(wordsRemaining);
-
   return (
     <div className={classes.prompt}>
       {wordsRemaining.map((word, index) => {

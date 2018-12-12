@@ -10,8 +10,10 @@ class PlayInput extends React.Component {
     this.state = {
       key: "k",
       text: "",
+      oldText: "",
       wordsRemaining: this.props.snippetArray,
-      words: this.props.snippetArray
+      words: this.props.snippetArray,
+      wordsComplete: []
     };
   }
 
@@ -23,55 +25,76 @@ class PlayInput extends React.Component {
     document.getElementById("inputDiv").focus();
   };
 
-  inputDidUpdate = text => {
-    const { wordsRemaining, words, key } = this.state;
+  inputDidUpdate = e => {
+    const { wordsRemaining, wordsComplete, words, key, oldText } = this.state;
     const currentWord = wordsRemaining[0];
+    var text = e.target.innerText;
 
-    console.log(key, text);
+    console.log(text.substring(0, text.length) === words[0].substring(0, text.length))
 
-    // if (key === " ") {
-    //   var copy = wordsRemaining.slice()
-    //   console.log(copy.shift())
-    //   this.setState({
-    //     wordsRemaining: temp
-    //   });
-    // }
+    if (text.substring(0, text.length) === words[0].substring(0, text.length)) {
 
-    if (currentWord.charAt(0) === key) {
-      var temp = currentWord.split("");
-      if (currentWord.charAt(0) === temp[0]) {
-        temp.shift();
-        var copy = wordsRemaining.slice();
-        copy[0] = temp.join("");
-        this.setState({
-          wordsRemaining: copy
-        });
+
+      // Look into using indexOf(). it might be the key because it scans for the first occurance..?
+      if (key === "Backspace") {
+        console.log(oldText.charAt(oldText.length - 1), wordsRemaining[0].charAt(0) )
+        if (oldText.charAt(oldText.length - 1) === wordsRemaining[0].charAt(0)) {
+          var copy = wordsRemaining.slice();
+          var temp = copy[0].split("");
+          var target = oldText.charAt(oldText.length - 1);
+          console.log(target);
+          console.log(temp);
+          temp.unshift(target);
+          var string = temp.join("");
+          console.log(string);
+          copy[0] = string;
+          this.setState({
+            wordsRemaining: copy
+          }); 
+        }
       }
+
+      if (currentWord.charAt(0) === key) {
+        var temp = currentWord.split("");
+        if (currentWord.charAt(0) === temp[0]) {
+          temp.shift();
+          var copy = wordsRemaining.slice();
+          copy[0] = temp.join("");
+          this.setState({
+            wordsRemaining: copy
+          });
+        }
+      }
+
+      // console.log(oldText, wordsRemaining[0], words[0]);
+      // var copy = currentWord.split("");
+      // var target = oldText.charAt(oldText.length - 1);
+      // if (target === currentWord.charAt(0)) {
+      //   copy.unshift(target);
+      //   var tempString = copy.join("");
+      //   var temp = wordsRemaining.splice()
+      //   temp[0] = tempString
+      //   this.setState({
+      //     wordsRemaining: temp
+      //   });
+      // }
     }
 
-    // if (
-    //   wordsRemaining[0].charAt(0) === keyPressed &&
-    //   inputText === words[0].substring(0, inputText.length)
-    // ) {
+    if (key === " ") {
+      if (words[0] === text.trim()) {
+        var wordCopy = words.slice();
+        wordCopy.shift();
 
-    // }
-
-    // if (key.length !== 1) {
-    //   if (key === "Backspace") {
-    //     var newText = this.state.text.split("");
-    //     newText.pop();
-    //     this.setState({ keyPressed: key, text: newText.join("") });
-    //   }
-    //   return;
-    // } else {
-    //   const isLetter = key >= "a" && key <= "z";
-    //   if (isLetter) {
-    //     this.setState({
-    //       keyPressed: key,
-    //       text: this.state.text + key
-    //     });
-    //   }
-    // }
+        var completeWordCopy = wordsComplete.slice();
+        completeWordCopy.push(words[0]);
+        this.setState({
+          wordsRemaining: wordCopy,
+          words: wordCopy,
+          wordsComplete: completeWordCopy
+        });
+        e.target.innerText = "";
+      }
+    }
   };
 
   establishInputListener = () => {
@@ -79,21 +102,27 @@ class PlayInput extends React.Component {
       const editor = document.getElementById("inputDiv");
       editor.addEventListener("keydown", e => {
         const key = e.key;
-        this.setState({ key });
+        this.setState({
+          key: key,
+          oldText: editor.innerText
+        });
       });
     });
   };
 
   render() {
     const { classes } = this.props;
-    const { wordsRemaining } = this.state
+    const { wordsRemaining, wordsComplete } = this.state;
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputContent inputDidUpdate={this.inputDidUpdate} />
+          <PlayInputContent
+            wordsComplete={wordsComplete}
+            inputDidUpdate={this.inputDidUpdate}
+          />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputPrompt wordsRemaining={this.state.wordsRemaining} />
+          <PlayInputPrompt wordsRemaining={wordsRemaining} />
         </div>
       </div>
     );

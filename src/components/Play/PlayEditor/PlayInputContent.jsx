@@ -1,7 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
 import PlayInputEditor from "./PlayInputEditor";
-//inputDidUpdate={inputDidUpdate}
+
 const PlayInputContent = ({ classes, inputDidUpdate, snippetArray }) => {
   return (
     <div className={classes.prompt}>

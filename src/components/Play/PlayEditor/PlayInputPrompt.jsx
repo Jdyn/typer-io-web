@@ -1,18 +1,30 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayInputPrompt = ({ classes, snippetArray, input }) => {
-  const originalString = snippetArray[0];
+const PlayInputPrompt = ({
+  classes,
+  wordsRemaining,
+}) => { 
 
-  for (const letter of snippetArray[0]) {
-    console.log(letter + "is at position " + index);
-  }
+  // if (keyPressed === "Backspace") {
+  //   var temp = snippetArray[0].split("");
+  //   var target = inputText.charAt(inputText.length - 1);
+  //   // if (target === snippetArray[0].charAt(0)) {
+  //     temp.unshift(target);
+  //     // console.log(temp)
+  //     snippetArray[0] = temp.join("");
+  //   // }
+  // }
 
-  snippetArray[0] = snippetArray[0].slice(1);
+  // console.log(inputText, keyPressed)
+  // console.log(inputText, snippetArray[0].substring(0, inputText.length))
+
+
+  // console.log(wordsRemaining);
 
   return (
     <div className={classes.prompt}>
-      {snippetArray.map((word, index) => {
+      {wordsRemaining.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}

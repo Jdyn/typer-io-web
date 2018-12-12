@@ -24,7 +24,7 @@ class Play extends React.Component {
         <div className={classes.root}>
           <PlayMain snippetString={snippet} />
           <PlayClientList client={client} />
-          {client.room.snippet && <PlayInput snippetArray={snippetArray} />}
+          {client.room.snippet && <PlayInput snippetArray={client.room.snippet.split(" ")} />}
         </div>
       </main>
     );

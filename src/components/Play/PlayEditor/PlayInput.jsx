@@ -5,44 +5,95 @@ import PlayInputContent from "./PlayInputContent";
 
 class PlayInput extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.input = "";
     this.state = {
-      input: ""
-    }
+      key: "k",
+      text: "",
+      wordsRemaining: this.props.snippetArray,
+      words: this.props.snippetArray
+    };
   }
 
   componentWillMount() {
-    // this.establishInputListener();
-    this.snippetWordsRemaining = this.props.snippetArray
+    this.establishInputListener();
   }
+
   focusInput = () => {
     document.getElementById("inputDiv").focus();
   };
-  inputDidUpdate = (input) => {
-    this.setState({input})
+
+  inputDidUpdate = text => {
+    const { wordsRemaining, words, key } = this.state;
+    const currentWord = wordsRemaining[0];
+
+    console.log(key, text);
+
+    // if (key === " ") {
+    //   var copy = wordsRemaining.slice()
+    //   console.log(copy.shift())
+    //   this.setState({
+    //     wordsRemaining: temp
+    //   });
+    // }
+
+    if (currentWord.charAt(0) === key) {
+      var temp = currentWord.split("");
+      if (currentWord.charAt(0) === temp[0]) {
+        temp.shift();
+        var copy = wordsRemaining.slice();
+        copy[0] = temp.join("");
+        this.setState({
+          wordsRemaining: copy
+        });
+      }
+    }
+
+    // if (
+    //   wordsRemaining[0].charAt(0) === keyPressed &&
+    //   inputText === words[0].substring(0, inputText.length)
+    // ) {
+
+    // }
+
+    // if (key.length !== 1) {
+    //   if (key === "Backspace") {
+    //     var newText = this.state.text.split("");
+    //     newText.pop();
+    //     this.setState({ keyPressed: key, text: newText.join("") });
+    //   }
+    //   return;
+    // } else {
+    //   const isLetter = key >= "a" && key <= "z";
+    //   if (isLetter) {
+    //     this.setState({
+    //       keyPressed: key,
+    //       text: this.state.text + key
+    //     });
+    //   }
+    // }
   };
 
   establishInputListener = () => {
     window.addEventListener("load", () => {
       const editor = document.getElementById("inputDiv");
-      editor.addEventListener("keyup", e => {
-        this.inputDidUpdate(e.key, editor.innerText);
+      editor.addEventListener("keydown", e => {
+        const key = e.key;
+        this.setState({ key });
       });
     });
   };
 
   render() {
-    const { classes, snippetArray } = this.props;
+    const { classes } = this.props;
+    const { wordsRemaining } = this.state
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputContent
-            snippetArray={snippetArray}
-            inputDidUpdate={this.inputDidUpdate}
-          />
+          <PlayInputContent inputDidUpdate={this.inputDidUpdate} />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputPrompt snippetArray={this.snippetWordsRemaining} input={this.state.input}/>
+          <PlayInputPrompt wordsRemaining={this.state.wordsRemaining} />
         </div>
       </div>
     );

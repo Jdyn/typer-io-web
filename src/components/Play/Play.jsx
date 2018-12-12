@@ -34,9 +34,9 @@ class Play extends React.Component {
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "auto auto",
+    gridTemplateColumns: "auto min-content",
     gridTemplateRows: "auto auto",
-
+    
     maxWidth: "1140px",
     flexDirection: "row",
     position: "relative",

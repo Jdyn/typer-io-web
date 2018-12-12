@@ -28,89 +28,77 @@ class PlayInput extends React.Component {
   inputDidUpdate = e => {
     const { wordsRemaining, wordsComplete, words, key, oldText } = this.state;
     const currentWord = wordsRemaining[0];
-    var text = e.target.innerText;
+    const text = e.target.innerText;
+    if (wordsRemaining.length > 0) {
+      if (
+        text.substring(0, text.length) === words[0].substring(0, text.length)
+      ) {
+        if (text === words[0].substring(0, text.length)) {
+          if (text !== words[0]) {
+            let copy = wordsRemaining.slice();
+            copy[0] = words[0].substring(text.length, words[0].length);
+            this.setState({
+              wordsRemaining: copy
+            });
+          } else if (text === words[0]) {
+            let copy = wordsRemaining.slice();
+            copy[0] = "";
+            this.setState({
+              wordsRemaining: copy
+            });
+          }
+        }
+        if (e.target.innerText === "") {
+          if (wordsRemaining[0] !== words[0]) {
+            let copy = wordsRemaining.slice();
+            copy[0] = words[0];
+            this.setState({
+              wordsRemaining: copy
+            });
+          }
+        }
 
-    if (text.substring(0, text.length) === words[0].substring(0, text.length)) {
+        if (key === "Backspace") {
+          if (
+            oldText.charAt(oldText.length - 1) ===
+            words[0].charAt(oldText.length - 1)
+          ) {
+            console.log("still true");
+            let copy = wordsRemaining.slice();
+            copy[0] = words[0].substring(text.length, words[0].length);
+            this.setState({
+              wordsRemaining: copy
+            });
+          }
+        }
 
-
-
-      // console.log(oldText);
-      // console.log(text);
-      // console.log(text.substring(0, text.length), words[0].substring(0, text.length) )
-
-      if (text === words[0].substring(0, text.length)) {
-        if (text !== words[0]) {
-          let copy = wordsRemaining.slice();
-          copy[0] = words[0].substring(text.length, words[0].length);
-          this.setState({
-            wordsRemaining: copy
-          });
-        } else if (text === words[0]) {
-          let copy = wordsRemaining.slice();
-          copy[0] = "";
-          this.setState({
-            wordsRemaining: copy
-          });
+        if (currentWord.charAt(0) === key) {
+          let temp = currentWord.split("");
+          if (currentWord.charAt(0) === words[0].charAt(text.length - 1)) {
+            temp.shift();
+            let copy = wordsRemaining.slice();
+            copy[0] = temp.join("");
+            this.setState({
+              wordsRemaining: copy
+            });
+          }
         }
       }
-      if (e.target.innerText === "") {
-        if (wordsRemaining[0] !== words[0]) {
-          let copy = wordsRemaining.slice();
-          copy[0] = words[0];
+
+      if (key === " ") {
+        if (words[0] === text.trim()) {
+          e.target.innerText = "";
+          let wordsCopy = [...words];
+          let wordsCompleteCopy = [...wordsComplete];
+
+          wordsCopy.shift();
+          wordsCompleteCopy.push(words[0]);
           this.setState({
-            wordsRemaining: copy
+            wordsRemaining: wordsCopy,
+            words: wordsCopy,
+            wordsComplete: wordsCompleteCopy
           });
         }
-      }
-
-      if (key === "Backspace") {
-
-        if (
-          oldText.charAt(oldText.length - 1) ===
-          words[0].charAt(oldText.length - 1)
-        ) {
-          console.log('still true')
-          let copy = wordsRemaining.slice();
-          // let temp = copy[0].substring()
-          copy[0] = words[0].substring(text.length, words[0].length);
-
-          // let target = words[0].charAt(oldText.length - 1);
-          // temp.unshift(target);
-          // var string = temp.join("");
-          // copy[0] = string;
-          this.setState({
-            wordsRemaining: copy
-          });
-        } else {
-          console.log("else happened");
-        }
-      }
-
-      if (currentWord.charAt(0) === key) {
-        let temp = currentWord.split("");
-        if (currentWord.charAt(0) === words[0].charAt(text.length - 1)) {
-          temp.shift();
-          let copy = wordsRemaining.slice();
-          copy[0] = temp.join("");
-          this.setState({
-            wordsRemaining: copy
-          });
-        }
-      }
-    }
-
-    if (key === " ") {
-      if (words[0] === text.trim()) {
-        var wordCopy = words.slice();
-        wordCopy.shift();
-        var completeWordCopy = wordsComplete.slice();
-        completeWordCopy.push(words[0]);
-        this.setState({
-          wordsRemaining: wordCopy,
-          words: wordCopy,
-          wordsComplete: completeWordCopy
-        });
-        e.target.innerText = "";
       }
     }
   };
@@ -119,9 +107,8 @@ class PlayInput extends React.Component {
     window.addEventListener("load", () => {
       const editor = document.getElementById("inputDiv");
       editor.addEventListener("keydown", e => {
-        const key = e.key;
         this.setState({
-          key: key,
+          key: e.key,
           oldText: editor.innerText
         });
       });

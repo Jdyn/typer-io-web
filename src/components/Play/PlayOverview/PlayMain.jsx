@@ -38,6 +38,7 @@ const styles = theme => ({
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "375px" // 375px was standard. Changing to 300px to debug.
+    
   }
 });
 

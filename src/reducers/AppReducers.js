@@ -18,7 +18,7 @@ const initalState = {
   },
   socket: {
     io: null, // The actual socket object
-    inProgress: false,
+    pending: false,
     hasErrored: false,
     error: null
   }
@@ -40,7 +40,7 @@ export default (state = initalState, action) => {
         ...state,
         socket: {
           ...state.socket,
-          inProgress: action.inProgress
+          pending: action.pending
         }
       };
 

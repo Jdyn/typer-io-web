@@ -6,9 +6,9 @@ export const initClient = username => ({
   username
 });
 
-export const connectSocketRequest = inProgress => ({
+export const connectSocketRequest = pending => ({
   type: types.CONNECT_SOCKET_REQUEST,
-  inProgress
+  pending
 });
 
 export const connectSocketErrored = (hasErrored, error) => ({

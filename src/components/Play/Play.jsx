@@ -13,6 +13,10 @@ const propTypes = {
 };
 
 class Play extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const { classes, client } = this.props;
     const snippet = client.room.snippet;
@@ -24,7 +28,7 @@ class Play extends React.Component {
         <div className={classes.root}>
           <PlayMain snippetString={snippet} />
           <PlayClientList client={client} />
-          {client.room.snippet && <PlayInput snippetArray={client.room.snippet.split(" ")} />}
+          <PlayInput snippetArray={snippetArray} />
         </div>
       </main>
     );
@@ -36,7 +40,7 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "auto min-content",
     gridTemplateRows: "auto auto",
-    
+
     maxWidth: "1140px",
     flexDirection: "row",
     position: "relative",

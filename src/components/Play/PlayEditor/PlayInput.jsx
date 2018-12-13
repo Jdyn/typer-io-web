@@ -6,15 +6,23 @@ import PlayInputContent from "./PlayInputContent";
 class PlayInput extends React.Component {
   constructor(props) {
     super(props);
-    this.input = "";
     this.state = {
-      key: "k",
+      key: "",
+      prevText: "",
       text: "",
-      oldText: "",
-      wordsRemaining: this.props.snippetArray,
-      words: this.props.snippetArray,
+      currentWord: "",
+      wordsRemaining: [],
       wordsComplete: []
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      this.setState({
+        wordsRemaining: this.props.snippetArray,
+        currentWord: this.props.snippetArray[0]
+      });
+    }
   }
 
   componentWillMount() {
@@ -26,21 +34,28 @@ class PlayInput extends React.Component {
   };
 
   inputDidUpdate = e => {
-    const { wordsRemaining, wordsComplete, words, key, oldText } = this.state;
-    const currentWord = wordsRemaining[0];
     const text = e.target.innerText;
+
+    const {
+      wordsRemaining,
+      wordsComplete,
+      key,
+      prevText,
+      currentWord
+    } = this.state;
+
     if (wordsRemaining.length > 0) {
       if (
-        text.substring(0, text.length) === words[0].substring(0, text.length)
+        text.substring(0, text.length) === currentWord.substring(0, text.length)
       ) {
-        if (text === words[0].substring(0, text.length)) {
-          if (text !== words[0]) {
+        if (text === currentWord.substring(0, text.length)) {
+          if (text !== currentWord) {
             let copy = wordsRemaining.slice();
-            copy[0] = words[0].substring(text.length, words[0].length);
+            copy[0] = currentWord.substring(text.length, currentWord.length);
             this.setState({
               wordsRemaining: copy
             });
-          } else if (text === words[0]) {
+          } else if (text === currentWord) {
             let copy = wordsRemaining.slice();
             copy[0] = "";
             this.setState({
@@ -49,9 +64,9 @@ class PlayInput extends React.Component {
           }
         }
         if (e.target.innerText === "") {
-          if (wordsRemaining[0] !== words[0]) {
+          if (wordsRemaining[0] !== currentWord) {
             let copy = wordsRemaining.slice();
-            copy[0] = words[0];
+            copy[0] = currentWord;
             this.setState({
               wordsRemaining: copy
             });
@@ -60,12 +75,11 @@ class PlayInput extends React.Component {
 
         if (key === "Backspace") {
           if (
-            oldText.charAt(oldText.length - 1) ===
-            words[0].charAt(oldText.length - 1)
+            prevText.charAt(prevText.length - 1) ===
+            currentWord.charAt(prevText.length - 1)
           ) {
-            console.log("still true");
             let copy = wordsRemaining.slice();
-            copy[0] = words[0].substring(text.length, words[0].length);
+            copy[0] = currentWord.substring(text.length, currentWord.length);
             this.setState({
               wordsRemaining: copy
             });
@@ -74,7 +88,7 @@ class PlayInput extends React.Component {
 
         if (currentWord.charAt(0) === key) {
           let temp = currentWord.split("");
-          if (currentWord.charAt(0) === words[0].charAt(text.length - 1)) {
+          if (currentWord.charAt(0) === currentWord.charAt(text.length - 1)) {
             temp.shift();
             let copy = wordsRemaining.slice();
             copy[0] = temp.join("");
@@ -86,16 +100,16 @@ class PlayInput extends React.Component {
       }
 
       if (key === " ") {
-        if (words[0] === text.trim()) {
+        if (currentWord === text.trim()) {
           e.target.innerText = "";
-          let wordsCopy = [...words];
+          let wordsCopy = [...wordsRemaining];
           let wordsCompleteCopy = [...wordsComplete];
-
           wordsCopy.shift();
-          wordsCompleteCopy.push(words[0]);
+          wordsCompleteCopy.push(currentWord);
+
           this.setState({
             wordsRemaining: wordsCopy,
-            words: wordsCopy,
+            currentWord: wordsCopy[0],
             wordsComplete: wordsCompleteCopy
           });
         }
@@ -107,9 +121,12 @@ class PlayInput extends React.Component {
     window.addEventListener("load", () => {
       const editor = document.getElementById("inputDiv");
       editor.addEventListener("keydown", e => {
+        if (this.state.wordsRemaining.length <= 0) {
+          e.preventDefault();
+        }
         this.setState({
           key: e.key,
-          oldText: editor.innerText
+          prevText: editor.innerText
         });
       });
     });

@@ -3,6 +3,7 @@ import React from "react";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
+import CommonPaper from "../CommonComponents/CommonPaper";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
@@ -11,14 +12,17 @@ const propTypes = {
 };
 
 export const Dashboard = props => {
-  const { client, initClient, classes,socket } = props;
+  const { client, initClient, classes, socket } = props;
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
+        <div className={classes.container}>
+          <CommonPaper />
+        </div>
         <DashboardProfile initClient={initClient} client={client} />
-        <DashboardPlay socket={socket}/>
+        <DashboardPlay socket={socket} />
       </div>
     </main>
   );
@@ -28,7 +32,11 @@ Dashboard.propTypes = propTypes;
 
 const styles = theme => ({
   root: {
-    display: "flex",
+    display: "grid",
+
+    gridTemplateColumns: "auto min-content min-content",
+    gridTemplateRows: "auto",
+
     maxWidth: "1040px",
     margin: "0 auto"
   },
@@ -43,6 +51,13 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.secondaryWhite,
     position: "absolute"
+  },
+  container: {
+    display: "flex",
+    position: "relative",
+    margin: "20px 0px 20px auto",
+    padding: "5px 5px",
+    width: "100%"
   }
 });
 

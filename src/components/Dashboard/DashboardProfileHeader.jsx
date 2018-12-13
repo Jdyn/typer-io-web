@@ -4,8 +4,8 @@ import injectSheet from "react-jss";
 
 const propTypes = {
   initClient: PropTypes.func.isRequired,
-  username: PropTypes.string,
-}
+  username: PropTypes.string
+};
 
 const DashboardProfileHeader = props => {
   const { initClient, username, classes } = props;
@@ -55,27 +55,20 @@ const styles = theme => ({
     width: "275px"
   },
   nameInput: {
-    flex: "100px",
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
     maxWidth: "165px",
     margin: "25px auto 0 auto",
-    height: "40px",
+    height: "60px",
     padding: "10px",
-    transition: "background-color .1s ease-in,color .1s ease-in",
     borderRadius: 8,
-    borderStyle: "solid",
-    borderColor: theme.primaryWhite,
-    fontWeight: 400,
-    fontSize: 17,
-    lineHeight: 26,
+    // boxShadow: "0px 0px 20px 0px rgba(50,50,93,.25) inset",
+    fontSize: 24,
     border: "none",
     outline: "none",
 
     "&:focus": {
-      backgroundColor: "#f6f9fc",
-      borderColor: "#e4effa",
-      borderStyle: "solid"
+      backgroundColor: theme.primaryWhite,
     }
   }
 });

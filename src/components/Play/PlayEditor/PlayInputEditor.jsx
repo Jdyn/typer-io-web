@@ -26,7 +26,7 @@ class PlayInputEditor extends React.Component {
 
 const styles = {
   input: {
-    display: "flex",
+    display: "inline-block",
     lineHeight: "40px",
     outline: 0,
     fontSize: "28px",

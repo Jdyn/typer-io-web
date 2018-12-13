@@ -9,7 +9,6 @@ class PlayInput extends React.Component {
     this.state = {
       key: "",
       prevText: "",
-      text: "",
       currentWord: "",
       wordsRemaining: [],
       wordsComplete: []
@@ -18,6 +17,7 @@ class PlayInput extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
+      this.establishInputListener()
       this.setState({
         wordsRemaining: this.props.snippetArray,
         currentWord: this.props.snippetArray[0]
@@ -26,7 +26,6 @@ class PlayInput extends React.Component {
   }
 
   componentWillMount() {
-    this.establishInputListener();
   }
 
   focusInput = () => {
@@ -35,7 +34,6 @@ class PlayInput extends React.Component {
 
   inputDidUpdate = e => {
     const text = e.target.innerText;
-
     const {
       wordsRemaining,
       wordsComplete,
@@ -43,7 +41,6 @@ class PlayInput extends React.Component {
       prevText,
       currentWord
     } = this.state;
-
     if (wordsRemaining.length > 0) {
       if (
         text.substring(0, text.length) === currentWord.substring(0, text.length)
@@ -63,6 +60,7 @@ class PlayInput extends React.Component {
             });
           }
         }
+
         if (e.target.innerText === "") {
           if (wordsRemaining[0] !== currentWord) {
             let copy = wordsRemaining.slice();
@@ -112,6 +110,10 @@ class PlayInput extends React.Component {
             currentWord: wordsCopy[0],
             wordsComplete: wordsCompleteCopy
           });
+
+          if (wordsCopy.length <= 0) {
+            document.getElementById("inputDiv").contentEditable = false;
+          }
         }
       }
     }
@@ -119,11 +121,9 @@ class PlayInput extends React.Component {
 
   establishInputListener = () => {
     window.addEventListener("load", () => {
-      const editor = document.getElementById("inputDiv");
+      console.log("load called")
+      const editor = document.getElementById("inputDiv")
       editor.addEventListener("keydown", e => {
-        if (this.state.wordsRemaining.length <= 0) {
-          e.preventDefault();
-        }
         this.setState({
           key: e.key,
           prevText: editor.innerText

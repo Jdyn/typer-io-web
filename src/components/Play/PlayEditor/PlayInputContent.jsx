@@ -2,7 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 import PlayInputEditor from "./PlayInputEditor";
 
-const PlayInputContent = ({ classes, inputDidUpdate, wordsComplete }) => {
+const PlayInputContent = ({ classes, inputDidUpdate, eventListener, wordsComplete }) => {
   return (
     <div className={classes.content}>
       {wordsComplete.map((word, index) => {
@@ -12,7 +12,7 @@ const PlayInputContent = ({ classes, inputDidUpdate, wordsComplete }) => {
           </span>
         );
       })}
-      <PlayInputEditor inputDidUpdate={inputDidUpdate} />
+      <PlayInputEditor inputDidUpdate={inputDidUpdate} eventListener={eventListener} />
     </div>
   );
 };

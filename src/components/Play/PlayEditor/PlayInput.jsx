@@ -17,7 +17,6 @@ class PlayInput extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      this.establishInputListener()
       this.setState({
         wordsRemaining: this.props.snippetArray,
         currentWord: this.props.snippetArray[0]
@@ -25,7 +24,14 @@ class PlayInput extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    const editor = document.getElementById("inputDiv");
+    editor.addEventListener("keydown", e => {
+      this.setState({
+        key: e.key,
+        prevText: editor.innerText
+      });
+    });
   }
 
   focusInput = () => {
@@ -41,6 +47,7 @@ class PlayInput extends React.Component {
       prevText,
       currentWord
     } = this.state;
+
     if (wordsRemaining.length > 0) {
       if (
         text.substring(0, text.length) === currentWord.substring(0, text.length)
@@ -117,19 +124,6 @@ class PlayInput extends React.Component {
         }
       }
     }
-  };
-
-  establishInputListener = () => {
-    window.addEventListener("load", () => {
-      console.log("load called")
-      const editor = document.getElementById("inputDiv")
-      editor.addEventListener("keydown", e => {
-        this.setState({
-          key: e.key,
-          prevText: editor.innerText
-        });
-      });
-    });
   };
 
   render() {

@@ -5,7 +5,7 @@ const SnippetLetter = props => {
   const { classes, letter, cord } = props;
   
   switch (letter) {
-    case "'","’",",",".",",":
+    case "'", "’", ",", ".", ",":
       return <span className={classes.punctuation}></span>;
     default:
       return <span className={classes.letter}></span>;

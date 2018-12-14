@@ -9,7 +9,9 @@ class PlayInput extends React.Component {
     this.state = {
       key: "",
       prevText: "",
+      inputIsWrong: false,
       currentWord: "",
+      text: "",
       wordsRemaining: [],
       wordsComplete: []
     };
@@ -27,6 +29,12 @@ class PlayInput extends React.Component {
   componentDidMount() {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keydown", e => {
+      console.log(e.key)
+      if (e.key === " " || e.key === "Enter") {
+        if (this.state.text !== this.state.currentWord) {
+          e.preventDefault();
+        }
+      }
       this.setState({
         key: e.key,
         prevText: editor.innerText
@@ -52,6 +60,11 @@ class PlayInput extends React.Component {
       if (
         text.substring(0, text.length) === currentWord.substring(0, text.length)
       ) {
+        this.setState({
+          inputIsWrong: false,
+          text: text
+        });
+
         if (text === currentWord.substring(0, text.length)) {
           if (text !== currentWord) {
             let copy = wordsRemaining.slice();
@@ -93,7 +106,10 @@ class PlayInput extends React.Component {
 
         if (currentWord.charAt(0) === key) {
           let temp = currentWord.split("");
-          if (currentWord.charAt(0) === currentWord.charAt(text.length - 1)) {
+          if (
+            currentWord.charAt(0) === currentWord.charAt(prevText.length - 1)
+          ) {
+            // This used to be "text". bug fix attempt - "eyes"
             temp.shift();
             let copy = wordsRemaining.slice();
             copy[0] = temp.join("");
@@ -101,6 +117,12 @@ class PlayInput extends React.Component {
               wordsRemaining: copy
             });
           }
+        }
+      } else {
+        if (text.trim() !== "") {
+          this.setState({
+            inputIsWrong: true
+          });
         }
       }
 
@@ -115,7 +137,8 @@ class PlayInput extends React.Component {
           this.setState({
             wordsRemaining: wordsCopy,
             currentWord: wordsCopy[0],
-            wordsComplete: wordsCompleteCopy
+            wordsComplete: wordsCompleteCopy,
+            inputIsWrong: false
           });
 
           if (wordsCopy.length <= 0) {
@@ -128,13 +151,14 @@ class PlayInput extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { wordsRemaining, wordsComplete } = this.state;
+    const { wordsRemaining, wordsComplete, inputIsWrong } = this.state;
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
           <PlayInputContent
             wordsComplete={wordsComplete}
             inputDidUpdate={this.inputDidUpdate}
+            inputIsWrong={inputIsWrong}
           />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>

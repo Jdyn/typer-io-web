@@ -4,8 +4,6 @@ import injectSheet from "react-jss";
 const PlayMainSnippet = props => {
   const { classes, snippet } = props;
 
-  
-
   return (
     <div className={classes.container}>
       <div className={classes.inner}>

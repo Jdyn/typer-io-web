@@ -50,6 +50,7 @@ export const disconnectSocket = (socket, client) => dispatch => {
     id: null,
     playerCount: null,
     clients: [],
+    messages: [],
     snippet: ""
   };
 
@@ -71,7 +72,21 @@ export const handleRoomUpdates = socket => dispatch => {
     console.log("a client joined room");
     dispatch(updateClientRoom(room));
   });
+
+  socket.on("connectChat", messages => {
+    dispatch(updateClientRoomChat(messages));
+  });
+
+  socket.on("newMessage", messages => {
+    console.log(messages)
+    dispatch(updateClientRoomChat(messages));
+  });
 };
+
+export const updateClientRoomChat = messages => ({
+  type: types.UPDATE_CLIENT_ROOM_CHAT,
+  messages
+});
 
 export const updateClientRoom = room => ({
   type: types.UPDATE_CLIENT_ROOM,

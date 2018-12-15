@@ -174,6 +174,7 @@ const styles = theme => ({
     display: "flex",
     position: "relative",
     overflow: " hidden",
+    gridColumn: "2 / 3",
     flexDirection: "row",
     margin: "15px 15px 0px 15px",
     backgroundColor: theme.primaryWhite,

@@ -23,11 +23,13 @@ const styles = {
   input: {
     display: "inline-block",
     lineHeight: "40px",
-    outline: 0,
-    color: props => props.inputIsWrong ? '#FF5A5F' : '#24b47e',
+    outline: 0, // '#ffa27b'
+    whiteSpace: 'nowrap',
+    color: props => props.inputIsWrong ? '#da552f' : '#24b47e', //'#24b47e'
+    textShadow: '0px 0px .5px rgba(50,50,93,.25)',
     caretColor: '#0d2b3e',
     fontSize: "28px",
-    fontWeight: "500",
+    fontWeight: "400",
     paddingLeft: "5px",
     verticalAlign: "middle",
     textDecoration: props => props.inputIsWrong ? "line-through" : "none"

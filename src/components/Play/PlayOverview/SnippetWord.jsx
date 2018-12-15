@@ -30,7 +30,7 @@ const SnippetWord = props => {
 const styles = theme => ({
   container: {
     display: "flex",
-    margin: "15px 0.7em 0px 0px",
+    margin: "0.7em 0.7em 0px 0px",
     position: "relative",
     // "&:first-child": {
     //   paddingLeft: "px !important"

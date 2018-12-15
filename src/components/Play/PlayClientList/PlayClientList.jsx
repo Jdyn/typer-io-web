@@ -23,7 +23,8 @@ const styles = theme => ({
   container: {
     display: "flex",
     position: "relative",
-    margin: "25px auto auto auto"
+    margin: "25px auto auto auto",
+    borderRadius: 8
   }
 });
 

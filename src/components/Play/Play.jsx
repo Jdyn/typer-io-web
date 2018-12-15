@@ -4,21 +4,18 @@ import injectSheet from "react-jss";
 import PlayClientList from "./PlayClientList/PlayClientList";
 import PlayMain from "./PlayOverview/PlayMain";
 import PlayInput from "./PlayEditor/PlayInput";
+import PlayChat from "./PlayChat/PlayChat";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
-  connectSocket: PropTypes.func.isRequired,
-  disconnectSocket: PropTypes.func.isRequired
+  updateClientRoomChat: PropTypes.func.isRequired
 };
 
 class Play extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+
   render() {
-    const { classes, client } = this.props;
+    const { classes, client, socket } = this.props;
     const snippet = client.room.snippet;
     const snippetArray = client.room.snippet.split(" ");
 
@@ -26,8 +23,9 @@ class Play extends React.Component {
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <PlayMain snippetString={snippet} />
           <PlayClientList client={client} />
+          <PlayMain snippetString={snippet} />
+          <PlayChat socket={socket} client={client}/>
           <PlayInput snippetArray={snippetArray} />
         </div>
       </main>
@@ -38,10 +36,10 @@ class Play extends React.Component {
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "auto min-content",
+    gridTemplateColumns: "min-content auto min-content",
     gridTemplateRows: "auto auto",
 
-    maxWidth: "1140px",
+    maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",
     margin: "auto",

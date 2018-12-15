@@ -26,8 +26,9 @@ const styles = {
     width: "auto",
     alignItems: "center",
     fontSize: "28px",
-    fontWeight: "500",
-    color: '#24b47e'
+    fontWeight: "400",
+    color: '#24b47e',
+    textShadow: '0px 0px .5px rgba(50,50,93,.25)',
   },
   word: {
     lineHeight: "40px",

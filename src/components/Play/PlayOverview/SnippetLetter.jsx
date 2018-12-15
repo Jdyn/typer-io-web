@@ -14,8 +14,8 @@ const SnippetLetter = props => {
 
 const styles = theme => ({
   letter: {
-    width: "1em",
-    height: "1em",
+    width: "20px",
+    height: "20px",
     position: "relative",
     backgroundColor: props => props.color ? props.color : theme.primaryGrey
   },

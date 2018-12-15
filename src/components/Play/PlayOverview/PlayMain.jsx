@@ -25,7 +25,9 @@ const PlayMain = props => {
 
   return (
     <div className={classes.container}>
-      <PlayMainSnippet snippet={transformedSnippet} />
+      <div className={classes.wrapper}>
+        <PlayMainSnippet snippet={transformedSnippet} />
+      </div>
     </div>
   );
 };
@@ -37,8 +39,12 @@ const styles = theme => ({
     display: "flex",
     position: "relative",
     margin: "25px 15px 15px 15px",
-    height: "375px" // 375px was standard. Changing to 300px to debug.
-    
+    height: "auto",
+  },
+  wrapper: {
+    maxHeight: "375px",
+    minHeight: "auto",
+    width: '100%'
   }
 });
 

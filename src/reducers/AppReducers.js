@@ -13,6 +13,7 @@ const initalState = {
       id: null,
       playerCount: null,
       clients: [],
+      messages: [],
       snippet: ""
     }
   },
@@ -81,13 +82,25 @@ export default (state = initalState, action) => {
       };
 
     case types.UPDATE_CLIENT_ROOM:
-    return {
-      ...state,
-      client: {
-        ...state.client,
-        room: action.room
-      }
-    }
+      return {
+        ...state,
+        client: {
+          ...state.client,
+          room: action.room
+        }
+      };
+
+    case types.UPDATE_CLIENT_ROOM_CHAT:
+      return {
+        ...state,
+        client: {
+          ...state.client,
+          room: {
+            ...state.client.room,
+            messages: action.messages
+          }
+        }
+      };
 
     default:
       return state;

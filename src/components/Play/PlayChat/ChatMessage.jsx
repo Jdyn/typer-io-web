@@ -14,14 +14,13 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    flexWrap: "wrap",
     position: "relative",
-    zIndex: 20,
+    minHeight: "60px",
     margin: "10px 0px 10px 0px",
     borderRadius: 8
   },
   inner: {
-    display: "inline-block",
+    // display: "inline-block",
     position: "relative",
     backgroundColor: props => props.color,
     zIndex: 21,
@@ -34,7 +33,7 @@ const styles = theme => ({
     borderRadius: 8
   },
   name: {
-    display: "inline-block",
+    // display: "inline-block",
     fontSize: "14px",
     alignSelf: props => props.align,
   }

@@ -176,7 +176,7 @@ const styles = theme => ({
     overflow: " hidden",
     gridColumn: "2 / 3",
     flexDirection: "row",
-    margin: "15px 15px 0px 15px",
+    margin: "15px 15px 15px 15px",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
     boxShadow: "0px -6px 40px 0px rgba(50,50,93,.25) inset"

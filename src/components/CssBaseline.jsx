@@ -37,7 +37,8 @@ const styles = theme => ({
       fontWeight: 400,
       fontStyle: 'normal',
       webkitTextSizeAdjust: '100%',
-      textRendering: 'optimizeLegibility'
+      textRendering: 'optimizeLegibility',
+      fontFeatureSettings: 'pnum',
     }
   }
 });

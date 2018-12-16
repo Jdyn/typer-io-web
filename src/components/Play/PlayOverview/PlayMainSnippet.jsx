@@ -36,7 +36,7 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     overflow: "auto",
-    padding: "25px 25px 0px 0px",
+    padding: "11px 25px 0px 0px",
 
   }
 });

@@ -40,9 +40,10 @@ const styles = theme => ({
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "auto",
+    maxHeight: "375px",
   },
   wrapper: {
-    maxHeight: "375px",
+    maxHeight: "auto",
     minHeight: "auto",
     width: '100%'
   }

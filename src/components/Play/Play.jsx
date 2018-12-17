@@ -37,7 +37,7 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
-    gridTemplateRows: "auto auto",
+    gridTemplateRows: "min-content min-content",
     maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",

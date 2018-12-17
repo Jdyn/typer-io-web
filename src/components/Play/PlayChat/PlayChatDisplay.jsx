@@ -31,7 +31,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "0px 10px 0px 10px",
+    margin: "15px 10px 15px 10px",
     height: "450px",
     zIndex: 20,
     maxWidth: "100%",

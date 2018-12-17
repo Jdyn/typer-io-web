@@ -28,7 +28,7 @@ class PlayInput extends React.Component {
 
   componentDidMount() {
     const editor = document.getElementById("inputDiv");
-    editor.addEventListener("keydown", e => {
+    editor.addEventListener("keypress", e => {
       console.log(e.key)
       if (e.key === " " || e.key === "Enter") {
         if (this.state.text !== this.state.currentWord) {
@@ -109,7 +109,6 @@ class PlayInput extends React.Component {
           if (
             currentWord.charAt(0) === currentWord.charAt(prevText.length - 1)
           ) {
-            // This used to be "text". bug fix attempt - "eyes"
             temp.shift();
             let copy = wordsRemaining.slice();
             copy[0] = temp.join("");

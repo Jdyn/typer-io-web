@@ -50,23 +50,21 @@ PlayChat.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    // display: "inline-block",
+    display: "flex",
     margin: "25px 15px 15px 15px",
-    position: "relative", 
+    position: "relative",
+    width: "285px",
+    maxWidth: "285px",
     gridRow: "1 / 3",
     gridColumn: "3 / 4",
-    maxWidth: "275px"
-    // boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
   },
   inner: {
     display: "flex",
-    minWidth: "275px",
     flexDirection: "column",
     backgroundColor: theme.primaryWhite,
     position: "relative",
-    flexDirection: "column",
-    minHeight: "100%",
-    maxHeight: "100%",
+    height: "100%",
+    width: "100%",
     borderRadius: 12,
     "&:before": {
       content: "''",

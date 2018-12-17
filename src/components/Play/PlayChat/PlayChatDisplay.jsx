@@ -12,15 +12,17 @@ class PlayChatDisplay extends React.Component {
     const { classes, messages, clientId } = this.props;
 
     return (
-      <div id="chatDisplay" className={classes.container}>
-        {messages.map((message, index) => (
-          <ChatMessage
-            message={message}
-            key={index}
-            color={clientId === message.id ? "#6ed69a" : "#007bff"}
-            align={clientId === message.id ? "flex-end" : "flex-start"}
-          />
-        ))}
+      <div className={classes.container}>
+        <div id="chatDisplay" className={classes.inner}>
+          {messages.map((message, index) => (
+            <ChatMessage
+              message={message}
+              key={index}
+              color={clientId === message.id ? "#6ed69a" : "#007bff"}
+              align={clientId === message.id ? "flex-end" : "flex-start"}
+            />
+          ))}
+        </div>
       </div>
     );
   }
@@ -29,12 +31,20 @@ class PlayChatDisplay extends React.Component {
 const styles = {
   container: {
     display: "flex",
-    flexDirection: "column",
     position: "relative",
-    margin: "15px 10px 15px 10px",
-    height: "450px",
-    zIndex: 20,
+    height: "100%",
     maxWidth: "100%",
+    overflow: "hidden",
+    zIndex: 20,
+    margin: "15px 10px 15px 10px"
+  },
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    position: "absolute",
+    zIndex: 20,
+    width: "100%",
+    height: "100%",
     overflowY: "scroll",
     overflowX: "hidden"
   }

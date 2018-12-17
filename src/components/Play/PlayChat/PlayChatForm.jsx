@@ -27,7 +27,7 @@ const styles = {
     height: '45px',
     display: 'flex',
     zIndex: 10,
-    margin: "0px 10px 15px 10px",
+    margin: "auto 10px 15px 10px",
   },
   input: {
     position: "relative",

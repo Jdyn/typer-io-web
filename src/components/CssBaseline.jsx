@@ -24,7 +24,7 @@ const styles = theme => ({
       MozOsxFontSmoothing: "grayscale", // Antialiasing.
       // Change from `box-sizing: content-box` so that `width`
       // is not affected by `padding` or `border`.
-      boxSizing: "border-box"
+      boxSizing: "border-box",
     },
     "*, *::before, *::after": {
       boxSizing: "inherit"

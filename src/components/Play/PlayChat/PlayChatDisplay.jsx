@@ -30,9 +30,10 @@ class PlayChatDisplay extends React.Component {
 
 const styles = {
   container: {
-    display: "flex",
+    display: "inline-block",
     position: "relative",
     height: "100%",
+    paddingLeft: "25px",
     maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,
@@ -45,6 +46,7 @@ const styles = {
     zIndex: 20,
     width: "100%",
     height: "100%",
+    borderBox: "content-box",
     overflowY: "scroll",
     overflowX: "hidden"
   }

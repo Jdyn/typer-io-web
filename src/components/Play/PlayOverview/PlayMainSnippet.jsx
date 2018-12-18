@@ -34,9 +34,9 @@ const styles = theme => ({
     position: "relative",
     boxSizing: "content-box",
     width: "100%",
-    height: "100%",
+    height: "95%",
     overflow: "auto",
-    padding: "11px 25px 0px 0px",
+    padding: "11px 25px 11px 0px",
 
   }
 });

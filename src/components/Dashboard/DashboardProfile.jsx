@@ -14,25 +14,26 @@ const DashboardProfile = props => {
 
   return (
     <div className={classes.container}>
-      <CommonPaper>
-        <DashboardProfileHeader
-          initClient={initClient}
-          username={client.username}
-        />
-      </CommonPaper>
+      <DashboardProfileHeader
+        initClient={initClient}
+        username={client.username}
+      />
     </div>
   );
 };
 
-DashboardProfile.propTypes = propTypes
+DashboardProfile.propTypes = propTypes;
 
-const styles = {
+const styles = theme => ({
   container: {
     display: "flex",
     position: "relative",
-    margin: "20px 0px 20px auto",
-    padding: "5px 5px"
+    margin: "40px 0px 40px auto",
+    // padding: "5px 5px",
+    borderRadius: 8,
+    backgroundColor: theme.primaryWhite,
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
   }
-};
+});
 
 export default injectSheet(styles)(DashboardProfile);

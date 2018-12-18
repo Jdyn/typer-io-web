@@ -78,7 +78,6 @@ export const handleRoomUpdates = socket => dispatch => {
   });
 
   socket.on("newMessage", messages => {
-    console.log(messages)
     dispatch(updateClientRoomChat(messages));
   });
 };

@@ -32,9 +32,7 @@ const DashboardPlay = props => {
     }
   ];
 
-  const handleOnClick = e => {
-    console.log("Link was clicked");
-    
+  const handleOnClick = e => {    
       if (props.socket.hasErrored) {
         e.perventDefault()
       }

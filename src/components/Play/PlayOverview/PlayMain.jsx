@@ -41,6 +41,8 @@ const styles = theme => ({
     margin: "25px 15px 15px 15px",
     height: "auto",
     maxHeight: "375px",
+    minHeight: "375px",
+    minWidth: "575px"
   },
   wrapper: {
     maxHeight: "auto",

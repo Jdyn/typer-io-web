@@ -17,7 +17,7 @@ class Play extends React.Component {
   render() {
     const { classes, client, socket } = this.props;
     const snippet = client.room.snippet;
-    const snippetArray = client.room.snippet.split(" ");
+    const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : []
 
     return (
       <main>

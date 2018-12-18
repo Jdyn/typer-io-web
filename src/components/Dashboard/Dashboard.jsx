@@ -18,9 +18,9 @@ export const Dashboard = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <div className={classes.container}>
+        {/* <div className={classes.container}>
           <CommonPaper />
-        </div>
+        </div> */}
         <DashboardProfile initClient={initClient} client={client} />
         <DashboardPlay socket={socket} />
       </div>
@@ -34,7 +34,7 @@ const styles = theme => ({
   root: {
     display: "grid",
 
-    gridTemplateColumns: "auto min-content min-content",
+    gridTemplateColumns: "auto auto",
     gridTemplateRows: "auto",
 
     maxWidth: "1040px",

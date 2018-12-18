@@ -9,9 +9,10 @@ class PlayInput extends React.Component {
     this.state = {
       key: "",
       prevText: "",
-      inputIsWrong: false,
       currentWord: "",
       text: "",
+      words: [],
+      inputIsWrong: false,
       wordsRemaining: [],
       wordsComplete: []
     };
@@ -19,17 +20,19 @@ class PlayInput extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      this.setState({
-        wordsRemaining: this.props.snippetArray,
-        currentWord: this.props.snippetArray[0]
-      });
+      if (this.state.words.length === 0) {
+        this.setState({
+          wordsRemaining: this.props.snippetArray,
+          currentWord: this.props.snippetArray[0],
+          words: this.props.snippetArray
+        });
+      }
     }
   }
 
   componentDidMount() {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keypress", e => {
-      console.log(e.key)
       if (e.key === " " || e.key === "Enter") {
         if (this.state.text !== this.state.currentWord) {
           e.preventDefault();

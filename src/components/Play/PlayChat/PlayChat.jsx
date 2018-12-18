@@ -30,7 +30,6 @@ class PlayChat extends React.Component {
 
   render() {
     const { classes, client } = this.props;
-    console.log(client);
     return (
       <div className={classes.container}>
         {/* <div className={classes.chatHeader}>CHAT ROOM</div> */}

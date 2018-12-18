@@ -33,7 +33,7 @@ const styles = {
     display: "inline-block",
     position: "relative",
     height: "100%",
-    paddingLeft: "25px",
+    paddingLeft: "20px",
     maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,

@@ -26,7 +26,8 @@ class PlayContainer extends Component {
 const mapStateToProps = state => {
   return {
     socket: state.app.socket,
-    client: state.app.client
+    client: state.app.client,
+    snippet: state.app.client.room.snippet
   };
 };
 

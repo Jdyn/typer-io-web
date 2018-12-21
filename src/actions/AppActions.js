@@ -77,14 +77,15 @@ export const handleRoomUpdates = socket => dispatch => {
     dispatch(updateClientRoomChat(messages));
   });
 
-  socket.on("newMessage", messages => {
-    dispatch(updateClientRoomChat(messages));
+  socket.on("newMessage", newMessage => {
+    console.log(newMessage)
+    dispatch(updateClientRoomChat(newMessage));
   });
 };
 
-export const updateClientRoomChat = messages => ({
+export const updateClientRoomChat = newMessage => ({
   type: types.UPDATE_CLIENT_ROOM_CHAT,
-  messages
+  newMessage
 });
 
 export const updateClientRoom = room => ({

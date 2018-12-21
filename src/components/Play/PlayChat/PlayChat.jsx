@@ -20,7 +20,6 @@ class PlayChat extends React.Component {
 
     var form = document.getElementById("chatForm");
     form.reset();
-
     this.props.socket.io.emit("message", {
       username: this.props.client.username,
       id: this.props.client.id,

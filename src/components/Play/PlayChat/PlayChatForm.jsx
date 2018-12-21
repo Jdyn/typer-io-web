@@ -5,8 +5,11 @@ const PlayChatForm = ({ classes, submitMessage }) => {
   var input = "";
 
   const onChange = event => {
+    // console.log("change", event.target.value);
     input = event.target.value;
   };
+
+  // console.log("input", input);
 
   return (
     <form id="chatForm" className={classes.container} onSubmit={e => submitMessage(e, input)}>
@@ -24,22 +27,22 @@ const PlayChatForm = ({ classes, submitMessage }) => {
 const styles = {
   container: {
     position: "relative",
-    height: '45px',
-    display: 'flex',
+    height: "45px",
+    display: "flex",
     zIndex: 10,
-    margin: "auto 10px 15px 10px",
+    margin: "auto 10px 15px 10px"
   },
   input: {
     position: "relative",
     height: "100%",
-    width: '100%',
-    lineHeight: '20px',
+    width: "100%",
+    lineHeight: "20px",
     border: "none",
     outline: "none",
-    fontSize: '18px',
+    fontSize: "18px",
     boxShadow: "0px 0px 10px 0px rgba(50,50,93,.25)",
-    padding: '10px', 
-    borderRadius: '12px'
+    padding: "10px",
+    borderRadius: "12px"
   }
 };
 

@@ -97,7 +97,7 @@ export default (state = initalState, action) => {
           ...state.client,
           room: {
             ...state.client.room,
-            messages: action.messages
+            messages: updateClientRoomChat(action.newMessage, state.client.room.messages)
           }
         }
       };
@@ -106,3 +106,14 @@ export default (state = initalState, action) => {
       return state;
   }
 };
+
+function updateClientRoomChat(newMessage, messages) {
+  if (Array.isArray(newMessage)) {
+    return newMessage;
+  } else {
+    const copy = messages.slice();
+    copy.push(newMessage);
+    console.log(copy);
+    return copy;
+  }
+}

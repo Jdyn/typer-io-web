@@ -11,8 +11,8 @@ class PlayInput extends React.Component {
       prevText: "",
       currentWord: "",
       text: "",
-      words: [],
       inputIsWrong: false,
+      words: [],
       wordsRemaining: [],
       wordsComplete: []
     };
@@ -51,18 +51,10 @@ class PlayInput extends React.Component {
 
   inputDidUpdate = e => {
     const text = e.target.innerText;
-    const {
-      wordsRemaining,
-      wordsComplete,
-      key,
-      prevText,
-      currentWord
-    } = this.state;
+    const { wordsRemaining, wordsComplete, key, prevText, currentWord } = this.state;
 
     if (wordsRemaining.length > 0) {
-      if (
-        text.substring(0, text.length) === currentWord.substring(0, text.length)
-      ) {
+      if (text.substring(0, text.length) === currentWord.substring(0, text.length)) {
         this.setState({
           inputIsWrong: false,
           text: text
@@ -95,26 +87,9 @@ class PlayInput extends React.Component {
         }
 
         if (key === "Backspace") {
-          if (
-            prevText.charAt(prevText.length - 1) ===
-            currentWord.charAt(prevText.length - 1)
-          ) {
+          if (prevText.charAt(prevText.length - 1) === currentWord.charAt(prevText.length - 1)) {
             let copy = wordsRemaining.slice();
             copy[0] = currentWord.substring(text.length, currentWord.length);
-            this.setState({
-              wordsRemaining: copy
-            });
-          }
-        }
-
-        if (currentWord.charAt(0) === key) {
-          let temp = currentWord.split("");
-          if (
-            currentWord.charAt(0) === currentWord.charAt(prevText.length - 1)
-          ) {
-            temp.shift();
-            let copy = wordsRemaining.slice();
-            copy[0] = temp.join("");
             this.setState({
               wordsRemaining: copy
             });

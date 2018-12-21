@@ -7,7 +7,7 @@ const styles = {
     whiteSpace: "normal",
     fontSize: 18,
     lineHeight: "15px",
-    color: props => (props.color ? props.color : "red"),
+    color: props => (props.color ? props.color : "black"),
     padding: props => (props.padding ? props.padding : '0px'),
     fontWeight: 600,
     textTransform: "uppercase",

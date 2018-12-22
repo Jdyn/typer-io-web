@@ -2,21 +2,12 @@ import React from "react";
 import injectSheet from "react-jss";
 
 const PlayChatForm = ({ classes, submitMessage }) => {
-  var input = "";
-
-  const onChange = event => {
-    // console.log("change", event.target.value);
-    input = event.target.value;
-  };
-
-  // console.log("input", input);
-
   return (
-    <form id="chatForm" className={classes.container} onSubmit={e => submitMessage(e, input)}>
+    <form id="chatForm" className={classes.container} onSubmit={e => submitMessage(e)}>
       <input
+        id="chatInput"
         className={classes.input}
         type="text"
-        onChange={onChange}
         placeholder="Write a message..."
         required
       />

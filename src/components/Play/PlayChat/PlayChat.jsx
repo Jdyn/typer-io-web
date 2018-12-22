@@ -15,16 +15,17 @@ class PlayChat extends React.Component {
     super(props);
   }
 
-  submitMessage = (e, input) => {
+  submitMessage = e => {
     e.preventDefault();
-
-    var form = document.getElementById("chatForm");
-    form.reset();
+    const input = document.getElementById("chatInput");
+    const message = input.value;
     this.props.socket.io.emit("message", {
       username: this.props.client.username,
       id: this.props.client.id,
-      message: input
+      message: message
     });
+
+    input.value = "";
   };
 
   render() {
@@ -33,10 +34,7 @@ class PlayChat extends React.Component {
       <div className={classes.container}>
         {/* <div className={classes.chatHeader}>CHAT ROOM</div> */}
         <div className={classes.inner}>
-          <PlayChatDisplay
-            messages={client.room.messages}
-            clientId={client.id}
-          />
+          <PlayChatDisplay messages={client.room.messages} clientId={client.id} />
           <PlayChatForm submitMessage={this.submitMessage} />
         </div>
       </div>
@@ -54,7 +52,7 @@ const styles = theme => ({
     width: "285px",
     maxWidth: "285px",
     gridRow: "1 / 3",
-    gridColumn: "3 / 4",
+    gridColumn: "3 / 4"
   },
   inner: {
     display: "flex",

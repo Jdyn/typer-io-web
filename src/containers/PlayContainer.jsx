@@ -5,7 +5,6 @@ import {
   connectSocket,
   disconnectSocket,
   updateRoomChat,
-  submitGamePieceUpdate
 } from "../actions/AppActions";
 
 class PlayContainer extends Component {
@@ -38,7 +37,7 @@ const mapDispatchToProps = dispatch => {
     connectSocket: username => dispatch(connectSocket(serverUrl, username)),
     disconnectSocket: (socket, client) => dispatch(disconnectSocket(socket, client)),
     updateRoomChat: () => dispatch(updateRoomChat()),
-    submitGamePieceUpdate: data => dispatch(submitGamePieceUpdate(data))
+    // submitGamePieceUpdate: data => dispatch(submitGamePieceUpdate(data))
   };
 };
 

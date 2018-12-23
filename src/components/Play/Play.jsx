@@ -9,13 +9,17 @@ import PlayChat from "./PlayChat/PlayChat";
 const propTypes = {
   socket: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
-  updateClientRoomChat: PropTypes.func.isRequired
+  updateRoomChat: PropTypes.func.isRequired
 };
 
 class Play extends React.Component {
 
+  gamePieceUpdate = data => {
+
+  }
+
   render() {
-    const { classes, client, socket } = this.props;
+    const { classes, client, socket, submitGamePieceUpdate } = this.props;
     const snippet = client.room.snippet;
     const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : []
 
@@ -23,10 +27,10 @@ class Play extends React.Component {
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <PlayClientList client={client} />
+          <PlayClientList socket={socket} client={client} />
           <PlayMain snippetString={snippet} />
           <PlayChat socket={socket} client={client}/>
-          <PlayInput snippetArray={snippetArray} />
+          <PlayInput submitGamePieceUpdate={submitGamePieceUpdate} snippetArray={snippetArray} />
         </div>
       </main>
     );

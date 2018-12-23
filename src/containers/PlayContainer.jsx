@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import {
   connectSocket,
   disconnectSocket,
-  updateClientRoomChat
+  updateRoomChat,
+  submitGamePieceUpdate
 } from "../actions/AppActions";
 
 class PlayContainer extends Component {
@@ -35,9 +36,9 @@ const mapDispatchToProps = dispatch => {
   const serverUrl = "localhost:8000";
   return {
     connectSocket: username => dispatch(connectSocket(serverUrl, username)),
-    disconnectSocket: (socket, client) =>
-      dispatch(disconnectSocket(socket, client)),
-    updateClientRoomChat: () => dispatch(updateClientRoomChat())
+    disconnectSocket: (socket, client) => dispatch(disconnectSocket(socket, client)),
+    updateRoomChat: () => dispatch(updateRoomChat()),
+    submitGamePieceUpdate: data => dispatch(submitGamePieceUpdate(data))
   };
 };
 

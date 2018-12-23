@@ -13,6 +13,7 @@ class PlayInput extends React.Component {
       text: "",
       inputIsWrong: false,
       words: [],
+      charactersTyped: 0,
       wordsRemaining: [],
       wordsComplete: []
     };
@@ -51,7 +52,15 @@ class PlayInput extends React.Component {
 
   inputDidUpdate = e => {
     const text = e.target.innerText;
-    const { wordsRemaining, wordsComplete, key, prevText, currentWord } = this.state;
+    const {
+      wordsRemaining,
+      wordsComplete,
+      key,
+      prevText,
+      currentWord,
+      words,
+      charactersTyped
+    } = this.state;
 
     if (wordsRemaining.length > 0) {
       if (text.substring(0, text.length) === currentWord.substring(0, text.length)) {
@@ -108,13 +117,23 @@ class PlayInput extends React.Component {
           e.target.innerText = "";
           let wordsCopy = [...wordsRemaining];
           let wordsCompleteCopy = [...wordsComplete];
+          const total = charactersTyped + words[wordsCompleteCopy.length].length;
+
           wordsCopy.shift();
           wordsCompleteCopy.push(currentWord);
+
+
+          this.props.socket.emit("client", )
+          this.props.submitGamePieceUpdate({
+            completedWordIndex: wordsCompleteCopy.length,
+            characters: total
+          });
 
           this.setState({
             wordsRemaining: wordsCopy,
             currentWord: wordsCopy[0],
             wordsComplete: wordsCompleteCopy,
+            charactersTyped: total,
             inputIsWrong: false
           });
 

@@ -8,23 +8,19 @@ class PlayInput extends React.Component {
     super(props);
     this.state = {
       key: "",
-      prevText: "",
-      currentWord: "",
-      text: "",
-      inputIsWrong: false,
+      isWrong: false,
+      entries: 0,
       words: [],
-      charactersTyped: 0,
       wordsRemaining: [],
       wordsComplete: []
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       if (this.state.words.length === 0) {
         this.setState({
           wordsRemaining: this.props.snippetArray,
-          currentWord: this.props.snippetArray[0],
           words: this.props.snippetArray
         });
       }
@@ -34,15 +30,7 @@ class PlayInput extends React.Component {
   componentDidMount() {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keypress", e => {
-      if (e.key === " " || e.key === "Enter") {
-        if (this.state.text !== this.state.currentWord) {
-          e.preventDefault();
-        }
-      }
-      this.setState({
-        key: e.key,
-        prevText: editor.innerText
-      });
+      this.setState({ key: e.key });
     });
   }
 
@@ -51,62 +39,47 @@ class PlayInput extends React.Component {
   };
 
   inputDidUpdate = e => {
+    const { wordsRemaining, wordsComplete, key, words, entries } = this.state;
     const text = e.target.innerText;
-    const {
-      wordsRemaining,
-      wordsComplete,
-      key,
-      prevText,
-      currentWord,
-      words,
-      charactersTyped
-    } = this.state;
+    const currentWord = words[wordsComplete.length];
 
-    if (wordsRemaining.length > 0) {
-      if (text.substring(0, text.length) === currentWord.substring(0, text.length)) {
+    if (text.substring(0, text.length) === currentWord.substring(0, text.length)) {
+      this.setState({
+        isWrong: false,
+        text: text
+      });
+
+      if (text !== currentWord) {
+        let copy = [...wordsRemaining];
+        copy[0] = currentWord.substring(text.length, currentWord.length);
         this.setState({
-          inputIsWrong: false,
-          text: text
+          wordsRemaining: copy
         });
-
-        if (text === currentWord.substring(0, text.length)) {
-          if (text !== currentWord) {
-            let copy = wordsRemaining.slice();
-            copy[0] = currentWord.substring(text.length, currentWord.length);
-            this.setState({
-              wordsRemaining: copy
-            });
-          } else if (text === currentWord) {
-            let copy = wordsRemaining.slice();
-            copy[0] = "";
-            this.setState({
-              wordsRemaining: copy
-            });
-          }
-        }
+      } else if (text === currentWord) {
+        let copy = wordsRemaining.slice();
+        copy[0] = "";
+        this.setState({
+          wordsRemaining: copy
+        });
       }
+    }
 
-      if (key === " ") {
-        if (currentWord === text.trim()) {
-          e.target.innerText = "";
-          let wordsCopy = [...wordsRemaining];
-          let wordsCompleteCopy = [...wordsComplete];
-          const total = charactersTyped + words[wordsCompleteCopy.length].length;
+    if (key === " ") {
+      if (currentWord === text.trim()) {
+        e.target.innerText = "";
+        let newWordsRemaining = [...wordsRemaining];
 
-          wordsCopy.shift();
-          wordsCompleteCopy.push(currentWord);
+        newWordsRemaining.shift();
 
-          this.setState({
-            wordsRemaining: wordsCopy,
-            currentWord: wordsCopy[0],
-            wordsComplete: wordsCompleteCopy,
-            charactersTyped: total,
-            inputIsWrong: false
-          });
+        this.setState(prevState => ({
+          wordsRemaining: newWordsRemaining,
+          wordsComplete: [...prevState.wordsComplete, currentWord],
+          entries: prevState.entries + words[wordsComplete.length].length,
+          isWrong: false
+        }));
 
-          if (wordsCopy.length <= 0) {
-            document.getElementById("inputDiv").contentEditable = false;
-          }
+        if (newWordsRemaining.length <= 0) {
+          document.getElementById("inputDiv").contentEditable = false;
         }
       }
     }
@@ -114,14 +87,14 @@ class PlayInput extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { wordsRemaining, wordsComplete, inputIsWrong } = this.state;
+    const { wordsRemaining, wordsComplete, isWrong } = this.state;
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
           <PlayInputContent
             wordsComplete={wordsComplete}
             inputDidUpdate={this.inputDidUpdate}
-            inputIsWrong={inputIsWrong}
+            isWrong={isWrong}
           />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>

@@ -2,7 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 import PlayInputEditor from "./PlayInputEditor";
 
-const PlayInputContent = ({ classes, inputDidUpdate, wordsComplete, inputIsWrong }) => {
+const PlayInputContent = ({ classes, inputDidUpdate, wordsComplete, isWrong }) => {
 
   return (
     <div className={classes.content}>
@@ -13,7 +13,7 @@ const PlayInputContent = ({ classes, inputDidUpdate, wordsComplete, inputIsWrong
           </span>
         ); 
       })}
-      <PlayInputEditor inputDidUpdate={inputDidUpdate} inputIsWrong={inputIsWrong}/>
+      <PlayInputEditor inputDidUpdate={inputDidUpdate} isWrong={isWrong}/>
     </div>
   );
 };

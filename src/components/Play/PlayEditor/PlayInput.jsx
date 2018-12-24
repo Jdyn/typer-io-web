@@ -84,32 +84,6 @@ class PlayInput extends React.Component {
             });
           }
         }
-
-        if (e.target.innerText === "") {
-          if (wordsRemaining[0] !== currentWord) {
-            let copy = wordsRemaining.slice();
-            copy[0] = currentWord;
-            this.setState({
-              wordsRemaining: copy
-            });
-          }
-        }
-
-        if (key === "Backspace") {
-          if (prevText.charAt(prevText.length - 1) === currentWord.charAt(prevText.length - 1)) {
-            let copy = wordsRemaining.slice();
-            copy[0] = currentWord.substring(text.length, currentWord.length);
-            this.setState({
-              wordsRemaining: copy
-            });
-          }
-        }
-      } else {
-        if (text.trim() !== "") {
-          this.setState({
-            inputIsWrong: true
-          });
-        }
       }
 
       if (key === " ") {
@@ -121,13 +95,6 @@ class PlayInput extends React.Component {
 
           wordsCopy.shift();
           wordsCompleteCopy.push(currentWord);
-
-
-          this.props.socket.emit("client", )
-          this.props.submitGamePieceUpdate({
-            completedWordIndex: wordsCompleteCopy.length,
-            characters: total
-          });
 
           this.setState({
             wordsRemaining: wordsCopy,

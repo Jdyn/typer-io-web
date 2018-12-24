@@ -5,10 +5,15 @@ const PlayInputPrompt = ({
   classes,
   wordsRemaining,
 }) => { 
+  const filtered = []
+
+  for(let i = 0; i < 8; i++) {
+    filtered.push(wordsRemaining[i])
+  }
 
   return (
     <div className={classes.prompt}>
-      {wordsRemaining.map((word, index) => {
+      {filtered.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}

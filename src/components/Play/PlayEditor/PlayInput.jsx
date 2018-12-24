@@ -31,6 +31,12 @@ class PlayInput extends React.Component {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keypress", e => {
       this.setState({ key: e.key });
+
+      if (e.key === " " || e.key === "Enter") {
+        if (this.state.input !== this.state.words[this.state.wordsComplete.length]) {
+          e.preventDefault();
+        }
+      }
     });
   }
 
@@ -40,32 +46,32 @@ class PlayInput extends React.Component {
 
   inputDidUpdate = e => {
     const { wordsRemaining, wordsComplete, key, words, entries } = this.state;
-    const text = e.target.innerText;
+    const input = e.target.innerText;
     const currentWord = words[wordsComplete.length];
+    this.setState({ input });
 
-    if (text.substring(0, text.length) === currentWord.substring(0, text.length)) {
-      this.setState({
-        isWrong: false,
-        text: text
-      });
+    if (input === currentWord.substring(0, input.length)) {
+      this.setState({ isWrong: false });
 
-      if (text !== currentWord) {
+      if (input !== currentWord) {
         let copy = [...wordsRemaining];
-        copy[0] = currentWord.substring(text.length, currentWord.length);
+        copy[0] = currentWord.substring(input.length, currentWord.length);
         this.setState({
           wordsRemaining: copy
         });
-      } else if (text === currentWord) {
+      } else if (input === currentWord) {
         let copy = wordsRemaining.slice();
         copy[0] = "";
         this.setState({
           wordsRemaining: copy
         });
       }
+    } else {
+      this.setState({ isWrong: true });
     }
 
     if (key === " ") {
-      if (currentWord === text.trim()) {
+      if (currentWord === input.trim()) {
         e.target.innerText = "";
         let newWordsRemaining = [...wordsRemaining];
 

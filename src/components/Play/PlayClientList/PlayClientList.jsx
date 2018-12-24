@@ -9,10 +9,7 @@ const PlayClientList = props => {
   return (
     <div className={classes.container}>
       <CommonPaper width="265px">
-        <CommonTitle className={classes.title} color="black" padding="20px">
-          {}
-        </CommonTitle>
-        <CommonTitle className={classes.title} color="black" padding="20px">
+          <CommonTitle className={classes.title} color="black" padding="20px">
           Current Players:
         </CommonTitle>
         {client.room &&

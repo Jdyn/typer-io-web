@@ -2,7 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 import ChatMessage from "./ChatMessage";
 
-class PlayChatDisplay extends React.Component {
+class ChatDisplay extends React.Component {
   componentDidUpdate() {
     const display = document.getElementById("chatDisplay");
     display.scrollTop = display.scrollHeight;
@@ -52,4 +52,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(PlayChatDisplay);
+export default injectSheet(styles)(ChatDisplay);

@@ -1,7 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayChatForm = ({ classes, submitMessage }) => {
+const ChatInput = ({ classes, submitMessage }) => {
   return (
     <form id="chatForm" className={classes.container} onSubmit={e => submitMessage(e)}>
       <input
@@ -37,4 +37,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(PlayChatForm);
+export default injectSheet(styles)(ChatInput);

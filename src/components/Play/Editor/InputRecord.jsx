@@ -1,40 +1,33 @@
 import React from "react";
 import injectSheet from "react-jss";
+import Input from "./Input";
 
-const PlayInputPrompt = ({
-  classes,
-  wordsRemaining,
-}) => { 
-  const filtered = []
-
-  for(let i = 0; i < 8; i++) {
-    filtered.push(wordsRemaining[i])
-  }
+const InputRecord = ({ classes, inputDidUpdate, wordsComplete, isWrong }) => {
 
   return (
-    <div className={classes.prompt}>
-      {filtered.map((word, index) => {
+    <div className={classes.content}>
+      {wordsComplete.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}
           </span>
-        );
+        ); 
       })}
+      <Input inputDidUpdate={inputDidUpdate} isWrong={isWrong}/>
     </div>
   );
 };
 
 const styles = {
-  prompt: {
+  content: {
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "flex-end",
     height: "95%",
     width: "auto",
-    lineHeight: "40px",
     alignItems: "center",
     fontSize: "28px",
     fontWeight: "400",
-    color: '#0d2b3e',
+    color: '#24b47e',
     textShadow: '0px 0px .5px rgba(50,50,93,.25)',
   },
   word: {
@@ -46,4 +39,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(PlayInputPrompt);
+export default injectSheet(styles)(InputRecord);

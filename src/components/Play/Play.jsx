@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-import PlayClientList from "./PlayClientList/PlayClientList";
-import PlayMain from "./PlayOverview/PlayMain";
-import PlayInput from "./PlayEditor/PlayInput";
-import PlayChat from "./PlayChat/PlayChat";
+import ClientList from "./ClientList";
+import Gameboard from "./Gameboard";
+import Editor from "./Editor";
+import Chat from "./Chat";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,
@@ -13,24 +13,25 @@ const propTypes = {
 };
 
 class Play extends React.Component {
-
-  gamePieceUpdate = data => {
-
-  }
+  gamePieceUpdate = data => {};
 
   render() {
     const { classes, client, socket, submitGamePieceUpdate } = this.props;
     const snippet = client.room.snippet;
-    const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : []
+    const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : [];
 
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <PlayClientList socket={socket} client={client} />
-          <PlayMain snippetString={snippet} />
-          <PlayChat socket={socket} client={client}/>
-          <PlayInput submitGamePieceUpdate={submitGamePieceUpdate} snippetArray={snippetArray} />
+          <ClientList socket={socket} client={client} />
+          <Gameboard snippetString={snippet} />
+          <Chat socket={socket} client={client} />
+          <Editor
+            socket={socket}
+            submitGamePieceUpdate={submitGamePieceUpdate}
+            snippetArray={snippetArray}
+          />
         </div>
       </main>
     );

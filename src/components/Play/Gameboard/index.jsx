@@ -1,38 +1,34 @@
 import React from "react";
 import injectSheet from "react-jss";
-import PlayMainSnippet from "./PlayMainSnippet";
+import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
-const PlayMain = props => {
+const Gameboard = props => {
   const { classes, snippetString } = props;
 
-  const snippetStringToArray = snippetString
-    .split(" ")
-    .map(letter => letter.split(""));
+  const snippetArray = snippetString.split(" ").map(letter => letter.split(""));
 
-  const transformSnippet = snippet => {
-    //split(/\b(?![\s(.|;|:|,)])/); || RegEX for including spaces
-
+  const transformSnippet = snippetArray => {
     var res = new Set();
 
-    snippet.forEach((word, index) =>
+    snippetArray.forEach((word, index) =>
       res.add(<SnippetWord word={word} key={index} wordIndex={index} />)
     );
     return res;
   };
 
-  const transformedSnippet = transformSnippet(snippetStringToArray);
+  const transformedSnippet = transformSnippet(snippetArray);
 
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
-        <PlayMainSnippet snippet={transformedSnippet} />
+        <Snippet snippet={transformedSnippet} />
       </div>
     </div>
   );
 };
 
-PlayMain.propTypes = {};
+Gameboard.propTypes = {};
 
 const styles = theme => ({
   container: {
@@ -47,8 +43,8 @@ const styles = theme => ({
   wrapper: {
     maxHeight: "auto",
     minHeight: "auto",
-    width: '100%'
+    width: "100%"
   }
 });
 
-export default injectSheet(styles)(PlayMain);
+export default injectSheet(styles)(Gameboard);

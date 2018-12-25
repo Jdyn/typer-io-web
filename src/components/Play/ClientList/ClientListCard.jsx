@@ -1,6 +1,5 @@
 import React from "react";
 import injectSheet from "react-jss";
-
 import CommonTitle from "../../CommonComponents/commonTitle";
 import CommonText from "../../CommonComponents/commonText";
 

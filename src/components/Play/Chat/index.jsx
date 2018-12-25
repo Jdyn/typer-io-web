@@ -1,16 +1,14 @@
 import React from "react";
 import injectSheet from "react-jss";
 import PropTypes from "prop-types";
-import CommonTitle from "../../CommonComponents/commonTitle";
-import CommonPaper from "../../CommonComponents/CommonPaper";
-import PlayChatForm from "./PlayChatForm";
-import PlayChatDisplay from "./PlayChatDisplay";
+import PlayChatForm from "./ChatInput";
+import PlayChatDisplay from "./ChatDisplay";
 
 const propTypes = {
   socket: PropTypes.object.isRequired
 };
 
-class PlayChat extends React.Component {
+class Chat extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -42,7 +40,7 @@ class PlayChat extends React.Component {
   }
 }
 
-PlayChat.propTypes = propTypes;
+Chat.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
@@ -87,4 +85,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(PlayChat);
+export default injectSheet(styles)(Chat);

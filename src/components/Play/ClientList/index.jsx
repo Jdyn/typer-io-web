@@ -4,7 +4,7 @@ import ClientListCard from "./ClientListCard";
 import CommonTitle from "../../CommonComponents/commonTitle";
 import CommonPaper from "../../CommonComponents/CommonPaper";
 
-const PlayClientList = props => {
+const ClientList = props => {
   const { client, classes } = props;
   return (
     <div className={classes.container}>
@@ -30,4 +30,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(PlayClientList);
+export default injectSheet(styles)(ClientList);

@@ -1,7 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayInputEditor = props => {
+const Input = props => {
   const { classes, inputDidUpdate } = props;
 
   return (
@@ -36,4 +36,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(PlayInputEditor);
+export default injectSheet(styles)(Input);

@@ -1,9 +1,9 @@
 import React from "react";
 import injectSheet from "react-jss";
-import PlayInputPrompt from "./PlayInputPrompt";
-import PlayInputContent from "./PlayInputContent";
+import InputPrompt from "./InputPrompt";
+import InputRecord from "./InputRecord";
 
-class PlayInput extends React.Component {
+class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +19,7 @@ class PlayInput extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       if (this.state.words.length === 0) {
+        console.log(this.props);
         this.setState({
           wordsRemaining: this.props.snippetArray,
           words: this.props.snippetArray
@@ -77,6 +78,9 @@ class PlayInput extends React.Component {
 
         newWordsRemaining.shift();
 
+        const newEntries = entries + words[wordsComplete.length].length;
+        this.props.socket.io.emit("clientUpdate:game", newEntries);
+
         this.setState(prevState => ({
           wordsRemaining: newWordsRemaining,
           wordsComplete: [...prevState.wordsComplete, currentWord],
@@ -97,14 +101,14 @@ class PlayInput extends React.Component {
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputContent
+          <InputRecord
             wordsComplete={wordsComplete}
             inputDidUpdate={this.inputDidUpdate}
             isWrong={isWrong}
           />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <PlayInputPrompt wordsRemaining={wordsRemaining} />
+          <InputPrompt wordsRemaining={wordsRemaining} />
         </div>
       </div>
     );
@@ -131,4 +135,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(PlayInput);
+export default injectSheet(styles)(Editor);

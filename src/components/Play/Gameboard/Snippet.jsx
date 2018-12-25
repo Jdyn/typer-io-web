@@ -1,7 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const PlayMainSnippet = props => {
+const Snippet = props => {
   const { classes, snippet } = props;
 
   return (
@@ -13,7 +13,7 @@ const PlayMainSnippet = props => {
   );
 };
 
-PlayMainSnippet.propTypes = {};
+Snippet.propTypes = {};
 
 const styles = theme => ({
   container: {
@@ -41,4 +41,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(PlayMainSnippet);
+export default injectSheet(styles)(Snippet);

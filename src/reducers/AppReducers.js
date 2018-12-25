@@ -102,6 +102,18 @@ export default (state = initalState, action) => {
         }
       };
 
+    case types.GAME_UPDATE:
+      return {
+        ...state,
+        client: {
+          ...state.client,
+          room: {
+            ...state.client.room,
+            clients: action.clients
+          }
+        }
+      };
+
     default:
       return state;
   }

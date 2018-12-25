@@ -19,7 +19,6 @@ class Editor extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       if (this.state.words.length === 0) {
-        console.log(this.props);
         this.setState({
           wordsRemaining: this.props.snippetArray,
           words: this.props.snippetArray

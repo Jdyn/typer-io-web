@@ -6,14 +6,12 @@ import CommonText from "../../CommonComponents/commonText";
 const ClientListCard = props => {
   const { client, classes } = props;
 
-  
-
   return (
     <div className={classes.container}>
       <CommonTitle color="black">NAME: {client.username}</CommonTitle>
-      <CommonText color="black" fontSize={14}>
+      {/* <CommonText color="black" fontSize={14}>
         ID: {client.id}
-      </CommonText>
+      </CommonText> */}
       <div className={classes.wpm}>{client.gamePiece.wpm}</div>
     </div>
   );

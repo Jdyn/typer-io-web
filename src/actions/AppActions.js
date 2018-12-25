@@ -10,6 +10,7 @@ export const connectSocket = (serverUrl, client) => dispatch => {
   socket.on("onConnected", client => {
     dispatch(connectSocketSuccess(client, socket));
     dispatch(handleRoomUpdates(socket));
+    dispatch(handleGameUpdates(socket));
   });
 
   socket.on("connect_error", error => {
@@ -54,15 +55,16 @@ export const handleRoomUpdates = socket => dispatch => {
 };
 
 export const handleGameUpdates = socket => dispatch => {
-  socket.on("gameUpdate", data => {
-    dispatch(updateRoomGame(data))
+  socket.on("gameboardUpdate", clients => {
+    // console.log(clients)
+    dispatch(updateGame(clients));
   });
 };
 
-export const updateRoomGame = data => ({
-  types: types.UPDATE_ROOM_GAME,
-  data
-})
+export const updateGame = clients => ({
+  type: types.GAME_UPDATE,
+  clients
+});
 
 export const disconnectSocketSuccess = room => ({
   type: types.DISCONNECT_SOCKET,

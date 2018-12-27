@@ -36,6 +36,7 @@ const styles = theme => ({
     width: "100%",
     height: "95%",
     overflow: "auto",
+    alignContent: "flex-start",
     padding: "11px 25px 11px 0px",
 
   }

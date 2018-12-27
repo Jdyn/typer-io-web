@@ -7,9 +7,8 @@ const SnippetWord = props => {
 
   const changeColor = letterIndex => {
     if (letterIndex === 1 && wordIndex === 0) {
-      return
+      return;
     }
-
     return;
   };
 
@@ -32,6 +31,7 @@ const styles = theme => ({
     display: "flex",
     margin: "6.5px 0.7em 6.5px 0px",
     position: "relative",
+    maxHeight: "20px"
     // "&:first-child": {
     //   paddingLeft: "px !important"
     // }

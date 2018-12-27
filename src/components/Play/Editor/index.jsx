@@ -77,8 +77,12 @@ class Editor extends React.Component {
 
         newWordsRemaining.shift();
 
-        const newEntries = entries + words[wordsComplete.length].length;
-        this.props.socket.io.emit("clientUpdate:game", newEntries);
+        
+        const entries = words[wordsComplete.length].length
+          ? words[wordsComplete.length].length
+          : 0;
+
+        this.props.socket.io.emit("clientUpdate:game", entries);
 
         this.setState(prevState => ({
           wordsRemaining: newWordsRemaining,

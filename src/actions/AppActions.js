@@ -55,15 +55,14 @@ export const handleRoomUpdates = socket => dispatch => {
 };
 
 export const handleGameUpdates = socket => dispatch => {
-  socket.on("gameboardUpdate", clients => {
-    // console.log(clients)
-    dispatch(updateGame(clients));
+  socket.on("gameboardUpdate", gamePieces => {
+    dispatch(updateGame(gamePieces));
   });
 };
 
-export const updateGame = clients => ({
+export const updateGame = gamePieces => ({
   type: types.GAME_UPDATE,
-  clients
+  gamePieces
 });
 
 export const disconnectSocketSuccess = room => ({

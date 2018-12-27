@@ -3,12 +3,15 @@ import * as types from "../constants/ActionTypes";
 const initalState = {
   isLoggedIn: false,
   client: {
-    username: null,
     id: null,
-    email: null,
+    username: null,
     isInRoom: false,
-    CPM: 0, // Characters per Minute
-    WPM: 0, // Words per Minute
+    gamePiece: {
+      entries: 0,
+      wpm: 0,
+      cpm: 0,
+      errors: 0
+    },
     room: {
       id: null,
       playerCount: null,
@@ -109,7 +112,10 @@ export default (state = initalState, action) => {
           ...state.client,
           room: {
             ...state.client.room,
-            clients: action.clients
+            clients: updateGameboard(
+              [...state.client.room.clients],
+              action.gamePieces
+            )
           }
         }
       };
@@ -119,13 +125,21 @@ export default (state = initalState, action) => {
   }
 };
 
-function updateRoomChat(newMessage, messages) {
+const updateGameboard = (clients, gamePieces) => {
+  const res = [...clients];
+  res.forEach((client, index) => {
+    client.gamePiece = gamePieces[index];
+  });
+  return res;
+};
+
+const updateRoomChat = (newMessage, messages) => {
   if (Array.isArray(newMessage)) {
     return newMessage;
   } else {
-    const copy = messages.slice();
+    const copy = [...messages];
     copy.push(newMessage);
     console.log(copy);
     return copy;
   }
-}
+};

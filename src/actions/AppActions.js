@@ -25,6 +25,7 @@ export const disconnectSocket = (socket, client) => dispatch => {
     playerCount: null,
     clients: [],
     messages: [],
+    gameboard: {},
     snippet: ""
   };
 
@@ -55,14 +56,14 @@ export const handleRoomUpdates = socket => dispatch => {
 };
 
 export const handleGameUpdates = socket => dispatch => {
-  socket.on("gameboardUpdate", gamePieces => {
-    dispatch(updateGame(gamePieces));
+  socket.on("gameboardUpdate", data => {
+    dispatch(updateGame(data));
   });
 };
 
-export const updateGame = gamePieces => ({
+export const updateGame = data => ({
   type: types.GAME_UPDATE,
-  gamePieces
+  data
 });
 
 export const disconnectSocketSuccess = room => ({

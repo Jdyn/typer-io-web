@@ -4,14 +4,10 @@ import injectSheet from "react-jss";
 const styles = {
   commonTitle: {
     margin: props => (props.margin ? props.margin : "0px"),
-    whiteSpace: "normal",
-    fontSize: 18,
-    lineHeight: "15px",
+    fontSize: props => (props.fontSize ? props.fontSize : 18),
     color: props => (props.color ? props.color : "black"),
     padding: props => (props.padding ? props.padding : '0px'),
     fontWeight: 600,
-    textTransform: "uppercase",
-    letterSpacing: ".025em"
   }
 };
 

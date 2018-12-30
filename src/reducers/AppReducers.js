@@ -100,16 +100,16 @@ export default (state = initalState, action) => {
       };
 
     case types.ROOM_TIMER_UPDATE:
-    return {
-      ...state,
-      client: {
-        ...state.client,
-        room: {
-          ...state.client.room,
-          timer: action.time
+      return {
+        ...state,
+        client: {
+          ...state.client,
+          room: {
+            ...state.client.room,
+            timer: action.time
+          }
         }
       }
-    }
 
     case types.ROOM_CHAT_UPDATE:
       return {
@@ -131,6 +131,8 @@ export default (state = initalState, action) => {
           room: {
             ...state.client.room,
             gameboard: {
+              ...state.client.room.gameboard,
+              isStarted: action.data.isStarted ? action.data.isStarted : state.client.room.gameboard.isStarted, 
               gameTime: action.data.timeRemaining
             },
             clients: updateGameboard(

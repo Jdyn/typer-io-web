@@ -38,7 +38,9 @@ const styles = theme => ({
     height: "auto",
     maxHeight: "375px",
     minHeight: "375px",
-    minWidth: "575px"
+    maxWidth: "575px",
+    minWidth: "475px",
+    Width: "575px"
   },
   wrapper: {
     maxHeight: "auto",

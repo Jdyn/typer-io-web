@@ -13,12 +13,13 @@ const propTypes = {
 };
 
 class Play extends React.Component {
-  gamePieceUpdate = data => {};
+  gamePieceUpdate = data => { };
 
   render() {
     const { classes, client, socket, submitGamePieceUpdate } = this.props;
     const snippet = client.room.snippet;
     const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : [];
+    const isStarted = client.room.gameboard.isStarted
 
     return (
       <main>
@@ -28,6 +29,7 @@ class Play extends React.Component {
           <Gameboard snippetString={snippet} />
           <Chat socket={socket} client={client} />
           <Editor
+            isStarted={isStarted}
             socket={socket}
             submitGamePieceUpdate={submitGamePieceUpdate}
             snippetArray={snippetArray}

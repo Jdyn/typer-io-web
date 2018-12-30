@@ -21,7 +21,8 @@ const theme = {
   secondaryWhite: "#f6f9fc",
   tertiaryWhite: "#eef2f7",
   quartinaryWhite: "#e6ebf1",
-  primaryGrey: '#d7dadc'
+  primaryGrey: '#d7dadc',
+  transparentGrey: "#80808017"
 };
 
 const app = (

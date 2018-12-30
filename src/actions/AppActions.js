@@ -63,6 +63,10 @@ export const handleGameUpdates = socket => dispatch => {
   socket.on("gameboardUpdate", data => {
     dispatch(updateGame(data));
   });
+
+  socket.on("startGame", data => {
+    dispatch(updateGame(data))
+  })
 };
 
 export const updateGame = data => ({

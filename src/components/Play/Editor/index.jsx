@@ -32,6 +32,10 @@ class Editor extends React.Component {
     editor.addEventListener("keypress", e => {
       this.setState({ key: e.key });
 
+      if (!this.props.isStarted) {
+        e.preventDefault();
+      }
+
       if (e.key === " " || e.key === "Enter") {
         if (this.state.input !== this.state.words[this.state.wordsComplete.length]) {
           e.preventDefault();
@@ -77,7 +81,7 @@ class Editor extends React.Component {
 
         newWordsRemaining.shift();
 
-        
+
         const entries = words[wordsComplete.length].length
           ? words[wordsComplete.length].length
           : 0;
@@ -99,7 +103,7 @@ class Editor extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, isStarted } = this.props;
     const { wordsRemaining, wordsComplete, isWrong } = this.state;
     return (
       <div className={classes.container}>
@@ -111,7 +115,7 @@ class Editor extends React.Component {
           />
         </div>
         <div className={classes.wrapper} onClick={this.focusInput}>
-          <InputPrompt wordsRemaining={wordsRemaining} />
+          <InputPrompt wordsRemaining={wordsRemaining} isStarted={isStarted} />
         </div>
       </div>
     );
@@ -126,8 +130,9 @@ const styles = theme => ({
     gridColumn: "2 / 3",
     flexDirection: "row",
     margin: "15px 15px 15px 15px",
-    backgroundColor: theme.primaryWhite,
+    backgroundColor: props => props.isStarted ? theme.primaryWhite : theme.transparentGrey,
     borderRadius: 8,
+    transition: "background-color 0.5s",
     boxShadow: "0px -6px 40px 0px rgba(50,50,93,.25) inset"
   },
   wrapper: {

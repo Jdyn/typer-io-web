@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import DashboardProfileHeader from "./DashboardProfileHeader";
-import CommonPaper from "../CommonComponents/CommonPaper";
 
 const propTypes = {
   initClient: PropTypes.func.isRequired,

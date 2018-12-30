@@ -1,31 +1,32 @@
 import React from "react";
 import injectSheet from "react-jss";
 import ClientListCard from "./ClientListCard";
-import ListLoadingCard from "./ListLoadingCard";
+// import ListLoadingCard from "./ListLoadingCard";
 import ClientListHeader from "./ClientListHeader";
 
 const ClientList = props => {
   const { client, classes } = props;
 
   const getTime = () => {
-    const gameTime = props.client.room.gameboard.gameTime;
-    const text = gameTime.substring(gameTime.length - 2, gameTime.length);
-    console.log(text)
-    const seconds = parseInt(text);
-    return seconds;
+    const roomTime = props.client.room.timer;
+    if (roomTime) {
+      const text = roomTime.substring(roomTime.length - 2, roomTime.length);
+      const seconds = parseInt(text);
+      return seconds
+    }
   };
 
   const getHeaderInfo = () => {
-    const res = {
-      backgroundColor: null,
-      text: ""
-    };
-    console.log(getTime());
+    const res = {};
+
     if (getTime() > 20) {
+      res.backgroundColor = "#469cd0";
+      res.text = "Looking for Players...";
+    } else if (getTime() > 10) {
       res.backgroundColor = "#e57373";
       res.text = "Get Ready...";
-    } else if (getTime() > 10) {
-      res.backgroundColor = "#ffe7cb";
+    } else if (getTime() > 0) {
+      res.backgroundColor = "#FF8A65";
       res.text = "Get Set...";
     } else if (getTime() === 0) {
       res.backgroundColor = "#81C784";
@@ -35,6 +36,7 @@ const ClientList = props => {
     return res;
   };
 
+  console.log("rerendered")
   return (
     <div className={classes.container}>
       <div className={classes.inner}>
@@ -44,9 +46,9 @@ const ClientList = props => {
             <ClientListCard key={index} client={client} />
           ))}
       </div>
-      {client.room.clients.length > 0 && client.room.clients.length < 5 && (
+      {/* {client.room.clients.length > 0 && client.room.clients.length < 5 && (
         <ListLoadingCard />
-      )}
+      )} */}
     </div>
   );
 };
@@ -59,7 +61,6 @@ const styles = theme => ({
     position: "relative",
     margin: "0px",
     backgroundColor: theme.primaryWhite,
-    borderRadius: 8,
     maxHeight: "500px",
     boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
     gridRow: "1 / 3",

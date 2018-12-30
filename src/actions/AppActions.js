@@ -41,6 +41,10 @@ export const handleRoomUpdates = socket => dispatch => {
   socket.on("ClientLeftRoom", room => {
     dispatch(updateRoom(room));
   });
+  
+  socket.on("roomTimer", time => {
+    dispatch(roomTimerUpdate(time))
+  })
 
   socket.on("ClientJoinedRoom", room => {
     dispatch(updateRoom(room));
@@ -94,11 +98,16 @@ export const connectSocketSuccess = (client, socket) => ({
 });
 
 export const updateRoomChat = newMessage => ({
-  type: types.UPDATE_CLIENT_ROOM_CHAT,
+  type: types.ROOM_CHAT_UPDATE,
   newMessage
 });
 
 export const updateRoom = room => ({
-  type: types.UPDATE_CLIENT_ROOM,
+  type: types.ROOM_UPDATE,
   room
 });
+
+export const roomTimerUpdate = time => ({
+  type: types.ROOM_TIMER_UPDATE,
+  time
+})

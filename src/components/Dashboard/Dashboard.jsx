@@ -3,7 +3,6 @@ import React from "react";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
-import CommonPaper from "../CommonComponents/CommonPaper";
 
 const propTypes = {
   socket: PropTypes.object.isRequired,

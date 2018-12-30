@@ -6,19 +6,13 @@ const initalState = {
     id: null,
     username: null,
     isInRoom: false,
-    gamePiece: {
-      entries: 0,
-      wpm: 0,
-      cpm: 0,
-      errors: 0
-    },
     room: {
       id: null,
       playerCount: null,
-      roomTimer: 30,
+      timer: null,
       gameboard: {
         isStarted: false,
-        gameTime: ""
+        gameTime: null
       },
       clients: [],
       messages: [],
@@ -93,7 +87,7 @@ export default (state = initalState, action) => {
         }
       };
 
-    case types.UPDATE_CLIENT_ROOM:
+    case types.ROOM_UPDATE:
       return {
         ...state,
         client: {
@@ -105,7 +99,19 @@ export default (state = initalState, action) => {
         }
       };
 
-    case types.UPDATE_CLIENT_ROOM_CHAT:
+    case types.ROOM_TIMER_UPDATE:
+    return {
+      ...state,
+      client: {
+        ...state.client,
+        room: {
+          ...state.client.room,
+          timer: action.time
+        }
+      }
+    }
+
+    case types.ROOM_CHAT_UPDATE:
       return {
         ...state,
         client: {
@@ -122,7 +128,6 @@ export default (state = initalState, action) => {
         ...state,
         client: {
           ...state.client,
-
           room: {
             ...state.client.room,
             gameboard: {

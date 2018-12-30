@@ -45,7 +45,7 @@ class Editor extends React.Component {
   };
 
   inputDidUpdate = e => {
-    const { wordsRemaining, wordsComplete, key, words, entries } = this.state;
+    const { wordsRemaining, wordsComplete, key, words } = this.state;
     const input = e.target.innerText;
     const currentWord = words[wordsComplete.length];
     this.setState({ input });

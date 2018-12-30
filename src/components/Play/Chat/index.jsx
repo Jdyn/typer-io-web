@@ -9,9 +9,6 @@ const propTypes = {
 };
 
 class Chat extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   submitMessage = e => {
     e.preventDefault();

@@ -2,12 +2,12 @@ import React from "react";
 import injectSheet from "react-jss";
 
 const ClientListHeader = props => {
-  const { classes, client } = props;
+  const { classes, client, headerInfo } = props;
 
   return (
     <div className={classes.container} color="black" padding="20px">
-      <div className={classes.time}>{client.room.gameboard.gameTime}</div>
-      <div className={classes.infoText}>Looking for Players...</div>
+      <div className={classes.time}>{client.room.timer}</div>
+      <div className={classes.infoText}>{headerInfo.text}</div>
     </div>
   );
 };
@@ -19,12 +19,22 @@ const styles = {
     position: "relative",
     margin: "0px",
     fontSize: "18px",
-		color: "black",
-		borderRadius: 8,
-		backgroundColor: props => props.headerInfo.backgroundColor ? props.headerInfo.backgroundColor : "#469cd0",
+    color: "black",
+		borderRadius: "8px 8px 0px 0px",
+		transition: "background-color 1s",
+    backgroundColor: props =>
+      props.headerInfo.backgroundColor
+        ? props.headerInfo.backgroundColor
+        : "#469cd0",
     padding: "20px",
     fontWeight: 600,
     textAlign: "center"
+  },
+  time: {
+    color: "white"
+  },
+  infoText: {
+    color: "white"
   }
 };
 

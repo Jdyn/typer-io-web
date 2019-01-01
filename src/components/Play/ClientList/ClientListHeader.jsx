@@ -6,7 +6,7 @@ const ClientListHeader = props => {
 
   return (
     <div className={classes.container} color="black" padding="20px">
-      <div className={classes.time}>{client.room.timer}</div>
+      <div className={classes.time}>{client.room.gameboard.gameTime ? client.room.gameboard.gameTime : client.room.timer}</div>
       <div className={classes.infoText}>{headerInfo.text}</div>
     </div>
   );
@@ -31,7 +31,8 @@ const styles = {
     textAlign: "center"
   },
   time: {
-    color: "white"
+    color: "white",
+    height: "25px"
   },
   infoText: {
     color: "white"

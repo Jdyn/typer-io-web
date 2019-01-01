@@ -19,18 +19,21 @@ const ClientList = props => {
   const getHeaderInfo = () => {
     const res = {};
 
-    if (getTime() > 20) {
+    if (getTime() > 10) {
       res.backgroundColor = "#469cd0";
       res.text = "Looking for Players...";
-    } else if (getTime() > 10) {
+    } else if (getTime() > 5) {
       res.backgroundColor = "#e57373";
       res.text = "Get Ready...";
     } else if (getTime() > 0) {
-      res.backgroundColor = "#FF8A65";
+      res.backgroundColor = "#e5a03e";
       res.text = "Get Set...";
     } else if (getTime() === 0) {
       res.backgroundColor = "#81C784";
       res.text = "GO!";
+    } else {
+      res.backgroundColor = "#469cd0"
+      res.text = "Looking for Players..."
     }
 
     return res;
@@ -63,14 +66,14 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     maxHeight: "500px",
     boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    gridRow: "1 / 3",
     borderRadius: 8
   },
   container: {
     display: "flex",
     flexDirection: "column",
     margin: "25px 15px 15px 15px",
-    position: "relative"
+    position: "relative",
+    gridRow: "1 / 3",
   },
   listHeader: {
     display: "flex",

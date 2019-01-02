@@ -32,7 +32,7 @@ const styles = {
     fontWeight: "400",
     paddingLeft: "5px",
     verticalAlign: "middle",
-    textDecoration: props => props.isWrong ? "line-through" : "none"
+    // textDecoration: props => props.isWrong ? "line-through" : "none"
   }
 };
 

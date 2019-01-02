@@ -36,10 +36,8 @@ const styles = theme => ({
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "auto",
-    maxHeight: "375px",
     minHeight: "375px",
-    maxWidth: "575px",
-    minWidth: "475px",
+    minWidth: "575px",
     Width: "575px"
   },
   wrapper: {

@@ -86,7 +86,7 @@ class Editor extends React.Component {
           ? words[wordsComplete.length].length
           : 0;
 
-        this.props.socket.io.emit("clientUpdate:game", entries);
+        this.props.socket.io.emit("clientUpdate:game", entries + 1);
 
         this.setState(prevState => ({
           wordsRemaining: newWordsRemaining,
@@ -104,7 +104,8 @@ class Editor extends React.Component {
 
   render() {
     const { classes, isStarted } = this.props;
-    const { wordsRemaining, wordsComplete, isWrong } = this.state;
+    const { wordsRemaining, wordsComplete, isWrong, entries, words } = this.state;
+    const snippet = words.join("")
     return (
       <div className={classes.container}>
         <div className={classes.wrapper} onClick={this.focusInput}>
@@ -117,6 +118,7 @@ class Editor extends React.Component {
         <div className={classes.wrapper} onClick={this.focusInput}>
           <InputPrompt wordsRemaining={wordsRemaining} isStarted={isStarted} />
         </div>
+        {/* {entries === snippet.length ? <div>Race Complete</div> : <div />} */}
       </div>
     );
   }

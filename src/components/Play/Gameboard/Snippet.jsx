@@ -1,18 +1,29 @@
 import React from "react";
 import injectSheet from "react-jss";
+import GamePiece from "./GamePiece";
+import { Transition } from 'react-spring'
 
 const Snippet = props => {
-  const { classes, snippet } = props;
+  const { classes, snippet, client } = props;
+
   return (
     <div className={classes.container}>
       <div className={classes.inner}>
-        {snippet.map(SnippetWord => {
-          return SnippetWord;
-        })}
+        {
+          snippet.map(SnippetWord => {
 
-        {/* {snippet.map(SnippetWord => {
-          return <div> {SnippetWord} </div>;
-        })} */}
+            return (
+              <div className={classes.wrapper}>
+                {client.room.clients.map((client, index) => {
+                  if (SnippetWord.props.wordIndex === client.gamePiece.currentIndex) {
+                    return <GamePiece key={index}></GamePiece>
+                  }
+                })}
+                {SnippetWord}
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   );
@@ -43,6 +54,11 @@ const styles = theme => ({
     overflow: "auto",
     alignContent: "flex-start",
     padding: "11px 25px 11px 0px"
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    position: "relative"
   }
 });
 

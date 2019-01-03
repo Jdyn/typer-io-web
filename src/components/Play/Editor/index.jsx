@@ -91,7 +91,7 @@ class Editor extends React.Component {
 
         const payload = {
           entries: entries + 1,
-          currentIndex: wordsComplete.length ? wordsComplete.length : 0,
+          currentIndex: wordsComplete.length + 1,
           errors: errors
         };
 

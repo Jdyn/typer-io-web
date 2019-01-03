@@ -13,11 +13,10 @@ const GamePiece = props => {
 
 const styles = {
   container: {
+    margin: "0px, 0px auto 0px",
     display: "flex",
     position: "relative",
     flexDirection: "column",
-    alignContent: "center",
-    justifyContent: "Center"
   },
   circle: {
     width: "8px",

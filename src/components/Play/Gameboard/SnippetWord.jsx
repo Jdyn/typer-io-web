@@ -19,7 +19,8 @@ const SnippetWord = props => {
 const styles = theme => ({
   container: {
     display: "flex",
-    margin: "6.5px 0.7em 6.5px 0px",
+    margin: "6.5px 0px 6.5px 0px",
+    paddingRight: "12px",
     position: "relative",
     maxHeight: "20px"
   }

@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  const serverUrl = "192.168.1.8:8000";
+  const serverUrl = "localhost:8000";
   return {
     connectSocket: username => dispatch(connectSocket(serverUrl, username)),
     disconnectSocket: (socket, client) => dispatch(disconnectSocket(socket, client)),

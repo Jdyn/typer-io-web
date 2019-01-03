@@ -41,10 +41,10 @@ export const handleRoomUpdates = socket => dispatch => {
   socket.on("ClientLeftRoom", room => {
     dispatch(updateRoom(room));
   });
-  
+
   socket.on("roomTimer", time => {
-    dispatch(roomTimerUpdate(time))
-  })
+    dispatch(roomTimerUpdate(time));
+  });
 
   socket.on("ClientJoinedRoom", room => {
     dispatch(updateRoom(room));
@@ -65,8 +65,8 @@ export const handleGameUpdates = socket => dispatch => {
   });
 
   socket.on("startGame", data => {
-    dispatch(updateGame(data))
-  })
+    dispatch(updateGame(data));
+  });
 };
 
 export const updateGame = data => ({
@@ -114,4 +114,4 @@ export const updateRoom = room => ({
 export const roomTimerUpdate = time => ({
   type: types.ROOM_TIMER_UPDATE,
   time
-})
+});

@@ -130,6 +130,7 @@ export default (state = initalState, action) => {
           ...state.client,
           room: {
             ...state.client.room,
+            timer: action.data.timer ? action.data.timer : state.client.room.timer,
             gameboard: {
               ...state.client.room.gameboard,
               isStarted: action.data.isStarted ? action.data.isStarted : state.client.room.gameboard.isStarted, 

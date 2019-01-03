@@ -13,10 +13,9 @@ const propTypes = {
 };
 
 class Play extends React.Component {
-  gamePieceUpdate = data => { };
 
   render() {
-    const { classes, client, socket, submitGamePieceUpdate } = this.props;
+    const { classes, client, socket } = this.props;
     const snippet = client.room.snippet;
     const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : [];
     const isStarted = client.room.gameboard.isStarted
@@ -26,12 +25,11 @@ class Play extends React.Component {
         <div className={classes.stripe} />
         <div className={classes.root}>
           <ClientList socket={socket} client={client} />
-          <Gameboard snippetString={snippet} />
+          <Gameboard snippetString={snippet} client={client}/>
           <Chat socket={socket} client={client} />
           <Editor
             isStarted={isStarted}
             socket={socket}
-            submitGamePieceUpdate={submitGamePieceUpdate}
             snippetArray={snippetArray}
           />
         </div>
@@ -58,7 +56,6 @@ const styles = theme => ({
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",
-    // boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) ",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
     backgroundColor: theme.secondaryWhite,

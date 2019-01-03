@@ -39,7 +39,6 @@ const ClientList = props => {
     return res;
   };
 
-  console.log("rerendered")
   return (
     <div className={classes.container}>
       <div className={classes.inner}>

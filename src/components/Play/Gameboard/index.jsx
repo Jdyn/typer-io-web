@@ -2,27 +2,26 @@ import React from "react";
 import injectSheet from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
+// import GamePiece from "./GamePiece";
 
 const Gameboard = props => {
-  const { classes, snippetString } = props;
+  const { classes, snippetString, client } = props;
+  // console.log(client.room)
 
   const snippetArray = snippetString.split(" ").map(letter => letter.split(""));
 
   const transformSnippet = snippetArray => {
-    var res = new Set();
-
+    var res = [];
     snippetArray.forEach((word, index) =>
-      res.add(<SnippetWord word={word} key={index} wordIndex={index} />)
+      res.push(<SnippetWord word={word} key={index} wordIndex={index} />)
     );
     return res;
   };
 
-  const transformedSnippet = transformSnippet(snippetArray);
-
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
-        <Snippet snippet={transformedSnippet} />
+        <Snippet snippet={transformSnippet(snippetArray)} client={client} />
       </div>
     </div>
   );

@@ -3,11 +3,16 @@ import injectSheet from "react-jss";
 
 const Snippet = props => {
   const { classes, snippet } = props;
-
   return (
     <div className={classes.container}>
       <div className={classes.inner}>
-        {[...snippet].map(SnippetWord => SnippetWord)}
+        {snippet.map(SnippetWord => {
+          return SnippetWord;
+        })}
+
+        {/* {snippet.map(SnippetWord => {
+          return <div> {SnippetWord} </div>;
+        })} */}
       </div>
     </div>
   );
@@ -37,8 +42,7 @@ const styles = theme => ({
     height: "95%",
     overflow: "auto",
     alignContent: "flex-start",
-    padding: "11px 25px 11px 0px",
-
+    padding: "11px 25px 11px 0px"
   }
 });
 

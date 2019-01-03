@@ -32,12 +32,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  const serverUrl = "localhost:8000";
+  const serverUrl = "192.168.1.8:8000";
   return {
     connectSocket: username => dispatch(connectSocket(serverUrl, username)),
     disconnectSocket: (socket, client) => dispatch(disconnectSocket(socket, client)),
-    updateRoomChat: () => dispatch(updateRoomChat()),
-    // submitGamePieceUpdate: data => dispatch(submitGamePieceUpdate(data))
+    updateRoomChat: () => dispatch(updateRoomChat())
   };
 };
 

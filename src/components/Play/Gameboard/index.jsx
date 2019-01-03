@@ -2,7 +2,6 @@ import React from "react";
 import injectSheet from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
-// import GamePiece from "./GamePiece";
 
 const Gameboard = props => {
   const { classes, snippetString, client } = props;
@@ -34,9 +33,7 @@ const styles = theme => ({
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "auto",
-    minHeight: "375px",
-    minWidth: "575px",
-    Width: "575px"
+    minHeight: "375px"
   },
   wrapper: {
     maxHeight: "auto",

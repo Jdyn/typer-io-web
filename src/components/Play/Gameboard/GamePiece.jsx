@@ -1,21 +1,25 @@
 import React from "react";
 import injectSheet from "react-jss";
-
+import { Spring } from "react-spring";
 const GamePiece = props => {
-  const { classes } = props
+  const { classes } = props;
+
   return (
-    <div className={classes.container}>
-      <div className={classes.circle} />
-      <div className={classes.line}></div>
-    </div>
+    <Spring from={{ marginLeft: "0%" }} to={{ marginLeft: "100%" }}>
+      {props => (
+        <div style={props} className={classes.container}>
+          <div className={classes.circle} />
+          <div className={classes.line} />
+        </div>
+      )}
+    </Spring>
   );
 };
 
 const styles = {
   container: {
-    margin: "0px, 0px auto 0px",
     display: "flex",
-    position: "relative",
+    position: "absolute",
     flexDirection: "column",
   },
   circle: {
@@ -28,8 +32,7 @@ const styles = {
     width: "4px",
     height: "8px",
     margin: "0px auto 0px auto",
-    backgroundColor: "black",
-
+    backgroundColor: "black"
   }
 };
 

@@ -8,10 +8,10 @@ const SnippetWord = props => {
 
   return (
     <div className={classes.container}>
-      {currentWordIndex === wordIndex ? <GamePiece /> : null}
       {word.map((letter, index) => (
-        <SnippetLetter key={index}/>
+        <SnippetLetter key={index} />
       ))}
+      {/* {currentWordIndex === wordIndex ? <GamePiece /> : null} */}
     </div>
   );
 };
@@ -19,10 +19,11 @@ const SnippetWord = props => {
 const styles = theme => ({
   container: {
     display: "flex",
+    flexDirection: "row",
     margin: "6.5px 0px 6.5px 0px",
-    paddingRight: "12px",
     position: "relative",
-    maxHeight: "20px"
+    maxHeight: "20px",
+    boxSizing: "content-box"
   }
 });
 

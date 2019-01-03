@@ -6,7 +6,6 @@ import SnippetWord from "./SnippetWord";
 
 const Gameboard = props => {
   const { classes, snippetString, client } = props;
-  // console.log(client.room)
 
   const snippetArray = snippetString.split(" ").map(letter => letter.split(""));
 

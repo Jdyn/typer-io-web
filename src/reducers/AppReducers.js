@@ -166,7 +166,6 @@ const updateRoomChat = (newMessage, messages) => {
   } else {
     const copy = [...messages];
     copy.push(newMessage);
-    console.log(copy);
     return copy;
   }
 };

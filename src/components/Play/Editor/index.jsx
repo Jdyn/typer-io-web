@@ -10,6 +10,7 @@ class Editor extends React.Component {
       key: "",
       isWrong: false,
       entries: 0,
+      errors: 0,
       words: [],
       wordsRemaining: [],
       wordsComplete: []
@@ -29,13 +30,11 @@ class Editor extends React.Component {
 
   componentDidMount() {
     const editor = document.getElementById("inputDiv");
-    editor.addEventListener("keypress", e => {
+    editor.addEventListener("keydown", e => {
       this.setState({ key: e.key });
-
       if (!this.props.isStarted) {
         e.preventDefault();
       }
-
       if (e.key === " ") {
         if (this.state.input !== this.state.words[this.state.wordsComplete.length]) {
           e.preventDefault();
@@ -51,7 +50,7 @@ class Editor extends React.Component {
   };
 
   inputDidUpdate = e => {
-    const { wordsRemaining, wordsComplete, key, words } = this.state;
+    const { wordsRemaining, wordsComplete, key, words, errors } = this.state;
     const input = e.target.innerText;
     const currentWord = words[wordsComplete.length];
     this.setState({ input });
@@ -73,7 +72,11 @@ class Editor extends React.Component {
         });
       }
     } else {
-      this.setState({ isWrong: true });
+      if (key !== " " && key !== "Backspace" && key !== "Enter") {
+        this.setState({ isWrong: true, errors: this.state.errors + 1 });
+      } else {
+        this.setState({ isWrong: true });
+      }
     }
 
     if (key === " ") {
@@ -82,15 +85,17 @@ class Editor extends React.Component {
         let newWordsRemaining = [...wordsRemaining];
 
         newWordsRemaining.shift();
-        console.log(wordsComplete.length);
         const entries = words[wordsComplete.length].length
           ? words[wordsComplete.length].length
           : 0;
 
-        this.props.socket.io.emit("clientUpdate:game", {
+        const payload = {
           entries: entries + 1,
-          currentIndex: wordsComplete.length ? wordsComplete.length : 0
-        });
+          currentIndex: wordsComplete.length ? wordsComplete.length : 0,
+          errors: errors
+        };
+
+        this.props.socket.io.emit("clientUpdate:game", payload);
 
         this.setState(prevState => ({
           wordsRemaining: newWordsRemaining,
@@ -109,7 +114,6 @@ class Editor extends React.Component {
   render() {
     const { classes, isStarted } = this.props;
     const { wordsRemaining, wordsComplete, isWrong } = this.state;
-
     return (
       <div className={classes.container}>
         <div className={classes.inner}>

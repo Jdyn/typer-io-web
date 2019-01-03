@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   connectSocket,
   disconnectSocket,
-  updateRoomChat,
+  updateRoomChat
 } from "../actions/AppActions";
 
 class PlayContainer extends Component {

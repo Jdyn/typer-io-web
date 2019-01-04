@@ -1,17 +1,15 @@
 import React from "react";
 import injectSheet from "react-jss";
 import SnippetLetter from "./SnippetLetter";
-import GamePiece from "./GamePiece";
 
 const SnippetWord = props => {
-  const { word, classes, currentWordIndex, wordIndex } = props;
+  const { word, classes } = props;
 
   return (
     <div className={classes.container}>
       {word.map((letter, index) => (
-        <SnippetLetter key={index} />
+        <SnippetLetter key={index} letter={letter} />
       ))}
-      {/* {currentWordIndex === wordIndex ? <GamePiece /> : null} */}
     </div>
   );
 };
@@ -24,7 +22,8 @@ const styles = theme => ({
     position: "relative",
     paddingLeft: "12px",
     maxHeight: "20px",
-    boxSizing: "content-box"
+    boxSizing: "content-box",
+
   }
 });
 

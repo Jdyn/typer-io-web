@@ -89,9 +89,11 @@ class Editor extends React.Component {
           ? words[wordsComplete.length].length
           : 0;
 
+        this.props.updateGameboard(wordsComplete.length);
+
         const payload = {
           entries: entries + 1,
-          currentIndex: wordsComplete.length + 1,
+          currentIndex: wordsComplete.length,
           errors: errors
         };
 

@@ -13,24 +13,39 @@ const propTypes = {
 };
 
 class Play extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clientIndex: null
+    };
+  }
+
+  updateGameboard = newIndex => {
+    this.setState({ clientIndex: newIndex });
+  };
 
   render() {
     const { classes, client, socket } = this.props;
     const snippet = client.room.snippet;
     const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : [];
-    const isStarted = client.room.gameboard.isStarted
+    const isStarted = client.room.gameboard.isStarted;
 
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
           <ClientList socket={socket} client={client} />
-          <Gameboard snippetString={snippet} client={client}/>
+          <Gameboard
+            snippetString={snippet}
+            client={client}
+            clientIndex={this.state.clientIndex}
+          />
           <Chat socket={socket} client={client} />
           <Editor
             isStarted={isStarted}
             socket={socket}
             snippetArray={snippetArray}
+            updateGameboard={this.updateGameboard}
           />
         </div>
       </main>

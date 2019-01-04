@@ -3,7 +3,7 @@ import injectSheet from "react-jss";
 import GamePiece from "./GamePiece";
 
 const Snippet = props => {
-  const { classes, snippet, client } = props;
+  const { classes, snippet, client, clientIndex } = props;
 
   return (
     <div className={classes.container}>
@@ -12,11 +12,21 @@ const Snippet = props => {
           return (
             <div className={classes.wrapper}>
               {SnippetWord}
-              {client.room.clients.map((client, index) => {
-                if (SnippetWord.props.wordIndex === client.gamePiece.currentIndex) {
-                  return <GamePiece key={index} />;
-                }
-              })}
+              {SnippetWord.props.wordIndex === clientIndex && (
+                <GamePiece key={-1} />
+              )}
+
+              {client.room.clients
+                .filter(object => object.id !== client.id)
+                .map((client, index) => {
+                  if (
+                    SnippetWord.props.wordIndex === client.gamePiece.currentIndex
+                  ) {
+                    return <GamePiece key={index} />;
+                  } else {
+                    return null
+                  }
+                })}
             </div>
           );
         })}
@@ -55,7 +65,7 @@ const styles = theme => ({
   wrapper: {
     display: "flex",
     flexFlow: "row",
-    position: "relative",
+    position: "relative"
   }
 });
 

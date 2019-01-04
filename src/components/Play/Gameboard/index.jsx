@@ -4,7 +4,7 @@ import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
 const Gameboard = props => {
-  const { classes, snippetString, client } = props;
+  const { classes, snippetString, client, clientIndex } = props;
 
   const snippetArray = snippetString.split(" ").map(letter => letter.split(""));
 
@@ -19,7 +19,11 @@ const Gameboard = props => {
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
-        <Snippet snippet={transformSnippet(snippetArray)} client={client} />
+        <Snippet
+          snippet={transformSnippet(snippetArray)}
+          client={client}
+          clientIndex={clientIndex}
+        />
       </div>
     </div>
   );

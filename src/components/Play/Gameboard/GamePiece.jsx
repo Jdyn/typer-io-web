@@ -24,8 +24,8 @@ const styles = {
     // width: "100%"
   },
   circle: {
-    width: "8px",
-    height: "8px",
+    width: "12px",
+    height: "12px",
     backgroundColor: "black",
     borderRadius: "50%",
   },

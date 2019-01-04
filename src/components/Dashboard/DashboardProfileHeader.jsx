@@ -1,47 +1,58 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
+import CommonDivider from "../CommonComponents/CommonDivider";
 
 const propTypes = {
   initClient: PropTypes.func.isRequired,
   username: PropTypes.string
 };
 
-const DashboardProfileHeader = props => {
-  const { initClient, username, classes } = props;
-  var input = null;
+class DashboardProfileHeader extends React.Component {
 
-  const handleSubmit = event => {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: this.props.username ? this.props.username : ""
+    }
+  }
+
+  handleChange = event => {
+    this.setState({ value: event.target.value })
+  }
+
+  handleSubmit = event => {
+    const { initClient, username } = this.props;
     event.preventDefault();
-
-    if (input.value !== username) {
-      const name = input.value;
-      if (name == null) {
-        const name = "nullclient";
-        initClient(name);
-      } else {
-        initClient(name);
+    const value = this.state.value;
+    if (value !== username) {
+      if (value !== null) {
+        initClient(value);
       }
     }
   };
 
-  return (
-    <Fragment>
-      <form
-        onSubmit={event => handleSubmit(event)}
-        className={classes.container}
-      >
-        <input
-          className={classes.nameInput}
-          placeholder="name"
-          type="text"
-          ref={element => {
-            input = element;
-          }}
-        />
-      </form>
-    </Fragment>
-  );
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.container}>
+        <form
+          onSubmit={this.handleSubmit}
+          className={classes.container}
+        >
+          <input
+            className={classes.nameInput}
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="Nickname"
+          />
+        </form>
+        <div className={classes.divider}></div>
+      </div>
+    );
+  }
+
 };
 
 DashboardProfileHeader.propTypes = propTypes;
@@ -49,23 +60,35 @@ DashboardProfileHeader.propTypes = propTypes;
 const styles = theme => ({
   container: {
     display: "flex",
-    flexDirection: "row",
-    height: "100%",
+    flexDirection: "column",
     maxWidth: "275px",
-    width: "275px"
+    width: "275px",
+    marginBottom: "auto"
+  },
+  divider: {
+    display: "flex",
+    position: "relative",
+    height: "1px",
+    margin: "auto",
+    border: "none",
+    flexShrink: 0,
+    width: "65%",
+    backgroundColor: theme.divider
   },
   nameInput: {
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
     maxWidth: "165px",
     margin: "25px auto 0 auto",
-    height: "60px",
-    padding: "10px",
-    borderRadius: 8,
-    // boxShadow: "0px 0px 20px 0px rgba(50,50,93,.25) inset",
+    // height: "60px",
+    padding: "10px 10px 0px 10px",
     fontSize: 24,
     border: "none",
     outline: "none",
+
+    "&::placeholder": {
+      color: theme.primaryGrey
+    },
 
     "&:focus": {
       backgroundColor: theme.primaryWhite,

@@ -54,9 +54,8 @@ const styles = theme => ({
   },
   wrapper: {
     display: "flex",
-    flexDirection: "row",
+    flexFlow: "row",
     position: "relative",
-    paddingRight: "12px",
   }
 });
 

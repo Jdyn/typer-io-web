@@ -20,18 +20,19 @@ const styles = {
   container: {
     display: "flex",
     position: "absolute",
-    flexDirection: "column",
+    flexDirection: "column"
+    // width: "100%"
   },
   circle: {
     width: "8px",
     height: "8px",
     backgroundColor: "black",
-    borderRadius: "50%"
+    borderRadius: "50%",
   },
   line: {
     width: "4px",
-    height: "8px",
-    margin: "0px auto 0px auto",
+    height: "18px",
+    margin: "0 auto 0 auto",
     backgroundColor: "black"
   }
 };

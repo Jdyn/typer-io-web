@@ -5,12 +5,12 @@ const SnippetLetter = props => {
   const { classes, letter } = props;
 
   switch (letter) {
-    // case "'":
-    // case "’":
-    // case ".":
-    // case ",":
-    // case "-":
-    //   return <span className={classes.punctuation} />;
+    case "'":
+    case "’":
+    case ".":
+    case ",":
+    case "-":
+      return <span className={classes.punctuation} />;
     default:
       return <span className={classes.letter} />;
   }
@@ -38,10 +38,13 @@ const styles = theme => ({
     position: "relative",
     backgroundColor: theme.primaryGrey,
     "&:first-child": {
-      borderRadius: "8px 0px 0px 8px"
+      borderRadius: "4px 0px 0px 4px"
     },
     "&:last-child": {
-      borderRadius: "0px 8px 8px 0px"
+      borderRadius: "0px 4px 4px 0px"
+    },
+    "&:only-child": {
+      borderRadius: "4px 4px 4px 4px"
     }
   }
 });

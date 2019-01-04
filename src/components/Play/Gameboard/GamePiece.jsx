@@ -2,18 +2,28 @@ import React from "react";
 import injectSheet from "react-jss";
 import { Spring } from "react-spring";
 const GamePiece = props => {
-  const { classes } = props;
+  const { classes, index } = props;
 
-  return (
-    <Spring from={{ marginLeft: "0%" }} to={{ marginLeft: "100%" }}>
-      {props => (
-        <div style={props} className={classes.container}>
-          <div className={classes.circle} />
-          <div className={classes.line} />
-        </div>
-      )}
-    </Spring>
-  );
+  if (index !== null) {
+    return (
+      <Spring from={{ marginLeft: "0%" }} to={{ marginLeft: "100%" }}>
+        {props => (
+          <div style={props} className={classes.container}>
+            <div className={classes.circle} />
+            <div className={classes.line} />
+          </div>
+        )}
+      </Spring>
+    );
+  } else {
+    return (
+      <div style={props} className={classes.container}>
+        <div className={classes.circle} />
+        <div className={classes.line} />
+      </div>
+    );
+  }
+
 };
 
 const styles = {

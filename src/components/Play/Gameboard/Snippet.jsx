@@ -8,28 +8,33 @@ const Snippet = props => {
   return (
     <div className={classes.container}>
       <div className={classes.inner}>
-        {snippet.map(SnippetWord => {
-          return (
-            <div className={classes.wrapper}>
-              {SnippetWord}
-              {SnippetWord.props.wordIndex === clientIndex && (
-                <GamePiece key={-1} />
-              )}
+        {snippet.map((SnippetWord, index) => (
+          <div className={classes.wrapper} key={index}>
+            {SnippetWord}
 
-              {client.room.clients
-                .filter(object => object.id !== client.id)
-                .map((client, index) => {
-                  if (
-                    SnippetWord.props.wordIndex === client.gamePiece.currentIndex
-                  ) {
-                    return <GamePiece key={index} />;
-                  } else {
-                    return null
-                  }
-                })}
-            </div>
-          );
-        })}
+            {SnippetWord.props.wordIndex === 0 && clientIndex === null && (
+              <GamePiece index={clientIndex} />
+            )}
+
+            {SnippetWord.props.wordIndex === clientIndex && (
+              <GamePiece index={clientIndex} />
+            )}
+
+            {client.room.clients
+              .filter(object => object.id !== client.id)
+              .map((client, index) => {
+
+                if (SnippetWord.props.wordIndex === 0 && client.gamePiece.currentIndex === null) {
+                  return <GamePiece key={index} index={client.gamePiece.currentIndex} />
+                }
+
+                return SnippetWord.props.wordIndex === client.gamePiece.currentIndex
+                  ? <GamePiece key={index} index={client.gamePiece.currentIndex} />
+                  : null
+              })}
+          </div>
+        ))
+        }
       </div>
     </div>
   );

@@ -7,11 +7,12 @@ const ClientListCard = props => {
 
   return (
     <div className={classes.container}>
-      <CommonTitle color="#525f7f" fontSize="24px">
+      <CommonTitle color="#525f7f" fontSize="24px" padding="15px">
         {client.username}
       </CommonTitle>
-      {/* <div className={classes.wpmText}>wpm</div> */}
-      <div className={classes.wpmNumber}>{client.gamePiece.wpm}</div>
+      <div className={classes.colorBadge}>
+        <div className={classes.wpmNumber}>{client.gamePiece.wpm}</div>
+      </div>
     </div>
   );
 };
@@ -20,9 +21,8 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    padding: "15px",
     minWidth: "245px",
-    margin: "10px",
+    // margin: "10px",
     borderRadius: 8
   },
   wpmNumber: {
@@ -34,6 +34,14 @@ const styles = theme => ({
   wpmText: {
     margin: "0px 0px 0px auto",
     verticalAlign: "text-bottom"
+  },
+  colorBadge: {
+    display: "flex",
+    margin: "0 0 0 auto",
+    width: "100px",
+    height: "100%",
+    borderRadius: "0 0 8px 0",
+    backgroundColor: props => props.client.gamePiece.color
   }
 });
 

@@ -25,7 +25,7 @@ const GamePiece = props => {
   }
 };
 
-const styles = {
+const styles = theme => ({
   container: {
     display: "flex",
     position: "absolute",
@@ -35,15 +35,19 @@ const styles = {
   circle: {
     width: "12px",
     height: "12px",
+    // margin: "0 3px 0 3px",
     borderRadius: "50%",
-    backgroundColor: props => props.color ? props.color : "red"
+    backgroundColor: props => props.color,
+    boxShadow: "0px 0px 3px rgba(50,50,93,.25)",
+
   },
   line: {
     width: "4px",
     height: "18px",
     margin: "0 auto 0 auto",
-    backgroundColor: props => props.color ? props.color : "red"
+    backgroundColor: props => props.color,
+    boxShadow: "0px 0px 2px rgba(50,50,93,.25)",
   }
-};
+});
 
 export default injectSheet(styles)(GamePiece);

@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-import CommonDivider from "../CommonComponents/CommonDivider";
 
 const propTypes = {
   initClient: PropTypes.func.isRequired,
@@ -9,17 +8,16 @@ const propTypes = {
 };
 
 class DashboardProfileHeader extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       value: this.props.username ? this.props.username : ""
-    }
+    };
   }
 
   handleChange = event => {
-    this.setState({ value: event.target.value })
-  }
+    this.setState({ value: event.target.value });
+  };
 
   handleSubmit = event => {
     const { initClient, username } = this.props;
@@ -36,10 +34,7 @@ class DashboardProfileHeader extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        <form
-          onSubmit={this.handleSubmit}
-          className={classes.container}
-        >
+        <form onSubmit={this.handleSubmit} className={classes.container}>
           <input
             className={classes.nameInput}
             type="text"
@@ -48,12 +43,11 @@ class DashboardProfileHeader extends React.Component {
             placeholder="Nickname"
           />
         </form>
-        <div className={classes.divider}></div>
+        <div className={classes.divider} />
       </div>
     );
   }
-
-};
+}
 
 DashboardProfileHeader.propTypes = propTypes;
 
@@ -91,7 +85,7 @@ const styles = theme => ({
     },
 
     "&:focus": {
-      backgroundColor: theme.primaryWhite,
+      backgroundColor: theme.primaryWhite
     }
   }
 });

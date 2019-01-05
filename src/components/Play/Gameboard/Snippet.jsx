@@ -5,37 +5,60 @@ import GamePiece from "./GamePiece";
 const Snippet = props => {
   const { classes, snippet, client, clientIndex } = props;
 
+  const currentClient = client.room.clients.filter(
+    object => object.id === client.id
+  )[0];
+
   return (
     <div className={classes.container}>
-      <div className={classes.inner}>
-        {snippet.map((SnippetWord, index) => (
-          <div className={classes.wrapper} key={index}>
-            {SnippetWord}
+      {client.id && (
+        <div className={classes.inner}>
+          {snippet.map((SnippetWord, index) => (
+            <div className={classes.wrapper} key={index}>
+              {SnippetWord}
 
-            {SnippetWord.props.wordIndex === 0 && clientIndex === null && (
-              <GamePiece index={clientIndex} />
-            )}
+              {client.room.clients
+                .filter(object => object.id !== client.id)
+                .map((client, index) => {
+                  if (
+                    SnippetWord.props.wordIndex === 0 &&
+                    client.gamePiece.currentIndex === null
+                  ) {
+                    return (
+                      <GamePiece
+                        key={index}
+                        index={client.gamePiece.currentIndex}
+                        color={client.gamePiece.color}
+                      />
+                    );
+                  }
+                  return SnippetWord.props.wordIndex ===
+                    client.gamePiece.currentIndex ? (
+                    <GamePiece
+                      key={index}
+                      index={client.gamePiece.currentIndex}
+                      color={client.gamePiece.color}
+                    />
+                  ) : null;
+                })}
 
-            {SnippetWord.props.wordIndex === clientIndex && (
-              <GamePiece index={clientIndex} />
-            )}
+              {SnippetWord.props.wordIndex === 0 && clientIndex === null && (
+                <GamePiece
+                  index={clientIndex}
+                  color={currentClient.gamePiece.color}
+                />
+              )}
 
-            {client.room.clients
-              .filter(object => object.id !== client.id)
-              .map((client, index) => {
-
-                if (SnippetWord.props.wordIndex === 0 && client.gamePiece.currentIndex === null) {
-                  return <GamePiece key={index} index={client.gamePiece.currentIndex} />
-                }
-
-                return SnippetWord.props.wordIndex === client.gamePiece.currentIndex
-                  ? <GamePiece key={index} index={client.gamePiece.currentIndex} />
-                  : null
-              })}
-          </div>
-        ))
-        }
-      </div>
+              {SnippetWord.props.wordIndex === clientIndex && (
+                <GamePiece
+                  index={clientIndex}
+                  color={currentClient.gamePiece.color}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -109,7 +109,7 @@ export default (state = initalState, action) => {
             timer: action.time
           }
         }
-      }
+      };
 
     case types.ROOM_CHAT_UPDATE:
       return {
@@ -133,7 +133,9 @@ export default (state = initalState, action) => {
             timer: action.data.timer ? action.data.timer : state.client.room.timer,
             gameboard: {
               ...state.client.room.gameboard,
-              isStarted: action.data.isStarted ? action.data.isStarted : state.client.room.gameboard.isStarted, 
+              isStarted: action.data.isStarted
+                ? action.data.isStarted
+                : state.client.room.gameboard.isStarted,
               gameTime: action.data.timeRemaining
             },
             clients: updateGameboard(
@@ -153,7 +155,7 @@ const updateGameboard = (clients, gamePieces) => {
   if (gamePieces) {
     const res = [...clients];
     res.forEach((client, index) => {
-      client.gamePiece = gamePieces[index];
+      client.gamePiece = { ...gamePieces[index], color: client.gamePiece.color };
     });
     return res;
   }

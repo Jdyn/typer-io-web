@@ -23,7 +23,6 @@ const GamePiece = props => {
       </div>
     );
   }
-
 };
 
 const styles = {
@@ -36,14 +35,14 @@ const styles = {
   circle: {
     width: "12px",
     height: "12px",
-    backgroundColor: "black",
     borderRadius: "50%",
+    backgroundColor: props => props.color ? props.color : "red"
   },
   line: {
     width: "4px",
     height: "18px",
     margin: "0 auto 0 auto",
-    backgroundColor: "black"
+    backgroundColor: props => props.color ? props.color : "red"
   }
 };
 

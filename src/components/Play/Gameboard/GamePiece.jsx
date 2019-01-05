@@ -29,24 +29,25 @@ const styles = theme => ({
   container: {
     display: "flex",
     position: "absolute",
-    flexDirection: "column"
-    // width: "100%"
+    flexDirection: "column",
+    bottom: "5px",
   },
   circle: {
-    width: "12px",
-    height: "12px",
-    // margin: "0 3px 0 3px",
+    width: "14px",
+    position: "relative",
+    height: "14px",
     borderRadius: "50%",
     backgroundColor: props => props.color,
-    boxShadow: "0px 0px 3px rgba(50,50,93,.25)",
+    boxShadow: "0px 0px 5px rgba(50,50,93,.25)",
 
   },
   line: {
-    width: "4px",
-    height: "18px",
-    margin: "0 auto 0 auto",
+    width: "6px",
+    height: "20px",
+    margin: "-1px auto 0 auto",
     backgroundColor: props => props.color,
-    boxShadow: "0px 0px 2px rgba(50,50,93,.25)",
+    boxShadow: "0px 0px 5px rgba(50,50,93,.25)",
+    borderRadius: " 0px 0px 2px 2px",
   }
 });
 

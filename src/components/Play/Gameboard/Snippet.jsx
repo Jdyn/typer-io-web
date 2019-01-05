@@ -68,9 +68,9 @@ Snippet.propTypes = {};
 const styles = theme => ({
   container: {
     display: "inline-block",
-    position: "relative",
+    position: "absolute",
     backgroundColor: theme.primaryWhite,
-    paddingLeft: "25px",
+    padding: " 0px 10px 0px 15px",
     height: "100%",
     width: "100%",
     borderRadius: 8,
@@ -88,7 +88,7 @@ const styles = theme => ({
     overflow: "auto",
     alignContent: "flex-start",
     // justifyContent: "space-around",
-    padding: "11px 25px 11px 0px"
+    padding: "15px 25px 15px 5px"
   },
   wrapper: {
     display: "flex",

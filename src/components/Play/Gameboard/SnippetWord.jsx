@@ -20,7 +20,7 @@ const styles = theme => ({
     flexDirection: "row",
     margin: "6.5px 0px 6.5px 0px",
     position: "relative",
-    paddingLeft: "12px",
+    paddingLeft: "14px",
     maxHeight: "20px",
     boxSizing: "content-box",
 

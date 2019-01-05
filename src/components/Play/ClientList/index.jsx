@@ -41,8 +41,8 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
+      <ClientListHeader client={client} headerInfo={getHeaderInfo()} />
       <div className={classes.inner}>
-        <ClientListHeader client={client} headerInfo={getHeaderInfo()} />
         {client.room &&
           client.room.clients.map((client, index) => (
             <ClientListCard key={index} client={client} />
@@ -72,7 +72,7 @@ const styles = theme => ({
     flexDirection: "column",
     margin: "25px 15px 15px 15px",
     position: "relative",
-    gridRow: "1 / 3",
+    gridRow: "1 / 4",
   },
   listHeader: {
     display: "flex",

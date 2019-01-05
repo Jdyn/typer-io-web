@@ -20,7 +20,9 @@ const styles = {
     margin: "0px",
     fontSize: "18px",
     color: "black",
-		borderRadius: "8px 8px 0px 0px",
+    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    marginBottom: "25px",
+		borderRadius: "8px",
 		transition: "background-color 1s",
     backgroundColor: props =>
       props.headerInfo.backgroundColor

@@ -12,7 +12,7 @@ const ClientList = props => {
     if (roomTime) {
       const text = roomTime.substring(roomTime.length - 2, roomTime.length);
       const seconds = parseInt(text);
-      return seconds
+      return seconds;
     }
   };
 
@@ -32,8 +32,8 @@ const ClientList = props => {
       res.backgroundColor = "#81C784";
       res.text = "GO!";
     } else {
-      res.backgroundColor = "#469cd0"
-      res.text = "Looking for Players..."
+      res.backgroundColor = "#469cd0";
+      res.text = "Looking for Players...";
     }
 
     return res;
@@ -42,37 +42,35 @@ const ClientList = props => {
   return (
     <div className={classes.container}>
       <ClientListHeader client={client} headerInfo={getHeaderInfo()} />
-      <div className={classes.inner}>
-        {client.room &&
-          client.room.clients.map((client, index) => (
-            <ClientListCard key={index} client={client} />
-          ))}
-      </div>
-      {/* {client.room.clients.length > 0 && client.room.clients.length < 5 && (
-        <ListLoadingCard />
-      )} */}
+      {client.id && (
+        <div className={classes.inner}>
+          {client.room &&
+            client.room.clients.map((client, index) => (
+              <ClientListCard key={index} client={client} />
+            ))}
+        </div>
+      )}
     </div>
   );
 };
 
 const styles = theme => ({
-  inner: {
-    display: "flex",
-    width: "265px",
-    flexDirection: "column",
-    position: "relative",
-    margin: "0px",
-    backgroundColor: theme.primaryWhite,
-    maxHeight: "500px",
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    borderRadius: 8
-  },
   container: {
     display: "flex",
     flexDirection: "column",
+    width: "265px",
+    maxWidth: "265px",
     margin: "25px 15px 15px 15px",
     position: "relative",
-    gridRow: "1 / 4",
+    gridRow: "1 / 4"
+  },
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    backgroundColor: theme.primaryWhite,
+    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    borderRadius: 8
   },
   listHeader: {
     display: "flex",

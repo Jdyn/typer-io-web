@@ -44,8 +44,7 @@ const styles = theme => ({
     display: "flex",
     margin: "25px 15px 15px 15px",
     position: "relative",
-    width: "285px",
-    maxWidth: "285px",
+    width: "265px",
     gridRow: "1 / 3",
     gridColumn: "3 / 4"
   },

@@ -55,7 +55,7 @@ export default (state = initalState, action) => {
           ...state.socket,
           hasErrored: action.hasErrored,
           error: action.error,
-          inProgress: false
+          pending: false
         }
       };
 
@@ -73,7 +73,7 @@ export default (state = initalState, action) => {
         socket: {
           ...state.socket,
           io: action.socket,
-          inProgress: false
+          pending: false
         }
       };
 
@@ -82,8 +82,13 @@ export default (state = initalState, action) => {
         ...state,
         client: {
           ...state.client,
+          id: null,
           room: action.room,
           isInRoom: false
+        },
+        socket: {
+          ...state.socket,
+          io: null
         }
       };
 

@@ -20,12 +20,12 @@ class DashboardProfileHeader extends React.Component {
   };
 
   handleSubmit = event => {
-    const { initClient, username } = this.props;
+    const { updateClient, username } = this.props;
     event.preventDefault();
-    const value = this.state.value;
-    if (value !== username) {
-      if (value !== null) {
-        initClient(value);
+    const name = this.state.value;
+    if (name !== username) {
+      if (name !== null) {
+        updateClient({ username: name });
       }
     }
   };

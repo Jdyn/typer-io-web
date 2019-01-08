@@ -11,7 +11,15 @@ const Gameboard = props => {
   const transformSnippet = snippetArray => {
     var res = [];
     snippetArray.forEach((word, index) =>
-      res.push(<SnippetWord word={word} key={index} wordIndex={index} />)
+      res.push(
+        <SnippetWord
+          word={word}
+          key={index}
+          wordIndex={index}
+          client={client}
+          clientIndex={clientIndex}
+        />
+      )
     );
     return res;
   };

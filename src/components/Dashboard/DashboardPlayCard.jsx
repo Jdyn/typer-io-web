@@ -2,9 +2,8 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import injectSheets from "react-jss";
-
-import CommonTitle from "../CommonComponents/commonTitle";
-import CommonText from '../CommonComponents/commonText'
+import Header from "../Common/Header";
+import Content from "../Common/Content";
 
 const propTypes = {
   navPath: PropTypes.string.isRequired,
@@ -13,14 +12,20 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { navPath, classes, title, text, handleOnClick } = props;
+  const { navPath, classes, title, text } = props;
+
+  const handleOnClick = e => {
+    
+  };
 
   return (
     <Fragment>
-      <Link className={classes.card} to={navPath} onClick={handleOnClick}>
-        <CommonTitle color={'#fff'}>{title}</CommonTitle>
-        <CommonText color={'#fff'} className={classes.itemText}>{text}</CommonText>
-      </Link>
+      <button className={classes.card} to={navPath} onClick={handleOnClick}>
+        <Header color={"#fff"}>{title}</Header>
+        <Content className={classes.itemText} color={"#fff"} fontSize={18}>
+          {text}
+        </Content>
+      </button>
     </Fragment>
   );
 };
@@ -33,7 +38,7 @@ const styles = theme => ({
     justifyContent: "right",
     position: "relative",
     cursor: "pointer",
-    minWidth: '300px',
+    minWidth: "300px",
     margin: 15,
     padding: "40px 40px 40px 40px",
     backgroundColor: props => props.backgroundColor,
@@ -43,7 +48,8 @@ const styles = theme => ({
     boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {
       transform: "translateY(-2px)",
-      boxShadow: "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
+      boxShadow:
+        "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
     }
   }
 });

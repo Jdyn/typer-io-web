@@ -4,17 +4,17 @@ import injectSheet from "react-jss";
 import DashboardProfileHeader from "./DashboardProfileHeader";
 
 const propTypes = {
-  initClient: PropTypes.func.isRequired,
+  updateClient: PropTypes.func.isRequired,
   client: PropTypes.object.isRequired
 };
 
 const DashboardProfile = props => {
-  const { classes, initClient, client } = props;
+  const { classes, updateClient, client } = props;
 
   return (
     <div className={classes.container}>
       <DashboardProfileHeader
-        initClient={initClient}
+        updateClient={updateClient}
         username={client.username}
       />
     </div>

@@ -14,7 +14,7 @@ const Snippet = props => {
       {client.id && (
         <div className={classes.inner}>
           {snippet.map((SnippetWord, index) => (
-            <div className={classes.wrapper} key={index}>
+            <div className={classes.word} key={index}>
               {SnippetWord}
 
               {client.room.clients
@@ -90,7 +90,7 @@ const styles = theme => ({
     // justifyContent: "space-around",
     padding: "15px 25px 15px 5px"
   },
-  wrapper: {
+  word: {
     display: "flex",
     flexFlow: "row",
     position: "relative"

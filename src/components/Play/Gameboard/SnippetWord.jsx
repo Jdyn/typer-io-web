@@ -8,9 +8,6 @@ const SnippetWord = props => {
   return (
     <div className={classes.container}>
       {word}
-      {/* {word.map((letter, index) => (
-        <SnippetLetter key={index} letter={letter} />
-      ))} */}
     </div>
   );
 };

@@ -1,41 +1,28 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
-
-const propTypes = {
-  socket: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired,
-  initClient: PropTypes.func.isRequired
-};
+import io from "socket.io-client";
 
 export const Dashboard = props => {
-  const { client, initClient, classes, socket } = props;
-
+  const { client, updateClient, classes, socket } = props;
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        {/* <div className={classes.container}>
-          <CommonPaper />
-        </div> */}
-        <DashboardProfile initClient={initClient} client={client} />
-        <DashboardPlay socket={socket} />
+        <DashboardProfile updateClient={updateClient} client={client} />
+        <DashboardPlay history={props.history}/>
       </div>
     </main>
   );
 };
 
-Dashboard.propTypes = propTypes;
-
 const styles = theme => ({
   root: {
     display: "grid",
-
     gridTemplateColumns: "auto auto",
     gridTemplateRows: "auto",
-
     maxWidth: "1040px",
     margin: "0 auto"
   },

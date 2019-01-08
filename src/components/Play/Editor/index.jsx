@@ -152,7 +152,7 @@ const styles = theme => ({
   container: {
     margin: "15px 15px 15px 15px",
     display: "flex",
-    width: "600px",
+    // width: "600px",
     position: "relative",
     backgroundColor: theme.primaryWhite
   },

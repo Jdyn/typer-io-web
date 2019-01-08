@@ -3,14 +3,9 @@ import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
 import injectSheets from "react-jss";
 
-const propTypes = {
-  username: PropTypes.string,
-  socket: PropTypes.object
-};
-
 const DashboardPlay = props => {
   const { classes, socket } = props;
-
+  console.log(props.history)
   const options = [
     {
       title: "Play",
@@ -22,7 +17,7 @@ const DashboardPlay = props => {
       title: "Solo",
       text: "This is the Solo Text",
       color: "#6772e5",
-      route: "/"
+      route: "/about"
     },
     {
       title: "Friends",
@@ -32,11 +27,6 @@ const DashboardPlay = props => {
     }
   ];
 
-  const handleOnClick = e => {    
-      if (props.socket.hasErrored) {
-        e.perventDefault()
-      }
-  };
 
   return (
     <div className={classes.container}>
@@ -45,9 +35,10 @@ const DashboardPlay = props => {
           const { title, text, color, route } = object;
           return (
             <DashboardPlayCard
-              hasErrored={socket.hasErrored}
-              inProgress={socket.inProgress}
-              handleOnClick={handleOnClick}
+              // hasErrored={socket.hasErrored}
+              // inProgress={socket.inProgress}
+              // handleOnClick={handleOnClick}
+              history={props.history}
               navPath={route}
               title={title}
               text={text}
@@ -72,5 +63,4 @@ const styles = theme => ({
   }
 });
 
-DashboardPlay.propTypes = propTypes;
 export default injectSheets(styles)(DashboardPlay);

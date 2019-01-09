@@ -1,8 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
 import PropTypes from "prop-types";
-import PlayChatForm from "./ChatInput";
-import PlayChatDisplay from "./ChatDisplay";
+import ChatInput from "./ChatInput";
+import ChatDisplay from "./ChatDisplay";
 
 const propTypes = {
   socket: PropTypes.object.isRequired
@@ -27,10 +27,9 @@ class Chat extends React.Component {
     const { classes, client } = this.props;
     return (
       <div className={classes.container}>
-        {/* <div className={classes.chatHeader}>CHAT ROOM</div> */}
         <div className={classes.inner}>
-          <PlayChatDisplay messages={client.room.messages} clientId={client.id} />
-          <PlayChatForm submitMessage={this.submitMessage} />
+          <ChatDisplay messages={client.room.messages} clientId={client.id} />
+          <ChatInput submitMessage={this.submitMessage} />
         </div>
       </div>
     );
@@ -74,10 +73,6 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     boxShadow: "0px 0px 10px 0px rgba(50,50,93,.25) ",
     borderRadius: 8
-    // padding: "10px 0 0px 0",
-    // boxSizing: 'content-box'
-    // margin: "10px 0 0 0"
-    // width: "90%"
   }
 });
 

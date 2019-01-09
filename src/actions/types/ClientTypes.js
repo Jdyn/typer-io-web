@@ -1,5 +1,7 @@
-import keyMirror from "client/lib/keyMirror"
+import keyMirror from "../../lib/keyMirror"
 
-export const types = keyMirror(
+const  types = keyMirror(
   "UPDATE_CLIENT"
   );
+
+  export default types

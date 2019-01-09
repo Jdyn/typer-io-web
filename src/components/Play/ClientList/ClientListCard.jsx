@@ -8,7 +8,6 @@ const ClientListCard = props => {
     <div className={classes.container}>
       <div className={classes.username}>{client.username}</div>
       <div className={classes.divider} />
-      {/* <div className={classes.colorBadge} /> */}
     </div>
   );
 };

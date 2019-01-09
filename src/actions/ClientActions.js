@@ -1,11 +1,12 @@
 import types from "./types/ClientTypes";
+import io from "socket.io-client";
 
 let socket
 
-const init = (store, serverURL) => {
+export const init = (serverURL, dispatch) => {
     socket = io(serverURL)
 
-    Object.keys()
+    
 }
 
 export const updateClient = object => ({

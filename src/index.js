@@ -28,13 +28,13 @@ const theme = {
 
 const app = (
   <Fragment>
-    <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
+        <Provider store={store}>
           <App />
+          </Provider>
         </ThemeProvider>
       </BrowserRouter>
-    </Provider>
   </Fragment>
 );
 

@@ -4,11 +4,22 @@ const initialState = {
   id: null,
   username: null,
   isInRoom: false,
-  socket: {
+  room: {
     id: null,
-    io: null, // The actual Socket.
-    pending: false,
+    count: null,
+    roomTime: null,
+    snippet: null,
+    isSearching: null,
+    clients: [],
+    messages: [],
+    gameboard: {
+      isStarted: false,
+      gameTime: null
+    }
+  },
+  socket: {
     connected: false,
+    pending: false,
     errored: false,
     error: null
   }
@@ -19,7 +30,24 @@ export default (state = initialState, action) => {
     case types.UPDATE_CLIENT:
       return {
         ...state,
-        ...action.object
+        ...action.payload
+      };
+
+    case types.INIT_SOCKET_REQUEST:
+      return {
+        ...state,
+        socket: {
+          ...state.socket,
+          pending: true
+        }
+      }
+
+    case "ON_CONNECTION":
+      return {
+        ...state,
+        id: action.payload.id,
+        username: action.payload.username,
+        isInRoom: action.payload.isInRoom
       };
     default:
       return state;

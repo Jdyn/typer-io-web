@@ -1,6 +1,6 @@
 import types from "./types/ClientTypes";
 
 export const updateClient = payload => ({
-  type: types.UPDATE_CLIENT,
+  type: "ON_CONNECTION",
   payload
 });

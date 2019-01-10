@@ -1,8 +1,12 @@
-import keyMirror from "client/lib/keyMirror"
+import keyMirror from "../../lib/keyMirror"
 
-export const types = keyMirror(
-  "updateClient",
-  "updateRoom",
-  "updateGameboard",
-  "onConnection",
+const types = keyMirror(
+  "UPDATE_CLIENT",
+  "UPDATE_ROOM",
+  "UPDATE_GAMEBOARD",
+  "INIT_SOCKET_REQUEST",
+  "INIT_SOCKET_SUCCESS",
+  "INIT_SOCKET_FAILURE"
   );
+
+export default types

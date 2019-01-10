@@ -8,7 +8,7 @@ const initalState = {
     isInRoom: false,
     room: {
       id: null,
-      playerCount: null,
+      count: null,
       timer: null,
       gameboard: {
         isStarted: false,
@@ -16,8 +16,8 @@ const initalState = {
       },
       clients: [],
       messages: [],
-      snippet: "",
-      isSearching: true
+      snippet: null,
+      isSearching: null
     }
   },
   socket: {
@@ -123,7 +123,10 @@ export default (state = initalState, action) => {
           ...state.client,
           room: {
             ...state.client.room,
-            messages: updateRoomChat(action.newMessage, state.client.room.messages)
+            messages: updateRoomChat(
+              action.newMessage,
+              state.client.room.messages
+            )
           }
         }
       };
@@ -135,7 +138,9 @@ export default (state = initalState, action) => {
           ...state.client,
           room: {
             ...state.client.room,
-            timer: action.data.timer ? action.data.timer : state.client.room.timer,
+            timer: action.data.timer
+              ? action.data.timer
+              : state.client.room.timer,
             gameboard: {
               ...state.client.room.gameboard,
               isStarted: action.data.isStarted
@@ -160,7 +165,10 @@ const updateGameboard = (clients, gamePieces) => {
   if (gamePieces) {
     const res = [...clients];
     res.forEach((client, index) => {
-      client.gamePiece = { ...gamePieces[index], color: client.gamePiece.color };
+      client.gamePiece = {
+        ...gamePieces[index],
+        color: client.gamePiece.color
+      };
     });
     return res;
   }

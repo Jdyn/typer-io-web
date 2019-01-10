@@ -6,18 +6,18 @@ import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
 
-const propTypes = {
-  socket: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired,
-  updateRoomChat: PropTypes.func.isRequired
-};
-
 class Play extends React.Component {
   constructor(props) {
     super(props);
+    const { room } = props;
     this.state = {
-      clientIndex: null
+      clientIndex: null,
+      snippet: room.snippet.split(" ")
     };
+  }
+
+  componentWillUnmount() {
+    this.props.leaveRoom({ id: this.props.room.id });
   }
 
   updateGameboard = newIndex => {
@@ -25,28 +25,25 @@ class Play extends React.Component {
   };
 
   render() {
-    const { classes, client, socket } = this.props;
-    const snippet = client.room.snippet;
-    const snippetArray = client.room.snippet ? client.room.snippet.split(" ") : [];
-    const isStarted = client.room.gameboard.isStarted;
+    const { classes, isStarted, client } = this.props;
+    const { snippet } = this.state;
 
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          <ClientList socket={socket} client={client} />
+          {/* <ClientList client={client} />
           <Gameboard
-            snippetString={snippet}
+            snippet={snippet}
             client={client}
             clientIndex={this.state.clientIndex}
           />
-          <Chat socket={socket} client={client} />
+          <Chat client={client} />
           <Editor
             isStarted={isStarted}
-            socket={socket}
-            snippetArray={snippetArray}
+            snippet={snippet}
             updateGameboard={this.updateGameboard}
-          />
+          /> */}
         </div>
       </main>
     );
@@ -77,7 +74,5 @@ const styles = theme => ({
     position: "absolute"
   }
 });
-
-Play.propTypes = propTypes;
 
 export default injectSheet(styles)(Play);

@@ -19,7 +19,7 @@ export const connectSocket = (serverUrl, client) => dispatch => {
   });
 };
 
-export const disconnectSocket = (socket, client) => dispatch => {
+export const disconnectSocket = (room) => dispatch => {
   const room = {
     id: null,
     playerCount: null,

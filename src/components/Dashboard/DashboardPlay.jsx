@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
 import injectSheets from "react-jss";
+import { withRouter } from "react-router-dom";
 
 const DashboardPlay = props => {
-  const { classes, socket } = props;
-  console.log(props.history)
+  const { classes, initSocket } = props;
   const options = [
     {
       title: "Play",
@@ -27,26 +27,30 @@ const DashboardPlay = props => {
     }
   ];
 
+  const handleOnClick = e => {
+    e.preventDefault();
+    if (!props.socket.connected) {
+      props.initSocket(props.client.username);
+    }
+  };
 
   return (
     <div className={classes.container}>
-      {true &&
-        options.map((object, index) => {
-          const { title, text, color, route } = object;
-          return (
-            <DashboardPlayCard
-              // hasErrored={socket.hasErrored}
-              // inProgress={socket.inProgress}
-              // handleOnClick={handleOnClick}
-              history={props.history}
-              navPath={route}
-              title={title}
-              text={text}
-              backgroundColor={color}
-              key={index}
-            />
-          );
-        })}
+      {options.map((object, index) => {
+        const { title, text, color, route } = object;
+        return (
+          <DashboardPlayCard
+            initSocket={initSocket}
+            socket={props.socket}
+            onClick={handleOnClick}
+            navPath={route}
+            title={title}
+            text={text}
+            backgroundColor={color}
+            key={index}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -63,4 +67,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheets(styles)(DashboardPlay);
+export default withRouter(injectSheets(styles)(DashboardPlay));

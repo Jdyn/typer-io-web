@@ -1,48 +1,66 @@
 import io from "socket.io-client";
-import types from "../actions/types/SocketTypes";
+import types from "../constants/ActionTypes";
 
 export default url => {
-  let socket;
-
   return store => next => action => {
     switch (action.type) {
       case types.INIT_SOCKET_REQUEST:
         const { dispatch } = store;
-        const payload = action.payload;
-        socket = io(url, { reconnection: false });
-        init(dispatch, socket, payload);
-        defaultListeners(dispatch, socket, action);
-      default:
-        break;
+        const { payload } = action;
+        init(url, dispatch, payload);
     }
-
     return next(action);
   };
 };
 
-const init = (dispatch, socket, payload) => {
-  socket.emit("REGISTER", payload.username);
+let socket;
 
+const init = (url, dispatch, payload) => {
+  socket = io(url, { reconnection: false });
+  defaultListeners(dispatch);
   Object.keys(types).forEach(key =>
     socket.on(key, payload => {
       dispatch({ type: key, payload });
     })
   );
+  socket.emit("REGISTER", payload.username);
 };
 
-const defaultListeners = (dispatch, socket, action) => {
-  socket.on("connect", () => {
-    dispatch({
-      type: types.INIT_SOCKET_SUCCESS,
-      ...socket.connected
+const defaultListeners = dispatch => {
+  if (socket) {
+    socket.on("disconnect", () => {
+      socket = null;
+      dispatch({
+        type: types.DISCONNECT_SOCKET
+      });
     });
-  });
 
-  socket.on("disconnect", () => {
-    console.log("disconnect: ");
-  });
+    socket.on("connect_error", payload => {
+      dispatch({
+        type: types.INIT_SOCKET_FAILURE,
+        payload: {
+          errored: true,
+          pending: false,
+          error: payload
+        }
+      });
+      socket.close();
+    });
+  }
+};
 
-  socket.on("connect_error", payload => {
-    console.log("connect_error: ", payload);
-  });
+export const leaveRoom = payload => {
+  if (socket) {
+    socket.emit(types.DISCONNECT_SOCKET, payload);
+  }
+};
+
+export const emitAction = action => {
+  return (...args) => {
+    const result = action.apply(this, args);
+    if (socket) {
+      socket.emit(result.type, result.payload);
+    }
+    return result;
+  };
 };

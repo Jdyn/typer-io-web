@@ -21,20 +21,20 @@ const theme = {
   secondaryWhite: "#f6f9fc",
   tertiaryWhite: "#eef2f7",
   quartinaryWhite: "#e6ebf1",
-  primaryGrey: '#d7dadc',
+  primaryGrey: "#d7dadc",
   transparentGrey: "#80808017",
   divider: "#0000001f"
 };
 
 const app = (
   <Fragment>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
         <Provider store={store}>
           <App />
-          </Provider>
-        </ThemeProvider>
+        </Provider>
       </BrowserRouter>
+    </ThemeProvider>
   </Fragment>
 );
 

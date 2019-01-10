@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 import PropTypes from "prop-types";
 import injectSheets from "react-jss";
 import Header from "../Common/Header";
@@ -12,19 +13,15 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { navPath, classes, title, text } = props;
-
-  const handleOnClick = e => {
-    
-  };
-
+  const { onClick, classes, title, text } = props;
   return (
     <Fragment>
-      <button className={classes.card} to={navPath} onClick={handleOnClick}>
+      <button className={classes.card} onClick={onClick} >
         <Header color={"#fff"}>{title}</Header>
         <Content className={classes.itemText} color={"#fff"} fontSize={18}>
           {text}
         </Content>
+        {props.socket.pending && <div>LOADING</div>}
       </button>
     </Fragment>
   );
@@ -45,7 +42,9 @@ const styles = theme => ({
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
-    boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
+    border: "none",
+    boxShadow:
+      "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {
       transform: "translateY(-2px)",
       boxShadow:

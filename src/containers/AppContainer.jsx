@@ -7,7 +7,6 @@ import CssBaseline from "../components/CssBaseline";
 class App extends Component {
 
   render() {
-    console.log(this.props)
     return (
       <Fragment>
         <CssBaseline />

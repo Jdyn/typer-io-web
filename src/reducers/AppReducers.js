@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes";
+import types from "../constants/ActionTypes";
 
 const initalState = {
   isLoggedIn: false,

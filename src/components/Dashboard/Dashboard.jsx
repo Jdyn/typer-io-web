@@ -3,16 +3,21 @@ import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
-import io from "socket.io-client";
+import { useEffect } from "react";
 
 export const Dashboard = props => {
-  const { client, updateClient, classes, socket } = props;
+  const { client, updateClient, classes, initSocket } = props;
+
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
         <DashboardProfile updateClient={updateClient} client={client} />
-        <DashboardPlay history={props.history}/>
+        <DashboardPlay
+          initSocket={initSocket}
+          socket={props.socket}
+          client={client}
+        />
       </div>
     </main>
   );

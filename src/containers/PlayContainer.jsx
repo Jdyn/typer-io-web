@@ -1,31 +1,34 @@
 import React, { Component } from "react";
-import Play from "../components/Play/Play";
 import { connect } from "react-redux";
-import types from "../actions/types/SocketTypes";
+import types from "../constants/ActionTypes";
+import Play from "../components/Play/Play";
+import { initSocket } from "../actions/ClientActions";
+import { leaveRoom } from "../store/socket";
 
 class PlayContainer extends Component {
-  componentDidMount() {
-    this.props.initWebSocket(this.props.client.username);
+  componentWillMount() {
+    if (!this.props.socket.connected) {
+      this.props.initSocket(this.props.client.username);
+    }
   }
 
   render() {
-    return <div>Hello</div>; //<Play {...this.props} />;
+    return <Play {...this.props} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    client: state.client
+    client: state.client.meta,
+    room: state.client.room,
+    socket: state.client.socket
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    initWebSocket: username =>
-      dispatch({
-        type: types.INIT_SOCKET_REQUEST,
-        payload: { username, pending: true }
-      })
+    initSocket: username => dispatch(initSocket(username)),
+    leaveRoom: payload => leaveRoom(payload)
   };
 };
 

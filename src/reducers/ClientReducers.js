@@ -6,7 +6,19 @@ const initialState = {
     username: null,
     isInRoom: false
   },
-  room: {},
+  room: {
+    id: null,
+    playerCount: null,
+    timer: null,
+    gameboard: {
+      isStarted: false,
+      gameTime: null
+    },
+    clients: [],
+    messages: [],
+    snippet: "",
+    isSearching: true
+  },
   socket: {
     connected: false,
     pending: false,
@@ -60,7 +72,7 @@ export default (state = initialState, action) => {
     case types.DISCONNECT_SOCKET:
       return {
         ...state,
-        room: {},
+        room: action.room,
         socket: {
           ...state.socket,
           connected: false

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import types from "../constants/ActionTypes";
-import Play from "../components/Play/Play";
+import Play from "../components/Play";
 import { initSocket } from "../actions/ClientActions";
 import { leaveRoom } from "../store/socket";
 
@@ -21,6 +21,7 @@ const mapStateToProps = state => {
   return {
     client: state.client.meta,
     room: state.client.room,
+    gameboard: state.client.room.gameboard,
     socket: state.client.socket
   };
 };

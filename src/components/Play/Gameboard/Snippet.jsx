@@ -3,9 +3,9 @@ import injectSheet from "react-jss";
 import GamePiece from "./GamePiece";
 
 const Snippet = props => {
-  const { classes, snippet, client, clientIndex } = props;
+  const { classes, snippet, client, room, clientIndex } = props;
 
-  const currentClient = client.room.clients.filter(
+  const currentClient = room.clients.filter(
     object => object.id === client.id
   )[0];
 
@@ -17,29 +17,52 @@ const Snippet = props => {
             <div className={classes.word} key={index}>
               {SnippetWord}
 
-              {client.room.clients
+              {room.clients
                 .filter(object => object.id !== client.id)
                 .map((client, index) => {
-                  if (
-                    SnippetWord.props.wordIndex === 0 &&
-                    client.gamePiece.currentIndex === null
-                  ) {
-                    return (
-                      <GamePiece
-                        key={index}
-                        index={client.gamePiece.currentIndex}
-                        color={client.gamePiece.color}
-                      />
-                    );
+                  const { currentIndex, color } = client.props.gamePiece;
+                  const { wordIndex } = SnippetWord.props;
+                  switch (wordIndex) {
+                    case 0 && currentIndex === null:
+                      return (
+                        <GamePiece
+                          key={index}
+                          index={currentIndex}
+                          color={color}
+                        />
+                      );
+                    case wordIndex === currentIndex:
+                      return (
+                        <GamePiece
+                          key={index}
+                          index={client.gamePiece.currentIndex}
+                          color={client.gamePiece.color}
+                        />
+                      );
+                    default:
+                      return null;
                   }
-                  return SnippetWord.props.wordIndex ===
-                    client.gamePiece.currentIndex ? (
-                    <GamePiece
-                      key={index}
-                      index={client.gamePiece.currentIndex}
-                      color={client.gamePiece.color}
-                    />
-                  ) : null;
+
+                  // if (
+                  //   SnippetWord.props.wordIndex === 0 &&
+                  //   client.gamePiece.currentIndex === null
+                  // ) {
+                  //   return (
+                  //     <GamePiece
+                  //       key={index}
+                  //       index={client.gamePiece.currentIndex}
+                  //       color={client.gamePiece.color}
+                  //     />
+                  //   );
+                  // }
+                  // return SnippetWord.props.wordIndex ===
+                  //   client.gamePiece.currentIndex ? (
+                  //   <GamePiece
+                  //     key={index}
+                  //     index={client.gamePiece.currentIndex}
+                  //     color={client.gamePiece.color}
+                  //   />
+                  // ) : null;
                 })}
 
               {SnippetWord.props.wordIndex === 0 && clientIndex === null && (

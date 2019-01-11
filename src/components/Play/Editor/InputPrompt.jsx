@@ -1,14 +1,10 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const InputPrompt = ({
-  classes,
-  wordsRemaining,
-}) => { 
-  const filtered = []
-
-  for(let i = 0; i < 8; i++) {
-    filtered.push(wordsRemaining[i])
+const InputPrompt = ({ classes, wordsRemaining }) => {
+  const filtered = [];
+  for (let i = 0; i < 8; i++) {
+    filtered.push(wordsRemaining[i]);
   }
 
   return (
@@ -34,14 +30,14 @@ const styles = theme => ({
     alignItems: "center",
     fontSize: "28px",
     fontWeight: "400",
-    color: props => props.isStarted ? '#0d2b3e' : '#0d2b3e30',
+    color: props => (props.isStarted ? "#0d2b3e" : "#0d2b3e30"),
     transition: "color 0.5s",
-    textShadow: '0px 0px .5px rgba(50,50,93,.25)',
+    textShadow: "0px 0px .5px rgba(50,50,93,.25)"
   },
   word: {
     lineHeight: "40px",
     padding: "0px 5px",
-    opacity: props => props.isStarted ? 1 : 0.4,
+    opacity: props => (props.isStarted ? 1 : 0.4),
     "&:first-child": {
       paddingLeft: "0px !important"
     }

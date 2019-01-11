@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import ChatInput from "./ChatInput";
 import ChatDisplay from "./ChatDisplay";
 
-const propTypes = {
-  socket: PropTypes.object.isRequired
-};
-
 class Chat extends React.Component {
 
   submitMessage = e => {
@@ -24,19 +20,17 @@ class Chat extends React.Component {
   };
 
   render() {
-    const { classes, client } = this.props;
+    const { classes, room, clientId } = this.props;
     return (
       <div className={classes.container}>
         <div className={classes.inner}>
-          <ChatDisplay messages={client.room.messages} clientId={client.id} />
+          <ChatDisplay messages={room.messages} clientId={clientId} />
           <ChatInput submitMessage={this.submitMessage} />
         </div>
       </div>
     );
   }
 }
-
-Chat.propTypes = propTypes;
 
 const styles = theme => ({
   container: {

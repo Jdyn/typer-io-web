@@ -9,10 +9,8 @@ import Chat from "./Chat";
 class Play extends React.Component {
   constructor(props) {
     super(props);
-    const { room } = props;
     this.state = {
-      clientIndex: null,
-      snippet: room.snippet.split(" ")
+      clientIndex: null
     };
   }
 
@@ -25,25 +23,25 @@ class Play extends React.Component {
   };
 
   render() {
-    const { classes, isStarted, client } = this.props;
-    const { snippet } = this.state;
-
+    const { classes, room, gameboard, client } = this.props;
+    // console.log(room.snippet)
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
-          {/* <ClientList client={client} />
+          <ClientList room={room} gameboard={gameboard} />
           <Gameboard
-            snippet={snippet}
+            snippet={room.snippet.split(" ")}
             client={client}
+            room={room}
             clientIndex={this.state.clientIndex}
           />
-          <Chat client={client} />
+          <Chat room={room} clientId={client.id} />
           <Editor
-            isStarted={isStarted}
-            snippet={snippet}
-            updateGameboard={this.updateGameboard}
-          /> */}
+            snippet={room.snippet.split(" ")}
+            // isStarted={gameboard.isStarted}
+            // updateGameboard={this.updateGameboard}
+          />
         </div>
       </main>
     );

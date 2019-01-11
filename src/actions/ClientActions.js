@@ -1,5 +1,5 @@
-import types from "./types/SocketTypes";
-import { emitAction, deinit } from "../store/socket";
+import types from "../constants/ActionTypes";
+import { emitAction } from "../store/socket";
 
 export const updateClient = payload => ({
   type: types.UPDATE_CLIENT,
@@ -14,7 +14,3 @@ export const initSocket = (username, history) => ({
     pending: true
   }
 });
-
-// export const disconnectSocket = payload => {
-//   leaveRoom(payload.id);
-// };

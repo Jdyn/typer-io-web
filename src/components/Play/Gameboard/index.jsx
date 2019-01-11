@@ -4,15 +4,14 @@ import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
 const Gameboard = props => {
-  const { classes, snippet, client, clientIndex } = props;
-
+  const { classes, snippet, client, room, clientIndex } = props;
   const transformSnippet = snippet => {
     var res = [];
     snippet.forEach((word, index) =>
       res.push(
         <SnippetWord
-          word={word}
           key={index}
+          word={word}
           wordIndex={index}
           clientIndex={clientIndex}
         />
@@ -26,6 +25,7 @@ const Gameboard = props => {
       <div className={classes.wrapper}>
         <Snippet
           snippet={transformSnippet(snippet)}
+          room={room}
           client={client}
           clientIndex={clientIndex}
         />

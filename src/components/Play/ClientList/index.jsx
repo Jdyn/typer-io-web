@@ -5,10 +5,9 @@ import ClientListCard from "./ClientListCard";
 import ClientListHeader from "./ClientListHeader";
 
 const ClientList = props => {
-  const { client, classes } = props;
-
+  const { room, gameboard, classes } = props;
   const getTime = () => {
-    const roomTime = props.client.room.timer;
+    const roomTime = room.roomTime;
     if (roomTime) {
       const text = roomTime.substring(roomTime.length - 2, roomTime.length);
       const seconds = parseInt(text);
@@ -16,38 +15,41 @@ const ClientList = props => {
     }
   };
 
-  const getHeaderInfo = () => {
+  const headerInfo = () => {
     const res = {};
 
-    if (getTime() > 10) {
-      res.backgroundColor = "#469cd0";
-      res.text = "Looking for Players...";
-    } else if (getTime() > 5) {
-      res.backgroundColor = "#e57373";
-      res.text = "Get Ready...";
-    } else if (getTime() > 0) {
-      res.backgroundColor = "#e5a03e";
-      res.text = "Get Set...";
-    } else if (getTime() === 0) {
-      res.backgroundColor = "#81C784";
-      res.text = "GO!";
-    } else {
-      res.backgroundColor = "#469cd0";
-      res.text = "Looking for Players...";
+    switch (getTime()) {
+      case getTime() > 10:
+        res.backgroundColor = "#469cd0";
+        res.text = "Looking for Players...";
+      case getTime() > 5:
+        res.backgroundColor = "#e57373";
+        res.text = "Get Ready...";
+      case getTime() > 0:
+        res.backgroundColor = "#e5a03e";
+        res.text = "Get Set...";
+      case getTime() === 0:
+        res.backgroundColor = "#81C784";
+        res.text = "GO!";
+      default:
+        res.backgroundColor = "#469cd0";
+        res.text = "Looking for Players...";
     }
-
     return res;
   };
 
   return (
     <div className={classes.container}>
-      <ClientListHeader client={client} headerInfo={getHeaderInfo()} />
-      {client.id && (
+      <ClientListHeader
+        gameTime={gameboard.gameTime}
+        roomTime={room.roomTime}
+        headerInfo={headerInfo()}
+      />
+      {room.id && (
         <div className={classes.inner}>
-          {client.room &&
-            client.room.clients.map((client, index) => (
-              <ClientListCard key={index} client={client} />
-            ))}
+          {room.clients.map((client, index) => (
+            <ClientListCard key={index} client={client} />
+          ))}
         </div>
       )}
     </div>
@@ -56,8 +58,6 @@ const ClientList = props => {
 
 const styles = theme => ({
   container: {
-    display: "flex",
-    flexDirection: "column",
     width: "265px",
     maxWidth: "265px",
     margin: "25px 15px 15px 15px",
@@ -71,17 +71,6 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
     borderRadius: 8
-  },
-  listHeader: {
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    margin: "0px",
-    fontSize: "18px",
-    color: "black",
-    padding: "20px",
-    fontWeight: 600,
-    textAlign: "center"
   }
 });
 

@@ -8,8 +8,10 @@ export default url => {
         const { dispatch } = store;
         const { payload } = action;
         init(url, dispatch, payload);
+        return next(action);
+      default:
+        return next(action);
     }
-    return next(action);
   };
 };
 
@@ -31,7 +33,20 @@ const defaultListeners = dispatch => {
     socket.on("disconnect", () => {
       socket = null;
       dispatch({
-        type: types.DISCONNECT_SOCKET
+        type: types.DISCONNECT_SOCKET,
+        room: {
+          id: null,
+          count: null,
+          roomTime: null,
+          clients: [],
+          messages: [],
+          snippet: "",
+          isSearching: true,
+          gameboard: {
+            isStarted: false,
+            gameTime: null
+          }
+        }
       });
     });
 
@@ -50,10 +65,10 @@ const defaultListeners = dispatch => {
 };
 
 export const leaveRoom = payload => {
-  if (socket) {
-    socket.emit(types.DISCONNECT_SOCKET, payload);
-  }
+  emit(types.DISCONNECT_SOCKET, payload);
 };
+
+const emit = (type, payload) => socket.emit(type, payload);
 
 export const emitAction = action => {
   return (...args) => {

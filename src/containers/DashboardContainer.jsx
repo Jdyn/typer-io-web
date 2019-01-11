@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dashboard from "../components/Dashboard/Dashboard";
 import { connect } from "react-redux";
 import { updateClient } from "../actions/ClientActions";
-import { initSocket, disconnectSocket } from "../actions/ClientActions";
+import { initSocket } from "../actions/ClientActions";
 
 class DashboardContainer extends Component {
   componentDidUpdate() {

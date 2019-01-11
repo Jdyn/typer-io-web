@@ -1,17 +1,12 @@
 import React from "react";
 import injectSheet from "react-jss";
-import Content from "../../Common/Content";
 
 const ClientListHeader = props => {
-  const { classes, client, headerInfo } = props;
+  const { classes, gameTime, roomTime, headerInfo } = props;
 
   return (
     <div className={classes.container}>
-      <div className={classes.time}>
-        {client.room.gameboard.gameTime
-          ? client.room.gameboard.gameTime
-          : client.room.timer}
-      </div>
+      <div className={classes.time}>{gameTime ? gameTime : roomTime}</div>
       <div className={classes.infoText}>{headerInfo.text}</div>
     </div>
   );
@@ -21,8 +16,8 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
     position: "relative",
+    width: "100%",
     margin: "0px",
     fontSize: "18px",
     color: "black",

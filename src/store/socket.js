@@ -18,14 +18,17 @@ export default url => {
 let socket;
 
 const init = (url, dispatch, payload) => {
-  socket = io(url, { reconnection: false });
+  socket = io(url); // { reconnection: false }
   defaultListeners(dispatch);
-  Object.keys(types).forEach(key =>
-    socket.on(key, payload => {
-      dispatch({ type: key, payload });
-    })
-  );
   socket.emit("REGISTER", payload.username);
+  socket.on(types.INIT_SOCKET_SUCCESS, payload => {
+    dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });
+    Object.keys(types).forEach(key =>
+      socket.on(key, payload => {
+        dispatch({ type: key, payload });
+      })
+    );
+  })
 };
 
 const defaultListeners = dispatch => {
@@ -62,7 +65,6 @@ const defaultListeners = dispatch => {
           error: payload
         }
       });
-      socket.close();
     });
   }
 };

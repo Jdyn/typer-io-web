@@ -3,17 +3,22 @@ import injectSheet from "react-jss";
 import Input from "./Input";
 
 const InputRecord = props => {
-  const { classes, gameboard, gameboardUpdate } = props
+  const { classes, words, wordsComplete, wordsRemaining, editorUpdate, isWrong } = props
   return (
     <div className={classes.content}>
-      {gameboard.wordsComplete.map((word, index) => {
+      {wordsComplete.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}
           </span>
         );
       })}
-      <Input gameboard={gameboard} gameboardUpdate={gameboardUpdate} />
+      <Input
+        editorUpdate={editorUpdate}
+        words={words}
+        isWrong={isWrong}
+        wordsComplete={wordsComplete}
+        wordsRemaining={wordsRemaining} />
     </div>
   );
 };

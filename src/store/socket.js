@@ -67,11 +67,8 @@ const defaultListeners = dispatch => {
   }
 };
 
-export const leaveRoom = payload => {
-  emit(types.DISCONNECT_SOCKET, payload);
-};
-
-const emit = (type, payload) => socket.emit(type, payload);
+export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
+export const silentOn = (type, payload) => socket && socket.on(type, payload)
 
 export const emitAction = action => {
   return (...args) => {

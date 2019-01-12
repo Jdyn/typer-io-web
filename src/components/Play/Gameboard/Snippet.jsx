@@ -3,7 +3,7 @@ import injectSheet from "react-jss";
 import GamePiece from "./GamePiece";
 
 const Snippet = props => {
-  const { classes, client, room, words, clientIndex } = props;
+  const { classes, client, room, words, gamePieceIndex } = props;
 
   const currentClient = room.clients.filter(
     object => object.id === client.id
@@ -19,7 +19,7 @@ const Snippet = props => {
               {room.clients
                 .filter(object => object.id !== client.id)
                 .map((client, index) => {
-                  const { currentIndex, color } = client.props.gamePiece;
+                  const { currentIndex, color } = client.gamePiece;
                   const { wordIndex } = word.props;
                   if (
                     wordIndex === 0 &&
@@ -43,16 +43,16 @@ const Snippet = props => {
                     ) : null;
                 })}
 
-              {word.props.wordIndex === 0 && clientIndex === null && (
+              {word.props.wordIndex === 0 && gamePieceIndex === null && (
                 <GamePiece
-                  index={clientIndex}
+                  index={gamePieceIndex}
                   color={currentClient.gamePiece.color}
                 />
               )}
 
-              {word.props.wordIndex === clientIndex && (
+              {word.props.wordIndex === gamePieceIndex && (
                 <GamePiece
-                  index={clientIndex}
+                  index={gamePieceIndex}
                   color={currentClient.gamePiece.color}
                 />
               )}

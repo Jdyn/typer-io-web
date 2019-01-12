@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import types from "../constants/ActionTypes";
 import Play from "../components/Play";
 import { initSocket, gameboardUpdate } from "../actions/ClientActions";
-import { leaveRoom } from "../store/socket";
+import { silentEmit } from "../store/socket";
 
 class PlayContainer extends Component {
   componentWillMount() {
@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => {
   return {
     initSocket: username => dispatch(initSocket(username)),
     gameboardUpdate: payload => dispatch(gameboardUpdate(payload)),
-    leaveRoom: payload => leaveRoom(payload)
+    leaveRoom: payload => silentEmit(types.DISCONNECT_SOCKET, payload)
   };
 };
 

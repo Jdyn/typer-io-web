@@ -26,7 +26,7 @@ const Gameboard = props => {
         <Snippet
           words={transform(gameboard.words)}
           room={room}
-          clientIndex={gameboard.clientIndex}
+          gamePieceIndex={gameboard.gamePieceIndex}
           client={client}
         />
       </div>

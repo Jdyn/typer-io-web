@@ -3,6 +3,7 @@ import keyMirror from "../lib/keyMirror";
 const types = keyMirror(
   "CLIENT_UPDATE",
   "ROOM_UPDATE",
+  "ROOM_TIMER",
   "START_GAME",
   "GAMEBOARD_UPDATE",
   "INIT_SOCKET_REQUEST",

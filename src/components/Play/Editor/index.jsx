@@ -1,90 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import injectSheet from "react-jss";
 import InputPrompt from "./InputPrompt";
 import InputRecord from "./InputRecord";
 
 const Editor = props => {
   const { classes, gameboard, gameboardUpdate, client, room } = props;
+  const [state, setState] = useState({
+    gamePieceIndex: null,
+    isWrong: false,
+    words: [],
+    wordsRemaining: [],
+    wordsComplete: [],
+  })
+
+  useEffect(() => {
+    setState({ ...state, words: gameboard.words, wordsRemaining: gameboard.words })
+  }, [gameboard.words])
+
+  const updateState = payload => {
+    setState({ ...state, ...payload })
+  }
+
   const focusInput = () => {
     document.getElementById("inputDiv").focus();
   };
-
-  // inputDidUpdate = e => {
-  //   const { wordsRemaining, wordsComplete, key, words, errors } = this.state;
-  //   const input = e.target.innerText;
-  //   const currentWord = words[wordsComplete.length];
-  //   this.setState({ input });
-
-  //   if (input === currentWord.substring(0, input.length)) {
-  //     this.setState({ isWrong: false });
-
-  //     if (input !== currentWord) {
-  //       let copy = [...wordsRemaining];
-  //       copy[0] = currentWord.substring(input.length, currentWord.length);
-  //       this.setState({
-  //         wordsRemaining: copy
-  //       });
-  //     } else if (input === currentWord) {
-  //       let copy = wordsRemaining.slice();
-  //       copy[0] = "";
-  //       this.setState({
-  //         wordsRemaining: copy
-  //       });
-  //     }
-  //   } else {
-  //     if (key !== " " && key !== "Backspace" && key !== "Enter") {
-  //       this.setState({ isWrong: true, errors: this.state.errors + 1 });
-  //     } else {
-  //       this.setState({ isWrong: true });
-  //     }
-  //   }
-
-  //   if (key === " ") {
-  //     if (currentWord === input.trim()) {
-  //       e.target.innerText = "";
-  //       let newWordsRemaining = [...wordsRemaining];
-
-  //       newWordsRemaining.shift();
-  //       const entries = words[wordsComplete.length].length || 0;
-
-  //       // this.props.gameboardUpdate(wordsComplete.length);
-
-  //       const payload = {
-  //         entries: entries + 1,
-  //         currentIndex: wordsComplete.length,
-  //         errors: errors
-  //       };
-
-  //       // this.props.socket.io.emit("clientUpdate:game", payload);
-
-  //       this.setState(prevState => ({
-  //         wordsRemaining: newWordsRemaining,
-  //         wordsComplete: [...prevState.wordsComplete, currentWord],
-  //         entries: prevState.entries + words[wordsComplete.length].length,
-  //         isWrong: false
-  //       }));
-
-  //       if (newWordsRemaining.length <= 0) {
-  //         document.getElementById("inputDiv").contentEditable = false;
-  //       }
-  //     }
-  //   }
-  // };
 
   return (
     <div className={classes.container}>
       {client.id &&
         <div className={classes.wrapper} onClick={focusInput}>
           <InputRecord
-            gameboard={gameboard}
-            gameboardUpdate={gameboardUpdate}
+            words={state.words}
+            isWrong={state.isWrong}
+            wordsComplete={state.wordsComplete}
+            wordsRemaining={state.wordsRemaining}
+            editorUpdate={updateState}
           />
         </div>
       }
       {client.id &&
         <div className={classes.wrapper} onClick={focusInput}>
           <InputPrompt
-            gameboard={gameboard}
+            wordsRemaining={state.wordsRemaining}
           />
         </div>
       }

@@ -11,10 +11,8 @@ const initialState = {
     playerCount: null,
     roomTime: null,
     gameboard: {
-      clientIndex: null,
       words: [],
-      wordsRemaining: [],
-      wordsComplete: [],
+      gamePieceIndex: null,
       isStarted: false,
       gameTime: null
     },
@@ -40,6 +38,15 @@ export default (state = initialState, action) => {
       };
 
     case types.ROOM_UPDATE:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          clients: action.payload.clients
+        }
+      };
+
+    case types.ROOM_TIMER:
       return {
         ...state,
         room: {
@@ -103,8 +110,7 @@ export default (state = initialState, action) => {
           ...action.payload.room,
           gameboard: {
             ...state.room.gameboard,
-            words: action.payload.room.snippet.split(" "),
-            wordsRemaining: action.payload.room.snippet.split(" ")
+            words: action.payload.room.snippet.split(" ") || [],
           }
         },
         socket: {

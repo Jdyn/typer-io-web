@@ -7,20 +7,9 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 
 class Play extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clientIndex: null
-    };
-  }
-
   componentWillUnmount() {
     this.props.leaveRoom({ id: this.props.room.id });
   }
-
-  // gameboardUpdate = newIndex => {
-  //   this.setState({ clientIndex: newIndex });
-  // };
 
   render() {
     const { classes, room, gameboard, gameboardUpdate, client } = this.props;

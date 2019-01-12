@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import injectSheet from "react-jss";
+import { silentEmit } from "../../../store/socket";
 
 const Input = props => {
-  const { classes, gameboard, gameboardUpdate } = props;
+  const { classes, words, wordsComplete, wordsRemaining, editorUpdate, isWrong } = props;
+
+  const [key, setKey] = useState("")
   const [state, setState] = useState({
     key: "",
     input: "",
-    isWrong: false,
     entries: 0,
     errors: 0,
   })
-  const [key, setKey] = useState("")
 
   useEffect(() => {
     const editor = document.getElementById("inputDiv");
@@ -23,12 +24,8 @@ const Input = props => {
 
   const keydown = event => {
     setKey(event.key);
-    // setState({...state, key: event.key})
-    // const { input } = state
-    const { words, wordsComplete } = gameboard
     if (event.key === " ") {
-      // console.log(input, words[wordsComplete.length])
-      // if (input !== words[wordsComplete.length]) {
+      // if (state.input !== words[wordsComplete.length]) {
       //   event.preventDefault();
       // }
     } else if (event.key === "Enter") {
@@ -38,28 +35,26 @@ const Input = props => {
 
   const inputDidUpdate = event => {
     const { errors, entries } = state;
-    const { words, wordsComplete, wordsRemaining } = props.gameboard
     const input = event.target.innerText;
     const currentWord = words[wordsComplete.length];
     setState({ ...state, input: input });
-    console.log(state)
     if (input === currentWord.substring(0, input.length)) {
-      setState({ ...state, isWrong: false });
 
       if (input !== currentWord) {
         let copy = [...wordsRemaining];
         copy[0] = currentWord.substring(input.length, currentWord.length);
-        gameboardUpdate({ wordsRemaining: copy })
+        editorUpdate({ wordsRemaining: copy, isWrong: false })
       } else if (input === currentWord) {
         let copy = wordsRemaining.slice();
         copy[0] = "";
-        gameboardUpdate({ wordsRemaining: copy })
+        editorUpdate({ wordsRemaining: copy, isWrong: false })
       }
     } else {
       if (key !== " " && key !== "Backspace" && key !== "Enter") {
-        setState({ ...state, isWrong: true, errors: state.errors + 1 });
+        setState({ ...state, errors: errors + 1 });
+        editorUpdate({ isWrong: true })
       } else {
-        setState({ ...state, isWrong: true });
+        editorUpdate({ isWrong: true })
       }
     }
 
@@ -69,19 +64,18 @@ const Input = props => {
         let newWordsRemaining = [...wordsRemaining];
 
         newWordsRemaining.shift();
-        const entries = words[wordsComplete.length].length;
-
-        // this.props.gameboardUpdate(wordsComplete.length);
-
+        const newEntry = words[wordsComplete.length].length + 1;
+        const newIndex = wordsComplete.length
         const payload = {
-          entries: entries + 1,
-          currentIndex: wordsComplete.length,
+          entries: newEntry,
+          currentIndex: newIndex,
           errors: errors
         };
 
-        // this.props.socket.io.emit("clientUpdate:game", payload);
-        setState({ ...state, entries: state.entries + words[wordsComplete.length].length, isWrong: false })
-        gameboardUpdate({
+        silentEmit("CLIENT_UPDATE", payload);
+        setState({ ...state, entries: entries + newEntry, isWrong: false })
+        editorUpdate({
+          gamePieceIndex: newIndex,
           wordsRemaining: newWordsRemaining,
           wordsComplete: [...wordsComplete, currentWord],
         })

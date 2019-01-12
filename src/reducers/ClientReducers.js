@@ -9,7 +9,7 @@ const initialState = {
   room: {
     id: null,
     playerCount: null,
-    timer: null,
+    roomTime: null,
     gameboard: {
       isStarted: false,
       gameTime: null
@@ -29,10 +29,44 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.UPDATE_CLIENT:
+    case types.CLIENT_UPDATE:
       return {
         ...state,
         ...action.payload
+      };
+
+    case types.ROOM_UPDATE:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          ...action.payload
+        }
+      };
+
+    case types.START_GAME:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          ...action.payload
+        }
+      };
+
+    case types.GAMEBOARD_UPDATE:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          gameboard: {
+            ...state.room.gameboard,
+            gameTime: action.payload.gameTime || state.room.gameboard.gameTime
+          },
+          clients: updateGameboard(
+            [...state.room.clients],
+            action.payload.gamePieces
+          )
+        }
       };
 
     case types.INIT_SOCKET_REQUEST:
@@ -81,4 +115,18 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+const updateGameboard = (clients, gamePieces) => {
+  if (gamePieces) {
+    const res = [...clients];
+    res.forEach((client, index) => {
+      client.gamePiece = {
+        ...gamePieces[index],
+        color: client.gamePiece.color
+      };
+    });
+    return res;
+  }
+  return clients;
 };

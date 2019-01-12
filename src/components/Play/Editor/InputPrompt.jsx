@@ -29,6 +29,7 @@ const styles = theme => ({
     lineHeight: "40px",
     alignItems: "center",
     fontSize: "28px",
+    whiteSpace: 'nowrap',
     fontWeight: "400",
     color: props => (props.isStarted ? "#0d2b3e" : "#0d2b3e30"),
     transition: "color 0.5s",

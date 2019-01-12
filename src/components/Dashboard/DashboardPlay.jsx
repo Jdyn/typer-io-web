@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
 import injectSheets from "react-jss";
-import { withRouter } from "react-router-dom";
 
 const DashboardPlay = props => {
-  const { classes, initSocket } = props;
+  const { classes, initSocket, socket } = props;
   const options = [
     {
       title: "Play",
@@ -29,8 +28,8 @@ const DashboardPlay = props => {
 
   const handleOnClick = e => {
     e.preventDefault();
-    if (!props.socket.connected) {
-      props.initSocket(props.client.username);
+    if (!socket.connected) {
+      initSocket(props.client.username);
     }
   };
 
@@ -40,14 +39,13 @@ const DashboardPlay = props => {
         const { title, text, color, route } = object;
         return (
           <DashboardPlayCard
-            initSocket={initSocket}
-            socket={props.socket}
             onClick={handleOnClick}
             navPath={route}
             title={title}
             text={text}
             backgroundColor={color}
             key={index}
+            pending={socket.pending}
           />
         );
       })}
@@ -61,10 +59,10 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "flex-end",
     margin: "20px auto 20px 0 ",
-    padding: ["5px", "5px"],
+    padding: "5px 5px",
     maxWidth: "1160px",
     backgroundColor: theme.primaryWhite
   }
 });
 
-export default withRouter(injectSheets(styles)(DashboardPlay));
+export default injectSheets(styles)(DashboardPlay);

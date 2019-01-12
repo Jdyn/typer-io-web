@@ -16,12 +16,12 @@ const DashboardPlayCard = props => {
   const { onClick, classes, title, text } = props;
   return (
     <Fragment>
-      <button className={classes.card} onClick={onClick} >
-        <Header color={"#fff"}>{title}</Header>
+      <button className={classes.card} onClick={onClick}>
+        <Header color="#fff">{title}</Header>
         <Content className={classes.itemText} color={"#fff"} fontSize={18}>
           {text}
         </Content>
-        {props.socket.pending && <div>LOADING</div>}
+        {props.pending && <div>LOADING</div>}
       </button>
     </Fragment>
   );

@@ -11,14 +11,16 @@ class Editor extends React.Component {
       isWrong: false,
       entries: 0,
       errors: 0,
-      words: [],
-      wordsRemaining: [],
+      words: this.props.snippet || [],
+      wordsRemaining: this.props.snippet,
       wordsComplete: []
     };
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
+    // console.log(true === true)
+    if (prevProps.snippet !== this.state.words) {
+      console.log(prevProps.snippet === this.state.words)
       this.setState({
         wordsRemaining: this.props.snippet,
         words: this.props.snippet
@@ -154,7 +156,7 @@ const styles = theme => ({
   container: {
     margin: "15px 15px 15px 15px",
     display: "flex",
-    width: "600px",
+    width: "680px",
     position: "relative",
     backgroundColor: theme.primaryWhite
   },

@@ -18,22 +18,21 @@ const ClientList = props => {
   const headerInfo = () => {
     const res = {};
 
-    switch (getTime()) {
-      case getTime() > 10:
-        res.backgroundColor = "#469cd0";
-        res.text = "Looking for Players...";
-      case getTime() > 5:
-        res.backgroundColor = "#e57373";
-        res.text = "Get Ready...";
-      case getTime() > 0:
-        res.backgroundColor = "#e5a03e";
-        res.text = "Get Set...";
-      case getTime() === 0:
-        res.backgroundColor = "#81C784";
-        res.text = "GO!";
-      default:
-        res.backgroundColor = "#469cd0";
-        res.text = "Looking for Players...";
+    if (getTime() > 10) {
+      res.backgroundColor = "#469cd0";
+      res.text = "Looking for Players...";
+    } else if (getTime() > 5) {
+      res.backgroundColor = "#e57373";
+      res.text = "Get Ready...";
+    } else if (getTime() > 0) {
+      res.backgroundColor = "#e5a03e";
+      res.text = "Get Set...";
+    } else if (getTime() === 0) {
+      res.backgroundColor = "#81C784";
+      res.text = "GO!";
+    } else {
+      res.backgroundColor = "#469cd0";
+      res.text = "Looking for Players...";
     }
     return res;
   };

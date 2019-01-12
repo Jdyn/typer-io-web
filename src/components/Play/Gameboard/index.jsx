@@ -4,16 +4,16 @@ import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
 const Gameboard = props => {
-  const { classes, snippet, client, room, clientIndex } = props;
-  const transformSnippet = snippet => {
+  const { classes, gameboard, client, room } = props;
+
+  const transform = words => {
     var res = [];
-    snippet.forEach((word, index) =>
+    words.forEach((word, index) =>
       res.push(
         <SnippetWord
           key={index}
           word={word}
           wordIndex={index}
-          clientIndex={clientIndex}
         />
       )
     );
@@ -24,24 +24,24 @@ const Gameboard = props => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <Snippet
-          snippet={transformSnippet(snippet)}
+          words={transform(gameboard.words)}
           room={room}
+          clientIndex={gameboard.clientIndex}
           client={client}
-          clientIndex={clientIndex}
         />
       </div>
     </div>
   );
 };
 
-Gameboard.propTypes = {};
-
-const styles = theme => ({
+const styles = {
   container: {
     display: "flex",
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "auto",
+    minWidth: "450px",
+    maxWidth: "650px",
     minHeight: "375px"
   },
   wrapper: {
@@ -49,6 +49,6 @@ const styles = theme => ({
     minHeight: "auto",
     width: "100%"
   }
-});
+}
 
 export default injectSheet(styles)(Gameboard);

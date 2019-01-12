@@ -43,6 +43,9 @@ const defaultListeners = dispatch => {
           snippet: "",
           isSearching: true,
           gameboard: {
+            words: [],
+            wordsRemaining: [],
+            wordsComplete: [],
             isStarted: false,
             gameTime: null
           }

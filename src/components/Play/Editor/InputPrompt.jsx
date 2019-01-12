@@ -1,10 +1,10 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-const InputPrompt = ({ classes, wordsRemaining }) => {
+const InputPrompt = ({ classes, gameboard }) => {
   const filtered = [];
   for (let i = 0; i < 8; i++) {
-    filtered.push(wordsRemaining[i]);
+    filtered.push(gameboard.wordsRemaining[i]);
   }
 
   return (

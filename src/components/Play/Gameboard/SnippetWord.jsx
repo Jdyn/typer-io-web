@@ -1,6 +1,5 @@
 import React from "react";
 import injectSheet from "react-jss";
-import SnippetLetter from "./SnippetLetter";
 
 const SnippetWord = props => {
   const { word, classes } = props;

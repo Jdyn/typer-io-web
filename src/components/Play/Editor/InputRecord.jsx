@@ -2,18 +2,18 @@ import React from "react";
 import injectSheet from "react-jss";
 import Input from "./Input";
 
-const InputRecord = ({ classes, inputDidUpdate, wordsComplete, isWrong }) => {
-
+const InputRecord = props => {
+  const { classes, gameboard, gameboardUpdate } = props
   return (
     <div className={classes.content}>
-      {wordsComplete.map((word, index) => {
+      {gameboard.wordsComplete.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}
           </span>
-        ); 
+        );
       })}
-      <Input inputDidUpdate={inputDidUpdate} isWrong={isWrong}/>
+      <Input gameboard={gameboard} gameboardUpdate={gameboardUpdate} />
     </div>
   );
 };

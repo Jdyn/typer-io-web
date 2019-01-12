@@ -11,6 +11,10 @@ const initialState = {
     playerCount: null,
     roomTime: null,
     gameboard: {
+      clientIndex: null,
+      words: [],
+      wordsRemaining: [],
+      wordsComplete: [],
       isStarted: false,
       gameTime: null
     },
@@ -60,9 +64,9 @@ export default (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            gameTime: action.payload.gameTime || state.room.gameboard.gameTime
+            ...action.payload,
           },
-          clients: updateGameboard(
+          clients: gameboardUpdate(
             [...state.room.clients],
             action.payload.gamePieces
           )
@@ -95,7 +99,14 @@ export default (state = initialState, action) => {
           username: action.payload.username,
           isInRoom: action.payload.isInRoom
         },
-        room: action.payload.room,
+        room: {
+          ...action.payload.room,
+          gameboard: {
+            ...state.room.gameboard,
+            words: action.payload.room.snippet.split(" "),
+            wordsRemaining: action.payload.room.snippet.split(" ")
+          }
+        },
         socket: {
           ...state.socket,
           connected: true,
@@ -117,7 +128,7 @@ export default (state = initialState, action) => {
   }
 };
 
-const updateGameboard = (clients, gamePieces) => {
+const gameboardUpdate = (clients, gamePieces) => {
   if (gamePieces) {
     const res = [...clients];
     res.forEach((client, index) => {

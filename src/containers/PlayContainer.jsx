@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import types from "../constants/ActionTypes";
 import Play from "../components/Play";
-import { initSocket } from "../actions/ClientActions";
+import { initSocket, gameboardUpdate } from "../actions/ClientActions";
 import { leaveRoom } from "../store/socket";
 
 class PlayContainer extends Component {
@@ -29,6 +29,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     initSocket: username => dispatch(initSocket(username)),
+    gameboardUpdate: payload => dispatch(gameboardUpdate(payload)),
     leaveRoom: payload => leaveRoom(payload)
   };
 };

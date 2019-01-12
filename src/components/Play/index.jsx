@@ -18,29 +18,28 @@ class Play extends React.Component {
     this.props.leaveRoom({ id: this.props.room.id });
   }
 
-  updateGameboard = newIndex => {
-    this.setState({ clientIndex: newIndex });
-  };
+  // gameboardUpdate = newIndex => {
+  //   this.setState({ clientIndex: newIndex });
+  // };
 
   render() {
-    const { classes, room, gameboard, client } = this.props;
-    // console.log(room.snippet)
+    const { classes, room, gameboard, gameboardUpdate, client } = this.props;
     return (
       <main>
         <div className={classes.stripe} />
         <div className={classes.root}>
           <ClientList room={room} gameboard={gameboard} />
           <Gameboard
-            snippet={room.snippet.split(" ")}
+            gameboard={gameboard}
             client={client}
             room={room}
-            clientIndex={this.state.clientIndex}
           />
-          <Chat room={room} clientId={client.id} />
+          <Chat room={room} client={client} />
           <Editor
-            snippet={room.snippet.split(" ")}
-            // isStarted={gameboard.isStarted}
-            // updateGameboard={this.updateGameboard}
+            gameboard={gameboard}
+            gameboardUpdate={gameboardUpdate}
+            client={client}
+            room={room}
           />
         </div>
       </main>
@@ -51,7 +50,7 @@ class Play extends React.Component {
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "min-content min-content min-content",
+    gridTemplateColumns: "min-content auto min-content",
     gridTemplateRows: "min-content min-content min-content",
     maxWidth: "1240px",
     flexDirection: "row",

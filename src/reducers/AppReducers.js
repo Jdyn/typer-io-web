@@ -148,7 +148,7 @@ export default (state = initalState, action) => {
                 : state.client.room.gameboard.isStarted,
               gameTime: action.data.timeRemaining
             },
-            clients: updateGameboard(
+            clients: gameboardUpdate(
               [...state.client.room.clients],
               action.data.gamePieces
             )
@@ -161,7 +161,7 @@ export default (state = initalState, action) => {
   }
 };
 
-const updateGameboard = (clients, gamePieces) => {
+const gameboardUpdate = (clients, gamePieces) => {
   if (gamePieces) {
     const res = [...clients];
     res.forEach((client, index) => {

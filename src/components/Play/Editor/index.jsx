@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import injectSheet from "react-jss";
 import InputPrompt from "./InputPrompt";
 import InputRecord from "./InputRecord";
+import { gameboardUpdate } from "../../../actions/ClientActions";
 
 const Editor = props => {
-  const { classes, gameboard, gameboardUpdate, client, room } = props;
+  const { classes, gameboard, client, room, gameboardUpdate } = props;
   const [state, setState] = useState({
     gamePieceIndex: null,
     isWrong: false,
@@ -17,6 +18,10 @@ const Editor = props => {
     setState({ ...state, words: gameboard.words, wordsRemaining: gameboard.words })
   }, [gameboard.words])
 
+  useEffect(() => {
+    gameboardUpdate({ gamePieceIndex: state.gamePieceIndex })
+  }, [state.gamePieceIndex])
+
   const updateState = payload => {
     setState({ ...state, ...payload })
   }
@@ -24,7 +29,6 @@ const Editor = props => {
   const focusInput = () => {
     document.getElementById("inputDiv").focus();
   };
-
   return (
     <div className={classes.container}>
       {client.id &&
@@ -34,6 +38,7 @@ const Editor = props => {
             isWrong={state.isWrong}
             wordsComplete={state.wordsComplete}
             wordsRemaining={state.wordsRemaining}
+            gameboard={gameboard}
             editorUpdate={updateState}
           />
         </div>
@@ -41,6 +46,7 @@ const Editor = props => {
       {client.id &&
         <div className={classes.wrapper} onClick={focusInput}>
           <InputPrompt
+            gameboard={gameboard}
             wordsRemaining={state.wordsRemaining}
           />
         </div>

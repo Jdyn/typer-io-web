@@ -19,7 +19,9 @@ const Editor = props => {
   }, [gameboard.words])
 
   useEffect(() => {
-    gameboardUpdate({ gamePieceIndex: state.gamePieceIndex })
+    if (state.gamePieceIndex !== null) {
+      gameboardUpdate({ gamePieceIndex: state.gamePieceIndex })
+    }
   }, [state.gamePieceIndex])
 
   const updateState = payload => {

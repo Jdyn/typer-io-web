@@ -3,6 +3,7 @@ import injectSheet from "react-jss";
 import PropTypes from "prop-types";
 import ChatInput from "./ChatInput";
 import ChatDisplay from "./ChatDisplay";
+import { sendChatMessage } from "../../../actions/ClientActions";
 
 class Chat extends React.Component {
 
@@ -10,7 +11,7 @@ class Chat extends React.Component {
     e.preventDefault();
     const input = document.getElementById("chatInput");
     const message = input.value;
-    this.props.socket.io.emit("message", {
+    this.props.sendChatMessage({
       username: this.props.client.username,
       id: this.props.client.id,
       message: message
@@ -20,11 +21,11 @@ class Chat extends React.Component {
   };
 
   render() {
-    const { classes, room, clientId } = this.props;
+    const { classes, room, client } = this.props;
     return (
       <div className={classes.container}>
         <div className={classes.inner}>
-          <ChatDisplay messages={room.messages} clientId={clientId} />
+          <ChatDisplay messages={room.messages} client={client} />
           <ChatInput submitMessage={this.submitMessage} />
         </div>
       </div>

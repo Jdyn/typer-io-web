@@ -12,7 +12,7 @@ class Play extends React.Component {
   }
 
   render() {
-    const { classes, room, gameboard, client, gameboardUpdate } = this.props;
+    const { classes, room, gameboard, client, gameboardUpdate, sendChatMessage } = this.props;
     return (
       <main>
         <div className={classes.stripe} />
@@ -23,7 +23,7 @@ class Play extends React.Component {
             client={client}
             room={room}
           />
-          <Chat room={room} client={client} />
+          <Chat room={room} client={client} sendChatMessage={sendChatMessage} />
           <Editor
             gameboardUpdate={gameboardUpdate}
             gameboard={gameboard}

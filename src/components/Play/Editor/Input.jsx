@@ -12,34 +12,38 @@ const Input = props => {
     errors: 0,
   })
 
+  /**
+   * Listener is being added and removed every state update.
+   * Need to find a fix.
+   */
   useEffect(() => {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keydown", keydown, true)
     return (() => {
       editor.removeEventListener("keydown", keydown, true)
     })
-  }, [])
+  }, [gameboard, state])
 
   const keydown = event => {
     setKey(event.key);
-    // if (!gameboard.isStarted) {
-    //   event.preventDefault();
-    // }
-    // if (event.key === " ") {
-    //   if (state.input !== words[wordsComplete.length]) {
-    //     event.preventDefault();
-    //   }
-    // } else if (event.key === "Enter") {
-    //   event.preventDefault();
-    // }
+    if (!gameboard.isStarted) {
+      event.preventDefault();
+    }
+    if (event.key === " ") {
+      if (state.input !== words[wordsComplete.length]) {
+        event.preventDefault();
+      }
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+    }
   }
+
   const inputDidUpdate = event => {
     const { errors, entries } = state;
     const input = event.target.innerText;
     const currentWord = words[wordsComplete.length];
     setState({ ...state, input: input });
     if (input === currentWord.substring(0, input.length)) {
-
       if (input !== currentWord) {
         let copy = [...wordsRemaining];
         copy[0] = currentWord.substring(input.length, currentWord.length);

@@ -9,7 +9,7 @@ class ChatDisplay extends React.Component {
   }
 
   render() {
-    const { classes, messages, clientId } = this.props;
+    const { classes, messages, client } = this.props;
 
     return (
       <div className={classes.container}>
@@ -18,8 +18,8 @@ class ChatDisplay extends React.Component {
             <ChatMessage
               message={message}
               key={index}
-              color={clientId === message.id ? "#6ed69a" : "#007bff"}
-              align={clientId === message.id ? "flex-end" : "flex-start"}
+              color={client.id === message.id ? "#6ed69a" : "#007bff"}
+              align={client.id === message.id ? "flex-end" : "flex-start"}
             />
           ))}
         </div>

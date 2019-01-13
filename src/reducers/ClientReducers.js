@@ -132,6 +132,18 @@ export default (state = initialState, action) => {
           connected: false
         }
       };
+
+    case types.RECIEVE_CHAT_MESSAGE:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          messages: updateRoomChat(
+            action.payload,
+            state.room.messages
+          )
+        }
+      }
     default:
       return state;
   }
@@ -149,4 +161,14 @@ const gameboardUpdate = (clients, gamePieces) => {
     return res;
   }
   return clients;
+};
+
+const updateRoomChat = (newMessage, messages) => {
+  if (Array.isArray(newMessage)) {
+    return newMessage;
+  } else {
+    const copy = [...messages];
+    copy.push(newMessage);
+    return copy;
+  }
 };

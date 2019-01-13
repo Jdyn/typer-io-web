@@ -3,8 +3,7 @@ import injectSheet from "react-jss";
 import { silentEmit } from "../../../store/socket";
 
 const Input = props => {
-  const { classes, words, wordsComplete, wordsRemaining, editorUpdate, isWrong } = props;
-
+  const { classes, words, wordsComplete, wordsRemaining, editorUpdate, gameboard } = props;
   const [key, setKey] = useState("")
   const [state, setState] = useState({
     key: "",
@@ -16,7 +15,6 @@ const Input = props => {
   useEffect(() => {
     const editor = document.getElementById("inputDiv");
     editor.addEventListener("keydown", keydown, true)
-
     return (() => {
       editor.removeEventListener("keydown", keydown, true)
     })
@@ -24,15 +22,17 @@ const Input = props => {
 
   const keydown = event => {
     setKey(event.key);
-    if (event.key === " ") {
-      // if (state.input !== words[wordsComplete.length]) {
-      //   event.preventDefault();
-      // }
-    } else if (event.key === "Enter") {
-      event.preventDefault();
-    }
+    // if (!gameboard.isStarted) {
+    //   event.preventDefault();
+    // }
+    // if (event.key === " ") {
+    //   if (state.input !== words[wordsComplete.length]) {
+    //     event.preventDefault();
+    //   }
+    // } else if (event.key === "Enter") {
+    //   event.preventDefault();
+    // }
   }
-
   const inputDidUpdate = event => {
     const { errors, entries } = state;
     const input = event.target.innerText;

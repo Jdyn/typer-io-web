@@ -37,9 +37,9 @@ class DashboardProfileHeader extends React.Component {
             onChange={this.handleChange}
             placeholder="username"
           />
+          <div className={classes.divider} />
+          <button type="submit" className={classes.setButton}>Set</button>
         </form>
-        <div className={classes.divider} />
-        <button className={classes.setButton}>Set</button>
       </div>
     );
   }
@@ -91,6 +91,10 @@ const styles = theme => ({
     transitionDuration: ".15s",
     "&:hover": {
       transform: "translateY(-2px)",
+    },
+    "&:active": {
+      color: "#7795f8",
+      transform: "translateY(2px)",
     }
   }
 });

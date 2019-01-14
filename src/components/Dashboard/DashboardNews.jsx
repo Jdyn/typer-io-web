@@ -27,9 +27,9 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
     "&:hover": {
-      transform: "translateY(-2px)",
+      transform: "translateY(-1px)",
     },
-    transitionDuration: ".3s",
+    transitionDuration: ".1s",
   }
 });
 

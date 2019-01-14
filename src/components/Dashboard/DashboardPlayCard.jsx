@@ -13,10 +13,10 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { onClick, classes, title, text } = props;
+  const { onClick, classes, title, text, navPath } = props;
   return (
     <Fragment>
-      <button className={classes.card} onClick={onClick}>
+      <button className={classes.card} onClick={e => onClick(e, navPath)}>
         <Header color="#fff">{title}</Header>
         <Content className={classes.itemText} color={"#fff"} fontSize={18}>
           {text}
@@ -30,13 +30,14 @@ const DashboardPlayCard = props => {
 const styles = theme => ({
   card: {
     display: "flex",
-    flex: [1, 1, "100%"],
     flexDirection: "column",
-    justifyContent: "right",
+    justifyContent: "flex-start",
     position: "relative",
     cursor: "pointer",
     minWidth: "300px",
     margin: 15,
+    fontWeight: 500,
+    outline: "none",
     padding: "40px 40px 40px 40px",
     backgroundColor: props => props.backgroundColor,
     textDecoration: "none",

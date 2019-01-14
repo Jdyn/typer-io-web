@@ -30,7 +30,15 @@ const propTypes = {
   /**
    * Defines the `color` style property.
    */
-  color: PropTypes.string
+  color: PropTypes.string,
+  /**
+   * Defines the `background-color` style property.
+   */
+  backgroundColor: PropTypes.string,
+  /**
+   * Defines the `border-radius` style property.
+   */
+  borderRadius: PropTypes.borderRadius
 };
 
 const Header = ({ children, classes }) => (
@@ -42,17 +50,23 @@ Header.defaultProps = {
   margin: "0",
   padding: "0",
   fontSize: 18,
-  fontWeight: 600
+  fontWeight: 600,
+  borderRadius: 8,
 };
 
-const styles = {
+const styles = theme => ({
   header: {
     margin: props => props.margin,
     padding: props => props.padding,
     fontSize: props => props.fontSize,
     fontWeight: props => props.fontWeight,
-    color: props => props.color || "black"
+    color: props => props.color || "black",
+    backgroundColor: props => props.backgroundColor,
+    borderRadius: props => props.borderRadius,
+    border: props => props.border,
+    boxShadow: props => props.boxShadow,
+    justifyContent: "left"
   }
-};
+});
 
 export default injectSheet(styles)(Header);

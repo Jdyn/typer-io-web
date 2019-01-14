@@ -4,6 +4,7 @@ import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
 import { useEffect } from "react";
+import DashboardNews from "./DashboardNews";
 
 export const Dashboard = props => {
   const { client, updateClient, classes, initSocket } = props;
@@ -12,6 +13,7 @@ export const Dashboard = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
+        <DashboardNews></DashboardNews>
         <DashboardProfile updateClient={updateClient} client={client} />
         <DashboardPlay
           initSocket={initSocket}
@@ -26,7 +28,7 @@ export const Dashboard = props => {
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "auto auto",
+    gridTemplateColumns: "auto min-content auto",
     gridTemplateRows: "auto",
     maxWidth: "1040px",
     margin: "0 auto"
@@ -40,7 +42,7 @@ const styles = theme => ({
     transform: "skewY(-12deg)",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
-    backgroundColor: theme.secondaryWhite,
+    backgroundColor: theme.tertiaryWhite,
     position: "absolute"
   },
   container: {

@@ -2,12 +2,13 @@ import types from "../constants/ActionTypes";
 import { emitAction } from "../store/socket";
 import keyMirror from '../lib/keyMirror'
 
-const actions = keyMirror(
-  "SEND_CHAT_MESSAGE"
+export const actions = keyMirror(
+  "SEND_CHAT_MESSAGE",
+  "CLIENT_UPDATE",
 )
 
 export const updateClient = payload => ({
-  type: types.UPDATE_CLIENT,
+  type: actions.CLIENT_UPDATE,
   payload
 });
 

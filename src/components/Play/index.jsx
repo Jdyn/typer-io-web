@@ -56,7 +56,7 @@ const styles = theme => ({
     transform: "skewY(-12deg)",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
-    backgroundColor: theme.secondaryWhite,
+    backgroundColor: theme.tertiaryWhite,
     position: "absolute"
   }
 });

@@ -2,11 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 
-const propTypes = {
-  initClient: PropTypes.func.isRequired,
-  username: PropTypes.string
-};
-
 class DashboardProfileHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -40,16 +35,15 @@ class DashboardProfileHeader extends React.Component {
             type="text"
             value={this.state.value}
             onChange={this.handleChange}
-            placeholder="Nickname"
+            placeholder="username"
           />
         </form>
         <div className={classes.divider} />
+        <button className={classes.setButton}>Set</button>
       </div>
     );
   }
 }
-
-DashboardProfileHeader.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
@@ -62,30 +56,41 @@ const styles = theme => ({
   divider: {
     display: "flex",
     position: "relative",
-    height: "1px",
+    height: "2px",
     margin: "auto",
     border: "none",
     flexShrink: 0,
     width: "65%",
-    backgroundColor: theme.divider
+    backgroundColor: "rgba(0, 0, 0, 0.05)"
   },
   nameInput: {
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
     maxWidth: "165px",
     margin: "25px auto 0 auto",
-    // height: "60px",
     padding: "10px 10px 0px 10px",
     fontSize: 24,
     border: "none",
     outline: "none",
-
     "&::placeholder": {
-      color: theme.primaryGrey
+      color: ""
     },
-
-    "&:focus": {
-      backgroundColor: theme.primaryWhite
+  },
+  setButton: {
+    border: "none",
+    cursor: "pointer",
+    outline: "none",
+    width: "65%",
+    margin: "5px auto 0px auto",
+    padding: "10px",
+    fontSize: 18,
+    border: "2px solid rgba(0,0,0,.05)",
+    borderRadius: 8,
+    // boxShadow: "0 0.5px 5px rgba(27,31,35,.15)",
+    backgroundColor: theme.primaryWhite,
+    transitionDuration: ".15s",
+    "&:hover": {
+      transform: "translateY(-2px)",
     }
   }
 });

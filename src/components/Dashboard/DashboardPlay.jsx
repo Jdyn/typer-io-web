@@ -8,28 +8,32 @@ const DashboardPlay = props => {
   const options = [
     {
       title: "Play",
-      text: "This is the Play Text",
-      color: "#3ecf8e",
+      text: "Defeat other players",
+      color: "#06A978",
       route: "/play"
     },
     {
       title: "Solo",
-      text: "This is the Solo Text",
+      text: "Practice your skills",
       color: "#6772e5",
-      route: "/about"
+      route: "/"
     },
     {
       title: "Friends",
-      text: "This is the Friends Text",
+      text: "Defeat your friends",
       color: "#b76ac4",
       route: "/"
     }
   ];
 
-  const handleOnClick = e => {
-    e.preventDefault();
+  const handleOnClick = (event, navPath) => {
+    event.preventDefault();
     if (!socket.connected) {
-      initSocket(props.client.username);
+      switch (navPath) {
+        case "/play":
+          initSocket(props.client.username);
+        default: break
+      }
     }
   };
 

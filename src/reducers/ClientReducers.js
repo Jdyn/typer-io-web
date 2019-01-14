@@ -31,10 +31,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.CLIENT_UPDATE:
+    case "CLIENT_UPDATE":
       return {
         ...state,
-        ...action.payload
+        meta: {
+          ...state.meta,
+          ...action.payload
+        }
       };
 
     case types.ROOM_UPDATE:

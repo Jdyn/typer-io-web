@@ -70,10 +70,11 @@ const styles = theme => ({
     margin: "25px auto 0 auto",
     padding: "10px 10px 0px 10px",
     fontSize: 24,
+    color: "",//"#6772e5",
     border: "none",
     outline: "none",
     "&::placeholder": {
-      color: ""
+      color: "",
     },
   },
   setButton: {
@@ -86,14 +87,13 @@ const styles = theme => ({
     fontSize: 18,
     border: "2px solid rgba(0,0,0,.05)",
     borderRadius: 8,
-    // boxShadow: "0 0.5px 5px rgba(27,31,35,.15)",
     backgroundColor: theme.primaryWhite,
     transitionDuration: ".15s",
     "&:hover": {
       transform: "translateY(-2px)",
     },
     "&:active": {
-      color: "#7795f8",
+      color: "#6772e5",
       transform: "translateY(2px)",
     }
   }

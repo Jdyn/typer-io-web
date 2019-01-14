@@ -29,7 +29,7 @@ const styles = theme => ({
     "&:hover": {
       transform: "translateY(-1px)",
     },
-    transitionDuration: ".1s",
+    transitionDuration: ".2s",
   }
 });
 

@@ -50,6 +50,9 @@ const styles = theme => ({
       transform: "translateY(-2px)",
       boxShadow:
         "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
+    },
+    "&:active": {
+      transform: "translateY(2px)",
     }
   }
 });

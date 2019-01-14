@@ -32,7 +32,7 @@ const styles = theme => ({
     "&:hover": {
       transform: "translateY(-1px)",
     },
-    transitionDuration: ".1s",
+    transitionDuration: ".2s",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"

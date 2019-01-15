@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import ClientList from "./ClientList";
@@ -6,35 +6,55 @@ import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
 
-class Play extends React.Component {
-  componentWillUnmount() {
-    this.props.leaveRoom({ id: this.props.room.id });
-  }
+const propTypes = {
+  client: PropTypes.object.isRequired,
+  room: PropTypes.object.isRequired,
+  gameboard: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired,
+  updateClient: PropTypes.func.isRequired,
+  initSocket: PropTypes.func.isRequired,
+  gameboardUpdate: PropTypes.func.isRequired,
+  leaveRoom: PropTypes.func.isRequired,
+  sendChatMessage: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired
+};
 
-  render() {
-    const { classes, room, gameboard, client, gameboardUpdate, sendChatMessage } = this.props;
-    return (
-      <main>
-        <div className={classes.stripe} />
-        <div className={classes.root}>
-          <ClientList room={room} gameboard={gameboard} />
-          <Gameboard
-            gameboard={gameboard}
-            client={client}
-            room={room}
-          />
-          <Chat room={room} client={client} sendChatMessage={sendChatMessage} />
-          <Editor
-            gameboardUpdate={gameboardUpdate}
-            gameboard={gameboard}
-            client={client}
-            room={room}
-          />
-        </div>
-      </main>
-    );
-  }
-}
+const Play = props => {
+  const {
+    client,
+    room,
+    gameboard,
+    leaveRoom,
+    gameboardUpdate,
+    sendChatMessage,
+    classes
+  } = props;
+
+  useEffect(() => {
+    return () => {
+      leaveRoom({ id: room.id });
+    };
+  }, []);
+
+  return (
+    <main>
+      <div className={classes.stripe} />
+      <div className={classes.root}>
+        <ClientList room={room} gameboard={gameboard} />
+        <Gameboard client={client} room={room} gameboard={gameboard} />
+        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        <Editor
+          client={client}
+          room={room}
+          gameboard={gameboard}
+          gameboardUpdate={gameboardUpdate}
+        />
+      </div>
+    </main>
+  );
+};
+
+Play.propTypes = propTypes;
 
 const styles = theme => ({
   root: {

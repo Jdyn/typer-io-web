@@ -17,7 +17,7 @@ const GamePiece = props => {
     );
   } else {
     return (
-      <div style={props} className={classes.container}>
+      <div className={classes.container}>
         <div className={classes.circle} />
         <div className={classes.line} />
       </div>

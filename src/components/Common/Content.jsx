@@ -41,12 +41,12 @@ Content.defaultProps = {
 };
 
 const styles = {
-  content: {
-    margin: props => props.margin,
-    fontSize: props => props.fontSize,
-    fontWeight: props => props.fontWeight,
-    color: props => props.color || "black"
-  }
+  content: props => ({
+    margin: props.margin,
+    fontSize: props.fontSize,
+    fontWeight: props.fontWeight,
+    color: props.color || "black"
+  })
 };
 
 export default injectSheet(styles)(Content);

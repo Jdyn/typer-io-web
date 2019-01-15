@@ -36,9 +36,9 @@ const propTypes = {
    */
   backgroundColor: PropTypes.string,
   /**
-   * Defines the `border-radius` style property.
+   * Defines extra style properties.
    */
-  borderRadius: PropTypes.borderRadius
+  styles: PropTypes.object
 };
 
 const Header = ({ children, classes }) => (
@@ -51,22 +51,23 @@ Header.defaultProps = {
   padding: "0",
   fontSize: 18,
   fontWeight: 600,
-  borderRadius: 8,
+  borderRadius: "8px"
 };
 
 const styles = theme => ({
-  header: {
-    margin: props => props.margin,
-    padding: props => props.padding,
-    fontSize: props => props.fontSize,
-    fontWeight: props => props.fontWeight,
-    color: props => props.color || "black",
-    backgroundColor: props => props.backgroundColor,
-    borderRadius: props => props.borderRadius,
-    border: props => props.border,
-    boxShadow: props => props.boxShadow,
-    justifyContent: "left"
-  }
+  header: props => ({
+    margin: props.margin,
+    padding: props.padding,
+    fontSize: props.fontSize,
+    fontWeight: props.fontWeight,
+    color: props.color || "black",
+    backgroundColor: props.backgroundColor,
+    borderRadius: props.borderRadius,
+    border: props.border,
+    boxShadow: props.boxShadow,
+    justifyContent: "left",
+    ...props.styles
+  })
 });
 
 export default injectSheet(styles)(Header);

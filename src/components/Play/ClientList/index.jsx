@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Transition } from "react-spring";
+import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-import ClientListCard from "./ClientListCard";
-// import ListLoadingCard from "./ListLoadingCard";
-import ClientListHeader from "./ClientListHeader";
+import ListHeader from "./ListHeader";
+import ClientCard from "./ClientCard";
+
+const propTypes = {
+  room: PropTypes.object.isRequired,
+  gameboard: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+};
 
 const ClientList = props => {
   const { room, gameboard, classes } = props;
-  const getTime = () => {
+  const [header, setHeader] = useState({
+    color: "#469cd0",
+    text: "Looking for Players..."
+  });
+
+  useEffect(
+    () => {
+      updateHeader();
+    },
+    [room.roomTime]
+  );
+
+  const timeRemaining = () => {
     const roomTime = room.roomTime;
     if (roomTime) {
       const text = roomTime.substring(roomTime.length - 2, roomTime.length);
@@ -15,45 +34,46 @@ const ClientList = props => {
     }
   };
 
-  const headerInfo = () => {
-    const res = {};
-
-    if (getTime() > 10) {
-      res.backgroundColor = "#469cd0";
-      res.text = "Looking for Players...";
-    } else if (getTime() > 5) {
-      res.backgroundColor = "#e57373";
-      res.text = "Get Ready...";
-    } else if (getTime() > 0) {
-      res.backgroundColor = "#e5a03e";
-      res.text = "Get Set...";
-    } else if (getTime() === 0) {
-      res.backgroundColor = "#81C784";
-      res.text = "GO!";
+  const updateHeader = () => {
+    const time = timeRemaining();
+    if (time > 10) {
+      setHeader({ color: "#469cd0", text: "Looking for Players..." });
+    } else if (time > 5) {
+      setHeader({ color: "#e57373", text: "Get Ready..." });
+    } else if (time > 0) {
+      setHeader({ color: "#e5a03e", text: "Get Set..." });
+    } else if (time === 0) {
+      setHeader({ color: "#81C784", text: "GO!" });
     } else {
-      res.backgroundColor = "#469cd0";
-      res.text = "Looking for Players...";
+      setHeader({ color: "#469cd0", text: "Looking for Players..." });
     }
-    return res;
   };
 
   return (
     <div className={classes.container}>
-      <ClientListHeader
+      <ListHeader
         gameTime={gameboard.gameTime}
         roomTime={room.roomTime}
-        headerInfo={headerInfo()}
+        header={header}
       />
-      {room.id && (
-        <div className={classes.inner}>
-          {room.clients.map((client, index) => (
-            <ClientListCard key={index} client={client} />
-          ))}
-        </div>
-      )}
+      <div className={classes.inner}>
+        <Transition
+          items={room.clients}
+          keys={item => item.id}
+          from={{ overflow: "hidden", height: "0px" }}
+          enter={{ height: "100px" }}
+          leave={{ height: "0px" }}
+        >
+          {item => props => (
+            <ClientCard style={props} client={item} />
+          )}
+        </Transition>
+      </div>
     </div>
   );
 };
+
+ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {

@@ -36,17 +36,17 @@ Paper.defaultProps = {
 };
 
 const styles = theme => ({
-  paper: {
+  paper: props => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
     width: "100%",
     borderRadius: 8,
     boxShadow: "0px 5px 30px 5px rgba(50, 50, 93, .25)",
-    margin: props => props.margin,
-    padding: props => props.padding,
-    backgroundColor: props => props.color || theme.primaryWhite
-  }
+    margin: props.margin,
+    padding: props.padding,
+    backgroundColor: props.color || theme.primaryWhite
+  })
 });
 
 export default injectSheet(styles)(Paper);

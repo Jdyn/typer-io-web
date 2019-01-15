@@ -1,0 +1,51 @@
+import React from "react";
+import PropTypes from "prop-types";
+import injectSheet from "react-jss";
+import Header from "../../Common/Header";
+
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  header: PropTypes.object.isRequired,
+  gameTime: PropTypes.string,
+  roomTime: PropTypes.string
+};
+
+const ListHeader = props => {
+  const { classes, theme, header, gameTime, roomTime } = props;
+
+  return (
+    <div className={classes.container}>
+      <Header
+        color={theme.primaryWhite}
+        fontWeight={600}
+        styles={{ height: "25px" }}
+      >
+        {gameTime || roomTime}
+      </Header>
+      <Header color={theme.primaryWhite} fontWeight={600}>
+        {header.text}
+      </Header>
+    </div>
+  );
+};
+
+ListHeader.propTypes = propTypes;
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    width: "100%",
+    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    marginBottom: "25px",
+    borderRadius: "8px",
+    transition: "background-color 1s",
+    backgroundColor: props => props.header.color || "#469cd0",
+    padding: "20px",
+    textAlign: "center"
+  }
+});
+
+export default injectSheet(styles)(ListHeader);

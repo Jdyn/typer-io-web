@@ -46,13 +46,13 @@ Divider.defaultProps = {
 };
 
 const styles = theme => ({
-  divider: {
-    height: props => props.height,
-    margin: props => props.margin,
-    border: props => props.border,
-    flexShrink: props => props.flexShrink,
-    backgroundColor: props => props.color || theme.divider
-  }
+  divider: props => (-{
+    height: props.height,
+    margin: props.margin,
+    border: props.border,
+    flexShrink: props.flexShrink,
+    backgroundColor: props.color || theme.divider
+  })
 });
 
 export default injectSheet(styles)(Divider);

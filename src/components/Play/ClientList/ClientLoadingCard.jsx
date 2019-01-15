@@ -2,7 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 import CommonTitle from "../../CommonComponents/commonTitle";
 
-const ListLoadingCard = props => {
+const ClientLoadingCard = props => {
   const { classes } = props;
 
   return (
@@ -25,4 +25,4 @@ const styles = theme => ({
   wpm: {}
 });
 
-export default injectSheet(styles)(ListLoadingCard);
+export default injectSheet(styles)(ClientLoadingCard);

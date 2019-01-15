@@ -13,7 +13,7 @@ export const Dashboard = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <DashboardNews></DashboardNews>
+        <DashboardNews />
         <DashboardProfile updateClient={updateClient} client={client} />
         <DashboardPlay
           initSocket={initSocket}

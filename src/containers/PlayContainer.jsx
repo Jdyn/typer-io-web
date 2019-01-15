@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import types from "../constants/ActionTypes";
 import Play from "../components/Play";
-import { initSocket, gameboardUpdate, sendChatMessage, updateClient } from "../actions/ClientActions";
 import { silentEmit } from "../store/socket";
+import {
+  initSocket,
+  gameboardUpdate,
+  sendChatMessage,
+  updateClient
+} from "../actions/ClientActions";
 
 class PlayContainer extends Component {
   componentWillMount() {

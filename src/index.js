@@ -23,7 +23,7 @@ const theme = {
   quartinaryWhite: "#e6ebf1",
   primaryGrey: "#d7dadc",
   transparentGrey: "#80808017",
-  divider: "#0000001f"
+  divider: "rgba(0, 0, 0, 0.05)"
 };
 
 const app = (

@@ -61,7 +61,7 @@ const styles = theme => ({
     border: "none",
     flexShrink: 0,
     width: "65%",
-    backgroundColor: "rgba(0, 0, 0, 0.05)"
+    backgroundColor: theme.divider
   },
   nameInput: {
     textAlign: "center",
@@ -70,12 +70,8 @@ const styles = theme => ({
     margin: "25px auto 0 auto",
     padding: "10px 10px 0px 10px",
     fontSize: 24,
-    color: "",//"#6772e5",
     border: "none",
     outline: "none",
-    "&::placeholder": {
-      color: "",
-    },
   },
   setButton: {
     border: "none",
@@ -85,7 +81,8 @@ const styles = theme => ({
     margin: "5px auto 0px auto",
     padding: "10px",
     fontSize: 18,
-    border: "2px solid rgba(0,0,0,.05)",
+    border: "2px solid",
+    borderColor: theme.divider,
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     transitionDuration: ".15s",

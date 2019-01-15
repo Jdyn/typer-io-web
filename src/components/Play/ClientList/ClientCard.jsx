@@ -1,24 +1,26 @@
 import React from "react";
 import injectSheet from "react-jss";
-import { animated } from "react-spring";
+
 const ClientCard = props => {
   const { client, classes } = props;
 
   return (
-    <animated.div className={classes.container}>
+    <div className={classes.container}>
       <div className={classes.username}>{client.username}</div>
       <div className={classes.divider} />
-    </animated.div>
+      <div className={classes.stat}>{client.gamePiece.accuracy}</div>
+      <div className={classes.stat}>{client.gamePiece.errors}</div>
+      <div className={classes.stat}>{client.gamePiece.wpm}</div>
+    </div>
   );
 };
 
 const styles = theme => ({
   container: props => ({
-    // display: "grid",
-    // gridTemplateColumns: "repeat(3, 1fr)",
-    // gridTemplateRows: "min-content 6px auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "min-content 6px auto",
     width: "100%",
-    // height: "90px",
     borderRadius: 8,
     ...props.style
   }),
@@ -26,7 +28,13 @@ const styles = theme => ({
     padding: "5px 15px 0px 15px",
     gridColumn: "1 / 4",
     gridRow: "1 / 2",
+    fontSize: "22px",
     fontWeight: 600
+  },
+  stat: {
+    fontSize: "28px",
+    textAlign: "center",
+    verticalAlign: "middle"
   },
   divider: {
     height: "1px",

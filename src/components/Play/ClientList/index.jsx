@@ -64,8 +64,8 @@ const ClientList = props => {
           enter={{ height: "100px" }}
           leave={{ height: "0px" }}
         >
-          {item => props => (
-            <ClientCard style={props} client={item} />
+          {client => props => (
+            <ClientCard style={props} client={client}/>
           )}
         </Transition>
       </div>

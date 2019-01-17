@@ -66,7 +66,7 @@ const styles = theme => ({
     border: props.border,
     boxShadow: props.boxShadow,
     justifyContent: "left",
-    ...props.styles
+    ...props.style
   })
 });
 

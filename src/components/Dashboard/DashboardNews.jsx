@@ -5,14 +5,10 @@ import Header from "../Common/Header";
 
 const DashboardProfile = props => {
   const { classes, theme } = props;
-  const headerStyle = {
-    transitionDuration: ".15s"
-  };
 
   return (
     <div className={classes.container}>
       <Header
-        styles={headerStyle}
         boxShadow="0 5px 20px rgba(35,35,80,.25)"
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"

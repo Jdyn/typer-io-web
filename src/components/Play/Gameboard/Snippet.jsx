@@ -69,7 +69,7 @@ const styles = theme => ({
     display: "inline-block",
     position: "absolute",
     backgroundColor: theme.primaryWhite,
-    padding: " 0px 10px 0px 15px",
+    padding: " 0px 20px 0px 15px",
     height: "100%",
     width: "100%",
     borderRadius: 8,

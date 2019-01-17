@@ -22,15 +22,7 @@ const styles = theme => ({
     userSelect: "none",
     letterSpacing: "5px",
     backgroundColor: props => (props.color ? props.color : theme.primaryGrey),
-    "&:first-child": {
-      borderRadius: "4px 0px 0px 4px"
-    },
-    "&:last-child": {
-      borderRadius: "0px 4px 4px 0px"
-    },
-    "&:only-child": {
-      borderRadius: "4px 4px 4px 4px"
-    }
+    borderRadius: "4px",
   }
 });
 

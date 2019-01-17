@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import ListHeader from "./ListHeader";
 import ClientCard from "./ClientCard";
-
+import List from "./List";
 const propTypes = {
   room: PropTypes.object.isRequired,
   gameboard: PropTypes.object.isRequired,
@@ -65,7 +65,11 @@ const ClientList = props => {
           leave={{ height: "0px" }}
         >
           {client => props => (
-            <ClientCard style={props} client={client}/>
+            <ClientCard
+              style={props}
+              client={client}
+              color={client.gamePiece.color}
+            />
           )}
         </Transition>
       </div>
@@ -87,8 +91,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    backgroundColor: "transparent",
+    // boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
     borderRadius: 8
   }
 });

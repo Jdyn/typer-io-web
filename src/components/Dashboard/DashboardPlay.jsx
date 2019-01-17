@@ -5,7 +5,7 @@ import injectSheets from "react-jss";
 
 const DashboardPlay = props => {
   const { classes, initSocket, socket } = props;
-  const options = [
+  const cards = [
     {
       title: "Play",
       text: "Defeat other players",
@@ -39,15 +39,11 @@ const DashboardPlay = props => {
 
   return (
     <div className={classes.container}>
-      {options.map((object, index) => {
-        const { title, text, color, route } = object;
+      {cards.map((card, index) => {
         return (
           <DashboardPlayCard
             onClick={handleOnClick}
-            navPath={route}
-            title={title}
-            text={text}
-            backgroundColor={color}
+            card={card}
             key={index}
             pending={socket.pending}
           />

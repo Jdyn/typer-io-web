@@ -43,7 +43,7 @@ const styles = theme => ({
     borderRadius: "8px",
     transition: "background-color 1s",
     backgroundColor: props => props.header.color || "#469cd0",
-    padding: "20px",
+    padding: "25px 0px 25px 0px",
     textAlign: "center"
   }
 });

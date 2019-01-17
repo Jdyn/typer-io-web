@@ -13,13 +13,13 @@ const propTypes = {
 };
 
 const DashboardPlayCard = props => {
-  const { onClick, classes, title, text, navPath } = props;
+  const { onClick, classes, card } = props;
   return (
     <Fragment>
-      <button className={classes.card} onClick={e => onClick(e, navPath)}>
-        <Header color="#fff">{title}</Header>
+      <button className={classes.card} onClick={e => onClick(e, card.route)}>
+        <Header color="#fff">{card.title}</Header>
         <Content className={classes.itemText} color={"#fff"} fontSize={18}>
-          {text}
+          {card.text}
         </Content>
         {props.pending && <div>LOADING</div>}
       </button>
@@ -39,7 +39,7 @@ const styles = theme => ({
     fontWeight: 500,
     outline: "none",
     padding: "40px 40px 40px 40px",
-    backgroundColor: props => props.backgroundColor,
+    backgroundColor: props => props.card.color,
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",

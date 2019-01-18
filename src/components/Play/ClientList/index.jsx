@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import ListHeader from "./ListHeader";
 import ClientCard from "./ClientCard";
-import List from "./List";
+
 const propTypes = {
   room: PropTypes.object.isRequired,
   gameboard: PropTypes.object.isRequired,

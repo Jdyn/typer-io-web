@@ -87,7 +87,7 @@ const styles = theme => ({
     overflow: "auto",
     alignContent: "flex-start",
     // justifyContent: "space-around",
-    padding: "15px 25px 15px 5px"
+    padding: "15px 40px 15px 0px"
   },
   word: {
     display: "flex",

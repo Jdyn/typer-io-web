@@ -13,7 +13,7 @@ const DashboardProfile = props => {
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"
         fontSize={24}
-        backgroundColor={"#6772e5"} //"#f7bb10"
+        backgroundColor={"#555abf"} //"#f7bb10"
         padding="10px"
       >
         Arena

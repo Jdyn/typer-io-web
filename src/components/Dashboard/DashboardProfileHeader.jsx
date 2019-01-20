@@ -51,7 +51,6 @@ const styles = theme => ({
     flexDirection: "column",
     maxWidth: "275px",
     width: "275px",
-    marginBottom: "auto"
   },
   divider: {
     display: "flex",
@@ -79,17 +78,21 @@ const styles = theme => ({
     width: "65%",
     margin: "5px auto 0px auto",
     padding: "10px",
-    fontSize: 18,
+    fontSize: 15,
+    fontWeight: 600,
+    color: "#6772e5",
     border: "2px solid",
     borderColor: theme.divider,
     borderRadius: 8,
+    letterSpacing: ".025em",
+    textTransform: "uppercase",
     backgroundColor: theme.primaryWhite,
     transitionDuration: ".15s",
-    "&:hover": {
+    "&:hover": {  
       transform: "translateY(-2px)",
     },
     "&:active": {
-      color: "#6772e5",
+      color: "#6772e580",
       transform: "translateY(2px)",
     }
   }

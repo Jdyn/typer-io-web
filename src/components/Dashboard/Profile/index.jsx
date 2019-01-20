@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
-import DashboardProfileHeader from "./DashboardProfileHeader";
-import Header from "../Common/Header";
+import Header from "../../Common/Header";
+import GuestProfile from "./GuestProfile";
 
 const propTypes = {
   updateClient: PropTypes.func.isRequired,
@@ -19,15 +19,13 @@ const DashboardProfile = props => {
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"
         fontSize={24}
-        backgroundColor={"#6772e5"}
+        backgroundColor={"#555abf"}
         padding="10px"
       >
         Profile
       </Header>
-      <DashboardProfileHeader
-        updateClient={updateClient}
-        username={client.username}
-      />
+
+      <GuestProfile updateClient={updateClient} client={client} />
     </div>
   );
 };
@@ -36,6 +34,8 @@ DashboardProfile.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
+    display: "flex",
+    flexDirection: "column",
     position: "relative",
     margin: "40px 0px 40px 0px",
     "&:hover": {

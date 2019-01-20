@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
-import DashboardProfile from "./DashboardProfile";
+import DashboardProfile from "./Profile";
 import injectSheet from "react-jss";
 import DashboardNews from "./DashboardNews";
 

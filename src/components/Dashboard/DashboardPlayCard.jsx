@@ -1,15 +1,11 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router";
 import PropTypes from "prop-types";
 import injectSheets from "react-jss";
 import Header from "../Common/Header";
 import Content from "../Common/Content";
 
 const propTypes = {
-  navPath: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  card: PropTypes.object.isRequired
 };
 
 const DashboardPlayCard = props => {

@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 
 class DashboardProfileHeader extends React.Component {
@@ -74,7 +74,6 @@ const styles = theme => ({
     outline: "none",
   },
   setButton: {
-    border: "none",
     cursor: "pointer",
     outline: "none",
     width: "65%",

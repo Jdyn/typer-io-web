@@ -46,7 +46,6 @@ const styles = theme => ({
     textAlign: "center",
     verticalAlign: "middle",
     color: "#e57373",
-    color: theme.primaryWhite,
 
   },
   wpm: {
@@ -54,8 +53,6 @@ const styles = theme => ({
     textAlign: "center",
     verticalAlign: "middle",
     color: "#64B5F6",
-    color: theme.primaryWhite,
-
   },
   divider: {
     height: "2px",

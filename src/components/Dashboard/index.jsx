@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./DashboardProfile";
 import injectSheet from "react-jss";
-import { useEffect } from "react";
 import DashboardNews from "./DashboardNews";
 
 export const Dashboard = props => {

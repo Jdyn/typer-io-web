@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
 import injectSheets from "react-jss";
 
@@ -32,6 +32,7 @@ const DashboardPlay = props => {
       switch (navPath) {
         case "/play":
           initSocket(props.client.username);
+          break
         default: break
       }
     }

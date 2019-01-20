@@ -1,9 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import ChatInput from "./ChatInput";
 import ChatDisplay from "./ChatDisplay";
-import { sendChatMessage } from "../../../actions/ClientActions";
 
 class Chat extends React.Component {
 

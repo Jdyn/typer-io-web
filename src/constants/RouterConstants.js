@@ -1,3 +1,3 @@
 export const HOME_PATH = '/'
-export const ABOUT_PATH = '/about'
+export const LOGIN_PATH = '/login'
 export const PLAY_PATH = '/play'

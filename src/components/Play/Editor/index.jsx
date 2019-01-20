@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types"
 import injectSheet from "react-jss";
 import InputPrompt from "./InputPrompt";
 import InputRecord from "./InputRecord";
-import { gameboardUpdate } from "../../../actions/ClientActions";
+
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  gameboard: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
+  room: PropTypes.object.isRequired,
+  gameboardUpdate: PropTypes.func.isRequired
+}
 
 const Editor = props => {
-  const { classes, gameboard, client, room, gameboardUpdate } = props;
+  const { classes, gameboard, client, gameboardUpdate } = props;
   const [state, setState] = useState({
     gamePieceIndex: null,
     isWrong: false,
@@ -56,6 +64,8 @@ const Editor = props => {
     </div>
   );
 }
+
+Editor.propTypes = propTypes
 
 const styles = theme => ({
   container: {

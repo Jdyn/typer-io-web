@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const InputPrompt = ({ classes, wordsRemaining }) => {
   const filtered = [];
@@ -45,4 +45,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(InputPrompt);
+export default withStyles(styles)(InputPrompt);

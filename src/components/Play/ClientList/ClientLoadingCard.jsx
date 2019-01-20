@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import CommonTitle from "../../CommonComponents/commonTitle";
 
 const ClientLoadingCard = props => {
@@ -25,4 +25,4 @@ const styles = theme => ({
   wpm: {}
 });
 
-export default injectSheet(styles)(ClientLoadingCard);
+export default withStyles(styles)(ClientLoadingCard);

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import injectSheets from "react-jss";
+import withStyless from "react-jss";
 import Header from "../Common/Header";
 import Content from "../Common/Content";
 
@@ -55,4 +55,4 @@ const styles = theme => ({
 
 DashboardPlayCard.propTypes = propTypes;
 
-export default injectSheets(styles)(DashboardPlayCard);
+export default withStyless(styles)(DashboardPlayCard);

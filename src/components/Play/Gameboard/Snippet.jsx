@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import GamePiece from "./GamePiece";
 
 const Snippet = props => {
@@ -96,4 +96,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Snippet);
+export default withStyles(styles)(Snippet);

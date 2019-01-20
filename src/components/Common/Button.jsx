@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import PropTypes from "prop-types";
 
 // TODO: Need to update prop-types for this component.
@@ -31,8 +31,10 @@ const propTypes = {
   color: PropTypes.string
 };
 
-const Button = ({ children, classes }) => (
-  <button className={classes.button}>{children}</button>
+const Button = ({ children, classes, onClick }) => (
+  <button onClick={onClick} className={classes.button}>
+    {children}
+  </button>
 );
 
 Button.propTypes = propTypes;
@@ -96,4 +98,4 @@ const styles = theme => ({
   // }
 });
 
-export default injectSheet(styles)(Button);
+export default withStyles(styles)(Button);

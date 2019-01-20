@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const propTypes = {
   children: PropTypes.node,
@@ -46,6 +46,6 @@ const styles = theme => ({
 CssBaseline.propTypes = propTypes;
 CssBaseline.defaultProps = defaultProps;
 
-export default injectSheet(styles)(CssBaseline);
+export default withStyles(styles)(CssBaseline);
 
 // Inspired by Material-UI baseline CSS. - Thanks

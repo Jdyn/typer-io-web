@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Transition } from "react-spring";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import ListHeader from "./ListHeader";
 import ClientCard from "./ClientCard";
 
@@ -97,4 +97,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(ClientList);
+export default withStyles(styles)(ClientList);

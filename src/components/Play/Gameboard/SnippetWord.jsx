@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const SnippetWord = props => {
   const { word, classes } = props;
@@ -26,4 +26,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(SnippetWord);
+export default withStyles(styles)(SnippetWord);

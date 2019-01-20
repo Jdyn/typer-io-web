@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Button from "../Common/Button";
 
 const propTypes = {};
 
 const DashboardProfileFooter = props => {
-  const { classes, theme } = props;
+  const { classes, theme, changeProfile } = props;
   return (
     <div className={classes.container}>
       <div className={classes.divider} />
 
       <Button
+        onClick={() => changeProfile("LOG_IN_PROFILE")}
         backgroundColor={theme.primaryWhite}
         width="65%"
         margin="5px auto 0px auto"
@@ -21,6 +22,7 @@ const DashboardProfileFooter = props => {
         log in
       </Button>
       <Button
+        onClick={() => changeProfile("SIGN_UP_PROFILE")}
         backgroundColor={"#6772e5"}
         width="65%"
         margin="5px auto 0 auto"
@@ -54,4 +56,6 @@ const styles = theme => ({
 
 DashboardProfileFooter.propTypes = propTypes;
 
-export default injectSheet(styles)(DashboardProfileFooter);
+export default withStyles(styles, { injectTheme: true })(
+  DashboardProfileFooter
+);

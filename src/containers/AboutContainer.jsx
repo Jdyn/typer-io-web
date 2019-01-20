@@ -1,5 +1,5 @@
 import React from 'react'
-import injectSheet from 'react-jss'
+import withStyles from 'react-jss'
 import { useState } from 'react'
 const About = props => {
   const { classes } = props
@@ -66,4 +66,4 @@ const styles = {
   }
 }
 
-export default injectSheet(styles)(About)
+export default withStyles(styles)(About)

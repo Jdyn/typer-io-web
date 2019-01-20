@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
@@ -51,4 +51,4 @@ const styles = {
   }
 }
 
-export default injectSheet(styles)(Gameboard);
+export default withStyles(styles)(Gameboard);

@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import { Spring } from "react-spring";
 const GamePiece = props => {
   const { classes, index } = props;
@@ -52,4 +52,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(GamePiece);
+export default withStyles(styles)(GamePiece);

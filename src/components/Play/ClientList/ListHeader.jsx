@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Header from "../../Common/Header";
 
 const propTypes = {
@@ -48,4 +48,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(ListHeader);
+export default withStyles(styles)(ListHeader);

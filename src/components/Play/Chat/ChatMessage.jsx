@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const ChatMessage = ({ classes, message }) => {
   return (
@@ -39,4 +39,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(ChatMessage);
+export default withStyles(styles)(ChatMessage);

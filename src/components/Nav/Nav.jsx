@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import { Link } from 'react-router-dom'
 const Nav = props => {
   const { classes } = props;
@@ -68,4 +68,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Nav);
+export default withStyles(styles)(Nav);

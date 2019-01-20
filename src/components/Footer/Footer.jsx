@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const Footer = ({ classes }) => {
   return (
@@ -28,4 +28,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(Footer);
+export default withStyles(styles)(Footer);

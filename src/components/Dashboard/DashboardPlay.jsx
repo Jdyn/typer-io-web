@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
-import injectSheets from "react-jss";
+import withStyless from "react-jss";
 
 const DashboardPlay = props => {
   const { classes, initSocket, socket } = props;
@@ -66,4 +66,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheets(styles)(DashboardPlay);
+export default withStyless(styles)(DashboardPlay);

@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import ChatMessage from "./ChatMessage";
 
 class ChatDisplay extends React.Component {
@@ -52,4 +52,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(ChatDisplay);
+export default withStyles(styles)(ChatDisplay);

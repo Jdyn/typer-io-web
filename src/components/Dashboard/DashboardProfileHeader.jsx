@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 class DashboardProfileHeader extends React.Component {
   constructor(props) {
@@ -98,4 +98,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(DashboardProfileHeader);
+export default withStyles(styles)(DashboardProfileHeader);

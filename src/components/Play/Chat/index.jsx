@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 // import PropTypes from "prop-types";
 import ChatInput from "./ChatInput";
 import ChatDisplay from "./ChatDisplay";
@@ -70,4 +70,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Chat);
+export default withStyles(styles)(Chat);

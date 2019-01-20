@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 
 const ClientCard = props => {
   const { client, classes } = props;
@@ -65,4 +65,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(ClientCard);
+export default withStyles(styles)(ClientCard);

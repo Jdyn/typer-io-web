@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types"
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import InputPrompt from "./InputPrompt";
 import InputRecord from "./InputRecord";
 
@@ -91,4 +91,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Editor);
+export default withStyles(styles)(Editor);

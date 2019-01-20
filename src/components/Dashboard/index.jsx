@@ -2,7 +2,7 @@ import React from "react";
 // import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./Profile";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import DashboardNews from "./DashboardNews";
 
 export const Dashboard = props => {
@@ -53,4 +53,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Dashboard);
+export default withStyles(styles)(Dashboard);

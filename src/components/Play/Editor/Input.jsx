@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import { silentEmit } from "../../../store/socket";
 
 const Input = props => {
@@ -122,4 +122,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(Input);
+export default withStyles(styles)(Input);

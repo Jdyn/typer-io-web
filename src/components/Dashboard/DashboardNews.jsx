@@ -1,11 +1,10 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Header from "../Common/Header";
 
 const DashboardProfile = props => {
   const { classes, theme } = props;
-
   return (
     <div className={classes.container}>
       <Header
@@ -39,4 +38,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(DashboardProfile);
+export default withStyles(styles, { injectTheme: true })(DashboardProfile);

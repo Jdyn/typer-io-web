@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
@@ -81,4 +81,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(Play);
+export default withStyles(styles)(Play);

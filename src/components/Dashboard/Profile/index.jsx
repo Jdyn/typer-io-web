@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Header from "../../Common/Header";
 import GuestProfile from "./GuestProfile";
+import LogInProfile from "./LogInProfile";
+import SignInProfile from "./SignInProfile";
+import UserProfile from "./UserProfile";
 
 const propTypes = {
   updateClient: PropTypes.func.isRequired,
@@ -11,6 +14,40 @@ const propTypes = {
 
 const DashboardProfile = props => {
   const { classes, updateClient, client, theme } = props;
+  const isLoggedIn = false;
+  const [profile, setProfile] = useState(
+    isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
+  );
+
+  const changeProfile = newProfile => {
+    switch (newProfile) {
+      case "BACK":
+        setProfile(isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
+        break
+      default:
+        setProfile(newProfile);
+        break
+    }
+  };
+
+  const renderProfile = profile => {
+    switch (profile) {
+      case "GUEST_PROFILE":
+        return (
+          <GuestProfile
+            changeProfile={changeProfile}
+            updateClient={updateClient}
+            client={client}
+          />
+        );
+      case "USER_PROFILE":
+        return <UserProfile />;
+      case "SIGN_UP_PROFILE":
+        return <SignInProfile changeProfile={changeProfile} />;
+      case "LOG_IN_PROFILE":
+        return <LogInProfile changeProfile={changeProfile} />;
+    }
+  };
 
   return (
     <div className={classes.container}>
@@ -25,7 +62,7 @@ const DashboardProfile = props => {
         Profile
       </Header>
 
-      <GuestProfile updateClient={updateClient} client={client} />
+      {renderProfile(profile)}
     </div>
   );
 };
@@ -49,4 +86,4 @@ const styles = theme => ({
   }
 });
 
-export default injectSheet(styles)(DashboardProfile);
+export default withStyles(styles, { injectTheme: true })(DashboardProfile);

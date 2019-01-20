@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import DashboardProfileHeader from "../DashboardProfileHeader";
 import DashboardProfileFooter from "../DashboardProfileFooter";
 
@@ -10,24 +10,26 @@ const propTypes = {
 };
 
 const LogInProfile = props => {
-  const { classes, updateClient, client, theme } = props;
+  const { classes, changeProfile } = props;
 
   return (
     <div className={classes.inner}>
-        This is the log in
+      This is the log in
+      <button onClick={() => changeProfile("BACK")}>back</button>
     </div>
   );
 };
 
-DashboardProfile.propTypes = propTypes;
+LogInProfile.propTypes = propTypes;
 
 const styles = theme => ({
   inner: {
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    height: "100%"
+    height: "100%",
+    width: "275px"
   }
 });
 
-export default injectSheet(styles)(LogInProfile);
+export default withStyles(styles)(LogInProfile);

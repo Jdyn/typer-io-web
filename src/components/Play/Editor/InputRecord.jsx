@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import Input from "./Input";
 
 const InputRecord = props => {
@@ -45,4 +45,4 @@ const styles = {
   }
 };
 
-export default injectSheet(styles)(InputRecord);
+export default withStyles(styles)(InputRecord);

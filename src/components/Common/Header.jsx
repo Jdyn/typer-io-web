@@ -1,5 +1,5 @@
 import React from "react";
-import injectSheet from "react-jss";
+import withStyles from "react-jss";
 import PropTypes from "prop-types";
 
 const propTypes = {
@@ -70,4 +70,4 @@ const styles = theme => ({
   })
 });
 
-export default injectSheet(styles)(Header);
+export default withStyles(styles)(Header);

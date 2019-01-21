@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../Common/Header";
 import GuestProfile from "./GuestProfile";
-import LogInProfile from "./LogInProfile";
-import SignInProfile from "./SignUpProfile";
+import LogInView from "./LogInView";
+import SignInProfile from "./SignInView";
 import UserProfile from "./UserProfile";
 
 const propTypes = {
@@ -13,17 +13,16 @@ const propTypes = {
 };
 
 const DashboardProfile = props => {
-  const { classes, updateClient, client, theme } = props;
-  const isLoggedIn = false;
+  const { classes, updateClient, client, theme, logIn } = props;
+  console.log(client)
   const [profile, setProfile] = useState(
-    "SIGN_UP_PROFILE"
-    // isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
+    client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
   );
 
   const changeProfile = newProfile => {
     switch (newProfile) {
       case "BACK":
-        setProfile(isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
+        setProfile(client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
         break;
       default:
         setProfile(newProfile);
@@ -46,7 +45,7 @@ const DashboardProfile = props => {
       case "SIGN_UP_PROFILE":
         return <SignInProfile changeProfile={changeProfile} />;
       case "LOG_IN_PROFILE":
-        return <LogInProfile changeProfile={changeProfile} />;
+        return <LogInView changeProfile={changeProfile} logIn={logIn} />;
     }
   };
 

@@ -62,8 +62,6 @@ const styles = theme => ({
     borderRadius: 8,
     letterSpacing: ".025em",
     textTransform: "uppercase",
-    color: props.color,
-    backgroundColor: props.backgroundColor,
     transitionDuration: ".15s",
     "&:hover": {
       transform: "translateY(-2px)"

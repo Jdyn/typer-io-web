@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import DashboardProfileHeader from "../DashboardProfileHeader";
-import DashboardProfileFooter from "../DashboardProfileFooter";
 import Button from "../../Common/Button";
+import Input from "../../Common/Input";
 
 const propTypes = {
   updateClient: PropTypes.func.isRequired,
   client: PropTypes.object.isRequired
 };
 
-const SignUpProfile = props => {
+const SignInView = props => {
   const { classes, changeProfile, theme } = props;
   const [form, setForm] = useState({
     email: "",
@@ -28,27 +27,27 @@ const SignUpProfile = props => {
         className={classes.exitButton}
         onClick={() => changeProfile("BACK")}
       >
-        <svg className={classes.exitSVG} width="35" height="35" viewBox="0 0 25 25">
+        <svg
+          className={classes.exitSVG}
+          width="35"
+          height="35"
+          viewBox="0 0 25 25"
+        >
           <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
         </svg>
       </button>
-      <form onSubmit={handleSubmit} className={classes.container}>
-        <input
-          className={classes.input}
-          type="text"
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <Input
           value={form.username}
           onChange={event => setForm({ ...form, username: event.target.value })}
           placeholder="username"
         />
-        <input
-          className={classes.input}
-          type="text"
+        <Input
           value={form.email}
           onChange={event => setForm({ ...form, email: event.target.value })}
           placeholder="email"
         />
-        <input
-          className={classes.input}
+        <Input
           type="password"
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
@@ -71,7 +70,7 @@ const SignUpProfile = props => {
   );
 };
 
-SignUpProfile.propTypes = propTypes;
+SignInView.propTypes = propTypes;
 
 const styles = theme => ({
   inner: {
@@ -81,22 +80,9 @@ const styles = theme => ({
     height: "100%",
     width: "275px"
   },
-  container: {
+  form: {
     width: "75%",
     margin: "15px auto 0px auto"
-  },
-  input: {
-    height: "42px",
-    width: "100%",
-    margin: "0 0 10px 0",
-    borderRadius: 8,
-    border: "2px solid",
-    borderColor: theme.divider,
-    backgroundColor: theme.primaryWhite,
-    padding: "10px",
-    fontSize: 18,
-    outline: "none",
-    backgroundImage: "none"
   },
   exitButton: {
     height: "32px",
@@ -121,4 +107,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(SignUpProfile);
+export default withStyles(styles, { injectTheme: true })(SignInView);

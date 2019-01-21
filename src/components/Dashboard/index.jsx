@@ -6,14 +6,14 @@ import withStyles from "react-jss";
 import DashboardNews from "./DashboardNews";
 
 export const Dashboard = props => {
-  const { client, updateClient, classes, initSocket } = props;
+  const { client, updateClient, classes, initSocket, logIn } = props;
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <DashboardNews />
-        <DashboardProfile updateClient={updateClient} client={client} />
+        <DashboardNews /> 
+        <DashboardProfile logIn={logIn} updateClient={updateClient} client={client} />
         <DashboardPlay
           initSocket={initSocket}
           socket={props.socket}

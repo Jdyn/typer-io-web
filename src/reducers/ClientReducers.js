@@ -4,7 +4,15 @@ const initialState = {
   meta: {
     id: null,
     username: null,
-    isInRoom: false
+    isInRoom: false,
+    session: {
+      id: null,
+      isAuthenticating: false,
+      isLoggedIn: false,
+      firstName: null,
+      lastName: null,
+      email: null
+    }
   },
   room: {
     id: null,
@@ -77,7 +85,7 @@ export default (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            ...action.payload,
+            ...action.payload
           },
           clients: gameboardUpdate(
             [...state.room.clients],
@@ -116,7 +124,7 @@ export default (state = initialState, action) => {
           ...action.payload.room,
           gameboard: {
             ...state.room.gameboard,
-            words: action.payload.room.snippet.split(" ") || [],
+            words: action.payload.room.snippet.split(" ") || []
           }
         },
         socket: {
@@ -141,12 +149,33 @@ export default (state = initialState, action) => {
         ...state,
         room: {
           ...state.room,
-          messages: updateRoomChat(
-            action.payload,
-            state.room.messages
-          )
+          messages: updateRoomChat(action.payload, state.room.messages)
+        }
+      };
+    case "LOG_IN_REQUEST":
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          session: {
+            ...state.meta.session,
+            isAuthenticating: true
+          }
+        }
+      };
+    case "LOG_IN_SUCCESS":
+    return {
+      ...state,
+      meta: {
+        ...state.meta,
+        session: {
+          ...state.session,
+          isAuthenticating: false,
+          isLoggedIn: true,
+          ...action.response.data
         }
       }
+    }
     default:
       return state;
   }

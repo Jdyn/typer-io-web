@@ -4,7 +4,7 @@ import withStyles from "react-jss";
 import Header from "../../Common/Header";
 import GuestProfile from "./GuestProfile";
 import LogInProfile from "./LogInProfile";
-import SignInProfile from "./SignInProfile";
+import SignInProfile from "./SignUpProfile";
 import UserProfile from "./UserProfile";
 
 const propTypes = {
@@ -16,17 +16,18 @@ const DashboardProfile = props => {
   const { classes, updateClient, client, theme } = props;
   const isLoggedIn = false;
   const [profile, setProfile] = useState(
-    isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
+    "SIGN_UP_PROFILE"
+    // isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
   );
 
   const changeProfile = newProfile => {
     switch (newProfile) {
       case "BACK":
         setProfile(isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
-        break
+        break;
       default:
         setProfile(newProfile);
-        break
+        break;
     }
   };
 

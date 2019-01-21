@@ -48,19 +48,21 @@ Button.defaultProps = {
 
 const styles = theme => ({
   button: props => ({
+    width: props.width,
+    margin: props.margin,
+    borderColor: theme.divider,
+    color: props.color,
+    backgroundColor: props.backgroundColor,
     cursor: "pointer",
     outline: "none",
-    width: "75%",
-    margin: props.margin,
     padding: "10px",
     fontSize: 15,
     fontWeight: 600,
     border: "2px solid",
-    borderColor: theme.divider,
     borderRadius: 8,
     letterSpacing: ".025em",
     textTransform: "uppercase",
-    color: props.color, //"#6772e5", //"#525f7f"
+    color: props.color,
     backgroundColor: props.backgroundColor,
     transitionDuration: ".15s",
     "&:hover": {

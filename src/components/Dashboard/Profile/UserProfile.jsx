@@ -10,12 +10,11 @@ const propTypes = {
 };
 
 const UserProfile = props => {
-  const { classes, updateClient, client, shouldRender } = props;
+  const { classes, updateClient, client, shouldRender, username } = props;
 
   return (
     <div className={classes.inner}>
-      This is the user profile
-      <DashboardProfileFooter />
+      <DashboardProfileHeader username={username} />
     </div>
   );
 };

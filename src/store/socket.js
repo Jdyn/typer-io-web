@@ -28,7 +28,7 @@ const init = (url, dispatch, payload) => {
         dispatch({ type: key, payload });
       })
     );
-  })
+  });
 };
 
 const defaultListeners = dispatch => {
@@ -65,12 +65,17 @@ const defaultListeners = dispatch => {
           error: payload
         }
       });
+      if (socket) {
+        socket.close();
+        socket = null;
+      }
     });
   }
 };
 
-export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
-export const silentOn = (type, payload) => socket && socket.on(type, payload)
+export const silentEmit = (type, payload) =>
+  socket && socket.emit(type, payload);
+export const silentOn = (type, payload) => socket && socket.on(type, payload);
 
 export const emitAction = action => {
   return (...args) => {

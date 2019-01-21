@@ -59,7 +59,7 @@ const styles = theme => ({
     fontSize: 15,
     fontWeight: 600,
     border: "2px solid",
-    borderRadius: 8,
+    borderRadius: 4,
     letterSpacing: ".025em",
     textTransform: "uppercase",
     transitionDuration: ".15s",

@@ -168,6 +168,7 @@ export default (state = initialState, action) => {
       ...state,
       meta: {
         ...state.meta,
+        username: action.response.data.username,
         session: {
           ...state.session,
           isAuthenticating: false,

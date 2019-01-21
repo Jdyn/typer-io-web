@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../Common/Header";
@@ -14,15 +14,23 @@ const propTypes = {
 
 const DashboardProfile = props => {
   const { classes, updateClient, client, theme, logIn } = props;
-  console.log(client)
   const [profile, setProfile] = useState(
     client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
+  );
+  console.log(localStorage);
+  useEffect(
+    () => {
+      setProfile(client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
+    },
+    [client.session.isLoggedIn]
   );
 
   const changeProfile = newProfile => {
     switch (newProfile) {
       case "BACK":
-        setProfile(client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
+        setProfile(
+          client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
+        );
         break;
       default:
         setProfile(newProfile);
@@ -41,7 +49,7 @@ const DashboardProfile = props => {
           />
         );
       case "USER_PROFILE":
-        return <UserProfile />;
+        return <UserProfile username={client.username} />;
       case "SIGN_UP_PROFILE":
         return <SignInProfile changeProfile={changeProfile} />;
       case "LOG_IN_PROFILE":

@@ -48,4 +48,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(ListHeader);
+export default withStyles(styles, { injectTheme: true })(ListHeader);

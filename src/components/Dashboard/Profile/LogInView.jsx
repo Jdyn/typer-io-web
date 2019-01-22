@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const LogInView = props => {
-  const { classes, changeProfile, theme, logIn } = props;
+  const { classes, changeProfile, theme, logIn, client } = props;
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -60,6 +60,7 @@ const LogInView = props => {
         >
           Log In
         </Button>
+        {client.session.errored && <p>{client.session.error}</p>}
       </form>
     </div>
   );

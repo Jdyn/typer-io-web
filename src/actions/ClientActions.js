@@ -32,13 +32,16 @@ export const initSocket = (username, history) => ({
 export const logIn = payload => dispatch => {
   dispatch({ type: "LOG_IN_REQUEST" });
   ApiService.post("/sessions/login", payload).then(response => {
-    console.log(response)
-    setCurrentSession(dispatch, response);
+    if (response.ok) {
+      setCurrentSession(dispatch, response);
+    } else {
+      dispatch({type: "LOG_IN_FAILURE", response})
+    }
   });
 };
 
 const setCurrentSession = (dispatch, response) => {
-  localStorage.setItem("token", JSON.stringify(response.meta.token));
+  localStorage.setItem("token", JSON.stringify(response.result.token));
   console.log(response.data);
 
   dispatch({ type: "LOG_IN_SUCCESS", response });

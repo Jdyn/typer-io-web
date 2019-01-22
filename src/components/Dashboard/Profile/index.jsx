@@ -32,6 +32,9 @@ const DashboardProfile = props => {
           client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
         );
         break;
+      case "LOG_OUT":
+        setProfile("GUEST_PROFILE");
+        break
       default:
         setProfile(newProfile);
         break;
@@ -49,11 +52,22 @@ const DashboardProfile = props => {
           />
         );
       case "USER_PROFILE":
-        return <UserProfile username={client.username} />;
+        return (
+          <UserProfile
+            username={client.username}
+            changeProfile={changeProfile}
+          />
+        );
       case "SIGN_UP_PROFILE":
         return <SignInProfile changeProfile={changeProfile} />;
       case "LOG_IN_PROFILE":
-        return <LogInView changeProfile={changeProfile} logIn={logIn} />;
+        return (
+          <LogInView
+            changeProfile={changeProfile}
+            logIn={logIn}
+            client={client}
+          />
+        );
     }
   };
 

@@ -11,7 +11,9 @@ const initialState = {
       isLoggedIn: false,
       firstName: null,
       lastName: null,
-      email: null
+      email: null,
+      error: null,
+      errored: false
     }
   },
   room: {
@@ -116,6 +118,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         meta: {
+          ...state.meta,
           id: action.payload.id,
           username: action.payload.username,
           isInRoom: action.payload.isInRoom
@@ -164,19 +167,35 @@ export default (state = initialState, action) => {
         }
       };
     case "LOG_IN_SUCCESS":
-    return {
-      ...state,
-      meta: {
-        ...state.meta,
-        username: action.response.data.username,
-        session: {
-          ...state.session,
-          isAuthenticating: false,
-          isLoggedIn: true,
-          ...action.response.data
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          username: action.response.result.user.username,
+          session: {
+            ...state.session,
+            isAuthenticating: false,
+            isLoggedIn: true,
+            ...action.response.result.user,
+            error: null,
+            errored: false
+          }
         }
-      }
-    }
+      };
+
+    case "LOG_IN_FAILURE":
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          session: {
+            ...state.meta.session,
+            isAuthenticating: false,
+            error: action.response.error,
+            errored: true
+          }
+        }
+      };
     default:
       return state;
   }

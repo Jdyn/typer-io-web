@@ -12,10 +12,10 @@ function headers() {
 
 function parseResponse(response) {
   return response.json().then(json => {
-    // if (!response.ok) {
-    //   return Promise.reject(json);
+    // if (response.ok) {
+    //   return json;
     // }
-    return json;
+    return json
   });
 }
 

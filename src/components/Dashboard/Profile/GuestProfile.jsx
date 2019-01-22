@@ -18,6 +18,7 @@ console.log("rendered")
         updateClient={updateClient}
         username={client.username}
       />
+
       <DashboardProfileFooter changeProfile={changeProfile}/>
     </div>
   );

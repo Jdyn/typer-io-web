@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../Common/Header";
-import GuestProfile from "./GuestProfile";
+import GuestView from "./GuestView";
 import LogInView from "./LogInView";
 import SignInProfile from "./SignInView";
-import UserProfile from "./UserProfile";
+import ClientView from "./ClientView";
 
 const propTypes = {
   updateClient: PropTypes.func.isRequired,
@@ -13,11 +13,11 @@ const propTypes = {
 };
 
 const DashboardProfile = props => {
-  const { classes, updateClient, client, theme, login } = props;
+  const { classes, updateClient, client, theme, login, logout } = props;
   const [profile, setProfile] = useState(
     client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
   );
-  console.log(localStorage);
+
   useEffect(
     () => {
       setProfile(client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
@@ -45,7 +45,7 @@ const DashboardProfile = props => {
     switch (profile) {
       case "GUEST_PROFILE":
         return (
-          <GuestProfile
+          <GuestView
             changeProfile={changeProfile}
             updateClient={updateClient}
             client={client}
@@ -53,9 +53,10 @@ const DashboardProfile = props => {
         );
       case "USER_PROFILE":
         return (
-          <UserProfile
+          <ClientView
             username={client.username}
             changeProfile={changeProfile}
+            logout={logout}
           />
         );
       case "SIGN_UP_PROFILE":

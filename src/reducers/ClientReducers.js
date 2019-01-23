@@ -166,6 +166,7 @@ export default (state = initialState, action) => {
           }
         }
       };
+    case "AUTHENTICATION_SUCCESS":
     case "LOG_IN_SUCCESS":
       return {
         ...state,
@@ -182,6 +183,26 @@ export default (state = initialState, action) => {
           }
         }
       };
+
+    case "LOG_OUT":
+    return {
+      ...state,
+      meta: {
+        ...state.meta,
+        username: null,
+        session: {
+          username: null,
+          id: null,
+          isAuthenticating: false,
+          isLoggedIn: false,
+          firstName: null,
+          lastName: null,
+          email: null,
+          error: null,
+          errored: false
+        }
+      }
+    }
 
     case "LOG_IN_FAILURE":
       return {

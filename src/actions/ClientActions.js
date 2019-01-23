@@ -40,14 +40,28 @@ export const login = payload => dispatch => {
   });
 };
 
-export const logout = payload => dispatch => {};
+export const logout = () => dispatch => {
+  console.log("logout callled");
+  ApiService.delete("/sessions/logout")
+    .then(() => {
+      dispatch({ type: "LOG_OUT" });
+      localStorage.removeItem("token");
+    })
+    .catch(() => {
+      dispatch({ type: "LOG_OUT" });
+      localStorage.removeItem("token");
+    });
+};
 
 export const authenticate = () => dispatch => {
+  console.log("authenticate called");
   ApiService.post("/sessions/refresh")
     .then(response => {
       verifyCurrentSession(dispatch, response);
+      console.log("success");
     })
     .catch(() => {
+      console.log("failure");
       localStorage.removeItem("token");
       dispatch({ type: "AUTHENTICATION_FAILURE" });
     });

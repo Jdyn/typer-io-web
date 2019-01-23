@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
-import { updateClient, login, initSocket } from "../actions/ClientActions";
+import { updateClient, login, initSocket, logout } from "../actions/ClientActions";
 
 class DashboardContainer extends Component {
   componentDidUpdate() {
@@ -24,7 +24,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateClient: object => dispatch(updateClient(object)),
   initSocket: username => dispatch(initSocket(username)),
-  login: payload => dispatch(login(payload))
+  login: payload => dispatch(login(payload)),
+  logout: () => dispatch(logout())
 });
 
 export default connect(

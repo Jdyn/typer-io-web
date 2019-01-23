@@ -2,6 +2,8 @@ import React from "react";
 // import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ApiService from "../../services/ApiService";
+import Divider from "../Common/Divider";
+import Button from "../Common/Button";
 
 class DashboardProfileHeader extends React.Component {
   constructor(props) {
@@ -16,21 +18,19 @@ class DashboardProfileHeader extends React.Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault()
-    ApiService.post("/sessions/refresh").then(res => console.log(res.json()))
-
-    // const { updateClient, username } = this.props;
-    // event.preventDefault();
-    // const name = this.state.value;
-    // if (name !== username) {
-    //   if (name !== null) {
-    //     updateClient({ username: name });
-    //   }
-    // }
+    event.preventDefault();
+    const { updateClient, username } = this.props;
+    event.preventDefault();
+    const name = this.state.value;
+    if (name !== username) {
+      if (name !== null) {
+        updateClient({ username: name });
+      }
+    }
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
     return (
       <div className={classes.container}>
         <form onSubmit={this.handleSubmit} className={classes.container}>
@@ -41,8 +41,17 @@ class DashboardProfileHeader extends React.Component {
             onChange={this.handleChange}
             placeholder="username"
           />
-          <div className={classes.divider} />
-          <button type="submit" className={classes.setButton}>Set</button>
+          <Divider />
+          <Button
+            type="submit"
+            backgroundColor={theme.primaryWhite}
+            width="65%"
+            margin="5px auto 0px auto"
+            color="#6772e5"
+            activeColor={"#6772e580"}
+          >
+            Set
+          </Button>
         </form>
       </div>
     );
@@ -54,17 +63,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     maxWidth: "275px",
-    width: "275px",
-  },
-  divider: {
-    display: "flex",
-    position: "relative",
-    height: "2px",
-    margin: "auto",
-    border: "none",
-    flexShrink: 0,
-    width: "65%",
-    backgroundColor: theme.divider
+    width: "275px"
   },
   nameInput: {
     textAlign: "center",
@@ -74,32 +73,10 @@ const styles = theme => ({
     padding: "10px 10px 0px 10px",
     fontSize: 24,
     border: "none",
-    outline: "none",
-  },
-  setButton: {
-    cursor: "pointer",
-    outline: "none",
-    width: "65%",
-    margin: "5px auto 0px auto",
-    padding: "10px",
-    fontSize: 15,
-    fontWeight: 600,
-    color: "#6772e5",
-    border: "2px solid",
-    borderColor: theme.divider,
-    borderRadius: 8,
-    letterSpacing: ".025em",
-    textTransform: "uppercase",
-    backgroundColor: theme.primaryWhite,
-    transitionDuration: ".15s",
-    "&:hover": {  
-      transform: "translateY(-2px)",
-    },
-    "&:active": {
-      color: "#6772e580",
-      transform: "translateY(2px)",
-    }
+    outline: "none"
   }
 });
 
-export default withStyles(styles)(DashboardProfileHeader);
+export default withStyles(styles, { injectTheme: true })(
+  DashboardProfileHeader
+);

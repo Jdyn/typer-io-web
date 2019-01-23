@@ -42,12 +42,14 @@ const LogInView = props => {
           value={form.email}
           onChange={event => setForm({ ...form, email: event.target.value })}
           placeholder="email"
+          autocomplete="email"
         />
         <Input
           type="password"
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
           placeholder="password"
+          autoComplete="current-password"
         />
         <Button
           onClick={event => handleSubmit(event)}

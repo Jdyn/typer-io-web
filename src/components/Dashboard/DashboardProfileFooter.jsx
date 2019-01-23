@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Button from "../Common/Button";
+import Divider from "../Common/Divider";
 
 const propTypes = {};
 
@@ -9,8 +10,7 @@ const DashboardProfileFooter = props => {
   const { classes, theme, changeProfile } = props;
   return (
     <div className={classes.container}>
-      <div className={classes.divider} />
-
+      <Divider />
       <Button
         onClick={() => changeProfile("LOG_IN_PROFILE")}
         backgroundColor={theme.primaryWhite}

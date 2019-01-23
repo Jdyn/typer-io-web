@@ -2,11 +2,11 @@ const API = "http://localhost:4000/api/v1";
 
 function headers() {
   const token = JSON.parse(localStorage.getItem("token"));
-
+  console.log("from api service", token)
   return {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization: `Bearer: ${token}`
+    Authorization: `Bearer ${token ? token : ""}`
   };
 }
 

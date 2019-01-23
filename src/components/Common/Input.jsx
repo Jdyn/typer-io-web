@@ -2,8 +2,6 @@ import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
 
-// TODO: Need to update prop-types for this component.
-
 const propTypes = {
   /**
    * The content of the component.
@@ -28,7 +26,15 @@ const propTypes = {
   /**
    * Defines the `color` style property.
    */
-  color: PropTypes.string
+  color: PropTypes.string,
+  /**
+   * Defines the `width` style property.
+   */
+  width: PropTypes.width,
+  /**
+   * Defines the `padding` style property.
+   */
+  padding: PropTypes.padding
 };
 
 const Input = ({ children, classes, onChange, type, value, placeholder }) => (
@@ -45,23 +51,23 @@ const Input = ({ children, classes, onChange, type, value, placeholder }) => (
 
 Input.propTypes = propTypes;
 Input.defaultProps = {
-  margin: "0",
+  margin: "0 0 10px 0",
   fontSize: 15,
   fontWeight: 600,
-  width: "155px",
+  width: "100%",
   padding: "10px"
 };
 
 const styles = theme => ({
   input: props => ({
-    height: "42px",
-    width: "100%",
-    margin: "0 0 10px 0",
-    borderRadius: 8,
-    border: "2px solid",
+    width: props.width,
+    margin: props.margin,
     borderColor: theme.divider,
     backgroundColor: theme.primaryWhite,
-    padding: "10px",
+    padding: props.padding,
+    height: "42px",
+    borderRadius: 8,
+    border: "2px solid",
     fontSize: 18,
     outline: "none",
     backgroundImage: "none"

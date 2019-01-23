@@ -9,12 +9,12 @@ const propTypes = {
   client: PropTypes.object.isRequired
 };
 
-const UserProfile = props => {
-  const { classes, changeProfile, username, theme } = props;
+const ClientView = props => {
+  const { classes, changeProfile, username, theme, logout } = props;
 
-  const logout = event => {
+  const handleClick = event => {
     event.preventDefault();
-
+    logout()
     changeProfile("LOG_OUT");
   };
 
@@ -24,7 +24,7 @@ const UserProfile = props => {
 
       <div className={classes.wrapper}>
         <Button
-          onClick={e => logout(e)}
+          onClick={e => handleClick(e)}
           backgroundColor={theme.primaryWhite}
           width="65%"
           margin="5px auto 0px auto"
@@ -38,7 +38,7 @@ const UserProfile = props => {
   );
 };
 
-UserProfile.propTypes = propTypes;
+ClientView.propTypes = propTypes;
 
 const styles = theme => ({
   inner: {
@@ -55,4 +55,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(UserProfile);
+export default withStyles(styles, { injectTheme: true })(ClientView);

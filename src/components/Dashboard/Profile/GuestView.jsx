@@ -9,9 +9,8 @@ const propTypes = {
   client: PropTypes.object.isRequired
 };
 
-const GuestProfile = props => {
+const GuestView = props => {
   const { classes, updateClient, client, changeProfile } = props;
-console.log("rendered")
   return (
     <div className={classes.inner}>
       <DashboardProfileHeader
@@ -19,12 +18,12 @@ console.log("rendered")
         username={client.username}
       />
 
-      <DashboardProfileFooter changeProfile={changeProfile}/>
+      <DashboardProfileFooter changeProfile={changeProfile} />
     </div>
   );
 };
 
-GuestProfile.propTypes = propTypes;
+GuestView.propTypes = propTypes;
 
 const styles = theme => ({
   inner: {
@@ -35,4 +34,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(GuestProfile);
+export default withStyles(styles)(GuestView);

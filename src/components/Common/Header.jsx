@@ -51,7 +51,8 @@ Header.defaultProps = {
   padding: "0",
   fontSize: 18,
   fontWeight: 600,
-  borderRadius: "8px"
+  borderRadius: "8px",
+  color: "black"
 };
 
 const styles = theme => ({
@@ -60,7 +61,7 @@ const styles = theme => ({
     padding: props.padding,
     fontSize: props.fontSize,
     fontWeight: props.fontWeight,
-    color: props.color || "black",
+    color: props.color,
     backgroundColor: props.backgroundColor,
     borderRadius: props.borderRadius,
     border: props.border,

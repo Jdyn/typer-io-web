@@ -24,9 +24,9 @@ const propTypes = {
    */
   border: PropTypes.string,
   /**
-   * Defines the `flex-shrink` style property.
+   * Defines the `width` style property.
    */
-  flexShrink: PropTypes.number,
+  width: PropTypes.string,
   /**
    * Defines the `color` style property.
    */
@@ -39,19 +39,19 @@ const Divider = ({ children, classes }) => (
 
 Divider.propTypes = propTypes;
 Divider.defaultProps = {
-  height: "1px",
-  margin: "0",
+  margin: "0 auto 0 auto",
   border: "none",
-  flexShrink: 0
+  width: "65%",
 };
 
 const styles = theme => ({
-  divider: props => (-{
+  divider: props => ({
     height: props.height,
     margin: props.margin,
+    width: props.width,
     border: props.border,
     flexShrink: props.flexShrink,
-    backgroundColor: props.color || theme.divider
+    backgroundColor: theme.divider
   })
 });
 

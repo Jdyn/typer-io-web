@@ -8,13 +8,13 @@ import { connect } from "react-redux";
 // import Footer from "../components/Footer/Footer";
 
 class App extends Component {
-  componentWillMount() {
-    const { authenticate } = this.props;
-    const token = localStorage.getItem("token");
-    if (token) {
-      authenticate();
-    }
-  }
+  // componentWillMount() {
+    // const { authenticate } = this.props;
+    // const token = localStorage.getItem("token");
+    // if (token) {
+    //   authenticate();
+    // }
+  // }
 
   render() {
     return (
@@ -32,7 +32,9 @@ const mapDispatchToProps = dispatch => ({
   authenticate: () => dispatch(authenticate())
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default App
+
+// connect(
+//   null,
+//   mapDispatchToProps
+// )(App);

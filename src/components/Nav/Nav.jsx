@@ -9,7 +9,7 @@ const Nav = props => {
       <nav className={classes.container}>
         <ul className={classes.list}>
           <li className={classes.listItem}>
-            <Link to="/login" className={classes.listItemTitle}>login</Link>
+            {/* <Link to="/login" className={classes.listItemTitle}>login</Link> */}
           </li>
           <li>
             <button className={classes.listItemTitle}></button>

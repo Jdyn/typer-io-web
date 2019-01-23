@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const LogInView = props => {
-  const { classes, changeProfile, theme, logIn, client } = props;
+  const { classes, changeProfile, theme, login, client } = props;
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -19,7 +19,7 @@ const LogInView = props => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(form)
-    logIn(form)
+    login(form)
   };
 
   return (

@@ -13,7 +13,7 @@ const propTypes = {
 };
 
 const DashboardProfile = props => {
-  const { classes, updateClient, client, theme, logIn } = props;
+  const { classes, updateClient, client, theme, login } = props;
   const [profile, setProfile] = useState(
     client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
   );
@@ -64,7 +64,7 @@ const DashboardProfile = props => {
         return (
           <LogInView
             changeProfile={changeProfile}
-            logIn={logIn}
+            login={login}
             client={client}
           />
         );

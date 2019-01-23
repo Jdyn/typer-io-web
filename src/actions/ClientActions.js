@@ -29,20 +29,36 @@ export const initSocket = (username, history) => ({
   }
 });
 
-export const logIn = payload => dispatch => {
+export const login = payload => dispatch => {
   dispatch({ type: "LOG_IN_REQUEST" });
   ApiService.post("/sessions/login", payload).then(response => {
     if (response.ok) {
       setCurrentSession(dispatch, response);
     } else {
-      dispatch({type: "LOG_IN_FAILURE", response})
+      dispatch({ type: "LOG_IN_FAILURE", response });
     }
   });
 };
 
+export const logout = payload => dispatch => {};
+
+export const authenticate = () => dispatch => {
+  ApiService.post("/sessions/refresh")
+    .then(response => {
+      verifyCurrentSession(dispatch, response);
+    })
+    .catch(() => {
+      localStorage.removeItem("token");
+      dispatch({ type: "AUTHENTICATION_FAILURE" });
+    });
+};
+
+const verifyCurrentSession = (dispatch, response) => {
+  localStorage.setItem("token", JSON.stringify(response.result.token));
+  dispatch({ type: "AUTHENTICATION_SUCCESS", response });
+};
+
 const setCurrentSession = (dispatch, response) => {
   localStorage.setItem("token", JSON.stringify(response.result.token));
-  console.log(response.data);
-
   dispatch({ type: "LOG_IN_SUCCESS", response });
 };

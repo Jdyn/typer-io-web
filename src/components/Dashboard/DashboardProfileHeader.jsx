@@ -1,6 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import withStyles from "react-jss";
+import ApiService from "../../services/ApiService";
 
 class DashboardProfileHeader extends React.Component {
   constructor(props) {
@@ -15,14 +16,17 @@ class DashboardProfileHeader extends React.Component {
   };
 
   handleSubmit = event => {
-    const { updateClient, username } = this.props;
-    event.preventDefault();
-    const name = this.state.value;
-    if (name !== username) {
-      if (name !== null) {
-        updateClient({ username: name });
-      }
-    }
+    event.preventDefault()
+    ApiService.post("/sessions/refresh").then(res => console.log(res.json()))
+
+    // const { updateClient, username } = this.props;
+    // event.preventDefault();
+    // const name = this.state.value;
+    // if (name !== username) {
+    //   if (name !== null) {
+    //     updateClient({ username: name });
+    //   }
+    // }
   };
 
   render() {

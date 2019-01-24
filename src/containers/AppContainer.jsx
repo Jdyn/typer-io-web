@@ -3,16 +3,13 @@ import Router from "../components/Router";
 import Nav from "../components/Nav/Nav";
 import CssBaseline from "../components/CssBaseline";
 import { authenticate } from "../actions/ClientActions";
-import { connect } from "react-redux";
-
 // import Footer from "../components/Footer/Footer";
 
 class App extends Component {
-  componentDidMount() {
-    console.log("called")
+  componentWillMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      this.props.authenticate();
+      this.props.store.dispatch(authenticate())
     }
   }
 
@@ -28,11 +25,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  authenticate: () => dispatch(authenticate())
-});
-
-export default connect(
-  state => state,
-  mapDispatchToProps
-)(App);
+export default App

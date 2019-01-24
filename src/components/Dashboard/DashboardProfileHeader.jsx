@@ -1,27 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import ApiService from "../../services/ApiService";
 import Divider from "../Common/Divider";
 import Button from "../Common/Button";
 
-class DashboardProfileHeader extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: this.props.username ? this.props.username : ""
-    };
-  }
+const DashboardProfileHeader = props => {
+  const { classes, theme, username, updateClient } = props;
+  const [name, setName] = useState(username ? username : "");
 
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    const { updateClient, username } = this.props;
-    event.preventDefault();
-    const name = this.state.value;
     if (name !== username) {
       if (name !== null) {
         updateClient({ username: name });
@@ -29,34 +17,38 @@ class DashboardProfileHeader extends React.Component {
     }
   };
 
-  render() {
-    const { classes, theme } = this.props;
-    return (
-      <div className={classes.container}>
-        <form onSubmit={this.handleSubmit} className={classes.container}>
-          <input
-            className={classes.nameInput}
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="username"
-          />
-          <Divider />
-          <Button
-            type="submit"
-            backgroundColor={theme.primaryWhite}
-            width="65%"
-            margin="5px auto 0px auto"
-            color="#6772e5"
-            activeColor={"#6772e580"}
-          >
-            Set
-          </Button>
-        </form>
-      </div>
-    );
-  }
-}
+  useEffect(
+    () => {
+      setName(username);
+    },
+    [username]
+  );
+
+  return (
+    <div className={classes.container}>
+      <form onSubmit={handleSubmit} className={classes.container}>
+        <input
+          className={classes.nameInput}
+          type="text"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          placeholder="username"
+        />
+        <Divider />
+        <Button
+          type="submit"
+          backgroundColor={theme.primaryWhite}
+          width="65%"
+          margin="5px auto 0px auto"
+          color="#6772e5"
+          activeColor={"#6772e580"}
+        >
+          Set
+        </Button>
+      </form>
+    </div>
+  );
+};
 
 const styles = theme => ({
   container: {

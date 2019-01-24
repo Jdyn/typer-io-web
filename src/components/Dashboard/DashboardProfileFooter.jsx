@@ -12,7 +12,7 @@ const DashboardProfileFooter = props => {
     <div className={classes.container}>
       <Divider />
       <Button
-        onClick={() => changeProfile("LOG_IN_PROFILE")}
+        onClick={() => changeProfile("LOGIN_VIEW")}
         backgroundColor={theme.primaryWhite}
         width="65%"
         margin="5px auto 0px auto"
@@ -22,7 +22,7 @@ const DashboardProfileFooter = props => {
         log in
       </Button>
       <Button
-        onClick={() => changeProfile("SIGN_UP_PROFILE")}
+        onClick={() => changeProfile("SIGNUP_VIEW")}
         backgroundColor={"#6772e5"}
         width="65%"
         margin="5px auto 0 auto"

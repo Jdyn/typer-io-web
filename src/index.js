@@ -31,7 +31,7 @@ const app = (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Provider store={store}>
-          <App />
+          <App store={store}/>
         </Provider>
       </BrowserRouter>
     </ThemeProvider>

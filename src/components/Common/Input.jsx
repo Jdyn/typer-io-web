@@ -30,20 +30,21 @@ const propTypes = {
   /**
    * Defines the `width` style property.
    */
-  width: PropTypes.width,
+  width: PropTypes.string,
   /**
    * Defines the `padding` style property.
    */
-  padding: PropTypes.padding
+  padding: PropTypes.string
 };
 
-const Input = ({ children, classes, onChange, type, value, placeholder }) => (
+const Input = ({ children, classes, ...props }) => (
   <input
-    onChange={onChange}
-    value={value}
-    type={type || "text"}
-    placeholder={placeholder}
+    onChange={props.onChange}
+    value={props.value}
+    type={props.type || "text"}
+    placeholder={props.placeholder}
     className={classes.input}
+    autoComplete={props.autoComplete}
   >
     {children}
   </input>

@@ -17,6 +17,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   client: state.client.meta,
+  session: state.client.meta.session,
   room: state.client.room,
   socket: state.client.socket,
 });

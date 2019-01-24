@@ -5,12 +5,13 @@ import Button from "../../Common/Button";
 import Input from "../../Common/Input";
 
 const propTypes = {
-  updateClient: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  changeProfile: PropTypes.func.isRequired
 };
 
 const SignInView = props => {
-  const { classes, changeProfile, theme } = props;
+  const { classes, changeProfile, theme, signup } = props;
   const [form, setForm] = useState({
     email: "",
     username: "",
@@ -19,6 +20,7 @@ const SignInView = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    signup(form);
   };
 
   return (
@@ -41,17 +43,20 @@ const SignInView = props => {
           value={form.username}
           onChange={event => setForm({ ...form, username: event.target.value })}
           placeholder="username"
+          autoComplete="username"
         />
         <Input
           value={form.email}
           onChange={event => setForm({ ...form, email: event.target.value })}
           placeholder="email"
+          autoComplete="email"
         />
         <Input
           type="password"
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
           placeholder="password"
+          autoComplete="current-password"
         />
         <div className={classes.divider} />
         <Button

@@ -5,12 +5,15 @@ import Input from "../../Common/Input";
 import Button from "../../Common/Button";
 
 const propTypes = {
-  updateClient: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  changeProfile: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 const LogInView = props => {
-  const { classes, changeProfile, theme, login, client } = props;
+  const { classes, theme, session, changeProfile, login } = props;
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -18,8 +21,7 @@ const LogInView = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(form)
-    login(form)
+    login(form);
   };
 
   return (
@@ -42,7 +44,7 @@ const LogInView = props => {
           value={form.email}
           onChange={event => setForm({ ...form, email: event.target.value })}
           placeholder="email"
-          autocomplete="email"
+          autoComplete="email"
         />
         <Input
           type="password"
@@ -62,7 +64,7 @@ const LogInView = props => {
         >
           Log In
         </Button>
-        {client.session.errored && <p>{client.session.error}</p>}
+        {session.errored && <p>{session.error}</p>}
       </form>
     </div>
   );

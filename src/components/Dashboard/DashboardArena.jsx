@@ -3,7 +3,7 @@ import React from "react";
 import withStyles from "react-jss";
 import Header from "../Common/Header";
 
-const DashboardProfile = props => {
+const DashboardArena = props => {
   const { classes, theme } = props;
   return (
     <div className={classes.container}>
@@ -38,4 +38,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(DashboardProfile);
+export default withStyles(styles, { injectTheme: true })(DashboardArena);

@@ -5,23 +5,33 @@ import DashboardProfileHeader from "../DashboardProfileHeader";
 import Button from "../../Common/Button";
 
 const propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
   updateClient: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  changeProfile: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 const ClientView = props => {
-  const { classes, changeProfile, username, theme, logout } = props;
+  const {
+    classes,
+    theme,
+    username,
+    updateClient,
+    changeProfile,
+    logout
+  } = props;
 
   const handleClick = event => {
     event.preventDefault();
-    logout()
+    logout();
     changeProfile("LOG_OUT");
   };
 
   return (
     <div className={classes.inner}>
-      <DashboardProfileHeader username={username} />
-
+      <DashboardProfileHeader username={username} updateClient={updateClient} />
       <div className={classes.wrapper}>
         <Button
           onClick={e => handleClick(e)}

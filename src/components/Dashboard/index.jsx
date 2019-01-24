@@ -3,17 +3,23 @@ import React from "react";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
-import DashboardNews from "./DashboardNews";
+import DashboardNews from "./DashboardArena";
 
 export const Dashboard = props => {
-  const { client, updateClient, classes, initSocket, login, logout } = props;
+  const { client, updateClient, classes, initSocket, login, logout, session } = props;
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <DashboardNews /> 
-        <DashboardProfile login={login} logout={logout} updateClient={updateClient} client={client} />
+        <DashboardNews />
+        <DashboardProfile
+          login={login}
+          logout={logout}
+          updateClient={updateClient}
+          client={client}
+          session={session}
+        />
         <DashboardPlay
           initSocket={initSocket}
           socket={props.socket}

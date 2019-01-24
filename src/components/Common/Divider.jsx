@@ -39,6 +39,7 @@ const Divider = ({ children, classes }) => (
 
 Divider.propTypes = propTypes;
 Divider.defaultProps = {
+  height: "2px",
   margin: "0 auto 0 auto",
   border: "none",
   width: "65%",

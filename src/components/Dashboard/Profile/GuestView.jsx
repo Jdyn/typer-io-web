@@ -5,8 +5,10 @@ import DashboardProfileHeader from "../DashboardProfileHeader";
 import DashboardProfileFooter from "../DashboardProfileFooter";
 
 const propTypes = {
+  classes: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
   updateClient: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  changeProfile: PropTypes.func.isRequired
 };
 
 const GuestView = props => {
@@ -17,7 +19,6 @@ const GuestView = props => {
         updateClient={updateClient}
         username={client.username}
       />
-
       <DashboardProfileFooter changeProfile={changeProfile} />
     </div>
   );

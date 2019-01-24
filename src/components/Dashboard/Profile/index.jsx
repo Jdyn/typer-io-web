@@ -4,46 +4,57 @@ import withStyles from "react-jss";
 import Header from "../../Common/Header";
 import GuestView from "./GuestView";
 import LogInView from "./LogInView";
-import SignInProfile from "./SignInView";
 import ClientView from "./ClientView";
+import SignInProfile from "./SignInView";
 
 const propTypes = {
-  updateClient: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
+  updateClient: PropTypes.func.isRequired
 };
 
 const DashboardProfile = props => {
-  const { classes, updateClient, client, theme, login, logout } = props;
-  const [profile, setProfile] = useState(
-    client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
-  );
+  const [profile, setProfile] = useState("");
+  const {
+    classes,
+    theme,
+    client,
+    session,
+    login,
+    logout,
+    signup,
+    updateClient
+  } = props;
 
   useEffect(
     () => {
-      setProfile(client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE");
+      if (!session.isAuthenticating) {
+        setProfile(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
+      }
     },
-    [client.session.isLoggedIn]
+    [session.isLoggedIn]
   );
 
   const changeProfile = newProfile => {
+    const { isLoggedIn } = session;
     switch (newProfile) {
       case "BACK":
-        setProfile(
-          client.session.isLoggedIn ? "USER_PROFILE" : "GUEST_PROFILE"
-        );
-        break;
+        return setProfile(isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
       case "LOG_OUT":
-        setProfile("GUEST_PROFILE");
-        break
+        return setProfile("GUEST_VIEW");
       default:
-        setProfile(newProfile);
-        break;
+        return setProfile(newProfile);
     }
   };
 
   const renderProfile = profile => {
     switch (profile) {
-      case "GUEST_PROFILE":
+      case "GUEST_VIEW":
         return (
           <GuestView
             changeProfile={changeProfile}
@@ -51,24 +62,27 @@ const DashboardProfile = props => {
             client={client}
           />
         );
-      case "USER_PROFILE":
+      case "CLIENT_VIEW":
         return (
           <ClientView
             username={client.username}
+            updateClient={updateClient}
             changeProfile={changeProfile}
             logout={logout}
           />
         );
-      case "SIGN_UP_PROFILE":
+      case "SIGNUP_VIEW":
         return <SignInProfile changeProfile={changeProfile} />;
-      case "LOG_IN_PROFILE":
+      case "LOGIN_VIEW":
         return (
           <LogInView
             changeProfile={changeProfile}
             login={login}
-            client={client}
+            session={session}
           />
         );
+      default:
+        return <div className={classes.loading}>Loading</div>;
     }
   };
 
@@ -84,7 +98,6 @@ const DashboardProfile = props => {
       >
         Profile
       </Header>
-
       {renderProfile(profile)}
     </div>
   );
@@ -98,14 +111,17 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     margin: "40px 0px 40px 0px",
-    "&:hover": {
-      transform: "translateY(-1px)"
-    },
     transitionDuration: ".2s",
     borderRadius: 8,
-    backgroundColor: theme.primaryWhite,
     boxShadow:
-      "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
+      "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
+    backgroundColor: theme.primaryWhite,
+    "&:hover": {
+      transform: "translateY(-1px)"
+    }
+  },
+  loading: {
+    width: "275px"
   }
 });
 

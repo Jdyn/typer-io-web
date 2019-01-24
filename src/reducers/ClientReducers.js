@@ -3,12 +3,12 @@ import types from "../constants/ActionTypes";
 const initialState = {
   meta: {
     id: null,
-    username: null,
+    username: "",
     isInRoom: false,
     session: {
       id: null,
       isAuthenticating: false,
-      isLoggedIn: false,
+      isLoggedIn: false, //bool
       firstName: null,
       lastName: null,
       email: null,
@@ -155,6 +155,7 @@ export default (state = initialState, action) => {
           messages: updateRoomChat(action.payload, state.room.messages)
         }
       };
+    case "AUTHENTICATION_REQUEST":
     case "LOG_IN_REQUEST":
       return {
         ...state,
@@ -185,25 +186,26 @@ export default (state = initialState, action) => {
       };
 
     case "LOG_OUT":
-    return {
-      ...state,
-      meta: {
-        ...state.meta,
-        username: null,
-        session: {
-          username: null,
-          id: null,
-          isAuthenticating: false,
-          isLoggedIn: false,
-          firstName: null,
-          lastName: null,
-          email: null,
-          error: null,
-          errored: false
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          username: "",
+          session: {
+            username: null,
+            id: null,
+            isAuthenticating: false,
+            isLoggedIn: false,
+            firstName: null,
+            lastName: null,
+            email: null,
+            error: null,
+            errored: false
+          }
         }
-      }
-    }
+      };
 
+    case "AUTHENTICATION_FAILURE":
     case "LOG_IN_FAILURE":
       return {
         ...state,
@@ -212,6 +214,7 @@ export default (state = initialState, action) => {
           session: {
             ...state.meta.session,
             isAuthenticating: false,
+            isLoggedIn: false,
             error: action.response.error,
             errored: true
           }

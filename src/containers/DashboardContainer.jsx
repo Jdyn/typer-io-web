@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
-import { updateClient, login, initSocket, logout } from "../actions/ClientActions";
-
+import { updateClient, initSocket } from "../actions/ClientActions";
+import { login, logout, signup } from "../actions/SessionActions";
 class DashboardContainer extends Component {
   componentDidUpdate() {
     if (this.props.socket.connected) {
@@ -17,15 +17,16 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   client: state.client.meta,
-  session: state.client.meta.session,
+  session: state.session,
   room: state.client.room,
-  socket: state.client.socket,
+  socket: state.client.socket
 });
 
 const mapDispatchToProps = dispatch => ({
   updateClient: object => dispatch(updateClient(object)),
   initSocket: username => dispatch(initSocket(username)),
-  login: payload => dispatch(login(payload)),
+  login: form => dispatch(login(form)),
+  signup: form => dispatch(signup(form)),
   logout: () => dispatch(logout())
 });
 

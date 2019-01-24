@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import DashboardProfileHeader from "../DashboardProfileHeader";
+import ProfileHeader from "./ProfileHeader";
 import Button from "../../Common/Button";
 
 const propTypes = {
@@ -31,7 +31,7 @@ const ClientView = props => {
 
   return (
     <div className={classes.inner}>
-      <DashboardProfileHeader username={username} updateClient={updateClient} />
+      <ProfileHeader username={username} updateClient={updateClient} />
       <div className={classes.wrapper}>
         <Button
           onClick={e => handleClick(e)}

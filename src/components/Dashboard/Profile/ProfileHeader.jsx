@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Divider from "../Common/Divider";
-import Button from "../Common/Button";
+import Divider from "../../Common/Divider";
+import Button from "../../Common/Button";
 
-const DashboardProfileHeader = props => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  username: PropTypes.string,
+  updateClient: PropTypes.func.isRequired
+};
+
+const ProfileHeader = props => {
   const { classes, theme, username, updateClient } = props;
   const [name, setName] = useState(username ? username : "");
 
@@ -50,6 +57,8 @@ const DashboardProfileHeader = props => {
   );
 };
 
+ProfileHeader.propTypes = propTypes;
+
 const styles = theme => ({
   container: {
     display: "flex",
@@ -69,6 +78,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(
-  DashboardProfileHeader
-);
+export default withStyles(styles, { injectTheme: true })(ProfileHeader);

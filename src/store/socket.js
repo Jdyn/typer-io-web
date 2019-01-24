@@ -33,8 +33,11 @@ const init = (url, dispatch, payload) => {
 
 const defaultListeners = dispatch => {
   if (socket) {
-    socket.on("disconnect", () => {
-      socket = null;
+    socket.on("disconnect", reason => {
+      if (socket) {
+        socket.close();
+        socket = null;
+      }
       dispatch({
         type: types.DISCONNECT_SOCKET,
         room: {
@@ -52,7 +55,8 @@ const defaultListeners = dispatch => {
             isStarted: false,
             gameTime: null
           }
-        }
+        },
+        error: reason
       });
     });
 

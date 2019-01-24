@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Button from "../../Common/Button";
@@ -10,15 +10,24 @@ const propTypes = {
   changeProfile: PropTypes.func.isRequired
 };
 
-const SignInView = props => {
-  const { classes, changeProfile, theme, signup } = props;
+const SignUpView = props => {
+  const { classes, changeProfile, theme, signup, session } = props;
   const [form, setForm] = useState({
     email: "",
     username: "",
     password: ""
   });
 
-  const handleSubmit = event => {
+  const [errors, setErrors] = useState({});
+
+  useEffect(
+    () => {
+      setErrors(session.errors);
+    },
+    [session.errors]
+  );
+
+  const validateForm = event => {
     event.preventDefault();
     signup(form);
   };
@@ -38,29 +47,35 @@ const SignInView = props => {
           <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
         </svg>
       </button>
-      <form onSubmit={handleSubmit} className={classes.form}>
+      <form onSubmit={validateForm} className={classes.form}>
         <Input
-          value={form.username}
-          onChange={event => setForm({ ...form, username: event.target.value })}
-          placeholder="username"
-          autoComplete="username"
-        />
-        <Input
+          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
           value={form.email}
+          margin="0 0 10px 0"
           onChange={event => setForm({ ...form, email: event.target.value })}
-          placeholder="email"
+          placeholder="jane.doe@example.com"
           autoComplete="email"
         />
         <Input
+          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
+          value={form.username}
+          margin="0 0 10px 0"
+          onChange={event => setForm({ ...form, username: event.target.value })}
+          placeholder="example"
+          autoComplete="username"
+        />
+        <Input
           type="password"
+          margin="0 0 10px 0"
+          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
-          placeholder="password"
+          placeholder="password123"
           autoComplete="current-password"
         />
         <div className={classes.divider} />
         <Button
-          onClick={event => handleSubmit(event)}
+          onClick={event => validateForm(event)}
           type="submit"
           backgroundColor={"#6772e5"}
           width="100%"
@@ -75,7 +90,7 @@ const SignInView = props => {
   );
 };
 
-SignInView.propTypes = propTypes;
+SignUpView.propTypes = propTypes;
 
 const styles = theme => ({
   inner: {
@@ -84,6 +99,11 @@ const styles = theme => ({
     position: "relative",
     height: "100%",
     width: "275px"
+  },
+  title: {
+    fontSize: "12px",
+    marginLeft: "0px",
+    padding: "5px",
   },
   form: {
     width: "75%",
@@ -112,4 +132,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(SignInView);
+export default withStyles(styles, { injectTheme: true })(SignUpView);

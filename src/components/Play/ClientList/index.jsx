@@ -91,8 +91,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    backgroundColor: "transparent",
-    // boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    backgroundColor: theme.primaryWhite,
+    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
     borderRadius: 8
   }
 });

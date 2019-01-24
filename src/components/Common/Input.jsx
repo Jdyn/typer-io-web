@@ -63,12 +63,12 @@ const styles = theme => ({
   input: props => ({
     width: props.width,
     margin: props.margin,
-    borderColor: theme.divider,
     backgroundColor: theme.primaryWhite,
     padding: props.padding,
     height: "42px",
-    borderRadius: 8,
-    border: "2px solid",
+    borderRadius: 4,
+    border: "none",
+    boxShadow: props.border,
     fontSize: 18,
     outline: "none",
     backgroundImage: "none"

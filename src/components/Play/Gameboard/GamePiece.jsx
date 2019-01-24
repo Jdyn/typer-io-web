@@ -1,6 +1,7 @@
 import React from "react";
 import withStyles from "react-jss";
 import { Spring } from "react-spring";
+
 const GamePiece = props => {
   const { classes, index } = props;
 

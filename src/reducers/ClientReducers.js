@@ -4,17 +4,7 @@ const initialState = {
   meta: {
     id: null,
     username: "",
-    isInRoom: false,
-    session: {
-      id: null,
-      isAuthenticating: false,
-      isLoggedIn: false, //bool
-      firstName: null,
-      lastName: null,
-      email: null,
-      error: null,
-      errored: false
-    }
+    isInRoom: false
   },
   room: {
     id: null,
@@ -143,10 +133,10 @@ export default (state = initialState, action) => {
         room: action.room,
         socket: {
           ...state.socket,
-          connected: false
+          connected: false,
+          error: action.error ? action.error : state.socket.error
         }
       };
-
     case types.RECIEVE_CHAT_MESSAGE:
       return {
         ...state,
@@ -155,69 +145,12 @@ export default (state = initialState, action) => {
           messages: updateRoomChat(action.payload, state.room.messages)
         }
       };
-    case "AUTHENTICATION_REQUEST":
-    case "LOG_IN_REQUEST":
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          session: {
-            ...state.meta.session,
-            isAuthenticating: true
-          }
-        }
-      };
     case "AUTHENTICATION_SUCCESS":
-    case "LOG_IN_SUCCESS":
       return {
         ...state,
         meta: {
           ...state.meta,
-          username: action.response.result.user.username,
-          session: {
-            ...state.session,
-            isAuthenticating: false,
-            isLoggedIn: true,
-            ...action.response.result.user,
-            error: null,
-            errored: false
-          }
-        }
-      };
-
-    case "LOG_OUT":
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          username: "",
-          session: {
-            username: null,
-            id: null,
-            isAuthenticating: false,
-            isLoggedIn: false,
-            firstName: null,
-            lastName: null,
-            email: null,
-            error: null,
-            errored: false
-          }
-        }
-      };
-
-    case "AUTHENTICATION_FAILURE":
-    case "LOG_IN_FAILURE":
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          session: {
-            ...state.meta.session,
-            isAuthenticating: false,
-            isLoggedIn: false,
-            error: action.response.error,
-            errored: true
-          }
+          username: action.response.result.user.username
         }
       };
     default:

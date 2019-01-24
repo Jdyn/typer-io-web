@@ -64,7 +64,7 @@ const LogInView = props => {
         >
           Log In
         </Button>
-        {session.errored && <p>{session.error}</p>}
+        {session.errored && <p>{session.errors.error}</p>}
       </form>
     </div>
   );

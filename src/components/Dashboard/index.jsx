@@ -6,7 +6,16 @@ import withStyles from "react-jss";
 import DashboardNews from "./DashboardArena";
 
 export const Dashboard = props => {
-  const { client, updateClient, classes, initSocket, login, logout, session } = props;
+  const {
+    client,
+    updateClient,
+    classes,
+    session,
+    initSocket,
+    login,
+    logout,
+    signup
+  } = props;
 
   return (
     <main>
@@ -16,6 +25,7 @@ export const Dashboard = props => {
         <DashboardProfile
           login={login}
           logout={logout}
+          signup={signup}
           updateClient={updateClient}
           client={client}
           session={session}

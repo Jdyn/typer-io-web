@@ -1,68 +1,52 @@
 import React from "react";
 import withStyles from "react-jss";
+import Divider from "../../Common/Divider";
+import Header from "../../Common/Header";
 
 const ClientCard = props => {
-  const { client, classes } = props;
+  const { client, classes, theme } = props;
 
   return (
     <div className={classes.container}>
-      <div className={classes.username}>{client.username}</div>
+      {/* <div className={classes.username}>{client.username}</div>
       <div className={classes.divider} />
+
+      <div className={classes.title}>errors</div>
+      <div className={classes.title}>accuracy</div>
+      <div className={classes.title}>w/pm</div>
+
       <div className={classes.errors}>{client.gamePiece.errors}</div>
       <div className={classes.accuracy}>{client.gamePiece.accuracy}</div>
-      <div className={classes.wpm}>{client.gamePiece.wpm}</div>
+      <div className={classes.wpm}>{client.gamePiece.wpm}</div> */}
+      <Divider width="85%" />
+      <Header
+        color={theme.fontColor}
+        padding="10px 15px 10px 15px"
+        className={classes.username}
+      >
+        {client.username}
+      </Header>
+      {/* <div className={classes.band}></div> */}
     </div>
   );
 };
 
 const styles = theme => ({
   container: props => ({
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "min-content 2px auto",
-    width: "100%",
+    // display: "grid",
+    // gridTemplateColumns: "repeat(3, 1fr)",
+    // gridTemplateRows: "min-content 2px auto",
+    width: "90%",
     borderRadius: 8,
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    backgroundColor: props.color,
+    backgroundColor: theme.primaryWhite,
     ...props.style
   }),
-  username: {
-    padding: "5px 15px 0px 15px",
-    gridColumn: "1 / 4",
-    gridRow: "1 / 2",
-    fontSize: "22px",
-    color: theme.primaryWhite,
-    fontWeight: 600
-  },
-  accuracy: {
-    fontSize: "24px",
-    textAlign: "center",
-    verticalAlign: "middle",
-    // color: "#81C784",
-    color: theme.primaryWhite,
-  },
-  errors: {
-    fontSize: "24px",
-    textAlign: "center",
-    verticalAlign: "middle",
-    color: "#e57373",
-
-  },
-  wpm: {
-    fontSize: "24px",
-    textAlign: "center",
-    verticalAlign: "middle",
-    color: "#64B5F6",
-  },
-  divider: {
-    height: "2px",
-    gridColumn: "1 / 4",
-    margin: "0px auto 0px auto",
-    border: "none",
-    flexShrink: 0,
-    width: "75%",
-    backgroundColor: theme.divider
-  }
+  band: props => ({
+    width: "10%",
+    height: "100%",
+    marginLeft: "100%",
+    backgroundColor: props.color
+  })
 });
 
-export default withStyles(styles)(ClientCard);
+export default withStyles(styles, { injectTheme: true })(ClientCard);

@@ -5,7 +5,7 @@ import Header from "../../Common/Header";
 import GuestView from "./GuestView";
 import LogInView from "./LogInView";
 import ClientView from "./ClientView";
-import SignInProfile from "./SignInView";
+import SignUpView from "./SignUpView";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -72,7 +72,13 @@ const DashboardProfile = props => {
           />
         );
       case "SIGNUP_VIEW":
-        return <SignInProfile changeProfile={changeProfile} />;
+        return (
+          <SignUpView
+            changeProfile={changeProfile}
+            signup={signup}
+            session={session}
+          />
+        );
       case "LOGIN_VIEW":
         return (
           <LogInView

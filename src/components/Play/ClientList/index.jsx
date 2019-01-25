@@ -22,7 +22,7 @@ const ClientList = props => {
     () => {
       updateHeader();
     },
-    [room.roomTime, socket.errored]
+    [room.roomTime, socket]
   );
 
   const timeRemaining = () => {
@@ -36,9 +36,8 @@ const ClientList = props => {
 
   const updateHeader = () => {
     const time = timeRemaining();
-    if (socket.errored) {
-      setHeader({ color: "#e57373", text: "Connection error occured" });
-    } else if (time > 10) {
+
+    if (time > 10) {
       setHeader({ color: "#469cd0", text: "Looking for Players..." });
     } else if (time > 5) {
       setHeader({ color: "#e57373", text: "Get Ready..." });
@@ -46,8 +45,14 @@ const ClientList = props => {
       setHeader({ color: "#e5a03e", text: "Get Set..." });
     } else if (time === 0) {
       setHeader({ color: "#81C784", text: "GO!" });
-    } else {
+    } else if (socket.connected) {
       setHeader({ color: "#469cd0", text: "Looking for Players..." });
+      return;
+    } else if (socket.errored) {
+      setHeader({ color: "#e57373", text: "Connection error occured" });
+      return;
+    } else {
+      setHeader({ color: "#469cd0", text: "Connecting to server..." });
     }
   };
 

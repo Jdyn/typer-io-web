@@ -15,7 +15,7 @@ const propTypes = {
 const LogInView = props => {
   const { classes, theme, session, changeProfile, login } = props;
   const [form, setForm] = useState({
-    email: "",
+    username: "",
     password: ""
   });
 
@@ -42,13 +42,15 @@ const LogInView = props => {
       <form onSubmit={handleSubmit} className={classes.form}>
         <Input
           value={form.email}
-          onChange={event => setForm({ ...form, email: event.target.value })}
-          placeholder="email"
-          autoComplete="email"
+          color={theme.divider}
+          onChange={event => setForm({ ...form, username: event.target.value })}
+          placeholder="username"
+          autoComplete="username"
         />
         <Input
           type="password"
           value={form.password}
+          color={theme.divider}
           onChange={event => setForm({ ...form, password: event.target.value })}
           placeholder="password"
           autoComplete="current-password"

@@ -28,7 +28,7 @@ const Editor = props => {
 
   useEffect(() => {
     if (state.gamePieceIndex !== null) {
-      gameboardUpdate({ gamePieceIndex: state.gamePieceIndex })
+      gameboardUpdate(state.gamePieceIndex)
     }
   }, [state.gamePieceIndex])
 

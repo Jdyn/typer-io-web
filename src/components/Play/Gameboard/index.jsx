@@ -4,7 +4,7 @@ import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room } = props;
+  const { classes, gameboard, client, room, clientIndex } = props;
 
   const transform = words => {
     var res = [];
@@ -26,7 +26,7 @@ const Gameboard = props => {
         <Snippet
           words={transform(gameboard.words)}
           room={room}
-          gamePieceIndex={gameboard.gamePieceIndex}
+          gamePieceIndex={clientIndex}
           client={client}
         />
       </div>

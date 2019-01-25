@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientList from "./ClientList";
@@ -13,20 +13,19 @@ const propTypes = {
   socket: PropTypes.object.isRequired,
   updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
-  gameboardUpdate: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
   sendChatMessage: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 };
 
 const Play = props => {
+  const [clientIndex, setClientIndex] = useState(null);
   const {
     client,
     room,
     socket,
     gameboard,
     leaveRoom,
-    gameboardUpdate,
     sendChatMessage,
     classes
   } = props;
@@ -41,14 +40,19 @@ const Play = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList room={room} gameboard={gameboard} socket={socket}/>
-        <Gameboard client={client} room={room} gameboard={gameboard} />
+        <ClientList room={room} gameboard={gameboard} socket={socket} />
+        <Gameboard
+          clientIndex={clientIndex}
+          client={client}
+          room={room}
+          gameboard={gameboard}
+        />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
           client={client}
           room={room}
           gameboard={gameboard}
-          gameboardUpdate={gameboardUpdate}
+          gameboardUpdate={setClientIndex}
         />
       </div>
     </main>

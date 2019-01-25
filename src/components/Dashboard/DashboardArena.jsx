@@ -26,7 +26,7 @@ const styles = theme => ({
     position: "relative",
     width: "400px",
     margin: "40px 20px 40px auto",
-    borderBottom: "2px solid rgba(207,215,223,.25)",
+    // borderBottom: "2px solid rgba(207,215,223,.25)",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     boxShadow:

@@ -23,6 +23,7 @@ const Play = props => {
   const {
     client,
     room,
+    socket,
     gameboard,
     leaveRoom,
     gameboardUpdate,
@@ -40,7 +41,7 @@ const Play = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList room={room} gameboard={gameboard} />
+        <ClientList room={room} gameboard={gameboard} socket={socket}/>
         <Gameboard client={client} room={room} gameboard={gameboard} />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor

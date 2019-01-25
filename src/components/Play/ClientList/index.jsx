@@ -12,7 +12,7 @@ const propTypes = {
 };
 
 const ClientList = props => {
-  const { room, gameboard, classes } = props;
+  const { room, gameboard, classes, socket } = props;
   const [header, setHeader] = useState({
     color: "#469cd0",
     text: "Looking for Players..."
@@ -22,7 +22,7 @@ const ClientList = props => {
     () => {
       updateHeader();
     },
-    [room.roomTime]
+    [room.roomTime, socket.errored]
   );
 
   const timeRemaining = () => {
@@ -36,7 +36,9 @@ const ClientList = props => {
 
   const updateHeader = () => {
     const time = timeRemaining();
-    if (time > 10) {
+    if (socket.errored) {
+      setHeader({ color: "#e57373", text: "Connection error occured" });
+    } else if (time > 10) {
       setHeader({ color: "#469cd0", text: "Looking for Players..." });
     } else if (time > 5) {
       setHeader({ color: "#e57373", text: "Get Ready..." });
@@ -56,23 +58,25 @@ const ClientList = props => {
         roomTime={room.roomTime}
         header={header}
       />
-      <div className={classes.inner}>
-        <Transition
-          items={room.clients}
-          keys={item => item.id}
-          from={{ overflow: "hidden", height: "0px" }}
-          enter={{ height: "100px" }}
-          leave={{ height: "0px" }}
-        >
-          {client => props => (
-            <ClientCard
-              style={props}
-              client={client}
-              color={client.gamePiece.color}
-            />
-          )}
-        </Transition>
-      </div>
+      {socket.connected && (
+        <div className={classes.inner}>
+          <Transition
+            items={room.clients}
+            keys={item => item.id}
+            from={{ overflow: "hidden", height: "0px" }}
+            enter={{ height: "100px" }}
+            leave={{ height: "0px" }}
+          >
+            {client => props => (
+              <ClientCard
+                style={props}
+                client={client}
+                color={client.gamePiece.color}
+              />
+            )}
+          </Transition>
+        </div>
+      )}
     </div>
   );
 };
@@ -93,7 +97,8 @@ const styles = theme => ({
     position: "relative",
     backgroundColor: theme.primaryWhite,
     boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    borderRadius: 8
+    borderRadius: 8,
+    padding: "0px 15px 0px 15px"
   }
 });
 

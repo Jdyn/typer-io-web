@@ -123,6 +123,7 @@ export default (state = initialState, action) => {
         socket: {
           ...state.socket,
           connected: true,
+          errored: false,
           pending: false
         }
       };
@@ -134,7 +135,8 @@ export default (state = initialState, action) => {
         socket: {
           ...state.socket,
           connected: false,
-          error: action.error ? action.error : state.socket.error
+          error: action.error ? action.error : state.socket.error,
+          errored: true
         }
       };
     case types.RECIEVE_CHAT_MESSAGE:

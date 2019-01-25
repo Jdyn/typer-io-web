@@ -68,7 +68,7 @@ const styles = theme => ({
     height: "42px",
     borderRadius: 4,
     border: "none",
-    boxShadow: props.border,
+    boxShadow: `0px 0px 0px 1.5px ${props.color}`,
     fontSize: 18,
     outline: "none",
     backgroundImage: "none"

@@ -18,10 +18,11 @@ const ClientCard = props => {
       <div className={classes.errors}>{client.gamePiece.errors}</div>
       <div className={classes.accuracy}>{client.gamePiece.accuracy}</div>
       <div className={classes.wpm}>{client.gamePiece.wpm}</div> */}
-      <Divider width="85%" />
       <Header
         color={theme.fontColor}
-        padding="10px 15px 10px 15px"
+        fontSize={18}
+        fontWeight={400}
+        padding="10px 0px 10px 0px"
         className={classes.username}
       >
         {client.username}
@@ -36,8 +37,11 @@ const styles = theme => ({
     // display: "grid",
     // gridTemplateColumns: "repeat(3, 1fr)",
     // gridTemplateRows: "min-content 2px auto",
-    width: "90%",
-    borderRadius: 8,
+    borderTop: `solid 1px ${theme.divider}`,
+    "&:first-child": {
+      border: "none"
+    },
+    width: "100%",
     backgroundColor: theme.primaryWhite,
     ...props.style
   }),

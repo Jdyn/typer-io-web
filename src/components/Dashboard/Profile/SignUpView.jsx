@@ -32,11 +32,17 @@ const SignUpView = props => {
     signup(form);
   };
 
+  const handleExit = event => {
+    event.preventDefault()
+    setErrors({})
+    changeProfile("BACK")
+  }
+
   return (
     <div className={classes.inner}>
       <button
         className={classes.exitButton}
-        onClick={() => changeProfile("BACK")}
+        onClick={e => handleExit(e)}
       >
         <svg
           className={classes.exitSVG}
@@ -49,28 +55,28 @@ const SignUpView = props => {
       </button>
       <form onSubmit={validateForm} className={classes.form}>
         <Input
-          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
           value={form.email}
           margin="0 0 10px 0"
+          color={errors.email ? "#ffa27b" : theme.divider}
           onChange={event => setForm({ ...form, email: event.target.value })}
-          placeholder="jane.doe@example.com"
+          placeholder="email"
           autoComplete="email"
         />
         <Input
-          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
           value={form.username}
           margin="0 0 10px 0"
+          color={errors.username ? "#ffa27b" : theme.divider}
           onChange={event => setForm({ ...form, username: event.target.value })}
-          placeholder="example"
+          placeholder="username"
           autoComplete="username"
         />
         <Input
           type="password"
           margin="0 0 10px 0"
-          border={errors.password ? "0 0 0 1px #ffa27b" : "0 0 0 1px rgba(0, 0, 0, 0.05)"}
+          color={errors.password ? "#ffa27b" : theme.divider}
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
-          placeholder="password123"
+          placeholder="password"
           autoComplete="current-password"
         />
         <div className={classes.divider} />
@@ -103,7 +109,7 @@ const styles = theme => ({
   title: {
     fontSize: "12px",
     marginLeft: "0px",
-    padding: "5px",
+    padding: "5px"
   },
   form: {
     width: "75%",

@@ -2,8 +2,6 @@ import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
 
-// TODO: Need to update prop-types for this component.
-
 const propTypes = {
   /**
    * The content of the component.

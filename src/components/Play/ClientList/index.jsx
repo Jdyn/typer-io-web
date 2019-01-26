@@ -58,29 +58,22 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      <ListHeader
-        gameTime={gameboard.gameTime}
-        roomTime={room.roomTime}
-        header={header}
-      />
       {socket.connected && (
-        <div className={classes.inner}>
-          <Transition
-            items={room.clients}
-            keys={item => item.id}
-            from={{ overflow: "hidden", height: "0px" }}
-            enter={{ height: "100px" }}
-            leave={{ height: "0px" }}
-          >
-            {client => props => (
-              <ClientCard
-                style={props}
-                client={client}
-                color={client.gamePiece.color}
-              />
-            )}
-          </Transition>
-        </div>
+        <Transition
+          items={room.clients}
+          keys={item => item.id}
+          from={{ overflow: "hidden", width: "0px" }}
+          enter={{ width: "200px" }}
+          leave={{ width: "0px" }}
+        >
+          {client => props => (
+            <ClientCard
+              style={props}
+              client={client}
+              color={client.gamePiece.color}
+            />
+          )}
+        </Transition>
       )}
     </div>
   );
@@ -90,20 +83,13 @@ ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    width: "265px",
-    maxWidth: "265px",
-    margin: "25px 15px 15px 15px",
-    position: "relative",
-    gridRow: "1 / 4"
-  },
-  inner: {
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    borderRadius: 8,
-    padding: "0px 15px 0px 15px"
+    width: "100%",
+    display: "Flex",
+    gridRow: "1 / 2",
+    gridColumn: "2 / 4",
+    flexDirection: "row",
+    // margin: "25px 15px 15px 15px",
+    position: "relative"
   }
 });
 

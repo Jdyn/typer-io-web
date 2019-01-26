@@ -57,7 +57,7 @@ const SignUpView = props => {
         <Input
           value={form.email}
           margin="0 0 10px 0"
-          color={errors.email ? "#ffa27b" : theme.divider}
+          borderColor={errors.email ? "#ffa27b" : theme.divider}
           onChange={event => setForm({ ...form, email: event.target.value })}
           placeholder="email"
           autoComplete="email"
@@ -65,7 +65,7 @@ const SignUpView = props => {
         <Input
           value={form.username}
           margin="0 0 10px 0"
-          color={errors.username ? "#ffa27b" : theme.divider}
+          borderColor={errors.username ? "#ffa27b" : theme.divider}
           onChange={event => setForm({ ...form, username: event.target.value })}
           placeholder="username"
           autoComplete="username"
@@ -73,7 +73,7 @@ const SignUpView = props => {
         <Input
           type="password"
           margin="0 0 10px 0"
-          color={errors.password ? "#ffa27b" : theme.divider}
+          borderColor={errors.password ? "#ffa27b" : theme.divider}
           value={form.password}
           onChange={event => setForm({ ...form, password: event.target.value })}
           placeholder="password"

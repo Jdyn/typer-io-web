@@ -5,6 +5,7 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
+import Paper from "../Common/Paper";
 
 const propTypes = {
   client: PropTypes.object.isRequired,
@@ -41,6 +42,9 @@ const Play = props => {
       <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
+        <div className={classes.paper}>
+          <Paper />
+        </div>
         <Gameboard
           clientIndex={clientIndex}
           client={client}
@@ -65,7 +69,7 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
-    gridTemplateRows: "min-content min-content min-content",
+    gridTemplateRows: "min-content min-content min-content min-content",
     maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",
@@ -83,6 +87,12 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.tertiaryWhite,
     position: "absolute"
+  },
+  paper: {
+    gridRow: "2 / 3",
+    gridColumn: "1 / 2",
+    height: "100%",
+    width: "300px"
   }
 });
 

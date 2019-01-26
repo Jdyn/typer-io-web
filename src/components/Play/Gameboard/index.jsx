@@ -40,6 +40,8 @@ const styles = {
     position: "relative",
     margin: "25px 15px 15px 15px",
     height: "auto",
+    gridRow: "2 / 3",
+    gridColumn: "2 / 3",
     minWidth: "450px",
     maxWidth: "650px",
     minHeight: "375px"

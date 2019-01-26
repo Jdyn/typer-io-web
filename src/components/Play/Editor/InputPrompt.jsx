@@ -31,7 +31,7 @@ const styles = theme => ({
     fontSize: "28px",
     whiteSpace: 'nowrap',
     fontWeight: "400",
-    color: props => (props.gameboard.isStarted ? "#0d2b3e" : "#0d2b3e30"),
+    color: "#525f7f",//"#0d2b3e",
     transition: "color 0.5s",
     textShadow: "0px 0px .5px rgba(50,50,93,.25)"
   },

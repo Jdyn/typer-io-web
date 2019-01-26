@@ -19,7 +19,7 @@ const ListHeader = props => {
       <Header
         color={theme.primaryWhite}
         fontWeight={600}
-        styles={{ height: "25px" }}
+        height="20px"
       >
         {gameTime || roomTime}
       </Header>
@@ -34,17 +34,19 @@ ListHeader.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
+    margin: "0px",
     display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    width: "100%",
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    marginBottom: "25px",
-    borderRadius: "8px",
-    transition: "background-color 1s",
-    backgroundColor: props => props.header.color || "#469cd0",
-    padding: "25px 0px 25px 0px",
-    textAlign: "center"
+    flexDirection: "row",
+    // position: "relative",
+    width: "200px",
+    // margin: "0px",
+    // boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
+    // // marginBottom: "25px",
+    // borderRadius: "8px",
+    // transition: "background-color 1s",
+    // backgroundColor: props => props.header.color || "#469cd0",
+    // padding: "25px 0px 25px 0px",
+    // textAlign: "center"
   }
 });
 

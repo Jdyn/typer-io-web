@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
-
+ 
 const propTypes = {
   /**
    * The content of the component.
@@ -52,7 +52,7 @@ Header.defaultProps = {
   fontSize: 18,
   fontWeight: 600,
   borderRadius: "8px",
-  color: "black"
+  color: "black",
 };
 
 const styles = theme => ({
@@ -62,6 +62,7 @@ const styles = theme => ({
     fontSize: props.fontSize,
     fontWeight: props.fontWeight,
     color: props.color,
+    height: props.height,
     backgroundColor: props.backgroundColor,
     borderRadius: props.borderRadius,
     border: props.border,

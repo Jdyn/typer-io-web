@@ -38,7 +38,7 @@ const styles = theme => ({
     margin: "25px 15px 15px 15px",
     position: "relative",
     width: "265px",
-    gridRow: "1 / 3",
+    gridRow: "2 / 4",
     gridColumn: "3 / 4"
   },
   inner: {

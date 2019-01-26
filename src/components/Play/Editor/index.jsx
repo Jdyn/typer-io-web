@@ -69,7 +69,7 @@ Editor.propTypes = propTypes
 
 const styles = theme => ({
   container: {
-    margin: "15px 15px 15px 15px",
+    margin: "10px 15px 15px 15px",
     display: "flex",
     position: "relative",
     overflow: " hidden",
@@ -77,6 +77,7 @@ const styles = theme => ({
     minWidth: "450px",
     height: "100px",
     gridColumn: "2 / 3",
+    gridRow: "3 / 4",
     flexDirection: "row",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,

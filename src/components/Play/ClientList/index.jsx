@@ -83,12 +83,12 @@ ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    width: "100%",
+    width: "auto",
     display: "Flex",
     gridRow: "1 / 2",
-    gridColumn: "2 / 4",
+    gridColumn: "1 / 4",
     flexDirection: "row",
-    // margin: "25px 15px 15px 15px",
+    margin: "0px auto 0px auto",
     position: "relative"
   }
 });

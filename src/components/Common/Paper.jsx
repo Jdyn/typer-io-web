@@ -31,7 +31,7 @@ const Paper = ({ children, classes }) => (
 
 Paper.propTypes = propTypes;
 Paper.defaultProps = {
-  margin: "15px",
+  margin: "10px 15px 0px 15px",
   padding: "0"
 };
 

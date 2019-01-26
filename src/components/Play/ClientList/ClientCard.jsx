@@ -27,7 +27,10 @@ const styles = theme => ({
   card: props => ({
     borderRadius: 8,
     backgroundColor: props.color,
-    height: "50px",
+    height: "65px",
+    margin: "10px 5px 0px 15px",
+    boxShadow: "0px 0px 20px rgba(50,50,93,.25)",
+    // padding: "20px",
     ...props.style
   })
 });

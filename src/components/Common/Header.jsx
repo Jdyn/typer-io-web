@@ -68,6 +68,7 @@ const styles = theme => ({
     border: props.border,
     boxShadow: props.boxShadow,
     justifyContent: "left",
+    position: "relative",
     ...props.style
   })
 });

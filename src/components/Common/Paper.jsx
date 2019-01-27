@@ -31,7 +31,7 @@ const Paper = ({ children, classes }) => (
 
 Paper.propTypes = propTypes;
 Paper.defaultProps = {
-  margin: "15px",
+  margin: "10px 15px 0px 15px",
   padding: "0"
 };
 
@@ -40,7 +40,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    width: "100%",
+    width: "auto",
+    height: "100%",
     borderRadius: 8,
     boxShadow: "0px 5px 30px 5px rgba(50, 50, 93, .25)",
     margin: props.margin,

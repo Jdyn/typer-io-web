@@ -67,27 +67,27 @@ const Snippet = props => {
 const styles = theme => ({
   container: {
     display: "inline-block",
-    position: "absolute",
-    backgroundColor: theme.primaryWhite,
-    padding: " 0px 20px 0px 15px",
-    height: "100%",
-    width: "100%",
-    borderRadius: 8,
-    boxShadow: "0px 6px 40px 0px rgba(50,50,93,.25) inset",
-    overflow: "hidden"
+    position: "relative",
+    height: "375px",
+    paddingLeft: "20px",
+    maxWidth: "100%",
+    overflow: "hidden",
+    zIndex: 20,
+    margin: "0px 30px 0px 10px"
   },
   inner: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    position: "relative",
-    boxSizing: "content-box",
-    width: "100%",
-    height: "95%",
-    overflow: "auto",
     alignContent: "flex-start",
-    // justifyContent: "space-around",
-    padding: "15px 40px 15px 0px"
+    position: "absolute",
+    padding: "20px 0px 20px 0px",
+    zIndex: 20,
+    width: "100%",
+    height: "100%",
+    borderBox: "content-box",
+    overflowY: "scroll",
+    overflowX: "hidden"
   },
   word: {
     display: "flex",

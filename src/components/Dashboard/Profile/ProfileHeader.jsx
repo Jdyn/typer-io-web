@@ -35,7 +35,7 @@ const ProfileHeader = props => {
     <div className={classes.container}>
       <form onSubmit={handleSubmit} className={classes.container}>
         <input
-          className={classes.nameInput}
+          className={classes.input}
           type="text"
           value={name}
           onChange={e => setName(e.target.value)}
@@ -66,10 +66,11 @@ const styles = theme => ({
     maxWidth: "275px",
     width: "275px"
   },
-  nameInput: {
+  input: {
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
     maxWidth: "165px",
+    color: "#8E8D8F",
     margin: "25px auto 0 auto",
     padding: "10px 10px 0px 10px",
     fontSize: 24,

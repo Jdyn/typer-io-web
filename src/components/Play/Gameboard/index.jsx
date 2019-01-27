@@ -2,27 +2,31 @@ import React from "react";
 import withStyles from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
+import Header from "../../Common/Header";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, clientIndex } = props;
+  const { classes, gameboard, client, room, clientIndex, theme } = props;
 
   const transform = words => {
     var res = [];
     words.forEach((word, index) =>
-      res.push(
-        <SnippetWord
-          key={index}
-          word={word}
-          wordIndex={index}
-        />
-      )
+      res.push(<SnippetWord key={index} word={word} wordIndex={index} />)
     );
     return res;
   };
 
   return (
     <div className={classes.container}>
-      <div className={classes.wrapper}>
+      <Header
+        color={theme.primaryWhite}
+        borderRadius="8px 8px 0px 0px"
+        fontSize={24}
+        backgroundColor={"#555abf"}
+        padding="10px"
+      >
+        Gameboard
+      </Header>
+      <div className={classes.inner}>
         <Snippet
           words={transform(gameboard.words)}
           room={room}
@@ -34,21 +38,26 @@ const Gameboard = props => {
   );
 };
 
-const styles = {
+const styles = theme => ({
   container: {
     display: "flex",
+    flexDirection: "column",
     position: "relative",
-    margin: "25px 15px 15px 15px",
-    height: "auto",
-    minWidth: "450px",
-    maxWidth: "650px",
-    minHeight: "375px"
+    margin: "20px 10px 10px 10px",
+    borderRadius: 8,
+    gridRow: "1 / 3",
+    gridColumn: "2 / 3"
   },
-  wrapper: {
-    maxHeight: "auto",
-    minHeight: "auto",
-    width: "100%"
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: theme.primaryWhite,
+    position: "relative",
+    height: "100%",
+    width: "100%",
+    borderRadius: "0px 0px 8px 8px",
+    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset",
   }
-}
+});
 
-export default withStyles(styles)(Gameboard);
+export default withStyles(styles, { injectTheme: true })(Gameboard);

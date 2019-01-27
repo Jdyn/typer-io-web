@@ -65,13 +65,13 @@ const styles = theme => ({
     margin: props.margin,
     backgroundColor: theme.primaryWhite,
     padding: props.padding,
+    color: props.color,
     height: "42px",
     borderRadius: 4,
     border: "none",
-    boxShadow: `0px 0px 0px 1.5px ${props.color}`,
+    boxShadow: `0px 0px 0px 1.5px ${props.borderColor}`,
     fontSize: 18,
     outline: "none",
-    backgroundImage: "none"
   })
 });
 

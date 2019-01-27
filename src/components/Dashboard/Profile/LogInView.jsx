@@ -42,7 +42,7 @@ const LogInView = props => {
       <form onSubmit={handleSubmit} className={classes.form}>
         <Input
           value={form.email}
-          color={theme.divider}
+          borderColor={theme.divider}
           onChange={event => setForm({ ...form, username: event.target.value })}
           placeholder="username"
           autoComplete="username"
@@ -50,7 +50,7 @@ const LogInView = props => {
         <Input
           type="password"
           value={form.password}
-          color={theme.divider}
+          borderColor={theme.divider}
           onChange={event => setForm({ ...form, password: event.target.value })}
           placeholder="password"
           autoComplete="current-password"

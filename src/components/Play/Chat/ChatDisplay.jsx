@@ -37,7 +37,7 @@ const styles = {
     maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,
-    margin: "15px 10px 15px 10px"
+    margin: "0px 10px 0px 10px"
   },
   inner: {
     display: "flex",

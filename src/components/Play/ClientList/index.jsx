@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Transition } from "react-spring";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import ListHeader from "./ListHeader";
+import ListHeader from "../ListHeader";
 import ClientCard from "./ClientCard";
+import Header from "../../Common/Header";
 
 const propTypes = {
   room: PropTypes.object.isRequired,
@@ -12,18 +13,11 @@ const propTypes = {
 };
 
 const ClientList = props => {
-  const { room, gameboard, classes, socket } = props;
+  const { room, gameboard, classes, socket, theme } = props;
   const [header, setHeader] = useState({
     color: "#469cd0",
     text: "Looking for Players..."
   });
-
-  useEffect(
-    () => {
-      updateHeader();
-    },
-    [room.roomTime, socket]
-  );
 
   const timeRemaining = () => {
     const roomTime = room.roomTime;
@@ -58,11 +52,19 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      <ListHeader
-        gameTime={gameboard.gameTime}
-        roomTime={room.roomTime}
-        header={header}
-      />
+      {socket.connected && (
+        <Header
+          boxShadow="0 5px 20px rgba(35,35,80,.25)"
+          color={theme.primaryWhite}
+          borderRadius="8px 8px 0px 0px"
+          fontSize={24}
+          backgroundColor={"#555abf"} //"#f7bb10"
+          padding="10px"
+        >
+          Players
+        </Header>
+      )}
+
       {socket.connected && (
         <div className={classes.inner}>
           <Transition
@@ -90,21 +92,18 @@ ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    width: "265px",
-    maxWidth: "265px",
-    margin: "25px 15px 15px 15px",
-    position: "relative",
-    gridRow: "1 / 4"
+    display: "Flex",
+    flexDirection: "column",
+    gridRow: "2 / 4",
+    gridColumn: "1 / 2",
+    margin: "0px 10px 0px 10px",
+    position: "relative"
   },
   inner: {
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
+    borderRadius: "0px 0px 8px 8px",
     backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 5px 30px 5px rgba(50,50,93,.25)",
-    borderRadius: 8,
-    padding: "0px 15px 0px 15px"
+    boxShadow: "0px 0px 30px 5px rgba(50,50,93,.25)"
   }
 });
 
-export default withStyles(styles)(ClientList);
+export default withStyles(styles, { injectTheme: true })(ClientList);

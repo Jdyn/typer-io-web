@@ -18,16 +18,13 @@ const Gameboard = props => {
   return (
     <div className={classes.container}>
       <Header
-        boxShadow="0 5px 20px rgba(35,35,80,.25)"
-        // border="1px solid rgba(0,0,0,.1)"
-        margin="0px 0px -8px 0px"
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"
         fontSize={24}
-        backgroundColor={"#555abf"} //"#f7bb10"
-        padding="10px 10px 15px 10px"
+        backgroundColor={"#555abf"}
+        padding="10px"
       >
-        Map
+        Gameboard
       </Header>
       <div className={classes.inner}>
         <Snippet
@@ -47,9 +44,7 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     margin: "20px 10px 10px 10px",
-    backgroundClip: "padding-box",
     borderRadius: 8,
-    //width: ??
     gridRow: "1 / 3",
     gridColumn: "2 / 3"
   },
@@ -60,19 +55,8 @@ const styles = theme => ({
     position: "relative",
     height: "100%",
     width: "100%",
-    // borderRadius: "0px 0px 8px 8px",
-    borderRadius: 8,
-    zIndex: 100,
-    "&:before": {
-      content: "''",
-      display: "block",
-      position: "absolute",
-      borderRadius: "0px 0px 8px 8px",
-      width: "100%",
-      height: "100%",
-      zIndex: 5,
-      boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
-    }
+    borderRadius: "0px 0px 8px 8px",
+    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset",
   }
 });
 

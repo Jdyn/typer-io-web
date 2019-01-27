@@ -52,17 +52,19 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      <Header
-        boxShadow="0px 0px 30px 5px rgba(50,50,93,.25)"
-        margin="0px 0px -8px 0px"
-        color={theme.primaryWhite}
-        borderRadius="8px 8px 0px 0px"
-        fontSize={24}
-        backgroundColor={"#555abf"} //"#f7bb10"
-        padding="10px 10px 15px 10px"
-      >
-        Players
-      </Header>{" "}
+      {socket.connected && (
+        <Header
+          boxShadow="0 5px 20px rgba(35,35,80,.25)"
+          color={theme.primaryWhite}
+          borderRadius="8px 8px 0px 0px"
+          fontSize={24}
+          backgroundColor={"#555abf"} //"#f7bb10"
+          padding="10px"
+        >
+          Players
+        </Header>
+      )}
+
       {socket.connected && (
         <div className={classes.inner}>
           <Transition
@@ -94,14 +96,11 @@ const styles = theme => ({
     flexDirection: "column",
     gridRow: "2 / 4",
     gridColumn: "1 / 2",
-    minHeight: "75px",
     margin: "0px 10px 0px 10px",
     position: "relative"
   },
   inner: {
-    // marginTop: "-8px",
-    borderRadius: 8,
-    zIndex: 100,
+    borderRadius: "0px 0px 8px 8px",
     backgroundColor: theme.primaryWhite,
     boxShadow: "0px 0px 30px 5px rgba(50,50,93,.25)"
   }

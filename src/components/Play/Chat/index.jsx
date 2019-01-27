@@ -24,13 +24,12 @@ class Chat extends React.Component {
     return (
       <div className={classes.container}>
         <Header
-          boxShadow="0 0px 30px rgba(35,35,80,.25)"
+          boxShadow="0 5px 20px rgba(35,35,80,.25)"
           color={theme.primaryWhite}
           borderRadius="8px 8px 0px 0px"
           fontSize={24}
-          margin="0px 0px -8px 0px"
           backgroundColor={"#555abf"} //"#f7bb10"
-          padding="10px 10px 18px 10px"
+          padding="10px"
         >
           Chat
         </Header>
@@ -50,8 +49,6 @@ const styles = theme => ({
     margin: "20px 10px 10px 10px",
     position: "relative",
     width: "275px",
-    backgroundClip: "padding-box",
-
     gridRow: "1 / 4",
     gridColumn: "3 / 4"
   },
@@ -62,19 +59,8 @@ const styles = theme => ({
     position: "relative",
     height: "100%",
     width: "100%",
-    borderRadius: 8,
-    boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
-
-    // "&:before": {
-    //   content: "''",
-    //   display: "block",
-    //   position: "absolute",
-    //   borderRadius: 8,
-    //   width: "100%",
-    //   height: "100%",
-    //   zIndex: 5,
-    //   boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
-    // }
+    borderRadius: "0px 0px 8px 8px",
+    boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset",
   }
 });
 

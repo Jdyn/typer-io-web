@@ -140,7 +140,7 @@ const styles = theme => ({
     position: "relative",
     gridRow: "1 / 2",
     gridColumn: "1 / 2",
-    width: "275px"
+    // width: "275px"
   }
 });
 

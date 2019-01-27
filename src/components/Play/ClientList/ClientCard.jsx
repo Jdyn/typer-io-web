@@ -27,8 +27,11 @@ const ClientCard = props => {
 const styles = theme => ({
   card: props => ({
     backgroundColor: theme.primaryWhite,
-    height: "65px",
     borderRadius: 8,
+    borderTop: `solid 2px ${theme.divider}`,
+    "&:first-child": {
+      border: "none"
+    },
     ...props.style
   })
 });

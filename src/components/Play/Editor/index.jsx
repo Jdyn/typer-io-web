@@ -69,18 +69,20 @@ Editor.propTypes = propTypes
 
 const styles = theme => ({
   container: {
-    margin: "10px 15px 15px 15px",
+    margin: "10px 10px 10px 10px",
     display: "flex",
     position: "relative",
     overflow: " hidden",
     maxWidth: "650px",
     minWidth: "450px",
-    height: "100px",
+    height: "110px",
     gridColumn: "2 / 3",
     gridRow: "3 / 4",
     flexDirection: "row",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
+    border: "1px solid rgba(0,0,0,.1)",
+    backgroundClip: "padding-box",
     transition: "background-color 0.5s",
     boxShadow: "0px -6px 40px 0px rgba(50,50,93,.25) inset"
   },

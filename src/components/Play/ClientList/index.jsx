@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Transition } from "react-spring";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import ListHeader from "./ListHeader";
+import ListHeader from "../ListHeader";
 import ClientCard from "./ClientCard";
+import Header from "../../Common/Header";
 
 const propTypes = {
   room: PropTypes.object.isRequired,
@@ -12,18 +13,11 @@ const propTypes = {
 };
 
 const ClientList = props => {
-  const { room, gameboard, classes, socket } = props;
+  const { room, gameboard, classes, socket, theme } = props;
   const [header, setHeader] = useState({
     color: "#469cd0",
     text: "Looking for Players..."
   });
-
-  useEffect(
-    () => {
-      updateHeader();
-    },
-    [room.roomTime, socket]
-  );
 
   const timeRemaining = () => {
     const roomTime = room.roomTime;
@@ -58,22 +52,35 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
+      <Header
+        boxShadow="0px 0px 30px 5px rgba(50,50,93,.25)"
+        margin="0px 0px -8px 0px"
+        color={theme.primaryWhite}
+        borderRadius="8px 8px 0px 0px"
+        fontSize={24}
+        backgroundColor={"#555abf"} //"#f7bb10"
+        padding="10px 10px 15px 10px"
+      >
+        Players
+      </Header>{" "}
       {socket.connected && (
-        <Transition
-          items={room.clients}
-          keys={item => item.id}
-          from={{ overflow: "hidden", width: "0px" }}
-          enter={{ width: "200px" }}
-          leave={{ width: "0px" }}
-        >
-          {client => props => (
-            <ClientCard
-              style={props}
-              client={client}
-              color={client.gamePiece.color}
-            />
-          )}
-        </Transition>
+        <div className={classes.inner}>
+          <Transition
+            items={room.clients}
+            keys={item => item.id}
+            from={{ overflow: "hidden", height: "0px" }}
+            enter={{ height: "100px" }}
+            leave={{ height: "0px" }}
+          >
+            {client => props => (
+              <ClientCard
+                style={props}
+                client={client}
+                color={client.gamePiece.color}
+              />
+            )}
+          </Transition>
+        </div>
       )}
     </div>
   );
@@ -83,14 +90,21 @@ ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    width: "auto",
     display: "Flex",
-    gridRow: "1 / 2",
-    gridColumn: "1 / 4",
-    flexDirection: "row",
-    margin: "0px auto 0px auto",
+    flexDirection: "column",
+    gridRow: "2 / 4",
+    gridColumn: "1 / 2",
+    minHeight: "75px",
+    margin: "0px 10px 0px 10px",
     position: "relative"
+  },
+  inner: {
+    // marginTop: "-8px",
+    borderRadius: 8,
+    zIndex: 100,
+    backgroundColor: theme.primaryWhite,
+    boxShadow: "0px 0px 30px 5px rgba(50,50,93,.25)"
   }
 });
 
-export default withStyles(styles)(ClientList);
+export default withStyles(styles, { injectTheme: true })(ClientList);

@@ -20,7 +20,7 @@ const styles = theme => ({
     maxHeight: "20px",
     boxSizing: "content-box",
     userSelect: "none",
-    boxShadow: "-2px 2px 2px rgba(50,50,93,.25)",
+    boxShadow: "0px 2px 2px rgba(50,50,93,.25)",
     letterSpacing: "5px",
     backgroundColor: theme.primaryGrey,
     borderRadius: "4px",

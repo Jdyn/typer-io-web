@@ -67,8 +67,10 @@ const styles = theme => ({
     borderRadius: props.borderRadius,
     border: props.border,
     boxShadow: props.boxShadow,
+    backgroundClip: "padding-box",
     justifyContent: "left",
     position: "relative",
+    zIndex: 0,
     ...props.style
   })
 });

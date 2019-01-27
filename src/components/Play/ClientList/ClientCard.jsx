@@ -9,7 +9,8 @@ const ClientCard = props => {
   return (
     <div className={classes.card}>
       <Header
-        color={theme.primaryWhite}
+        color={theme.fontColor}
+        // backgroundColor={props.color}
         fontSize={20}
         borderRadius={"8px 8px 0px 0px"}
         fontWeight={500}
@@ -25,12 +26,9 @@ const ClientCard = props => {
 
 const styles = theme => ({
   card: props => ({
-    borderRadius: 8,
-    backgroundColor: props.color,
+    backgroundColor: theme.primaryWhite,
     height: "65px",
-    margin: "10px 5px 0px 15px",
-    boxShadow: "0px 0px 20px rgba(50,50,93,.25)",
-    // padding: "20px",
+    borderRadius: 8,
     ...props.style
   })
 });

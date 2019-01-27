@@ -6,7 +6,7 @@ import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
 import Paper from "../Common/Paper";
-import ListHeader from "./ClientList/ListHeader";
+import ListHeader from "./ListHeader";
 
 const propTypes = {
   client: PropTypes.object.isRequired,
@@ -22,6 +22,10 @@ const propTypes = {
 
 const Play = props => {
   const [clientIndex, setClientIndex] = useState(null);
+  const [header, setHeader] = useState({
+    color: "#469cd0",
+    text: "Looking for Players..."
+  });
   const {
     client,
     room,
@@ -38,14 +42,56 @@ const Play = props => {
     };
   }, []);
 
+  useEffect(
+    () => {
+      updateHeader();
+    },
+    [room.roomTime, socket]
+  );
+
+  const timeRemaining = () => {
+    const roomTime = room.roomTime;
+    if (roomTime) {
+      const text = roomTime.substring(roomTime.length - 2, roomTime.length);
+      const seconds = parseInt(text);
+      return seconds;
+    }
+  };
+
+  const updateHeader = () => {
+    const time = timeRemaining();
+
+    if (time > 10) {
+      setHeader({ color: "#469cd0", text: "Looking for Players..." });
+    } else if (time > 5) {
+      setHeader({ color: "#e57373", text: "Get Ready..." });
+    } else if (time > 0) {
+      setHeader({ color: "#e5a03e", text: "Get Set..." });
+    } else if (time === 0) {
+      setHeader({ color: "#81C784", text: "GO!" });
+    } else if (socket.connected) {
+      setHeader({ color: "#469cd0", text: "Looking for Players..." });
+      return;
+    } else if (socket.errored) {
+      setHeader({ color: "#e57373", text: "Connection error occured" });
+      return;
+    } else {
+      setHeader({ color: "#469cd0", text: "Connecting to server..." });
+    }
+  };
+
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
-        <div className={classes.paper}>
-        {/* <ListHeader></ListHeader> */}
-          <Paper />
+
+        <div className={classes.gameState}>
+          <ListHeader
+            header={header}
+            gameTime={gameboard.gameTime}
+            roomTime={room.roomTime}
+          />
         </div>
         <Gameboard
           clientIndex={clientIndex}
@@ -71,7 +117,7 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
-    gridTemplateRows: "min-content 500px min-content",
+    gridTemplateRows: "min-content min-content min-content",
     maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",
@@ -90,10 +136,10 @@ const styles = theme => ({
     backgroundColor: theme.tertiaryWhite,
     position: "absolute"
   },
-  paper: {
-    gridRow: "2 / 4",
-    gridColumn: "1 / ",
-    height: "90%",
+  gameState: {
+    position: "relative",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 2",
     width: "275px"
   }
 });

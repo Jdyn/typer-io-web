@@ -37,6 +37,7 @@ const ProfileHeader = props => {
         <input
           className={classes.input}
           type="text"
+          maxLength={16}
           value={name}
           onChange={e => setName(e.target.value)}
           placeholder="username"

@@ -17,6 +17,7 @@ const ListHeader = props => {
   return (
     <div className={classes.container}>
       <Header
+        border="none"
         color={theme.primaryWhite}
         fontWeight={600}
         fontSize={20}
@@ -24,7 +25,12 @@ const ListHeader = props => {
       >
         {gameTime || roomTime}
       </Header>
-      <Header color={theme.primaryWhite} fontSize={20} fontWeight={600}>
+      <Header
+        border="none"
+        color={theme.primaryWhite}
+        fontSize={20}
+        fontWeight={600}
+      >
         {header.text}
       </Header>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
- 
+
 const propTypes = {
   /**
    * The content of the component.
@@ -53,6 +53,7 @@ Header.defaultProps = {
   fontWeight: 600,
   borderRadius: "8px",
   color: "black",
+  border: "1px solid rgba(0,0,0,.1)"
 };
 
 const styles = theme => ({
@@ -67,10 +68,10 @@ const styles = theme => ({
     borderRadius: props.borderRadius,
     border: props.border,
     boxShadow: props.boxShadow,
-    // backgroundClip: "padding-box",
+    border: props.border,
     justifyContent: "left",
     position: "relative",
-    zIndex: 1,
+    zIndex: 100,
     ...props.style
   })
 });

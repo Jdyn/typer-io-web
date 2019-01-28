@@ -55,6 +55,8 @@ const styles = theme => ({
   inner: {
     display: "flex",
     flexDirection: "column",
+    zIndex: 10,
+    // border: "1px solid rgba(0,0,0,.1)",
     backgroundColor: theme.primaryWhite,
     position: "relative",
     height: "100%",

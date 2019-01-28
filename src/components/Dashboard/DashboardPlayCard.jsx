@@ -13,7 +13,9 @@ const DashboardPlayCard = props => {
   return (
     <Fragment>
       <button className={classes.card} onClick={e => onClick(e, card.route)}>
-        <Header color="#fff">{card.title}</Header>
+        <Header border="none" color="#fff">
+          {card.title}
+        </Header>
         <Content className={classes.itemText} color={"#fff"} fontSize={18}>
           {card.text}
         </Content>
@@ -36,10 +38,10 @@ const styles = theme => ({
     outline: "none",
     padding: "40px 40px 40px 40px",
     backgroundColor: props => props.card.color,
+    border: "1px solid rgba(0,0,0,.1)",
     textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
-    border: "none",
     boxShadow:
       "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {
@@ -48,7 +50,7 @@ const styles = theme => ({
         "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
     },
     "&:active": {
-      transform: "translateY(2px)",
+      transform: "translateY(2px)"
     }
   }
 });

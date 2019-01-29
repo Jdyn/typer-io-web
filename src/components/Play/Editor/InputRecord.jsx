@@ -3,7 +3,18 @@ import withStyles from "react-jss";
 import Input from "./Input";
 
 const InputRecord = props => {
-  const { classes, words, wordsComplete, wordsRemaining, editorUpdate, isWrong, gameboard } = props
+  const {
+    classes,
+    words,
+    wordsComplete,
+    wordsRemaining,
+    editorUpdate,
+    isWrong,
+    gameboard,
+    client,
+    room
+  } = props;
+
   return (
     <div className={classes.content}>
       {wordsComplete.map((word, index) => {
@@ -18,8 +29,11 @@ const InputRecord = props => {
         words={words}
         isWrong={isWrong}
         gameboard={gameboard}
+        room={room}
+        client={client}
         wordsComplete={wordsComplete}
-        wordsRemaining={wordsRemaining} />
+        wordsRemaining={wordsRemaining}
+      />
     </div>
   );
 };
@@ -33,8 +47,8 @@ const styles = {
     alignItems: "center",
     fontSize: "28px",
     fontWeight: "400",
-    color: '#24b47e',
-    textShadow: '0px 0px .5px rgba(50,50,93,.25)',
+    color: "#24b47e",
+    textShadow: "0px 0px .5px rgba(50,50,93,.25)"
   },
   word: {
     lineHeight: "40px",

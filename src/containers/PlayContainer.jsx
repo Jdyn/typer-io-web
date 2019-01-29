@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => {
   return {
     initSocket: username => dispatch(initSocket(username)),
     updateClient: username => dispatch(updateClient({ username })),
-    gameboardUpdate: payload => dispatch(gameboardUpdate(payload)),
+    // gameboardUpdate: payload => dispatch(gameboardUpdate(payload)),
     leaveRoom: payload => silentEmit(types.DISCONNECT_SOCKET, payload),
     sendChatMessage: message => sendChatMessage(message)
   };

@@ -1,28 +1,20 @@
 import React from "react";
-import withStyles from "react-jss";
+import withStyles, { ThemeProvider } from "react-jss";
 import Divider from "../../Common/Divider";
 import Header from "../../Common/Header";
 
 const ClientCard = props => {
-  const { client, classes, theme } = props;
+  const { client, classes } = props;
   const { gamePiece } = client;
   return (
     <div className={classes.card}>
-      <Header
-        color={theme.primaryWhite}
-        backgroundColor={props.color}
-        border="none"
-        margin="5px"
-        borderRadius="8px"
-        fontWeight={500}
-        fontSize={20}
-        padding="5px"
-      >
+    {/* <div className={classes.errors}> */}
+      
+    {/* </div> */}
+      <div className={classes.username}>
         {client.username}
-      </Header>
-      {/* <div className={classes.accuracy}>{gamePiece.accuracy}</div>
-      <div className={classes.errors}>{gamePiece.errors}</div>
-      <div className={classes.wpm}>{gamePiece.wpm}</div> */}
+        <div className={classes.stat}>{gamePiece.wpm} <span className={classes.statHeader}>WPM</span></div>
+      </div>
     </div>
   );
 };
@@ -31,48 +23,48 @@ const styles = theme => ({
   card: props => ({
     display: "grid",
     gridTemplateRows: "min-content auto",
-    gridTemplateColumns: "min-content min-content min-content min-content",
+    gridTemplateColumns: "min-content 1fr 1fr",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
-    // maxWidth: "275px",
+    maxWidth: "265px",
     borderTop: `solid 2px ${theme.divider}`,
     "&:first-child": {
       border: "none"
     },
     ...props.style
   }),
-  accuracy: {
-    backgroundColor: "green",
+  username: props => ({
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: props.color,
+    boxShadow: "0 1px 5px rgba(50,50,93,.25)",
+    fontWeight: 600,
+    margin: "5px 5px 5px 5px",
+    borderRadius: 4,
     color: theme.primaryWhite,
-    margin: "5px",
-    padding: "5px",
-    gridRow: "2 / 3",
-    borderRadius: 8,
-    width: "60px",
+    padding: "5px 10px 5px 10px",
+    gridRow: "1 / 2",
+    gridColumn: "2 / 4"
+  }),
+  stat: {
+    margin: "auto 0px auto auto",
+    backgroundColor: "",
+    fontSize: 20,
     textAlign: "center",
-    gridColumn: "2 / 3"
+    color: theme.primaryWhite //"#616161"
+  },
+  statHeader: {
+    fontSize: 10,
   },
   errors: {
-    backgroundColor: "red",
-    color: theme.primaryWhite,
-    margin: "5px",
-    padding: "5px",
-    width: "60px",
-    borderRadius: 8,
-    textAlign: "center",
-    gridRow: "2 / 3",
-    gridColumn: "3 / 4"
-  },
-  wpm: {
-    backgroundColor: "blue",
-    color: theme.primaryWhite,
-    margin: "5px",
-    padding: "5px",
-    width: "60px",
-    textAlign: "center",
-    borderRadius: 8,
-    gridRow: "2 / 3",
-    gridColumn: "4 / 5"
+    width: "35px",
+    height: "85%",
+    borderRadius: "0px 8px 8px 0px",
+    boxShadow: "0 1px 5px rgba(50,50,93,.25)",
+    margin: "5px -10px auto 0px",
+    backgroundColor: "#ef5350",
+    gridRow: "1 / 3",
+    gridColumn: "1 / 2"
   }
 });
 

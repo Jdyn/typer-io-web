@@ -94,7 +94,7 @@ const styles = theme => ({
   container: {
     display: "Flex",
     flexDirection: "column",
-    gridRow: "2 / 4",
+    gridRow: "2 / 5",
     gridColumn: "1 / 2",
     margin: "0px 10px 0px 10px",
     position: "relative"

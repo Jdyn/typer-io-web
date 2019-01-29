@@ -77,7 +77,7 @@ export default (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            ...action.payload
+            gameTime: action.payload.gameTime
           },
           clients: gameboardUpdate(
             [...state.room.clients],

@@ -38,7 +38,7 @@ const styles = theme => ({
     margin: [0, "auto"],
     padding: 0,
     backgroundColor: theme.primaryWhite,
-    boxShadow: '0 5px 20px rgba(50,50,93,.25)',
+    boxShadow: '0 5px 10px rgba(50,50,93,.25)',
     borderRadius: 0
   },
 

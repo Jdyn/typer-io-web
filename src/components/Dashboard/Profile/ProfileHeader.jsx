@@ -18,17 +18,17 @@ const ProfileHeader = props => {
   const handleSubmit = event => {
     event.preventDefault();
     if (name !== username) {
-      if (name !== null) {
-        updateClient({ username: name });
-      }
+      updateClient({ username: name });
     }
   };
 
   useEffect(
     () => {
-      setName(username);
+      if (name !== username) {
+        updateClient({ username: name });
+      }
     },
-    [username]
+    [name]
   );
 
   return (

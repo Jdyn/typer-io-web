@@ -45,7 +45,7 @@ const styles = theme => ({
     position: "relative",
     margin: "20px 10px 10px 10px",
     borderRadius: 8,
-    maxHeight: "375px",
+    // maxHeight: "375px",
     gridRow: "1 / 3",
     gridColumn: "2 / 3"
   },

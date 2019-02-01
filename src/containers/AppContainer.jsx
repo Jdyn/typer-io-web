@@ -8,8 +8,9 @@ import { authenticate } from "../actions/SessionActions";
 class App extends Component {
   componentWillMount() {
     const token = localStorage.getItem("token");
+    const { dispatch } = this.props.store
     if (token) {
-      this.props.store.dispatch(authenticate())
+      dispatch(authenticate())
     }
   }
 

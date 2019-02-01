@@ -1,7 +1,5 @@
 import React from "react";
-import withStyles, { ThemeProvider } from "react-jss";
-import Divider from "../../Common/Divider";
-import Header from "../../Common/Header";
+import withStyles from "react-jss";
 
 const ClientCard = props => {
   const { client, classes } = props;
@@ -39,6 +37,8 @@ const styles = theme => ({
     backgroundColor: props.color,
     boxShadow: "0 1px 5px rgba(50,50,93,.25)",
     fontWeight: 600,
+    lineHeight: "25px",
+    height: "35px",
     margin: "5px 5px 5px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,

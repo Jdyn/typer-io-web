@@ -65,7 +65,7 @@ export default (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            ...action.payload
+            isStarted: action.payload.isStarted,
           }
         }
       };

@@ -6,12 +6,11 @@ import Header from "../Common/Header";
 const propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  header: PropTypes.object.isRequired,
   gameTime: PropTypes.string,
   roomTime: PropTypes.string
 };
 
-const ListHeader = props => {
+const PlayStatusCard = props => {
   const { classes, theme, header, gameTime, roomTime } = props;
 
   return (
@@ -31,16 +30,16 @@ const ListHeader = props => {
         fontSize={20}
         fontWeight={600}
       >
-        {header.text}
+      {header.text}
       </Header>
     </div>
   );
 };
 
-ListHeader.propTypes = propTypes;
+PlayStatusCard.propTypes = propTypes;
 
 const styles = theme => ({
-  container: {
+  container: props => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
@@ -51,10 +50,10 @@ const styles = theme => ({
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 1s",
-    backgroundColor: props => props.header.color || "#469cd0",
+    backgroundColor: props.header ? props.header.color : "black",
     padding: "25px 0px 25px 0px",
     textAlign: "center"
-  }
+  })
 });
 
-export default withStyles(styles, { injectTheme: true })(ListHeader);
+export default withStyles(styles, { injectTheme: true })(PlayStatusCard);

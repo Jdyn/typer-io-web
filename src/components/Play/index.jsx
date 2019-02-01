@@ -5,10 +5,10 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
-import Paper from "../Common/Paper";
-import ListHeader from "./ListHeader";
+import PlayStatus from "./PlayStatus";
 
 const propTypes = {
+  classes: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   room: PropTypes.object.isRequired,
   gameboard: PropTypes.object.isRequired,
@@ -16,25 +16,12 @@ const propTypes = {
   updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
-  sendChatMessage: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  sendChatMessage: PropTypes.func.isRequired
 };
 
 const Play = props => {
+  const { client, room, socket, gameboard, leaveRoom, sendChatMessage, classes } = props;
   const [clientIndex, setClientIndex] = useState(null);
-  const [header, setHeader] = useState({
-    color: "#469cd0",
-    text: "Looking for Players..."
-  });
-  const {
-    client,
-    room,
-    socket,
-    gameboard,
-    leaveRoom,
-    sendChatMessage,
-    classes
-  } = props;
 
   useEffect(() => {
     return () => {
@@ -85,20 +72,8 @@ const Play = props => {
       <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
-
-        <div className={classes.gameState}>
-          <ListHeader
-            header={header}
-            gameTime={gameboard.gameTime}
-            roomTime={room.roomTime}
-          />
-        </div>
-        <Gameboard
-          clientIndex={clientIndex}
-          client={client}
-          room={room}
-          gameboard={gameboard}
-        />
+        <PlayStatus gameboard={gameboard} room={room} socket={socket} />
+        <Gameboard clientIndex={clientIndex} client={client} room={room} gameboard={gameboard} />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
           client={client}
@@ -118,7 +93,7 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
     gridTemplateRows: "min-content min-content min-content min-content",
-    
+
     maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",
@@ -136,12 +111,6 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.tertiaryWhite,
     position: "absolute"
-  },
-  gameState: {
-    position: "relative",
-    gridRow: "1 / 2",
-    gridColumn: "1 / 2",
-    // width: "275px"
   }
 });
 

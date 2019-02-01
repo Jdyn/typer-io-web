@@ -14,11 +14,6 @@ export const sendChatMessage = emitAction(payload => ({
   payload
 }));
 
-// export const gameboardUpdate = payload => ({
-//   type: types.GAMEBOARD_UPDATE,
-//   payload
-// });
-
 export const initSocket = (username, history) => ({
   type: types.INIT_SOCKET_REQUEST,
   payload: {

@@ -5,7 +5,6 @@ import Play from "../components/Play";
 import { silentEmit } from "../store/socket";
 import {
   initSocket,
-  gameboardUpdate,
   sendChatMessage,
   updateClient
 } from "../actions/ClientActions";
@@ -35,7 +34,6 @@ const mapDispatchToProps = dispatch => {
   return {
     initSocket: username => dispatch(initSocket(username)),
     updateClient: username => dispatch(updateClient({ username })),
-    // gameboardUpdate: payload => dispatch(gameboardUpdate(payload)),
     leaveRoom: payload => silentEmit(types.DISCONNECT_SOCKET, payload),
     sendChatMessage: message => sendChatMessage(message)
   };

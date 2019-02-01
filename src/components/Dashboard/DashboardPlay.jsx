@@ -61,7 +61,7 @@ const styles = theme => ({
     justifyContent: "flex-end",
     margin: "20px auto 20px 0 ",
     padding: "5px 5px",
-    maxWidth: "1160px",
+    // maxWidth: "1160px",
     backgroundColor: theme.primaryWhite
   }
 });

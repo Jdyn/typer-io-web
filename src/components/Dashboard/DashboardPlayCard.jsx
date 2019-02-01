@@ -1,27 +1,28 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withStyless from "react-jss";
 import Header from "../Common/Header";
 import Content from "../Common/Content";
 
 const propTypes = {
-  card: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  card: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  pending: PropTypes.bool.isRequired
 };
 
 const DashboardPlayCard = props => {
-  const { onClick, classes, card } = props;
+  const { onClick, classes, card, pending } = props;
   return (
-    <Fragment>
-      <button className={classes.card} onClick={e => onClick(e, card.route)}>
-        <Header border="none" color="#fff">
-          {card.title}
-        </Header>
-        <Content className={classes.itemText} color={"#fff"} fontSize={18}>
-          {card.text}
-        </Content>
-        {props.pending && <div>LOADING</div>}
-      </button>
-    </Fragment>
+    <button className={classes.card} onClick={e => onClick(e, card.route)}>
+      <Header border="none" color="#fff">
+        {card.title}
+      </Header>
+      <Content className={classes.itemText} color={"#fff"} fontSize={18}>
+        {card.text}
+      </Content>
+      {pending && <div>LOADING</div>}
+    </button>
   );
 };
 
@@ -36,10 +37,9 @@ const styles = theme => ({
     margin: 15,
     fontWeight: 500,
     outline: "none",
-    padding: "40px 40px 40px 40px",
+    padding: "40px",
     backgroundColor: props => props.card.color,
     border: "1px solid rgba(0,0,0,.1)",
-    textDecoration: "none",
     borderRadius: 8,
     transitionDuration: ".15s",
     boxShadow:

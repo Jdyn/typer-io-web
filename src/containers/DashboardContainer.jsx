@@ -3,6 +3,7 @@ import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
 import { updateClient, initSocket } from "../actions/ClientActions";
 import { login, logout, signup } from "../actions/SessionActions";
+
 class DashboardContainer extends Component {
   componentDidUpdate() {
     if (this.props.socket.connected) {

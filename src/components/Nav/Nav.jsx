@@ -1,6 +1,6 @@
 import React from "react";
 import withStyles from "react-jss";
-import { Link } from 'react-router-dom'
+
 const Nav = props => {
   const { classes } = props;
 
@@ -9,7 +9,6 @@ const Nav = props => {
       <nav className={classes.container}>
         <ul className={classes.list}>
           <li className={classes.listItem}>
-            {/* <Link to="/login" className={classes.listItemTitle}>login</Link> */}
           </li>
           <li>
             <button className={classes.listItemTitle}></button>

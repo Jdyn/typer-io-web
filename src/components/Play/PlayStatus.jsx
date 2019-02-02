@@ -14,8 +14,6 @@ const PlayStatus = props => {
   const { classes, gameboard, room, socket } = props;
   const [viewType, setViewType] = useState("ROOM_TYPE");
 
-  useEffect(() => {}, [room.roomTime, gameboard.gameTime, socket]);
-
   const renderHeader = type => {
     switch (type) {
       case "ROOM_TYPE":
@@ -51,7 +49,7 @@ const PlayStatus = props => {
     const time = getTime(viewType);
     if (time !== null) {
       if (time === 0) {
-        return { color: "#469cd0", text: "Game Over" };
+        return { color: "#555abf", text: "Game has Ended" };
       } else if (time < 10) {
         return { color: "#e57373", text: "GO!" };
       } else if (time < 20) {

@@ -29,6 +29,7 @@ const SignUpView = props => {
 
   const validateForm = event => {
     event.preventDefault();
+    // Do some client side validation...
     signup(form);
   };
 

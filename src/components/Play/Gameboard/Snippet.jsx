@@ -19,25 +19,25 @@ const Snippet = props => {
               {room.clients
                 .filter(object => object.id !== client.id)
                 .map((client, index) => {
-                  const { currentIndex, color } = client.gamePiece;
+                  const { position, color } = client.gamePiece;
                   const { wordIndex } = word.props;
                   if (
                     wordIndex === 0 &&
-                    currentIndex === null
+                    position === null
                   ) {
                     return (
                       <GamePiece
                         key={index}
-                        index={currentIndex}
+                        index={position}
                         color={color}
                       />
                     );
                   }
                   return wordIndex ===
-                    currentIndex ? (
+                    position ? (
                       <GamePiece
                         key={index}
-                        index={client.gamePiece.currentIndex}
+                        index={client.gamePiece.position}
                         color={client.gamePiece.color}
                       />
                     ) : null;

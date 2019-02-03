@@ -6,12 +6,11 @@ const ClientCard = props => {
   const { gamePiece } = client;
   return (
     <div className={classes.card}>
-    {/* <div className={classes.errors}> */}
-      
-    {/* </div> */}
       <div className={classes.username}>
         {client.username}
-        <div className={classes.stat}>{gamePiece.wpm} <span className={classes.statHeader}>WPM</span></div>
+        <div className={classes.stat}>
+          {gamePiece.wpm} <span className={classes.statHeader}>WPM</span>
+        </div>
       </div>
     </div>
   );
@@ -44,7 +43,7 @@ const styles = theme => ({
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",
     gridRow: "1 / 2",
-    gridColumn: "2 / 4"
+    gridColumn: "1 / 4"
   }),
   stat: {
     margin: "auto 0px auto auto",
@@ -54,7 +53,7 @@ const styles = theme => ({
     color: theme.primaryWhite //"#616161"
   },
   statHeader: {
-    fontSize: 10,
+    fontSize: 10
   },
   errors: {
     width: "35px",

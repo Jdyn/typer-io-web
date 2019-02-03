@@ -165,6 +165,7 @@ const gameboardUpdate = (clients, gamePieces) => {
     const res = [...clients];
     res.forEach((client, index) => {
       client.gamePiece = {
+        ...client.gamePiece,
         ...gamePieces[index],
         color: client.gamePiece.color
       };

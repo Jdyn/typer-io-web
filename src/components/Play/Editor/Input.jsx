@@ -105,7 +105,7 @@ const Input = props => {
 
     const payload = {
       entries: newEntry,
-      currentIndex: newIndex,
+      position: newIndex,
       errors: errors
     };
 

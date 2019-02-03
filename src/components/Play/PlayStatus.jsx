@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import PlayStatusCard from "./PlayStatusCard";
@@ -20,6 +20,8 @@ const PlayStatus = props => {
         return updateRoomView();
       case "GAME_TYPE":
         return updateGameView();
+      default:
+        return { color: "#e57373", text: "An error has occured." };
     }
   };
 
@@ -68,18 +70,26 @@ const PlayStatus = props => {
       case "ROOM_TYPE":
         const { roomTime } = room;
         if (roomTime) {
-          const seconds = roomTime.substring(roomTime.length - 2, roomTime.length);
+          const seconds = roomTime.substring(
+            roomTime.length - 2,
+            roomTime.length
+          );
           console.log("roomTime: ", parseInt(seconds));
           return parseInt(seconds);
         }
+        return null
       case "GAME_TYPE":
         const { gameTime } = gameboard;
         if (gameTime) {
           const minutes = gameTime.substring(1, 2);
-          const seconds = gameTime.substring(gameTime.length - 2, gameTime.length);
+          const seconds = gameTime.substring(
+            gameTime.length - 2,
+            gameTime.length
+          );
           console.log("gameTime: ", parseInt(seconds) + parseInt(minutes) * 60);
           return parseInt(seconds) + parseInt(minutes) * 60;
         }
+        return null
       default:
         return null;
     }

@@ -12,6 +12,10 @@ const ClientCard = props => {
           {gamePiece.wpm} <span className={classes.statHeader}>WPM</span>
         </div>
       </div>
+      <span>
+        {gamePiece.errors}
+        {gamePiece.accuracy}
+      </span>
     </div>
   );
 };

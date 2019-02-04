@@ -56,7 +56,8 @@ const defaultListeners = dispatch => {
             gameTime: null
           }
         },
-        error: reason
+        error: reason,
+        errored: reason === "io server disconnect" ? false : true
       });
     });
 

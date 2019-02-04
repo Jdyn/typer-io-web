@@ -150,7 +150,7 @@ export default (state = initialState, action) => {
           ...state.socket,
           connected: false,
           error: action.error ? action.error : state.socket.error,
-          errored: true
+          errored: action.errored
         }
       };
     case types.RECIEVE_CHAT_MESSAGE:

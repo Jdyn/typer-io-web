@@ -6,7 +6,8 @@ import { silentEmit } from "../store/socket";
 import {
   initSocket,
   sendChatMessage,
-  updateClient
+  updateClient,
+  leaveRoom
 } from "../actions/ClientActions";
 
 class PlayContainer extends Component {

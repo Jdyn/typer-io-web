@@ -14,6 +14,8 @@ const initialState = {
       words: [],
       gamePieceIndex: null,
       isStarted: false,
+      isOver: false,
+      text: null,
       gameTime: null
     },
     clients: [],
@@ -65,7 +67,18 @@ export default (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            isStarted: action.payload.isStarted,
+            isStarted: action.payload.isStarted
+          }
+        }
+      };
+    case types.END_GAME:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          gameboard: {
+            ...state.room.gameboard,
+            ...action.payload
           }
         }
       };
@@ -100,7 +113,8 @@ export default (state = initialState, action) => {
         ...state,
         socket: {
           ...state.socket,
-          ...action.payload
+          ...action.payload,
+          errored: true
         }
       };
 

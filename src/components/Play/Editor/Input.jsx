@@ -43,7 +43,7 @@ const Input = props => {
 
   const keydown = event => {
     setKey(event.key);
-    if (currentClient.gamePiece.isComplete) {
+    if (currentClient.gamePiece.isComplete || gameboard.isOver) {
       event.preventDefault();
       document.getElementById("inputDiv").contentEditable = false;
     }

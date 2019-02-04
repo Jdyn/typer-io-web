@@ -7,10 +7,21 @@ import Header from "../../Common/Header";
 const Gameboard = props => {
   const { classes, gameboard, client, room, clientIndex, theme } = props;
 
+  const currentClient = room.clients.filter(
+    object => object.id === client.id
+  )[0];
+
   const transform = words => {
     var res = [];
     words.forEach((word, index) =>
-      res.push(<SnippetWord key={index} word={word} wordIndex={index} />)
+      res.push(
+        <SnippetWord
+          key={index}
+          word={word}
+          wordIndex={index}
+          isComplete={currentClient.gamePiece.isComplete || gameboard.isOver}
+        />
+      )
     );
     return res;
   };
@@ -59,7 +70,7 @@ const styles = theme => ({
     height: "100%",
     width: "100%",
     borderRadius: "0px 0px 8px 8px",
-    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset",
+    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset"
   }
 });
 

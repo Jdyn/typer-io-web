@@ -25,7 +25,7 @@ const Play = props => {
 
   useEffect(() => {
     return () => {
-      leaveRoom({ id: room.id });
+      leaveRoom({ id: room.id, errored: false });
     };
   }, []);
 

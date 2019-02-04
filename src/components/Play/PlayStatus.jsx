@@ -49,19 +49,24 @@ const PlayStatus = props => {
 
   const updateGameView = () => {
     const time = getTime(viewType);
-    if (time !== null) {
-      if (time === 0) {
-        return { color: "#555abf", text: "Game has Ended" };
-      } else if (time < 10) {
-        return { color: "#e57373", text: "GO!" };
-      } else if (time < 20) {
-        return { color: "#e5a03e", text: "GO!" };
+    if (!gameboard.isOver) {
+      if (time !== null) {
+        if (time === 0) {
+          return { color: "#555abf", text: "Game has Ended" };
+        } else if (time < 10) {
+          return { color: "#e57373", text: "GO!" };
+        } else if (time < 20) {
+          return { color: "#e5a03e", text: "GO!" };
+        }
+      } else {
+        if (socket.errored) {
+          return { color: "#e57373", text: "Connection error occured" };
+        }
       }
     } else {
-      if (socket.errored) {
-        return { color: "#e57373", text: "Connection error occured" };
-      }
+      return { color: "#555abf", text: gameboard.text };
     }
+
     return { color: "#81C784", text: "GO!" };
   };
 
@@ -77,7 +82,7 @@ const PlayStatus = props => {
           console.log("roomTime: ", parseInt(seconds));
           return parseInt(seconds);
         }
-        return null
+        return null;
       case "GAME_TYPE":
         const { gameTime } = gameboard;
         if (gameTime) {
@@ -89,7 +94,7 @@ const PlayStatus = props => {
           console.log("gameTime: ", parseInt(seconds) + parseInt(minutes) * 60);
           return parseInt(seconds) + parseInt(minutes) * 60;
         }
-        return null
+        return null;
       default:
         return null;
     }

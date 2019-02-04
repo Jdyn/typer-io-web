@@ -8,20 +8,49 @@ const propTypes = {
   classes: PropTypes.object.isRequired,
   card: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
-  pending: PropTypes.bool.isRequired
+  pending: PropTypes.bool.isRequired,
+  errored: PropTypes.bool.isRequired
 };
 
 const DashboardPlayCard = props => {
-  const { onClick, classes, card, pending } = props;
+  const {
+    onClick,
+    classes,
+    card,
+    pending,
+    errored,
+    index,
+    selectedIndex
+  } = props;
+
   return (
-    <button className={classes.card} onClick={e => onClick(e, card.route)}>
+    <button className={classes.card} onClick={e => onClick(e, index)}>
       <Header border="none" color="#fff">
         {card.title}
       </Header>
       <Content className={classes.itemText} color={"#fff"} fontSize={18}>
         {card.text}
       </Content>
-      {pending && <div>LOADING</div>}
+
+      {selectedIndex === index ? (
+        pending === true ? (
+          <div className={classes.loader}>LOADING</div>
+        ) : (
+          <div className={classes.loader}>
+            {errored ? (
+              <div className={classes.error}>
+                <span>
+                  Error connecting to server <br /> Try again
+                </span>
+              </div>
+            ) : (
+              "Unexpected Error..."
+            )}
+          </div>
+        )
+      ) : (
+        <div className={classes.loader} />
+      )}
     </button>
   );
 };
@@ -52,6 +81,16 @@ const styles = theme => ({
     "&:active": {
       transform: "translateY(2px)"
     }
+  },
+  loader: {
+    height: "6px",
+    color: "#fff",
+    fontWeight: 600
+  },
+  error: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "column"
   }
 });
 

@@ -14,6 +14,11 @@ export const sendChatMessage = emitAction(payload => ({
   payload
 }));
 
+export const leaveRoom = payload => ({
+  type: types.DISCONNECT_SOCKET,
+  errored: false
+})
+
 export const initSocket = (username, history) => ({
   type: types.INIT_SOCKET_REQUEST,
   payload: {

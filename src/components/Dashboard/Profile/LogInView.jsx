@@ -21,7 +21,9 @@ const LogInView = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    login(form);
+    if (!session.isAuthenticating) {
+      login(form);
+    }
   };
 
   return (

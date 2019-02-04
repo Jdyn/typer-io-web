@@ -33,7 +33,8 @@ export default (state = initialState, action) => {
         isAuthenticating: false,
         isLoggedIn: false,
         errors: {
-          ...action.response.errors
+           ...state.errors,
+          ...action.response ? action.response.errors : null
         },
         errored: true
       };

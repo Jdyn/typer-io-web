@@ -6,6 +6,7 @@ import GuestView from "./GuestView";
 import LogInView from "./LogInView";
 import ClientView from "./ClientView";
 import SignUpView from "./SignUpView";
+import ProfileHeader from "./ProfileHeader";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -31,14 +32,11 @@ const DashboardProfile = props => {
     updateClient
   } = props;
 
-  useEffect(
-    () => {
-      if (!session.isAuthenticating) {
-        setProfile(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
-      }
-    },
-    [session.isLoggedIn]
-  );
+  useEffect(() => {
+    if (!session.isAuthenticating) {
+      setProfile(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
+    }
+  }, [session.isLoggedIn, session.isAuthenticating]);
 
   const changeProfile = newProfile => {
     const { isLoggedIn } = session;
@@ -88,7 +86,15 @@ const DashboardProfile = props => {
           />
         );
       default:
-        return <div className={classes.loading}>Loading</div>;
+        return (
+          <div className={classes.loading}>
+            <ProfileHeader
+              updateClient={updateClient}
+              username={client.username}
+            />
+            {/* Authenticating... */}
+          </div>
+        );
     }
   };
 
@@ -127,7 +133,8 @@ const styles = theme => ({
     }
   },
   loading: {
-    width: "275px"
+    width: "275px",
+    textAlign: "center"
   }
 });
 

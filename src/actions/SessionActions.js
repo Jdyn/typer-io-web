@@ -17,7 +17,10 @@ export const login = form => dispatch => {
     } else {
       dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
     }
-  });
+  })
+  .catch(response =>{
+    dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
+  })
 };
 
 export const logout = () => dispatch => {

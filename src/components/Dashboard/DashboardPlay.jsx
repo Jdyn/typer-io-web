@@ -9,7 +9,7 @@ const DashboardPlay = props => {
 
   const cards = [
     {
-      title: "Play",
+      title: "Quick Play",
       text: "Defeat other players",
       color: "#06A978",
       selected: false,

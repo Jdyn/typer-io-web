@@ -32,7 +32,7 @@ const styles = theme => ({
     position: "absolute",
     flexDirection: "column",
     bottom: "5px",
-    top: -5,
+    top: -3,
   },
   circle: {
     width: "14px",

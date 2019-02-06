@@ -79,7 +79,6 @@ const PlayStatus = props => {
             roomTime.length - 2,
             roomTime.length
           );
-          console.log("roomTime: ", parseInt(seconds));
           return parseInt(seconds);
         }
         return null;
@@ -91,7 +90,6 @@ const PlayStatus = props => {
             gameTime.length - 2,
             gameTime.length
           );
-          console.log("gameTime: ", parseInt(seconds) + parseInt(minutes) * 60);
           return parseInt(seconds) + parseInt(minutes) * 60;
         }
         return null;

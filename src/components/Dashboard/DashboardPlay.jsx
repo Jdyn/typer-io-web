@@ -10,23 +10,20 @@ const DashboardPlay = props => {
   const cards = [
     {
       title: "Quick Play",
-      text: "Defeat other players",
+      text: "Play against other players",
       color: "#06A978",
-      selected: false,
       route: "/play"
     },
     {
-      title: "Solo",
-      text: "Practice your skills",
+      title: "Solo Play",
+      text: "Practice on your own",
       color: "#6772e5",
-      selected: false,
       route: "/"
     },
     {
       title: "Friends",
-      text: "Defeat your friends",
+      text: "Play against your friends",
       color: "#b76ac4",
-      selected: false,
       route: "/"
     }
   ];
@@ -38,14 +35,11 @@ const DashboardPlay = props => {
         switch (index) {
           case 0:
             setSelectedIndex(index);
-            initSocket(props.client.username);
-            break;
+            return initSocket(props.client.username);
           case 1:
-            setSelectedIndex(index);
-            break;
+            return setSelectedIndex(index);
           case 2:
-            setSelectedIndex(index);
-            break;
+            return setSelectedIndex(index);
           default:
             break;
         }

@@ -20,8 +20,17 @@ const propTypes = {
 };
 
 const Play = props => {
-  const { client, room, socket, gameboard, leaveRoom, sendChatMessage, classes } = props;
+  const {
+    client,
+    room,
+    socket,
+    gameboard,
+    leaveRoom,
+    sendChatMessage,
+    classes
+  } = props;
   const [clientIndex, setClientIndex] = useState(null);
+  const [currentClient, setCurrentClient] = useState(null);
 
   useEffect(() => {
     return () => {
@@ -29,13 +38,24 @@ const Play = props => {
     };
   }, []);
 
+  useEffect(() => {
+    setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
+  }, [client.id]);
+
+  console.log(currentClient);
+
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList room={room} gameboard={gameboard} socket={socket} />
+        <ClientList currentClient={currentClient} room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
-        <Gameboard clientIndex={clientIndex} client={client} room={room} gameboard={gameboard} />
+        <Gameboard
+          clientIndex={clientIndex}
+          client={client}
+          room={room}
+          gameboard={gameboard}
+        />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
           client={client}

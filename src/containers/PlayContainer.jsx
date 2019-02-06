@@ -13,7 +13,10 @@ import {
 class PlayContainer extends Component {
   componentWillMount() {
     if (!this.props.socket.connected) {
-      this.props.initSocket(this.props.client.username);
+      const localUsername = localStorage.getItem("username");
+      this.props.initSocket(
+        localUsername ? localUsername : this.props.client.username
+      );
     }
   }
 

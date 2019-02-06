@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import PropTypes from "prop-types";
 import DashboardPlay from "./DashboardPlay";
 import DashboardProfile from "./Profile";
@@ -16,6 +16,11 @@ export const Dashboard = props => {
     logout,
     signup
   } = props;
+
+  useEffect(() => {
+    const localUsername = localStorage.getItem("username")
+    updateClient({username: localUsername ? localUsername : ""})
+  }, [])
 
   return (
     <main>

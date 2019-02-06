@@ -17,11 +17,6 @@ export const Dashboard = props => {
     signup
   } = props;
 
-  useEffect(() => {
-    const localUsername = localStorage.getItem("username")
-    updateClient({username: localUsername ? localUsername : ""})
-  }, [])
-
   return (
     <main>
       <div className={classes.stripe} />

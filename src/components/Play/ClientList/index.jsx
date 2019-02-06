@@ -17,15 +17,7 @@ const ClientList = props => {
   return (
     <div className={classes.container}>
       {socket.connected && (
-        <div
-          className={classes.listHeader}
-          boxShadow="0 5px 20px rgba(35,35,80,.25)"
-          color={theme.primaryWhite}
-          borderRadius="8px 8px 0px 0px"
-          fontSize={24}
-          backgroundColor={"#555abf"} //"#f7bb10"
-          padding="10px"
-        >
+        <div className={classes.listHeader}>
           Players
           <div className={classes.wpm}>You are</div>
           <div className={classes.wpmBadge} />

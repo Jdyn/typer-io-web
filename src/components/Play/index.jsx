@@ -42,8 +42,6 @@ const Play = props => {
     setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
   }, [client.id]);
 
-  console.log(currentClient);
-
   return (
     <main>
       <div className={classes.stripe} />

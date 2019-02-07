@@ -74,7 +74,7 @@ const styles = theme => ({
     maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,
-    margin: "0px 30px 0px 10px"
+    margin: "0px 20px 0px 10px"
   },
   inner: {
     display: "flex",
@@ -82,7 +82,7 @@ const styles = theme => ({
     flexWrap: "wrap",
     alignContent: "flex-start",
     position: "absolute",
-    padding: "20px 0px 20px 0px",
+    padding: "20px 20px 20px 0px",
     zIndex: 20,
     width: "100%",
     height: "100%",

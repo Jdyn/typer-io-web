@@ -61,6 +61,17 @@ const defaultListeners = dispatch => {
       });
     });
 
+    socket.on("INIT_SOCKET_FAILURE", payload => {
+      dispatch({
+        type: types.INIT_SOCKET_FAILURE,
+        payload: {
+          errored: true,
+          pending: false,
+          error: payload.error
+        }
+      })
+    })
+
     socket.on("connect_error", payload => {
       dispatch({
         type: types.INIT_SOCKET_FAILURE,

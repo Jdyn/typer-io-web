@@ -5,7 +5,7 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
-import PlayStatus from "./PlayStatus";
+import PlayStatus from "./Status/PlayStatus";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

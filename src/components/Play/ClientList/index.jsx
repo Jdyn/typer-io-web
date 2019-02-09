@@ -16,32 +16,30 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      {socket.connected && (
+      {/* {socket.connected && (
         <div className={classes.listHeader}>
           Players
           <div className={classes.wpm}>You are</div>
           <div className={classes.wpmBadge} />
         </div>
-      )}
+      )} */}
 
       {socket.connected && (
-        <div className={classes.inner}>
-          <Transition
-            items={room.clients}
-            keys={item => item.id}
-            from={{ overflow: "hidden", height: "0px" }}
-            enter={{ height: "110px" }}
-            leave={{ height: "0px" }}
-          >
-            {client => props => (
-              <ClientCard
-                style={props}
-                client={client}
-                color={client.gamePiece.color}
-              />
-            )}
-          </Transition>
-        </div>
+        <Transition
+          items={room.clients}
+          keys={item => item.id}
+          from={{ overflow: "hidden", width: "0px" }}
+          enter={{ width: "110px" }}
+          leave={{ width: "0px" }}
+        >
+          {client => props => (
+            <ClientCard
+              style={props}
+              client={client}
+              color={client.gamePiece.color}
+            />
+          )}
+        </Transition>
       )}
     </div>
   );
@@ -52,13 +50,15 @@ ClientList.propTypes = propTypes;
 const styles = theme => ({
   container: {
     display: "Flex",
-    flexDirection: "column",
-    gridRow: "2 / 5",
-    gridColumn: "1 / 2",
+    flexDirection: "row",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 4",
     margin: "0px 10px 0px 10px",
-    position: "relative"
+    position: "relative",
+    height: "100px"
   },
   inner: {
+
     borderRadius: "0px 0px 8px 8px",
     backgroundColor: theme.primaryWhite,
     boxShadow: "0px 0px 30px 5px rgba(50,50,93,.25)"

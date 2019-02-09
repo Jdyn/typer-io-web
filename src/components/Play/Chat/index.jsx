@@ -49,7 +49,7 @@ const styles = theme => ({
     margin: "20px 10px 10px 10px",
     position: "relative",
     width: "275px",
-    gridRow: "1 / 4",
+    gridRow: "3 / 4",
     gridColumn: "3 / 4"
   },
   inner: {

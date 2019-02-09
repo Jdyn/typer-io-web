@@ -30,7 +30,7 @@ const ClientList = props => {
             items={room.clients}
             keys={item => item.id}
             from={{ overflow: "hidden", height: "0px" }}
-            enter={{ height: "100px" }}
+            enter={{ height: "110px" }}
             leave={{ height: "0px" }}
           >
             {client => props => (

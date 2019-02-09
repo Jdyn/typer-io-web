@@ -12,16 +12,19 @@ const ClientCard = props => {
           {gamePiece.wpm} <span className={classes.wpmBadge}>WPM</span>
         </div>
       </div>
+
       <span className={classes.stat}>
-      <span className={classes.wpmBadge}>ACCURACY</span>
+        <span className={classes.wpmBadge}>ACCURACY</span>
         {gamePiece.accuracy}
       </span>
+
       <span className={classes.stat}>
-      <span className={classes.wpmBadge}>ERRORS</span>
+        <span className={classes.wpmBadge}>ERRORS</span>
         {gamePiece.errors}
       </span>
+
       <span className={classes.stat}>
-      <span className={classes.wpmBadge}>TIME</span>
+        <span className={classes.wpmBadge}>TIME</span>
         {gamePiece.time}
       </span>
     </div>
@@ -50,7 +53,7 @@ const styles = theme => ({
     fontWeight: 600,
     lineHeight: "25px",
     height: "35px",
-    margin: "5px 5px 5px 5px",
+    margin: "5px 5px 0px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",
@@ -74,7 +77,8 @@ const styles = theme => ({
     verticalAlign: "middle",
     color: "#8E8D8F",
     fontWeight: 600,
-    margin: "5px",
+    height: "50%",
+    margin: "auto"
   }
 });
 

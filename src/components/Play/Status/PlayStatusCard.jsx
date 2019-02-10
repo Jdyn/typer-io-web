@@ -46,7 +46,6 @@ const styles = theme => ({
     width: "265px",
     height: "100px",
     boxShadow: "0px 10px 30px rgba(50,50,93,.25)",
-    margin: "20px 10px 20px 10px",
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 1s",

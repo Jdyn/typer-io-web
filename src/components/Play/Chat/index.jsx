@@ -25,6 +25,8 @@ class Chat extends React.Component {
       <div className={classes.container}>
         <Header
           boxShadow="0 5px 20px rgba(35,35,80,.25)"
+          margin="0px 0px -8px 0px"
+          height="67px"
           color={theme.primaryWhite}
           borderRadius="8px 8px 0px 0px"
           fontSize={24}
@@ -49,20 +51,20 @@ const styles = theme => ({
     margin: "20px 10px 10px 10px",
     position: "relative",
     width: "275px",
-    gridRow: "3 / 4",
+    gridRow: "2 / 5",
     gridColumn: "3 / 4"
   },
   inner: {
     display: "flex",
     flexDirection: "column",
-    zIndex: 10,
+    zIndex: 150,
     // border: "1px solid rgba(0,0,0,.1)",
     backgroundColor: theme.primaryWhite,
     position: "relative",
     height: "100%",
     width: "100%",
-    borderRadius: "0px 0px 8px 8px",
-    boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset",
+    borderRadius: 8,
+    boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
   }
 });
 

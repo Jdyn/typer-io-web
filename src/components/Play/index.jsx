@@ -6,6 +6,7 @@ import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status/PlayStatus";
+import Leaderboard from "./Leaderboard/index";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -38,16 +39,27 @@ const Play = props => {
     };
   }, []);
 
-  useEffect(() => {
-    setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
-  }, [client.id]);
+  useEffect(
+    () => {
+      setCurrentClient(
+        room.clients.filter(object => object.id === client.id)[0]
+      );
+    },
+    [client.id]
+  );
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList currentClient={currentClient} room={room} gameboard={gameboard} socket={socket} />
+        <ClientList
+          currentClient={currentClient}
+          room={room}
+          gameboard={gameboard}
+          socket={socket}
+        />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
+        <Leaderboard />
         <Gameboard
           clientIndex={clientIndex}
           client={client}
@@ -72,7 +84,7 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
-    gridTemplateRows: "min-content auto min-content min-content",
+    gridTemplateRows: "min-content min-content auto",
 
     maxWidth: "1240px",
     flexDirection: "row",

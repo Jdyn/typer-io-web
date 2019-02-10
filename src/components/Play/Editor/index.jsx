@@ -90,7 +90,7 @@ const styles = theme => ({
     minWidth: "450px",
     height: "110px",
     gridColumn: "2 / 3",
-    gridRow: "3 / 4",
+    gridRow: "4 / 5",
     flexDirection: "row",
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,

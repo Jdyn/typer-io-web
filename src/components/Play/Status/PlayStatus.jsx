@@ -115,7 +115,8 @@ const styles = {
   container: {
     position: "relative",
     gridRow: "2 / 3",
-    gridColumn: "1 / 2"
+    gridColumn: "1 / 2",
+    margin: "10px"
   }
 };
 

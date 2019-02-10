@@ -37,18 +37,18 @@ const styles = theme => ({
     gridTemplateRows: "min-content auto",
     gridTemplateColumns: "1fr 1fr 1fr",
     backgroundColor: theme.primaryWhite,
+    margin: "0px 5px 0px 5px",
     borderRadius: 8,
-    maxWidth: "265px",
-    borderTop: `solid 2px ${theme.divider}`,
-    "&:first-child": {
-      border: "none"
-    },
+    height: "100px",
+    backgroundClip: "padding-box",
+    border: "1px solid rgba(0,0,0,.05)",
+    boxShadow: "0 1px 15px rgba(27,31,35,.15)!important",
     ...props.style
   }),
   username: props => ({
     display: "flex",
     flexDirection: "row",
-    backgroundColor: props.color,
+    backgroundColor: props.color,//"#555abf",
     boxShadow: "0 1px 5px rgba(50,50,93,.25)",
     fontWeight: 600,
     lineHeight: "25px",

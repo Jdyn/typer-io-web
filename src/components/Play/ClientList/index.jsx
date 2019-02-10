@@ -12,24 +12,16 @@ const propTypes = {
 };
 
 const ClientList = props => {
-  const { room, classes, socket, theme, currentClient } = props;
+  const { room, classes, socket } = props;
 
   return (
     <div className={classes.container}>
-      {/* {socket.connected && (
-        <div className={classes.listHeader}>
-          Players
-          <div className={classes.wpm}>You are</div>
-          <div className={classes.wpmBadge} />
-        </div>
-      )} */}
-
       {socket.connected && (
         <Transition
           items={room.clients}
           keys={item => item.id}
           from={{ overflow: "hidden", width: "0px" }}
-          enter={{ width: "110px" }}
+          enter={{ width: "235px" }}
           leave={{ width: "0px" }}
         >
           {client => props => (
@@ -53,27 +45,9 @@ const styles = theme => ({
     flexDirection: "row",
     gridRow: "1 / 2",
     gridColumn: "1 / 4",
-    margin: "0px 10px 0px 10px",
+    margin: "20px auto 0px auto",
     position: "relative",
     height: "100px"
-  },
-  inner: {
-
-    borderRadius: "0px 0px 8px 8px",
-    backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 0px 30px 5px rgba(50,50,93,.25)"
-  },
-  listHeader: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "#555abf",
-    boxShadow: "0 5px 20px rgba(35,35,80,.25)",
-    // height: "35px",
-    borderRadius: "8px 8px 0px 0px",
-    fontSize: 24,
-    fontWeight: 600,
-    color: theme.primaryWhite,
-    padding: "10px"
   },
   wpm: {
     display: "flex",
@@ -95,4 +69,4 @@ const styles = theme => ({
   })
 });
 
-export default withStyles(styles, { injectTheme: true })(ClientList);
+export default withStyles(styles)(ClientList);

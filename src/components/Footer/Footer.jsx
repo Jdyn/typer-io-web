@@ -4,10 +4,6 @@ import withStyles from "react-jss";
 const Footer = ({ classes }) => {
   return (
     <footer className={classes.root}>
-      <article className={classes.container}>
-        <ul>
-        </ul>
-      </article>
     </footer>
   );
 };
@@ -21,11 +17,8 @@ const styles = {
     right: 0,
     margin: "0px",
     display: "block",
-    // backgroundColor: 'red'
-  },
-  container: {
-    height: "500px"
-  }
+    height: "250px"
+    }
 };
 
 export default withStyles(styles)(Footer);

@@ -47,7 +47,7 @@ const styles = {
     width: "100%",
     height: "100%",
     borderBox: "content-box",
-    overflowY: "scroll",
+    overflowY: "auto",
     overflowX: "hidden"
   }
 };

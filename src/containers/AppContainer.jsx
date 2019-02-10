@@ -4,7 +4,7 @@ import Nav from "../components/Nav/Nav";
 import CssBaseline from "../components/CssBaseline";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
-// import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
 
 class App extends Component {
   componentWillMount() {
@@ -26,7 +26,7 @@ class App extends Component {
         <CssBaseline />
         <Nav />
         <Router />
-        {/* <Footer /> */}
+        <Footer />
       </Fragment>
     );
   }

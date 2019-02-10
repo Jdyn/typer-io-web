@@ -7,6 +7,7 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status/PlayStatus";
 import Leaderboard from "./Leaderboard/index";
+import Context from "./Context";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -66,7 +67,11 @@ const Play = props => {
           room={room}
           gameboard={gameboard}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        {/* <div className={classes.container}> */}
+          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+          {/* <Context />
+        </div> */}
+
         <Editor
           client={client}
           room={room}
@@ -83,7 +88,7 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "min-content auto min-content",
+    gridTemplateColumns: "285px auto 285px",
     gridTemplateRows: "min-content min-content auto",
 
     maxWidth: "1240px",
@@ -91,6 +96,13 @@ const styles = theme => ({
     position: "relative",
     margin: "auto",
     height: "100%"
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    gridRow: "2 / 5",
+    gridColumn: "3 / 4"
   },
   stripe: {
     zIndex: 0,

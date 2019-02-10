@@ -48,12 +48,11 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    margin: "20px 10px 10px 10px",
+    margin: "0px 10px 10px 10px",
     position: "relative",
-    width: "275px",
     gridRow: "2 / 5",
-    gridColumn: "3 / 4"
-  },
+    gridColumn: "3 / 4",
+    },
   inner: {
     display: "flex",
     flexDirection: "column",
@@ -64,7 +63,7 @@ const styles = theme => ({
     height: "100%",
     width: "100%",
     borderRadius: 8,
-    boxShadow: "0px 0px 40px 0px rgba(50,50,93,.25) inset"
+    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset"
   }
 });
 

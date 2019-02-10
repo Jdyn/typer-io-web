@@ -1,14 +1,14 @@
 import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
-import LeaderboardDisplay from "./LeaderboardDisplay";
 import Header from "../../Common/Header";
+import ContextDisplay from "./ContextDisplay";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-const Leaderboard = props => {
+const Context = props => {
   const { classes, theme } = props;
   return (
     <div className={classes.container}>
@@ -22,9 +22,9 @@ const Leaderboard = props => {
         backgroundColor={"#555abf"}
         padding="10px"
       >
-        Leaderboard
+        context
       </Header>
-      <LeaderboardDisplay />
+      <ContextDisplay />
     </div>
   );
 };
@@ -32,14 +32,14 @@ const Leaderboard = props => {
 const styles = {
   container: {
     display: "flex",
+    position: "relative",
     flexDirection: "column",
+    height: "50%",
     margin: "10px",
-    gridRow: "3 / 5",
-    // maxWidth: "265px",
-    gridColumn: "1 / 2"
+
   }
 };
 
-Leaderboard.propTypes = propTypes;
+Context.propTypes = propTypes;
 
-export default withStyles(styles, { injectTheme: true })(Leaderboard);
+export default withStyles(styles, { injectTheme: true })(Context);

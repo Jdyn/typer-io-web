@@ -34,15 +34,19 @@ const ClientCard = props => {
 const styles = theme => ({
   card: props => ({
     display: "grid",
-    gridTemplateRows: "min-content auto",
+    gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
     backgroundColor: theme.primaryWhite,
-    margin: "0px 5px 0px 5px",
-    borderRadius: 8,
-    height: "100px",
-    backgroundClip: "padding-box",
-    border: "1px solid rgba(0,0,0,.05)",
-    boxShadow: "0 1px 15px rgba(27,31,35,.15)!important",
+    margin: "0px 0px 0px 0px",
+    borderLeft: `2px solid ${theme.divider}`,
+    // borderRadius: 8,
+    // height: "100px",
+    "&:first-child": {
+      border: "none"
+    },
+    // backgroundClip: "padding-box",
+    // border: "1px solid rgba(0,0,0,.05)",
+    // boxShadow: "0 1px 15px rgba(27,31,35,.15)",
     ...props.style
   }),
   username: props => ({
@@ -57,7 +61,7 @@ const styles = theme => ({
     borderRadius: 4,
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",
-    gridRow: "1 / 2",
+    gridRow: "2 / 3",
     gridColumn: "1 / 4"
   }),
   wpm: {
@@ -68,7 +72,7 @@ const styles = theme => ({
     color: theme.primaryWhite //"#616161"
   },
   wpmBadge: {
-    fontSize: 10
+    fontSize: 12
   },
   stat: {
     display: "flex",

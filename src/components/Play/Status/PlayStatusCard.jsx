@@ -43,7 +43,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    width: "265px",
+    // width: "265px",
     height: "100px",
     boxShadow: "0px 10px 30px rgba(50,50,93,.25)",
     borderRadius: "8px",

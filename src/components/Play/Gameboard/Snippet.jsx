@@ -68,10 +68,10 @@ const styles = theme => ({
   container: {
     display: "inline-block",
     position: "relative",
-    height: "335px",
-    maxHeight: "335px",
+    height: "345px",
+    maxHeight: "365px",
     paddingLeft: "20px",
-    maxWidth: "100%",
+    // maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,
     margin: "0px 20px 0px 10px"

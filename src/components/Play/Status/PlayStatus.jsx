@@ -116,7 +116,7 @@ const styles = {
     position: "relative",
     gridRow: "2 / 3",
     gridColumn: "1 / 2",
-    margin: "10px"
+    margin: "0px 10px 10px 10px"
   }
 };
 

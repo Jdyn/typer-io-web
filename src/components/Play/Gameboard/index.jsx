@@ -57,7 +57,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "20px 10px 10px 10px",
+    margin: "0px 10px 10px 10px",
     gridRow: "2 / 4",
     gridColumn: "2 / 3"
   },
@@ -68,8 +68,8 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     zIndex: 150,
     position: "relative",
-    height: "100%",
-    width: "100%",
+    // height: "100%",
+    // width: "100%",
     borderRadius: "8px 8px 8px 8px",
     boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset"
   }

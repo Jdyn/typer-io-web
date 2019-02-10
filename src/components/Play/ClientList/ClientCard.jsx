@@ -39,8 +39,6 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     margin: "0px 0px 0px 0px",
     borderLeft: `2px solid ${theme.divider}`,
-    // borderRadius: 8,
-    // height: "100px",
     "&:first-child": {
       border: "none"
     },
@@ -57,7 +55,7 @@ const styles = theme => ({
     fontWeight: 600,
     lineHeight: "25px",
     height: "35px",
-    margin: "5px 5px 0px 5px",
+    margin: "5px 5px 5px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",

@@ -46,11 +46,11 @@ const styles = theme => ({
     gridColumn: "1 / 4",
     margin: "15px auto 15px auto",
     position: "relative",
-    height: "105px",
+    height: "115px",
     padding: "5px 5px 5px 5px",
     backgroundClip: "padding-box",
     border: "1px solid rgba(0,0,0,.05)",
-    boxShadow: "0 1px 15px rgba(27,31,35,.15)",
+    boxShadow: "0 1px 15px rgba(27,31,35,.15) inset",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite
   },

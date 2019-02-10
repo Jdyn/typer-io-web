@@ -20,7 +20,7 @@ class Chat extends React.Component {
   };
 
   render() {
-    const { classes, room, client, theme } = this.props;
+    const { classes, room, client, theme, currentClient } = this.props;
     return (
       <div className={classes.container}>
         <Header
@@ -36,7 +36,7 @@ class Chat extends React.Component {
           Chat
         </Header>
         <div className={classes.inner}>
-          <ChatDisplay messages={room.messages} client={client} />
+          <ChatDisplay currentClient={currentClient} room={room}messages={room.messages} client={client} />
           <ChatInput submitMessage={this.submitMessage} />
         </div>
       </div>

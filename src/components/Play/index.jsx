@@ -68,8 +68,13 @@ const Play = props => {
           gameboard={gameboard}
         />
         {/* <div className={classes.container}> */}
-          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
-          {/* <Context />
+        <Chat
+          client={client}
+          currentClient={currentClient}
+          room={room}
+          sendChatMessage={sendChatMessage}
+        />
+        {/* <Context />
         </div> */}
 
         <Editor

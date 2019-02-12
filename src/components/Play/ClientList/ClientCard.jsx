@@ -34,30 +34,31 @@ const ClientCard = props => {
 const styles = theme => ({
   card: props => ({
     display: "grid",
-    gridTemplateRows: "min-content auto",
+    gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
-    backgroundColor: theme.primaryWhite,
-    borderRadius: 8,
-    maxWidth: "265px",
-    borderTop: `solid 2px ${theme.divider}`,
+    margin: "0px 0px 0px 0px",
+    borderLeft: `2px solid ${theme.divider}`,
     "&:first-child": {
       border: "none"
     },
+    overflow: "hidden",
     ...props.style
   }),
   username: props => ({
     display: "flex",
     flexDirection: "row",
-    backgroundColor: props.color,
+    backgroundColor: props.color,//"#555abf",
     boxShadow: "0 1px 5px rgba(50,50,93,.25)",
     fontWeight: 600,
     lineHeight: "25px",
     height: "35px",
-    margin: "5px 5px 0px 5px",
+    minWidth: "100px",
+    overflow: "hidden",
+    margin: "5px 5px 5px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",
-    gridRow: "1 / 2",
+    gridRow: "2 / 3",
     gridColumn: "1 / 4"
   }),
   wpm: {
@@ -68,7 +69,7 @@ const styles = theme => ({
     color: theme.primaryWhite //"#616161"
   },
   wpmBadge: {
-    fontSize: 10
+    fontSize: 12
   },
   stat: {
     display: "flex",
@@ -78,7 +79,7 @@ const styles = theme => ({
     color: "#8E8D8F",
     fontWeight: 600,
     height: "50%",
-    margin: "auto"
+    margin: "5px auto auto auto"
   }
 });
 

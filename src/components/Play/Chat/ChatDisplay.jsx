@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import withStyles from "react-jss";
 import ChatMessage from "./ChatMessage";
 
-class ChatDisplay extends React.Component {
-  componentDidUpdate() {
-    const display = document.getElementById("chatDisplay");
-    display.scrollTop = display.scrollHeight;
-  }
+const ChatDisplay = props => {
+  const { classes, messages, client, currentClient, room } = props;
 
-  render() {
-    const { classes, messages, client } = this.props;
+  useEffect(
+    () => {
+      const display = document.getElementById("chatDisplay");
+      display.scrollTop = display.scrollHeight;
+    },
+    [messages]
+  );
 
-    return (
-      <div className={classes.container}>
-        <div id="chatDisplay" className={classes.inner}>
-          {messages.map((message, index) => (
-            <ChatMessage
-              message={message}
-              key={index}
-              color={client.id === message.id ? "#6ed69a" : "#007bff"}
-              align={client.id === message.id ? "flex-end" : "flex-start"}
-            />
-          ))}
-        </div>
+  return (
+    <div className={classes.container}>
+      <div id="chatDisplay" className={classes.inner}>
+        {messages.map((message, index) => (
+          <ChatMessage
+            message={message}
+            key={index}
+            color={message.color} 
+            align={client.id === message.id ? "flex-end" : "flex-start"}
+          />
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const styles = {
   container: {
@@ -47,7 +48,7 @@ const styles = {
     width: "100%",
     height: "100%",
     borderBox: "content-box",
-    overflowY: "scroll",
+    overflowY: "auto",
     overflowX: "hidden"
   }
 };

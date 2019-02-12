@@ -30,8 +30,11 @@ const Gameboard = props => {
     <div className={classes.container}>
       <Header
         color={theme.primaryWhite}
+        boxShadow="0 5px 20px rgba(35,35,80,.25)"
         borderRadius="8px 8px 0px 0px"
+        margin="0px 0px -8px 0px"
         fontSize={24}
+        height="62px"
         backgroundColor={"#555abf"}
         padding="10px"
       >
@@ -54,9 +57,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "20px 10px 10px 10px",
-    borderRadius: 8,
-    gridRow: "1 / 3",
+    margin: "0px 10px 10px 10px",
+    gridRow: "2 / 4",
     gridColumn: "2 / 3"
   },
   inner: {
@@ -64,11 +66,11 @@ const styles = theme => ({
     flexDirection: "column",
     // border: "1px solid rgba(0,0,0,.1)",
     backgroundColor: theme.primaryWhite,
-    zIndex: 50,
+    zIndex: 150,
     position: "relative",
-    height: "100%",
-    width: "100%",
-    borderRadius: "0px 0px 8px 8px",
+    // height: "100%",
+    // width: "100%",
+    borderRadius: "8px 8px 8px 8px",
     boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset"
   }
 });

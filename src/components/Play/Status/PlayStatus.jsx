@@ -114,8 +114,9 @@ PlayStatus.propTypes = propTypes;
 const styles = {
   container: {
     position: "relative",
-    gridRow: "1 / 2",
-    gridColumn: "1 / 2"
+    gridRow: "2 / 3",
+    gridColumn: "1 / 2",
+    margin: "0px 10px 10px 10px"
   }
 };
 

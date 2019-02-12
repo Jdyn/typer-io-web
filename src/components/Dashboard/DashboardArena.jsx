@@ -25,7 +25,7 @@ const styles = theme => ({
   container: {
     position: "relative",
     width: "400px",
-    margin: "40px 20px 40px auto",
+    margin: "15px 20px 40px auto",
     // borderBottom: "2px solid rgba(207,215,223,.25)",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,

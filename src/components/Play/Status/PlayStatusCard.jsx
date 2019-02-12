@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../Common/Header";
+import Header from "../../Common/Header";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -43,10 +43,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    width: "265px",
+    // width: "265px",
     height: "100px",
     boxShadow: "0px 10px 30px rgba(50,50,93,.25)",
-    margin: "20px 10px 20px 10px",
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 1s",

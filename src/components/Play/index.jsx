@@ -5,7 +5,9 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
-import PlayStatus from "./PlayStatus";
+import PlayStatus from "./Status/PlayStatus";
+import Leaderboard from "./Leaderboard/index";
+import Context from "./Context";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -38,23 +40,43 @@ const Play = props => {
     };
   }, []);
 
-  useEffect(() => {
-    setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
-  }, [client.id]);
+  useEffect(
+    () => {
+      setCurrentClient(
+        room.clients.filter(object => object.id === client.id)[0]
+      );
+    },
+    [client.id]
+  );
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList currentClient={currentClient} room={room} gameboard={gameboard} socket={socket} />
+        <ClientList
+          currentClient={currentClient}
+          room={room}
+          gameboard={gameboard}
+          socket={socket}
+        />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
+        <Leaderboard />
         <Gameboard
           clientIndex={clientIndex}
           client={client}
           room={room}
           gameboard={gameboard}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        {/* <div className={classes.container}> */}
+        <Chat
+          client={client}
+          currentClient={currentClient}
+          room={room}
+          sendChatMessage={sendChatMessage}
+        />
+        {/* <Context />
+        </div> */}
+
         <Editor
           client={client}
           room={room}
@@ -71,14 +93,21 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "min-content auto min-content",
-    gridTemplateRows: "min-content auto min-content min-content",
+    gridTemplateColumns: "285px auto 285px",
+    gridTemplateRows: "min-content min-content auto",
 
     maxWidth: "1240px",
     flexDirection: "row",
     position: "relative",
     margin: "auto",
     height: "100%"
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    gridRow: "2 / 5",
+    gridColumn: "3 / 4"
   },
   stripe: {
     zIndex: 0,

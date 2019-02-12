@@ -95,7 +95,7 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     borderRadius: 8,
     transition: "background-color 0.5s",
-    boxShadow: "0px -6px 30px 0px rgba(50,50,93,.25) inset"
+    boxShadow: "0px -5px 25px 0px rgba(50,50,93,.25) inset"
   },
   wrapper: {
     display: "inline-block",

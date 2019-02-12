@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Play from "../components/Play";
-import {
-  initSocket,
-  sendChatMessage,
-  leaveRoom
-} from "../actions/ClientActions";
+import Solo from "../components/Solo";
+import { initSocket, leaveRoom } from "../actions/ClientActions";
 
-class PlayContainer extends Component {
+class SoloContainer extends Component {
   componentWillMount() {
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
         localUsername ? localUsername : this.props.client.username,
-        { mode: "MULTIPLAYER", ...this.props.match.params }
+        { mode: "SOLO", ...this.props.match.params }
       );
     }
   }
 
   render() {
-    return <Play {...this.props} />;
+    return <Solo {...this.props} />;
   }
 }
 
@@ -35,12 +31,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     initSocket: (username, params) => dispatch(initSocket(username, params)),
-    leaveRoom: payload => leaveRoom(payload),
-    sendChatMessage: payload => sendChatMessage(payload)
+    leaveRoom: payload => leaveRoom(payload)
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlayContainer);
+)(SoloContainer);

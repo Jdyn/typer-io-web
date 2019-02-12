@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import ClientList from "./ClientList";
-import Gameboard from "./Gameboard";
-import Editor from "./Editor";
-import Chat from "./Chat";
-import PlayStatus from "./Status/PlayStatus";
-import Leaderboard from "./Leaderboard/index";
-import Context from "./Context";
+import ClientList from "../components/Play/ClientList";
+import Gameboard from "../components/Play/Gameboard";
+import Editor from "../components/Play/Editor";
+import PlayStatus from "../components/Play/Status/PlayStatus";
+import Leaderboard from "../components/Play/Leaderboard";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -21,28 +19,22 @@ const propTypes = {
   sendChatMessage: PropTypes.func.isRequired
 };
 
-const Play = props => {
+const Solo = props => {
   const {
     client,
     room,
     socket,
     gameboard,
     leaveRoom,
-    sendChatMessage,
     classes
   } = props;
   const [clientIndex, setClientIndex] = useState(null);
-  const [currentClient, setCurrentClient] = useState(null);
 
   useEffect(() => {
     return () => {
       leaveRoom({ id: room.id, errored: false });
     };
   }, []);
-
-  useEffect(() => {
-    setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
-  }, [client.id]);
 
   return (
     <main>
@@ -54,14 +46,13 @@ const Play = props => {
           socket={socket}
         />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
-        <Leaderboard />
         <Gameboard
           clientIndex={clientIndex}
           client={client}
           room={room}
           gameboard={gameboard}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        <Leaderboard isSolo={true}/>
         <Editor
           client={client}
           room={room}
@@ -73,7 +64,7 @@ const Play = props => {
   );
 };
 
-Play.propTypes = propTypes;
+Solo.propTypes = propTypes;
 
 const styles = theme => ({
   root: {
@@ -107,4 +98,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(Play);
+export default withStyles(styles)(Solo);

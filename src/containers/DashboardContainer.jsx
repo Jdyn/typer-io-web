@@ -7,7 +7,14 @@ import { login, logout, signup } from "../actions/SessionActions";
 class DashboardContainer extends Component {
   componentDidUpdate() {
     if (this.props.socket.connected) {
-      this.props.history.push("/play");
+      switch (this.props.socket.mode) {
+        case "MULTIPLAYER":
+          this.props.history.push("/play");
+          break;
+        case "SOLO":
+          this.props.history.push("/solo");
+          break;
+      }
     }
   }
 

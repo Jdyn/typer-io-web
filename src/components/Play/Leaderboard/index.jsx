@@ -5,7 +5,9 @@ import LeaderboardDisplay from "./LeaderboardDisplay";
 import Header from "../../Common/Header";
 
 const propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  isSolo: PropTypes.bool
 };
 
 const Leaderboard = props => {
@@ -30,14 +32,13 @@ const Leaderboard = props => {
 };
 
 const styles = {
-  container: {
+  container: props => ({
     display: "flex",
     flexDirection: "column",
-    margin: "10px",
-    gridRow: "3 / 5",
-    // maxWidth: "265px",
-    gridColumn: "1 / 2"
-  }
+    margin: props.isSolo ? "0px 10px 10px 10px" : "10px",
+    gridRow: props.isSolo ? "2 / 5" : "3 / 5",
+    gridColumn: props.isSolo ? "3 / 4" : "1 / 2"
+  })
 };
 
 Leaderboard.propTypes = propTypes;

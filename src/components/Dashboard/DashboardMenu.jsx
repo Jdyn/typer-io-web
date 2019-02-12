@@ -41,9 +41,10 @@ const DashboardMenu = props => {
         switch (index) {
           case 0:
             setSelectedIndex(index);
-            return initSocket(props.client.username, {});
+            return initSocket(props.client.username, { mode: "MULTIPLAYER" });
           case 1:
-            return setSelectedIndex(index);
+            setSelectedIndex(index);
+            return initSocket(props.client.username, { mode: "SOLO" });
           case 2:
             return setSelectedIndex(index);
           default:

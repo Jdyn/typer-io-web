@@ -10,7 +10,7 @@ const styles = theme => ({
   container: {
     height: "100%",
     backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset",
+    boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset",
     borderRadius: 8,
     zIndex: 150
   }

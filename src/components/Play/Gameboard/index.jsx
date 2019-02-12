@@ -71,7 +71,7 @@ const styles = theme => ({
     // height: "100%",
     // width: "100%",
     borderRadius: "8px 8px 8px 8px",
-    boxShadow: "0px 10px 40px 0px rgba(50,50,93,.25) inset"
+    boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset"
   }
 });
 

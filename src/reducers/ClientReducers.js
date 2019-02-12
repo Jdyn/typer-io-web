@@ -169,6 +169,14 @@ export default (state = initialState, action) => {
           username: action.response.result.user.username
         }
       };
+      case "ROOM_NOT_FOUND":
+      return {
+        ...state,
+        socket: {
+          ...action.payload,
+          errored: true
+        }
+      }
     default:
       return state;
   }

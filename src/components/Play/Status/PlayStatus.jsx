@@ -21,7 +21,7 @@ const PlayStatus = props => {
       case "GAME_TYPE":
         return updateGameView();
       default:
-        return { color: "#e57373", text: "An error has occured." };
+      return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
     }
   };
 
@@ -41,7 +41,7 @@ const PlayStatus = props => {
       if (socket.connected) {
         return { color: "#469cd0", text: "Looking for Players..." };
       } else if (socket.errored) {
-        return { color: "#e57373", text: "Connection error occured" };
+        return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
       }
       return { color: "#469cd0", text: "Connecting to server..." };
     }
@@ -60,7 +60,7 @@ const PlayStatus = props => {
         }
       } else {
         if (socket.errored) {
-          return { color: "#e57373", text: "Connection error occured" };
+          return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
         }
       }
     } else {

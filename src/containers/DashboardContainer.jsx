@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateClient: object => dispatch(updateClient(object)),
-  initSocket: username => dispatch(initSocket(username)),
+  initSocket: (username, params) => dispatch(initSocket(username, params)),
   login: form => dispatch(login(form)),
   signup: form => dispatch(signup(form)),
   logout: () => dispatch(logout())

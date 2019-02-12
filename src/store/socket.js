@@ -18,9 +18,10 @@ export default url => {
 let socket;
 
 const init = (url, dispatch, payload) => {
-  socket = io(url); // { reconnection: false }
+  socket = io(url);
   defaultListeners(dispatch);
-  socket.emit("REGISTER", payload.username);
+  console.log("SOCKET: ", payload);
+  socket.emit("REGISTER", payload);
   socket.on(types.INIT_SOCKET_SUCCESS, payload => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });
     Object.keys(types).forEach(key =>
@@ -68,6 +69,18 @@ const defaultListeners = dispatch => {
           errored: true,
           pending: false,
           error: payload.error
+        }
+      });
+    });
+
+    socket.on("ROOM_NOT_FOUND", payload => {
+      console.log(payload)
+      dispatch({
+        type: types.ROOM_NOT_FOUND,
+        payload: {
+          errored: false,
+          pending: false,
+          error: payload
         }
       })
     })

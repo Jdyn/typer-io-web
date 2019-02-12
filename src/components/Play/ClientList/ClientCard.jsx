@@ -52,14 +52,13 @@ const styles = theme => ({
     fontWeight: 600,
     lineHeight: "25px",
     height: "35px",
-    minWidth: "100px",
     overflow: "hidden",
     margin: "5px 5px 5px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,
     padding: "5px 10px 5px 10px",
     gridRow: "2 / 3",
-    gridColumn: "1 / 4"
+    gridColumn: "1 / 4",
   }),
   wpm: {
     margin: "auto 0px auto auto",

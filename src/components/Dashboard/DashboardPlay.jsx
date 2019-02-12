@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import PropTypes from "prop-types";
 import DashboardPlayCard from "./DashboardPlayCard";
-import withStyless from "react-jss";
+import withStyles from "react-jss";
 
 const DashboardPlay = props => {
   const { classes, initSocket, socket } = props;
@@ -35,7 +35,7 @@ const DashboardPlay = props => {
         switch (index) {
           case 0:
             setSelectedIndex(index);
-            return initSocket(props.client.username);
+            return initSocket(props.client.username, {});
           case 1:
             return setSelectedIndex(index);
           case 2:
@@ -77,4 +77,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyless(styles)(DashboardPlay);
+export default withStyles(styles)(DashboardPlay);

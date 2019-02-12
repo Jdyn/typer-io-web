@@ -5,7 +5,7 @@ import keyMirror from "../lib/keyMirror";
 export const actions = keyMirror("SEND_CHAT_MESSAGE", "CLIENT_UPDATE");
 
 export const updateClient = payload => {
-  localStorage.setItem("username", payload.username)
+  localStorage.setItem("username", payload.username);
   return { type: actions.CLIENT_UPDATE, payload };
 };
 
@@ -18,11 +18,12 @@ export const leaveRoom = payload => {
   silentEmit(types.DISCONNECT_SOCKET, payload);
 };
 
-export const initSocket = (username, history) => ({
-  type: types.INIT_SOCKET_REQUEST,
-  payload: {
-    username: username,
-    history: history,
-    pending: true
-  }
-});
+export const initSocket = (username, payload) => {
+  return {
+    type: types.INIT_SOCKET_REQUEST,
+    payload: {
+      username,
+      ...payload
+    }
+  };
+};

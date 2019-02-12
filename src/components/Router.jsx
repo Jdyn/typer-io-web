@@ -9,6 +9,7 @@ const Router = () => (
   <Switch>
     <Route exact path={route.HOME_PATH} component={DashboardContainer}/>
     <Route exact path={route.PLAY_PATH} component={PlayContainer} />
+    <Route exact path={`${route.PLAY_PATH}/:roomId`} component={PlayContainer}/>
     <Redirect to={route.HOME_PATH} />
   </Switch>
 );

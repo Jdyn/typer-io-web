@@ -11,7 +11,7 @@ const types = keyMirror(
   "INIT_SOCKET_SUCCESS",
   "INIT_SOCKET_FAILURE",
   "DISCONNECT_SOCKET",
-
+  "ROOM_NOT_FOUND"
 );
 
 export default types;

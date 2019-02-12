@@ -15,7 +15,8 @@ class PlayContainer extends Component {
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
-        localUsername ? localUsername : this.props.client.username
+        localUsername ? localUsername : this.props.client.username,
+        this.props.match.params
       );
     }
   }
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    initSocket: username => dispatch(initSocket(username)),
+    initSocket: (username, params) => dispatch(initSocket(username, params)),
     updateClient: username => dispatch(updateClient({ username })),
     leaveRoom: payload => leaveRoom(payload),
     sendChatMessage: message => sendChatMessage(message)

@@ -13,22 +13,15 @@ const Nav = props => {
 
 const styles = theme => ({
   root: {
-    zIndex: 2,
+    display: "block",
     position: "relative",
-    top: 0,
-    left: 0,
-    right: 0,
-    margin: "auto",
-    display: "block"
+    zIndex: 2,
+    margin: "0px",
   },
-
   container: {
-    margin: 0,
-    padding: 0,
     height: "65px",
     backgroundColor: theme.primaryWhite,
     boxShadow: "0 5px 10px rgba(50,50,93,.25)",
-    borderRadius: 0
   }
 });
 

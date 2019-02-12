@@ -1,9 +1,14 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../Common/Header";
 
-const DashboardArena = props => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
+};
+
+const DashboardChallenge = props => {
   const { classes, theme } = props;
   return (
     <div className={classes.container}>
@@ -15,18 +20,19 @@ const DashboardArena = props => {
         backgroundColor={"#555abf"} //"#f7bb10"
         padding="10px"
       >
-        Arena
+        Challenge
       </Header>
     </div>
   );
 };
+
+DashboardChallenge.propTypes = propTypes
 
 const styles = theme => ({
   container: {
     position: "relative",
     width: "400px",
     margin: "15px 20px 40px auto",
-    // borderBottom: "2px solid rgba(207,215,223,.25)",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     boxShadow:
@@ -38,4 +44,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(DashboardArena);
+export default withStyles(styles, { injectTheme: true })(DashboardChallenge);

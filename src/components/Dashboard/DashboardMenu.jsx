@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
-import DashboardPlayCard from "./DashboardPlayCard";
+import PropTypes from "prop-types";
+import MenuCard from "./MenuCard";
 import withStyles from "react-jss";
 
-const DashboardPlay = props => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired,
+  initSocket: PropTypes.func.isRequired
+};
+
+const DashboardMenu = props => {
   const { classes, initSocket, socket } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
@@ -51,14 +57,13 @@ const DashboardPlay = props => {
     <div className={classes.container}>
       {cards.map((card, index) => {
         return (
-          <DashboardPlayCard
-            onClick={handleOnClick}
-            card={card}
+          <MenuCard
             key={index}
             index={index}
+            onClick={handleOnClick}
             selectedIndex={selectedIndex}
-            pending={socket.pending}
-            errored={socket.errored}
+            card={card}
+            socket={socket}
           />
         );
       })}
@@ -66,15 +71,14 @@ const DashboardPlay = props => {
   );
 };
 
-const styles = theme => ({
+DashboardMenu.propTypes = propTypes;
+
+const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
-    margin: "0px auto 20px 0 ",
-    // padding: "5px 5px",
-    backgroundColor: theme.primaryWhite
+    margin: "0px auto 20px 0 "
   }
-});
+};
 
-export default withStyles(styles)(DashboardPlay);
+export default withStyles(styles)(DashboardMenu);

@@ -1,11 +1,22 @@
-import React, { useEffect } from "react";
-// import PropTypes from "prop-types";
-import DashboardPlay from "./DashboardPlay";
+import React from "react";
+import PropTypes from "prop-types";
+import DashboardMenu from "./DashboardMenu";
 import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
-import DashboardNews from "./DashboardArena";
+import DashboardNews from "./DashboardChallenge";
 
-export const Dashboard = props => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  updateClient: PropTypes.func.isRequired,
+  initSocket: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired
+};
+
+const Dashboard = props => {
   const {
     client,
     updateClient,
@@ -30,7 +41,7 @@ export const Dashboard = props => {
           client={client}
           session={session}
         />
-        <DashboardPlay
+        <DashboardMenu
           initSocket={initSocket}
           socket={props.socket}
           client={client}
@@ -39,6 +50,8 @@ export const Dashboard = props => {
     </main>
   );
 };
+
+Dashboard.propTypes = propTypes;
 
 const styles = theme => ({
   root: {
@@ -53,9 +66,10 @@ const styles = theme => ({
     zIndex: 0,
     width: "100%",
     height: "85%",
+    top: -10,
     overflow: "hidden",
-    WebkitTransform: "skwY(-12deg)",
-    transform: "skewY(-12deg)",
+    WebkitTransform: "skwY(-10deg)",
+    transform: "skewY(-10deg)",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
     backgroundColor: theme.tertiaryWhite,

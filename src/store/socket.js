@@ -74,7 +74,6 @@ const defaultListeners = dispatch => {
     });
 
     socket.on("ROOM_NOT_FOUND", payload => {
-      console.log(payload)
       dispatch({
         type: types.ROOM_NOT_FOUND,
         payload: {

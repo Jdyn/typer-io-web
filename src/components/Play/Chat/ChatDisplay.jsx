@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ChatMessage from "./ChatMessage";
 
-const ChatDisplay = props => {
-  const { classes, messages, client, currentClient, room } = props;
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
+  messages: PropTypes.array.isRequired
+};
 
-  useEffect(
-    () => {
-      const display = document.getElementById("chatDisplay");
-      display.scrollTop = display.scrollHeight;
-    },
-    [messages]
-  );
+const ChatDisplay = props => {
+  const { classes, client, messages } = props;
+
+  useEffect(() => {
+    const display = document.getElementById("chatDisplay");
+    display.scrollTop = display.scrollHeight;
+  }, [messages]);
 
   return (
     <div className={classes.container}>
@@ -20,7 +24,7 @@ const ChatDisplay = props => {
           <ChatMessage
             message={message}
             key={index}
-            color={message.color} 
+            color={message.color}
             align={client.id === message.id ? "flex-end" : "flex-start"}
           />
         ))}
@@ -28,6 +32,8 @@ const ChatDisplay = props => {
     </div>
   );
 };
+
+ChatDisplay.propTypes = propTypes
 
 const styles = {
   container: {

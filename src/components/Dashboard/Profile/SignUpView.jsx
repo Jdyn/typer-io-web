@@ -7,11 +7,13 @@ import Input from "../../Common/Input";
 const propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  changeProfile: PropTypes.func.isRequired
+  session: PropTypes.object.isRequired,
+  changeProfile: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired
 };
 
 const SignUpView = props => {
-  const { classes, changeProfile, theme, signup, session } = props;
+  const { classes, theme, session, changeProfile, signup } = props;
   const [form, setForm] = useState({
     email: "",
     username: "",
@@ -20,12 +22,9 @@ const SignUpView = props => {
 
   const [errors, setErrors] = useState({});
 
-  useEffect(
-    () => {
-      setErrors(session.errors);
-    },
-    [session.errors]
-  );
+  useEffect(() => {
+    setErrors(session.errors);
+  }, [session.errors]);
 
   const validateForm = event => {
     event.preventDefault();
@@ -34,17 +33,14 @@ const SignUpView = props => {
   };
 
   const handleExit = event => {
-    event.preventDefault()
-    setErrors({})
-    changeProfile("BACK")
-  }
+    event.preventDefault();
+    setErrors({});
+    changeProfile("BACK");
+  };
 
   return (
     <div className={classes.inner}>
-      <button
-        className={classes.exitButton}
-        onClick={e => handleExit(e)}
-      >
+      <button className={classes.exitButton} onClick={e => handleExit(e)}>
         <svg
           className={classes.exitSVG}
           width="35"
@@ -99,7 +95,7 @@ const SignUpView = props => {
 
 SignUpView.propTypes = propTypes;
 
-const styles = theme => ({
+const styles = {
   inner: {
     display: "flex",
     flexDirection: "column",
@@ -137,6 +133,6 @@ const styles = theme => ({
   exitSVG: {
     fill: "#6772e5"
   }
-});
+};
 
 export default withStyles(styles, { injectTheme: true })(SignUpView);

@@ -8,20 +8,11 @@ const propTypes = {
   classes: PropTypes.object.isRequired,
   card: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
-  pending: PropTypes.bool.isRequired,
-  errored: PropTypes.bool.isRequired
+  socket: PropTypes.object.isRequired
 };
 
-const DashboardPlayCard = props => {
-  const {
-    onClick,
-    classes,
-    card,
-    pending,
-    errored,
-    index,
-    selectedIndex
-  } = props;
+const MenuCard = props => {
+  const { onClick, classes, card, socket, index, selectedIndex } = props;
 
   return (
     <button className={classes.card} onClick={e => onClick(e, index)}>
@@ -33,15 +24,13 @@ const DashboardPlayCard = props => {
       </Content>
 
       {selectedIndex === index ? (
-        pending === true ? (
+        socket.pending === true ? (
           <div className={classes.loader}>LOADING</div>
         ) : (
           <div className={classes.loader}>
-            {errored ? (
-              <div className={classes.error}>
-                <span>
-                  Error connecting to server <br /> Try again
-                </span>
+            {socket.errored ? (
+              <div>
+                Error connecting to server <br /> Try again
               </div>
             ) : (
               "Unexpected Error..."
@@ -56,18 +45,18 @@ const DashboardPlayCard = props => {
 };
 
 const styles = theme => ({
-  card: {
+  card: props => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     position: "relative",
     cursor: "pointer",
-    minWidth: "300px",
+    width: "300px",
     margin: 15,
-    fontWeight: 500,
+    fontWeight: 600,
     outline: "none",
     padding: "40px",
-    backgroundColor: props => props.card.color,
+    backgroundColor: props.card.color,
     border: "1px solid rgba(0,0,0,.1)",
     borderRadius: 8,
     transitionDuration: ".15s",
@@ -81,19 +70,14 @@ const styles = theme => ({
     "&:active": {
       transform: "translateY(2px)"
     }
-  },
+  }),
   loader: {
     height: "6px",
     color: "#fff",
     fontWeight: 600
-  },
-  error: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "column"
   }
 });
 
-DashboardPlayCard.propTypes = propTypes;
+MenuCard.propTypes = propTypes;
 
-export default withStyless(styles)(DashboardPlayCard);
+export default withStyless(styles)(MenuCard);

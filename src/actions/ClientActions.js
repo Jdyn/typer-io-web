@@ -1,5 +1,5 @@
 import types from "../constants/ActionTypes";
-import { emitAction, silentEmit } from "../store/socket";
+import { silentEmit } from "../store/socket";
 import keyMirror from "../lib/keyMirror";
 
 export const actions = keyMirror("SEND_CHAT_MESSAGE", "CLIENT_UPDATE");
@@ -9,21 +9,16 @@ export const updateClient = payload => {
   return { type: actions.CLIENT_UPDATE, payload };
 };
 
-export const sendChatMessage = emitAction(payload => ({
-  type: actions.SEND_CHAT_MESSAGE,
-  payload
-}));
+export const sendChatMessage = payload =>
+  silentEmit(actions.SEND_CHAT_MESSAGE, payload);
 
-export const leaveRoom = payload => {
+export const leaveRoom = payload =>
   silentEmit(types.DISCONNECT_SOCKET, payload);
-};
 
-export const initSocket = (username, payload) => {
-  return {
-    type: types.INIT_SOCKET_REQUEST,
-    payload: {
-      username,
-      ...payload
-    }
-  };
-};
+export const initSocket = (username, payload) => ({
+  type: types.INIT_SOCKET_REQUEST,
+  payload: {
+    username,
+    ...payload
+  }
+});

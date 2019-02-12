@@ -67,16 +67,11 @@ const Play = props => {
           room={room}
           gameboard={gameboard}
         />
-        {/* <div className={classes.container}> */}
         <Chat
           client={client}
-          currentClient={currentClient}
           room={room}
           sendChatMessage={sendChatMessage}
         />
-        {/* <Context />
-        </div> */}
-
         <Editor
           client={client}
           room={room}
@@ -96,7 +91,7 @@ const styles = theme => ({
     gridTemplateColumns: "285px auto 285px",
     gridTemplateRows: "min-content min-content auto",
 
-    maxWidth: "1240px",
+    maxWidth: "1185px",
     flexDirection: "row",
     position: "relative",
     margin: "auto",

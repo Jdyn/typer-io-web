@@ -7,6 +7,7 @@ import Button from "../../Common/Button";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   updateClient: PropTypes.func.isRequired,
   changeProfile: PropTypes.func.isRequired

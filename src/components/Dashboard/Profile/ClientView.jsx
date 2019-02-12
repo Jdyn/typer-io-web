@@ -50,7 +50,7 @@ const ClientView = props => {
 
 ClientView.propTypes = propTypes;
 
-const styles = theme => ({
+const styles = {
   inner: {
     display: "flex",
     flexDirection: "column",
@@ -63,6 +63,6 @@ const styles = theme => ({
     position: "relative",
     margin: "auto 0px 25px 0px"
   }
-});
+};
 
 export default withStyles(styles, { injectTheme: true })(ClientView);

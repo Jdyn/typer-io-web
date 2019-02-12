@@ -92,7 +92,6 @@ const DashboardProfile = props => {
               updateClient={updateClient}
               username={client.username}
             />
-            {/* Authenticating... */}
           </div>
         );
     }

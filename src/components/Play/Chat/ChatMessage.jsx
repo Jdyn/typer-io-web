@@ -1,7 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
-const ChatMessage = ({ classes, message }) => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired
+};
+
+const ChatMessage = props => {
+  const { classes, message } = props;
+
   return (
     <div className={classes.container}>
       <div className={classes.name}>{message.username}</div>
@@ -9,6 +17,8 @@ const ChatMessage = ({ classes, message }) => {
     </div>
   );
 };
+
+ChatMessage.propTypes = propTypes
 
 const styles = theme => ({
   container: {
@@ -19,23 +29,22 @@ const styles = theme => ({
     margin: "10px 20px 10px 0px",
     borderRadius: 8
   },
-  inner: {
-    // display: "inline-block",
+  inner: props => ({
     position: "relative",
-    backgroundColor: props => props.color,
+    backgroundColor: props.color,
     zIndex: 21,
-    alignSelf: props => props.align,
+    alignSelf: props.align,
     padding: "10px",
     fontSize: "18px",
     wordWrap: "break-word",
     color: theme.primaryWhite,
     maxWidth: "75%",
     borderRadius: 8
-  },
+  }),
   name: {
-    // display: "inline-block",
     fontSize: "14px",
-    alignSelf: props => props.align,
+    padding: "5px",
+    alignSelf: props => props.align
   }
 });
 

@@ -16,30 +16,32 @@ const ClientList = props => {
   return (
     <div className={classes.container}>
       {socket.connected && (
-        <Transition
-          items={room.clients}
-          keys={item => item.id}
-          from={{
-            opacity: 0,
-            overflow: "hidden",
-            transform: "translate3d(0,-100%,0)",
-            width: "0px"
-          }}
-          enter={{
-            opacity: 1,
-            transform: "translate3d(0,0%,0)",
-            width: "230px"
-          }}
-          leave={{ transform: "translate3d(100%,0,0)", width: "0px" }}
-        >
-          {client => props => (
-            <ClientCard
-              style={props}
-              client={client}
-              color={client.gamePiece.color}
-            />
-          )}
-        </Transition>
+        <div className={classes.inner}>
+          <Transition
+            items={room.clients}
+            keys={item => item.id}
+            from={{
+              opacity: 0,
+              overflow: "hidden",
+              transform: "translate3d(0,-100%,0)",
+              width: "0px"
+            }}
+            enter={{
+              opacity: 1,
+              transform: "translate3d(0,0%,0)",
+              width: "230px"
+            }}
+            leave={{ transform: "translate3d(100%,0,0)", width: "0px" }}
+          >
+            {client => props => (
+              <ClientCard
+                style={props}
+                client={client}
+                color={client.gamePiece.color}
+              />
+            )}
+          </Transition>
+        </div>
       )}
     </div>
   );
@@ -49,7 +51,7 @@ ClientList.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    display: "Flex",
+    display: "flex",
     flexDirection: "row",
     gridRow: "1 / 2",
     gridColumn: "1 / 4",
@@ -61,9 +63,12 @@ const styles = theme => ({
     border: "1px solid rgba(0,0,0,.05)",
     boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25) inset",
     borderRadius: 8,
-    backgroundColor: theme.primaryWhite,
-
-    // width: "100%"
+    backgroundColor: theme.primaryWhite
+  },
+  inner: {
+    display: "flex",
+    flexDirection: "row",
+    margin: "0 auto"
   }
 });
 

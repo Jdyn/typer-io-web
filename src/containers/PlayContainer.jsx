@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
     initSocket: (username, params) => dispatch(initSocket(username, params)),
     updateClient: username => dispatch(updateClient({ username })),
     leaveRoom: payload => leaveRoom(payload),
-    sendChatMessage: message => sendChatMessage(message)
+    sendChatMessage: payload => sendChatMessage(payload)
   };
 };
 

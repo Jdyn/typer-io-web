@@ -43,6 +43,7 @@ export const Dashboard = props => {
 const styles = theme => ({
   root: {
     display: "grid",
+    marginTop: "120px",
     gridTemplateColumns: "auto min-content auto",
     gridTemplateRows: "auto",
     maxWidth: "1040px",

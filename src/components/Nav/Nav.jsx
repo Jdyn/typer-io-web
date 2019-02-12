@@ -25,9 +25,9 @@ const styles = theme => ({
   container: {
     margin: 0,
     padding: 0,
-    // height: "55px",
-    backgroundColor: "transparent",//theme.primaryWhite,
-    // boxShadow: "0 5px 10px rgba(50,50,93,.25)",
+    height: "65px",
+    backgroundColor: theme.primaryWhite,
+    boxShadow: "0 5px 10px rgba(50,50,93,.25)",
     borderRadius: 0
   }
 });

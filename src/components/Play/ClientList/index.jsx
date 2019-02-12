@@ -19,9 +19,9 @@ const ClientList = props => {
         <Transition
           items={room.clients}
           keys={item => item.id}
-          from={{ overflow: "hidden", width: "0px" }}
-          enter={{ width: "230px" }}
-          leave={{ width: "0px" }}
+          from={{ opacity: 0, overflow: "hidden", transform: 'translate3d(0,-100%,0)', width: "0px" }}
+          enter={{  opacity: 1, transform: 'translate3d(0,0%,0)', width: "230px" }}
+          leave={{ transform: 'translate3d(100%,0,0)', width: "0px" }}
         >
           {client => props => (
             <ClientCard
@@ -46,7 +46,7 @@ const styles = theme => ({
     gridColumn: "1 / 4",
     margin: "15px auto 15px auto",
     position: "relative",
-    height: "115px",
+    height: "105px",
     padding: "5px 5px 5px 5px",
     backgroundClip: "padding-box",
     border: "1px solid rgba(0,0,0,.05)",

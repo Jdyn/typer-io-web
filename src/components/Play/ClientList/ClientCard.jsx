@@ -36,15 +36,12 @@ const styles = theme => ({
     display: "grid",
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
-    backgroundColor: theme.primaryWhite,
     margin: "0px 0px 0px 0px",
     borderLeft: `2px solid ${theme.divider}`,
     "&:first-child": {
       border: "none"
     },
-    // backgroundClip: "padding-box",
-    // border: "1px solid rgba(0,0,0,.05)",
-    // boxShadow: "0 1px 15px rgba(27,31,35,.15)",
+    overflow: "hidden",
     ...props.style
   }),
   username: props => ({
@@ -55,6 +52,8 @@ const styles = theme => ({
     fontWeight: 600,
     lineHeight: "25px",
     height: "35px",
+    minWidth: "100px",
+    overflow: "hidden",
     margin: "5px 5px 5px 5px",
     borderRadius: 4,
     color: theme.primaryWhite,
@@ -80,7 +79,7 @@ const styles = theme => ({
     color: "#8E8D8F",
     fontWeight: 600,
     height: "50%",
-    margin: "auto"
+    margin: "5px auto auto auto"
   }
 });
 

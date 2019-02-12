@@ -122,7 +122,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "40px 0px 40px 0px",
+    margin: "15px 0px 40px 0px",
     transitionDuration: ".2s",
     borderRadius: 8,
     boxShadow:

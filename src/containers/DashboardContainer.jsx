@@ -14,6 +14,8 @@ class DashboardContainer extends Component {
         case "SOLO":
           this.props.history.push("/solo");
           break;
+        default:
+          break;  
       }
     }
   }
@@ -25,6 +27,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   client: state.client.meta,
+  matches: state.matchHistory.matches,
   session: state.session,
   room: state.client.room,
   socket: state.client.socket

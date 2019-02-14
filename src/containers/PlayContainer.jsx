@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Play from "../components/Play";
+import { saveMatch } from "../actions/MatchHistoryActions";
 import {
   initSocket,
   sendChatMessage,
@@ -36,7 +37,8 @@ const mapDispatchToProps = dispatch => {
   return {
     initSocket: (username, params) => dispatch(initSocket(username, params)),
     leaveRoom: payload => leaveRoom(payload),
-    sendChatMessage: payload => sendChatMessage(payload)
+    sendChatMessage: payload => sendChatMessage(payload),
+    saveMatch: payload => dispatch(saveMatch(payload))
   };
 };
 

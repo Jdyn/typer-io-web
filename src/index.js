@@ -9,10 +9,10 @@ import App from "./containers/AppContainer";
 
 const persistedStore = loadState();
 const store = configureStore(persistedStore);
-
+console.log({matchHistory: store.getState().matchHistory})
 store.subscribe(() => {
   saveState({
-    // object from state to save
+    matchHistory: store.getState().matchHistory
   });
 });
 

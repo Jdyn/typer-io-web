@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DashboardMenu from "./DashboardMenu";
 import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
-import DashboardNews from "./DashboardChallenge";
+import MatchHistory from "./MatchHistory/";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -18,9 +18,10 @@ const propTypes = {
 
 const Dashboard = props => {
   const {
-    client,
-    updateClient,
     classes,
+    client,
+    matches,
+    updateClient,
     session,
     initSocket,
     login,
@@ -32,7 +33,8 @@ const Dashboard = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <DashboardNews />
+        {/* <DashboardNews /> */}
+        <MatchHistory matches={matches}/>
         <DashboardProfile
           login={login}
           logout={logout}
@@ -59,7 +61,7 @@ const styles = theme => ({
     marginTop: "120px",
     gridTemplateColumns: "auto min-content auto",
     gridTemplateRows: "auto",
-    maxWidth: "1040px",
+    maxWidth: "1185px",
     margin: "0 auto"
   },
   stripe: {

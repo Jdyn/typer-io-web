@@ -7,7 +7,6 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status/PlayStatus";
 import Leaderboard from "./Leaderboard/index";
-import Context from "./Context";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -15,7 +14,6 @@ const propTypes = {
   room: PropTypes.object.isRequired,
   gameboard: PropTypes.object.isRequired,
   socket: PropTypes.object.isRequired,
-  updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
   sendChatMessage: PropTypes.func.isRequired
@@ -28,11 +26,17 @@ const Play = props => {
     socket,
     gameboard,
     leaveRoom,
+    saveMatch,
     sendChatMessage,
     classes
   } = props;
+
   const [clientIndex, setClientIndex] = useState(null);
-  const [currentClient, setCurrentClient] = useState(null);
+  const [currentGamePiece, setGamePiece] = useState(null);
+
+  const gamePiece = room.clients[0]
+    ? room.clients.filter(object => object.id === client.id)[0].gamePiece
+    : {};
 
   useEffect(() => {
     return () => {
@@ -41,18 +45,16 @@ const Play = props => {
   }, []);
 
   useEffect(() => {
-    setCurrentClient(room.clients.filter(object => object.id === client.id)[0]);
-  }, [client.id]);
+    if (gamePiece && gamePiece.isComplete) {
+      saveMatch(gamePiece);
+    }
+  }, [gamePiece.isComplete]);
 
   return (
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList
-          room={room}
-          gameboard={gameboard}
-          socket={socket}
-        />
+        <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
         <Gameboard

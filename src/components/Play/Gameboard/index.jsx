@@ -64,13 +64,10 @@ const styles = theme => ({
   inner: {
     display: "flex",
     flexDirection: "column",
-    // border: "1px solid rgba(0,0,0,.1)",
     backgroundColor: theme.primaryWhite,
     zIndex: 150,
     position: "relative",
-    // height: "100%",
-    // width: "100%",
-    borderRadius: "8px 8px 8px 8px",
+    borderRadius: 8,
     boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset"
   }
 });

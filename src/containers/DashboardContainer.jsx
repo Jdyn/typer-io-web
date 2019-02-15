@@ -3,6 +3,7 @@ import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
 import { updateClient, initSocket } from "../actions/ClientActions";
 import { login, logout, signup } from "../actions/SessionActions";
+import { deleteMatch } from "../actions/MatchHistoryActions";
 
 class DashboardContainer extends Component {
   componentDidUpdate() {
@@ -15,7 +16,7 @@ class DashboardContainer extends Component {
           this.props.history.push("/solo");
           break;
         default:
-          break;  
+          break;
       }
     }
   }
@@ -38,7 +39,8 @@ const mapDispatchToProps = dispatch => ({
   initSocket: (username, params) => dispatch(initSocket(username, params)),
   login: form => dispatch(login(form)),
   signup: form => dispatch(signup(form)),
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  deleteMatch: index => dispatch(deleteMatch(index))
 });
 
 export default connect(

@@ -71,7 +71,6 @@ const styles = theme => ({
     height: "345px",
     maxHeight: "365px",
     paddingLeft: "20px",
-    // maxWidth: "100%",
     overflow: "hidden",
     zIndex: 20,
     margin: "0px 20px 0px 10px"

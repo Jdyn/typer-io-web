@@ -26,7 +26,8 @@ const Dashboard = props => {
     initSocket,
     login,
     logout,
-    signup
+    signup,
+    deleteMatch
   } = props;
 
   return (
@@ -34,7 +35,7 @@ const Dashboard = props => {
       <div className={classes.stripe} />
       <div className={classes.root}>
         {/* <DashboardNews /> */}
-        <MatchHistory matches={matches}/>
+        <MatchHistory matches={matches} deleteMatch={deleteMatch}/>
         <DashboardProfile
           login={login}
           logout={logout}

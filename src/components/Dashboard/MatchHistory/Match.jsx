@@ -1,34 +1,80 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
+import formatTime from "../../../lib/formatTime";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const Match = props => {
-  const { classes, match, index } = props;
+  const { classes, match, index, deleteMatch } = props;
+
+  const handleDelete = event => {
+    event.preventDefault();
+    deleteMatch(index);
+  };
+
   return (
     <div className={classes.container}>
-      <span>{index}</span>
-      <span>{match.title}</span>
-      <span>{match.wpm}wpm</span>
-      <span>{match.place}</span>
+      <span className={classes.title}>{match.title}</span>
+      <span className={classes.wpm}>{match.wpm}</span>
+      <span className={classes.place}>{match.place}</span>
+      <span className={classes.date}>{formatTime(match.date)}</span>
+      {/* <button onClick={e => handleDelete(e)}>delete</button> */}
     </div>
   );
 };
 
 const styles = theme => ({
   container: {
-    display: "flex",
+    display: "grid",
+    gridTemplateRows: "1fr",
+    gridTemplateColumns: "195px 1fr 1fr 110px",
     flexDirection: "row",
-    justifyContent: "space-between",
-    height: "45px",
-    padding: "10px 0px 10px 0px",
-    borderBottom: `solid 2px ${theme.divider}`,
-    backgroundColor: theme.primaryWhite,
-    margin: "0 0",
-    fontSize: 16
+    position: "relative",
+    padding: "12.5px 10px 12.5px 10px",
+    borderRadius: 4,
+    width: "100%",
+    boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
+    cursor: "pointer",
+    transitionDuration: ".2s",
+    "&:hover": {
+      transform: "translateY(-1px)",
+      boxShadow: "inset -1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 10px 1px rgba(60,64,67,.15)"
+    },
+    "&:active": {
+      transform: "translateY(2px)"
+    }
+  },
+  item: {
+    fontWeight: 400,
+    lineHeight: "20px",
+    letterSpacing: ".2px",
+    whiteSpace: "nowrap"
+  },
+  title: {
+    extend: "item",
+    textAlign: "left",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    fontSize: 15
+  },
+  wpm: {
+    extend: "item",
+    margin: "auto",
+    fontSize: 14
+  },
+  place: {
+    extend: "item",
+    margin: "auto",
+    fontSize: 14
+  },
+  date: {
+    extend: "item",
+    fontSize: 14,
+    color: "#5f6368"
   }
 });
 

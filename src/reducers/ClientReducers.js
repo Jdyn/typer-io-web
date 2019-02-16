@@ -20,7 +20,7 @@ const initialState = {
     },
     clients: [],
     messages: [],
-    snippet: "",
+    snippet: {},
     isSearching: true
   },
   socket: {
@@ -132,7 +132,7 @@ export default (state = initialState, action) => {
           ...action.payload.room,
           gameboard: {
             ...state.room.gameboard,
-            words: action.payload.room.snippet.split(" ") || []
+            words: action.payload.room.snippet.quote.split(" ") || []
           }
         },
         socket: {

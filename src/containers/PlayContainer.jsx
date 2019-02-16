@@ -28,6 +28,7 @@ const mapStateToProps = state => {
   return {
     client: state.client.meta,
     room: state.client.room,
+    snippet: state.client.room.snippet,
     gameboard: state.client.room.gameboard,
     socket: state.client.socket
   };
@@ -38,7 +39,7 @@ const mapDispatchToProps = dispatch => {
     initSocket: (username, params) => dispatch(initSocket(username, params)),
     leaveRoom: payload => leaveRoom(payload),
     sendChatMessage: payload => sendChatMessage(payload),
-    saveMatch: payload => dispatch(saveMatch(payload))
+    saveMatch: (payload, snippet) => dispatch(saveMatch(payload, snippet))
   };
 };
 

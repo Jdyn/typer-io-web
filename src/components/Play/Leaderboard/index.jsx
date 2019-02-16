@@ -20,9 +20,9 @@ const Leaderboard = props => {
         margin="0px 0px -8px 0px"
         boxShadow="0 1px 40px rgba(50,50,93,.25)"
         fontSize={24}
-        height="67px"
+        height="64px"
         backgroundColor={"#555abf"}
-        padding="10px"
+        padding="10px 10px 10px 10px"
       >
         Leaderboard
       </Header>
@@ -35,9 +35,10 @@ const styles = {
   container: props => ({
     display: "flex",
     flexDirection: "column",
-    margin: props.isSolo ? "0px 10px 10px 10px" : "10px",
-    gridRow: props.isSolo ? "2 / 5" : "3 / 5",
-    gridColumn: props.isSolo ? "3 / 4" : "1 / 2"
+    flexGrow: 1,
+    position: "relative",
+    margin: "0px 10px 10px 10px",
+    gridRow: "3 / 5"
   })
 };
 

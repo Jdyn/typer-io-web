@@ -54,9 +54,9 @@ const PlayStatus = props => {
         if (time === 0) {
           return { color: "#555abf", text: "Game has Ended" };
         } else if (time < 10) {
-          return { color: "#e57373", text: "GO!" };
+          return { color: "#81C784", text: "GO!" };
         } else if (time < 20) {
-          return { color: "#e5a03e", text: "GO!" };
+          return { color: "#81C784", text: "GO!" };
         }
       } else {
         if (socket.errored) {

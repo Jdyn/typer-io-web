@@ -34,13 +34,14 @@ const styles = theme => ({
     flexDirection: "row",
     position: "relative",
     padding: "12.5px 10px 12.5px 10px",
-    borderRadius: 4,
+    borderRadius: 0,
     width: "100%",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
     cursor: "pointer",
     transitionDuration: ".2s",
     "&:hover": {
       transform: "translateY(-1px)",
+      borderRadius: 8,
       boxShadow: "inset -1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 10px 1px rgba(60,64,67,.15)"
     },
     "&:active": {
@@ -74,7 +75,8 @@ const styles = theme => ({
   date: {
     extend: "item",
     fontSize: 14,
-    color: "#5f6368"
+    color: "#5f6368",
+    margin: "auto",
   }
 });
 

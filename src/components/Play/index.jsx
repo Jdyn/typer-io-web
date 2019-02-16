@@ -7,6 +7,7 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status/PlayStatus";
 import Leaderboard from "./Leaderboard/index";
+import Context from "./Content";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -23,6 +24,7 @@ const Play = props => {
   const {
     client,
     room,
+    snippet,
     socket,
     gameboard,
     leaveRoom,
@@ -46,7 +48,7 @@ const Play = props => {
 
   useEffect(() => {
     if (gamePiece && gamePiece.isComplete) {
-      saveMatch(gamePiece);
+      saveMatch(gamePiece, snippet);
     }
   }, [gamePiece.isComplete]);
 
@@ -54,16 +56,19 @@ const Play = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList room={room} gameboard={gameboard} socket={socket} />
+      <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
+        <div className={classes.wrapper}>
+          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+          <Context snippet={snippet} />
+        </div>
         <Gameboard
           clientIndex={clientIndex}
           client={client}
           room={room}
           gameboard={gameboard}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
           client={client}
           room={room}
@@ -80,7 +85,7 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "285px auto 285px",
+    gridTemplateColumns: "285px auto 275px",
     gridTemplateRows: "min-content min-content auto",
     maxWidth: "1185px",
     flexDirection: "row",
@@ -92,6 +97,12 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
+    gridRow: "2 / 5",
+    gridColumn: "3 / 4"
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
     gridRow: "2 / 5",
     gridColumn: "3 / 4"
   },

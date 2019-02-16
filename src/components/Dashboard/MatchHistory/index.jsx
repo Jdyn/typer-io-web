@@ -70,13 +70,22 @@ const styles = theme => ({
     // width: "100%",
     maxHeight: "350px",
     overflowX: "hidden",
-    overflowY: "scroll",
+    overflowY: "auto",
     margin: "0px 5px 5px 5px",
     padding: "0px 5px 5px 5px",
-    scrollbarWidth: "none",
-    msOverflowStyle: "none",
+    // scrollbarWidth: "none",
+    // msOverflowStyle: "none",
     "&::-webkit-scrollbar": {
-      width: "0px"
+      width: "10px",
+      height: "16px"
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,0.2)"
+    },
+    "&::-webkit-scrollbar-button": {
+      width: "0",
+      height: "0",
+      display: "none"
     }
   },
   box: {

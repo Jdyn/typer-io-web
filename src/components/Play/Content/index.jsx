@@ -2,29 +2,44 @@ import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import Header from "../../Common/Header";
-import ContextDisplay from "./ContextDisplay";
+import ContextDisplay from "./ContentDisplay";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const Context = props => {
-  const { classes, theme } = props;
+  const { classes, theme, snippet } = props;
+
+  const difficultyColor = difficulty => {
+    switch (difficulty) {
+      case "easy":
+        return "#81C784";
+      case "medium":
+        return "#e5a03e";
+      case "hard":
+        return "#e57373";
+    }
+  };
+
   return (
     <div className={classes.container}>
-      <Header
+      {/* <Header
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"
         margin="0px 0px -8px 0px"
         boxShadow="0 1px 40px rgba(50,50,93,.25)"
         fontSize={24}
-        height="67px"
+        height="60px"
         backgroundColor={"#555abf"}
         padding="10px"
       >
-        context
-      </Header>
-      <ContextDisplay />
+        Content
+      </Header> */}
+      <ContextDisplay
+        snippet={snippet}
+        difficultyColor={difficultyColor(snippet.difficulty)}
+      />
     </div>
   );
 };
@@ -34,9 +49,9 @@ const styles = {
     display: "flex",
     position: "relative",
     flexDirection: "column",
-    height: "50%",
-    margin: "10px",
-
+    margin: "10px 10px 10px 10px",
+    flexShrink: 1,
+    height: "150px"
   }
 };
 

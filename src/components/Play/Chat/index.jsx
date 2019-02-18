@@ -30,10 +30,11 @@ const Chat = props => {
       >
         Chat
       </Header>
-      <div className={classes.inner}>
-        <ChatDisplay messages={room.messages} client={client} />
-        <ChatInput sendChatMessage={sendChatMessage} client={client} />
-      </div>
+      <ChatDisplay
+        sendChatMessage={sendChatMessage}
+        messages={room.messages}
+        client={client}
+      />
     </div>
   );
 };
@@ -57,7 +58,6 @@ const styles = theme => ({
     zIndex: 150,
     backgroundColor: theme.primaryWhite,
     position: "relative",
-    // height: "100%",
     width: "100%",
     borderRadius: 8,
     boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset"

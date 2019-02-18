@@ -10,17 +10,17 @@ const propTypes = {
 
 const ChatInput = props => {
   const { classes, sendChatMessage, client } = props;
-  const [message, setMessage] = useState("");
+  const [input, setInput] = useState("");
 
   const submitMessage = event => {
     event.preventDefault();
     const payload = {
       username: client.username,
       id: client.id,
-      message: message
+      message: input
     };
     sendChatMessage(payload);
-    setMessage("");
+    setInput("");
   };
 
   return (
@@ -28,8 +28,8 @@ const ChatInput = props => {
       <input
         className={classes.input}
         type="text"
-        onChange={e => setMessage(e.target.value)}
-        value={message}
+        onChange={e => setInput(e.target.value)}
+        value={input}
         placeholder="Write a message..."
         required
       />
@@ -45,7 +45,7 @@ const styles = {
     height: "45px",
     display: "flex",
     zIndex: 10,
-    margin: "auto 10px 15px 10px"
+    margin: "auto 15px 15px 15px"
   },
   input: {
     position: "relative",

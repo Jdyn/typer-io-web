@@ -5,8 +5,8 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
-import PlayStatus from "./Status/PlayStatus";
-import Leaderboard from "./Leaderboard/index";
+import PlayStatus from "./Status";
+import Leaderboard from "./Leaderboard";
 import Context from "./Content";
 
 const propTypes = {
@@ -56,13 +56,9 @@ const Play = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-      <ClientList room={room} gameboard={gameboard} socket={socket} />
-        {/* <Context snippet={snippet} /> */}
+        <ClientList room={room} gameboard={gameboard} socket={socket} />
+        <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
-        {/* <div className={classes.wrapper}> */}
-          <PlayStatus gameboard={gameboard} room={room} socket={socket} />
-        {/* </div> */}
         <Gameboard
           clientIndex={clientIndex}
           client={client}
@@ -75,6 +71,7 @@ const Play = props => {
           gameboard={gameboard}
           gameboardUpdate={setClientIndex}
         />
+        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
       </div>
     </main>
   );
@@ -110,7 +107,7 @@ const styles = theme => ({
   stripe: {
     zIndex: 0,
     width: "100%",
-    height: "90%",
+    height: "100%",
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",

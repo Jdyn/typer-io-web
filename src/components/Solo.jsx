@@ -4,7 +4,7 @@ import withStyles from "react-jss";
 import ClientList from "../components/Play/ClientList";
 import Gameboard from "../components/Play/Gameboard";
 import Editor from "../components/Play/Editor";
-import PlayStatus from "../components/Play/Status/PlayStatus";
+import PlayStatus from "../components/Play/Status";
 import Leaderboard from "../components/Play/Leaderboard";
 
 const propTypes = {
@@ -20,14 +20,7 @@ const propTypes = {
 };
 
 const Solo = props => {
-  const {
-    client,
-    room,
-    socket,
-    gameboard,
-    leaveRoom,
-    classes
-  } = props;
+  const { client, room, socket, gameboard, leaveRoom, classes } = props;
   const [clientIndex, setClientIndex] = useState(null);
 
   useEffect(() => {
@@ -40,11 +33,7 @@ const Solo = props => {
     <main>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <ClientList
-          room={room}
-          gameboard={gameboard}
-          socket={socket}
-        />
+        <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Gameboard
           clientIndex={clientIndex}
@@ -52,7 +41,7 @@ const Solo = props => {
           room={room}
           gameboard={gameboard}
         />
-        <Leaderboard isSolo={true}/>
+        <Leaderboard isSolo={true} />
         <Editor
           client={client}
           room={room}

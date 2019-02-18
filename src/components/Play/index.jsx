@@ -85,8 +85,9 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "285px auto 285px",
+    gridTemplateColumns: "265px auto 265px",
     gridTemplateRows: "min-content min-content auto",
+    gridGap: "20px",
     maxWidth: "1185px",
     flexDirection: "row",
     position: "relative",

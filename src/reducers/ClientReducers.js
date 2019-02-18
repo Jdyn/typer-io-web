@@ -167,7 +167,7 @@ export default (state = initialState, action) => {
         ...state,
         meta: {
           ...state.meta,
-          username: action.response.result.user.username
+          username: action.response.localUsername ? action.response.localUsername : action.response.result.user.username
         }
       };
     case "ROOM_NOT_FOUND":

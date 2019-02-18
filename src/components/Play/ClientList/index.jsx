@@ -55,15 +55,15 @@ const styles = theme => ({
     flexDirection: "row",
     gridRow: "1 / 2",
     gridColumn: "1 / 4",
-    margin: "15px 1% 15px 1%",
+    margin: "10px 1% 0px 1%",
     position: "relative",
     height: "105px",
-    padding: "5px 5px 5px 5px",
+    // padding: "5px 5px 5px 5px",
     backgroundClip: "padding-box",
-    border: "1px solid rgba(0,0,0,.05)",
-    boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",
+    // border: "1px solid rgba(0,0,0,.05)",
+    // boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",
     borderRadius: 8,
-    backgroundColor: theme.primaryWhite
+    backgroundColor: "transparent"//theme.primaryWhite
   },
   inner: {
     display: "flex",

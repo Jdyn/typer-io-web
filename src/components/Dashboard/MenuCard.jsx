@@ -19,7 +19,7 @@ const MenuCard = props => {
       <Header border="none" color="#fff">
         {card.title}
       </Header>
-      <Content className={classes.itemText} color={"#fff"} fontSize={18}>
+      <Content className={classes.itemText} color={"#fff"} fontSize={20}>
         {card.text}
       </Content>
 
@@ -51,8 +51,8 @@ const styles = theme => ({
     justifyContent: "flex-start",
     position: "relative",
     cursor: "pointer",
-    width: "300px",
-    margin: 15,
+    width: "315px",
+    margin: "15px 0px 15px 15px",
     fontWeight: 600,
     outline: "none",
     padding: "40px",

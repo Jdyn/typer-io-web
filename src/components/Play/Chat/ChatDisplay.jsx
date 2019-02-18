@@ -40,6 +40,7 @@ const styles = {
     display: "inline-block",
     position: "relative",
     height: "100%",
+    // flexGrow: 1,
     paddingLeft: "20px",
     maxWidth: "100%",
     overflow: "hidden",

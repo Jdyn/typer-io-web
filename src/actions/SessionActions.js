@@ -59,5 +59,6 @@ export const authenticate = () => dispatch => {
 
 const setCurrentSession = (dispatch, response) => {
   localStorage.setItem("token", JSON.stringify(response.result.token));
-  dispatch({ type: actions.AUTHENTICATION_SUCCESS, response });
+  const localUsername = localStorage.getItem("username")
+  dispatch({ type: actions.AUTHENTICATION_SUCCESS, response: {localUsername, ...response} });
 };

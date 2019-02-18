@@ -35,8 +35,16 @@ const styles = theme => ({
     gridTemplateColumns: "1fr 1fr 1fr",
     margin: "0px 0px 0px 0px",
     borderLeft: `2px solid ${theme.divider}`,
+    backgroundColor: theme.primaryWhite,
     "&:first-child": {
-      border: "none"
+      border: "none",
+      borderRadius: "8px 0px 0px 8px"
+    },
+    "&:last-child": {
+      borderRadius: "0px 8px 8px 0px"
+    },
+    "&:only-child": {
+      borderRadius: 8
     },
     overflow: "hidden",
     ...props.style

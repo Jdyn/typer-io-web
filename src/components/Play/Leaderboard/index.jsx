@@ -16,15 +16,15 @@ const Leaderboard = props => {
     <div className={classes.container}>
       <Header
         color={theme.primaryWhite}
+        boxShadow="0 5px 20px rgba(35,35,80,.25)"
         borderRadius="8px 8px 0px 0px"
         margin="0px 0px -8px 0px"
-        boxShadow="0 1px 40px rgba(50,50,93,.25)"
         fontSize={24}
-        height="55px" 
+        height="60px"
         backgroundColor={"#555abf"}
-        padding="10px 10px 10px 10px"
+        padding="10px 10px 0px 10px"
       >
-        Leaderboards
+        Leaderboard
       </Header>
       <LeaderboardDisplay />
     </div>
@@ -37,8 +37,9 @@ const styles = {
     flexDirection: "column",
     flexGrow: 1,
     position: "relative",
-    margin: "10px 10px 10px 10px",
-    gridRow: "3 / 5"
+    margin: 0,//"10px 10px 10px 10px",
+    gridRow: "3 / 5",
+    gridColumn: "1 / 2"
   })
 };
 

@@ -82,7 +82,7 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    margin: "10px 10px 10px 10px",
+    margin: 0,//"0px 10px 0px 10px",
     display: "flex",
     position: "relative",
     overflow: " hidden",

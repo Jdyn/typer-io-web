@@ -22,12 +22,12 @@ const MatchHistory = props => {
         backgroundColor={"#555abf"} //"#f7bb10"
         padding="10px"
       >
-        History
+        Match History
       </Header>
       <div className={classes.categories}>
-        <span className={classes.category}>Title</span>
+        <span className={classes.titleCategory}>Title</span>
         <span className={classes.category}>wpm</span>
-        <span className={classes.category}>Place</span>
+        {/* <span className={classes.category}>Place</span> */}
         <span className={classes.category}>Time</span>
       </div>
       <div className={classes.inner}>
@@ -51,7 +51,7 @@ MatchHistory.propTypes = propTypes;
 const styles = theme => ({
   container: {
     position: "relative",
-    width: "435px",
+    width: "400px",
     maxWidth: "435px",
     margin: "15px 20px 40px auto",
     borderRadius: 8,
@@ -71,8 +71,8 @@ const styles = theme => ({
     maxHeight: "350px",
     overflowX: "hidden",
     overflowY: "auto",
-    margin: "0px 5px 5px 5px",
-    padding: "0px 5px 5px 5px",
+    padding: "0px 10px 10px 10px",
+    // padding: "0px 5px 5px 5px",
     // scrollbarWidth: "none",
     // msOverflowStyle: "none",
     "&::-webkit-scrollbar": {
@@ -94,9 +94,9 @@ const styles = theme => ({
   },
   categories: {
     display: "grid",
-    gridTemplateColumns: "195px 1fr 1fr 110px",
+    gridTemplateColumns: "195px 1fr 1fr",
     gridTemplateRows: "1fr",
-    padding: "10px 10px 10px 10px",
+    padding: "10px",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
     marginLeft: "10px",
     marginRight: "10px"
@@ -106,8 +106,13 @@ const styles = theme => ({
     fontSize: 16,
     letterSpacing: "0.025em",
     fontWeight: 600,
-    // textTransform: "uppercase",
-    color: theme.fontColor
+    textTransform: "uppercase",
+    color: "#8E8D8F",
+    textAlign: "center"
+  },
+  titleCategory: {
+    extend: "category",
+    width: "195px"
   }
 });
 

@@ -45,7 +45,7 @@ const styles = {
     height: "95%",
     width: "auto",
     alignItems: "center",
-    fontSize: "28px",
+    fontSize: "30px",
     fontWeight: "400",
     color: "#24b47e",
     textShadow: "0px 0px .5px rgba(50,50,93,.25)"

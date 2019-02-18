@@ -20,7 +20,7 @@ const PlayStatusCard = props => {
         color={theme.primaryWhite}
         fontWeight={600}
         fontSize={20}
-        height="20px"
+        height="35px"
       >
         {gameTime || roomTime}
       </Header>
@@ -44,11 +44,12 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     // width: "265px",
-    height: "100px",
-    boxShadow: "0px 10px 30px rgba(50,50,93,.25)",
+    height: "100%",
+    flexGrow: 1,
+    boxShadow: "0px 0px 30px rgba(50,50,93,.25)",
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
-    transition: "background-color 1s",
+    transition: "background-color 0.5s",
     backgroundColor: props.header ? props.header.color : "black",
     padding: "25px 0px 25px 0px",
     textAlign: "center"

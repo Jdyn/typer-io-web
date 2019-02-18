@@ -146,7 +146,7 @@ const styles = {
     color: props => (props.isWrong ? "#da552f" : "#24b47e"),
     textShadow: "0px 0px .5px rgba(50,50,93,.25)",
     caretColor: "#0d2b3e",
-    fontSize: "28px",
+    fontSize: "30px",
     fontWeight: "400",
     paddingLeft: "5px",
     verticalAlign: "middle"

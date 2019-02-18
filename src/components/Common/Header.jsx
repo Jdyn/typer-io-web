@@ -53,7 +53,8 @@ Header.defaultProps = {
   fontWeight: 600,
   borderRadius: "8px",
   color: "black",
-  border: "1px solid rgba(0,0,0,.1)"
+  border: "1px solid rgba(0,0,0,.1)",
+  height: "auto"
 };
 
 const styles = theme => ({
@@ -68,6 +69,7 @@ const styles = theme => ({
     borderRadius: props.borderRadius,
     border: props.border,
     boxShadow: props.boxShadow,
+    lineHeight: props.lineHeight,
     justifyContent: "left",
     position: "relative",
     zIndex: 100,

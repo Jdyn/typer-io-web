@@ -21,7 +21,7 @@ const Chat = props => {
       <Header
         boxShadow="0 5px 20px rgba(35,35,80,.25)"
         margin="0px 0px -8px 0px"
-        height="64px"
+        height="60px"
         color={theme.primaryWhite}
         borderRadius="8px 8px 0px 0px"
         fontSize={24}
@@ -46,8 +46,8 @@ const styles = theme => ({
     flexDirection: "column",
     margin: "0px 10px 10px 10px",
     position: "relative",
-    gridRow: "3 / 5",
-    gridColumn: "1 / 2",
+    gridRow: "2 / 5",
+    gridColumn: "3 / 4",
     flexGrow: 1
   },
   inner: {

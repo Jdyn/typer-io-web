@@ -34,9 +34,9 @@ const Gameboard = props => {
         borderRadius="8px 8px 0px 0px"
         margin="0px 0px -8px 0px"
         fontSize={24}
-        height="64px"
+        height="55px"
         backgroundColor={"#555abf"}
-        padding="10px"
+        padding="10px 10px 10px 10px"
       >
         Gameboard
       </Header>

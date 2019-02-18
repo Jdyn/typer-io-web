@@ -61,7 +61,7 @@ const styles = theme => ({
     padding: "5px 5px 5px 5px",
     backgroundClip: "padding-box",
     border: "1px solid rgba(0,0,0,.05)",
-    boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25) inset",
+    boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite
   },

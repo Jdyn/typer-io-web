@@ -28,7 +28,7 @@ const styles = theme => ({
     width: "auto",
     lineHeight: "40px",
     alignItems: "center",
-    fontSize: "28px",
+    fontSize: "30px",
     whiteSpace: 'nowrap',
     fontWeight: "400",
     color: "#525f7f",//"#0d2b3e",

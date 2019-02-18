@@ -46,12 +46,9 @@ const Context = props => {
 
 const styles = {
   container: {
-    display: "flex",
     position: "relative",
-    flexDirection: "column",
-    margin: "10px 10px 10px 10px",
-    flexShrink: 1,
-    height: "150px"
+    margin: "0px 10px 10px 10px",
+    height: "115px",
   }
 };
 

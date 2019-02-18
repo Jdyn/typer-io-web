@@ -57,12 +57,12 @@ const Play = props => {
       <div className={classes.stripe} />
       <div className={classes.root}>
       <ClientList room={room} gameboard={gameboard} socket={socket} />
-        <PlayStatus gameboard={gameboard} room={room} socket={socket} />
+        {/* <Context snippet={snippet} /> */}
         <Leaderboard />
-        <div className={classes.wrapper}>
-          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
-          <Context snippet={snippet} />
-        </div>
+        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        {/* <div className={classes.wrapper}> */}
+          <PlayStatus gameboard={gameboard} room={room} socket={socket} />
+        {/* </div> */}
         <Gameboard
           clientIndex={clientIndex}
           client={client}
@@ -85,7 +85,7 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "285px auto 275px",
+    gridTemplateColumns: "285px auto 285px",
     gridTemplateRows: "min-content min-content auto",
     maxWidth: "1185px",
     flexDirection: "row",

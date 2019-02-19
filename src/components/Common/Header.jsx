@@ -53,7 +53,7 @@ Header.defaultProps = {
   fontWeight: 600,
   borderRadius: "8px",
   color: "black",
-  border: "1px solid rgba(0,0,0,.1)",
+  border: "none",
   height: "auto"
 };
 

@@ -5,6 +5,19 @@ import CssBaseline from "../components/CssBaseline";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
 import Footer from "../components/Footer/Footer";
+import * as Sentry from "@sentry/browser";
+
+if (process.env.NODE_ENV === "production") {
+  Sentry.init({
+    dsn: "https://429f27fd7aab4c2dac9d534a38ccfaf8@sentry.io/1396899",
+    beforeSend(event) {
+      if (event.exception) {
+        Sentry.showReportDialog();
+      }
+      return event;
+    }
+  });
+}
 
 class App extends Component {
   componentWillMount() {

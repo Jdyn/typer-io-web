@@ -5,11 +5,11 @@ import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store/ConfigureStore";
 import { loadState, saveState } from "./store/LocalStorage";
 import { ThemeProvider } from "react-jss";
+import ErrorBoundary from "./containers/ErrorBoundary";
 import App from "./containers/AppContainer";
 
 const persistedStore = loadState();
 const store = configureStore(persistedStore);
-console.log({matchHistory: store.getState().matchHistory})
 store.subscribe(() => {
   saveState({
     matchHistory: store.getState().matchHistory
@@ -32,7 +32,9 @@ const app = (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Provider store={store}>
-          <App store={store}/>
+          <ErrorBoundary>
+            <App store={store} />
+          </ErrorBoundary>
         </Provider>
       </BrowserRouter>
     </ThemeProvider>

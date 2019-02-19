@@ -37,7 +37,8 @@ Content.propTypes = propTypes;
 Content.defaultProps = {
   margin: "0",
   fontSize: 14,
-  fontWeight: 400
+  fontWeight: 400,
+  color: "black"
 };
 
 const styles = {
@@ -45,7 +46,8 @@ const styles = {
     margin: props.margin,
     fontSize: props.fontSize,
     fontWeight: props.fontWeight,
-    color: props.color || "black"
+    color: props.color,
+    zIndex: 100
   })
 };
 

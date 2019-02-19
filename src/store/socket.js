@@ -18,9 +18,8 @@ export default url => {
 let socket;
 
 const init = (url, dispatch, payload) => {
-  socket = io(url, { transports: ["websocket"] });
+  socket = io(url);
   defaultListeners(dispatch);
-  console.log("SOCKET: ", payload);
   socket.emit("REGISTER", payload);
   socket.on(types.INIT_SOCKET_SUCCESS, payload => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });

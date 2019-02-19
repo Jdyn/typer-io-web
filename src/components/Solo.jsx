@@ -60,6 +60,7 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "285px auto 285px",
     gridTemplateRows: "min-content min-content auto",
+    gridGap: "15px",
     maxWidth: "1185px",
     flexDirection: "row",
     position: "relative",

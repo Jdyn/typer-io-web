@@ -40,6 +40,9 @@ const Play = props => {
     ? room.clients.filter(object => object.id === client.id)[0].gamePiece
     : {};
 
+  // const gamePiece = room.clients.filter(object => object.id === client.id)[0]
+  //   .gamePiece;
+
   useEffect(() => {
     return () => {
       leaveRoom({ id: room.id, errored: false });
@@ -84,7 +87,7 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "265px auto 265px",
     gridTemplateRows: "min-content min-content auto",
-    gridGap: "20px",
+    gridGap: "15px",
     maxWidth: "1185px",
     flexDirection: "row",
     position: "relative",
@@ -107,7 +110,7 @@ const styles = theme => ({
   stripe: {
     zIndex: 0,
     width: "100%",
-    height: "100%",
+    height: "95%",
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",

@@ -32,10 +32,11 @@ const Gameboard = props => {
         color={theme.primaryWhite}
         boxShadow="0 5px 20px rgba(35,35,80,.25)"
         borderRadius="8px 8px 0px 0px"
+        border="1px solid rgba(0,0,0,.1)"
         margin="0px 0px -8px 0px"
         fontSize={24}
         height="60px"
-        backgroundColor={"#555abf"}
+        backgroundColor="#555abf"
         padding="10px 10px 0px 10px"
       >
         Gameboard

@@ -59,7 +59,7 @@ Dashboard.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    marginTop: "120px",
+    marginTop: "115px",
     gridTemplateColumns: "auto min-content auto",
     gridTemplateRows: "auto",
     maxWidth: "1185px",
@@ -68,7 +68,7 @@ const styles = theme => ({
   stripe: {
     zIndex: 0,
     width: "100%",
-    height: "100%",
+    height: "95%",
     top: -10,
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",

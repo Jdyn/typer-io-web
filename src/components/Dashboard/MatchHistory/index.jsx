@@ -26,22 +26,23 @@ const MatchHistory = props => {
       </Header>
       <div className={classes.categories}>
         <span className={classes.titleCategory}>Title</span>
-        <span className={classes.category}>wpm</span>
-        {/* <span className={classes.category}>Place</span> */}
+        <span className={classes.wpmCategory}>wpm</span>
         <span className={classes.category}>Time</span>
       </div>
       <div className={classes.inner}>
-        {matches.map((match, index) => (
-          <Match
-            key={index}
-            match={match}
-            index={index}
-            deleteMatch={deleteMatch}
-          />
-        ))}
-        {/* <div className={classes.box} /> */}
+        {matches.length > 0 ? (
+          matches.map((match, index) => (
+            <Match
+              key={index}
+              match={match}
+              index={index}
+              deleteMatch={deleteMatch}
+            />
+          ))
+        ) : (
+          <div className={classes.empty}>Complete a match to make history</div>
+        )}
       </div>
-      {/* <div className={classes.box} /> */}
     </div>
   );
 };
@@ -67,14 +68,10 @@ const styles = theme => ({
   inner: {
     height: "396px",
     position: "relative",
-    // width: "100%",
     maxHeight: "350px",
     overflowX: "hidden",
     overflowY: "auto",
     padding: "0px 10px 10px 10px",
-    // padding: "0px 5px 5px 5px",
-    // scrollbarWidth: "none",
-    // msOverflowStyle: "none",
     "&::-webkit-scrollbar": {
       width: "10px",
       height: "16px"
@@ -88,13 +85,14 @@ const styles = theme => ({
       display: "none"
     }
   },
-  box: {
-    height: "20px",
-    width: "100%"
+  empty: {
+    textAlign: "center",
+    margin: "100px 0",
+    color: "#8E8D8F"
   },
   categories: {
     display: "grid",
-    gridTemplateColumns: "195px 1fr 1fr",
+    gridTemplateColumns: "195px min-content 1fr",
     gridTemplateRows: "1fr",
     padding: "10px",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
@@ -102,7 +100,7 @@ const styles = theme => ({
     marginRight: "10px"
   },
   category: {
-    margin: "auto",
+    margin: "0",
     fontSize: 16,
     letterSpacing: "0.025em",
     fontWeight: 600,
@@ -113,6 +111,10 @@ const styles = theme => ({
   titleCategory: {
     extend: "category",
     width: "195px"
+  },
+  wpmCategory: {
+    extend: "category",
+    margin: 0
   }
 });
 

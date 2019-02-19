@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import socket from './socket'
 
 export default function configureStore(initialState) {
-  const middleware = [thunk, socket("http://ec2-3-87-223-235.compute-1.amazonaws.com:8000")]
+  const middleware = [thunk, socket("localhost:8000")] //http://ec2-3-87-223-235.compute-1.amazonaws.com:8000
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   
   const store = createStore(rootReducer, initialState, composeEnhancers(

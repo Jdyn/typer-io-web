@@ -19,7 +19,6 @@ const Match = props => {
     <div className={classes.container}>
       <span className={classes.title}>{match.title}</span>
       <span className={classes.wpm}>{match.wpm}</span>
-      {/* <span className={classes.place}>{match.place}</span> */}
       <span className={classes.date}>{formatTime(match.date)}</span>
       {/* <button onClick={e => handleDelete(e)}>delete</button> */}
     </div>
@@ -42,7 +41,8 @@ const styles = theme => ({
     "&:hover": {
       transform: "translateY(-1px)",
       borderRadius: 8,
-      boxShadow: "inset -1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 10px 1px rgba(60,64,67,.15)"
+      boxShadow:
+        "inset -1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 10px 1px rgba(60,64,67,.15)"
     },
     "&:active": {
       transform: "translateY(2px)"
@@ -64,8 +64,8 @@ const styles = theme => ({
   },
   wpm: {
     extend: "item",
-    margin: "0px auto 0px 30px",
-    // width: "30px",
+    margin: 0,
+    paddingLeft: "10px",
     fontSize: 17
   },
   place: {
@@ -77,7 +77,7 @@ const styles = theme => ({
     extend: "item",
     fontSize: 16,
     color: "#5f6368",
-    margin: "0 0 0 auto",
+    margin: "0 0 0 auto"
   }
 });
 

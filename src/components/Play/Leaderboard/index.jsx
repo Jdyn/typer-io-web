@@ -37,9 +37,9 @@ const styles = {
     flexDirection: "column",
     flexGrow: 1,
     position: "relative",
-    margin: 0,//"10px 10px 10px 10px",
-    gridRow: "3 / 5",
-    gridColumn: "1 / 2"
+    margin: 0, //"10px 10px 10px 10px",
+    gridRow: props.isSolo ? "2 / 5" : "3 / 5",
+    gridColumn: props.isSolo ? "3 / 4": "1 / 2"
   })
 };
 

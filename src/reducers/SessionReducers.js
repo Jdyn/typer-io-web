@@ -55,6 +55,7 @@ export default (state = initialState, action) => {
         lastName: null,
         email: null,
         error: null,
+        errors: {},
         errored: false
       };
     default:

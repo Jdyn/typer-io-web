@@ -61,11 +61,13 @@ const styles = theme => ({
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
-    fontSize: 17
+    fontSize: 17,
+    fontWeight: 600
   },
   wpm: {
     extend: "item",
     margin: 0,
+    fontWeight: 600,
     paddingLeft: "10px",
     fontSize: 17
   },

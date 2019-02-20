@@ -13,10 +13,8 @@ const propTypes = {
   room: PropTypes.object.isRequired,
   gameboard: PropTypes.object.isRequired,
   socket: PropTypes.object.isRequired,
-  updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
-  sendChatMessage: PropTypes.func.isRequired
 };
 
 const Solo = props => {

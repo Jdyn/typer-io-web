@@ -12,7 +12,13 @@ const persistedStore = loadState();
 const store = configureStore(persistedStore);
 store.subscribe(() => {
   saveState({
-    matchHistory: store.getState().matchHistory
+    matchHistory: store.getState().matchHistory,
+    session: {
+      ...store.getState().session,
+      errored: false,
+      errors: {},
+      error: ""
+    }
   });
 });
 

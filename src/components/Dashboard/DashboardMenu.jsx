@@ -78,7 +78,7 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    margin: "0px auto 20px 0 "
+    margin: "15px auto auto 20px"
   }
 };
 

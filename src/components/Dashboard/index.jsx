@@ -27,7 +27,8 @@ const Dashboard = props => {
     login,
     logout,
     signup,
-    deleteMatch
+    deleteMatch,
+    clearSessionErrors
   } = props;
 
   return (
@@ -41,6 +42,7 @@ const Dashboard = props => {
           logout={logout}
           signup={signup}
           updateClient={updateClient}
+          clearSessionErrors={clearSessionErrors}
           client={client}
           session={session}
         />
@@ -61,7 +63,7 @@ const styles = theme => ({
     display: "grid",
     marginTop: "115px",
     gridTemplateColumns: "auto min-content auto",
-    gridTemplateRows: "auto",
+    gridTemplateRows: "min-content",
     maxWidth: "1185px",
     margin: "0 auto"
   },

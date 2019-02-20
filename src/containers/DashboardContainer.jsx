@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dashboard from "../components/Dashboard";
 import { connect } from "react-redux";
 import { updateClient, initSocket } from "../actions/ClientActions";
-import { login, logout, signup } from "../actions/SessionActions";
+import { login, logout, signup, clearSessionErrors } from "../actions/SessionActions";
 import { deleteMatch } from "../actions/MatchHistoryActions";
 
 class DashboardContainer extends Component {
@@ -40,8 +40,9 @@ const mapDispatchToProps = dispatch => ({
   login: form => dispatch(login(form)),
   signup: form => dispatch(signup(form)),
   logout: () => dispatch(logout()),
-  deleteMatch: index => dispatch(deleteMatch(index))
-});
+  deleteMatch: index => dispatch(deleteMatch(index)),
+  clearSessionErrors: () => dispatch(clearSessionErrors())
+}); 
 
 export default connect(
   mapStateToProps,

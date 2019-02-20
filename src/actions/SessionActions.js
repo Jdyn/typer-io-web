@@ -11,16 +11,22 @@ export const actions = keyMirror(
 
 export const login = form => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
-  ApiService.post("/sessions/login", form).then(response => {
-    if (response.ok) {
-      setCurrentSession(dispatch, response);
-    } else {
-      dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
-    }
-  })
-  .catch(response =>{
-    dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
-  })
+  ApiService.post("/sessions/login", form)
+    .then(response => {
+      console.log(response);
+      if (response.ok) {
+        setCurrentSession(dispatch, response);
+      } else {
+        dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: actions.AUTHENTICATION_FAILURE,
+        response: { error: "Error connecting to server" }
+      });
+    });
 };
 
 export const logout = () => dispatch => {
@@ -36,29 +42,50 @@ export const logout = () => dispatch => {
 };
 
 export const signup = form => dispatch => {
-  ApiService.post("/sessions/signup", form).then(response => {
-    if (response.ok) {
-      setCurrentSession(dispatch, response);
-    } else {
-      dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
-    }
-  });
+  ApiService.post("/sessions/signup", form)
+    .then(response => {
+      if (response.ok) {
+        setCurrentSession(dispatch, response);
+      } else {
+        dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
+      }
+    })
+    .catch(error => {
+      dispatch({
+        type: actions.AUTHENTICATION_FAILURE,
+        response: { error: "Error connecting to server" }
+      });
+    });
 };
 
 export const authenticate = () => dispatch => {
+  console.log(localStorage.getItem("token"));
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
   ApiService.post("/sessions/refresh")
     .then(response => {
+      console.log(response);
       setCurrentSession(dispatch, response);
     })
-    .catch(() => {
+    .catch(error => {
+      console.log(error);
       localStorage.removeItem("token");
       dispatch({ type: actions.AUTHENTICATION_FAILURE });
     });
 };
 
+export const clearSessionErrors = () => ({
+  type: "CLEAR_SESSION_ERRORS",
+  payload: {
+    error: "",
+    errors: {},
+    errored: false
+  }
+});
+
 const setCurrentSession = (dispatch, response) => {
   localStorage.setItem("token", JSON.stringify(response.result.token));
-  const localUsername = localStorage.getItem("username")
-  dispatch({ type: actions.AUTHENTICATION_SUCCESS, response: {localUsername, ...response} });
+  dispatch({
+    type: actions.AUTHENTICATION_SUCCESS,
+    response
+  });
 };

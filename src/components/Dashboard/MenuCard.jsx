@@ -52,7 +52,7 @@ const styles = theme => ({
     position: "relative",
     cursor: "pointer",
     width: "315px",
-    margin: "15px 0px 15px 15px",
+    margin: "15px 0",
     fontWeight: 600,
     outline: "none",
     padding: "40px",
@@ -69,6 +69,12 @@ const styles = theme => ({
     },
     "&:active": {
       transform: "translateY(2px)"
+    },
+    "&:first-child": {
+      marginTop: 0
+    },
+    "&:last-child": {
+      marginBottom: 0
     }
   }),
   loader: {

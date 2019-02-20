@@ -34,6 +34,7 @@ const styles = theme => ({
     position: "relative",
     padding: "12.5px 10px 12.5px 10px",
     borderRadius: 0,
+    zIndex: 150,
     width: "100%",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
     cursor: "pointer",

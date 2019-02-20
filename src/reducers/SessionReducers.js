@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         isAuthenticating: false,
         isLoggedIn: true,
         ...action.response.result.user,
-        error: null,
+        error: "",
         errored: false
       };
     case actions.AUTHENTICATION_FAILURE:
@@ -33,11 +33,16 @@ export default (state = initialState, action) => {
         ...state,
         isAuthenticating: false,
         isLoggedIn: false,
+        error: action.response.error,
         errors: {
-           ...state.errors,
-          ...action.response ? action.response.errors : null
+          ...(action.response ? action.response.errors : "")
         },
         errored: true
+      };
+    case "CLEAR_SESSION_ERRORS":
+      return {
+        ...state,
+        ...action.payload
       };
 
     case actions.LOG_OUT:

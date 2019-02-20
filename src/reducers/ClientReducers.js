@@ -162,14 +162,6 @@ export default (state = initialState, action) => {
           messages: updateRoomChat(action.payload, state.room.messages)
         }
       };
-    case "AUTHENTICATION_SUCCESS":
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          username: action.response.localUsername ? action.response.localUsername : action.response.result.user.username
-        }
-      };
     case "ROOM_NOT_FOUND":
       return {
         ...state,

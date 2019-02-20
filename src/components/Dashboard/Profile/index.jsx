@@ -20,7 +20,6 @@ const propTypes = {
 };
 
 const DashboardProfile = props => {
-  const [profile, setProfile] = useState("");
   const {
     classes,
     theme,
@@ -29,14 +28,18 @@ const DashboardProfile = props => {
     login,
     logout,
     signup,
-    updateClient
+    updateClient,
+    clearSessionErrors
   } = props;
+  const [profile, setProfile] = useState(
+    session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW"
+  );
 
   useEffect(() => {
     if (!session.isAuthenticating) {
       setProfile(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
     }
-  }, [session.isLoggedIn, session.isAuthenticating]);
+  }, [session.isLoggedIn]);
 
   const changeProfile = newProfile => {
     const { isLoggedIn } = session;
@@ -73,6 +76,7 @@ const DashboardProfile = props => {
         return (
           <SignUpView
             changeProfile={changeProfile}
+            clearSessionErrors={clearSessionErrors}
             signup={signup}
             session={session}
           />
@@ -81,6 +85,7 @@ const DashboardProfile = props => {
         return (
           <LogInView
             changeProfile={changeProfile}
+            clearSessionErrors={clearSessionErrors}
             login={login}
             session={session}
           />
@@ -121,7 +126,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "15px 0px 40px 0px",
+    margin: "15px 0px auto 0px",
+    height: "456px",
+    maxHeight: "456px",
     transitionDuration: ".2s",
     borderRadius: 8,
     boxShadow:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Input from "../../Common/Input";
@@ -13,11 +13,26 @@ const propTypes = {
 };
 
 const LogInView = props => {
-  const { classes, theme, session, changeProfile, login } = props;
+  const { classes, theme, session, changeProfile, login, clearSessionErrors } = props;
   const [form, setForm] = useState({
     username: "",
     password: ""
   });
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setError(session.error);
+
+  }, [session.error])
+
+  useEffect(() => {
+    return () => {
+      if (session.errored) {
+        clearSessionErrors();
+      }
+    };
+  }, [session.errored]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -68,7 +83,7 @@ const LogInView = props => {
         >
           Log In
         </Button>
-        {session.errored && <p>{session.errors.error}</p>}
+        {session.errored && <p>{error}</p>}
       </form>
     </div>
   );

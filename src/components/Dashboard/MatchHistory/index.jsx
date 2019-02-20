@@ -54,7 +54,9 @@ const styles = theme => ({
     position: "relative",
     width: "400px",
     maxWidth: "435px",
-    margin: "15px 20px 40px auto",
+    height: "456px",
+    maxHeight: "456px",
+    margin: "15px 20px auto auto",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     transitionDuration: ".2s",
@@ -66,7 +68,7 @@ const styles = theme => ({
       "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
   },
   inner: {
-    height: "396px",
+    height: "397px",
     position: "relative",
     maxHeight: "350px",
     overflowX: "hidden",
@@ -95,6 +97,7 @@ const styles = theme => ({
     gridTemplateColumns: "195px min-content 1fr",
     gridTemplateRows: "1fr",
     padding: "10px",
+    zIndex: 10,
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
     marginLeft: "10px",
     marginRight: "10px"
@@ -102,6 +105,7 @@ const styles = theme => ({
   category: {
     margin: "0",
     fontSize: 16,
+    zIndex: 0,
     letterSpacing: "0.025em",
     fontWeight: 600,
     textTransform: "uppercase",

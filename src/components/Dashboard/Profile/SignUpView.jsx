@@ -13,7 +13,14 @@ const propTypes = {
 };
 
 const SignUpView = props => {
-  const { classes, theme, session, changeProfile, signup } = props;
+  const {
+    classes,
+    theme,
+    session,
+    changeProfile,
+    signup,
+    clearSessionErrors
+  } = props;
   const [form, setForm] = useState({
     email: "",
     username: "",
@@ -25,6 +32,14 @@ const SignUpView = props => {
   useEffect(() => {
     setErrors(session.errors);
   }, [session.errors]);
+
+  useEffect(() => {
+    return () => {
+      if (session.errored) {
+        clearSessionErrors();
+      }
+    };
+  }, [session.errored]);
 
   const validateForm = event => {
     event.preventDefault();

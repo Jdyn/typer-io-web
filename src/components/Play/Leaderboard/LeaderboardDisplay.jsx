@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "react-jss";
 
 const LeaderboardDisplay = props => {
-  const { classes, theme } = props;
+  const { classes } = props;
   return <div className={classes.container} />;
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
-import ChatInput from "./ChatInput";
 import ChatDisplay from "./ChatDisplay";
 import Header from "../../Common/Header";
 
@@ -49,12 +48,12 @@ const styles = theme => ({
     position: "relative",
     gridRow: "2 / 5",
     gridColumn: "3 / 4",
-    flexGrow: 1
+    // flexGrow: 1
   },
   inner: {
     display: "flex",
     flexDirection: "column",
-    flexGrow: 1,
+    // flexGrow: 1,
     zIndex: 150,
     backgroundColor: theme.primaryWhite,
     position: "relative",

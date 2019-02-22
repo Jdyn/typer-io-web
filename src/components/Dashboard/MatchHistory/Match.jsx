@@ -20,7 +20,7 @@ const Match = props => {
       <span className={classes.title}>{match.title}</span>
       <span className={classes.wpm}>{match.wpm}</span>
       <span className={classes.date}>{formatTime(match.date)}</span>
-      {/* <button onClick={e => handleDelete(e)}>delete</button> */}
+      {false && <button onClick={e => handleDelete(e)}>delete</button>}
     </div>
   );
 };

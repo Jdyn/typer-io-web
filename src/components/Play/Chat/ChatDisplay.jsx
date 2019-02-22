@@ -42,9 +42,9 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    flexGrow: 1,
+    // flexGrow: 1,
     zIndex: 150,
-    maxHeight: "455px",
+    // maxHeight: "455px",
     backgroundColor: theme.primaryWhite,
     position: "relative",
     width: "100%",
@@ -52,9 +52,8 @@ const styles = theme => ({
     boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset"
   },
   inner: {
-    height: "400px",
-    maxHeight: "400px",
-    // paddingRight: "16px",
+    height: "90%",
+    // maxHeight: "400px",
     overflowY: "scroll",
     "&::-webkit-scrollbar": {
       width: "10px",

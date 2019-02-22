@@ -7,7 +7,7 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status";
 import Leaderboard from "./Leaderboard";
-import Context from "./Content";
+// import Context from "./Content";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -34,14 +34,10 @@ const Play = props => {
   } = props;
 
   const [clientIndex, setClientIndex] = useState(null);
-  const [currentGamePiece, setGamePiece] = useState(null);
 
   const gamePiece = room.clients[0]
     ? room.clients.filter(object => object.id === client.id)[0].gamePiece
     : {};
-
-  // const gamePiece = room.clients.filter(object => object.id === client.id)[0]
-  //   .gamePiece;
 
   useEffect(() => {
     return () => {

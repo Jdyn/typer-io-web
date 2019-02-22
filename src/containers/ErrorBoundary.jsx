@@ -3,7 +3,6 @@ import * as Sentry from "@sentry/browser";
 import withStyles from "react-jss";
 import Header from "../components/Common/Header";
 import CssBaseline from "../components/CssBaseline";
-import Content from "../components/Common/Content";
 import Nav from "../components/Nav/Nav";
 import Button from "../components/Common/Button";
 
@@ -49,9 +48,6 @@ class ErrorBoundary extends React.Component {
     }
     return this.props.children;
   }
-}
-{
-  /* <a className={classes.link} href="http://typer.io">Back Home</a> */
 }
 
 const styles = theme => ({

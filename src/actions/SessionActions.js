@@ -63,13 +63,22 @@ export const authenticate = () => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
   ApiService.post("/sessions/refresh")
     .then(response => {
-      console.log(response);
-      setCurrentSession(dispatch, response);
+      if (response.ok) {
+        setCurrentSession(dispatch, response);
+      } else {
+        localStorage.removeItem("token");
+        dispatch({
+          type: actions.AUTHENTICATION_FAILURE,
+          response: { error: "invalid token" }
+        });
+      }
     })
     .catch(error => {
-      console.log(error);
       localStorage.removeItem("token");
-      dispatch({ type: actions.AUTHENTICATION_FAILURE });
+      dispatch({
+        type: actions.AUTHENTICATION_FAILURE,
+        response: { error: "Error Connecting to server" }
+      });
     });
 };
 

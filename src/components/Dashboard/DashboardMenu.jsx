@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 import PropTypes from "prop-types";
 import MenuCard from "./MenuCard";
 import withStyles from "react-jss";
@@ -10,7 +11,7 @@ const propTypes = {
 };
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket } = props;
+  const { classes, initSocket, socket, history } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
   const cards = [
@@ -44,7 +45,7 @@ const DashboardMenu = props => {
             return initSocket(props.client.username, { mode: "MULTIPLAYER" });
           case 1:
             setSelectedIndex(index);
-            break;
+            return props.history.push("/friends")
           case 2:
             setSelectedIndex(index);
             return initSocket(props.client.username, { mode: "SOLO" });

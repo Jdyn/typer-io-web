@@ -27,6 +27,7 @@ const Dashboard = props => {
     login,
     logout,
     signup,
+    history,
     deleteMatch,
     clearSessionErrors
   } = props;
@@ -48,6 +49,7 @@ const Dashboard = props => {
         />
         <DashboardMenu
           initSocket={initSocket}
+          history={history}
           socket={props.socket}
           client={client}
         />

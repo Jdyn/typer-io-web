@@ -42,9 +42,9 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    // flexGrow: 1,
+    flexGrow: 1,
     zIndex: 150,
-    // maxHeight: "455px",
+    maxHeight: "455px",
     backgroundColor: theme.primaryWhite,
     position: "relative",
     width: "100%",
@@ -53,7 +53,7 @@ const styles = theme => ({
   },
   inner: {
     height: "90%",
-    // maxHeight: "400px",
+      maxHeight: "400px",
     overflowY: "scroll",
     "&::-webkit-scrollbar": {
       width: "10px",

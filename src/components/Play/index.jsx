@@ -67,6 +67,7 @@ const Play = props => {
         <Editor
           client={client}
           room={room}
+          socket={socket}
           gameboard={gameboard}
           gameboardUpdate={setClientIndex}
         />
@@ -87,21 +88,9 @@ const styles = theme => ({
     maxWidth: "1185px",
     flexDirection: "row",
     position: "relative",
+    padding: "10px",
     margin: "auto",
     height: "100%"
-  },
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    gridRow: "2 / 5",
-    gridColumn: "3 / 4"
-  },
-  wrapper: {
-    display: "flex",
-    flexDirection: "column",
-    gridRow: "2 / 5",
-    gridColumn: "3 / 4"
   },
   stripe: {
     zIndex: 0,

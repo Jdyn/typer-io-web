@@ -33,7 +33,7 @@ const styles = theme => ({
     display: "grid",
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
-    margin: "0px 0px 0px 0px",
+    margin: "0",
     borderLeft: `2px solid ${theme.divider}`,
     backgroundColor: theme.primaryWhite,
     "&:first-child": {
@@ -43,9 +43,12 @@ const styles = theme => ({
     "&:last-child": {
       borderRadius: "0px 8px 8px 0px"
     },
-    "&:only-child": {
+    maxWidth: "233px",
+    transitionDuration: ".5s",
+    "&:only-child": { 
       borderRadius: 8
     },
+    width: "25%",
     overflow: "hidden",
     ...props.style
   }),

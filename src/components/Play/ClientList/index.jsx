@@ -24,16 +24,16 @@ const ClientList = props => {
               opacity: 0,
               overflow: "hidden",
               transform: "translate3d(0,-100%,0)",
-              width: "0px"
+              // width: "0px"
             }}
             enter={{
               opacity: 1,
               transform: "translate3d(0,0%,0)",
-              width: "230px"
+              // width: "20%"
             }}
-            leave={{ transform: "translate3d(100%,0,0)", width: "0px" }}
+            leave={{ transform: "translate3d(100%,0,0)" }}
           >
-            {client => props => (
+          {client => props => (
               <ClientCard
                 style={props}
                 client={client}
@@ -41,6 +41,15 @@ const ClientList = props => {
               />
             )}
           </Transition>
+          {/* {room.clients.map(client => {
+            return (
+              <ClientCard
+                style={props}
+                client={client}
+                color={client.gamePiece.color}
+              />
+            );
+          })} */}
         </div>
       )}
     </div>
@@ -55,7 +64,7 @@ const styles = theme => ({
     flexDirection: "row",
     gridRow: "1 / 2",
     gridColumn: "1 / 4",
-    margin: "10px 1% 0px 1%",
+    margin: "10px 0 0px 0",
     position: "relative",
     height: "105px",
     // padding: "5px 5px 5px 5px",
@@ -63,11 +72,12 @@ const styles = theme => ({
     // border: "1px solid rgba(0,0,0,.05)",
     // boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",
     borderRadius: 8,
-    backgroundColor: "transparent"//theme.primaryWhite
+    backgroundColor: "transparent" //theme.primaryWhite
   },
   inner: {
     display: "flex",
     flexDirection: "row",
+    width: "100%",
     margin: "0 auto"
   }
 });

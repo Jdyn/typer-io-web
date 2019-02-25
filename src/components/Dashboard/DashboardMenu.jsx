@@ -21,15 +21,15 @@ const DashboardMenu = props => {
       route: "/play"
     },
     {
-      title: "Solo Play",
-      text: "Practice on your own",
-      color: "#6772e5",
-      route: "/"
-    },
-    {
       title: "Friends",
       text: "Play against your friends",
       color: "#b76ac4",
+      route: "/"
+    },
+    {
+      title: "Solo Play",
+      text: "Practice on your own",
+      color: "#6772e5",
       route: "/"
     }
   ];
@@ -44,9 +44,10 @@ const DashboardMenu = props => {
             return initSocket(props.client.username, { mode: "MULTIPLAYER" });
           case 1:
             setSelectedIndex(index);
-            return initSocket(props.client.username, { mode: "SOLO" });
+            break;
           case 2:
-            return setSelectedIndex(index);
+            setSelectedIndex(index);
+            return initSocket(props.client.username, { mode: "SOLO" });
           default:
             break;
         }

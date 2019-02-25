@@ -19,6 +19,11 @@ class PlayContainer extends Component {
     }
   }
 
+  // componentWillUnmount() {
+  //   console.log("component did unmount")
+  //   this.props.leaveRoom({ id: this.props.room.id, errored: false });
+  // }
+
   render() {
     return <Play {...this.props} />;
   }

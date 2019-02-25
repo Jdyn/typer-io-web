@@ -9,11 +9,12 @@ const propTypes = {
   gameboard: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   room: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired,
   gameboardUpdate: PropTypes.func.isRequired
 };
 
 const Editor = props => {
-  const { classes, gameboard, client, gameboardUpdate, room } = props;
+  const { classes, gameboard, client, gameboardUpdate, room, socket } = props;
   const [state, setState] = useState({
     gamePieceIndex: null,
     isWrong: false,
@@ -57,6 +58,7 @@ const Editor = props => {
           <InputRecord
             words={state.words}
             isWrong={state.isWrong}
+            socket={socket}
             wordsComplete={state.wordsComplete}
             wordsRemaining={state.wordsRemaining}
             room={room}
@@ -82,7 +84,7 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    margin: 0,//"0px 10px 0px 10px",
+    margin: 0, //"0px 10px 0px 10px",
     display: "flex",
     position: "relative",
     overflow: " hidden",

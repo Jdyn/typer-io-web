@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import withStyles from "react-jss";
 import { silentEmit } from "../../../store/socket";
-
 const Input = props => {
   const {
     classes,
@@ -11,7 +10,8 @@ const Input = props => {
     editorUpdate,
     gameboard,
     room,
-    client
+    client,
+    socket
   } = props;
 
   const [key, setKey] = useState("");
@@ -30,16 +30,13 @@ const Input = props => {
    * Listener is being added and removed every state update.
    * Need to find a fix.
    */
-  useEffect(
-    () => {
-      const editor = document.getElementById("inputDiv");
-      editor.addEventListener("keydown", keydown, true);
-      return () => {
-        editor.removeEventListener("keydown", keydown, true);
-      };
-    },
-    [gameboard, state]
-  );
+  useEffect(() => {
+    const editor = document.getElementById("inputDiv");
+    editor.addEventListener("keydown", keydown, true);
+    return () => {
+      editor.removeEventListener("keydown", keydown, true);
+    };
+  }, [gameboard, state]);
 
   const keydown = event => {
     setKey(event.key);
@@ -90,7 +87,11 @@ const Input = props => {
     if (key === " ") {
       if (currentWord === input.trim()) {
         event.target.innerText = "";
-        submitWord();
+        if (socket.connected) {
+          submitWord();
+        } else {
+          document.getElementById("inputDiv").contentEditable = false;
+        }
       }
     }
   };
@@ -109,8 +110,8 @@ const Input = props => {
       errors: errors
     };
 
-    silentEmit("CLIENT_UPDATE", payload);
     setState({ ...state, entries: entries + newEntry, isWrong: false });
+    silentEmit("CLIENT_UPDATE", payload);
     editorUpdate({
       gamePieceIndex: newIndex,
       wordsRemaining: remaining,

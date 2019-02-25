@@ -11,6 +11,7 @@ const InputRecord = props => {
     editorUpdate,
     isWrong,
     gameboard,
+    socket,
     client,
     room
   } = props;
@@ -30,6 +31,7 @@ const InputRecord = props => {
         isWrong={isWrong}
         gameboard={gameboard}
         room={room}
+        socket={socket}
         client={client}
         wordsComplete={wordsComplete}
         wordsRemaining={wordsRemaining}

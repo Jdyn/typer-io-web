@@ -1,5 +1,5 @@
 import React from "react";
-import { Transition } from "react-spring";
+import { useTransition } from "react-spring";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientCard from "./ClientCard";
@@ -13,43 +13,36 @@ const propTypes = {
 const ClientList = props => {
   const { room, classes, socket } = props;
 
+  const transitions = useTransition(room.clients, client => client.id, {
+    from: {
+      opacity: 0,
+      overflow: "hidden",
+      transform: "translate3d(0, -100%, 0)"
+    },
+    enter: {
+      opacity: 1,
+      transform: "translate3d(0, 0%, 0)",
+      width: "100%"
+    },
+    leave: {
+      opacity: 0,
+      transform: "translate3d(0, -100%, 0)",
+      width: "0%"
+    }
+  });
+
   return (
     <div className={classes.container}>
       {socket.connected && (
         <div className={classes.inner}>
-          <Transition
-            items={room.clients}
-            keys={item => item.id}
-            from={{
-              opacity: 0,
-              overflow: "hidden",
-              transform: "translate3d(0,-100%,0)",
-              // width: "0px"
-            }}
-            enter={{
-              opacity: 1,
-              transform: "translate3d(0,0%,0)",
-              // width: "20%"
-            }}
-            leave={{ transform: "translate3d(100%,0,0)" }}
-          >
-          {client => props => (
-              <ClientCard
-                style={props}
-                client={client}
-                color={client.gamePiece.color}
-              />
-            )}
-          </Transition>
-          {/* {room.clients.map(client => {
-            return (
-              <ClientCard
-                style={props}
-                client={client}
-                color={client.gamePiece.color}
-              />
-            );
-          })} */}
+          {transitions.map(({ item, props, key }) => (
+            <ClientCard
+              style={props}
+              client={item}
+              color={item.gamePiece.color}
+              key={key}
+            />
+          ))}
         </div>
       )}
     </div>

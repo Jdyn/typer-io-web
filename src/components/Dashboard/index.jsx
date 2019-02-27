@@ -63,7 +63,10 @@ Dashboard.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
+    position: "relative",
     marginTop: "115px",
+    gridGap: "15px",
+    padding: "15px",
     gridTemplateColumns: "auto min-content auto",
     gridTemplateRows: "min-content",
     maxWidth: "1185px",

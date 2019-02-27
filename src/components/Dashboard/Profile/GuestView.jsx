@@ -17,10 +17,7 @@ const GuestView = props => {
   const { classes, updateClient, client, changeProfile, theme } = props;
   return (
     <div className={classes.inner}>
-      <ProfileHeader
-        updateClient={updateClient}
-        username={client.username}
-      />
+      <ProfileHeader updateClient={updateClient} username={client.username} />
       <div className={classes.wrapper}>
         <Divider />
         <Button
@@ -30,6 +27,7 @@ const GuestView = props => {
           margin="5px auto 0px auto"
           color="#6772e5"
           activeColor={"#6772e580"}
+          borderColor={theme.divider}
         >
           log in
         </Button>
@@ -40,6 +38,7 @@ const GuestView = props => {
           margin="5px auto 0 auto"
           color={theme.primaryWhite}
           activeColor={"#fafafa80"}
+          borderColor={theme.divider}
         >
           sign up
         </Button>

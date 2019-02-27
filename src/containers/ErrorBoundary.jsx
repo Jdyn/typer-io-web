@@ -18,7 +18,7 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
     if (this.state.hasError) {
       return (
         <>
@@ -38,7 +38,11 @@ class ErrorBoundary extends React.Component {
               backgroundColor="#555abf"
               margin="0 auto 0 60px"
               color="#fff"
-              onClick={() => (window.location.href = "http://typer-io-web.s3-website-us-west-1.amazonaws.com/")}
+              borderColor={theme.divider}
+              onClick={() =>
+                (window.location.href =
+                  "http://typer-io-web.s3-website-us-west-1.amazonaws.com/")
+              }
             >
               Back Home
             </Button>
@@ -75,4 +79,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(ErrorBoundary);
+export default withStyles(styles, { injectTheme: true })(ErrorBoundary);

@@ -41,7 +41,8 @@ Button.defaultProps = {
   width: "155px",
   fontSize: 15,
   fontWeight: 600,
-  padding: "10px"
+  padding: "10px",
+  border: "2px solid",
 };
 
 const styles = theme => ({
@@ -52,13 +53,13 @@ const styles = theme => ({
     backgroundColor: props.backgroundColor,
     fontSize: props.fontSize,
     padding: props.padding,
-    borderColor: theme.divider,
+    borderColor: props.borderColor,
     boxShadow: props.boxShadow,
     cursor: "pointer",
     outline: "none",
     fontWeight: 600,
     zIndex: 100,
-    border: "2px solid",
+    border: props.border,
     borderRadius: 4,
     letterSpacing: ".025em",
     textTransform: "uppercase",

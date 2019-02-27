@@ -10,7 +10,10 @@ class FriendsContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  client: state.client.meta,
+  room: state.client.room
+});
 
 const mapDispatchToProps = dispatch => ({});
 

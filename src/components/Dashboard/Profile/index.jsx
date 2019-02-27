@@ -126,7 +126,6 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "15px 0px auto 0px",
     height: "456px",
     maxHeight: "456px",
     transitionDuration: ".2s",

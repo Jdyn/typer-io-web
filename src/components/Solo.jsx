@@ -14,7 +14,7 @@ const propTypes = {
   gameboard: PropTypes.object.isRequired,
   socket: PropTypes.object.isRequired,
   initSocket: PropTypes.func.isRequired,
-  leaveRoom: PropTypes.func.isRequired,
+  leaveRoom: PropTypes.func.isRequired
 };
 
 const Solo = props => {
@@ -43,6 +43,7 @@ const Solo = props => {
         <Editor
           client={client}
           room={room}
+          socket={socket}
           gameboard={gameboard}
           gameboardUpdate={setClientIndex}
         />

@@ -50,6 +50,7 @@ const ProfileHeader = props => {
           margin="5px auto 0px auto"
           color="#6772e5"
           activeColor={"#6772e580"}
+          borderColor={theme.divider}
         >
           Set
         </Button>

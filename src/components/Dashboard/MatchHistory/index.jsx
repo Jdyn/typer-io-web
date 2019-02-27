@@ -56,7 +56,7 @@ const styles = theme => ({
     maxWidth: "435px",
     height: "456px",
     maxHeight: "456px",
-    margin: "15px 20px auto auto",
+    marginLeft: "auto",
     borderRadius: 8,
     backgroundColor: theme.primaryWhite,
     transitionDuration: ".2s",

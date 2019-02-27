@@ -22,15 +22,15 @@ const DashboardMenu = props => {
       route: "/play"
     },
     {
-      title: "Friends",
-      text: "Play against your friends",
-      color: "#b76ac4",
-      route: "/"
-    },
-    {
       title: "Solo Play",
       text: "Practice on your own",
       color: "#6772e5",
+      route: "/"
+    },
+    {
+      title: "Friends",
+      text: "Play against your friends",
+      color: "#b76ac4",
       route: "/"
     }
   ];
@@ -45,10 +45,10 @@ const DashboardMenu = props => {
             return initSocket(props.client.username, { mode: "MULTIPLAYER" });
           case 1:
             setSelectedIndex(index);
-            return props.history.push("/friends")
+            return initSocket(props.client.username, { mode: "SOLO" });
           case 2:
             setSelectedIndex(index);
-            return initSocket(props.client.username, { mode: "SOLO" });
+            return props.history.push("/friends");
           default:
             break;
         }
@@ -80,7 +80,7 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    margin: "15px auto auto 20px"
+    marginRight: "auto"
   }
 };
 

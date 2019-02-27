@@ -44,7 +44,7 @@ const styles = {
     position: "relative",
     height: "45px",
     display: "flex",
-    zIndex: 10,
+    zIndex: 25,
     margin: "auto 15px 15px 15px"
   },
   input: {

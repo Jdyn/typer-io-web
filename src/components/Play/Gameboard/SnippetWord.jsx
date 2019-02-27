@@ -12,7 +12,7 @@ const styles = theme => ({
     margin: props.isComplete ? "6px 0px 6px 6px" : "6.5px 1px 6.5px 14px",
     position: "relative",
     color: props.isComplete ? "black" : "transparent",
-    paddingLeft: props.isComplete ? "0px" : "30px",
+    paddingLeft: props.isComplete ? "6px" : "30px",
     maxHeight: "20px",
     boxSizing: "content-box",
     userSelect: "none",

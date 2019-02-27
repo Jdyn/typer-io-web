@@ -43,7 +43,7 @@ const Friends = props => {
             <input
               type="checkbox"
               name="allowSpectators"
-              className={classes.radio}
+              className={classes.checkbox}
               value={form.allowSpectators}
               onClick={e =>
                 setForm({
@@ -73,6 +73,8 @@ const styles = theme => ({
   },
   chat: {
     display: "flex"
+    // gridRow: "1 / 3",
+    // gridColumn: "3 / 4"
   },
   option: {
     padding: "10px"
@@ -80,7 +82,7 @@ const styles = theme => ({
   title: {
     margin: 0,
     margin: "10px",
-    boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)",
+    boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)"
   },
   spectate: {
     gridRow: "2 / 3",
@@ -106,7 +108,7 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.tertiaryWhite,
     position: "absolute"
-  }
+  },
 });
 
 Friends.propTypes = propTypes;

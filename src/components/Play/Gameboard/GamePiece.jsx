@@ -41,7 +41,7 @@ const styles = theme => ({
     boxShadow: "0px 0px 5px rgba(50,50,93,.25)"
   },
   line: {
-    width: "6px",
+    width: "3px",
     height: "20px",
     margin: "-1px auto 0 auto",
     backgroundColor: props => props.color,

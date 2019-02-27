@@ -18,13 +18,13 @@ const InputRecord = props => {
 
   return (
     <div className={classes.content}>
-      {wordsComplete.map((word, index) => {
+      {/* {wordsComplete.map((word, index) => {
         return (
           <span key={index} className={classes.word}>
             {word}
           </span>
         );
-      })}
+      })} */}
       <Input
         editorUpdate={editorUpdate}
         words={words}

@@ -19,7 +19,7 @@ const MatchSettings = props => {
         backgroundColor={"#555abf"}
         padding="10px"
       >
-        Customize
+        Settings
       </Header>
       <form className={classes.form} onSubmit={e => handleSubmit(e)}>
         <h3 className={classes.title}>What will you type?</h3>
@@ -110,8 +110,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    width: "315px",
-    maxWidth: "315px",
+    width: "335px",
+    maxWidth: "335px",
     transitionDuration: ".2s",
     borderRadius: 8,
     boxShadow:

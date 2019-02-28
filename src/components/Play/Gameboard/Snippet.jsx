@@ -20,13 +20,14 @@ const Snippet = props => {
             const { position, color } = client.gamePiece;
             const { wordIndex } = word.props;
             if (wordIndex === 0 && position === null) {
-              return <GamePiece key={index} index={position} color={color} />;
+              return <GamePiece key={index} index={position} color={color} opacity={0.5}/>;
             }
             return wordIndex === position ? (
               <GamePiece
                 key={index}
                 index={client.gamePiece.position}
                 color={client.gamePiece.color}
+                opacity={0.5}
               />
             ) : null;
           })}

@@ -30,7 +30,8 @@ const styles = theme => ({
     position: "absolute",
     flexDirection: "column",
     bottom: "5px",
-    top: -3
+    top: 0,
+    opacity: props => props.opacity
   },
   circle: {
     width: "14px",
@@ -38,7 +39,7 @@ const styles = theme => ({
     height: "14px",
     borderRadius: "50%",
     backgroundColor: props => props.color,
-    boxShadow: "0px 0px 5px rgba(50,50,93,.25)"
+    boxShadow: "0px 0px 5px rgba(50,50,93,.25)",
   },
   line: {
     width: "3px",
@@ -46,7 +47,7 @@ const styles = theme => ({
     margin: "-1px auto 0 auto",
     backgroundColor: props => props.color,
     boxShadow: "0px 0px 5px rgba(50,50,93,.25)",
-    borderRadius: " 0px 0px 2px 2px"
+    borderRadius: " 0px 0px 2px 2px",
   }
 });
 

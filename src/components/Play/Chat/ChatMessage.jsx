@@ -26,7 +26,7 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     minHeight: "60px",
-    margin: "10px 15px 10px 0px",
+    margin: "10px 0px 10px 0px",
     borderRadius: 8
   },
   inner: props => ({

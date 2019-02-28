@@ -9,11 +9,13 @@ const SnippetWord = props => {
 
 const styles = theme => ({
   container: props => ({
-    margin: props.isComplete ? "6px 0px 6px 6px" : "6.5px 1px 6.5px 14px",
+    margin: props.isComplete ? "6px 0px 6px 0px" : "6.5px 1px 6.5px 14px",
     position: "relative",
+    fontSize: 20,
+    // lineHeight: "21px",
     color: props.isComplete ? "black" : "transparent",
-    paddingLeft: props.isComplete ? "6px" : "30px",
-    maxHeight: "20px",
+    paddingLeft: props.isComplete ? "10px" : "30px",
+    // height: "20px  ",
     boxSizing: "content-box",
     userSelect: "none",
     transitionDuration: "0.1s",

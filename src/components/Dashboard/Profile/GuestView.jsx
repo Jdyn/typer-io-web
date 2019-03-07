@@ -60,7 +60,8 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "auto 0px 25px 0px"
+    margin: "auto 0px 25px 0px",
+    // flexBasis: "275px"
   }
 };
 

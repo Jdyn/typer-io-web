@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket, history } = props;
+  const { classes, initSocket, socket } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
   const cards = [
@@ -48,7 +48,7 @@ const DashboardMenu = props => {
             return initSocket(props.client.username, { mode: "SOLO" });
           case 2:
             setSelectedIndex(index);
-            return props.history.push("/friends");
+            break;
           default:
             break;
         }
@@ -80,7 +80,7 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    marginRight: "auto"
+    gridArea: "menu"
   }
 };
 

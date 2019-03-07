@@ -65,8 +65,7 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    maxWidth: "275px",
-    width: "275px"
+    flexBasis: "275px"
   },
   input: {
     textAlign: "center",

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Router from "../components/Router";
-import Nav from "../components/Nav/Nav";
+import Header from "../components/Header/index";
 import CssBaseline from "../components/CssBaseline";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
@@ -35,12 +35,13 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <CssBaseline />
-        <Nav />
-        <Router />
-        <Footer />
-      </Fragment>
+      <>
+        <CssBaseline>
+          <Header />
+          <Router />
+          <Footer />
+        </CssBaseline>
+      </>
     );
   }
 }

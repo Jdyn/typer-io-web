@@ -31,9 +31,8 @@ const DashboardProfile = props => {
     updateClient,
     clearSessionErrors
   } = props;
-  const [profile, setProfile] = useState(
-    session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW"
-  );
+
+  const [profile, setProfile] = useState(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
 
   useEffect(() => {
     if (!session.isAuthenticating) {
@@ -57,11 +56,7 @@ const DashboardProfile = props => {
     switch (profile) {
       case "GUEST_VIEW":
         return (
-          <GuestView
-            changeProfile={changeProfile}
-            updateClient={updateClient}
-            client={client}
-          />
+          <GuestView changeProfile={changeProfile} updateClient={updateClient} client={client} />
         );
       case "CLIENT_VIEW":
         return (
@@ -93,10 +88,7 @@ const DashboardProfile = props => {
       default:
         return (
           <div className={classes.loading}>
-            <ProfileHeader
-              updateClient={updateClient}
-              username={client.username}
-            />
+            <ProfileHeader updateClient={updateClient} username={client.username} />
           </div>
         );
     }
@@ -125,21 +117,14 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
+    gridArea: "profile",
+    // maxWidth: "275px",
     position: "relative",
-    height: "456px",
-    maxHeight: "456px",
-    transitionDuration: ".2s",
+    margin: 0,
     borderRadius: 8,
-    boxShadow:
-      "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
-    backgroundColor: theme.primaryWhite,
-    "&:hover": {
-      transform: "translateY(-1px)"
-    }
-  },
-  loading: {
-    width: "275px",
-    textAlign: "center"
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
+    backgroundColor: theme.primaryWhite
   }
 });
 

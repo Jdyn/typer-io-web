@@ -1,4 +1,4 @@
-const API = "http://localhost:4000/api/v1"; //"http://ec2-3-87-223-235.compute-1.amazonaws.com:4000/api/v1";
+const API = "http://ec2-3-87-223-235.compute-1.amazonaws.com:4000/api/v1"; //"http://ec2-3-87-223-235.compute-1.amazonaws.com:4000/api/v1";
 
 function headers() {
   const token = JSON.parse(localStorage.getItem("token"));

@@ -41,40 +41,25 @@ const propTypes = {
   styles: PropTypes.object
 };
 
-const Header = ({ children, classes }) => (
-  <h2 className={classes.header}>{children}</h2>
-);
+const Header = ({ children, classes }) => <h2 className={classes.header}>{children}</h2>;
 
 Header.propTypes = propTypes;
-Header.defaultProps = {
-  margin: "0",
-  padding: "0",
-  fontSize: 18,
-  fontWeight: 600,
-  borderRadius: "8px",
-  color: "black",
-  border: "none",
-  height: "auto"
-};
 
-const styles = theme => ({
-  header: props => ({
-    margin: props.margin,
-    padding: props.padding,
-    fontSize: props.fontSize,
-    fontWeight: props.fontWeight,
-    color: props.color,
-    height: props.height,
-    backgroundColor: props.backgroundColor,
-    borderRadius: props.borderRadius,
-    border: props.border,
-    boxShadow: props.boxShadow,
-    lineHeight: props.lineHeight,
-    justifyContent: "left",
-    position: "relative",
-    zIndex: 100,
-    ...props.style
-  })
-});
+const styles = {
+  header: {
+    display: "flex",
+    alignItems: "center",
+    padding: "10px",
+    margin: 0,
+    boxSizing: "border-box",
+    fontSize: "1.3em",
+    minHeight: "55px",
+    fontWeight: 600,
+    color: "#fff",
+    backgroundColor: "#555abf",
+    boxShadow: "0 5px 20px rgba(35,35,80,.25)",
+    borderRadius: "8px 8px 0px 0px"
+  }
+};
 
 export default withStyles(styles)(Header);

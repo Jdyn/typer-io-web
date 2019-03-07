@@ -9,35 +9,38 @@ const propTypes = {
   classes: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   session: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired,
+  matches: PropTypes.array,
   updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  signup: PropTypes.func.isRequired
+  signup: PropTypes.func.isRequired,
+  deleteMatch: PropTypes.func.isRequired,
+  clearSessionErrors: PropTypes.func.isRequired
 };
 
 const Dashboard = props => {
   const {
     classes,
     client,
+    session,
+    socket,
     matches,
     updateClient,
-    session,
     initSocket,
     login,
     logout,
     signup,
-    history,
     deleteMatch,
     clearSessionErrors
   } = props;
 
   return (
-    <main>
+    <>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        {/* <DashboardNews /> */}
-        <MatchHistory matches={matches} deleteMatch={deleteMatch}/>
+        <MatchHistory matches={matches} deleteMatch={deleteMatch} />
         <DashboardProfile
           login={login}
           logout={logout}
@@ -47,14 +50,9 @@ const Dashboard = props => {
           client={client}
           session={session}
         />
-        <DashboardMenu
-          initSocket={initSocket}
-          history={history}
-          socket={props.socket}
-          client={client}
-        />
+        <DashboardMenu initSocket={initSocket} socket={socket} client={client} />
       </div>
-    </main>
+    </>
   );
 };
 
@@ -64,16 +62,39 @@ const styles = theme => ({
   root: {
     display: "grid",
     position: "relative",
-    marginTop: "115px",
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "15px",
-    padding: "15px",
-    gridTemplateColumns: "auto min-content auto",
-    gridTemplateRows: "min-content",
-    maxWidth: "1185px",
-    margin: "0 auto"
+    marginTop: "115px",
+    padding: "20px",
+    margin: "0 auto",
+    maxWidth: "350px",
+    gridTemplateAreas: `
+    'matchHistory'
+    'profile'
+    'menu'
+    `,
+    "@media (min-width: 700px)": {
+      gridTemplateColumns: "1fr 275px",
+      gridTemplateRows: "1fr 1fr",
+      maxWidth: "750px",
+      gridTemplateAreas: `
+      'matchHistory profile'
+      'menu menu'
+      `
+    },
+    "@media (min-width: 1050px)": {
+      gridTemplateColumns: "450px 275px 1fr",
+      gridTemplateRows: "1fr",
+      maxWidth: "1150px",
+      gridTemplateAreas: `
+      'matchHistory profile menu'
+      `
+    },
+    overscrollBehaviorY: "contain"
   },
   stripe: {
-    zIndex: 0,
+    zIndex: -1,
     width: "100%",
     height: "95%",
     top: -10,
@@ -84,13 +105,6 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.tertiaryWhite,
     position: "absolute"
-  },
-  container: {
-    display: "flex",
-    position: "relative",
-    margin: "20px 0px 20px auto",
-    padding: "5px 5px",
-    width: "100%"
   }
 });
 

@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
-import Header from "../../Common/Header";
+import Header from "../../reusable/Header";
 
 const Gameboard = props => {
   const { classes, gameboard, client, room, clientIndex, theme } = props;

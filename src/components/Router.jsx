@@ -4,7 +4,7 @@ import * as route from "../constants/RouterConstants";
 import DashboardContainer from "../containers/DashboardContainer";
 import PlayContainer from "../containers/PlayContainer";
 import SoloContainer from "../containers/SoloContainer";
-import FriendsContainer from "../containers/FriendsContainer"
+import FriendsContainer from "../containers/FriendsContainer";
 
 const Router = () => (
   <Switch>
@@ -12,11 +12,7 @@ const Router = () => (
     <Route exact path={route.PLAY_PATH} component={PlayContainer} />
     <Route exact path={route.SOLO_PATH} component={SoloContainer} />
     <Route exact path={route.FRIENDS_PATH} component={FriendsContainer} />
-    <Route
-      exact
-      path={`${route.PLAY_PATH}/:roomId`}
-      component={PlayContainer}
-    />
+    <Route exact path={`${route.PLAY_PATH}/:roomId`} component={PlayContainer} />
     <Redirect to={route.HOME_PATH} />
   </Switch>
 );

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Router from "../components/Router";
 import Header from "../components/Header/index";
-import CssBaseline from "../components/CssBaseline";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
 import Footer from "../components/Footer/Footer";
@@ -36,11 +35,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <CssBaseline>
-          <Header />
-          <Router />
-          <Footer />
-        </CssBaseline>
+        <Header />
+        <Router />
+        <Footer />
       </>
     );
   }

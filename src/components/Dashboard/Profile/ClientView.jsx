@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ProfileHeader from "./ProfileHeader";
-import Button from "../../Common/Button";
+import Button from "../../reusable/Button";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

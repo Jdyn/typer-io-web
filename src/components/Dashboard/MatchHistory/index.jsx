@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../../Common/Header";
+import Header from "../../reusable/Header";
 import Match from "./Match";
 
 const propTypes = {

@@ -66,9 +66,10 @@ const styles = theme => ({
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "15px",
     marginTop: "115px",
-    padding: "20px",
+    overflow: "hidden",
     margin: "0 auto",
     maxWidth: "350px",
+    padding: "15px",
     gridTemplateAreas: `
     'matchHistory'
     'profile'
@@ -77,21 +78,22 @@ const styles = theme => ({
     "@media (min-width: 700px)": {
       gridTemplateColumns: "1fr 275px",
       gridTemplateRows: "1fr 1fr",
+      padding: "0 60px 100px 60px",
       maxWidth: "750px",
       gridTemplateAreas: `
       'matchHistory profile'
       'menu menu'
-      `
+      `,
     },
-    "@media (min-width: 1050px)": {
+    "@media (min-width: 1130px)": {
       gridTemplateColumns: "450px 275px 1fr",
       gridTemplateRows: "1fr",
-      maxWidth: "1150px",
+      padding: "0 60px 85px 60px",
+      maxWidth: "1200px",
       gridTemplateAreas: `
       'matchHistory profile menu'
       `
-    },
-    overscrollBehaviorY: "contain"
+    }
   },
   stripe: {
     zIndex: -1,

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyless from "react-jss";
-import Header from "../Common/Header";
-import Content from "../Common/Content";
+import Header from "../reusable/Header";
+import Content from "../reusable/Content";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -77,6 +77,7 @@ const styles = theme => ({
     "& h2": {
       margin: 0,
       marginBottom: "5px",
+      fontSize: "20px",
       color: "#fff",
       textAlign: "left"
     }

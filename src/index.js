@@ -7,6 +7,7 @@ import { loadState, saveState } from "./store/LocalStorage";
 import { ThemeProvider } from "react-jss";
 import ErrorBoundary from "./containers/ErrorBoundary";
 import App from "./containers/AppContainer";
+import Baseline from "./components/Baseline";
 
 const persistedStore = loadState();
 const store = configureStore(persistedStore);
@@ -39,7 +40,9 @@ const app = (
       <BrowserRouter>
         <Provider store={store}>
           <ErrorBoundary>
-            <App store={store} />
+            <Baseline>
+              <App store={store} />
+            </Baseline>
           </ErrorBoundary>
         </Provider>
       </BrowserRouter>

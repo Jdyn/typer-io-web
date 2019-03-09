@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import LeaderboardDisplay from "./LeaderboardDisplay";
-import Header from "../../Common/Header";
+import Header from "../../reusable/Header";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

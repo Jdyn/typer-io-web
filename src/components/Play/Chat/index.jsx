@@ -3,7 +3,7 @@ import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
-import Header from "../../Common/Header";
+import Header from "../../reusable/Header";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

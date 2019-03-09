@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../../Common/Header";
+import Header from "../../reusable/Header";
 import GuestView from "./GuestView";
 import LogInView from "./LogInView";
 import ClientView from "./ClientView";
@@ -119,7 +119,6 @@ const styles = theme => ({
     flexDirection: "column",
     width: "100%",
     gridArea: "profile",
-    // maxWidth: "275px",
     position: "relative",
     margin: 0,
     borderRadius: 8,

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Input from "../../Common/Input";
-import Button from "../../Common/Button";
+import Input from "../../reusable/Input";
+import Button from "../../reusable/Button";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../Common/Header";
-import Button from "../Common/Button";
+import Header from "../reusable/Header";
+import Button from "../reusable/Button";
 
 const propTypes = {};
 

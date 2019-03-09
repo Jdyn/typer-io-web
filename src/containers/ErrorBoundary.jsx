@@ -1,9 +1,9 @@
 import React from "react";
 import * as Sentry from "@sentry/browser";
 import withStyles from "react-jss";
-import CssBaseline from "../components/CssBaseline";
+import CssBaseline from "../components/Baseline";
 import Header from "../components/Header/index";
-import Button from "../components/Common/Button";
+import Button from "../components/reusable/Button";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

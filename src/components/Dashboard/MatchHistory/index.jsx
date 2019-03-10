@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../reusable/Header";
-import Match from "./Match";
+// import Match from "./Match";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const MatchHistory = props => {
-  const { classes, matches, deleteMatch } = props;
+  const { classes } = props;
 
   return (
     <div className={classes.container}>

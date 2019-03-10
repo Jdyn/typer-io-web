@@ -9,11 +9,29 @@ export const actions = keyMirror(
   "LOG_OUT"
 );
 
-export const login = form => dispatch => {
+export const handleAuth = (form, type) => dispatch => {
+  switch (type) {
+    case "LOG IN":
+      dispatch(login(form));
+      break;
+    case "LOG OUT":
+      dispatch(logout());
+      break;
+    case "SIGN UP":
+      dispatch(signup(form));
+      break;
+    default:
+      dispatch({
+        type: actions.AUTHENTICATION_FAILURE,
+        response: { error: "internal client error" }
+      });
+  }
+};
+
+const login = form => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
   ApiService.post("/sessions/login", form)
     .then(response => {
-      console.log(response);
       if (response.ok) {
         setCurrentSession(dispatch, response);
       } else {
@@ -59,7 +77,6 @@ export const signup = form => dispatch => {
 };
 
 export const authenticate = () => dispatch => {
-  console.log(localStorage.getItem("token"));
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
   ApiService.post("/sessions/refresh")
     .then(response => {

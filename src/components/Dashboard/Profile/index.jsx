@@ -2,111 +2,125 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../reusable/Header";
-import GuestView from "./GuestView";
-import LogInView from "./LogInView";
-import ClientView from "./ClientView";
-import SignUpView from "./SignUpView";
 import ProfileHeader from "./ProfileHeader";
+import Input from "../../reusable/Input";
+import ExitButton from "../../reusable/ExitButton";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   session: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
-  signup: PropTypes.func.isRequired,
   updateClient: PropTypes.func.isRequired
 };
 
-const DashboardProfile = props => {
-  const {
-    classes,
-    theme,
-    client,
-    session,
-    login,
-    logout,
-    signup,
-    updateClient,
-    clearSessionErrors
-  } = props;
+const view = {
+  USER: "USER",
+  GUEST: "GUEST",
+  SIGNUP: "SIGN UP",
+  LOGIN: "LOG IN"
+};
 
-  const [profile, setProfile] = useState(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
+const template = {
+  signup: {
+    type: "SIGN UP",
+    fields: ["email", "username", "password"]
+  },
+  login: {
+    type: "LOG IN",
+    fields: ["username", "password"]
+  }
+};
+
+const DashboardProfile = props => {
+  const { classes, session, client, updateClient, handleAuth } = props;
+  const [state, setState] = useState(session.isLoggedIn ? view.USER : view.GUEST);
+  const [form, setForm] = useState({});
 
   useEffect(() => {
     if (!session.isAuthenticating) {
-      setProfile(session.isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
+      setState(session.isLoggedIn ? view.USER : view.GUEST);
     }
   }, [session.isLoggedIn]);
 
-  const changeProfile = newProfile => {
-    const { isLoggedIn } = session;
-    switch (newProfile) {
-      case "BACK":
-        return setProfile(isLoggedIn ? "CLIENT_VIEW" : "GUEST_VIEW");
-      case "LOG_OUT":
-        return setProfile("GUEST_VIEW");
-      default:
-        return setProfile(newProfile);
+  const submitForm = (event, type) => {
+    event.preventDefault();
+    if (!session.isAuthenticating) {
+      handleAuth(form, type);
+      console.log(type, form);
     }
   };
 
-  const renderProfile = profile => {
-    switch (profile) {
-      case "GUEST_VIEW":
+  const changeView = state => {
+    const { isLoggedIn } = session;
+    switch (state) {
+      case "BACK":
+        setForm({});
+        return setState(isLoggedIn ? view.USER : view.GUEST);
+      case "LOG_OUT":
+        // handleAuth(form, "LOG OUT");
+        return setState(view.GUEST);
+      default:
+        return setState(state);
+    }
+  };
+
+  const renderView = state => {
+    const data = state === template.login.type ? template.login : template.signup;
+    switch (state) {
+      case view.USER:
         return (
-          <GuestView changeProfile={changeProfile} updateClient={updateClient} client={client} />
+          <>
+            <ProfileHeader updateClient={updateClient} username={client.username} />
+            <button className={classes.whiteButton} onClick={() => changeView("LOG_OUT")}>
+              log out
+            </button>
+          </>
         );
-      case "CLIENT_VIEW":
+      case view.GUEST:
         return (
-          <ClientView
-            username={client.username}
-            updateClient={updateClient}
-            changeProfile={changeProfile}
-            logout={logout}
-          />
+          <>
+            <ProfileHeader updateClient={updateClient} />
+            <button className={classes.blueButton} onClick={() => changeView(view.SIGNUP)}>
+              sign up
+            </button>
+            <button className={classes.whiteButton} onClick={() => changeView(view.LOGIN)}>
+              log in
+            </button>
+          </>
         );
-      case "SIGNUP_VIEW":
+      case view.SIGNUP:
+      case view.LOGIN:
+        const type = data.type === view.LOGIN ? view.LOGIN : view.SIGNUP;
         return (
-          <SignUpView
-            changeProfile={changeProfile}
-            clearSessionErrors={clearSessionErrors}
-            signup={signup}
-            session={session}
-          />
-        );
-      case "LOGIN_VIEW":
-        return (
-          <LogInView
-            changeProfile={changeProfile}
-            clearSessionErrors={clearSessionErrors}
-            login={login}
-            session={session}
-          />
+          <>
+            <ExitButton onClick={() => changeView("BACK")} />
+            <form className={classes.form} onSubmit={e => submitForm(e, type)}>
+              {data.fields.map(field => (
+                <Input
+                  key={field}
+                  type={field}
+                  placeholder={field}
+                  width="100%"
+                  value={form[field] || ""}
+                  onChange={event => setForm({ ...form, [field]: event.target.value })}
+                />
+              ))}
+              <button type="submit" className={classes.blueButton}>
+                {data.type}
+              </button>
+            </form>
+          </>
         );
       default:
-        return (
-          <div className={classes.loading}>
-            <ProfileHeader updateClient={updateClient} username={client.username} />
-          </div>
-        );
+        setState(view.GUEST);
+        return <div />;
     }
   };
 
   return (
     <div className={classes.container}>
-      <Header
-        boxShadow="0 5px 20px rgba(35,35,80,.25)"
-        color={theme.primaryWhite}
-        borderRadius="8px 8px 0px 0px"
-        fontSize={24}
-        backgroundColor={"#555abf"}
-        padding="10px"
-      >
-        Profile
-      </Header>
-      {renderProfile(profile)}
+      <Header>Profile</Header>
+      {renderView(state)}
     </div>
   );
 };
@@ -124,7 +138,46 @@ const styles = theme => ({
     borderRadius: 8,
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
     backgroundColor: theme.primaryWhite
+  },
+  button: {
+    cursor: "pointer",
+    outline: "none",
+    fontWeight: 600,
+    zIndex: 100,
+    borderRadius: 4,
+    letterSpacing: ".025em",
+    textTransform: "uppercase",
+    transitionDuration: ".15s",
+    margin: "5px auto 0 auto",
+    width: "65%",
+    fontSize: 15,
+    padding: "10px",
+    border: "2px solid",
+    borderColor: theme.divider,
+    "&:hover": {
+      transform: "translateY(-2px)"
+    },
+    "&:active": {
+      transform: "translateY(2px)"
+    }
+  },
+  blueButton: {
+    extend: "button",
+    backgroundColor: "#6772e5",
+    color: theme.primaryWhite
+  },
+  whiteButton: {
+    extend: "button",
+    backgroundColor: theme.primaryWhite,
+    color: "#6772e5"
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    width: "75%",
+    margin: "15px auto 0px auto",
+    justifyContent: "center"
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(DashboardProfile);
+export default withStyles(styles)(DashboardProfile);

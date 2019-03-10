@@ -13,11 +13,8 @@ const propTypes = {
   matches: PropTypes.array,
   updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
-  signup: PropTypes.func.isRequired,
   deleteMatch: PropTypes.func.isRequired,
-  clearSessionErrors: PropTypes.func.isRequired
+  handleAuth: PropTypes.func.isRequired
 };
 
 const Dashboard = props => {
@@ -29,11 +26,8 @@ const Dashboard = props => {
     matches,
     updateClient,
     initSocket,
-    login,
-    logout,
-    signup,
     deleteMatch,
-    clearSessionErrors
+    handleAuth
   } = props;
 
   return (
@@ -42,11 +36,8 @@ const Dashboard = props => {
       <div className={classes.root}>
         <MatchHistory matches={matches} deleteMatch={deleteMatch} />
         <DashboardProfile
-          login={login}
-          logout={logout}
-          signup={signup}
+          handleAuth={handleAuth}
           updateClient={updateClient}
-          clearSessionErrors={clearSessionErrors}
           client={client}
           session={session}
         />
@@ -65,7 +56,7 @@ const styles = theme => ({
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "15px",
-    marginTop: "115px",
+    marginTop: "95px",
     overflow: "hidden",
     margin: "0 auto",
     maxWidth: "350px",
@@ -86,10 +77,10 @@ const styles = theme => ({
       `,
     },
     "@media (min-width: 1130px)": {
-      gridTemplateColumns: "450px 275px 1fr",
+      gridTemplateColumns: "400px 275px 1fr",
       gridTemplateRows: "1fr",
-      padding: "0 60px 85px 60px",
-      maxWidth: "1200px",
+      padding: "20px 60px 85px 60px",
+      maxWidth: "1150px",
       gridTemplateAreas: `
       'matchHistory profile menu'
       `

@@ -1,4 +1,4 @@
-import types from "../constants/ActionTypes";
+import { types } from "../services/socket";
 
 const initialState = {
   meta: {
@@ -92,10 +92,7 @@ export default (state = initialState, action) => {
             ...state.room.gameboard,
             gameTime: action.payload.gameTime
           },
-          clients: gameboardUpdate(
-            [...state.room.clients],
-            action.payload.gamePieces
-          )
+          clients: gameboardUpdate([...state.room.clients], action.payload.gamePieces)
         }
       };
 

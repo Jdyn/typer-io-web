@@ -56,7 +56,7 @@ Input.defaultProps = {
   fontSize: 15,
   fontWeight: 600,
   width: "100%",
-  padding: "10px"
+  padding: "10px",
 };
 
 const styles = theme => ({
@@ -66,12 +66,12 @@ const styles = theme => ({
     backgroundColor: theme.primaryWhite,
     padding: props.padding,
     color: props.color,
+    border: "none",
     height: "42px",
     borderRadius: 4,
-    border: "none",
-    boxShadow: `0px 0px 0px 1.5px ${props.borderColor}`,
+    boxShadow: `0px 0px 0px 1.5px ${theme.divider}`,
     fontSize: 18,
-    outline: "none",
+    outline: "none"
   })
 });
 

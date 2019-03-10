@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../../reusable/Header";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../reusable/Header";
 import Button from "../reusable/Button";
 
-const propTypes = {};
+const propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const MatchSettings = props => {
   const { classes, theme, history, form, setForm, handleSubmit } = props;
@@ -33,10 +35,7 @@ const MatchSettings = props => {
               setForm({
                 ...form,
                 isRandom: !form.isRandom,
-                isCustom:
-                  form.isRandom === form.isCustom
-                    ? form.isCustom
-                    : !form.isCustom
+                isCustom: form.isRandom === form.isCustom ? form.isCustom : !form.isCustom
               })
             }
           />
@@ -51,10 +50,7 @@ const MatchSettings = props => {
             onChange={e =>
               setForm({
                 ...form,
-                isRandom:
-                  form.isRandom === form.isCustom
-                    ? form.isRandom
-                    : !form.isRandom,
+                isRandom: form.isRandom === form.isCustom ? form.isRandom : !form.isRandom,
                 isCustom: !form.isCustom
               })
             }
@@ -105,6 +101,8 @@ const MatchSettings = props => {
   );
 };
 
+MatchSettings.propTypes = propTypes
+
 const styles = theme => ({
   container: {
     display: "flex",
@@ -114,15 +112,13 @@ const styles = theme => ({
     maxWidth: "335px",
     transitionDuration: ".2s",
     borderRadius: 8,
-    boxShadow:
-      "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
     backgroundColor: theme.primaryWhite,
     "&:hover": {
       transform: "translateY(-1px)"
     }
   },
   title: {
-    margin: 0,
     margin: "10px",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)"
   },

@@ -7,7 +7,6 @@ import Editor from "./Editor";
 import Chat from "./Chat";
 import PlayStatus from "./Status";
 import Leaderboard from "./Leaderboard";
-// import Context from "./Content";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

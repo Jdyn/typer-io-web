@@ -53,7 +53,7 @@ const styles = theme => ({
     backgroundColor: props.backgroundColor,
     fontSize: props.fontSize,
     padding: props.padding,
-    borderColor: props.borderColor,
+    borderColor: theme.divider,
     boxShadow: props.boxShadow,
     cursor: "pointer",
     outline: "none",

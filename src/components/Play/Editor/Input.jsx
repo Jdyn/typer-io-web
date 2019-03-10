@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import withStyles from "react-jss";
-import { silentEmit } from "../../../store/socket";
+import { silentEmit } from "../../../services/socket";
 const Input = props => {
   const {
     classes,

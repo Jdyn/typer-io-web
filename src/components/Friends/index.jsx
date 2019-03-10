@@ -80,7 +80,6 @@ const styles = theme => ({
     padding: "10px"
   },
   title: {
-    margin: 0,
     margin: "10px",
     boxShadow: "inset 0 -1px 0 0 rgba(100,121,143,0.122)"
   },

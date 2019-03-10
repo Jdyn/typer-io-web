@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Router from "../components/Router";
-import Header from "../components/Header/index";
+// import Header from "../components/Header/index";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
-import Footer from "../components/Footer/Footer";
+// import Footer from "../components/Footer/Footer";
 import * as Sentry from "@sentry/browser";
 
 if (process.env.NODE_ENV === "production") {
@@ -35,9 +35,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
+        {/* <Header /> */}
         <Router />
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }

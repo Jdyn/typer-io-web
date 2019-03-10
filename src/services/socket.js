@@ -1,5 +1,19 @@
 import io from "socket.io-client";
-import types from "../constants/ActionTypes";
+import keyMirror from "../lib/keyMirror";
+
+export const types = keyMirror(
+  "ROOM_UPDATE",
+  "ROOM_TIMER",
+  "START_GAME",
+  "END_GAME",
+  "GAMEBOARD_UPDATE",
+  "RECIEVE_CHAT_MESSAGE",
+  "INIT_SOCKET_REQUEST",
+  "INIT_SOCKET_SUCCESS",
+  "INIT_SOCKET_FAILURE",
+  "DISCONNECT_SOCKET",
+  "ROOM_NOT_FOUND"
+);
 
 export default url => {
   return store => next => action => {
@@ -100,11 +114,10 @@ const defaultListeners = dispatch => {
   }
 };
 
-export const silentEmit = (type, payload) =>
-  socket && socket.emit(type, payload);
+export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
 
-export const silentClose = () => socket && socket.close()
+export const silentClose = () => socket && socket.close();
 
 export const emitAction = action => {
   return (...args) => {

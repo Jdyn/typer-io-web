@@ -49,7 +49,7 @@ const styles = theme => ({
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",
     backgroundColor: props.header ? props.header.color : "black",
-    padding: "25px 0px 25px 0px",
+    padding: "20px 0px",
     textAlign: "center",
     "& h3": {
       margin: 0,

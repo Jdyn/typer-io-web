@@ -75,7 +75,7 @@ const styles = theme => ({
     height: "87%",
     width: "100%",
     flexDirection: "column",
-    overflowY: "scroll",
+    overflowY: "auto",
     padding: "0 10px 0px 20px",
     "&::-webkit-scrollbar": {
       width: "10px",

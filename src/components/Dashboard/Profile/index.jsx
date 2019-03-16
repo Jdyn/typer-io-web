@@ -20,7 +20,7 @@ const view = {
   LOGIN: "LOG IN"
 };
 
-const template = {
+const templates = {
   signup: {
     type: "SIGN UP",
     fields: ["email", "username", "password"]
@@ -35,6 +35,7 @@ const DashboardProfile = props => {
   const { classes, session, client, updateClient, handleAuth } = props;
   const [state, setState] = useState(session.isLoggedIn ? view.USER : view.GUEST);
   const [form, setForm] = useState({});
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (!session.isAuthenticating) {
@@ -45,19 +46,21 @@ const DashboardProfile = props => {
   const submitForm = (event, type) => {
     event.preventDefault();
     if (!session.isAuthenticating) {
-      handleAuth(form, type);
-      console.log(type, form);
+      // handleAuth(form, type);
     }
   };
+
+  const validate = (form, type) => {};
 
   const changeView = state => {
     const { isLoggedIn } = session;
     switch (state) {
       case "BACK":
         setForm({});
+        setErrors({});
         return setState(isLoggedIn ? view.USER : view.GUEST);
       case "LOG_OUT":
-        // handleAuth(form, "LOG OUT");
+        handleAuth(form, "LOG OUT");
         return setState(view.GUEST);
       default:
         return setState(state);
@@ -65,7 +68,7 @@ const DashboardProfile = props => {
   };
 
   const renderView = state => {
-    const data = state === template.login.type ? template.login : template.signup;
+    const data = state === templates.login.type ? templates.login : templates.signup;
     switch (state) {
       case view.USER:
         return (
@@ -79,7 +82,7 @@ const DashboardProfile = props => {
       case view.GUEST:
         return (
           <>
-            <ProfileHeader updateClient={updateClient} />
+            <ProfileHeader updateClient={updateClient} username={client.username} />
             <button className={classes.blueButton} onClick={() => changeView(view.SIGNUP)}>
               sign up
             </button>

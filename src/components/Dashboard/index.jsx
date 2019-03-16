@@ -69,7 +69,7 @@ const styles = theme => ({
     "@media (min-width: 700px)": {
       gridTemplateColumns: "1fr 275px",
       gridTemplateRows: "1fr 1fr",
-      padding: "0 60px 100px 60px",
+      padding: "20px 60px 115px 60px",
       maxWidth: "750px",
       gridTemplateAreas: `
       'matchHistory profile'
@@ -79,7 +79,7 @@ const styles = theme => ({
     "@media (min-width: 1130px)": {
       gridTemplateColumns: "400px 275px 1fr",
       gridTemplateRows: "1fr",
-      padding: "20px 60px 85px 60px",
+      padding: "20px 60px 115px 60px",
       maxWidth: "1150px",
       gridTemplateAreas: `
       'matchHistory profile menu'

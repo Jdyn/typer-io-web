@@ -8,16 +8,15 @@ const InputPrompt = ({ classes, wordsRemaining }) => {
   }
 
   return (
-    <div></div>
-    // <div className={classes.prompt}>
-    //   {filtered.map((word, index) => {
-    //     return (
-    //       <span key={index} className={classes.word}>
-    //         {word}
-    //       </span>
-    //     );
-    //   })}
-    // </div>
+    <div className={classes.prompt}>
+      {filtered.map((word, index) => {
+        return (
+          <span key={index} className={classes.word}>
+            {word}
+          </span>
+        );
+      })}
+    </div>
   );
 };
 

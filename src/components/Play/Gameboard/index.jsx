@@ -19,7 +19,7 @@ const Gameboard = props => {
           key={index}
           word={word}
           wordIndex={index}
-          isComplete={true} //{currentClient.gamePiece.isComplete || gameboard.isOver}
+          isComplete={currentClient.gamePiece.isComplete || gameboard.isOver}
         />
       )
     );

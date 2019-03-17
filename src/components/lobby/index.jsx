@@ -8,7 +8,7 @@ const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-const Friends = props => {
+const Lobby = props => {
   const { classes, history, client, room } = props;
 
   const [form, setForm] = useState({
@@ -110,6 +110,6 @@ const styles = theme => ({
   },
 });
 
-Friends.propTypes = propTypes;
+Lobby.propTypes = propTypes;
 
-export default withStyles(styles, { injectTheme: true })(Friends);
+export default withStyles(styles, { injectTheme: true })(Lobby);

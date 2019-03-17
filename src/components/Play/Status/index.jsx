@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import PlayStatusCard from "./PlayStatusCard";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -10,86 +9,75 @@ const propTypes = {
   socket: PropTypes.object.isRequired
 };
 
+const states = {
+  room: "ROOM",
+  game: "GAME"
+};
+
 const PlayStatus = props => {
   const { classes, gameboard, room, socket } = props;
-  const [viewType, setViewType] = useState("ROOM_TYPE");
+  const [state, setState] = useState(states.room);
+  const [header, setHeader] = useState({
+    color: "#469cd0",
+    text: "Connecting to server..."
+  });
 
-  const renderHeader = type => {
-    switch (type) {
-      case "ROOM_TYPE":
-        return updateRoomView();
-      case "GAME_TYPE":
-        return updateGameView();
-      default:
-      return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
-    }
-  };
+  useEffect(() => {
+    setHeader(updateHeader());
+  }, [gameboard, state, socket, room.roomTime]);
 
-  const updateRoomView = () => {
-    const time = getTime(viewType);
-    if (time !== null) {
+  const updateHeader = () => {
+    const time = getTime(state);
+
+    if (socket.connected && !gameboard.isOver) {
       if (time > 10) {
-        return { color: "#469cd0", text: "Looking for Players..." };
+        return gameboard.isStarted
+          ? { color: "#81C784", text: "GO!" }
+          : { color: "#469cd0", text: "Looking for Players..." };
       } else if (time > 5) {
-        return { color: "#e5a03e", text: "Get Ready..." };
+        return gameboard.isStarted
+          ? { color: "#e5a03e", text: "GO!" }
+          : { color: "#e5a03e", text: "Get Ready..." };
       } else if (time > 0) {
-        return { color: "#e57373", text: "Get Set..." };
-      } else if (time === 0) {
-        setViewType("GAME_TYPE");
+        return gameboard.isStarted
+          ? { color: "#e57373", text: "GO!" }
+          : { color: "#e57373", text: "Get Set..." };
+      } else {
+        return gameboard.isStarted
+          ? { color: "#81C784", text: "GO!" }
+          : { color: "#469cd0", text: "Looking for Players..." };
       }
-    } else {
-      if (socket.connected) {
-        return { color: "#469cd0", text: "Looking for Players..." };
-      } else if (socket.errored) {
-        return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
-      }
+    } else if (gameboard.isOver) {
+      return { color: "#555abf", text: "Game has Ended" };
+    }
+
+    if (socket.errored) {
+      return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
+    } else if (!socket.connected) {
       return { color: "#469cd0", text: "Connecting to server..." };
     }
+
+    return { color: "#81C784", text: "Calc" };
   };
 
-  const updateGameView = () => {
-    const time = getTime(viewType);
-    if (!gameboard.isOver) {
-      if (time !== null) {
-        if (time === 0) {
-          return { color: "#555abf", text: "Game has Ended" };
-        } else if (time < 10) {
-          return { color: "#81C784", text: "GO!" };
-        } else if (time < 20) {
-          return { color: "#81C784", text: "GO!" };
-        }
-      } else {
-        if (socket.errored) {
-          return { color: "#e57373", text: socket.error ? socket.error : "Connection error occured" };
-        }
-      }
-    } else {
-      return { color: "#555abf", text: gameboard.text };
-    }
-
-    return { color: "#81C784", text: "GO!" };
-  };
-
-  const getTime = type => {
-    switch (type) {
-      case "ROOM_TYPE":
+  const getTime = state => {
+    switch (state) {
+      case states.room:
         const { roomTime } = room;
         if (roomTime) {
-          const seconds = roomTime.substring(
-            roomTime.length - 2,
-            roomTime.length
-          );
-          return parseInt(seconds);
+          const seconds = roomTime.substring(roomTime.length - 2, roomTime.length);
+          const time = parseInt(seconds);
+          if (time <= 0) {
+            setState(states.game);
+          }
+          return time;
         }
         return null;
-      case "GAME_TYPE":
+      case states.game:
         const { gameTime } = gameboard;
         if (gameTime) {
           const minutes = gameTime.substring(1, 2);
-          const seconds = gameTime.substring(
-            gameTime.length - 2,
-            gameTime.length
-          );
+          const seconds = gameTime.substring(gameTime.length - 2, gameTime.length);
           return parseInt(seconds) + parseInt(minutes) * 60;
         }
         return null;
@@ -100,24 +88,43 @@ const PlayStatus = props => {
 
   return (
     <div className={classes.container}>
-      <PlayStatusCard
-        header={renderHeader(viewType)}
-        gameTime={gameboard.gameTime}
-        roomTime={room.roomTime}
-      />
+      <div className={classes.inner} style={{ backgroundColor: header.color }}>
+        <h3>{gameboard.gameTime || room.roomTime}</h3>
+        <h3>{header.text}</h3>
+      </div>
     </div>
   );
 };
 
 PlayStatus.propTypes = propTypes;
 
-const styles = {
+const styles = theme => ({
   container: {
     position: "relative",
     gridRow: "2 / 3",
     gridColumn: "1 / 2",
-    margin: 0//"0px 0px 10px 0px"
+    margin: 0
+  },
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    height: "100%",
+    flexGrow: 1,
+    fontSize: "18px",
+    boxShadow: "0px 0px 30px rgba(50,50,93,.25)",
+    borderRadius: "8px",
+    border: "1px solid rgba(0,0,0,.1)",
+    transition: "background-color 0.5s",
+    padding: "20px 0px",
+    textAlign: "center",
+    "& h3": {
+      margin: 0,
+      height: "35px",
+      color: theme.primaryWhite,
+      fontWeight: 600
+    }
   }
-};
+});
 
 export default withStyles(styles)(PlayStatus);

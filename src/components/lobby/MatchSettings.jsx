@@ -13,16 +13,7 @@ const MatchSettings = props => {
 
   return (
     <div className={classes.container}>
-      <Header
-        boxShadow="0 5px 20px rgba(35,35,80,.25)"
-        color={theme.primaryWhite}
-        borderRadius="8px 8px 0px 0px"
-        fontSize={24}
-        backgroundColor={"#555abf"}
-        padding="10px"
-      >
-        Settings
-      </Header>
+      <Header>Settings</Header>
       <form className={classes.form} onSubmit={e => handleSubmit(e)}>
         <h3 className={classes.title}>What will you type?</h3>
         <div>
@@ -101,7 +92,7 @@ const MatchSettings = props => {
   );
 };
 
-MatchSettings.propTypes = propTypes
+MatchSettings.propTypes = propTypes;
 
 const styles = theme => ({
   container: {

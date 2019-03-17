@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DashboardMenu from "./DashboardMenu";
+import DashboardMenu from "./menu";
 import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
 import MatchHistory from "./MatchHistory/";

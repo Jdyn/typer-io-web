@@ -52,7 +52,7 @@ const styles = {
     padding: "10px",
     margin: 0,
     boxSizing: "border-box",
-    fontSize: "1.3em",
+    fontSize: "24px",
     minHeight: "55px",
     fontWeight: 600,
     color: "#fff",

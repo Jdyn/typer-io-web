@@ -7,29 +7,17 @@ import Header from "../../reusable/Header";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
   client: PropTypes.object.isRequired,
   room: PropTypes.object.isRequired,
   sendChatMessage: PropTypes.func.isRequired
 };
 
 const Chat = props => {
-  const { classes, theme, room, client, sendChatMessage } = props;
+  const { classes, room, client, sendChatMessage } = props;
 
   return (
     <div className={classes.container}>
-      <Header
-        color={theme.primaryWhite}
-        boxShadow="0 5px 20px rgba(35,35,80,.25)"
-        borderRadius="8px 8px 0px 0px"
-        margin="0px 0px -8px 0px"
-        fontSize={24}
-        height="60px"
-        backgroundColor={"#555abf"}
-        padding="10px 10px 0px 10px"
-      >
-        Chat
-      </Header>
+      <Header>Chat</Header>
       <div className={classes.inner}>
         <div id="chat" className={classes.display}>
           {room.messages.map((message, index) => (
@@ -92,4 +80,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(Chat);
+export default withStyles(styles)(Chat);

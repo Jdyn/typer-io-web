@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Friends from "../components/Friends/";
+import Lobby from "../components/lobby";
 
 class FriendsContainer extends Component {
   componentWillMount() {}
 
   render() {
-    return <Friends {...this.props} />;
+    return <Lobby {...this.props} />;
   }
 }
 

@@ -42,6 +42,7 @@ const styles = theme => ({
   card: props => ({
     display: "flex",
     flexDirection: "column",
+    flexGrow: 1,
     position: "relative",
     cursor: "pointer",
     margin: "10px 0",

@@ -57,18 +57,20 @@ const DashboardMenu = props => {
 
   return (
     <div className={classes.container}>
-      {cards.map((card, index) => {
-        return (
-          <MenuCard
-            key={index}
-            index={index}
-            onClick={handleOnClick}
-            selectedIndex={selectedIndex}
-            card={card}
-            socket={socket}
-          />
-        );
-      })}
+      <div className={classes.wrapper}>
+        {cards.map((card, index) => {
+          return (
+            <MenuCard
+              key={index}
+              index={index}
+              onClick={handleOnClick}
+              selectedIndex={selectedIndex}
+              card={card}
+              socket={socket}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -80,6 +82,11 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gridArea: "menu"
+  },
+  wrapper: {
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "column"
   }
 };
 

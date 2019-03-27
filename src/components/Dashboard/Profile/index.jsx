@@ -72,16 +72,16 @@ const DashboardProfile = props => {
     switch (state) {
       case view.USER:
         return (
-          <>
+          <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
             <button className={classes.whiteButton} onClick={() => changeView("LOG_OUT")}>
               log out
             </button>
-          </>
+          </div>
         );
       case view.GUEST:
         return (
-          <>
+          <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
             <button className={classes.blueButton} onClick={() => changeView(view.SIGNUP)}>
               sign up
@@ -89,13 +89,13 @@ const DashboardProfile = props => {
             <button className={classes.whiteButton} onClick={() => changeView(view.LOGIN)}>
               log in
             </button>
-          </>
+          </div>
         );
       case view.SIGNUP:
       case view.LOGIN:
         const type = data.type === view.LOGIN ? view.LOGIN : view.SIGNUP;
         return (
-          <>
+          <div className={classes.wrapper}>
             <ExitButton onClick={() => changeView("BACK")} />
             <form className={classes.form} onSubmit={e => submitForm(e, type)}>
               {data.fields.map(field => (
@@ -112,7 +112,7 @@ const DashboardProfile = props => {
                 {data.type}
               </button>
             </form>
-          </>
+          </div>
         );
       default:
         setState(view.GUEST);
@@ -134,19 +134,25 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
     gridArea: "profile",
     position: "relative",
     margin: 0,
-    borderRadius: 8,
-    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
+    zIndex: 10,
+    borderRadius: "0px 0px 8px 8px",
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    flexGrow: 1,
+    borderRadius: "0px 0px 8px 8px",
     backgroundColor: theme.primaryWhite
   },
   button: {
     cursor: "pointer",
     outline: "none",
     fontWeight: 600,
-    zIndex: 100,
     borderRadius: 4,
     letterSpacing: ".025em",
     textTransform: "uppercase",

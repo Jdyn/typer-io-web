@@ -110,7 +110,6 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     height: "100%",
-    flexGrow: 1,
     fontSize: "18px",
     boxShadow: "0px 0px 30px rgba(50,50,93,.25)",
     borderRadius: "8px",

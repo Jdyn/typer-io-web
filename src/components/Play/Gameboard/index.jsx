@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useState } from "react";
 import withStyles from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
 import Header from "../../reusable/Header";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, clientIndex, theme } = props;
+  const { classes, gameboard, client, room, clientIndex } = props;
+  const currentClient = room.clients.filter(object => object.id === client.id)[0];
 
-  const currentClient = room.clients.filter(
-    object => object.id === client.id
-  )[0];
+
+
 
   const transform = words => {
     var res = [];
@@ -28,19 +28,7 @@ const Gameboard = props => {
 
   return (
     <div className={classes.container}>
-      <Header
-        color={theme.primaryWhite}
-        boxShadow="0 5px 20px rgba(35,35,80,.25)"
-        borderRadius="8px 8px 0px 0px"
-        border="1px solid rgba(0,0,0,.1)"
-        margin="0px 0px -8px 0px"
-        fontSize={24}
-        height="60px"
-        backgroundColor="#555abf"
-        padding="10px 10px 0px 10px"
-      >
-        Gameboard
-      </Header>
+      <Header>Gameboard</Header>
       <div className={classes.inner}>
         <Snippet
           words={transform(gameboard.words)}
@@ -58,7 +46,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: 0,//"0px 10px 10px 10px",
+    margin: 0, //"0px 10px 10px 10px",
     gridRow: "2 / 4",
     gridColumn: "2 / 3"
   },

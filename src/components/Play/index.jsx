@@ -50,29 +50,22 @@ const Play = props => {
     }
   }, [gamePiece.isComplete]);
 
+  const inputDidUpdate = event => {
+    console.log(event.target.innerText);
+  };
+
   return (
-    <main>
+    <>
       <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
-        <Gameboard
-          clientIndex={clientIndex}
-          client={client}
-          room={room}
-          gameboard={gameboard}
-        />
-        <Editor
-          client={client}
-          room={room}
-          socket={socket}
-          gameboard={gameboard}
-          gameboardUpdate={setClientIndex}
-        />
+        <Gameboard clientIndex={clientIndex} client={client} room={room} gameboard={gameboard} />
+        <Editor client={client} inputDidUpdate={inputDidUpdate} />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
       </div>
-    </main>
+    </>
   );
 };
 

@@ -1,81 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import InputPrompt from "./InputPrompt";
-import InputRecord from "./InputRecord";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  gameboard: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired,
-  room: PropTypes.object.isRequired,
-  socket: PropTypes.object.isRequired,
-  gameboardUpdate: PropTypes.func.isRequired
+  client: PropTypes.object.isRequired
 };
 
 const Editor = props => {
-  const { classes, gameboard, client, gameboardUpdate, room, socket } = props;
-  const [state, setState] = useState({
-    gamePieceIndex: null,
-    isWrong: false,
-    words: [],
-    wordsRemaining: [],
-    wordsComplete: []
-  });
-
-  useEffect(() => {
-    setState({
-      ...state,
-      words: gameboard.words,
-      wordsRemaining: gameboard.words
-    });
-  }, [gameboard.words]);
-
+  const { classes, client, inputDidUpdate } = props;
   useEffect(() => {
     focusInput();
   }, [client.id]);
 
-  useEffect(() => {
-    if (state.gamePieceIndex !== null) {
-      gameboardUpdate(state.gamePieceIndex);
-    }
-  }, [state.gamePieceIndex]);
-
-  const updateState = payload => {
-    setState({ ...state, ...payload });
-  };
-
   const focusInput = () => {
-    if (document.getElementById("inputDiv")) {
-      document.getElementById("inputDiv").focus();
+    const input = document.getElementById("inputDiv");
+    if (input) {
+      input.focus();
     }
   };
 
   return (
-    <div className={classes.container}>
-      {client.id && (
-        <div className={classes.wrapper} onClick={focusInput}>
-          <InputRecord
-            words={state.words}
-            isWrong={state.isWrong}
-            socket={socket}
-            wordsComplete={state.wordsComplete}
-            wordsRemaining={state.wordsRemaining}
-            room={room}
-            client={client}
-            gameboard={gameboard}
-            editorUpdate={updateState}
-          />
-        </div>
-      )}
-      {client.id && (
-        <div className={classes.wrapper} onClick={focusInput}>
-          <InputPrompt
-            gameboard={gameboard}
-            wordsRemaining={state.wordsRemaining}
-          />
-        </div>
-      )}
+    <div className={classes.container} onClick={focusInput}>
+      <div
+        id="inputDiv"
+        className={classes.input}
+        tabIndex="1"
+        contentEditable="true"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        onInput={e => inputDidUpdate(e)}
+      />
     </div>
   );
 };
@@ -84,10 +41,12 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    margin: 0, //"0px 10px 0px 10px",
+    margin: 0,
     display: "flex",
     position: "relative",
-    overflow: " hidden",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
     maxWidth: "650px",
     minWidth: "450px",
     height: "110px",
@@ -99,11 +58,18 @@ const styles = theme => ({
     transition: "background-color 0.5s",
     boxShadow: "0px -5px 25px 0px rgba(50,50,93,.15) inset"
   },
-  wrapper: {
+  input: {
     display: "inline-block",
-    width: "50%",
-    height: "100%",
-    overflow: "hidden"
+    lineHeight: "40px",
+    whiteSpace: "nowrap",
+    outline: "none",
+    color: props => (props.isWrong ? "#da552f" : "#24b47e"),
+    textShadow: "0px 0px .5px rgba(50,50,93,.25)",
+    caretColor: "#0d2b3e",
+    fontSize: "30px",
+    fontWeight: "400",
+    paddingLeft: "5px",
+    verticalAlign: "middle"
   }
 });
 

@@ -26,11 +26,7 @@ class ErrorBoundary extends React.Component {
             <h1>An error? But how...</h1>
             <h3>Let us know.</h3>
             <Button
-              boxShadow="0 5px 20px rgba(35,35,80,.25)"
-              backgroundColor="#555abf"
               margin="0 auto 0 60px"
-              color="#fff"
-              borderColor={theme.divider}
               onClick={() =>
                 (window.location.href = "http://typer-io-web.s3-website-us-west-1.amazonaws.com/")
               }

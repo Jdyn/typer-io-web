@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Divider from "../../reusable/Divider";
 import Button from "../../reusable/Button";
 
 const propTypes = {
@@ -22,14 +21,11 @@ const ProfileHeader = props => {
     }
   };
 
-  useEffect(
-    () => {
-      if (name !== username) {
-        updateClient({ username: name });
-      }
-    },
-    [name]
-  );
+  useEffect(() => {
+    if (name !== username) {
+      updateClient({ username: name });
+    }
+  }, [name]);
 
   return (
     <div className={classes.container}>
@@ -42,16 +38,7 @@ const ProfileHeader = props => {
           onChange={e => setName(e.target.value)}
           placeholder="username"
         />
-        <Divider />
-        <Button
-          type="submit"
-          backgroundColor={theme.primaryWhite}
-          width="65%"
-          margin="5px auto 0px auto"
-          color="#6772e5"
-          activeColor={"#6772e580"}
-          borderColor={theme.divider}
-        >
+        <Button secondary noShadow width="65%" margin="5px auto 0px auto">
           Set
         </Button>
       </form>

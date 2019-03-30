@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider } from "react-jss";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
+import ErrorBoundary from "../containers/ErrorBoundary";
 import Baseline from "../components/Baseline";
 import Router from "../components/Router";
 import * as Sentry from "@sentry/browser";
@@ -20,7 +21,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 class App extends React.Component {
-  
   componentWillMount() {
     const token = localStorage.getItem("token");
     const localUsername = localStorage.getItem("username");
@@ -39,7 +39,9 @@ class App extends React.Component {
       <>
         <ThemeProvider theme={theme.light}>
           <Baseline>
-            <Router />
+            <ErrorBoundary>
+              <Router />
+            </ErrorBoundary>
           </Baseline>
         </ThemeProvider>
       </>

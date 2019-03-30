@@ -69,7 +69,7 @@ const styles = theme => ({
     border: "none",
     height: "42px",
     borderRadius: 4,
-    boxShadow: `0px 0px 0px 1.5px ${theme.divider}`,
+    boxShadow: `0px 0px 0px 1.5px ${theme.grey}`,
     fontSize: 18,
     outline: "none"
   })

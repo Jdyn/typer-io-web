@@ -82,7 +82,7 @@ const MatchSettings = props => {
             color={theme.primaryWhite}
             activeColor={"#fafafa80"}
             boxShadow="0 5px 20px rgba(35,35,80,.25)"
-            borderColor={theme.divider}
+            borderColor={theme.grey}
           >
             start
           </Button>

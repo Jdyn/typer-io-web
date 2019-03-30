@@ -16,51 +16,34 @@ const propTypes = {
    */
   margin: PropTypes.string,
   /**
-   * Defines the `font-size` style property.
+   * Defines the `width` style property.
    */
-  fontSize: PropTypes.number,
-  /**
-   * Defines the `font-weight` style property.
-   */
-  fontWeight: PropTypes.number,
-  /**
-   * Defines the `color` style property.
-   */
-  color: PropTypes.string
+  width: PropTypes.string
 };
 
-const Button = ({ children, classes, onClick }) => (
-  <button onClick={onClick} className={classes.button}>
-    {children}
+const Button = props => (
+  <button
+    onClick={props.onClick}
+    className={props.secondary ? props.classes.secondary : props.classes.primary}
+  >
+    {props.children}
   </button>
 );
 
 Button.propTypes = propTypes;
 Button.defaultProps = {
   margin: "0",
-  width: "155px",
-  fontSize: 15,
-  fontWeight: 600,
-  padding: "10px",
-  border: "2px solid",
+  width: "175px"
 };
 
 const styles = theme => ({
-  button: props => ({
-    margin: props.margin,
-    width: props.width,
-    color: props.color,
-    backgroundColor: props.backgroundColor,
-    fontSize: props.fontSize,
-    padding: props.padding,
-    borderColor: theme.divider,
-    boxShadow: props.boxShadow,
+  button: {
     cursor: "pointer",
     outline: "none",
-    fontWeight: 600,
+    fontWeight: 700,
     zIndex: 100,
-    border: props.border,
-    borderRadius: 4,
+    padding: "10px",
+    borderRadius: 8,
     letterSpacing: ".025em",
     textTransform: "uppercase",
     transitionDuration: ".15s",
@@ -68,10 +51,29 @@ const styles = theme => ({
       transform: "translateY(-2px)"
     },
     "&:active": {
-      color: props.activeColor,
       transform: "translateY(2px)"
     }
-  })
+  },
+  primary: {
+    extend: "button",
+    border: `2px solid rgba(0, 0, 0, 0.05)`,
+    backgroundClip: "border-box",
+    backgroundColor: theme.accent,
+    color: theme.white,
+    margin: props => props.margin,
+    width: props => props.width,
+    boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
+  },
+  secondary: {
+    extend: "button",
+    border: `2px solid rgba(0, 0, 0, 0.05)`,
+    backgroundClip: "border-box",
+    backgroundColor: theme.white,
+    color: theme.accent,
+    margin: props => props.margin,
+    width: props => props.width,
+    boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
+  }
 });
 
 export default withStyles(styles)(Button);

@@ -35,7 +35,7 @@ const styles = theme => ({
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
     margin: "0",
-    borderLeft: `2px solid ${theme.divider}`,
+    borderLeft: `2px solid ${theme.grey}`,
     backgroundColor: theme.primaryWhite,
     "&:first-child": {
       border: "none",

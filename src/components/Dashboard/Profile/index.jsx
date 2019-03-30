@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Header from "../../reusable/Header";
+import Button from "../../reusable/Button";
 import ProfileHeader from "./ProfileHeader";
 import Input from "../../reusable/Input";
 import ExitButton from "../../reusable/ExitButton";
@@ -83,12 +84,12 @@ const DashboardProfile = props => {
         return (
           <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
-            <button className={classes.blueButton} onClick={() => changeView(view.SIGNUP)}>
+            <Button noShadow width="65%" margin="5px auto 0 auto" onClick={() => changeView(view.SIGNUP)}>
               sign up
-            </button>
-            <button className={classes.whiteButton} onClick={() => changeView(view.LOGIN)}>
+            </Button>
+            <Button noShadow secondary width="65%" margin="5px auto 0 auto" onClick={() => changeView(view.LOGIN)}>
               log in
-            </button>
+            </Button>
           </div>
         );
       case view.SIGNUP:
@@ -108,9 +109,7 @@ const DashboardProfile = props => {
                   onChange={event => setForm({ ...form, [field]: event.target.value })}
                 />
               ))}
-              <button type="submit" className={classes.blueButton}>
-                {data.type}
-              </button>
+              <Button>{data.type}</Button>
             </form>
           </div>
         );
@@ -148,37 +147,6 @@ const styles = theme => ({
     flexGrow: 1,
     borderRadius: "0px 0px 8px 8px",
     backgroundColor: theme.primaryWhite
-  },
-  button: {
-    cursor: "pointer",
-    outline: "none",
-    fontWeight: 600,
-    borderRadius: 4,
-    letterSpacing: ".025em",
-    textTransform: "uppercase",
-    transitionDuration: ".15s",
-    margin: "5px auto 0 auto",
-    width: "65%",
-    fontSize: 15,
-    padding: "10px",
-    border: "2px solid",
-    borderColor: theme.divider,
-    "&:hover": {
-      transform: "translateY(-2px)"
-    },
-    "&:active": {
-      transform: "translateY(2px)"
-    }
-  },
-  blueButton: {
-    extend: "button",
-    backgroundColor: "#6772e5",
-    color: theme.primaryWhite
-  },
-  whiteButton: {
-    extend: "button",
-    backgroundColor: theme.primaryWhite,
-    color: "#6772e5"
   },
   form: {
     display: "flex",

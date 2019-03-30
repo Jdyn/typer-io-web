@@ -75,6 +75,7 @@ const styles = theme => ({
     },
     "& h2": {
       margin: 0,
+      fontSize: "20px",
       marginBottom: "5px",
       color: "#fff",
       textAlign: "left"

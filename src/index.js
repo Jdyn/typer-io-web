@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store/ConfigureStore";
 import { loadState, saveState } from "./store/LocalStorage";
-import ErrorBoundary from "./containers/ErrorBoundary";
 import App from "./containers/AppContainer";
 import "./styles/global.css";
 
@@ -26,9 +25,7 @@ const app = (
   <>
     <BrowserRouter>
       <Provider store={store}>
-        <ErrorBoundary>
-          <App store={store} />
-        </ErrorBoundary>
+        <App store={store} />
       </Provider>
     </BrowserRouter>
   </>

@@ -2,7 +2,6 @@ import React from "react";
 import * as Sentry from "@sentry/browser";
 import withStyles from "react-jss";
 import CssBaseline from "../components/Baseline";
-// import Header from "../components/Header/index";
 import Button from "../components/reusable/Button";
 
 class ErrorBoundary extends React.Component {
@@ -21,9 +20,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <>
-          {/* <Header /> */}
           <div className={classes.stripe} />
-
           <div className={classes.root}>
             <CssBaseline />
             <h1>An error? But how...</h1>

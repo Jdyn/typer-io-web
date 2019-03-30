@@ -22,16 +22,16 @@ const styles = theme => ({
     "*, *::before, *::after": {
       boxSizing: "inherit"
     },
-    body: {
+    "body, button": {
       margin: 0,
       backgroundColor: theme.primaryWhite,
       fontSize: "100%",
-      fontFamily: ["Open Sans", "Segoe UI", "sans-serif"],
-      fontWeight: 400,
+      fontDisplay: "auto",
+      fontFamily: ["Museo Sans Rounded", "Open Sans", "Segoe UI", "sans-serif"],
+      fontWeight: "normal",
       fontStyle: "normal",
       webkitTextSizeAdjust: "100%",
       textRendering: "optimizeLegibility",
-      fontFeatureSettings: "pnum"
     }
   }
 });

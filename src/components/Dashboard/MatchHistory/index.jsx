@@ -19,7 +19,7 @@ const MatchHistory = props => {
       <div className={classes.wrapper}>
         {matches.length > 0 ? (
           matches.map((match, index) => (
-            <div>{match.title}{" "}{match.wpm}</div>
+            <div key={index} >{match.title}{" "}{match.wpm}</div>
             // <Match key={index} match={match} index={index} deleteMatch={deleteMatch} />
           ))
         ) : (
@@ -44,7 +44,7 @@ const styles = theme => ({
     // zIndex: 100,
     backgroundColor: theme.primaryWhite,
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
-    borderRadius: 8,
+    borderRadius: 10,
     "@media (min-width: 750px)": {
       marginLeft: "auto"
     },
@@ -52,7 +52,8 @@ const styles = theme => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    flexBasis: "400px",
+    width: "100%",
+    flexGrow: 1,
     "& span": {
       textAlign: "center",
       margin: "100px 0",

@@ -43,10 +43,11 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
+    font: "none",
     position: "relative",
     cursor: "pointer",
     margin: "10px 0",
-    fontWeight: 600,
+    fontWeight: 500,
     outline: "none",
     padding: "40px",
     backgroundColor: props.card.color,
@@ -70,13 +71,11 @@ const styles = theme => ({
     "& span": {
       color: "#fff",
       fontSize: "18px",
-      fontWeight: 400,
       textAlign: "left"
     },
     "& h2": {
       margin: 0,
       marginBottom: "5px",
-      fontSize: "20px",
       color: "#fff",
       textAlign: "left"
     }
@@ -84,7 +83,7 @@ const styles = theme => ({
   loader: {
     height: "6px",
     color: "#fff",
-    fontWeight: 600
+    fontWeight: 500
   }
 });
 

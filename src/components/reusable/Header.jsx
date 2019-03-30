@@ -58,7 +58,7 @@ const styles = {
     color: "#fff",
     backgroundColor: "#555abf",
     boxShadow: "0 5px 20px rgba(35,35,80,.25)",
-    borderRadius: "8px 8px 0px 0px"
+    borderRadius: "10px 10px 0px 0px"
   }
 };
 

@@ -32,7 +32,7 @@ const Dashboard = props => {
 
   return (
     <>
-      <div className={classes.stripe} />
+      {/* <div className={classes.stripe} /> */}
       <div className={classes.root}>
         <MatchHistory matches={matches} deleteMatch={deleteMatch} />
         <DashboardProfile

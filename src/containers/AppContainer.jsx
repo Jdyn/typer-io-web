@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import Router from "../components/Router";
-// import Header from "../components/Header/index";
+import React from "react";
+import { ThemeProvider } from "react-jss";
 import { authenticate } from "../actions/SessionActions";
 import { updateClient } from "../actions/ClientActions";
-// import Footer from "../components/Footer/Footer";
+import Baseline from "../components/Baseline";
+import Router from "../components/Router";
 import * as Sentry from "@sentry/browser";
+import theme from "../lib/theme";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -18,7 +19,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-class App extends Component {
+class App extends React.Component {
+  
   componentWillMount() {
     const token = localStorage.getItem("token");
     const localUsername = localStorage.getItem("username");
@@ -35,9 +37,11 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* <Header /> */}
-        <Router />
-        {/* <Footer /> */}
+        <ThemeProvider theme={theme.light}>
+          <Baseline>
+            <Router />
+          </Baseline>
+        </ThemeProvider>
       </>
     );
   }

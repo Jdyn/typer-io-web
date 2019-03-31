@@ -55,9 +55,8 @@ const styles = theme => ({
     position: "relative",
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
-    gridGap: "15px",
+    gridGap: "30px",
     marginTop: "95px",
-    // overflow: "hidden",
     margin: "0 auto",
     maxWidth: "350px",
     padding: "15px",
@@ -69,7 +68,6 @@ const styles = theme => ({
     "@media (min-width: 600px)": {
       gridTemplateColumns: "1fr 275px",
       gridTemplateRows: "1fr 1fr",
-      // padding: "20px 60px 115px 60px",
       maxWidth: "750px",
       gridTemplateAreas: `
       'matchHistory profile'
@@ -78,7 +76,7 @@ const styles = theme => ({
     },
     "@media (min-width: 1130px)": {
       gridTemplateColumns: "400px 275px 1fr",
-      gridTemplateRows: "1fr",
+      gridTemplateRows: "455px",
       // padding: "20px 60px 115px 60px",
       maxWidth: "1085px",
       gridTemplateAreas: `

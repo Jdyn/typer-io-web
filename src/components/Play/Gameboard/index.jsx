@@ -8,9 +8,6 @@ const Gameboard = props => {
   const { classes, gameboard, client, room, clientIndex } = props;
   const currentClient = room.clients.filter(object => object.id === client.id)[0];
 
-
-
-
   const transform = words => {
     var res = [];
     words.forEach((word, index) =>
@@ -47,8 +44,7 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     margin: "0 30px 15px 30px",
-    gridRow: "2 / 4",
-    gridColumn: "2 / 3"
+    gridArea: "gameboard"
   },
   inner: {
     display: "flex",

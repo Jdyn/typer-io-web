@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientList from "../components/Play/ClientList";
 import Gameboard from "../components/Play/Gameboard";
-import Editor from "../components/Play/Editor";
-import PlayStatus from "../components/Play/Status";
-import Leaderboard from "../components/Play/Leaderboard";
+import Editor from "./Play/Editor";
+import PlayStatus from "./Play/Status";
+import Leaderboard from "./Play/Leaderboard";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

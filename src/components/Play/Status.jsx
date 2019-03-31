@@ -101,8 +101,7 @@ PlayStatus.propTypes = propTypes;
 const styles = theme => ({
   container: {
     position: "relative",
-    gridRow: "2 / 3",
-    gridColumn: "1 / 2",
+    gridArea: "status",
     marginBottom: "30px"
   },
   inner: {

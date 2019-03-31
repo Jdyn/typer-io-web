@@ -32,8 +32,6 @@ const Play = props => {
     classes
   } = props;
 
-  const [clientIndex, setClientIndex] = useState(null);
-
   const gamePiece = room.clients[0]
     ? room.clients.filter(object => object.id === client.id)[0].gamePiece
     : {};
@@ -56,12 +54,12 @@ const Play = props => {
 
   return (
     <>
-      {/* <div className={classes.stripe} /> */}
+      <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
-        <Gameboard clientIndex={clientIndex} client={client} room={room} gameboard={gameboard} />
+        <Gameboard client={client} room={room} gameboard={gameboard} />
         <Editor client={client} inputDidUpdate={inputDidUpdate} />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
       </div>
@@ -75,8 +73,13 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "265px auto 265px",
-    gridTemplateRows: "min-content min-content auto",
-    // gridGap: "15px",
+    gridTemplateRows: "min-content min-content auto 1fr",
+    gridTemplateAreas: `
+    'clientlist clientlist clientlist'
+    'status gameboard leaderboard'
+    'chat gameboard leaderboard'
+    'chat editor leaderboard'
+    `,
     maxWidth: "1250px",
     flexDirection: "row",
     position: "relative",

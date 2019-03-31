@@ -71,11 +71,13 @@ const styles = theme => ({
     "& span": {
       color: "#fff",
       fontSize: "18px",
+      lineHeight: "20px",
       textAlign: "left"
     },
     "& h2": {
       margin: 0,
       fontSize: "20px",
+      lineHeight: "22px",
       marginBottom: "5px",
       color: "#fff",
       textAlign: "left"

@@ -43,8 +43,7 @@ const styles = theme => ({
     flexDirection: "column",
     margin: "0px 0px 0px 0px",
     position: "relative",
-    gridRow: "2 / 5",
-    gridColumn: "3 / 4",
+    gridArea: "chat",
     marginBottom: "30px"
   },
   inner: {
@@ -52,7 +51,6 @@ const styles = theme => ({
     backgroundColor: theme.white,
     height: "100%",
     flexDirection: "column",
-    // flexGrow: 1,
     zIndex: 150,
     position: "relative",
     borderRadius: "0 0 8px 8px",

@@ -10,9 +10,9 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexGrow: 1,
-    backgroundColor: theme.primaryWhite,
-    boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset",
-    borderRadius: 8,
+    backgroundColor: theme.white,
+    boxShadow: "0px 0px 25px 0px rgba(50,50,93,.3) inset",
+    borderRadius: "0 0 8px 8px",
     zIndex: 150
   }
 });

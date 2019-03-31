@@ -17,14 +17,14 @@ const MatchHistory = props => {
     <div className={classes.container}>
       <Header>Match History</Header>
       <div className={classes.wrapper}>
-        {matches.length > 0 ? (
+        {/* {matches.length > 0 ? (
           matches.map((match, index) => (
             <div key={index} >{match.title}{" "}{match.wpm}</div>
             // <Match key={index} match={match} index={index} deleteMatch={deleteMatch} />
           ))
         ) : (
           <span>Complete a match to make history</span>
-        )}
+        )} */}
       </div>
     </div>
   );
@@ -40,20 +40,19 @@ const styles = theme => ({
     gridArea: "matchHistory",
     width: "100%",
     margin: 0,
-
-    // zIndex: 100,
-    backgroundColor: theme.primaryWhite,
-    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
     borderRadius: 10,
+    backgroundColor: theme.white,
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
     "@media (min-width: 750px)": {
       marginLeft: "auto"
-    },
+    }
   },
   wrapper: {
     display: "flex",
     flexDirection: "column",
     width: "100%",
     flexGrow: 1,
+    borderRadius: 10,
     "& span": {
       textAlign: "center",
       margin: "100px 0",

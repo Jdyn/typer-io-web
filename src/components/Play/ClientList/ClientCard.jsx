@@ -62,7 +62,7 @@ const styles = theme => ({
     overflow: "hidden",
     margin: "5px 5px 5px 5px",
     borderRadius: 4,
-    color: theme.primaryWhite,
+    color: theme.white,
     padding: "5px 10px 5px 10px",
     gridRow: "2 / 3",
     gridColumn: "1 / 4"

@@ -103,7 +103,7 @@ const styles = theme => ({
     position: "relative",
     gridRow: "2 / 3",
     gridColumn: "1 / 2",
-    margin: 0
+    marginBottom: "30px"
   },
   inner: {
     display: "flex",
@@ -111,7 +111,8 @@ const styles = theme => ({
     position: "relative",
     height: "100%",
     fontSize: "18px",
-    boxShadow: "0px 0px 30px rgba(50,50,93,.25)",
+    color: theme.primary,
+    boxShadow: "0px 0px 20px -2px rgba(50,50,93,.4)",
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",
@@ -120,7 +121,6 @@ const styles = theme => ({
     "& h3": {
       margin: 0,
       height: "35px",
-      color: theme.primaryWhite,
       fontWeight: 600
     }
   }

@@ -24,7 +24,7 @@ const styles = theme => ({
     },
     "body, button": {
       margin: 0,
-      backgroundColor: theme.primaryWhite,
+      backgroundColor: theme.primary,
       fontSize: "100%",
       // fontDisplay: "auto",
       fontFamily: ["Museo Sans Rounded", "Open Sans", "Segoe UI", "sans-serif"],

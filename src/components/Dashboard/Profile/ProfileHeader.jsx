@@ -38,7 +38,7 @@ const ProfileHeader = props => {
           onChange={e => setName(e.target.value)}
           placeholder="username"
         />
-        <Button secondary noShadow width="65%" margin="5px auto 0px auto">
+        <Button secondary noShadow width="100%" margin="5px auto 0px auto">
           Set
         </Button>
       </form>
@@ -52,12 +52,12 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    flexBasis: "275px"
+    flexGrow: 1
   },
   input: {
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
-    maxWidth: "165px",
+    width: "100%",
     color: "#8E8D8F",
     margin: "25px auto 0 auto",
     padding: "10px 10px 0px 10px",

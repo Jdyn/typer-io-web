@@ -41,7 +41,7 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    margin: 0,
+    margin: "0 30px 30px 30px",
     display: "flex",
     position: "relative",
     overflow: "hidden",
@@ -49,14 +49,14 @@ const styles = theme => ({
     alignItems: "center",
     maxWidth: "650px",
     minWidth: "450px",
-    height: "110px",
+    height: "120px",
     gridColumn: "2 / 3",
     gridRow: "4 / 5",
     flexDirection: "row",
-    backgroundColor: theme.primaryWhite,
+    backgroundColor: theme.white,
     borderRadius: 8,
     transition: "background-color 0.5s",
-    boxShadow: "0px -5px 25px 0px rgba(50,50,93,.15) inset"
+    boxShadow: "0px -5px 25px -2px rgba(50,50,93,.3) inset"
   },
   input: {
     display: "inline-block",

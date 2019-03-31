@@ -75,19 +75,30 @@ const DashboardProfile = props => {
         return (
           <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
-            <button className={classes.whiteButton} onClick={() => changeView("LOG_OUT")}>
+            <Button secondary noShadow width="95%" onClick={() => changeView("LOG_OUT")}>
               log out
-            </button>
+            </Button>
           </div>
         );
       case view.GUEST:
         return (
           <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
-            <Button noShadow width="65%" margin="5px auto 0 auto" onClick={() => changeView(view.SIGNUP)}>
+            <Button
+              noShadow
+              width="95%"
+              margin="10px 0 0 0"
+              onClick={() => changeView(view.SIGNUP)}
+            >
               sign up
             </Button>
-            <Button noShadow secondary width="65%" margin="5px auto 0 auto" onClick={() => changeView(view.LOGIN)}>
+            <Button
+              noShadow
+              secondary
+              width="95%"
+              margin="10px 0 0 0"
+              onClick={() => changeView(view.LOGIN)}
+            >
               log in
             </Button>
           </div>
@@ -109,7 +120,7 @@ const DashboardProfile = props => {
                   onChange={event => setForm({ ...form, [field]: event.target.value })}
                 />
               ))}
-              <Button>{data.type}</Button>
+              <Button margin="15px 0 0 0" width="100%">{data.type}</Button>
             </form>
           </div>
         );
@@ -136,23 +147,25 @@ const styles = theme => ({
     gridArea: "profile",
     position: "relative",
     margin: 0,
-    zIndex: 10,
+    backgroundColor: theme.white,
     borderRadius: "0px 0px 8px 8px",
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
   },
   wrapper: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     width: "100%",
     flexGrow: 1,
-    borderRadius: "0px 0px 8px 8px",
-    backgroundColor: theme.primaryWhite
+    padding: "30px",
+    borderRadius: "0px 0px 8px 8px"
   },
   form: {
     display: "flex",
     flexDirection: "column",
-    width: "75%",
-    margin: "15px auto 0px auto",
+    alignItems: "center",
+    width: "100%",
+    margin: "15px 0",
     justifyContent: "center"
   }
 });

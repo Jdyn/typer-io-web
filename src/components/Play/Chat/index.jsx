@@ -44,18 +44,19 @@ const styles = theme => ({
     margin: "0px 0px 0px 0px",
     position: "relative",
     gridRow: "2 / 5",
-    gridColumn: "3 / 4"
+    gridColumn: "3 / 4",
+    marginBottom: "30px"
   },
   inner: {
     display: "flex",
-    backgroundColor: theme.primaryWhite,
+    backgroundColor: theme.white,
     height: "100%",
     flexDirection: "column",
     // flexGrow: 1,
     zIndex: 150,
     position: "relative",
-    borderRadius: 8,
-    boxShadow: "0px 5px 25px 0px rgba(50,50,93,.25) inset"
+    borderRadius: "0 0 8px 8px",
+    boxShadow: "0px 0px 25px -2px rgba(50,50,93,.3) inset"
   },
   display: {
     display: "flex",

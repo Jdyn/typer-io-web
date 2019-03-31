@@ -56,7 +56,7 @@ const Play = props => {
 
   return (
     <>
-      <div className={classes.stripe} />
+      {/* <div className={classes.stripe} /> */}
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
@@ -76,11 +76,11 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "265px auto 265px",
     gridTemplateRows: "min-content min-content auto",
-    gridGap: "15px",
-    maxWidth: "1185px",
+    // gridGap: "15px",
+    maxWidth: "1250px",
     flexDirection: "row",
     position: "relative",
-    padding: "10px",
+    padding: "10px 40px",
     margin: "auto",
     height: "100%"
   },

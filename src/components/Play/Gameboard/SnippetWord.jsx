@@ -21,7 +21,7 @@ const styles = theme => ({
     transitionDuration: "0.1s",
     boxShadow: props.isComplete ? "none" : "0px 2px 2px rgba(50,50,93,.25)",
     letterSpacing: "none",
-    backgroundColor: props.isComplete ? "transparent" : theme.primaryGrey,
+    backgroundColor: props.isComplete ? "transparent" : theme.grey,
     borderRadius: "4px"
   })
 });

@@ -57,7 +57,7 @@ const styles = theme => ({
     flexDirection: "row",
     gridRow: "1 / 2",
     gridColumn: "1 / 4",
-    margin: "0 0 0px 0",
+    margin: "0 0 15px 0",
     position: "relative",
     height: "105px",
     // padding: "5px 5px 5px 5px",

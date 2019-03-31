@@ -37,7 +37,7 @@ const styles = {
     flexDirection: "column",
     flexGrow: 1,
     position: "relative",
-    margin: 0, //"10px 10px 10px 10px",
+    margin: "0 0 30px 0",
     gridRow: props.isSolo ? "2 / 5" : "3 / 5",
     gridColumn: props.isSolo ? "3 / 4": "1 / 2"
   })

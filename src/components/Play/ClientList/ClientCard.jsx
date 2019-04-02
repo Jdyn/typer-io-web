@@ -1,6 +1,7 @@
 import React from "react";
 import withStyles from "react-jss";
 import { animated } from "react-spring";
+
 const ClientCard = props => {
   const { client, classes, style } = props;
   const { gamePiece } = client;
@@ -36,7 +37,7 @@ const styles = theme => ({
     gridTemplateColumns: "1fr 1fr 1fr",
     margin: "0",
     borderLeft: `2px solid ${theme.grey}`,
-    backgroundColor: theme.primaryWhite,
+    backgroundColor: theme.primary,
     "&:first-child": {
       border: "none",
       borderRadius: "8px 0px 0px 8px"
@@ -58,6 +59,7 @@ const styles = theme => ({
     boxShadow: "0 1px 5px rgba(50,50,93,.25)",
     fontWeight: 600,
     lineHeight: "25px",
+    fontSize: 20,
     height: "35px",
     overflow: "hidden",
     margin: "5px 5px 5px 5px",
@@ -70,7 +72,7 @@ const styles = theme => ({
   wpm: {
     margin: "auto 0px auto auto",
     backgroundColor: "",
-    fontSize: 20,
+    fontSize: 20  ,
     textAlign: "center",
     color: theme.primaryWhite //"#616161"
   },
@@ -84,6 +86,8 @@ const styles = theme => ({
     verticalAlign: "middle",
     color: "#8E8D8F",
     fontWeight: 600,
+    fontSize: 18,
+    padding: "2px",
     height: "50%",
     margin: "5px auto auto auto"
   }

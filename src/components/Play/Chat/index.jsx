@@ -44,7 +44,6 @@ const styles = theme => ({
     margin: "0px 0px 0px 0px",
     position: "relative",
     gridArea: "chat",
-    marginBottom: "30px"
   },
   inner: {
     display: "flex",

@@ -80,10 +80,10 @@ const styles = theme => ({
     'chat gameboard leaderboard'
     'chat editor leaderboard'
     `,
-    maxWidth: "1250px",
+    maxWidth: "1150px",
     flexDirection: "row",
     position: "relative",
-    padding: "10px 40px",
+    padding: "10px 15px",
     margin: "auto",
     height: "100%"
   },

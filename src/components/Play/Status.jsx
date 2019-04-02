@@ -102,7 +102,7 @@ const styles = theme => ({
   container: {
     position: "relative",
     gridArea: "status",
-    marginBottom: "30px"
+    marginBottom: "15px"
   },
   inner: {
     display: "flex",
@@ -115,11 +115,13 @@ const styles = theme => ({
     borderRadius: "8px",
     border: "1px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",
-    padding: "20px 0px",
+    padding: "30px 0px",
     textAlign: "center",
     "& h3": {
       margin: 0,
-      height: "35px",
+      fontSize: 20,
+      height: "25px",
+      lineHeight: "25px",
       fontWeight: 600
     }
   }

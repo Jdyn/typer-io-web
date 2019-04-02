@@ -41,13 +41,13 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
-    margin: "0 30px 30px 30px",
+    margin: "0 15px 0 15px",
     display: "flex",
     position: "relative",
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
-    maxWidth: "650px",
+    // maxWidth: "650px",
     minWidth: "450px",
     height: "120px",
     gridArea: "editor",

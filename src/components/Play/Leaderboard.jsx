@@ -23,7 +23,7 @@ const styles = theme => ({
     flexDirection: "column",
     flexGrow: 1,
     position: "relative",
-    margin: "0 0 30px 0",
+    margin: 0,
     gridArea: "leaderboard"
   }),
   inner: {

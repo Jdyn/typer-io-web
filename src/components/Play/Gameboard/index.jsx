@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import withStyles from "react-jss";
 import Snippet from "./Snippet";
 import SnippetWord from "./SnippetWord";
@@ -43,7 +43,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "0 30px 15px 30px",
+    margin: "0 15px 15px 15px",
     gridArea: "gameboard"
   },
   inner: {

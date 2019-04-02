@@ -1,38 +1,25 @@
 import React, { useState } from "react";
 import withStyles from "react-jss";
-import Snippet from "./Snippet";
-import SnippetWord from "./SnippetWord";
 import Header from "../../reusable/Header";
+import Word from "./Word";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, clientIndex } = props;
-  const currentClient = room.clients.filter(object => object.id === client.id)[0];
-
-  const transform = words => {
-    var res = [];
-    words.forEach((word, index) =>
-      res.push(
-        <SnippetWord
-          key={index}
-          word={word}
-          wordIndex={index}
-          isComplete={currentClient.gamePiece.isComplete || gameboard.isOver}
-        />
-      )
-    );
-    return res;
-  };
+  const { classes, gameboard, client, room, state, setState } = props;
 
   return (
     <div className={classes.container}>
       <Header>Gameboard</Header>
       <div className={classes.inner}>
-        <Snippet
-          words={transform(gameboard.words)}
-          room={room}
-          gamePieceIndex={clientIndex}
-          client={client}
-        />
+        {gameboard.words.map((word, index) => (
+          <Word
+            key={index}
+            {...state}
+            word={word}
+            index={index}
+            isHidden={index > state.currentIndex + 12}
+            isComplete={index < state.currentIndex}
+          />
+        ))}
       </div>
     </div>
   );

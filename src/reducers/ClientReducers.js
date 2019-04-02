@@ -12,7 +12,6 @@ const initialState = {
     roomTime: null,
     gameboard: {
       words: [],
-      gamePieceIndex: null,
       isStarted: false,
       isOver: false,
       text: null,

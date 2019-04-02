@@ -3,35 +3,66 @@ import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
 const propTypes = {
-  classes: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 const Editor = props => {
-  const { classes, client, inputDidUpdate } = props;
+  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord } = props;
+
   useEffect(() => {
     focusInput();
-  }, [client.id]);
+  }, []);
+
+  // Find a fix for adding and removing listener eveery update
+  useEffect(() => {
+    const editor = document.getElementById("input");
+    editor.addEventListener("keydown", keydown, true);
+    return () => {
+      editor.removeEventListener("keydown", keydown, true);
+    };
+  }, [input, currentWord, gameboard.isStarted]);
+
+  const keydown = event => {
+    if (!gameboard.isStarted) {
+      event.preventDefault();
+    }
+
+    // if (input.length >= currentWord.length) {
+    //   event.preventDefault();
+    // }
+
+    if (event.key === " ") {
+      if (input !== currentWord) {
+        event.preventDefault();
+      } else if (input.trim() === currentWord) {
+        event.preventDefault();
+        submitWord();
+        document.getElementById("input").innerText = "";
+      }
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
 
   const focusInput = () => {
-    const input = document.getElementById("inputDiv");
-    if (input) {
-      input.focus();
+    const editor = document.getElementById("input");
+    if (editor) {
+      editor.focus();
     }
   };
 
   return (
-    <div className={classes.container} onClick={focusInput}>
+    <div className={classes.container} onClick={() => focusInput()}>
       <div
-        id="inputDiv"
+        id="input"
         className={classes.input}
-        tabIndex="1"
+        tabIndex="0"
         contentEditable="true"
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
-        onInput={e => inputDidUpdate(e)}
+        onInput={e => inputDidUpdate(e.target.innerText)}
       />
     </div>
   );
@@ -62,7 +93,7 @@ const styles = theme => ({
     lineHeight: "40px",
     whiteSpace: "nowrap",
     outline: "none",
-    color: props => (props.isWrong ? "#da552f" : "#24b47e"),
+    color: "black",
     textShadow: "0px 0px .5px rgba(50,50,93,.25)",
     caretColor: "#0d2b3e",
     fontSize: "30px",

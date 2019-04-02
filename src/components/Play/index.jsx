@@ -20,36 +20,45 @@ const propTypes = {
 };
 
 const Play = props => {
-  const {
-    client,
-    room,
-    snippet,
-    socket,
-    gameboard,
-    leaveRoom,
-    saveMatch,
-    sendChatMessage,
-    classes
-  } = props;
+  const { client, room, socket, gameboard, leaveRoom, saveMatch, sendChatMessage, classes } = props;
 
-  const gamePiece = room.clients[0]
-    ? room.clients.filter(object => object.id === client.id)[0].gamePiece
-    : {};
+  const [state, setState] = useState({
+    input: "",
+    currentWord: "",
+    currentIndex: 0,
+    words: [],
+    wordsComplete: []
+  });
 
+  // When the component unmounts, signal the server that the client is leaving.
   useEffect(() => {
     return () => {
       leaveRoom({ id: room.id, errored: false });
     };
   }, []);
 
+  // Once the quote has loaded, update the gameboard accordingly.
   useEffect(() => {
-    if (gamePiece && gamePiece.isComplete) {
-      saveMatch(gamePiece, snippet);
-    }
-  }, [gamePiece.isComplete]);
+    setState({
+      ...state,
+      currentWord: gameboard.words[0],
+      currentIndex: 0,
+      words: gameboard.words,
+      wordsRemaining: gameboard.wordsRemaining
+    });
+  }, [gameboard.words]);
 
-  const inputDidUpdate = event => {
-    console.log(event.target.innerText);
+  const inputDidUpdate = input => {
+    setState({ ...state, input });
+  };
+
+  const submitWord = () => {
+    setState(prev => ({
+      ...state,
+      input: "",
+      currentIndex: prev.currentIndex + 1,
+      currentWord: prev.words[prev.currentIndex + 1]
+    }));
   };
 
   return (
@@ -59,8 +68,20 @@ const Play = props => {
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
-        <Gameboard client={client} room={room} gameboard={gameboard} />
-        <Editor client={client} inputDidUpdate={inputDidUpdate} />
+        <Gameboard
+          state={state}
+          setState={setState}
+          client={client}
+          room={room}
+          gameboard={gameboard}
+        />
+        <Editor
+          currentWord={state.currentWord}
+          gameboard={gameboard}
+          input={state.input}
+          inputDidUpdate={inputDidUpdate}
+          submitWord={submitWord}
+        />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
       </div>
     </>

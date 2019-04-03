@@ -8,28 +8,15 @@ const propTypes = {
 
 const Editor = props => {
   const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord } = props;
-
+  
   useEffect(() => {
     focusInput();
   }, []);
-
-  // Find a fix for adding and removing listener eveery update
-  useEffect(() => {
-    const editor = document.getElementById("input");
-    editor.addEventListener("keydown", keydown, true);
-    return () => {
-      editor.removeEventListener("keydown", keydown, true);
-    };
-  }, [input, currentWord, gameboard.isStarted]);
 
   const keydown = event => {
     if (!gameboard.isStarted) {
       event.preventDefault();
     }
-
-    // if (input.length >= currentWord.length) {
-    //   event.preventDefault();
-    // }
 
     if (event.key === " ") {
       if (input !== currentWord) {
@@ -53,16 +40,18 @@ const Editor = props => {
 
   return (
     <div className={classes.container} onClick={() => focusInput()}>
-      <div
+      <input
         id="input"
         className={classes.input}
         tabIndex="0"
-        contentEditable="true"
         autoComplete="off"
         autoCorrect="off"
+        maxLength={`${currentWord ? currentWord.length : 524288}`}
         autoCapitalize="off"
         spellCheck="false"
-        onInput={e => inputDidUpdate(e.target.innerText)}
+        value={input}
+        onChange={e => inputDidUpdate(e)}
+        onKeyDown={e => keydown(e)}
       />
     </div>
   );
@@ -92,14 +81,15 @@ const styles = theme => ({
     display: "inline-block",
     lineHeight: "40px",
     whiteSpace: "nowrap",
+    border: "none",
+    textAlign: "center",
     outline: "none",
     color: "black",
     textShadow: "0px 0px .5px rgba(50,50,93,.25)",
     caretColor: "#0d2b3e",
     fontSize: "30px",
     fontWeight: "400",
-    paddingLeft: "5px",
-    verticalAlign: "middle"
+    padding: 0
   }
 });
 

@@ -58,7 +58,8 @@ const styles = theme => ({
   display: {
     display: "flex",
     position: "absolute",
-    height: "87%",
+    height: "80%",
+    zIndex: 50,
     width: "100%",
     flexDirection: "column",
     overflowY: "auto",

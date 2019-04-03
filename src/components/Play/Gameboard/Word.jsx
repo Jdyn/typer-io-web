@@ -7,28 +7,15 @@ const propTypes = {
 };
 
 const Word = props => {
-  const { classes, word, index, currentIndex, currentWord, input, isHidden, isComplete } = props;
+  const { classes, word, index, currentIndex, currentWord, input, wrongIndex, setWrongIndex } = props;
 
   const [splitWord] = useState(word.split(""));
-  const [wrongIndex, set] = useState(null);
-
-  useEffect(() => {
-    set(null);
-  }, [currentWord]);
-
-  useEffect(() => {
-    if (currentWord) {
-      if (input === currentWord.substring(0, input.length)) {
-        set(null);
-      }
-    }
-  }, [input]);
 
   const validateLetter = index => {
     const text = input.split("");
     if (text[index]) {
       if (text[index] === splitWord[index]) {
-        if (wrongIndex) {
+        if (wrongIndex !== null) {
           if (wrongIndex < index) {
             return "#f44336";
           }
@@ -36,7 +23,7 @@ const Word = props => {
         return "#4CAF50";
       } else {
         if (index < wrongIndex || wrongIndex === null) {
-          set(index);
+          setWrongIndex(index);
         }
         return "#f44336";
       }
@@ -58,10 +45,6 @@ const Word = props => {
         </span>
       ))}
     </div>
-  ) : isHidden ? (
-    <span className={classes.word}>{word}</span>
-  ) : isComplete ? (
-    <span className={classes.word}>{word}</span>
   ) : (
     <span className={classes.word}>{word}</span>
   );

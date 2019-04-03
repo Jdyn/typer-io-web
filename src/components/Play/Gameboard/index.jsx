@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import withStyles from "react-jss";
 import Header from "../../reusable/Header";
 import Word from "./Word";
@@ -6,18 +6,34 @@ import Word from "./Word";
 const Gameboard = props => {
   const { classes, gameboard, client, room, state } = props;
 
+  const [wrongIndex, setWrongIndex] = useState(null);
+
+  useEffect(() => {
+    if (state.currentWord) {
+      if (state.input === state.currentWord.substring(0, state.input.length)) {
+        if (wrongIndex !== null) {
+          setWrongIndex(null);
+        }
+      }
+    }
+  }, [state.input]);
+
+  useEffect(() => {
+    setWrongIndex(null);
+  }, [state.currentWord]);
+
   return (
     <div className={classes.container}>
       <Header>Gameboard</Header>
       <div className={classes.inner}>
         {gameboard.words.map((word, index) => (
           <Word
-            key={index}
             {...state}
+            key={index}
             word={word}
             index={index}
-            isHidden={index > state.currentIndex + 12}
-            isComplete={index < state.currentIndex}
+            wrongIndex={wrongIndex}
+            setWrongIndex={setWrongIndex}
           />
         ))}
         {/* {state.wordsRemaining && <div>{state.wordsRemaining.join(" ")}</div>} */}

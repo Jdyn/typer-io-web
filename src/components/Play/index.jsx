@@ -41,7 +41,7 @@ const Play = props => {
   useEffect(() => {
     setState({
       ...state,
-      currentWord: gameboard.words[0],
+      currentWord: gameboard.words[0] || "",
       currentIndex: 0,
       words: gameboard.words,
       wordsRemaining: gameboard.words,
@@ -49,8 +49,8 @@ const Play = props => {
     });
   }, [gameboard.words]);
 
-  const inputDidUpdate = input => {
-    setState({ ...state, input });
+  const inputDidUpdate = event => {
+    setState({ ...state, input: event.target.value });
   };
 
   const submitWord = () => {

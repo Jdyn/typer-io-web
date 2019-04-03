@@ -20,7 +20,6 @@ const Lobby = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(form);
   };
 
   return (

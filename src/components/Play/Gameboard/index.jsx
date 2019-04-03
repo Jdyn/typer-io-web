@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import withStyles from "react-jss";
 import Header from "../../reusable/Header";
 import Word from "./Word";
+import Piece from "./Piece";
 
 const Gameboard = props => {
   const { classes, gameboard, client, room, state } = props;
@@ -26,17 +27,25 @@ const Gameboard = props => {
     <div className={classes.container}>
       <Header>Gameboard</Header>
       <div className={classes.inner}>
-        {gameboard.words.map((word, index) => (
-          <Word
-            {...state}
-            key={index}
-            word={word}
-            index={index}
-            wrongIndex={wrongIndex}
-            setWrongIndex={setWrongIndex}
-          />
+        {gameboard.words.map((word, wordIndex) => (
+          <div className={classes.wrapper}>
+            <Word
+              input={state.input ? state.input.split("") : []}
+              currentIndex={state.currentIndex}
+              key={wordIndex}
+              word={word}
+              index={wordIndex}
+              wrongIndex={wrongIndex}
+              setWrongIndex={setWrongIndex}
+            />
+            {room.clients.map((client, pieceIndex) => {
+              const { position, color } = client.gamePiece;
+              return position === wordIndex ? (
+                <Piece key={pieceIndex} color={color} position={position} />
+              ) : null;
+            })}
+          </div>
         ))}
-        {/* {state.wordsRemaining && <div>{state.wordsRemaining.join(" ")}</div>} */}
       </div>
     </div>
   );
@@ -76,7 +85,13 @@ const styles = theme => ({
       height: "0",
       display: "none"
     }
+  },
+  wrapper: {
+    display: "flex",
+    flexFlow: "row",
+    position: "relative",
+    alignItems: "center"
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(Gameboard);
+export default withStyles(styles)(Gameboard);

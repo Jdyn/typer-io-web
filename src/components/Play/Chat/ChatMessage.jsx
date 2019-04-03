@@ -37,7 +37,7 @@ const styles = theme => ({
     padding: "10px",
     fontSize: "18px",
     wordWrap: "break-word",
-    color: theme.primaryWhite,
+    color: theme.white,
     maxWidth: "75%",
     borderRadius: 8
   }),

@@ -157,6 +157,7 @@ const styles = theme => ({
     alignItems: "center",
     width: "100%",
     flexGrow: 1,
+    zIndex: 100,
     padding: "30px",
     borderRadius: "0px 0px 8px 8px"
   },

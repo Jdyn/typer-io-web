@@ -4,7 +4,7 @@ import Header from "../../reusable/Header";
 import Word from "./Word";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, state, setState } = props;
+  const { classes, gameboard, client, room, state } = props;
 
   return (
     <div className={classes.container}>
@@ -20,6 +20,7 @@ const Gameboard = props => {
             isComplete={index < state.currentIndex}
           />
         ))}
+        {/* {state.wordsRemaining && <div>{state.wordsRemaining.join(" ")}</div>} */}
       </div>
     </div>
   );
@@ -38,7 +39,7 @@ const styles = theme => ({
     flexDirection: "row",
     flexWrap: "wrap",
     alignContent: "flex-start",
-    zIndex: 150,
+    zIndex: 100,
     backgroundColor: theme.white,
     position: "relative",
     height: "325px",

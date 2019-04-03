@@ -56,8 +56,9 @@ const styles = {
     minHeight: "55px",
     fontWeight: 600,
     color: "#fff",
+    zIndex: 150,
     backgroundColor: "#555abf",
-    boxShadow: "0 5px 20px rgba(35,35,80,.25)",
+    boxShadow: "0 5px 20px rgba(35,35,80,.3)",
     borderRadius: "10px 10px 0px 0px"
   }
 };

@@ -32,7 +32,7 @@ const styles = theme => ({
     backgroundColor: theme.white,
     boxShadow: "0px 0px 25px 0px rgba(50,50,93,.3) inset",
     borderRadius: "0 0 8px 8px",
-    zIndex: 150
+    zIndex: 100
   }
 });
 

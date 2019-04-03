@@ -52,6 +52,7 @@ const styles = theme => ({
     flexDirection: "column",
     width: "100%",
     flexGrow: 1,
+    zIndex: 100,
     borderRadius: 10,
     "& span": {
       textAlign: "center",

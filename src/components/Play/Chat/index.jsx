@@ -50,7 +50,7 @@ const styles = theme => ({
     backgroundColor: theme.white,
     height: "100%",
     flexDirection: "column",
-    zIndex: 150,
+    zIndex: 100,
     position: "relative",
     borderRadius: "0 0 8px 8px",
     boxShadow: "0px 0px 25px -2px rgba(50,50,93,.3) inset"

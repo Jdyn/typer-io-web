@@ -30,15 +30,15 @@ const Word = props => {
       if (text[index] === splitWord[index]) {
         if (wrongIndex) {
           if (wrongIndex < index) {
-            return "#e57373";
+            return "#f44336";
           }
         }
-        return "#06a978";
+        return "#4CAF50";
       } else {
         if (index < wrongIndex || wrongIndex === null) {
           set(index);
         }
-        return "#e57373";
+        return "#f44336";
       }
     }
     return "#555abf";
@@ -59,26 +59,28 @@ const Word = props => {
       ))}
     </div>
   ) : isHidden ? (
-    <div className={classes.word}>{word}</div>
+    <span className={classes.word}>{word}</span>
   ) : isComplete ? (
-    <div className={classes.word}>{word}</div>
+    <span className={classes.word}>{word}</span>
   ) : (
-    <div className={classes.word}>{word}</div>
+    <span className={classes.word}>{word}</span>
   );
 };
 
 const styles = theme => ({
   currentWord: props => ({
-    margin: "0 1.5px",
-    fontSize: 24,
+    margin: "1px 1.5px",
+    padding: 0,
+    fontSize: 22,
     borderRadius: 4,
     textDecoration: props.currentIndex === props.index ? "underline" : "none",
     color: props.currentIndex === props.index ? theme.white : "black"
   }),
   word: {
-    margin: "0 1.5px",
+    margin: "1px 1.5px",
     padding: "0 5px 0 5px",
-    fontSize: 24,
+    fontSize: 22,
+    borderRadius: 4,
     userSelect: "none"
   },
   hidden: {
@@ -97,17 +99,16 @@ const styles = theme => ({
     backgroundColor: "#06a978"
   },
   letter: {
-    padding: "1px 0",
     "&:first-child": {
-      padding: "1px 0 1px 5px",
+      paddingLeft: "5px",
       borderRadius: "4px 0 0 4px"
     },
     "&:last-child": {
-      padding: "1px 5px 1px 0",
+      paddingRight: "5px",
       borderRadius: "0 4px 4px 0"
     },
     "&:only-child": {
-      padding: "1px 5px 1px 5px",
+      padding: "0 5px",
       borderRadius: 4
     }
   }

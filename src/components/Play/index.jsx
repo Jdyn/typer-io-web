@@ -44,7 +44,8 @@ const Play = props => {
       currentWord: gameboard.words[0],
       currentIndex: 0,
       words: gameboard.words,
-      wordsRemaining: gameboard.wordsRemaining
+      wordsRemaining: gameboard.words,
+      wordsComplete: []
     });
   }, [gameboard.words]);
 
@@ -53,11 +54,15 @@ const Play = props => {
   };
 
   const submitWord = () => {
+    const temp = [...state.wordsRemaining]
+    temp.shift()
+
     setState(prev => ({
       ...state,
       input: "",
       currentIndex: prev.currentIndex + 1,
-      currentWord: prev.words[prev.currentIndex + 1]
+      currentWord: prev.words[prev.currentIndex + 1],
+      wordsRemaining: temp
     }));
   };
 
@@ -70,7 +75,6 @@ const Play = props => {
         <Leaderboard />
         <Gameboard
           state={state}
-          setState={setState}
           client={client}
           room={room}
           gameboard={gameboard}

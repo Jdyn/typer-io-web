@@ -72,6 +72,7 @@ const styles = theme => ({
     margin: "1px 1.5px",
     padding: 0,
     fontSize: 22,
+    fontFamily: ["Segoe UI"],
     borderRadius: 4,
     textDecoration: props.currentIndex === props.index ? "underline" : "none",
     color: props.currentIndex === props.index ? theme.white : "black"
@@ -79,6 +80,7 @@ const styles = theme => ({
   word: {
     margin: "1px 1.5px",
     padding: "0 5px 0 5px",
+    fontFamily: ["Segoe UI"],
     fontSize: 22,
     borderRadius: 4,
     userSelect: "none"
@@ -99,6 +101,8 @@ const styles = theme => ({
     backgroundColor: "#06a978"
   },
   letter: {
+    paddingTop: "1px",
+    paddingBottom: "1px",
     "&:first-child": {
       paddingLeft: "5px",
       borderRadius: "4px 0 0 4px"

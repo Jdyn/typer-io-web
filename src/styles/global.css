@@ -1,5 +1,12 @@
 @font-face {
   font-family: "Museo Sans Rounded";
+  src: url("../fonts/museosansrounded-300-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Museo Sans Rounded";
   src: url("../fonts/museosansrounded-500-webfont.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;

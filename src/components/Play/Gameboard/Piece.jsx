@@ -10,18 +10,12 @@ const propTypes = {
 const Piece = props => {
   const { classes, position } = props;
 
-  const [index, setIndex] = useState(position);
-
-  useEffect(() => {
-    setIndex(position);
-  }, [position]);
-
   const movement = useSpring({
     marginLeft: position === null ? "0%" : position === 0 ? "110%" : "100%",
     from: {
       marginLeft: "0%"
     },
-    config: { tension: 400, friction: 35, mass: 1 }
+    config: { tension: 200, friction: 40, mass: 1 }
   });
 
   return <animated.div style={movement} className={classes.gamePiece} />;
@@ -31,7 +25,7 @@ const styles = {
   gamePiece: props => ({
     position: "absolute",
     width: "5px",
-    border: "1px solid rgb(0, 0, 0, .5)",
+    border: "0l.5px solid rgb(0, 0, 0, .6)",
     left: props.position === null ? -6 : -2,
     opacity: 1,
     zIndex: 50,

@@ -7,7 +7,7 @@ const propTypes = {
 };
 
 const Editor = props => {
-  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord } = props;
+  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong } = props;
   
   useEffect(() => {
     focusInput();
@@ -60,7 +60,7 @@ const Editor = props => {
 Editor.propTypes = propTypes;
 
 const styles = theme => ({
-  container: {
+  container: props => ({
     margin: "0 15px 0 15px",
     display: "flex",
     position: "relative",
@@ -75,8 +75,16 @@ const styles = theme => ({
     backgroundColor: theme.white,
     borderRadius: 8,
     transition: "background-color 0.5s",
-    boxShadow: "0px -5px 25px -2px rgba(50,50,93,.3) inset"
-  },
+    boxShadow: "0px -5px 25px -2px rgba(50,50,93,.3) inset",
+    "&:after": {
+      content: "''",
+      transitionDuration: "0.2s",
+      position: "absolute",
+      backgroundColor: props.isWrong ? "rgb(244,67,54, 0.3)" : "transparent",
+      width: "100%",
+      height: "100%"
+    }
+  }),
   input: {
     display: "inline-block",
     lineHeight: "40px",

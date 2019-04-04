@@ -5,22 +5,20 @@ import Word from "./Word";
 import Piece from "./Piece";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, state } = props;
-
-  const [wrongIndex, setWrongIndex] = useState(null);
+  const { classes, gameboard, client, room, state, wrongIndex, setEditorState } = props;
 
   useEffect(() => {
     if (state.currentWord) {
-      if (state.input === state.currentWord.substring(0, state.input.length)) {
+      if (state.currentInput === state.currentWord.substring(0, state.currentInput.length)) {
         if (wrongIndex !== null) {
-          setWrongIndex(null);
+          setEditorState(prev => ({ ...prev, wrongIndex: null }));
         }
       }
     }
-  }, [state.input]);
+  }, [state.currentInput]);
 
   useEffect(() => {
-    setWrongIndex(null);
+    setEditorState(prev => ({ ...prev, wrongIndex: null }));
   }, [state.currentWord]);
 
   return (
@@ -30,23 +28,25 @@ const Gameboard = props => {
         {gameboard.words.map((word, wordIndex) => (
           <div key={wordIndex} className={classes.wrapper}>
             <Word
-              input={state.input ? state.input.split("") : []}
+              input={state.currentInput ? state.currentInput.split("") : []}
               currentIndex={state.currentIndex}
               word={word}
               index={wordIndex}
               wrongIndex={wrongIndex}
-              setWrongIndex={setWrongIndex}
+              setEditorState={setEditorState}
             />
-            {room.clients.map((client, pieceIndex) => {
-              const { position, color } = client.gamePiece;
+            {room.clients
+              .filter(object => object.id !== client.id)
+              .map((client, pieceIndex) => {
+                const { position, color } = client.gamePiece;
 
-              if (wordIndex === 0 && position === null)
-                return <Piece key={pieceIndex} color={color} position={position} />;
+                if (wordIndex === 0 && position === null)
+                  return <Piece key={pieceIndex} color={color} position={position} />;
 
-              return position === wordIndex ? (
-                <Piece key={pieceIndex} color={color} position={position} />
-              ) : null;
-            })}
+                return position === wordIndex ? (
+                  <Piece key={pieceIndex} color={color} position={position} />
+                ) : null;
+              })}
           </div>
         ))}
       </div>

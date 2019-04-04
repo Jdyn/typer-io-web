@@ -9,11 +9,11 @@ const propTypes = {
   currentIndex: PropTypes.number,
   input: PropTypes.array.isRequired,
   wrongIndex: PropTypes.number,
-  setWrongIndex: PropTypes.func.isRequired
+  setEditorState: PropTypes.func.isRequired
 };
 
 const Word = props => {
-  const { classes, word, index, currentIndex, input, wrongIndex, setWrongIndex } = props;
+  const { classes, word, index, currentIndex, input, wrongIndex, setEditorState } = props;
 
   const [wordArray] = useState(word.split(""));
 
@@ -28,7 +28,7 @@ const Word = props => {
         return "#4CAF50";
       } else {
         if (index < wrongIndex || wrongIndex === null) {
-          setWrongIndex(index);
+          setEditorState(prev => ({ ...prev, wrongIndex: index }));
         }
         return "#f44336";
       }

@@ -5,6 +5,7 @@ import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
 import Editor from "./Editor";
 import Chat from "./Chat";
+import { silentEmit } from "../../services/socket";
 import PlayStatus from "./Status";
 import Leaderboard from "./Leaderboard";
 
@@ -22,12 +23,19 @@ const propTypes = {
 const Play = props => {
   const { client, room, socket, gameboard, leaveRoom, saveMatch, sendChatMessage, classes } = props;
 
-  const [state, setState] = useState({
-    input: "",
+  const [gameState, setGameState] = useState({
+    currentInput: "",
     currentWord: "",
     currentIndex: 0,
     words: [],
+    wordsRemaining: [],
     wordsComplete: []
+  });
+
+  const [editorState, setEditorState] = useState({
+    wrongIndex: null,
+    entries: 0,
+    errors: 0
   });
 
   // When the component unmounts, signal the server that the client is leaving.
@@ -39,8 +47,8 @@ const Play = props => {
 
   // Once the quote has loaded, update the gameboard accordingly.
   useEffect(() => {
-    setState({
-      ...state,
+    setGameState({
+      ...gameState,
       currentWord: gameboard.words[0] || "",
       currentIndex: 0,
       words: gameboard.words,
@@ -50,19 +58,33 @@ const Play = props => {
   }, [gameboard.words]);
 
   const inputDidUpdate = event => {
-    setState({ ...state, input: event.target.value });
+    setGameState({ ...gameState, currentInput: event.target.value });
   };
 
   const submitWord = () => {
-    const temp = [...state.wordsRemaining]
-    temp.shift()
+    const { wordsRemaining, words, currentIndex } = gameState;
+    const temp = [...wordsRemaining];
+    const removed = temp.shift();
 
-    setState(prev => ({
-      ...state,
-      input: "",
+    // + 1 includes the space key
+    const newEntries = words[currentIndex].length + 1;
+    const newIndex = currentIndex;
+
+    const payload = {
+      entries: newEntries,
+      position: newIndex,
+      errors: 0
+    };
+
+    silentEmit("CLIENT_UPDATE", payload);
+
+    setGameState(prev => ({
+      ...gameState,
+      currentInput: "",
       currentIndex: prev.currentIndex + 1,
       currentWord: prev.words[prev.currentIndex + 1],
-      wordsRemaining: temp
+      wordsRemaining: temp,
+      wordsComplete: [...prev.wordsComplete, removed]
     }));
   };
 
@@ -74,15 +96,18 @@ const Play = props => {
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
         <Gameboard
-          state={state}
+          state={gameState}
           client={client}
           room={room}
+          wrongIndex={editorState.wrongIndex}
           gameboard={gameboard}
+          setEditorState={setEditorState}
         />
         <Editor
-          currentWord={state.currentWord}
+          currentWord={gameState.currentWord}
           gameboard={gameboard}
-          input={state.input}
+          isWrong={editorState.wrongIndex !== null}
+          input={gameState.currentInput}
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />

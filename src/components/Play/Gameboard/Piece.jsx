@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import { useSpring, animated } from "react-spring";
@@ -8,21 +8,23 @@ const propTypes = {
 };
 
 const Piece = props => {
-  const { classes, index } = props;
+  const { classes, position } = props;
+
+  const [index, setIndex] = useState(position);
+
+  useEffect(() => {
+    setIndex(position);
+  }, [position]);
 
   const movement = useSpring({
-    marginLeft: "100%",
+    marginLeft: position === null ? "0%" : position === 0 ? "110%" : "100%",
     from: {
       marginLeft: "0%"
-    },  
-    config: {tension: 400, friction: 35, mass: 1}
+    },
+    config: { tension: 400, friction: 35, mass: 1 }
   });
 
-  return index === null ? (
-    <div className={classes.gamePiece} />
-  ) : (
-    <animated.div style={movement} className={classes.gamePiece} />
-  );
+  return <animated.div style={movement} className={classes.gamePiece} />;
 };
 
 const styles = {
@@ -30,14 +32,13 @@ const styles = {
     position: "absolute",
     width: "5px",
     border: "1px solid rgb(0, 0, 0, .5)",
-    left: -2,
-    opacity: 0.8,
-    zIndex: 25,
+    left: props.position === null ? -6 : -2,
+    opacity: 1,
+    zIndex: 50,
     boxShadow: "0 0 1px rgb(0, 0, 0, .5)",
     height: "90%",
     backgroundColor: props.color,
-    borderRadius: 2,
-
+    borderRadius: 2
   })
 };
 

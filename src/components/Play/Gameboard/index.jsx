@@ -28,11 +28,10 @@ const Gameboard = props => {
       <Header>Gameboard</Header>
       <div className={classes.inner}>
         {gameboard.words.map((word, wordIndex) => (
-          <div className={classes.wrapper}>
+          <div key={wordIndex} className={classes.wrapper}>
             <Word
               input={state.input ? state.input.split("") : []}
               currentIndex={state.currentIndex}
-              key={wordIndex}
               word={word}
               index={wordIndex}
               wrongIndex={wrongIndex}
@@ -40,6 +39,10 @@ const Gameboard = props => {
             />
             {room.clients.map((client, pieceIndex) => {
               const { position, color } = client.gamePiece;
+
+              if (wordIndex === 0 && position === null)
+                return <Piece key={pieceIndex} color={color} position={position} />;
+
               return position === wordIndex ? (
                 <Piece key={pieceIndex} color={color} position={position} />
               ) : null;
@@ -70,6 +73,7 @@ const styles = theme => ({
     height: "325px",
     maxHeight: "325px",
     padding: "20px",
+    fontWeight: 400,
     borderRadius: "0 0 10px 10px",
     boxShadow: "0px 5px 25px -2px rgba(50,50,93,.3) inset",
     overflowY: "auto",

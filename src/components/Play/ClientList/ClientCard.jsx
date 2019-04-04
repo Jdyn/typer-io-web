@@ -84,7 +84,7 @@ const styles = theme => ({
     flexDirection: "column",
     textAlign: "center",
     verticalAlign: "middle",
-    color: "#8E8D8F",
+    color: theme.color,
     fontWeight: 600,
     fontSize: 18,
     padding: "2px",

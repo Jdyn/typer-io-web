@@ -3,7 +3,7 @@ import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
-import Header from "../../reusable/Header";
+import Banner from "../../reusable/Banner";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -17,7 +17,7 @@ const Chat = props => {
 
   return (
     <div className={classes.container}>
-      <Header>Chat</Header>
+      <Banner>Chat</Banner>
       <div className={classes.inner}>
         <div id="chat" className={classes.display}>
           {room.messages.map((message, index) => (
@@ -53,7 +53,9 @@ const styles = theme => ({
     zIndex: 100,
     position: "relative",
     borderRadius: "0 0 8px 8px",
-    boxShadow: "0px 0px 25px -2px rgba(50,50,93,.3) inset"
+    border: "2px solid rgb(0,0,0,.1)",
+    borderTop: "none",
+    boxShadow: "0px -5px 25px 0px rgba(30,30,73,.3) inset",
   },
   display: {
     display: "flex",

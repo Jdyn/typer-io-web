@@ -41,26 +41,37 @@ const propTypes = {
   styles: PropTypes.object
 };
 
-const Header = ({ children, classes }) => <h2 className={classes.header}>{children}</h2>;
+const Banner = ({ children, classes }) => (
+  <div className={classes.container}>
+    <h2>{children}</h2>
+  </div>
+);
 
-Header.propTypes = propTypes;
+Banner.propTypes = propTypes;
 
 const styles = {
-  header: {
+  container: {
     display: "flex",
     alignItems: "center",
     padding: "10px",
     margin: 0,
     boxSizing: "border-box",
-    fontSize: "24px",
-    minHeight: "55px",
-    fontWeight: 600,
-    color: "#fff",
+    minHeight: "60px",
     zIndex: 150,
+    border: "3px solid rgb(0, 0, 0, .1)",
     backgroundColor: "#555abf",
-    boxShadow: "0 5px 20px rgba(35,35,80,.3)",
-    borderRadius: "10px 10px 0px 0px"
+    boxShadow: "0 5px 5px 0px rgba(35,35,80,.3)",
+    borderRadius: "10px 10px 0px 0px",
+    "& h2": {
+      fontSize: 26,
+      display: "Flex",
+      fontWeight: 600,
+      alignItems: "center",
+      margin: 0,
+      color: "#fff",
+      textAlign: "center"
+    }
   }
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(Banner);

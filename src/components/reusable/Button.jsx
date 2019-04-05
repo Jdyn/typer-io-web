@@ -56,7 +56,7 @@ const styles = theme => ({
   },
   primary: {
     extend: "button",
-    border: `2px solid rgba(0, 0, 0, 0.05)`,
+    border: `3px solid rgba(0, 0, 0, 0.1)`,
     backgroundClip: "border-box",
     backgroundColor: theme.accent,
     color: theme.white,
@@ -66,7 +66,7 @@ const styles = theme => ({
   },
   secondary: {
     extend: "button",
-    border: `2px solid rgba(0, 0, 0, 0.05)`,
+    border: `3px solid rgba(0, 0, 0, 0.1)`,
     backgroundClip: "border-box",
     backgroundColor: theme.white,
     color: theme.accent,

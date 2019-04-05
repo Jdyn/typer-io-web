@@ -113,7 +113,7 @@ const styles = theme => ({
     color: theme.primary,
     boxShadow: "0px 0px 20px -2px rgba(50,50,93,.4)",
     borderRadius: "8px",
-    border: "1px solid rgba(0,0,0,.1)",
+    border: "3px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",
     padding: "30px 0px",
     textAlign: "center",

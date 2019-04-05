@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import withStyles from "react-jss";
-import Header from "../../reusable/Header";
+import Banner from "../../reusable/Banner";
 import Word from "./Word";
 import Piece from "./Piece";
 
@@ -8,9 +8,9 @@ const Gameboard = props => {
   const { classes, gameboard, client, room, state, wrongIndex, setEditorState } = props;
 
   useEffect(() => {
-    if (state.currentWord) {
-      if (state.currentInput === state.currentWord.substring(0, state.currentInput.length)) {
-        if (wrongIndex !== null) {
+    if (wrongIndex !== null) {
+      if (state.currentWord) {
+        if (state.currentInput === state.currentWord.substring(0, state.currentInput.length)) {
           setEditorState(prev => ({ ...prev, wrongIndex: null }));
         }
       }
@@ -23,7 +23,7 @@ const Gameboard = props => {
 
   return (
     <div className={classes.container}>
-      <Header>Gameboard</Header>
+      <Banner>Gameboard</Banner>
       <div className={classes.inner}>
         {gameboard.words.map((word, wordIndex) => (
           <div key={wordIndex} className={classes.wrapper}>
@@ -70,12 +70,14 @@ const styles = theme => ({
     zIndex: 100,
     backgroundColor: theme.white,
     position: "relative",
-    height: "325px",
+    height: "300px",
     maxHeight: "325px",
     padding: "20px",
     fontWeight: 400,
+    // border: "2px solid rgb(0,0,0,.1)",
+    borderTop: "none",
     borderRadius: "0 0 10px 10px",
-    boxShadow: "0px 5px 25px -2px rgba(50,50,93,.3) inset",
+    boxShadow: "0px 5px 25px 0px rgba(30,30,73,.3) inset",
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "10px",

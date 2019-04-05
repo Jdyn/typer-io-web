@@ -26,7 +26,7 @@ const styles = theme => ({
       margin: 0,
       backgroundColor: theme.primary,
       fontSize: "100%",
-      fontDisplay: "block",
+      fontDisplay: "auto",
       fontFamily: ["Museo Sans Rounded", "Segoe UI", "sans-serif"],
       fontWeight: "normal",
       fontStyle: "normal",

@@ -10,20 +10,20 @@ const propTypes = {
 };
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket } = props;
+  const { classes, initSocket, socket, theme } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
   const cards = [
     {
       title: "Quick Play",
-      text: "Play against other players",
-      color: "#06A978",
+      text: "Play against others",
+      color: theme.accent,
       route: "/play"
     },
     {
       title: "Solo Play",
       text: "Practice on your own",
-      color: "#6772e5",
+      color: "#06A978",
       route: "/"
     },
     {
@@ -90,4 +90,4 @@ const styles = {
   }
 };
 
-export default withStyles(styles)(DashboardMenu);
+export default withStyles(styles, {injectTheme: true})(DashboardMenu);

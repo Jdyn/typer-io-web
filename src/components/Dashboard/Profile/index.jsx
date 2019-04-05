@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../../reusable/Header";
+import Banner from "../../reusable/Banner";
 import Button from "../../reusable/Button";
 import ProfileHeader from "./ProfileHeader";
 import Input from "../../reusable/Input";
@@ -132,7 +132,7 @@ const DashboardProfile = props => {
 
   return (
     <div className={classes.container}>
-      <Header>Profile</Header>
+      <Banner>Profile</Banner>
       {renderView(state)}
     </div>
   );
@@ -149,7 +149,6 @@ const styles = theme => ({
     margin: 0,
     backgroundColor: theme.white,
     borderRadius: "0px 0px 8px 8px",
-    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)"
   },
   wrapper: {
     display: "flex",
@@ -159,7 +158,8 @@ const styles = theme => ({
     flexGrow: 1,
     zIndex: 100,
     padding: "30px",
-    borderRadius: "0px 0px 8px 8px"
+    borderRadius: "0px 0px 8px 8px",
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)"
   },
   form: {
     display: "flex",

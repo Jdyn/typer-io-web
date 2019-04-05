@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../reusable/Header";
+import Banner from "../reusable/Banner";
 import Button from "../reusable/Button";
 
 const propTypes = {
@@ -13,7 +13,7 @@ const MatchSettings = props => {
 
   return (
     <div className={classes.container}>
-      <Header>Settings</Header>
+      <Banner>Settings</Banner>
       <form className={classes.form} onSubmit={e => handleSubmit(e)}>
         <h3 className={classes.title}>What will you type?</h3>
         <div>

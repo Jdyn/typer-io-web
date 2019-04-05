@@ -8,10 +8,6 @@ const propTypes = {
 
 const Editor = props => {
   const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong } = props;
-  
-  useEffect(() => {
-    focusInput();
-  }, []);
 
   const keydown = event => {
     if (!gameboard.isStarted) {
@@ -75,12 +71,13 @@ const styles = theme => ({
     backgroundColor: theme.white,
     borderRadius: 8,
     transition: "background-color 0.5s",
-    boxShadow: "0px -5px 25px -2px rgba(50,50,93,.3) inset",
+    boxShadow: "0px -5px 25px 0px rgba(30,30,73,.3) inset",
+    border: "2px solid rgb(0,0,0,.1)",
     "&:after": {
       content: "''",
-      transitionDuration: "0.2s",
+      transitionDuration: "0.1s",
       position: "absolute",
-      backgroundColor: props.isWrong ? "rgb(244,67,54, 0.3)" : "transparent",
+      backgroundColor: props.isWrong ? "rgb(244,67,54, 0.4)" : "transparent",
       width: "100%",
       height: "100%"
     }

@@ -69,6 +69,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     width: "100%",
+    zIndex: 50,
     margin: "0 auto"
   }
 });

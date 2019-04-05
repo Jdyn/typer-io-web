@@ -7,6 +7,7 @@ import Baseline from "../components/Baseline";
 import Router from "../components/Router";
 import * as Sentry from "@sentry/browser";
 import theme from "../lib/theme";
+import Header from "../components/Header";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -40,6 +41,7 @@ class App extends React.Component {
         <ThemeProvider theme={theme.light}>
           <Baseline>
             <ErrorBoundary>
+              <Header />
               <Router />
             </ErrorBoundary>
           </Baseline>

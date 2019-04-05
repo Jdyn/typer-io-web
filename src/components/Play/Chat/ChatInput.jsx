@@ -45,7 +45,7 @@ const styles = {
     height: "45px",
     display: "flex",
     zIndex: 25,
-    margin: "auto 15px 15px 15px"
+    margin: "auto 25px 20px 25px"
   },
   input: {
     position: "relative",
@@ -54,7 +54,7 @@ const styles = {
     lineHeight: "20px",
     border: "none",
     outline: "none",
-    fontSize: "18px",
+    fontSize: 20,
     boxShadow: "0px 0px 10px 0px rgba(50,50,93,.25)",
     padding: "10px",
     borderRadius: 8

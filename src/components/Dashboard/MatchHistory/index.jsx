@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
-import Header from "../../reusable/Header";
+import Banner from "../../reusable/Banner";
 // import Match from "./Match";
 
 const propTypes = {
@@ -15,7 +15,7 @@ const MatchHistory = props => {
 
   return (
     <div className={classes.container}>
-      <Header>Match History</Header>
+      <Banner>Match History</Banner>
       <div className={classes.wrapper}>
         {/* {matches.length > 0 ? (
           matches.map((match, index) => (
@@ -42,7 +42,7 @@ const styles = theme => ({
     margin: 0,
     borderRadius: 10,
     backgroundColor: theme.white,
-    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3)",
+    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)",
     "@media (min-width: 750px)": {
       marginLeft: "auto"
     }
@@ -52,7 +52,7 @@ const styles = theme => ({
     flexDirection: "column",
     width: "100%",
     flexGrow: 1,
-    zIndex: 100,
+    zIndex: 101,
     borderRadius: 10,
     "& span": {
       textAlign: "center",

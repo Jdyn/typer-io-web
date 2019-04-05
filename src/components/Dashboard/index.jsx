@@ -32,7 +32,7 @@ const Dashboard = props => {
 
   return (
     <>
-      {/* <div className={classes.stripe} /> */}
+      <div className={classes.stripe} />
       <div className={classes.root}>
         <MatchHistory matches={matches} deleteMatch={deleteMatch} />
         <DashboardProfile
@@ -56,10 +56,10 @@ const styles = theme => ({
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "15px",
-    marginTop: "95px",
-    margin: "0 auto",
+    margin: "95px auto",
     maxWidth: "350px",
     padding: "15px",
+    zIndex: 100,
     gridTemplateAreas: `
     'matchHistory'
     'profile'
@@ -88,13 +88,13 @@ const styles = theme => ({
     zIndex: -1,
     width: "100%",
     height: "95%",
-    top: -10,
+    top: 0,
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
-    backgroundColor: theme.tertiaryWhite,
+    backgroundColor: theme.tertiary,
     position: "absolute"
   }
 });

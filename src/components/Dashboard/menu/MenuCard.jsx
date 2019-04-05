@@ -51,7 +51,7 @@ const styles = theme => ({
     outline: "none",
     padding: "40px",
     backgroundColor: props.card.color,
-    border: "1px solid rgba(0,0,0,.1)",
+    border: "3px solid rgba(0,0,0,.1)",
     borderRadius: 8,
     transitionDuration: ".15s",
     boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
@@ -70,13 +70,15 @@ const styles = theme => ({
     },
     "& span": {
       color: "#fff",
-      fontSize: "18px",
+      fontSize: 20,
+      fontWeight: 500,
       lineHeight: "20px",
       textAlign: "left"
     },
     "& h2": {
       margin: 0,
-      fontSize: "20px",
+      fontSize: 22,
+      fontWeight: 700,
       lineHeight: "22px",
       marginBottom: "5px",
       color: "#fff",

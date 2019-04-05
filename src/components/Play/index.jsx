@@ -134,11 +134,11 @@ const styles = theme => ({
     flexDirection: "row",
     position: "relative",
     padding: "10px 15px",
-    margin: "auto",
+    margin: "50px auto",
     height: "100%"
   },
   stripe: {
-    zIndex: 0,
+    zIndex: -1,
     width: "100%",
     height: "95%",
     overflow: "hidden",
@@ -146,7 +146,7 @@ const styles = theme => ({
     transform: "skewY(-12deg)",
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
-    backgroundColor: theme.tertiaryWhite,
+    backgroundColor: theme.tertiary,
     position: "absolute"
   }
 });

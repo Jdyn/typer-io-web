@@ -55,7 +55,7 @@ const styles = theme => ({
     borderRadius: "0 0 8px 8px",
     border: "2px solid rgb(0,0,0,.1)",
     borderTop: "none",
-    boxShadow: "0px -5px 25px 0px rgba(30,30,73,.3) inset",
+    boxShadow: "0px -5px 15px 0px rgba(30,30,73,.3) inset",
   },
   display: {
     display: "flex",

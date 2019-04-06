@@ -57,13 +57,12 @@ Editor.propTypes = propTypes;
 
 const styles = theme => ({
   container: props => ({
-    margin: "0 15px 0 15px",
+    margin: "0 20px",
     display: "flex",
     position: "relative",
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
-    // maxWidth: "650px",
     minWidth: "450px",
     height: "120px",
     gridArea: "editor",
@@ -71,7 +70,7 @@ const styles = theme => ({
     backgroundColor: theme.white,
     borderRadius: 8,
     transition: "background-color 0.5s",
-    boxShadow: "0px -5px 25px 0px rgba(30,30,73,.3) inset",
+    boxShadow: "0px -5px 15px 0px rgba(30,30,73,.3) inset",
     border: "2px solid rgb(0,0,0,.1)",
     "&:after": {
       content: "''",

@@ -58,7 +58,7 @@ const styles = theme => ({
     gridArea: "clientlist",
     marginBottom: "15px",
     position: "relative",
-    height: "105px",
+    height: "115px",
     backgroundClip: "padding-box",
     // border: "1px solid rgba(0,0,0,.05)",
     // boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",

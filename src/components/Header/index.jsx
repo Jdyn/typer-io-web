@@ -52,7 +52,8 @@ const styles = theme => ({
     margin: "0 15px",
     "& a": {
       color: theme.white,
-      textDecoration: "none"
+      textDecoration: "none",
+      // fontFamily: "DIN Next Rounded"
     }
   },
   nav: {

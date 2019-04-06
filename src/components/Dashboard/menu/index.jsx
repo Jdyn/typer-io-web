@@ -17,7 +17,7 @@ const DashboardMenu = props => {
     {
       title: "Quick Play",
       text: "Play against others",
-      color: theme.accent,
+      color: "#1c91ff",
       route: "/play"
     },
     {

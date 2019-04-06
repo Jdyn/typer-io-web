@@ -30,7 +30,7 @@ const styles = theme => ({
     display: "flex",
     flexGrow: 1,
     backgroundColor: theme.white,
-    boxShadow: "0px 0px 25px 0px rgba(30,30,73,.3) inset",
+    boxShadow: "0px -5px 15px 0px rgba(30,30,73,.3) inset",
     borderRadius: "0 0 8px 8px",
     border: "2px solid rgb(0,0,0,.1)",
     borderTop: "none",

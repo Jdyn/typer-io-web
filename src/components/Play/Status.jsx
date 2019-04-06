@@ -33,7 +33,7 @@ const PlayStatus = props => {
       if (time > 10) {
         return gameboard.isStarted
           ? { color: "#81C784", text: "GO!" }
-          : { color: "#469cd0", text: "Looking for Players..." };
+          : { color: "#1c91ff", text: "Looking for Players..." };
       } else if (time > 5) {
         return gameboard.isStarted
           ? { color: "#e5a03e", text: "GO!" }
@@ -45,7 +45,7 @@ const PlayStatus = props => {
       } else {
         return gameboard.isStarted
           ? { color: "#81C784", text: "GO!" }
-          : { color: "#469cd0", text: "Looking for Players..." };
+          : { color: "#1c91ff", text: "Looking for Players..." };
       }
     } else if (gameboard.isOver) {
       return { color: "#555abf", text: "Game has Ended" };
@@ -111,7 +111,7 @@ const styles = theme => ({
     height: "100%",
     fontSize: "18px",
     color: theme.primary,
-    boxShadow: "0px 0px 20px -2px rgba(50,50,93,.4)",
+    boxShadow: "0px 1px 15px 0px rgba(50,50,93,.4)",
     borderRadius: "8px",
     border: "3px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",

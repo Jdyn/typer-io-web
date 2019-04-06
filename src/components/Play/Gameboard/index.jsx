@@ -59,7 +59,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "0 15px 15px 15px",
+    margin: "0 20px 15px 20px",
     gridArea: "gameboard"
   },
   inner: {
@@ -70,14 +70,14 @@ const styles = theme => ({
     zIndex: 100,
     backgroundColor: theme.white,
     position: "relative",
-    height: "300px",
+    height: "350px",
     maxHeight: "325px",
     padding: "20px",
     fontWeight: 400,
-    // border: "2px solid rgb(0,0,0,.1)",
+    border: "2px solid rgb(0,0,0,.1)",
     borderTop: "none",
     borderRadius: "0 0 10px 10px",
-    boxShadow: "0px 5px 25px 0px rgba(30,30,73,.3) inset",
+    boxShadow: "0px 5px 15px 0px rgba(30,30,73,.3) inset",
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "10px",

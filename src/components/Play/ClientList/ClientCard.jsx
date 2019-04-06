@@ -36,19 +36,23 @@ const styles = theme => ({
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
     margin: "0",
-    borderLeft: `2px solid ${theme.grey}`,
+    position: "relative",
+    zIndex: 50,
+    boxShadow: "0px 1px 10px -1px rgba(50,50,93,.3)",
+    overflow: "hidden",
+    border: `1px solid rgb(0,0,0,0.15)`,
     backgroundColor: theme.primary,
     "&:first-child": {
-      border: "none",
+      // border: "none",
       borderRadius: "8px 0px 0px 8px"
     },
     "&:last-child": {
-      borderRadius: "0px 8px 8px 0px"
+      borderRadius: "0px 8px 8px 0px",
     },
-    maxWidth: "233px",
     "&:only-child": {
       borderRadius: 8
     },
+    maxWidth: "240px",
     width: "25%",
     overflow: "hidden"
   },
@@ -72,12 +76,14 @@ const styles = theme => ({
   wpm: {
     margin: "auto 0px auto auto",
     backgroundColor: "",
-    fontSize: 20  ,
+    fontSize: 20,
     textAlign: "center",
     color: theme.primaryWhite //"#616161"
   },
   statHeader: {
-    fontSize: 12
+    fontSize: 12,
+    letterSpacing: ".8px",
+    fontWeight: 500
   },
   stat: {
     display: "flex",
@@ -89,7 +95,7 @@ const styles = theme => ({
     fontSize: 18,
     padding: "2px",
     height: "50%",
-    margin: "5px auto auto auto"
+    margin: "auto"
   }
 });
 

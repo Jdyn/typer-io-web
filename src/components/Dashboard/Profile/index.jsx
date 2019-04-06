@@ -157,7 +157,7 @@ const styles = theme => ({
     width: "100%",
     flexGrow: 1,
     zIndex: 100,
-    padding: "30px",
+    padding: "40px",
     borderRadius: "0px 0px 8px 8px",
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)"
   },

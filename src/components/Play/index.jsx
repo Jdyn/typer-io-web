@@ -130,11 +130,11 @@ const styles = theme => ({
     'chat gameboard leaderboard'
     'chat editor leaderboard'
     `,
-    maxWidth: "1150px",
+    maxWidth: "1200px",
     flexDirection: "row",
     position: "relative",
     padding: "10px 15px",
-    margin: "50px auto",
+    margin: "30px auto",
     height: "100%"
   },
   stripe: {

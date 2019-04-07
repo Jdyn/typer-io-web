@@ -131,6 +131,7 @@ const styles = theme => ({
     'chat editor leaderboard'
     `,
     maxWidth: "1200px",
+    overflow: "hidden",
     flexDirection: "row",
     position: "relative",
     padding: "10px 15px",

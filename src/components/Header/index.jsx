@@ -33,6 +33,7 @@ const styles = theme => ({
     height: "72px",
     zIndex: 500,
     paddingTop: "3px",
+    overflow: "hidden",
     backgroundColor: theme.accent,
     boxShadow: "0 5px 10px 0px rgba(35,35,80,.4)",
     borderBottom: "3px solid rgb(0,0,0,.1)",

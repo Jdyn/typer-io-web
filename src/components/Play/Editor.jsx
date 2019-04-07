@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
@@ -8,6 +8,8 @@ const propTypes = {
 
 const Editor = props => {
   const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong } = props;
+
+  const [focused, setFocus] = useState(false);
 
   const keydown = event => {
     if (!gameboard.isStarted) {
@@ -49,6 +51,11 @@ const Editor = props => {
         onChange={e => inputDidUpdate(e)}
         onKeyDown={e => keydown(e)}
       />
+      {/* {document.activeElement.id !== "input" ? (
+        gameboard.isStarted ? null : (
+          <div>{gameboard.isStarted ? "" : "click here to type"}</div>
+        )
+      ) : null} */}
     </div>
   );
 };
@@ -66,7 +73,7 @@ const styles = theme => ({
     minWidth: "450px",
     height: "120px",
     gridArea: "editor",
-    flexDirection: "row",
+    flexDirection: "column",
     backgroundColor: theme.white,
     borderRadius: 8,
     transition: "background-color 0.5s",

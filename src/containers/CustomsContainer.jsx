@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lobby from "../components/lobby";
+import Lobby from "../components/Customs/index";
 
-class FriendsContainer extends Component {
+class CustomsContainer extends Component {
   componentWillMount() {}
 
   render() {
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FriendsContainer);
+)(CustomsContainer);

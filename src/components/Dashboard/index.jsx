@@ -24,6 +24,7 @@ const Dashboard = props => {
     session,
     socket,
     matches,
+    history,
     updateClient,
     initSocket,
     deleteMatch,
@@ -41,7 +42,7 @@ const Dashboard = props => {
           client={client}
           session={session}
         />
-        <DashboardMenu initSocket={initSocket} socket={socket} client={client} />
+        <DashboardMenu initSocket={initSocket} socket={socket} client={client} history={history} />
       </div>
     </>
   );
@@ -72,7 +73,7 @@ const styles = theme => ({
       gridTemplateAreas: `
       'matchHistory profile'
       'menu menu'
-      `,
+      `
     },
     "@media (min-width: 1130px)": {
       gridTemplateColumns: "400px 275px 1fr",

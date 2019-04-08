@@ -102,7 +102,8 @@ const styles = theme => ({
   container: {
     position: "relative",
     gridArea: "status",
-    marginBottom: "15px"
+    marginBottom: "15px", 
+    zIndex: 100
   },
   inner: {
     display: "flex",

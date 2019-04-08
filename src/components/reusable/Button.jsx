@@ -42,6 +42,7 @@ const styles = theme => ({
     outline: "none",
     fontWeight: 700,
     zIndex: 100,
+    fontSize: 16,
     padding: "10px",
     borderRadius: 8,
     letterSpacing: ".025em",

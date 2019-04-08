@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket, theme } = props;
+  const { classes, initSocket, socket, history } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
   const cards = [
@@ -47,7 +47,7 @@ const DashboardMenu = props => {
             return initSocket(props.client.username, { mode: "SOLO" });
           case 2:
             setSelectedIndex(index);
-            break;
+            return initSocket(props.client.username, { mode: "CUSTOM" });
           default:
             break;
         }
@@ -90,4 +90,4 @@ const styles = {
   }
 };
 
-export default withStyles(styles, {injectTheme: true})(DashboardMenu);
+export default withStyles(styles)(DashboardMenu);

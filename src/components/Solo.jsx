@@ -17,11 +17,10 @@ const propTypes = {
   socket: PropTypes.object.isRequired,
   initSocket: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
-  sendChatMessage: PropTypes.func.isRequired
 };
 
 const Solo = props => {
-  const { client, room, socket, gameboard, leaveRoom, saveMatch, sendChatMessage, classes } = props;
+  const { client, room, socket, gameboard, leaveRoom, saveMatch, classes } = props;
 
   const [gameState, setGameState] = useState({
     currentInput: "",

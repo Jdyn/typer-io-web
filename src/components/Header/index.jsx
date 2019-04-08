@@ -30,7 +30,7 @@ const Header = props => {
 const styles = theme => ({
   root: {
     position: "relative",
-    height: "72px",
+    height: "75px",
     zIndex: 500,
     paddingTop: "3px",
     overflow: "hidden",

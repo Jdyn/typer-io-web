@@ -52,7 +52,7 @@ const styles = theme => ({
     "&:only-child": {
       borderRadius: 8
     },
-    maxWidth: "240px",
+    maxWidth: "265px",
     width: "25%",
     overflow: "hidden"
   },

@@ -7,37 +7,47 @@ const ClientCard = props => {
   const { gamePiece } = client;
 
   return (
-    <animated.div style={style} className={classes.card}>
-      <div className={classes.username}>
-        {client.username}
-        <div className={classes.wpm}>
-          {gamePiece.wpm} <span className={classes.statHeader}>WPM</span>
+    <animated.div className={classes.container} style={{ width: style.width }}>
+      <animated.div
+        className={classes.card}
+        style={{ transform: style.transform, opacity: style.opacity }}
+      >
+        <div className={classes.username}>
+          {client.username}
+          <div className={classes.wpm}>
+            {gamePiece.wpm} <span className={classes.statHeader}>WPM</span>
+          </div>
         </div>
-      </div>
-      <span className={classes.stat}>
-        <span className={classes.statHeader}>ACCURACY</span>
-        {gamePiece.accuracy}
-      </span>
-      <span className={classes.stat}>
-        <span className={classes.statHeader}>ERRORS</span>
-        {gamePiece.errors}
-      </span>
-      <span className={classes.stat}>
-        <span className={classes.statHeader}>TIME</span>
-        {gamePiece.time}
-      </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>ACCURACY</span>
+          {gamePiece.accuracy}
+        </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>ERRORS</span>
+          {gamePiece.errors}
+        </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>TIME</span>
+          {gamePiece.time}
+        </span>
+      </animated.div>
     </animated.div>
   );
 };
 
 const styles = theme => ({
+  container: {
+    marign: 0,
+    maxWidth: "265px",
+  },
   card: {
     display: "grid",
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
-    margin: "0",
+    margin: 0,
     position: "relative",
     zIndex: 50,
+    height: "100%",
     boxShadow: "0px 1px 10px -1px rgba(50,50,93,.3)",
     overflow: "hidden",
     border: `1px solid rgb(0,0,0,0.15)`,
@@ -47,13 +57,13 @@ const styles = theme => ({
       borderRadius: "8px 0px 0px 8px"
     },
     "&:last-child": {
-      borderRadius: "0px 8px 8px 0px",
+      borderRadius: "0px 8px 8px 0px"
     },
     "&:only-child": {
       borderRadius: 8
     },
     maxWidth: "265px",
-    width: "25%",
+    // width: "25%",
     overflow: "hidden"
   },
   username: props => ({

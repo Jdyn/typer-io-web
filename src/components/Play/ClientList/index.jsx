@@ -1,5 +1,5 @@
 import React from "react";
-import { useTransition } from "react-spring";
+import { useTransition, config } from "react-spring";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientCard from "./ClientCard";
@@ -17,18 +17,19 @@ const ClientList = props => {
     from: {
       opacity: 0,
       overflow: "hidden",
+      width: "0%",
       transform: "translate3d(0, -100%, 0)"
     },
-    enter: {
-      opacity: 1,
-      transform: "translate3d(0, 0%, 0)",
-      width: "100%"
+    enter: item => async (next, cancel) => {
+      await next({ width: room.clients.length > 1 ? "25%" : "100%" });
+      await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
     },
     leave: {
       opacity: 0,
       transform: "translate3d(0, -100%, 0)",
       width: "0%"
-    }
+    },
+    config: config.wobbly
   });
 
   return (
@@ -36,12 +37,7 @@ const ClientList = props => {
       {socket.connected && (
         <div className={classes.inner}>
           {transitions.map(({ item, props, key }) => (
-            <ClientCard
-              style={props}
-              client={item}
-              color={item.gamePiece.color}
-              key={key}
-            />
+            <ClientCard style={props} client={item} color={item.gamePiece.color} key={key} />
           ))}
         </div>
       )}
@@ -69,8 +65,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     width: "100%",
+    justifyContent: "center",
     zIndex: 50,
-    margin: "0 auto"
+    margin: 0//"0 auto"
   }
 });
 

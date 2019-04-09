@@ -28,7 +28,7 @@ const DashboardMenu = props => {
     },
     {
       title: "Friends",
-      text: "Play against your friends",
+      text: "Create a private match",
       color: "#b76ac4",
       route: "/"
     }

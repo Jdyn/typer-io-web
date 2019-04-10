@@ -75,7 +75,7 @@ const DashboardProfile = props => {
         return (
           <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
-            <Button secondary noShadow width="95%" onClick={() => changeView("LOG_OUT")}>
+            <Button secondary noShadow width="70%" onClick={() => changeView("LOG_OUT")}>
               log out
             </Button>
           </div>
@@ -86,7 +86,7 @@ const DashboardProfile = props => {
             <ProfileHeader updateClient={updateClient} username={client.username} />
             <Button
               noShadow
-              width="95%"
+              width="70%"
               margin="10px 0 0 0"
               onClick={() => changeView(view.SIGNUP)}
             >
@@ -95,7 +95,7 @@ const DashboardProfile = props => {
             <Button
               noShadow
               secondary
-              width="95%"
+              width="70%"
               margin="10px 0 0 0"
               onClick={() => changeView(view.LOGIN)}
             >
@@ -157,16 +157,17 @@ const styles = theme => ({
     width: "100%",
     flexGrow: 1,
     zIndex: 100,
-    padding: "40px",
+    paddingBottom: "40px",
     borderRadius: "0px 0px 8px 8px",
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)"
   },
   form: {
     display: "flex",
+    position: "relative",
     flexDirection: "column",
     alignItems: "center",
-    width: "100%",
-    margin: "15px 0",
+    // width: "100%",
+    margin: "15px 40px",
     justifyContent: "center"
   }
 });

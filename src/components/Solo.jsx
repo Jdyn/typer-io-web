@@ -4,7 +4,6 @@ import withStyles from "react-jss";
 import ClientList from "./Play/ClientList";
 import Gameboard from "./Play/Gameboard";
 import Editor from "./Play/Editor";
-import Chat from "./Play/Chat";
 import { silentEmit } from "../services/socket";
 import PlayStatus from "./Play/Status";
 import Leaderboard from "./Play/Leaderboard";
@@ -133,7 +132,7 @@ const styles = theme => ({
     flexDirection: "row",
     position: "relative",
     padding: "10px 15px",
-    margin: "30px auto",
+    margin: "160px auto 30px auto",
     height: "100%"
   },
   stripe: {

@@ -71,7 +71,7 @@ const defaultListeners = dispatch => {
           }
         },
         error: reason,
-        errored: reason === "io server disconnect" ? false : true
+        errored: true // reason === "io server disconnect" ? false : true
       });
     });
 
@@ -81,7 +81,7 @@ const defaultListeners = dispatch => {
         payload: {
           errored: true,
           pending: false,
-          error: payload.error ? payload.error : "Error connecting to server."
+          error: payload.error || "Error connecting to server"
         }
       });
     });

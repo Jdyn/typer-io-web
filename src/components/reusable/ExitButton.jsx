@@ -41,7 +41,7 @@ const styles = {
     height: "32px",
     width: "32px",
     padding: 0,
-    margin: "0 0 0 auto",
+    margin: "15px 15px 15px auto",
     border: "none",
     outline: "none",
     cursor: "pointer",

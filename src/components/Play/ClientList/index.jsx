@@ -21,7 +21,7 @@ const ClientList = props => {
       transform: "translate3d(0, -100%, 0)"
     },
     enter: item => async (next, cancel) => {
-      await next({ width: room.clients.length > 1 ? "25%" : "100%" });
+      await next({ width: room.isSolo ? "100%" : "25%" });
       await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
     },
     leave: {
@@ -37,7 +37,12 @@ const ClientList = props => {
       {socket.connected && (
         <div className={classes.inner}>
           {transitions.map(({ item, props, key }) => (
-            <ClientCard style={props} client={item} color={item.gamePiece.color} key={key} />
+            <ClientCard
+              style={props}
+              client={item}
+              color={item.gamePiece.color || "grey"}
+              key={key}
+            />
           ))}
         </div>
       )}
@@ -67,7 +72,7 @@ const styles = theme => ({
     width: "100%",
     justifyContent: "center",
     zIndex: 50,
-    margin: 0//"0 auto"
+    margin: 0 //"0 auto"
   }
 });
 

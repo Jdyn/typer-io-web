@@ -146,6 +146,7 @@ export default (state = initialState, action) => {
         room: action.room,
         socket: {
           ...state.socket,
+          pending: false,
           connected: false,
           error: action.error ? action.error : state.socket.error,
           errored: action.errored

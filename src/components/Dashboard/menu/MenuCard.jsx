@@ -19,12 +19,12 @@ const MenuCard = props => {
 
       {selectedIndex === index ? (
         socket.pending === true ? (
-          <div className={classes.loader}>LOADING</div>
+          <div className={classes.loader}>Connecting to server...</div>
         ) : (
           <div className={classes.loader}>
             {socket.errored ? (
               <div>
-                Error connecting to server <br /> Try again
+                {socket.error}
               </div>
             ) : (
               "Unexpected Error..."
@@ -88,7 +88,8 @@ const styles = theme => ({
   loader: {
     height: "6px",
     color: "#fff",
-    fontWeight: 500
+    fontWeight: 500,
+    fontSize: 18,
   }
 });
 

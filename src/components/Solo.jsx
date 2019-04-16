@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientList from "./Play/ClientList";
 import Gameboard from "./Play/Gameboard";
-import Editor from "./Play/Editor";
+import Editor from "./Play/Gameboard/Editor";
 import { silentEmit } from "../services/socket";
 import PlayStatus from "./Play/Status";
 import Leaderboard from "./Play/Leaderboard";

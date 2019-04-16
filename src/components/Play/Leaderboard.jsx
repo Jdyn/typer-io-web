@@ -12,7 +12,17 @@ const Leaderboard = props => {
   return (
     <div className={classes.container}>
       <Banner>Leaderboard</Banner>
-      <div className={classes.inner} />
+      <ul className={classes.categories}>
+        <li className={classes.category}>
+          <span>week</span>
+        </li>
+        <li className={classes.category}>
+          <span>month</span>
+        </li>
+        <li className={classes.category}>
+          <span>all time</span>
+        </li>
+      </ul>
     </div>
   );
 };
@@ -23,18 +33,46 @@ const styles = theme => ({
     flexDirection: "column",
     flexGrow: 1,
     position: "relative",
-    margin: 0,
-    gridArea: "leaderboard"
+    gridArea: "leaderboard",
+    boxShadow: "0px 0px 10px 0px rgba(30,30,73,.3)",
+    borderRadius: 16,
+    // height: "425px",
+    padding: "24px",
+    backgroundColor: theme.white
   }),
-  inner: {
+  categories: {
+    display: "flex",
+    position: "relative",
+    margin: 0,
+    padding: 0,
+    marginTop: "15px",
+    marginLeft: "-24px",
+    width: "calc(100% + 48px)"
+  },
+  category: {
     display: "flex",
     flexGrow: 1,
-    backgroundColor: theme.white,
-    boxShadow: "0px -5px 15px 0px rgba(30,30,73,.3) inset",
-    borderRadius: "0 0 8px 8px",
-    border: "2px solid rgb(0,0,0,.1)",
-    borderTop: "none",
-    zIndex: 100
+    justifyContent: "center",
+    textTransform: "uppercase",
+    letterSpacing: ".8px",
+    fontSize: "15px",
+    fontWeight: 700,
+    position: "relative",
+    listStyle: "none",
+    cursor: "pointer",
+    paddingBottom: "10px",
+    color: theme.secondaryColor,
+    borderBottom: "2px solid #e5e5e5",
+    "&:first-child": {
+      paddingLeft: "10px"
+    },
+    "&:last-child": {
+      paddingRight: "10px"
+    },
+    "& span": {
+      display: "flex",
+      justifyContent: "center"
+    }
   }
 });
 

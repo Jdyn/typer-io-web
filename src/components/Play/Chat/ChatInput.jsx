@@ -41,21 +41,22 @@ ChatInput.propTypes = propTypes;
 
 const styles = {
   container: {
-    position: "relative",
-    height: "45px",
     display: "flex",
+    position: "relative",
+    height: "55px",
     zIndex: 25,
-    margin: "auto 25px 20px 25px"
+    marginTop: "15px"
   },
   input: {
     position: "relative",
     height: "100%",
     width: "100%",
     lineHeight: "20px",
-    border: "none",
+    border: "1.5px solid #e5e5e5",
+    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     outline: "none",
-    fontSize: 20,
-    boxShadow: "0px 0px 10px 0px rgba(50,50,93,.25)",
+    fontSize: 18,
+    borderRadius: 16,
     padding: "10px",
     borderRadius: 8
   }

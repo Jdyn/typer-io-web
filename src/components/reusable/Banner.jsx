@@ -49,29 +49,28 @@ const Banner = ({ children, classes }) => (
 
 Banner.propTypes = propTypes;
 
-const styles = {
+const styles = theme => ({
   container: {
     display: "flex",
     alignItems: "center",
-    padding: "10px",
     margin: 0,
+    marginBottom: "15px",
     boxSizing: "border-box",
-    minHeight: "60px",
-    zIndex: 150,
-    border: "3px solid rgb(0, 0, 0, .1)",
-    backgroundColor: "#555abf",
-    boxShadow: "0 5px 5px 0px rgba(35,35,80,.3)",
-    borderRadius: "10px 10px 0px 0px",
+    // border: "2px solid rgb(0, 0, 0, .1)",
+    // padding: "15px",
+    borderRadius: 10,
+    color: theme.color,
+    // backgroundColor: "#555abf",
+    // boxShadow: "0 0px 15px 0px rgba(35,35,80,.3)",
     "& h2": {
-      fontSize: 26,
       display: "Flex",
       fontWeight: 600,
+      fontSize: 24,
       alignItems: "center",
       margin: 0,
-      color: "#fff",
       textAlign: "center"
     }
   }
-};
+});
 
 export default withStyles(styles)(Banner);

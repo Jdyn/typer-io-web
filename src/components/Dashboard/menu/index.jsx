@@ -81,7 +81,8 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    gridArea: "menu"
+    gridArea: "menu",
+    // minWidth: "275px",
   },
   wrapper: {
     display: "flex",

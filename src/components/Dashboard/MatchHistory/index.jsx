@@ -11,20 +11,31 @@ const propTypes = {
 };
 
 const MatchHistory = props => {
-  const { classes, matches } = props;
+  const { classes } = props;
 
   return (
     <div className={classes.container}>
-      <Banner>Match History</Banner>
+      <Banner>News</Banner>
       <div className={classes.wrapper}>
-        {/* {matches.length > 0 ? (
-          matches.map((match, index) => (
-            <div key={index} >{match.title}{" "}{match.wpm}</div>
-            // <Match key={index} match={match} index={index} deleteMatch={deleteMatch} />
-          ))
-        ) : (
-          <span>Complete a match to make history</span>
-        )} */}
+        <h2>Demo Released</h2>
+        <p>
+          Hello, thank you for checking out this early demo. Some features are currently disabled,
+          see below.
+        </p>
+        <h3>
+          <b>Disabled features:</b>
+        </h3>
+        <div className={classes.list}>
+          <ul>
+            <li>Match History</li>
+            <li>Private Matches</li>
+            <li>Discussions</li>
+            <li>Leaderboards</li>
+          </ul>
+          <ul>
+            <li>Accounts</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
@@ -38,8 +49,8 @@ const styles = theme => ({
     flexDirection: "column",
     position: "relative",
     gridArea: "matchHistory",
-    width: "100%",
     margin: 0,
+    maxWidth: "475px",
     borderRadius: 10,
     backgroundColor: theme.white,
     boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)",
@@ -50,16 +61,50 @@ const styles = theme => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
+    padding: "30px",
+    overflowY: "auto",
+    overflowX: "hidden",
     flexGrow: 1,
-    zIndex: 101,
-    borderRadius: 10,
-    "& span": {
-      textAlign: "center",
-      margin: "100px 0",
-      color: "#8E8D8F"
+    color: theme.color,
+    "& *": {
+      margin: 0,
+      marginBottom: "15px"
+    }
+  },
+  list: {
+    color: theme.color,
+    display: "flex",
+    flexDirection: "row",
+    "& ul": {
+      paddingLeft: "25px",
+      margin: 0,
+      "& li": {
+        margin: 0
+      }
     }
   }
 });
 
 export default withStyles(styles)(MatchHistory);
+
+// warning: {
+//   display: "flex",
+//   height: "130px",
+//   justifyContent: "center",
+//   margin: "25px 0 0 0",
+//   gridArea: "warning",
+//   "& div": {
+//     display: "flex",
+//     backgroundColor: theme.primary,
+//     borderRadius: 10,
+//     padding: "15px",
+//     width: "100%",
+//     textAlign: "center",
+//     boxShadow: "0px 1px 10px -1px rgba(50,50,93,.3)",
+// "& ul": {
+//   margin: 0,
+//   width: "200px",
+//   textAlign: "left"
+// }
+//   }
+// }

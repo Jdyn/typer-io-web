@@ -27,7 +27,7 @@ const styles = theme => ({
     position: "relative",
     minHeight: "60px",
     margin: "10px 0px 10px 0px",
-    borderRadius: 8
+    borderRadius: 16
   },
   inner: props => ({
     position: "relative",

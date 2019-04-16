@@ -46,7 +46,7 @@ const styles = theme => ({
     font: "none",
     position: "relative",
     cursor: "pointer",
-    margin: "10px 0",
+    margin: "7.5px 0",
     fontWeight: 500,
     outline: "none",
     padding: "40px",
@@ -70,14 +70,14 @@ const styles = theme => ({
     },
     "& span": {
       color: "#fff",
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: 500,
       lineHeight: "20px",
       textAlign: "left"
     },
     "& h2": {
       margin: 0,
-      fontSize: 22,
+      fontSize: 20,
       fontWeight: 700,
       lineHeight: "22px",
       marginBottom: "5px",

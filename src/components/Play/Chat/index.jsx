@@ -18,7 +18,6 @@ const Chat = props => {
   return (
     <div className={classes.container}>
       <Banner>Chat</Banner>
-      <div className={classes.inner}>
         <div id="chat" className={classes.display}>
           {room.messages.map((message, index) => (
             <ChatMessage
@@ -30,7 +29,6 @@ const Chat = props => {
           ))}
         </div>
         <ChatInput sendChatMessage={sendChatMessage} client={client} />
-      </div>
     </div>
   );
 };
@@ -44,28 +42,25 @@ const styles = theme => ({
     margin: "0px 0px 0px 0px",
     position: "relative",
     gridArea: "chat",
-  },
-  inner: {
-    display: "flex",
+    boxShadow: "0px 0px 10px 0px rgba(30,30,73,.3)",
+    padding: "24px",
+    // height: "400px",
+    // maxHeight: "400px",
     backgroundColor: theme.white,
-    height: "100%",
-    flexDirection: "column",
-    zIndex: 100,
-    position: "relative",
-    borderRadius: "0 0 8px 8px",
-    border: "2px solid rgb(0,0,0,.1)",
-    borderTop: "none",
-    boxShadow: "0px -5px 15px 0px rgba(30,30,73,.3) inset",
+    borderRadius: 16
   },
   display: {
     display: "flex",
-    position: "absolute",
-    height: "80%",
-    zIndex: 50,
-    width: "100%",
+    position: "relative",
+    flexGrow: 1,
+    maxHeight: "288px",
     flexDirection: "column",
-    overflowY: "auto",
-    padding: "0 10px 0px 20px",
+    overflowY: "scroll",
+    padding: "20px 0",
+    paddingLeft: "15px",
+    border: "1.5px solid #e5e5e5",
+    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    borderRadius: 16,
     "&::-webkit-scrollbar": {
       width: "10px",
       height: "16px"

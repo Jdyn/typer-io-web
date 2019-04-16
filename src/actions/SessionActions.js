@@ -39,7 +39,6 @@ const login = form => dispatch => {
       }
     })
     .catch(error => {
-      console.log(error);
       dispatch({
         type: actions.AUTHENTICATION_FAILURE,
         response: { error: "Error connecting to server" }

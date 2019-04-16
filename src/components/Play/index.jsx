@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientList from "./ClientList";
 import Gameboard from "./Gameboard";
-import Editor from "./Editor";
 import Chat from "./Chat";
 import { silentEmit } from "../../services/socket";
 import PlayStatus from "./Status";
@@ -88,7 +87,7 @@ const Play = props => {
     }));
   };
 
-  return (
+  return (  
     <>
       <div className={classes.stripe} />
       <div className={classes.root}>
@@ -96,22 +95,16 @@ const Play = props => {
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
         <Gameboard
-          state={gameState}
+          gameState={gameState}
+          editorState={editorState}
           client={client}
           room={room}
-          wrongIndex={editorState.wrongIndex}
           gameboard={gameboard}
           setEditorState={setEditorState}
-        />
-        <Editor
-          currentWord={gameState.currentWord}
-          gameboard={gameboard}
-          isWrong={editorState.wrongIndex !== null}
-          input={gameState.currentInput}
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        {/* <Chat client={client} room={room} sendChatMessage={sendChatMessage} /> */}
       </div>
     </>
   );
@@ -123,19 +116,18 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "265px auto 265px",
-    gridTemplateRows: "min-content min-content auto 1fr",
+    gridTemplateRows: "min-content auto 1fr",
     gridTemplateAreas: `
-    'clientlist clientlist clientlist'
-    'status gameboard leaderboard'
-    'chat gameboard leaderboard'
-    'chat editor leaderboard'
+    'status gameboard clientlist'
+    'leaderboard gameboard clientlist'
+    'leaderboard gameboard clientlist'
     `,
     maxWidth: "1200px",
     overflow: "hidden",
     flexDirection: "row",
     position: "relative",
-    padding: "10px 15px",
-    margin: "30px auto",
+    padding: "15px",
+    margin: "40px auto 0 auto",
     height: "100%"
   },
   stripe: {

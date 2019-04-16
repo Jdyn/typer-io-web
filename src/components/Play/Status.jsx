@@ -102,8 +102,8 @@ const styles = theme => ({
   container: {
     position: "relative",
     gridArea: "status",
-    marginBottom: "15px", 
-    zIndex: 100
+    marginBottom: "25px", 
+    zIndex: 100,
   },
   inner: {
     display: "flex",
@@ -112,8 +112,8 @@ const styles = theme => ({
     height: "100%",
     fontSize: "18px",
     color: theme.primary,
-    boxShadow: "0px 1px 15px 0px rgba(50,50,93,.4)",
-    borderRadius: "8px",
+    boxShadow: "0px 0px 15px 0px rgba(30,30,73,.3)",
+    borderRadius: 16,
     border: "3px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",
     padding: "30px 0px",

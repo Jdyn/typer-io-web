@@ -2,24 +2,38 @@ import React, { useState, useEffect } from "react";
 import withStyles from "react-jss";
 import Banner from "../../reusable/Banner";
 import Word from "./Word";
+import Editor from "./Editor";
 import Piece from "./Piece";
 
 const Gameboard = props => {
-  const { classes, gameboard, client, room, state, wrongIndex, setEditorState } = props;
+  const {
+    classes,
+    gameboard,
+    client,
+    room,
+    gameState,
+    editorState,
+    setEditorState,
+    inputDidUpdate,
+    submitWord
+  } = props;
 
   useEffect(() => {
-    if (wrongIndex !== null) {
-      if (state.currentWord) {
-        if (state.currentInput === state.currentWord.substring(0, state.currentInput.length)) {
+    if (editorState.wrongIndex !== null) {
+      if (gameState.currentWord) {
+        if (
+          gameState.currentInput ===
+          gameState.currentWord.substring(0, gameState.currentInput.length)
+        ) {
           setEditorState(prev => ({ ...prev, wrongIndex: null }));
         }
       }
     }
-  }, [state.currentInput]);
+  }, [gameState.currentInput]);
 
   useEffect(() => {
     setEditorState(prev => ({ ...prev, wrongIndex: null }));
-  }, [state.currentWord]);
+  }, [gameState.currentWord]);
 
   return (
     <div className={classes.container}>
@@ -28,11 +42,11 @@ const Gameboard = props => {
         {gameboard.words.map((word, wordIndex) => (
           <div key={wordIndex} className={classes.wrapper}>
             <Word
-              input={state.currentInput ? state.currentInput.split("") : []}
-              currentIndex={state.currentIndex}
+              input={gameState.currentInput ? gameState.currentInput.split("") : []}
+              currentIndex={gameState.currentIndex}
               word={word}
               index={wordIndex}
-              wrongIndex={wrongIndex}
+              wrongIndex={editorState.wrongIndex}
               setEditorState={setEditorState}
             />
             {room.clients
@@ -50,6 +64,14 @@ const Gameboard = props => {
           </div>
         ))}
       </div>
+      <Editor
+        currentWord={gameState.currentWord}
+        gameboard={gameboard}
+        isWrong={editorState.wrongIndex !== null}
+        input={gameState.currentInput}
+        inputDidUpdate={inputDidUpdate}
+        submitWord={submitWord}
+      />
     </div>
   );
 };
@@ -59,7 +81,11 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "0 20px 15px 20px",
+    margin: "0 25px",
+    boxShadow: "0px 0px 10px 0px rgba(30,30,73,.3)",
+    padding: "24px",
+    backgroundColor: theme.white,
+    borderRadius: 16,
     gridArea: "gameboard"
   },
   inner: {
@@ -67,17 +93,13 @@ const styles = theme => ({
     flexDirection: "row",
     flexWrap: "wrap",
     alignContent: "flex-start",
-    zIndex: 100,
-    backgroundColor: theme.white,
     position: "relative",
-    height: "350px",
-    maxHeight: "325px",
-    padding: "20px",
-    fontWeight: 400,
-    border: "2px solid rgb(0,0,0,.1)",
-    borderTop: "none",
-    borderRadius: "0 0 10px 10px",
-    boxShadow: "0px 5px 15px 0px rgba(30,30,73,.3) inset",
+    height: "325px",
+    padding: "25px",
+    marginBottom: "15px",
+    border: "1.5px solid #e5e5e5",
+    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    borderRadius: 16,
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "10px",

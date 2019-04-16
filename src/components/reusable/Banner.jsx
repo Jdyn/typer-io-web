@@ -53,15 +53,16 @@ const styles = theme => ({
   container: {
     display: "flex",
     alignItems: "center",
-    margin: 0,
     marginBottom: "15px",
-    boxSizing: "border-box",
-    // border: "2px solid rgb(0, 0, 0, .1)",
-    // padding: "15px",
-    borderRadius: 10,
-    color: theme.color,
+
+    // color: theme.white,
     // backgroundColor: "#555abf",
-    // boxShadow: "0 0px 15px 0px rgba(35,35,80,.3)",
+    // margin: "-20px",
+    // padding: "15px",
+    // borderRadius: 16,//"16px 16px 0px 0px",
+    // boxShadow: "0 5px 5px 0px rgba(35,35,80,.3)",
+
+    color: "#555abf",
     "& h2": {
       display: "Flex",
       fontWeight: 600,

@@ -38,7 +38,7 @@ const styles = theme => ({
     fontSize: "18px",
     wordWrap: "break-word",
     color: theme.white,
-    maxWidth: "75%",
+    maxWidth: "100%",
     borderRadius: 8
   }),
   name: {

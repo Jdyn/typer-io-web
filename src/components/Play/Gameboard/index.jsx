@@ -97,8 +97,8 @@ const styles = theme => ({
     height: "325px",
     padding: "25px",
     marginBottom: "15px",
-    border: "1.5px solid #e5e5e5",
-    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    border: "3px solid #e5e5e5",
+    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     borderRadius: 16,
     overflowY: "auto",
     "&::-webkit-scrollbar": {

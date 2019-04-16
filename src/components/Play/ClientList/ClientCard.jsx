@@ -7,21 +7,32 @@ const ClientCard = props => {
   const { gamePiece } = client;
 
   return (
-    <animated.div className={classes.card} style={{ height: style.height }}>
-      <div className={classes.portrait} />
-      <span className={classes.username}>{client.username}</span>
-      <span className={classes.wpm}>{gamePiece.wpm} wpm</span>
+    <animated.div className={classes.container} style={{ width: style.width }}>
+      <animated.div
+        className={classes.card}
+        style={{ transform: style.transform, opacity: style.opacity }}
+      >
+        <div className={classes.portrait} />
+        <span className={classes.username}>{client.username}</span>
+        <span className={classes.wpm}>{gamePiece.wpm} wpm</span>
+      </animated.div>
     </animated.div>
   );
 };
 
 const styles = theme => ({
+  container: {
+    margin: 0,
+    maxWidth: "265px",
+    height: "75px"
+  },
   card: {
     display: "flex",
-    width: "calc(100% + 24px)",
+    // width: "calc(100% + 24px)",
     borderBottom: "2px solid #e5e5e5",
     position: "relative",
-    marginLeft: "-24px",
+    height: "100%",
+    // marginLeft: "-24px",
     padding: "12px 0px 12px 24px",
     overflow: "hidden",
     alignItems: "center"
@@ -31,7 +42,7 @@ const styles = theme => ({
     height: "46px",
     margin: "-3px 10px -3px -3px",
     borderRadius: "50%",
-    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     border: `3px solid ${props.client.gamePiece.color}`
   }),
   username: props => ({

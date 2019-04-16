@@ -43,22 +43,20 @@ const styles = {
   container: {
     display: "flex",
     position: "relative",
-    height: "55px",
     zIndex: 25,
     marginTop: "15px"
   },
   input: {
     position: "relative",
-    height: "100%",
     width: "100%",
+    height: "45px",
     lineHeight: "20px",
-    border: "1.5px solid #e5e5e5",
-    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    border: "none",
+    borderBottom: "3px solid #e5e5e5",
+    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     outline: "none",
     fontSize: 18,
-    borderRadius: 16,
-    padding: "10px",
-    borderRadius: 8
+    padding: "0 10px",
   }
 };
 

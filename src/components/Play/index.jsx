@@ -104,7 +104,7 @@ const Play = props => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        {/* <Chat client={client} room={room} sendChatMessage={sendChatMessage} /> */}
+        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
       </div>
     </>
   );
@@ -116,11 +116,12 @@ const styles = theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "265px auto 265px",
-    gridTemplateRows: "min-content auto 1fr",
+    gridTemplateRows: "min-content min-content auto 1fr",
     gridTemplateAreas: `
-    'status gameboard clientlist'
-    'leaderboard gameboard clientlist'
-    'leaderboard gameboard clientlist'
+    'clientlist clientlist clientlist'
+    'status gameboard chat'
+    'leaderboard gameboard chat'
+    'leaderboard gameboard chat'
     `,
     maxWidth: "1200px",
     overflow: "hidden",

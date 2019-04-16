@@ -3,7 +3,6 @@ import { useTransition, config } from "react-spring";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import ClientCard from "./ClientCard";
-import Banner from "../../reusable/Banner";
 
 const propTypes = {
   room: PropTypes.object.isRequired,
@@ -18,17 +17,13 @@ const ClientList = props => {
     from: {
       opacity: 0,
       overflow: "hidden",
-      height: "0%"
-      // transform: "translate3d(0, -100%, 0)"
+      width: "0%",
+      transform: "translate3d(0, -100%, 0)"
     },
-    enter: {
-      height: "20%"
+    enter: item => async (next, cancel) => {
+      await next({ width: room.isSolo ? "100%" : "25%" });
+      await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
     },
-
-    // item => async (next, cancel) => {
-    //   await next({ width: room.isSolo ? "100%" : "25%" });
-    //   await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
-    // },
     leave: {
       opacity: 0,
       transform: "translate3d(0, -100%, 0)",
@@ -39,16 +34,18 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      <Banner noMargin>Players</Banner>
-      {socket.connected &&
-        transitions.map(({ item, props, key }) => (
-          <ClientCard
-            style={props}
-            client={item}
-            color={item.gamePiece.color || "grey"}
-            key={key}
-          />
-        ))}
+      {socket.connected && (
+        <div className={classes.inner}>
+          {transitions.map(({ item, props, key }) => (
+            <ClientCard
+              style={props}
+              client={item}
+              color={item.gamePiece.color || "grey"}
+              key={key}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -58,14 +55,24 @@ ClientList.propTypes = propTypes;
 const styles = theme => ({
   container: {
     display: "flex",
-    flexDirection: "column",
-    padding: "24px",
-    paddingBottom: "16px",
-    position: "relative",
+    flexDirection: "row",
     gridArea: "clientlist",
-    backgroundColor: theme.primary,
-    boxShadow: "0px 0px 10px 0px rgba(30,30,73,.3)",
-    borderRadius: 16
+    marginBottom: "15px",
+    position: "relative",
+    height: "75px",
+    backgroundClip: "padding-box",
+    // border: "1px solid rgba(0,0,0,.05)",
+    // boxShadow: "0px 0px 15px 0px rgba(50,50,93,.25)",
+    borderRadius: 8,
+    backgroundColor: "transparent" //theme.primaryWhite
+  },
+  inner: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+    zIndex: 50,
+    margin: 0 //"0 auto"
   }
 });
 

@@ -34,7 +34,7 @@ const styles = theme => ({
     flexGrow: 1,
     position: "relative",
     gridArea: "leaderboard",
-    boxShadow: "0px 0px 10px 0px rgba(30,30,73,.3)",
+    boxShadow: "0px 10px 50px 0px rgba(30,30,70,.3)",
     borderRadius: 16,
     // height: "425px",
     padding: "24px",

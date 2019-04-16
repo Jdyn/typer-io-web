@@ -37,24 +37,42 @@ const ClientCard = props => {
 
 const styles = theme => ({
   container: {
+    position: "relative",
     marign: 0,
     maxWidth: "265px",
+    backgroundColor: theme.primary,
+    borderRight: "2px solid #e5e5e5",
+    "&:before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      width: "100%",
+      zIndex: -1,
+      height: "100%",
+      boxShadow: "0px 0px 50px 0px rgba(30,30,70,.3)",
+      borderRadius: 16
+    },
+    "&:first-child": {
+      borderRadius: "16px 0 0 16px"
+    },
+    "&:last-child": {
+      borderRadius: "0 16px 16px 0"
+    },
+    "&:only-child": {
+      borderRadius: 16
+    }
   },
   card: {
     display: "grid",
+    position: "relative",
     gridTemplateRows: "auto min-content",
     gridTemplateColumns: "1fr 1fr 1fr",
     margin: 0,
-    position: "relative",
     zIndex: 50,
     height: "100%",
-    // boxShadow: "0px 0px 5px 0px rgba(30,30,70,.3)",
     overflow: "hidden",
-    border: `2px solid #e5e5e5`,
-    backgroundColor: theme.primary,
-    borderRadius: 16,
     maxWidth: "265px",
-    // width: "25%",
     overflow: "hidden"
   },
   username: props => ({
@@ -65,9 +83,9 @@ const styles = theme => ({
     fontWeight: 700,
     fontSize: 20,
     alignItems: "center",
-    height: "35px",
+    height: "40px",
     overflow: "hidden",
-    margin: "5px 5px 5px 5px",
+    margin: "8px",
     borderRadius: 12,
     color: theme.white,
     padding: "5px 10px 5px 10px",

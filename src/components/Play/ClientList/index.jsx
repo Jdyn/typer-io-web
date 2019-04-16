@@ -15,35 +15,42 @@ const ClientList = props => {
 
   const transitions = useTransition(room.clients, client => client.id, {
     from: {
-      opacity: 0,
-      overflow: "hidden",
+      // opacity: 0,
+      // overflow: "hidden",
       width: "0%",
-      transform: "translate3d(0, -100%, 0)"
+      // transform: "translate3d(0, -100%, 0)"
     },
-    enter: item => async (next, cancel) => {
-      await next({ width: room.isSolo ? "100%" : "25%" });
-      await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
+    enter: {
+      width: "25%"
     },
+    
+    
+    // item => async (next, cancel) => {
+    //   await next({ width: room.isSolo ? "100%" : "100%" });
+    //   await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
+    // },
     leave: {
       opacity: 0,
       transform: "translate3d(0, -100%, 0)",
       width: "0%"
     },
-    config: config.wobbly
+    config: config.default 
   });
 
   return (
     <div className={classes.container}>
       {socket.connected && (
         <div className={classes.inner}>
-          {transitions.map(({ item, props, key }) => (
-            <ClientCard
-              style={props}
-              client={item}
-              color={item.gamePiece.color || "grey"}
-              key={key}
-            />
-          ))}
+          {/* <div className={classes.wrapper}> */}
+            {transitions.map(({ item, props, key }) => (
+              <ClientCard
+                style={props}
+                client={item}
+                color={item.gamePiece.color || "grey"}
+                key={key}
+              />
+            ))}
+          {/* </div> */}
         </div>
       )}
     </div>
@@ -71,8 +78,15 @@ const styles = theme => ({
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",
-    zIndex: 50,
-    margin: 0 //"0 auto"
+    // zIndex: 50,
+    margin: 0
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: theme.primary,
+    boxShadow: "0px 0px 50px 0px rgba(30,30,70,.3)",
+    borderRadius: 16
   }
 });
 

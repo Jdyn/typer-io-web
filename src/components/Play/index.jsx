@@ -89,7 +89,7 @@ const Play = props => {
 
   return (  
     <>
-      {/* <div className={classes.stripe} /> */}
+      <div className={classes.stripe} />
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
@@ -124,7 +124,6 @@ const styles = theme => ({
     'leaderboard gameboard chat'
     `,
     maxWidth: "1200px",
-    overflow: "hidden",
     flexDirection: "row",
     position: "relative",
     padding: "15px",
@@ -134,7 +133,7 @@ const styles = theme => ({
   stripe: {
     zIndex: -1,
     width: "100%",
-    height: "95%",
+    height: "85%",
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",
     transform: "skewY(-12deg)",

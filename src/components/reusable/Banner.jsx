@@ -30,12 +30,12 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
 
-    color: theme.white, //"#555abf",
-    backgroundColor: "#555abf",
-    margin: "-20px",
-    padding: "15px",
-    borderRadius: "16px 16px 8px 8px",
-    boxShadow: "0 5px 5px 0px rgba(30,30,70,.3)",
+    color: "#555abf",
+    // backgroundColor: "#555abf",
+    // margin: "-20px",
+    // padding: "15px",
+    // borderRadius: "16px 16px 8px 8px",
+    // boxShadow: "0 5px 15px 0px rgba(30,30,70,.3) inset",
     marginBottom: props.noMargin ? 0 : "15px",
     "& h2": {
       display: "Flex",

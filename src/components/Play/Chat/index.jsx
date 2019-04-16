@@ -58,7 +58,7 @@ const styles = theme => ({
     overflowY: "scroll",
     padding: "20px 0",
     paddingLeft: "15px",
-    border: "3px solid #e5e5e5",
+    border: "2px solid #e5e5e5",
     // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     borderRadius: 16,
     "&::-webkit-scrollbar": {

@@ -70,7 +70,7 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "125px",
-    border: "3px solid #e5e5e5",
+    border: "2px solid #e5e5e5",
     // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     flexDirection: "column",
     backgroundColor: theme.white,

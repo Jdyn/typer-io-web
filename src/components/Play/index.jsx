@@ -128,7 +128,7 @@ const styles = theme => ({
     flexDirection: "row",
     position: "relative",
     padding: "15px",
-    margin: "40px auto 0 auto",
+    margin: "0px auto 0 auto",
     height: "100%"
   },
   stripe: {

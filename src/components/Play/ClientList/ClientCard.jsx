@@ -12,9 +12,24 @@ const ClientCard = props => {
         className={classes.card}
         style={{ transform: style.transform, opacity: style.opacity }}
       >
-        <div className={classes.portrait} />
-        <span className={classes.username}>{client.username}</span>
-        <span className={classes.wpm}>{gamePiece.wpm} wpm</span>
+        <div className={classes.username}>
+          {client.username}
+          <div className={classes.wpm}>
+            {gamePiece.wpm} <span className={classes.statHeader}>WPM</span>
+          </div>
+        </div>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>ACCURACY</span>
+          {gamePiece.accuracy}
+        </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>ERRORS</span>
+          {gamePiece.errors}
+        </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>TIME</span>
+          {gamePiece.time}
+        </span>
       </animated.div>
     </animated.div>
   );
@@ -22,46 +37,66 @@ const ClientCard = props => {
 
 const styles = theme => ({
   container: {
-    margin: 0,
+    marign: 0,
     maxWidth: "265px",
-    height: "115px"
   },
   card: {
-    display: "flex",
-    backgroundColor: theme.white,
-    // width: "calc(100% + 24px)",
-    border: "2px solid #e5e5e5",
+    display: "grid",
+    gridTemplateRows: "auto min-content",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    margin: 0,
     position: "relative",
+    zIndex: 50,
     height: "100%",
-    // marginLeft: "-24px",
-    padding: "12px 24px 12px 24px",
+    // boxShadow: "0px 0px 5px 0px rgba(30,30,70,.3)",
     overflow: "hidden",
-    alignItems: "center",
-    borderRadius: 16
-  },
-  portrait: props => ({
-    width: "46px",
-    height: "46px",
-    margin: "-3px 10px -3px -3px",
-    borderRadius: "50%",
-    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
-    border: `3px solid ${props.client.gamePiece.color}`
-  }),
-  username: props => ({
-    textOverflow: "ellipsis",
-    maxWidth: "100px",
-    fontWeight: 700,
-    color: props.client.gamePiece.color,
-    whiteSpace: "nowrap",
+    border: `2px solid #e5e5e5`,
+    backgroundColor: theme.primary,
+    borderRadius: 16,
+    maxWidth: "265px",
+    // width: "25%",
     overflow: "hidden"
+  },
+  username: props => ({
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: props.color,
+    boxShadow: "0 1px 5px rgba(30,30,70,.3)",
+    fontWeight: 700,
+    lineHeight: "25px",
+    fontSize: 20,
+    height: "35px",
+    overflow: "hidden",
+    margin: "5px 5px 5px 5px",
+    borderRadius: 12,
+    color: theme.white,
+    padding: "5px 10px 5px 10px",
+    gridRow: "2 / 3",
+    gridColumn: "1 / 4"
   }),
   wpm: {
-    fontSize: "15px",
-    fontWeight: 700,
-    color: theme.secondaryColor,
+    margin: "auto 0px auto auto",
+    backgroundColor: "",
+    fontSize: 20,
+    textAlign: "center",
+    color: theme.primaryWhite //"#616161"
+  },
+  statHeader: {
+    fontSize: 12,
     letterSpacing: ".8px",
-    margin: "0 0 0 auto",
-    textTransform: "uppercase"
+    fontWeight: 700
+  },
+  stat: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "center",
+    verticalAlign: "middle",
+    color: theme.secondaryColor,
+    fontWeight: 600,
+    fontSize: 18,
+    padding: "2px",
+    height: "50%",
+    margin: "auto"
   }
 });
 

@@ -89,7 +89,7 @@ const Play = props => {
 
   return (  
     <>
-      <div className={classes.stripe} />
+      {/* <div className={classes.stripe} /> */}
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />

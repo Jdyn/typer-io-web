@@ -12,33 +12,9 @@ const propTypes = {
    */
   classes: PropTypes.object.isRequired,
   /**
-   * Defines the `margin` style property.
+   * Defines whether a default 15px margin should be applied.
    */
-  margin: PropTypes.string,
-  /**
-   * Defines the `padding` style property.
-   */
-  padding: PropTypes.string,
-  /**
-   * Defines the `font-size` style property.
-   */
-  fontSize: PropTypes.number,
-  /**
-   * Defines the `font-weight` style property.
-   */
-  fontWeight: PropTypes.number,
-  /**
-   * Defines the `color` style property.
-   */
-  color: PropTypes.string,
-  /**
-   * Defines the `background-color` style property.
-   */
-  backgroundColor: PropTypes.string,
-  /**
-   * Defines extra style properties.
-   */
-  styles: PropTypes.object
+  noMargin: PropTypes.bool,
 };
 
 const Banner = ({ children, classes }) => (
@@ -50,19 +26,17 @@ const Banner = ({ children, classes }) => (
 Banner.propTypes = propTypes;
 
 const styles = theme => ({
-  container: {
+  container: props => ({
     display: "flex",
     alignItems: "center",
-    marginBottom: "15px",
 
-    // color: theme.white,
+    color: theme.color,
     // backgroundColor: "#555abf",
-    // margin: "-20px",
+    // margin: "-24px",
     // padding: "15px",
-    // borderRadius: 16,//"16px 16px 0px 0px",
-    // boxShadow: "0 5px 5px 0px rgba(35,35,80,.3)",
-
-    color: "#555abf",
+    // borderRadius: "16px 16px 3px 3px",
+    // boxShadow: "0 5px 5px 0px rgba(30,30,70,.3)",
+    marginBottom: props.noMargin ? 0 : "15px",
     "& h2": {
       display: "Flex",
       fontWeight: 600,
@@ -71,7 +45,7 @@ const styles = theme => ({
       margin: 0,
       textAlign: "center"
     }
-  }
+  })
 });
 
 export default withStyles(styles)(Banner);

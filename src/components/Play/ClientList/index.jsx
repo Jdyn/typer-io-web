@@ -39,7 +39,7 @@ const ClientList = props => {
 
   return (
     <div className={classes.container}>
-      <Banner>Players</Banner>
+      <Banner noMargin>Players</Banner>
       {socket.connected &&
         transitions.map(({ item, props, key }) => (
           <ClientCard
@@ -60,6 +60,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     padding: "24px",
+    paddingBottom: "16px",
     position: "relative",
     gridArea: "clientlist",
     backgroundColor: theme.primary,

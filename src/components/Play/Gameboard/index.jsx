@@ -94,7 +94,7 @@ const styles = theme => ({
     flexWrap: "wrap",
     alignContent: "flex-start",
     position: "relative",
-    height: "310px",
+    height: "325px",
     padding: "25px",
     marginBottom: "15px",
     border: "1.5px solid #e5e5e5",

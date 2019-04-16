@@ -31,6 +31,7 @@ const styles = theme => ({
     height: "46px",
     margin: "-3px 10px -3px -3px",
     borderRadius: "50%",
+    boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     border: `3px solid ${props.client.gamePiece.color}`
   }),
   username: props => ({

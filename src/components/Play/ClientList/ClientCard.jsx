@@ -24,18 +24,20 @@ const styles = theme => ({
   container: {
     margin: 0,
     maxWidth: "265px",
-    height: "75px"
+    height: "115px"
   },
   card: {
     display: "flex",
+    backgroundColor: theme.white,
     // width: "calc(100% + 24px)",
-    borderBottom: "2px solid #e5e5e5",
+    border: "2px solid #e5e5e5",
     position: "relative",
     height: "100%",
     // marginLeft: "-24px",
-    padding: "12px 0px 12px 24px",
+    padding: "12px 24px 12px 24px",
     overflow: "hidden",
-    alignItems: "center"
+    alignItems: "center",
+    borderRadius: 16
   },
   portrait: props => ({
     width: "46px",

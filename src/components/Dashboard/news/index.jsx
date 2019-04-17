@@ -10,7 +10,7 @@ const propTypes = {
   matches: PropTypes.array
 };
 
-const MatchHistory = props => {
+const News = props => {
   const { classes } = props;
 
   return (
@@ -41,7 +41,7 @@ const MatchHistory = props => {
   );
 };
 
-MatchHistory.propTypes = propTypes;
+News.propTypes = propTypes;
 
 const styles = theme => ({
   container: {
@@ -50,21 +50,20 @@ const styles = theme => ({
     position: "relative",
     gridArea: "matchHistory",
     margin: 0,
-    maxWidth: "475px",
-    borderRadius: 10,
+    padding: "24px",
+    borderRadius: 16,
     backgroundColor: theme.white,
-    boxShadow: "0 50px 100px -20px rgba(50,50,93,.25), 0 30px 30px -10px rgba(0,0,0,.3)",
-    "@media (min-width: 750px)": {
-      marginLeft: "auto"
-    }
+    boxShadow: "0 5px 50px 0px rgba(30,30,70,.4)",
+    // "@media (min-width: 750px)": {
+    //   marginLeft: "auto"
+    // }
   },
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    padding: "30px",
     overflowY: "auto",
     overflowX: "hidden",
-    flexGrow: 1,
+    // flexGrow: 1,
     color: theme.color,
     "& *": {
       margin: 0,
@@ -85,7 +84,7 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(MatchHistory);
+export default withStyles(styles)(News);
 
 // warning: {
 //   display: "flex",

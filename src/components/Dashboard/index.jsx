@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DashboardMenu from "./menu";
 import DashboardProfile from "./profile";
 import withStyles from "react-jss";
-import MatchHistory from "./matchHistory";
+import News from "./news";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -35,7 +35,7 @@ const Dashboard = props => {
     <>
       <div className={classes.stripe} />
       <div className={classes.root}>
-        <MatchHistory matches={matches} deleteMatch={deleteMatch} />
+        <News />
         <DashboardProfile
           handleAuth={handleAuth}
           updateClient={updateClient}
@@ -57,7 +57,7 @@ const styles = theme => ({
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "20px",
-    margin: "25px auto 0 auto",
+    margin: "115px auto 0 auto",
     maxWidth: "350px",
     padding: "15px",
     zIndex: 100,
@@ -76,8 +76,8 @@ const styles = theme => ({
       `
     },
     "@media (min-width: 1000px)": {
-      gridTemplateColumns: "fr1 275px fr1",
-      gridTemplateRows: "465px",
+      gridTemplateColumns: "1.3fr 300px 1fr",
+      gridTemplateRows: "455px",
       maxWidth: "1200px",
       gridTemplateAreas: `
       'matchHistory profile menu'

@@ -38,7 +38,7 @@ const ProfileHeader = props => {
           onChange={e => setName(e.target.value)}
           placeholder="username"
         />
-        <Button secondary noShadow width="70%" margin="5px auto 0px auto">
+        <Button secondary noShadow width="85%" margin="5px auto 0px auto">
           Set
         </Button>
       </form>

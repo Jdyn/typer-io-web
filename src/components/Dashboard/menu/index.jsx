@@ -82,7 +82,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gridArea: "menu",
-    // minWidth: "275px",
+    minWidth: "275px",
   },
   wrapper: {
     display: "flex",

@@ -12,7 +12,7 @@ const Piece = props => {
 
   const movement = useSpring({
     to: {
-      marginLeft: position === null ? "0%" : position === 0 ? "115%" : "100%"
+      marginLeft: position === null ? "0%" : position === 0 ? "110%" : "100%"
     },
     from: {
       marginLeft: "0%"
@@ -28,7 +28,7 @@ const styles = {
     position: "absolute",
     width: "5px",
     border: "0l.5px solid rgb(0, 0, 0, .6)",
-    left: props.position === null ? -10 : -2,
+    left: props.position === null ? "-15%" : "-5%",
     opacity: 1,
     zIndex: 50,
     boxShadow: "0 0 1px rgb(0, 0, 0, .5)",

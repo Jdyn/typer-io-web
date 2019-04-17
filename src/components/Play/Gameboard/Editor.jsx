@@ -38,19 +38,22 @@ const Editor = props => {
 
   return (
     <div className={classes.container} onClick={() => focusInput()}>
-      <input
-        id="input"
-        className={classes.input}
-        tabIndex="0"
-        autoComplete="off"
-        autoCorrect="off"
-        maxLength={`${currentWord ? currentWord.length : 524288}`}
-        autoCapitalize="off"
-        spellCheck="false"
-        value={input}
-        onChange={e => inputDidUpdate(e)}
-        onKeyDown={e => keydown(e)}
-      />
+      <div className={classes.inner}>
+        <input
+          id="input"
+          className={classes.input}
+          tabIndex="0"
+          autoComplete="off"
+          autoCorrect="off"
+          maxLength={`${currentWord ? currentWord.length : 524288}`}
+          autoCapitalize="off"
+          spellCheck="false"
+          value={input}
+          onChange={e => inputDidUpdate(e)}
+          onKeyDown={e => keydown(e)}
+        />
+      </div>
+
       {/* {document.activeElement.id !== "input" ? (
         gameboard.isStarted ? null : (
           <div>{gameboard.isStarted ? "" : "click here to type"}</div>
@@ -66,25 +69,37 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     position: "relative",
-    overflow: "hidden",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "115px",
-    border: "2px solid #e5e5e5",
-    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    height: "125px",
+    gridArea: "editor",
+    margin: "0 25px",
+    padding: "15px 24px",
     flexDirection: "column",
     backgroundColor: theme.white,
     borderRadius: 16,
     transition: "background-color 0.5s",
-    "&:after": {
+    "&:before": {
       content: "''",
       transitionDuration: "0.1s",
       position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: -1,
+      borderRadius: 16,
+      boxShadow: "0px 0px 50px rgba(30,30,70,.3)",
       backgroundColor: props.isWrong ? "rgb(244,67,54, 0.4)" : "transparent",
       width: "100%",
       height: "100%"
     }
   }),
+  inner: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "3px solid #e5e5e5",
+    width: "100%",
+    height: "100%",
+    borderRadius: 16
+  },
   input: {
     display: "inline-block",
     lineHeight: "40px",

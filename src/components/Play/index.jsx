@@ -7,6 +7,7 @@ import Chat from "./Chat";
 import { silentEmit } from "../../services/socket";
 import PlayStatus from "./Status";
 import Leaderboard from "./Leaderboard";
+import Editor from "./Gameboard/Editor"
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -105,6 +106,14 @@ const Play = props => {
           submitWord={submitWord}
         />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        <Editor
+        currentWord={gameState.currentWord}
+        gameboard={gameboard}
+        isWrong={editorState.wrongIndex !== null}
+        input={gameState.currentInput}
+        inputDidUpdate={inputDidUpdate}
+        submitWord={submitWord}
+      />
       </div>
     </>
   );
@@ -121,7 +130,7 @@ const styles = theme => ({
     'clientlist clientlist clientlist'
     'status gameboard chat'
     'leaderboard gameboard chat'
-    'leaderboard gameboard chat'
+    'leaderboard editor chat'
     `,
     maxWidth: "1200px",
     flexDirection: "row",

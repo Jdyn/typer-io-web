@@ -73,7 +73,6 @@ const styles = theme => ({
     height: "100%",
     overflow: "hidden",
     maxWidth: "265px",
-    overflow: "hidden"
   },
   username: props => ({
     display: "flex",
@@ -85,7 +84,7 @@ const styles = theme => ({
     alignItems: "center",
     height: "40px",
     overflow: "hidden",
-    margin: "8px",
+    margin: "8px 5px",
     borderRadius: 12,
     color: theme.white,
     padding: "5px 10px 5px 10px",

@@ -14,7 +14,7 @@ const propTypes = {
   /**
    * Defines whether a default 15px margin should be applied.
    */
-  noMargin: PropTypes.bool,
+  noMargin: PropTypes.bool
 };
 
 const Banner = ({ children, classes }) => (
@@ -29,13 +29,13 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     alignItems: "center",
-
-    color: "#555abf",
-    // backgroundColor: "#555abf",
-    // margin: "-20px",
-    // padding: "15px",
-    // borderRadius: "16px 16px 8px 8px",
-    // boxShadow: "0 5px 15px 0px rgba(30,30,70,.3) inset",
+    border: "3px solid rgb(0,0,0,.1)",
+    color: theme.white, // "#555abf",
+    backgroundColor: "#555abf",
+    margin: "-24px",
+    padding: "15px",
+    borderRadius: "16px 16px 0 0",
+    boxShadow: "0 5px 10px 0px rgba(30,30,70,.3)",
     marginBottom: props.noMargin ? 0 : "15px",
     "& h2": {
       display: "Flex",

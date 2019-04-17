@@ -15,18 +15,23 @@ const ClientList = props => {
 
   const transitions = useTransition(room.clients, client => client.id, {
     from: {
-      // opacity: 0,
-      // overflow: "hidden",
+      opacity: 0,
       width: "0%",
-      // transform: "translate3d(0, -100%, 0)"
+      transform: "translate3d(0, -100%, 0)"
     },
-    enter: {
-      width: "25%"
+    enter: item => async (next, cancel) => {
+      await next({ width: room.isSolo ? "100%" : "25%" });
+      await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
     },
-    
-    
+
+    // enter: {
+    //   width: room.isSolo ? "100%" : "25%",
+    //   opacity: 1,
+    //   transform: "translate3d(0, 0%, 0)"
+    // },
+
     // item => async (next, cancel) => {
-    //   await next({ width: room.isSolo ? "100%" : "100%" });
+    //   await next({ width: room.isSolo ? "100%" : "25%" });
     //   await next({ opacity: 1, transform: "translate3d(0, 0%, 0)" });
     // },
     leave: {
@@ -34,7 +39,7 @@ const ClientList = props => {
       transform: "translate3d(0, -100%, 0)",
       width: "0%"
     },
-    config: config.default 
+    config: config.default
   });
 
   return (
@@ -42,14 +47,14 @@ const ClientList = props => {
       {socket.connected && (
         <div className={classes.inner}>
           {/* <div className={classes.wrapper}> */}
-            {transitions.map(({ item, props, key }) => (
-              <ClientCard
-                style={props}
-                client={item}
-                color={item.gamePiece.color || "grey"}
-                key={key}
-              />
-            ))}
+          {transitions.map(({ item, props, key }) => (
+            <ClientCard
+              style={props}
+              client={item}
+              color={item.gamePiece.color || "grey"}
+              key={key}
+            />
+          ))}
           {/* </div> */}
         </div>
       )}

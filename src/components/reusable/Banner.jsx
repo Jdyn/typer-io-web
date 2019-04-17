@@ -33,7 +33,7 @@ const styles = theme => ({
     color: theme.white, // "#555abf",
     backgroundColor: "#555abf",
     margin: "-24px",
-    padding: "15px",
+    padding: "12px",
     borderRadius: "16px 16px 0 0",
     boxShadow: "0 5px 10px 0px rgba(30,30,70,.3)",
     marginBottom: props.noMargin ? 0 : "15px",

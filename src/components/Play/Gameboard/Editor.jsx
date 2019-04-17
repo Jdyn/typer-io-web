@@ -69,7 +69,7 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     position: "relative",
-    height: "125px",
+    height: "130px",
     gridArea: "editor",
     margin: "0 25px",
     padding: "15px 24px",
@@ -95,7 +95,7 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    border: "3px solid #e5e5e5",
+    border: "2px solid #e5e5e5",
     width: "100%",
     height: "100%",
     borderRadius: 16

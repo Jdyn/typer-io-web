@@ -56,11 +56,12 @@ const Word = props => {
 const styles = theme => ({
   word: {
     margin: 0, //"1px 1.5px",
-    padding: "0px 6.5px 2px 6.5px",
+    padding: "2px 6.5px 2px 6.5px",
     fontFamily: ["Segoe UI"],
     fontSize: 22,
     zIndex: 10,
     borderRadius: 4,
+    lineHeight: "25px",
     userSelect: "none"
   },
   current: props => ({
@@ -71,7 +72,7 @@ const styles = theme => ({
     color: props.currentIndex === props.index ? theme.white : "black"
   }),
   letter: {
-    paddingTop: "0px",
+    paddingTop: "2px",
     paddingBottom: "2px",
     transitionDuration: "0.02s",
     transition: "background-color ease-out",

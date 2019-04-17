@@ -94,12 +94,14 @@ const Solo = props => {
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
         <Leaderboard />
         <Gameboard
-          state={gameState}
+          gameState={gameState}
+          editorState={editorState}
           client={client}
           room={room}
-          wrongIndex={editorState.wrongIndex}
           gameboard={gameboard}
           setEditorState={setEditorState}
+          inputDidUpdate={inputDidUpdate}
+          submitWord={submitWord}
         />
         <Editor
           currentWord={gameState.currentWord}
@@ -127,8 +129,7 @@ const styles = theme => ({
     'clientlist gameboard leaderboard'
     'clientlist editor leaderboard'
     `,
-    maxWidth: "1200px",
-    overflow: "hidden",
+    maxWidth: "1150px",
     flexDirection: "row",
     position: "relative",
     padding: "10px 15px",

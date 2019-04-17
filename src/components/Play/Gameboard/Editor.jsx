@@ -69,7 +69,7 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     position: "relative",
-    height: "130px",
+    height: "135px",
     gridArea: "editor",
     margin: "0 25px",
     padding: "15px 24px",

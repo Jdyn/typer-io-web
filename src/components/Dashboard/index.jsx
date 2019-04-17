@@ -76,9 +76,9 @@ const styles = theme => ({
       `
     },
     "@media (min-width: 1000px)": {
-      gridTemplateColumns: "1.3fr 300px 1fr",
+      gridTemplateColumns: "1.3fr 280px 1fr",
       gridTemplateRows: "455px",
-      maxWidth: "1200px",
+      maxWidth: "1125px",
       gridTemplateAreas: `
       'matchHistory profile menu'
       `

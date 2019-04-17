@@ -165,7 +165,7 @@ const styles = theme => ({
     position: "relative",
     flexDirection: "column",
     alignItems: "center",
-    margin: "15px 25px",
+    margin: "15px 15px",
     justifyContent: "center"
   }
 });

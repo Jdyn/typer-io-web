@@ -19,12 +19,12 @@ const ClientCard = props => {
           </div>
         </div>
         <span className={classes.stat}>
-          <span className={classes.statHeader}>ACCURACY</span>
-          {gamePiece.accuracy}
-        </span>
-        <span className={classes.stat}>
           <span className={classes.statHeader}>ERRORS</span>
           {gamePiece.errors}
+        </span>
+        <span className={classes.stat}>
+          <span className={classes.statHeader}>ACCURACY</span>
+          {gamePiece.accuracy}
         </span>
         <span className={classes.stat}>
           <span className={classes.statHeader}>TIME</span>
@@ -72,7 +72,7 @@ const styles = theme => ({
     zIndex: 50,
     height: "100%",
     overflow: "hidden",
-    maxWidth: "265px",
+    maxWidth: "265px"
   },
   username: props => ({
     display: "flex",

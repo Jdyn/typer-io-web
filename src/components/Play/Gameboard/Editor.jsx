@@ -72,7 +72,7 @@ const styles = theme => ({
     height: "135px",
     gridArea: "editor",
     margin: "0 25px",
-    padding: "15px 24px",
+    padding: "24px 24px",
     flexDirection: "column",
     backgroundColor: theme.white,
     borderRadius: 16,

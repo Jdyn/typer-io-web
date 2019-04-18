@@ -71,7 +71,7 @@ const styles = theme => ({
     position: "relative",
     height: "135px",
     gridArea: "editor",
-    margin: "0 25px",
+    margin: "0 15px",
     padding: "24px 24px",
     flexDirection: "column",
     backgroundColor: theme.white,

@@ -81,7 +81,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    margin: "0 25px",
+    margin: "0 15px",
     marginBottom: "15px",
     padding: "24px",
     backgroundColor: theme.white,

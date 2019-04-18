@@ -42,7 +42,7 @@ const styles = theme => ({
     margin: "0px 0px 0px 0px",
     position: "relative",
     gridArea: "chat",
-    boxShadow: "0px 10px 50px 0px rgba(30,30,70,.3)",
+    boxShadow: "0px 0px 50px 0px rgba(30,30,70,.3)",
     padding: "24px",
     // height: "400px",
     // maxHeight: "400px",

@@ -112,7 +112,7 @@ const styles = theme => ({
     height: "100%",
     fontSize: "18px",
     color: theme.primary,
-    boxShadow: "0px 0px 50px 0px rgba(30,30,73,.3)",
+    boxShadow: "0px 0px 20px 0px rgba(30,30,73,.3)",
     borderRadius: 16,
     border: "3px solid rgba(0,0,0,.1)",
     transition: "background-color 0.5s",

@@ -57,7 +57,7 @@ const styles = theme => ({
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "20px",
-    margin: "115px auto 0 auto",
+    margin: "115px auto 115px auto",
     maxWidth: "350px",
     padding: "15px",
     zIndex: 100,

@@ -95,7 +95,7 @@ const styles = theme => ({
       content: "''",
       position: "absolute",
       borderRadius: 16,
-      boxShadow: "0px 0px 50px rgba(30,30,70,.3)",
+      boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
       width: "100%",
       height: "100%"
     }

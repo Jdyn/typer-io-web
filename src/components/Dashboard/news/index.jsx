@@ -17,9 +17,9 @@ const News = props => {
     <div className={classes.container}>
       <Banner>News</Banner>
       <div className={classes.wrapper}>
-        <h2>Demo Released</h2>
+        <h2>Demo Release</h2>
         <p>
-          Hello, thank you for checking out this early demo. Some features are currently disabled,
+          Thank you for taking a look at this demo. Some features are currently disabled,
           see below.
         </p>
         <h3>
@@ -53,7 +53,7 @@ const styles = theme => ({
     padding: "24px",
     borderRadius: 16,
     backgroundColor: theme.white,
-    boxShadow: "0 5px 50px 0px rgba(30,30,70,.4)",
+    boxShadow: "0 10px 20px 0px rgba(30,30,70,.4)",
     // "@media (min-width: 750px)": {
     //   marginLeft: "auto"
     // }

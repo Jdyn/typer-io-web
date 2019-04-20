@@ -50,7 +50,7 @@ const styles = theme => ({
       width: "100%",
       zIndex: -1,
       height: "100%",
-      boxShadow: "0px 0px 50px 0px rgba(30,30,70,.3)",
+      boxShadow: "0px 10px 20px 0px rgba(30,30,70,.3)",
       borderRadius: 16
     },
     "&:first-child": {

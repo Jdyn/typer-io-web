@@ -150,7 +150,7 @@ const styles = theme => ({
     padding: "24px",
     backgroundColor: theme.white,
     borderRadius: 16,
-    boxShadow: "0px 5px 50px 0 rgba(30,30,70,.4)"
+    boxShadow: "0px 10px 20px 0 rgba(30,30,70,.4)"
   },
   wrapper: {
     display: "flex",

@@ -85,7 +85,7 @@ const styles = theme => ({
       left: 0,
       zIndex: -1,
       borderRadius: 16,
-      boxShadow: "0px 0px 50px rgba(30,30,70,.3)",
+      boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
       backgroundColor: props.isWrong ? "rgb(244,67,54, 0.4)" : "transparent",
       width: "100%",
       height: "100%"

@@ -52,7 +52,7 @@ const styles = theme => ({
     padding: "40px",
     backgroundColor: props.card.color,
     border: "3px solid rgba(0,0,0,.1)",
-    borderRadius: 8,
+    borderRadius: 16,
     transitionDuration: ".15s",
     boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {

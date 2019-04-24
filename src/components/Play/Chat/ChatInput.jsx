@@ -49,14 +49,12 @@ const styles = {
   input: {
     position: "relative",
     width: "100%",
-    height: "45px",
-    lineHeight: "20px",
-    border: "2px solid #e5e5e5",
-    borderRadius: 16,
-    // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
+    border: "none",
+    borderBottom: "2px solid #e5e5e5",
+    margin: "10px",
     outline: "none",
     fontSize: 18,
-    padding: "0 10px",
+    padding: "5px 10px",
   }
 };
 

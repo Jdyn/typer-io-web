@@ -34,7 +34,9 @@ const templates = {
 
 const DashboardProfile = props => {
   const { classes, session, client, updateClient, handleAuth } = props;
-  const [state, setState] = useState(session.isLoggedIn ? view.USER : view.GUEST);
+  const [state, setState] = useState(
+    session.isLoggedIn ? view.USER : view.GUEST
+  );
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -69,13 +71,22 @@ const DashboardProfile = props => {
   };
 
   const renderView = state => {
-    const data = state === templates.login.type ? templates.login : templates.signup;
+    const data =
+      state === templates.login.type ? templates.login : templates.signup;
     switch (state) {
       case view.USER:
         return (
           <div className={classes.wrapper}>
-            <ProfileHeader updateClient={updateClient} username={client.username} />
-            <Button secondary noShadow width="85%" onClick={() => changeView("LOG_OUT")}>
+            <ProfileHeader
+              updateClient={updateClient}
+              username={client.username}
+            />
+            <Button
+              secondary
+              noShadow
+              width="85%"
+              onClick={() => changeView("LOG_OUT")}
+            >
               log out
             </Button>
           </div>
@@ -83,15 +94,10 @@ const DashboardProfile = props => {
       case view.GUEST:
         return (
           <div className={classes.wrapper}>
-            <ProfileHeader updateClient={updateClient} username={client.username} />
-            <Button
-              noShadow
-              width="85%"
-              margin="10px 0 0 0"
-              onClick={() => changeView(view.SIGNUP)}
-            >
-              sign up
-            </Button>
+            <ProfileHeader
+              updateClient={updateClient}
+              username={client.username}
+            />
             <Button
               noShadow
               secondary
@@ -100,6 +106,14 @@ const DashboardProfile = props => {
               onClick={() => changeView(view.LOGIN)}
             >
               log in
+            </Button>
+            <Button
+              noShadow
+              width="85%"
+              margin="10px 0 0 0"
+              onClick={() => changeView(view.SIGNUP)}
+            >
+              sign up
             </Button>
           </div>
         );
@@ -117,10 +131,14 @@ const DashboardProfile = props => {
                   placeholder={field}
                   width="100%"
                   value={form[field] || ""}
-                  onChange={event => setForm({ ...form, [field]: event.target.value })}
+                  onChange={event =>
+                    setForm({ ...form, [field]: event.target.value })
+                  }
                 />
               ))}
-              <Button margin="15px 0 0 0" width="100%">{data.type}</Button>
+              <Button margin="15px 0 0 0" width="100%">
+                {data.type}
+              </Button>
             </form>
           </div>
         );
@@ -158,7 +176,7 @@ const styles = theme => ({
     alignItems: "center",
     width: "100%",
     flexGrow: 1,
-    zIndex: 100,
+    zIndex: 100
   },
   form: {
     display: "flex",

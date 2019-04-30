@@ -45,7 +45,7 @@ const Editor = props => {
           tabIndex="0"
           autoComplete="off"
           autoCorrect="off"
-          maxLength={`${currentWord ? currentWord.length : 524288}`}
+          maxLength={`${currentWord ? currentWord.length + 3 : 524288}`}
           autoCapitalize="off"
           spellCheck="false"
           value={input}

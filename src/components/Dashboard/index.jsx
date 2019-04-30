@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import DashboardMenu from "./menu";
-import DashboardProfile from "./profile";
+import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
 import News from "./news";
 
@@ -75,9 +75,9 @@ const styles = theme => ({
       'menu menu'
       `
     },
-    "@media (min-width: 1000px)": {
-      gridTemplateColumns: "1.3fr 280px 1fr",
-      gridTemplateRows: "455px",
+    "@media (min-width: 1000px)": { 
+      gridTemplateColumns: "1.3fr 270px 1fr",
+      gridTemplateRows: "465px",
       maxWidth: "1125px",
       gridTemplateAreas: `
       'matchHistory profile menu'

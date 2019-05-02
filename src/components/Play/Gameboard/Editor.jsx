@@ -7,13 +7,22 @@ const propTypes = {
 };
 
 const Editor = props => {
-  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong } = props;
+  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong, setEditorState, gameState } = props;
 
   const [focused, setFocus] = useState(false);
 
   const keydown = event => {
     if (!gameboard.isStarted) {
       event.preventDefault();
+    }
+
+    if (event.key !== "Backspace") {
+      if (
+        gameState.currentInput !==
+        gameState.currentWord.substring(0, gameState.currentInput.length)
+      ) {
+        setEditorState(prev => ({ ...prev, errors: prev.errors + 1 }));
+      }
     }
 
     if (event.key === " ") {
@@ -45,7 +54,7 @@ const Editor = props => {
           tabIndex="0"
           autoComplete="off"
           autoCorrect="off"
-          maxLength={`${currentWord ? currentWord.length : 524288}`}
+          maxLength={`${currentWord ? currentWord.length + 3 : 524288}`}
           autoCapitalize="off"
           spellCheck="false"
           value={input}

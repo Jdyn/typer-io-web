@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import DashboardMenu from "./menu";
-import DashboardProfile from "./profile";
+import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
 import News from "./news";
+import { Socket as PhoenixSocket } from "phoenix";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -31,6 +32,20 @@ const Dashboard = props => {
     handleAuth
   } = props;
 
+  const [state, setState] = useState({});
+
+  // useEffect(() => {
+  //   let socket = new PhoenixSocket("ws://localhost:4000/socket", {});
+  //   socket.connect();
+
+  //   let channel = socket.channel("leaderboard:latest", {});
+
+  //   channel.join().receive("ok", res => {
+  //     console.log(res)
+  //     setState(res);
+  //   });
+  // }, []);
+
   return (
     <>
       <div className={classes.stripe} />
@@ -42,7 +57,12 @@ const Dashboard = props => {
           client={client}
           session={session}
         />
-        <DashboardMenu initSocket={initSocket} socket={socket} client={client} history={history} />
+        <DashboardMenu
+          initSocket={initSocket}
+          socket={socket}
+          client={client}
+          history={history}
+        />
       </div>
     </>
   );
@@ -75,9 +95,9 @@ const styles = theme => ({
       'menu menu'
       `
     },
-    "@media (min-width: 1000px)": {
-      gridTemplateColumns: "1.3fr 280px 1fr",
-      gridTemplateRows: "455px",
+    "@media (min-width: 1000px)": { 
+      gridTemplateColumns: "1.3fr 270px 1fr",
+      gridTemplateRows: "465px",
       maxWidth: "1125px",
       gridTemplateAreas: `
       'matchHistory profile menu'

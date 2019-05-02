@@ -5,6 +5,7 @@
   "homepage": ".",
   "dependencies": {
     "@sentry/browser": "^4.6.3",
+    "phoenix": "^1.4.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-jss": "^10.0.0-alpha.16",

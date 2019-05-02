@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import withStyles from "react-jss";
 import Banner from "../../reusable/Banner";
 import Word from "./Word";
-import Editor from "./Editor";
 import Piece from "./Piece";
 
 const Gameboard = props => {
@@ -25,7 +24,7 @@ const Gameboard = props => {
           gameState.currentInput ===
           gameState.currentWord.substring(0, gameState.currentInput.length)
         ) {
-          setEditorState(prev => ({ ...prev, wrongIndex: null }));
+          setEditorState(prev => ({ ...prev, wrongIndex: null, errors: prev.errors + 1 }));
         }
       }
     }
@@ -64,14 +63,6 @@ const Gameboard = props => {
           </div>
         ))}
       </div>
-      {/* <Editor
-        currentWord={gameState.currentWord}
-        gameboard={gameboard}
-        isWrong={editorState.wrongIndex !== null}
-        input={gameState.currentInput}
-        inputDidUpdate={inputDidUpdate}
-        submitWord={submitWord}
-      /> */}
     </div>
   );
 };

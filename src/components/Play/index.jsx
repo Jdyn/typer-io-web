@@ -33,6 +33,7 @@ const Play = props => {
   });
 
   const [editorState, setEditorState] = useState({
+    key: null,
     wrongIndex: null,
     entries: 0,
     errors: 0
@@ -73,7 +74,7 @@ const Play = props => {
     const payload = {
       entries: newEntries,
       position: newIndex,
-      errors: 0
+      errors: editorState.errors
     };
 
     silentEmit("CLIENT_UPDATE", payload);
@@ -109,6 +110,8 @@ const Play = props => {
         <Editor
         currentWord={gameState.currentWord}
         gameboard={gameboard}
+        gameState={gameState}
+        setEditorState={setEditorState}
         isWrong={editorState.wrongIndex !== null}
         input={gameState.currentInput}
         inputDidUpdate={inputDidUpdate}

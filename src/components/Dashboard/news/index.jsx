@@ -6,7 +6,6 @@ import Banner from "../../reusable/Banner";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  deleteMatch: PropTypes.func.isRequired,
   matches: PropTypes.array
 };
 

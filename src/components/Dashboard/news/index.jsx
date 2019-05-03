@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Banner from "../../reusable/Banner";
-import formatTime from "../../../lib/formatTime"
+import formatTime from "../../../lib/formatTime";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -36,9 +36,24 @@ const News = props => {
             <li>Accounts</li>
           </ul>
         </div>
-        Public forums and leaderboards are the primary focus right now and are actively
-        being developed. <br />
-        Forums soon™
+        <p>
+          Public forums and leaderboards are the primary focus right now and are actively
+          being developed. <br />
+          Forums soon™
+        </p>
+
+        <h3>Hot Fixes:</h3>
+        <div className={classes.list}>
+          <ul>
+            <li>Errors are now tracked properly</li>
+            <li>Text no longer shifts when encountering certain characters.</li>
+            <li>
+              Correct font is displayed on devices shipped without Sogue UI by default.
+            </li>
+            <li>Menu button style slightly updated.</li>
+            <li>Clearer warning when attempting to create a private match.</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
@@ -57,17 +72,16 @@ const styles = theme => ({
     borderRadius: 16,
     backgroundColor: theme.white,
     boxShadow: "0 10px 20px 0px rgba(30,30,70,.4)"
-    // "@media (min-width: 750px)": {
-    //   marginLeft: "auto"
-    // }
   },
   wrapper: {
     display: "flex",
     flexDirection: "column",
     overflowY: "auto",
     overflowX: "hidden",
-    // flexGrow: 1,
     color: theme.color,
+    border: "2px solid #e5e5e5",
+    borderRadius: 16,
+    padding: "10px",
     "& p, h3, div, span": {
       margin: 0,
       marginBottom: "15px"
@@ -77,43 +91,35 @@ const styles = theme => ({
       marginBottom: "5px"
     },
     "& span": {
-      fontSize: "14px",
+      fontSize: "14px"
+    },
+    "&::-webkit-scrollbar": {
+      width: "10px",
+      height: "16px"
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,0.2)"
+    },
+    "&::-webkit-scrollbar-button": {
+      width: "0",
+      height: "0",
+      display: "none"
     }
   },
   list: {
     color: theme.color,
     display: "flex",
     flexDirection: "row",
+    maxWidth: "85%",
     "& ul": {
       paddingLeft: "25px",
       margin: 0,
       "& li": {
-        margin: 0
+        margin: 0,
+        padding: "2px"
       }
     }
   }
 });
 
 export default withStyles(styles)(News);
-
-// warning: {
-//   display: "flex",
-//   height: "130px",
-//   justifyContent: "center",
-//   margin: "25px 0 0 0",
-//   gridArea: "warning",
-//   "& div": {
-//     display: "flex",
-//     backgroundColor: theme.primary,
-//     borderRadius: 10,
-//     padding: "15px",
-//     width: "100%",
-//     textAlign: "center",
-//     boxShadow: "0px 1px 10px -1px rgba(50,50,93,.3)",
-// "& ul": {
-//   margin: 0,
-//   width: "200px",
-//   textAlign: "left"
-// }
-//   }
-// }

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Banner from "../../reusable/Banner";
-// import Match from "./Match";
+import formatTime from "../../../lib/formatTime"
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -17,6 +17,7 @@ const News = props => {
       <Banner>News</Banner>
       <div className={classes.wrapper}>
         <h2>Demo Release</h2>
+        <span>updated {formatTime(1556905192689)}</span>
         <p>
           Thank you for taking a look at this demo. Some features are currently disabled,
           see below.
@@ -35,6 +36,9 @@ const News = props => {
             <li>Accounts</li>
           </ul>
         </div>
+        Public forums and leaderboards are the primary focus right now and are actively
+        being developed. <br />
+        Forums soon™
       </div>
     </div>
   );
@@ -52,7 +56,7 @@ const styles = theme => ({
     padding: "24px",
     borderRadius: 16,
     backgroundColor: theme.white,
-    boxShadow: "0 10px 20px 0px rgba(30,30,70,.4)",
+    boxShadow: "0 10px 20px 0px rgba(30,30,70,.4)"
     // "@media (min-width: 750px)": {
     //   marginLeft: "auto"
     // }
@@ -64,9 +68,16 @@ const styles = theme => ({
     overflowX: "hidden",
     // flexGrow: 1,
     color: theme.color,
-    "& *": {
+    "& p, h3, div, span": {
       margin: 0,
       marginBottom: "15px"
+    },
+    "& h2": {
+      margin: 0,
+      marginBottom: "5px"
+    },
+    "& span": {
+      fontSize: "14px",
     }
   },
   list: {

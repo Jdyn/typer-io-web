@@ -13,15 +13,9 @@ const Leaderboard = props => {
     <div className={classes.container}>
       <Banner>Leaderboard</Banner>
       <ul className={classes.categories}>
-        <li className={classes.category}>
-          <span>week</span>
-        </li>
-        <li className={classes.category}>
-          <span>month</span>
-        </li>
-        <li className={classes.category}>
-          <span>all time</span>
-        </li>
+        <li className={classes.category}>week</li>
+        <li className={classes.category}>month</li>
+        <li className={classes.category}>all time</li>
       </ul>
     </div>
   );

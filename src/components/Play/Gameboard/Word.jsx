@@ -57,7 +57,7 @@ const styles = theme => ({
   word: {
     margin: 0, //"1px 1.5px",
     padding: "2px 5px 2px 5px",
-    fontFamily: ["Segoe UI"],
+    fontFamily: ["Segoe"],
     fontSize: 22,
     zIndex: 10,
     borderRadius: 4,

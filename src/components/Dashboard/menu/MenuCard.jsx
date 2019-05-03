@@ -22,12 +22,12 @@ const MenuCard = props => {
           <div className={classes.loader}>Connecting to server...</div>
         ) : (
           <div className={classes.loader}>
-            {socket.errored ? (
+            {socket.errored  && index !== 2 ? (
               <div>
                 {socket.error}
               </div>
             ) : (
-              "Unexpected Error..."
+              "Privates matches are not enabled yet"
             )}
           </div>
         )
@@ -54,10 +54,10 @@ const styles = theme => ({
     border: "3px solid rgba(0,0,0,.1)",
     borderRadius: 16,
     transitionDuration: ".15s",
-    boxShadow: "0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3)",
+    boxShadow: "0 13px 27px -5px rgba(30,30,70,.4), 0 8px 16px -8px rgba(0,0,0,.3)",
     "&:hover": {
       transform: "translateY(-2px)",
-      boxShadow: "0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3)"
+      boxShadow: "0 30px 60px -12px rgba(30,30,70,.4),0 18px 36px -18px rgba(0,0,0,.3)"
     },
     "&:active": {
       transform: "translateY(2px)"

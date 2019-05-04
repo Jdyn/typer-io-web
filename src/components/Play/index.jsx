@@ -7,7 +7,7 @@ import Chat from "./Chat";
 import { silentEmit } from "../../services/socket";
 import PlayStatus from "./Status";
 import Leaderboard from "./Leaderboard";
-import Editor from "./Gameboard/Editor"
+import Editor from "./Gameboard/Editor";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -21,7 +21,16 @@ const propTypes = {
 };
 
 const Play = props => {
-  const { client, room, socket, gameboard, leaveRoom, saveMatch, sendChatMessage, classes } = props;
+  const {
+    client,
+    room,
+    socket,
+    gameboard,
+    leaveRoom,
+    saveMatch,
+    sendChatMessage,
+    classes
+  } = props;
 
   const [gameState, setGameState] = useState({
     currentInput: "",
@@ -89,7 +98,7 @@ const Play = props => {
     }));
   };
 
-  return (  
+  return (
     <>
       <div className={classes.stripe} />
       <div className={classes.root}>
@@ -108,15 +117,15 @@ const Play = props => {
         />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
-        currentWord={gameState.currentWord}
-        gameboard={gameboard}
-        gameState={gameState}
-        setEditorState={setEditorState}
-        isWrong={editorState.wrongIndex !== null}
-        input={gameState.currentInput}
-        inputDidUpdate={inputDidUpdate}
-        submitWord={submitWord}
-      />
+          currentWord={gameState.currentWord}
+          gameboard={gameboard}
+          gameState={gameState}
+          setEditorState={setEditorState}
+          isWrong={editorState.wrongIndex !== null}
+          input={gameState.currentInput}
+          inputDidUpdate={inputDidUpdate}
+          submitWord={submitWord}
+        />
       </div>
     </>
   );

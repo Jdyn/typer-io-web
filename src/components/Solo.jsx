@@ -15,11 +15,11 @@ const propTypes = {
   gameboard: PropTypes.object.isRequired,
   socket: PropTypes.object.isRequired,
   initSocket: PropTypes.func.isRequired,
-  leaveRoom: PropTypes.func.isRequired,
+  leaveRoom: PropTypes.func.isRequired
 };
 
 const Solo = props => {
-  const { client, room, socket, gameboard, leaveRoom, saveMatch, classes } = props;
+  const { client, room, socket, gameboard, leaveRoom, classes } = props;
 
   const [gameState, setGameState] = useState({
     currentInput: "",
@@ -71,7 +71,7 @@ const Solo = props => {
     const payload = {
       entries: newEntries,
       position: newIndex,
-      errors: 0
+      errors: editorState.errors
     };
 
     silentEmit("CLIENT_UPDATE", payload);
@@ -106,12 +106,13 @@ const Solo = props => {
         <Editor
           currentWord={gameState.currentWord}
           gameboard={gameboard}
+          gameState={gameState}
+          setEditorState={setEditorState}
           isWrong={editorState.wrongIndex !== null}
           input={gameState.currentInput}
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        {/* <Chat client={client} room={room} sendChatMessage={sendChatMessage} /> */}
       </div>
     </>
   );

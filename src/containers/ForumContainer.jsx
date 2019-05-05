@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lobby from "../components/Customs/index";
+import Forum from "../components/Forum";
 
-class CustomsContainer extends Component {
-  componentWillMount() {}
-
+class ForumContainer extends Component {
   render() {
-    return <Lobby {...this.props} />;
+    return <Forum {...this.props} />;
   }
 }
 
@@ -20,4 +18,4 @@ const mapDispatchToProps = dispatch => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CustomsContainer);
+)(ForumContainer);

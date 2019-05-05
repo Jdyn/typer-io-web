@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import { useSpring, animated } from "react-spring";

@@ -5,13 +5,12 @@ import Button from "../../reusable/Button";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
   username: PropTypes.string,
   updateClient: PropTypes.func.isRequired
 };
 
 const ProfileHeader = props => {
-  const { classes, theme, username, updateClient } = props;
+  const { classes, username, updateClient } = props;
   const [name, setName] = useState(username ? username : "");
 
   const handleSubmit = event => {
@@ -67,4 +66,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(ProfileHeader);
+export default withStyles(styles)(ProfileHeader);

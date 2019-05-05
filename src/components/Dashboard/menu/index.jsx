@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket, history } = props;
+  const { classes, initSocket, socket } = props;
   const [selectedIndex, setSelectedIndex] = useState();
 
   const cards = [

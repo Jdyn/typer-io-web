@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import withStyles from "react-jss";
 import Banner from "../../reusable/Banner";
 import Word from "./Word";
@@ -12,9 +12,7 @@ const Gameboard = props => {
     room,
     gameState,
     editorState,
-    setEditorState,
-    inputDidUpdate,
-    submitWord
+    setEditorState
   } = props;
 
   useEffect(() => {
@@ -24,7 +22,11 @@ const Gameboard = props => {
           gameState.currentInput ===
           gameState.currentWord.substring(0, gameState.currentInput.length)
         ) {
-          setEditorState(prev => ({ ...prev, wrongIndex: null, errors: prev.errors + 1 }));
+          setEditorState(prev => ({
+            ...prev,
+            wrongIndex: null,
+            errors: prev.errors + 1
+          }));
         }
       }
     }

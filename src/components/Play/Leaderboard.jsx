@@ -36,6 +36,7 @@ const styles = theme => ({
   }),
   categories: {
     display: "flex",
+    flexDirection: "row",
     position: "relative",
     margin: 0,
     padding: 0,

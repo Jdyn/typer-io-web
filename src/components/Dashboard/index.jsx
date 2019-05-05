@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import DashboardMenu from "./menu";
 import DashboardProfile from "./Profile";
 import withStyles from "react-jss";
 import News from "./news";
-import { Socket as PhoenixSocket } from "phoenix";
+// import { Socket as PhoenixSocket } from "phoenix";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -25,14 +25,11 @@ const Dashboard = props => {
     session,
     socket,
     matches,
-    history,
     updateClient,
     initSocket,
     deleteMatch,
     handleAuth
   } = props;
-
-  const [state, setState] = useState({});
 
   // useEffect(() => {
   //   let socket = new PhoenixSocket("ws://localhost:4000/socket", {});
@@ -61,7 +58,6 @@ const Dashboard = props => {
           initSocket={initSocket}
           socket={socket}
           client={client}
-          history={history}
         />
       </div>
     </>
@@ -77,7 +73,7 @@ const styles = theme => ({
     gridTemplateColumns: "1fr",
     gridTemplateRows: "1fr 1fr 1fr",
     gridGap: "20px",
-    margin: "115px auto 115px auto",
+    margin: "135px auto 115px auto",
     maxWidth: "350px",
     padding: "15px",
     zIndex: 100,

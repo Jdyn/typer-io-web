@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
@@ -7,9 +7,18 @@ const propTypes = {
 };
 
 const Editor = props => {
-  const { classes, currentWord, gameboard, input, inputDidUpdate, submitWord, isWrong, setEditorState, gameState } = props;
+  const {
+    classes,
+    currentWord,
+    gameboard,
+    input,
+    inputDidUpdate,
+    submitWord,
+    setEditorState,
+    gameState
+  } = props;
 
-  const [focused, setFocus] = useState(false);
+  console.log(props.isWrong);
 
   const keydown = event => {
     if (!gameboard.isStarted) {
@@ -81,34 +90,36 @@ const styles = theme => ({
     height: "135px",
     gridArea: "editor",
     margin: "0 15px",
-    padding: "12px 24px 24px 24px",
+    padding: "24px 24px 24px 24px",
     flexDirection: "column",
     backgroundColor: theme.white,
     borderRadius: 16,
     transition: "background-color 0.5s",
-    "&:before": {
-      content: "''",
-      transitionDuration: "0.1s",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      zIndex: -1,
-      borderRadius: 16,
-      boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
-      backgroundColor: props.isWrong ? "rgb(244,67,54, 0.4)" : "transparent",
-      width: "100%",
-      height: "100%"
-    }
+    boxShadow: "0px 10px 15px rgba(30,30,70,.3)"
   }),
-  inner: {
+  inner: props => ({
     display: "flex",
+    position: "relative",
     justifyContent: "center",
     alignItems: "center",
     border: "2px solid #e5e5e5",
     width: "100%",
     height: "100%",
-    borderRadius: 16
-  },
+    borderRadius: 16,
+    "&:before": {
+      content: "''",
+      transitionDuration: "0.1s",
+      position: "absolute",
+      top: -2,
+      left: -2,
+      zIndex: 0,
+      borderRadius: 16,
+      // border: "2px solid #e5e5e5",
+      backgroundColor: props.isWrong ? "#f4433666" : "transparent",
+      width: "calc(100% + 4px)",
+      height: "calc(100% + 4px)"
+    }
+  }),
   input: {
     display: "inline-block",
     lineHeight: "40px",

@@ -130,11 +130,11 @@ const styles = theme => ({
     'clientlist gameboard leaderboard'
     'clientlist editor leaderboard'
     `,
-    maxWidth: "1150px",
+    maxWidth: "1125px",
     flexDirection: "row",
     position: "relative",
-    padding: "10px 15px",
-    margin: "160px auto 30px auto",
+    padding: "15px",
+    margin: "135px auto 30px auto",
     height: "100%"
   },
   stripe: {

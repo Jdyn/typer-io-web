@@ -16,7 +16,7 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     if (this.state.hasError) {
       return (
         <>
@@ -72,4 +72,4 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles, { injectTheme: true })(ErrorBoundary);
+export default withStyles(styles)(ErrorBoundary);

@@ -33,7 +33,8 @@ const Button = props => (
 Button.propTypes = propTypes;
 Button.defaultProps = {
   margin: "0",
-  width: "175px"
+  width: "175px",
+  height: "auto"
 };
 
 const styles = theme => ({
@@ -61,6 +62,7 @@ const styles = theme => ({
     backgroundClip: "border-box",
     backgroundColor: theme.accent,
     color: theme.white,
+    height: props => props.height,
     margin: props => props.margin,
     width: props => props.width,
     boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
@@ -71,6 +73,7 @@ const styles = theme => ({
     backgroundClip: "border-box",
     backgroundColor: theme.white,
     color: theme.accent,
+    height: props => props.height,
     margin: props => props.margin,
     width: props => props.width,
     boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")

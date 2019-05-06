@@ -41,7 +41,7 @@ const Feed = props => {
 const styles = theme => ({
   container: {
     borderRadius: 16,
-    minHeight: "765px"
+    // minHeight: "765px"
   },
   feed: {
     listStyle: "none",

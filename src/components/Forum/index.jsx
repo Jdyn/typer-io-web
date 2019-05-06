@@ -4,6 +4,7 @@ import withStyles from "react-jss";
 import Feed from "./Feed";
 import Navigator from "./Navigator";
 import Banner from "../reusable/Banner";
+import PostForm from "./PostForm";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
@@ -38,8 +39,7 @@ const Forum = props => {
     NEW_POST: (
       <>
         <Navigator changeView={changeView} state={state} />
-        <textarea />
-        <textarea />
+        <PostForm />
       </>
     )
   });

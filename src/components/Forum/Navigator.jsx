@@ -20,16 +20,12 @@ const Navigator = props => {
   ) : (
     <div className={classes.container}>
       <h2>Create Post</h2>
-      {/* <div className={classes.cancel}>
-        <Button secondary width="124px" height="45px" onClick={() => changeView("FEED")}>
-          cancel
-        </Button>
-      </div> */}
-      <div className={classes.cancel}>
-        <Button width="124px" height="45px" onClick={() => changeView("NEW_POST")}>
-          post
-        </Button>
-      </div>
+      <Button width="124px" height="45px" onClick={() => changeView("FEED")}>
+        cancel
+      </Button>
+      <Button width="124px" height="45px" margin="0 0 0 10px" onClick={() => changeView("NEW_POST")}>
+        post
+      </Button>
     </div>
   );
 };
@@ -42,15 +38,11 @@ const styles = {
     gridArea: "navigator",
     height: "100px",
     "& h2": {
-      margin: 0
+      margin: 0,
+      flexGrow: 1
     }
   },
-  cancel: {
-    float: "right",
-    // position: "relative",
-    // top: 0,
-    // right: 0
-  }
+  cancel: {}
 };
 
 Navigator.propTypes = propTypes;

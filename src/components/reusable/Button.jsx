@@ -21,14 +21,17 @@ const propTypes = {
   width: PropTypes.string
 };
 
-const Button = props => (
-  <button
-    onClick={props.onClick}
-    className={props.secondary ? props.classes.secondary : props.classes.primary}
-  >
-    {props.children}
-  </button>
-);
+const Button = props => {
+  console.log("rendered", props.secondary)
+  return (
+    <button
+      onClick={props.onClick}
+      className={props.secondary ? props.classes.secondary : props.classes.primary}
+    >
+      {props.children}
+    </button>
+  );
+};
 
 Button.propTypes = propTypes;
 Button.defaultProps = {
@@ -64,7 +67,7 @@ const styles = theme => ({
     color: theme.white,
     height: props => props.height,
     margin: props => props.margin,
-    width: props => props.width,
+    width: props => props.width
     // boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
   },
   secondary: {
@@ -75,7 +78,7 @@ const styles = theme => ({
     color: theme.accent,
     height: props => props.height,
     margin: props => props.margin,
-    width: props => props.width,
+    width: props => props.width
     // boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
   }
 });

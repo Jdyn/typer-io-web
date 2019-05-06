@@ -5,8 +5,8 @@ export default {
   light: {
     color: "#4b4b4b",
     secondaryColor: "#999",
-    white: "#fff",
-    primary: "#fafafa",
+    white: "#fff", // #fafafa
+    primary: "#fff",
     secondary: "#f6f8fa",
     tertiary: "#eef2f7",
     quartinary: "#e6ebf1",

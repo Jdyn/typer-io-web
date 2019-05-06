@@ -1,4 +1,7 @@
-const API = "http://ec2-54-89-213-209.compute-1.amazonaws.com:4000/api/v1";
+const API =
+  process.env.NODE_ENV === "production"
+    ? "http://ec2-54-89-213-209.compute-1.amazonaws.com:4000/api/v1"
+    : "http://localhost:4000/api/v1";
 
 function headers() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -10,12 +13,7 @@ function headers() {
 }
 
 function parseResponse(response) {
-  return response.json().then(json => {
-    // if (response.ok) {
-    //   return json;
-    // }
-    return json;
-  });
+  return response.json().then(json => json);
 }
 
 function queryString(params) {

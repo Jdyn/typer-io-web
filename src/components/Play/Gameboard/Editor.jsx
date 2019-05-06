@@ -18,8 +18,6 @@ const Editor = props => {
     gameState
   } = props;
 
-  console.log(props.isWrong);
-
   const keydown = event => {
     if (!gameboard.isStarted) {
       event.preventDefault();

@@ -65,7 +65,7 @@ const styles = theme => ({
     height: props => props.height,
     margin: props => props.margin,
     width: props => props.width,
-    boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
+    // boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
   },
   secondary: {
     extend: "button",
@@ -76,7 +76,7 @@ const styles = theme => ({
     height: props => props.height,
     margin: props => props.margin,
     width: props => props.width,
-    boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
+    // boxShadow: props => (props.noShadow ? "none" : "0 5px 20px rgba(35,35,80,.25)")
   }
 });
 

@@ -3,10 +3,10 @@ export default {
     primary: ""
   },
   light: {
-    color: "#3c3c3c", //"3c3c3c", //"#4a4a4a",
+    color: "#4b4b4b",
     secondaryColor: "#999",
     white: "#fff",
-    primary: "#fafafa", // Old: #fafafa
+    primary: "#fafafa",
     secondary: "#f6f8fa",
     tertiary: "#eef2f7",
     quartinary: "#e6ebf1",

@@ -8,14 +8,28 @@ const propTypes = {
 };
 
 const Navigator = props => {
-  const { classes } = props;
+  const { classes, changeView, state } = props;
 
-  return (
+  return state === "FEED" ? (
     <div className={classes.container}>
       <h2>All Posts</h2>
-      <Button width="124px" height="45px" margin="0 0 0 auto">
+      <Button width="124px" height="45px" onClick={() => changeView("NEW_POST")}>
         New Post
       </Button>
+    </div>
+  ) : (
+    <div className={classes.container}>
+      <h2>Create Post</h2>
+      {/* <div className={classes.cancel}>
+        <Button secondary width="124px" height="45px" onClick={() => changeView("FEED")}>
+          cancel
+        </Button>
+      </div> */}
+      <div className={classes.cancel}>
+        <Button width="124px" height="45px" onClick={() => changeView("NEW_POST")}>
+          post
+        </Button>
+      </div>
     </div>
   );
 };
@@ -30,6 +44,12 @@ const styles = {
     "& h2": {
       margin: 0
     }
+  },
+  cancel: {
+    float: "right",
+    // position: "relative",
+    // top: 0,
+    // right: 0
   }
 };
 

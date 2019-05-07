@@ -2,32 +2,51 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Button from "../reusable/Button";
+import { Link } from "react-router-dom";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const Navigator = props => {
-  const { classes, changeView, state } = props;
+  const { classes, view } = props;
 
-  return state === "FEED" ? (
-    <div className={classes.container}>
-      <h2>All Posts</h2>
-      <Button width="124px" height="45px" onClick={() => changeView("NEW_POST")}>
-        New Post
-      </Button>
-    </div>
-  ) : (
-    <div className={classes.container}>
-      <h2>Create Post</h2>
-      <Button width="124px" height="45px" onClick={() => changeView("FEED")}>
-        cancel
-      </Button>
-      <Button width="124px" height="45px" margin="0 0 0 10px" onClick={() => changeView("NEW_POST")}>
-        post
-      </Button>
-    </div>
-  );
+  const renderView = () => ({
+    FEED: (
+      <>
+        <div className={classes.container}>
+          <h2>All Posts</h2>
+          <Link to="/forum/new">
+            <Button width="124px" height="45px">
+              New Post
+            </Button>
+          </Link>
+        </div>
+      </>
+    ),
+    NEW_POST: (
+      <div className={classes.container}>
+        <h2>New Post</h2>
+        <Link to="/forum">
+          <Button height="45px">cancel</Button>
+        </Link>
+
+        <Button height="45px" margin="0 0 0 10px">
+          post
+        </Button>
+      </div>
+    ),
+    POST: (
+      <div className={classes.post}>
+        <h2>Post</h2>
+        <Link to="/forum">
+          <Button height="45px">back</Button>
+        </Link>
+      </div>
+    )
+  });
+
+  return renderView()[view];
 };
 
 const styles = {
@@ -36,13 +55,16 @@ const styles = {
     alignItems: "top",
     position: "relative",
     gridArea: "navigator",
-    height: "100px",
+    height: "75px",
     "& h2": {
       margin: 0,
       flexGrow: 1
     }
   },
-  cancel: {}
+  post: {
+    extend: "container",
+    borderBottom: "2px solid #e5e5e5"
+  }
 };
 
 Navigator.propTypes = propTypes;

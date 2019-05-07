@@ -12,9 +12,10 @@ export const fetchFeedRequest = isLoading => ({
   isLoading
 });
 
-export const fetchFeedFailure = hasErrored => ({
+export const fetchFeedFailure = (hasErrored, error) => ({
   type: actions.FETCH_FEED_FAILURE,
-  hasErrored
+  hasErrored,
+  error
 });
 
 export const fetchFeedSuccess = posts => ({
@@ -25,13 +26,43 @@ export const fetchFeedSuccess = posts => ({
 export const fetchFeed = query => dispatch => {
   dispatch(fetchFeedRequest(true));
 
-  ApiService.fetch("/forum/posts")
+  ApiService.fetch(query)
     .then(response => {
       if (response.ok) {
         dispatch(fetchFeedSuccess(response.result.posts));
       }
     })
     .catch(error => {
-      console.log(error);
+      dispatch(fetchFeedFailure(true, "Failed to fetch"));
+    });
+};
+
+export const fetchPostRequest = isLoading => ({
+  type: actions.FETCH_FEED_REQUEST,
+  isLoading
+});
+
+export const fetchPostSuccess = post => ({
+  type: actions.FETCH_FEED_SUCCESS,
+  post
+});
+
+export const fetchPostFailure = (hasErrored, error) => ({
+  type: actions.FETCH_FEED_FAILURE,
+  hasErrored,
+  error
+});
+
+export const fetchPost = id => dispatch => {
+  dispatch(fetchPostRequest(true));
+
+  ApiService.fetch(`/forum/post/${id}`)
+    .then(response => {
+      if (response.ok) {
+        dispatch(fetchPostSuccess(response.result.post));
+      }
+    })
+    .catch(error => {
+      dispatch(fetchPostFailure(true, "Failed to fetch"));
     });
 };

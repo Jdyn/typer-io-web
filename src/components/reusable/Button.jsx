@@ -22,7 +22,6 @@ const propTypes = {
 };
 
 const Button = props => {
-  console.log("rendered", props.secondary)
   return (
     <button
       onClick={props.onClick}
@@ -36,7 +35,7 @@ const Button = props => {
 Button.propTypes = propTypes;
 Button.defaultProps = {
   margin: "0",
-  width: "175px",
+  width: "125px",
   height: "auto"
 };
 

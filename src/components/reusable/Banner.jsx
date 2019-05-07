@@ -31,7 +31,7 @@ const styles = theme => ({
     alignItems: "center",
     border: "3px solid rgb(0,0,0,.1)",
     color: theme.white, // "#555abf",
-    backgroundColor: "#555abf",
+    backgroundColor: theme.accent,
     margin: "-24px",
     padding: "15px",
     borderRadius: "16px 16px 4px 4px",

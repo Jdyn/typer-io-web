@@ -11,7 +11,7 @@ export default {
     tertiary: "#eef2f7",
     quartinary: "#e6ebf1",
     grey: "#d7dadc",
-    accent: "#555abf",
+    accent: "#555abf", // "#5c6ac4",
     shadow: "rgba(50,50,93,.3)"
   }
 };

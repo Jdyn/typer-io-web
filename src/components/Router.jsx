@@ -11,17 +11,25 @@ const routes = {
   play: "/play",
   solo: "/solo",
   lobby: "/lobby",
-  forum: "/forum"
+  forum: {
+    feed: "/forum",
+    post: "/forum/post",
+    new: "/forum/new"
+  }
 };
 
 const Router = () => (
   <Switch>
     <Route exact path={routes.home} component={DashboardContainer} />
     <Route exact path={routes.play} component={PlayContainer} />
-    <Route exact path={routes.forum} component={ForumContainer} />
     <Route exact path={routes.solo} component={SoloContainer} />
     <Route exact path={routes.lobby} component={LobbyContainer} />
-    <Route exact path={`${routes.play}/:roomId`} component={PlayContainer} />
+    <Route exact path={`${routes.play}/:room_id`} component={PlayContainer} />
+
+    <Route exact path={routes.forum.feed} component={ForumContainer} />
+    <Route exact path={`${routes.forum.post}/:post_id`} component={ForumContainer} />
+    <Route exact path={routes.forum.new} component={ForumContainer} />
+
     <Redirect to={routes.home} />
   </Switch>
 );

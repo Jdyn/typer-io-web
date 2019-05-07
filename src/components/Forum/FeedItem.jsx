@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import formatTime from "../../lib/formatTime";
-import theme from "../../lib/theme";
+import { Link } from "react-router-dom";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
@@ -11,13 +11,18 @@ const propTypes = {
 const FeedItem = props => {
   const { classes, post } = props;
 
-  const created = new Date(post.created_at)
+  const handleClick = () => {
+    console.log("log")
+  };
 
   return (
     <li className={classes.container}>
-      <h3>{post.title}</h3>
+      <Link to={`/forum/post/${post.id}`}>
+        <h3>{post.title}</h3>
+      </Link>
+
       <span>
-        {formatTime(created)} by {post.user.username}
+        {formatTime(post.created_at)} by {post.user.username}
       </span>
     </li>
   );

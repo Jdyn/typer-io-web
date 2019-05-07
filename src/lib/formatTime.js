@@ -1,4 +1,5 @@
-export default date => {
+export default time => {
+  const date = new Date(time)
   const NOW = new Date();
   const times = [
     ["second", 1],

@@ -19,7 +19,7 @@ const Header = props => {
             <Link to="/">home</Link>
           </li>
           <li>
-            <Link to="/forum">discussion</Link>
+            <Link to={{ pathname: "/forum" }}>discussion</Link>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@ const styles = theme => ({
     overflow: "hidden",
     backgroundColor: theme.accent,
     boxShadow: "0 5px 10px 0px rgba(35,35,80,.4)",
-    borderBottom: "3px solid rgb(0,0,0,.1)",
+    borderBottom: "3px solid rgb(0,0,0,.1)"
   },
   container: {
     display: "flex",
@@ -53,7 +53,7 @@ const styles = theme => ({
     margin: "0 15px",
     "& a": {
       color: theme.white,
-      textDecoration: "none",
+      textDecoration: "none"
       // fontFamily: "DIN Next Rounded"
     }
   },

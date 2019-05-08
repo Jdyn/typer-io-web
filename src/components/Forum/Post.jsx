@@ -6,16 +6,25 @@ import Banner from "../reusable/Banner";
 import ApiService from "../../services/ApiService";
 import formatTime from "../../lib/formatTime";
 import Button from "../reusable/Button";
+import PostComments from "./PostComments";
+import TextBox from "../reusable/TextBox";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const Post = props => {
-  const { classes, view, match } = props;
+  const { classes, view, match, history, isLoggedIn, fetchPost } = props;
   const [post, set] = useState(null);
+  const [newComment, setNewComment] = useState({
+    body: ""
+  });
 
   useEffect(() => {
+    fetchPostLocal();
+  }, []);
+
+  const fetchPostLocal = () => {
     const id = match.params.post_id;
     if (id) {
       ApiService.fetch(`/forum/post/${id}`)
@@ -28,18 +37,35 @@ const Post = props => {
           console.log(error);
         });
     }
-  }, []);
+  };
+
+  const submitComment = (event, id, form) => {
+    let payload = { ...form };
+
+    if (id) {
+      payload["parent_id"] = id;
+    }
+
+    ApiService.post(`/forum/post/${match.params.post_id}/comment`, payload).then(
+      response => {
+        if (response.ok) {
+          fetchPostLocal();
+          setNewComment({ body: "" });
+        }
+      }
+    );
+  };
 
   return (
     <div className={classes.container}>
-      <Banner>Forum</Banner>
-      <Navigator view={view} />
       <div className={classes.wrapper}>
+        <Banner>Forum</Banner>
+        <Navigator view={view} history={history} />
         {post && (
           <>
             <div className={classes.header}>
               <h2>{post.title}</h2>
-              <span className={classes.body}>
+              <span >
                 posted by {post.user.username} {formatTime(post.inserted_at)}
               </span>
             </div>
@@ -47,15 +73,38 @@ const Post = props => {
             <div className={classes.rating} />
           </>
         )}
+        {isLoggedIn ? (
+          <div className={classes.createComment}>
+            <TextBox
+              placeholder="Leave a comment"
+              value={newComment.body}
+              onChange={e => setNewComment({ body: e.target.value })}
+            />
+            <div>
+              <Button
+                secondary
+                margin="0 10px 0 0"
+                onClick={() => setNewComment({ body: "" })}
+              >
+                cancel
+              </Button>
+              <Button onClick={e => submitComment(e, null, newComment)}>post</Button>
+            </div>
+          </div>
+        ) : (
+          <div>Log in to comment on this post.</div>
+        )}
       </div>
-      <div className={classes.createComment}>
-        <textarea placeholder="Leave a comment" className={classes.textBox} />
-        <div>
-          <Button secondary margin="0 10px 0 0">
-            cancel
-          </Button>
-          <Button>post</Button>
+      <div className={classes.comments}>
+        <Banner>Comments</Banner>
+        <div className={classes.commentsInfo}>
+          <h2>Comments</h2>
         </div>
+        <PostComments
+          submitComment={submitComment}
+          comments={post ? post.comments : []}
+          depth={0}
+        />
       </div>
     </div>
   );
@@ -65,6 +114,11 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
+    width: "100%"
+  },
+  wrapper: {
+    padding: "0 15px",
+    flexGrow: 1,
     padding: "24px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
@@ -72,20 +126,14 @@ const styles = theme => ({
     minHeight: "400px",
     width: "100%"
   },
-  wrapper: {
-    padding: "0 15px",
-    flexBasis: "200px",
-    // marginLeft: "45px"
-    flexGrow: 1
-  },
   header: {
     padding: "20px 0px 20px 0",
     "& h2": {
       margin: 0,
-      marginBottom: "10px"
     },
     "& span": {
-      color: theme.secondaryColor
+      color: theme.secondaryColor,
+      margin: 0
     }
   },
   body: {
@@ -97,18 +145,20 @@ const styles = theme => ({
   rating: {
     height: "40px"
   },
-  textBox: {
-    resize: "vertical",
-    border: "2px solid #e5e5e5",
-    outline: "none",
-    backgroundColor: theme.secondary,
-    margin: "15px 0",
-    padding: "15px",
-    borderRadius: 8,
-    fontSize: 17,
-    lineHeight: "24px",
-    width: "100%",
-    height: "90px"
+  comments: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "30px",
+    padding: "24px",
+    borderRadius: 16,
+    boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
+    backgroundColor: theme.primary,
+    minHeight: "400px",
+    width: "100%"
+  },
+  commentsInfo: {
+    height: "75px",
+    // borderBottom: "2px solid #e5e5e5"
   }
 });
 

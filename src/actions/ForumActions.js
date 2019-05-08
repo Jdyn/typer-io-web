@@ -4,7 +4,11 @@ import ApiService from "../services/ApiService";
 export const actions = keyMirror(
   "FETCH_FEED_REQUEST",
   "FETCH_FEED_SUCCESS",
-  "FETCH_FEED_FAILURE"
+  "FETCH_FEED_FAILURE",
+
+  "FETCH_POST_REQUEST",
+  "FETCH_POST_SUCCESS",
+  "FETCH_POST_FAILURE",
 );
 
 export const fetchFeedRequest = isLoading => ({
@@ -38,17 +42,17 @@ export const fetchFeed = query => dispatch => {
 };
 
 export const fetchPostRequest = isLoading => ({
-  type: actions.FETCH_FEED_REQUEST,
+  type: actions.FETCH_POST_REQUEST,
   isLoading
 });
 
 export const fetchPostSuccess = post => ({
-  type: actions.FETCH_FEED_SUCCESS,
+  type: actions.FETCH_POST_SUCCESS,
   post
 });
 
 export const fetchPostFailure = (hasErrored, error) => ({
-  type: actions.FETCH_FEED_FAILURE,
+  type: actions.FETCH_POST_FAILURE,
   hasErrored,
   error
 });

@@ -19,7 +19,7 @@ class ForumContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  client: state.client.meta,
+  isLoggedIn: state.session.isLoggedIn,
   feed: state.forum.feed
 });
 

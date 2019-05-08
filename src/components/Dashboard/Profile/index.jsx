@@ -24,19 +24,24 @@ const view = {
 const templates = {
   signup: {
     type: "SIGN UP",
-    fields: ["email", "username", "password"]
+    fields: [
+      { type: "email", autocomplete: "new-email" },
+      { type: "username", autocomplete: "new-username" },
+      { type: "password", autocomplete: "new-password" }
+    ]
   },
   login: {
     type: "LOG IN",
-    fields: ["username", "password"]
+    fields: [
+      { type: "username", autocomplete: "username" },
+      { type: "password", autocomplete: "password" }
+    ]
   }
 };
 
 const DashboardProfile = props => {
   const { classes, session, client, updateClient, handleAuth } = props;
-  const [state, setState] = useState(
-    session.isLoggedIn ? view.USER : view.GUEST
-  );
+  const [state, setState] = useState(session.isLoggedIn ? view.USER : view.GUEST);
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -45,11 +50,11 @@ const DashboardProfile = props => {
       setState(session.isLoggedIn ? view.USER : view.GUEST);
     }
   }, [session.isLoggedIn]);
-
+  
   const submitForm = (event, type) => {
     event.preventDefault();
     if (!session.isAuthenticating) {
-      // handleAuth(form, type);
+      handleAuth(form, type);
     }
   };
 
@@ -71,22 +76,13 @@ const DashboardProfile = props => {
   };
 
   const renderView = state => {
-    const data =
-      state === templates.login.type ? templates.login : templates.signup;
+    const data = state === templates.login.type ? templates.login : templates.signup;
     switch (state) {
       case view.USER:
         return (
           <div className={classes.wrapper}>
-            <ProfileHeader
-              updateClient={updateClient}
-              username={client.username}
-            />
-            <Button
-              secondary
-              noShadow
-              width="85%"
-              onClick={() => changeView("LOG_OUT")}
-            >
+            <ProfileHeader updateClient={updateClient} username={client.username} />
+            <Button secondary noShadow width="85%" onClick={() => changeView("LOG_OUT")}>
               log out
             </Button>
           </div>
@@ -94,10 +90,7 @@ const DashboardProfile = props => {
       case view.GUEST:
         return (
           <div className={classes.wrapper}>
-            <ProfileHeader
-              updateClient={updateClient}
-              username={client.username}
-            />
+            <ProfileHeader updateClient={updateClient} username={client.username} />
             <Button
               noShadow
               secondary
@@ -126,14 +119,13 @@ const DashboardProfile = props => {
             <form className={classes.form} onSubmit={e => submitForm(e, type)}>
               {data.fields.map(field => (
                 <Input
-                  key={field}
-                  type={field}
-                  placeholder={field}
+                  key={field.type}
+                  type={field.type}
+                  placeholder={field.type}
                   width="100%"
-                  value={form[field] || ""}
-                  onChange={event =>
-                    setForm({ ...form, [field]: event.target.value })
-                  }
+                  autoComplete={field.autocomplete}
+                  value={form[field.type] || ""}
+                  onChange={event => setForm({ ...form, [field.type]: event.target.value })}
                 />
               ))}
               <Button margin="15px 0 0 0" width="100%">

@@ -11,9 +11,7 @@ const propTypes = {
 };
 
 const Feed = props => {
-  const { classes, posts, fetchFeed, view } = props;
-
-  // const [selectedPostId, set] = useState(null)
+  const { classes, posts, fetchFeed, view, isLoggedIn } = props;
 
   const filters = [
     {
@@ -34,7 +32,7 @@ const Feed = props => {
   return (
     <div className={classes.container}>
       <Banner>Forum</Banner>
-      <Navigator view={view} />
+      <Navigator view={view} isLoggedIn={isLoggedIn} />
       <div className={classes.filter}>
         <Filter filters={filters} padding="0 15px 15px 15px" />
       </div>
@@ -55,7 +53,7 @@ const styles = theme => ({
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,
-    height: "765px",
+    minHeight: "765px",
     flexGrow: 1
   },
   feed: {

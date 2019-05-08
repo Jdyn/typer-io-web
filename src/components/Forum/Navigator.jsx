@@ -9,18 +9,20 @@ const propTypes = {
 };
 
 const Navigator = props => {
-  const { classes, view } = props;
+  const { classes, view, history, isLoggedIn, onClick } = props;
 
   const renderView = () => ({
     FEED: (
       <>
         <div className={classes.container}>
           <h2>All Posts</h2>
-          <Link to="/forum/new">
-            <Button width="124px" height="45px">
-              New Post
-            </Button>
-          </Link>
+          {isLoggedIn && (
+            <Link to="/forum/new">
+              <Button width="124px" height="45px">
+                New Post
+              </Button>
+            </Link>
+          )}
         </div>
       </>
     ),
@@ -31,7 +33,7 @@ const Navigator = props => {
           <Button height="45px">cancel</Button>
         </Link>
 
-        <Button height="45px" margin="0 0 0 10px">
+        <Button height="45px" margin="0 0 0 10px" onClick={e => onClick(e)}>
           post
         </Button>
       </div>
@@ -39,9 +41,12 @@ const Navigator = props => {
     POST: (
       <div className={classes.post}>
         <h2>Post</h2>
-        <Link to="/forum">
-          <Button height="45px">back</Button>
-        </Link>
+        {/*
+         * History is used here so we can maintain scroll position when going back to the forum
+         */}
+        <Button height="45px" onClick={() => history.goBack()}>
+          back
+        </Button>
       </div>
     )
   });

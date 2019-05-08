@@ -30,10 +30,17 @@ export const handleAuth = (form, type) => dispatch => {
 
 const login = form => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
-  ApiService.post("/sessions/login", form)
+  ApiService.post("/signin", form)
     .then(response => {
       if (response.ok) {
-        setCurrentSession(dispatch, response);
+        if (response.result.user.token) {
+          const jsonToken = response.result.user.token;
+          localStorage.setItem("token", JSON.stringify(jsonToken));
+        }
+        dispatch({
+          type: actions.AUTHENTICATION_SUCCESS,
+          response
+        });
       } else {
         dispatch({ type: actions.AUTHENTICATION_FAILURE, response });
       }
@@ -47,7 +54,7 @@ const login = form => dispatch => {
 };
 
 export const logout = () => dispatch => {
-  ApiService.delete("/sessions/logout")
+  ApiService.delete("/signout")
     .then(() => {
       dispatch({ type: "LOG_OUT" });
       localStorage.removeItem("token");
@@ -59,7 +66,7 @@ export const logout = () => dispatch => {
 };
 
 export const signup = form => dispatch => {
-  ApiService.post("/sessions/signup", form)
+  ApiService.post("/signup", form)
     .then(response => {
       if (response.ok) {
         setCurrentSession(dispatch, response);
@@ -77,10 +84,17 @@ export const signup = form => dispatch => {
 
 export const authenticate = () => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
-  ApiService.post("/sessions/refresh")
+  ApiService.post("/refresh")
     .then(response => {
       if (response.ok) {
-        setCurrentSession(dispatch, response);
+        if (response.result.token) {
+          const jsonToken = response.result.token;
+          localStorage.setItem("token", JSON.stringify(jsonToken));
+        }
+        dispatch({
+          type: actions.AUTHENTICATION_SUCCESS,
+          response
+        });
       } else {
         localStorage.removeItem("token");
         dispatch({
@@ -108,7 +122,10 @@ export const clearSessionErrors = () => ({
 });
 
 const setCurrentSession = (dispatch, response) => {
-  localStorage.setItem("token", JSON.stringify(response.result.token));
+  if (response.result.token) {
+    const jsonToken = response.result.token;
+    localStorage.setItem("token", JSON.stringify(jsonToken));
+  }
   dispatch({
     type: actions.AUTHENTICATION_SUCCESS,
     response

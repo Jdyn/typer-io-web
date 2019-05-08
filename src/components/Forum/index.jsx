@@ -12,22 +12,33 @@ const propTypes = {
 };
 
 const Forum = props => {
-  const { classes, fetchFeed, feed, fetchPost, view, match } = props;
+  const { classes, fetchFeed, feed, fetchPost, view, match, history, isLoggedIn } = props;
 
   const renderView = () => ({
     FEED: (
       <div className={classes.container}>
-        <Feed posts={feed.posts} fetchFeed={fetchFeed} view={view} />
+        <Feed
+          posts={feed.posts}
+          fetchFeed={fetchFeed}
+          view={view}
+          isLoggedIn={isLoggedIn}
+        />
       </div>
     ),
     NEW_POST: (
       <div className={classes.container}>
-        <PostForm view={view} />
+        <PostForm view={view} history={history} />
       </div>
     ),
     POST: (
       <div className={classes.container}>
-        <Post view={view} match={match} fetchPost={fetchPost} />
+        <Post
+          view={view}
+          match={match}
+          fetchPost={fetchPost}
+          history={history}
+          isLoggedIn={isLoggedIn}
+        />
       </div>
     )
   });
@@ -74,6 +85,8 @@ const styles = theme => ({
   },
   search: {
     diplay: "flex",
+    position: "sticky",
+    top: "90px",
     flexGrow: 1,
     gridArea: "search",
     backgroundColor: "#f7f7f7",
@@ -97,6 +110,8 @@ const styles = theme => ({
   },
   messages: {
     display: "flex",
+    position: "sticky",
+    top: "90px",
     flexDirection: "column",
     gridArea: "messages",
     padding: "24px",
@@ -107,6 +122,8 @@ const styles = theme => ({
   },
   subjects: {
     display: "flex",
+    position: "sticky",
+    top: "165px",
     flexDirection: "column",
     gridArea: "subjects",
     padding: "24px",

@@ -13,7 +13,10 @@ function headers() {
 }
 
 function parseResponse(response) {
-  return response.json().then(json => json);
+  if (response.ok) {
+    return response.json().then(json => json);
+  }
+  return response
 }
 
 function queryString(params) {

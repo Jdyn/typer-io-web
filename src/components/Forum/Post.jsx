@@ -39,7 +39,7 @@ const Post = props => {
     }
   };
 
-  const submitComment = (event, id, form) => {
+  const submitComment = (event, id, form, setForm) => {
     let payload = { ...form };
 
     if (id) {
@@ -51,6 +51,7 @@ const Post = props => {
         if (response.ok) {
           fetchPostLocal();
           setNewComment({ body: "" });
+          setForm({ body: "" });
         }
       }
     );
@@ -65,7 +66,7 @@ const Post = props => {
           <>
             <div className={classes.header}>
               <h2>{post.title}</h2>
-              <span >
+              <span>
                 posted by {post.user.username} {formatTime(post.inserted_at)}
               </span>
             </div>
@@ -129,7 +130,7 @@ const styles = theme => ({
   header: {
     padding: "20px 0px 20px 0",
     "& h2": {
-      margin: 0,
+      margin: 0
     },
     "& span": {
       color: theme.secondaryColor,
@@ -157,7 +158,7 @@ const styles = theme => ({
     width: "100%"
   },
   commentsInfo: {
-    height: "75px",
+    height: "75px"
     // borderBottom: "2px solid #e5e5e5"
   }
 });

@@ -9,14 +9,14 @@ const propTypes = {
 };
 
 const PostComments = props => {
-  const { classes, comments, depth, submitComment } = props;
+  const { classes, comments, submitComment } = props;
 
   return comments.map((comment, index) => (
     <PostComment
       submitComment={submitComment}
       key={index}
       comment={comment}
-      depth={depth}
+    //   depth={depth}
     />
   ));
 };

@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const PostForm = props => {
-  const { classes, view, history } = props;
+  const { classes, view, history, fetchFeed } = props;
 
   const [form, setForm] = useState({
     title: "",
@@ -22,6 +22,7 @@ const PostForm = props => {
     event.preventDefault();
     ApiService.post("/forum/post", form).then(response => {
       if (response.ok) {
+        fetchFeed("/forum/posts")
         history.push("/forum");
       }
     });

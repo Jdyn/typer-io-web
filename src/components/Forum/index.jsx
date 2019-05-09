@@ -27,7 +27,7 @@ const Forum = props => {
     ),
     NEW_POST: (
       <div className={classes.container}>
-        <PostForm view={view} history={history} />
+        <PostForm view={view} history={history} fetchFeed={fetchFeed} />
       </div>
     ),
     POST: (
@@ -64,24 +64,16 @@ const styles = theme => ({
   root: {
     display: "grid",
     position: "relative",
-    gridTemplateColumns: "1fr",
-    gridTemplateRows: "1fr 1fr 1fr",
-    margin: "135px auto 30px auto",
-    maxWidth: "350px",
+    margin: "210px auto 30px auto",
     padding: "15px",
     zIndex: 100,
-    // gridTemplateAreas: `
-
-    //     `,
-    "@media (min-width: 1000px)": {
-      gridTemplateColumns: "265px auto 265px",
-      gridTemplateRows: "min-content 1fr",
-      maxWidth: "1125px",
-      gridTemplateAreas: `
-            ' messages main search'
-            'messages main subjects'
-            `
-    }
+    gridTemplateColumns: "265px auto 265px",
+    gridTemplateRows: "min-content 1fr",
+    maxWidth: "1125px",
+    gridTemplateAreas: `
+      ' messages main search'
+      'messages main subjects'
+    `
   },
   search: {
     diplay: "flex",
@@ -102,11 +94,6 @@ const styles = theme => ({
   container: {
     gridArea: "main",
     display: "flex"
-    // padding: "24px",
-    // borderRadius: 16,
-    // boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
-    // backgroundColor: theme.primary,
-    // flexBasis: "765px"
   },
   messages: {
     display: "flex",

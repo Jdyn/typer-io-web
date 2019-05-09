@@ -12,7 +12,7 @@ const propTypes = {
 };
 
 const PostComment = props => {
-  const { classes, comment, depth, submitComment } = props;
+  const { classes, comment, submitComment } = props;
   const [showReplyBox, set] = useState(false);
   const [form, setForm] = useState({ body: "" });
 
@@ -21,8 +21,8 @@ const PostComment = props => {
   };
 
   const submitReply = event => {
-    submitComment(event, comment.id, form);
-    set(false)
+    submitComment(event, comment.id, form, setForm);
+    set(false);
   };
 
   return (
@@ -31,9 +31,13 @@ const PostComment = props => {
         <h3 className={classes.username}>{comment.user.username}</h3>
         <p className={classes.body}>{comment.body}</p>
         <div className={classes.statusBar}>
-          <a className={classes.replyButton} onClick={onChange}>
-            reply
-          </a>
+          {comment.replyable ? (
+            <a className={classes.replyButton} onClick={onChange}>
+              reply
+            </a>
+          ) : (
+            <a className={classes.replyButton} />
+          )}
           <span className={classes.seperator}>•</span>
           <span>{formatTime(comment.created_at)}</span>
         </div>
@@ -53,14 +57,14 @@ const PostComment = props => {
         )}
       </div>
 
-      <PostComments submitComment={submitComment} comments={comment.comments} depth={depth + 1} />
+      <PostComments submitComment={submitComment} comments={comment.comments} />
     </>
   );
 };
 const styles = theme => ({
   container: props => ({
     borderTop: "2px solid #e5e5e5",
-    marginLeft: `${35 * props.depth}px`,
+    marginLeft: `${35 * props.comment.depth}px`,
     padding: "8px 35px",
     marginBottom: "15px"
   }),
@@ -89,6 +93,7 @@ const styles = theme => ({
   replyButton: {
     cursor: "pointer",
     fontWeight: 700,
+    width: "50px",
     textTransform: "uppercase",
     "&:hover": {
       textDecoration: "underline"

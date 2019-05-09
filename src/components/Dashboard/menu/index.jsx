@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import MenuCard from "./MenuCard";
-import withStyles from "react-jss";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -9,45 +9,47 @@ const propTypes = {
   initSocket: PropTypes.func.isRequired
 };
 
+const cards = [
+  {
+    title: "Quick Play",
+    text: "Play against others",
+    color: "#555AFF",
+    route: "/play"
+  },
+  {
+    title: "Solo Play",
+    text: "Practice on your own",
+    color: "#46C864",
+    route: "/"
+  },
+  {
+    title: "Friends",
+    text: "Create a private match",
+    color: "#DC6AC8",
+    route: "/"
+  }
+];
+
 const DashboardMenu = props => {
   const { classes, initSocket, socket } = props;
-  const [selectedIndex, setSelectedIndex] = useState();
-
-  const cards = [
-    {
-      title: "Quick Play",
-      text: "Play against others",
-      color: "#1c91ff",
-      route: "/play"
-    },
-    {
-      title: "Solo Play",
-      text: "Practice on your own",
-      color: "#06A978",
-      route: "/"
-    },
-    {
-      title: "Friends",
-      text: "Create a private match",
-      color: "#b76ac4",
-      route: "/"
-    }
-  ];
+  const [currentIndex, set] = useState(null);
 
   const handleOnClick = (event, index) => {
     event.preventDefault();
+    const { username } = props.client.username;
+
     if (!socket.pending) {
       if (!socket.connected) {
         switch (index) {
           case 0:
-            setSelectedIndex(index);
-            return initSocket(props.client.username, { mode: "MULTIPLAYER" });
+            set(index);
+            return initSocket(username, { mode: "MULTIPLAYER" });
           case 1:
-            setSelectedIndex(index);
-            return initSocket(props.client.username, { mode: "SOLO" });
+            set(index);
+            return initSocket(username, { mode: "SOLO" });
           case 2:
-            setSelectedIndex(index);
-            return initSocket(props.client.username, { mode: "CUSTOM" });
+            set(index);
+            return initSocket(username, { mode: "CUSTOM" });
           default:
             break;
         }
@@ -57,20 +59,18 @@ const DashboardMenu = props => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.wrapper}>
-        {cards.map((card, index) => {
-          return (
-            <MenuCard
-              key={index}
-              index={index}
-              onClick={handleOnClick}
-              selectedIndex={selectedIndex}
-              card={card}
-              socket={socket}
-            />
-          );
-        })}
-      </div>
+      {cards.map((card, index) => {
+        return (
+          <MenuCard
+            key={index}
+            index={index}
+            onClick={handleOnClick}
+            currentIndex={currentIndex}
+            card={card}
+            socket={socket}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -82,12 +82,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gridArea: "menu",
-    minWidth: "275px",
-  },
-  wrapper: {
-    display: "flex",
-    flexGrow: 1,
-    flexDirection: "column"
+    minWidth: "275px"
   }
 };
 

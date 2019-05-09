@@ -1,56 +1,51 @@
 import React from "react";
-import PropTypes from "prop-types";
 import withStyless from "react-jss";
+import PropTypes from "prop-types";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
   card: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
-  socket: PropTypes.object.isRequired
+  index: PropTypes.number.isRequired,
+  currentIndex: PropTypes.number
 };
 
 const MenuCard = props => {
-  const { onClick, classes, card, socket, index, selectedIndex } = props;
+  const { classes, card, socket, onClick, index, currentIndex } = props;
 
   return (
-    <button className={classes.card} onClick={e => onClick(e, index)}>
+    <button className={classes.container} onClick={e => onClick(e, index)}>
       <h2>{card.title}</h2>
       <span>{card.text}</span>
 
-      {selectedIndex === index ? (
-        socket.pending === true ? (
-          <div className={classes.loader}>Connecting to server...</div>
+      {currentIndex === index ? (
+        socket.pending ? (
+          <span>Connecting to server...</span>
         ) : (
-          <div className={classes.loader}>
-            {socket.errored  && index !== 2 ? (
-              <div>
-                {socket.error}
-              </div>
-            ) : (
-              "Privates matches are not enabled yet"
-            )}
-          </div>
+          <span>{socket.errored && socket.error}</span>
         )
       ) : (
-        <div className={classes.loader} />
+        <span />
       )}
     </button>
   );
 };
 
 const styles = theme => ({
-  card: props => ({
+  container: props => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    font: "none",
     position: "relative",
     cursor: "pointer",
-    margin: "7.5px 0",
-    fontWeight: 500,
+    marginBottom: "14px",
     outline: "none",
-    padding: "40px",
+    padding: "35px",
+    justifyContent: "center",
     backgroundColor: props.card.color,
+    color: theme.white,
+    textAlign: "left",
     border: "3px solid rgba(0,0,0,.1)",
     borderRadius: 16,
     transitionDuration: ".15s",
@@ -62,35 +57,21 @@ const styles = theme => ({
     "&:active": {
       transform: "translateY(2px)"
     },
-    "&:first-child": {
-      marginTop: 0
-    },
     "&:last-child": {
       marginBottom: 0
-    },
-    "& span": {
-      color: "#fff",
-      fontSize: 18,
-      fontWeight: 500,
-      lineHeight: "20px",
-      textAlign: "left"
     },
     "& h2": {
       margin: 0,
       fontSize: 20,
       fontWeight: 700,
-      lineHeight: "22px",
-      marginBottom: "5px",
-      color: "#fff",
-      textAlign: "left"
+      height: "20px",
+      marginBottom: "5px"
+    },
+    "& span": {
+      height: "20px",
+      fontSize: 17
     }
-  }),
-  loader: {
-    height: "6px",
-    color: "#fff",
-    fontWeight: 500,
-    fontSize: 18,
-  }
+  })
 });
 
 MenuCard.propTypes = propTypes;

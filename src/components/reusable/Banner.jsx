@@ -29,7 +29,7 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     alignItems: "center",
-    border: "3px solid #555AAA",
+    border: "3px solid #555ADC",
     color: theme.white,
     WebkitBackgroundClip: "border-box",
     backgroundColor: theme.accent,

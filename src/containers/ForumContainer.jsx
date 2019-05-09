@@ -4,6 +4,10 @@ import Forum from "../components/Forum";
 import { fetchFeed, fetchPost } from "../actions/ForumActions";
 
 class ForumContainer extends Component {
+  componentWillMount() {
+    this.props.fetchFeed("/forum/posts");
+  }
+
   render() {
     switch (this.props.match.path) {
       case "/forum":

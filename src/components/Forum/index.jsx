@@ -74,7 +74,7 @@ const styles = theme => ({
 
     //     `,
     "@media (min-width: 1000px)": {
-      gridTemplateColumns: "1fr 535px 1fr",
+      gridTemplateColumns: "265px auto 265px",
       gridTemplateRows: "min-content 1fr",
       maxWidth: "1125px",
       gridTemplateAreas: `

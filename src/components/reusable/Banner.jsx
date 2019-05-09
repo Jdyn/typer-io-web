@@ -29,14 +29,15 @@ const styles = theme => ({
   container: props => ({
     display: "flex",
     alignItems: "center",
-    border: "3px solid rgb(0,0,0,.1)",
-    color: theme.white, // "#555abf",
+    border: "3px solid #555AAA",
+    color: theme.white,
+    WebkitBackgroundClip: "border-box",
     backgroundColor: theme.accent,
     margin: "-24px",
     padding: "15px",
     borderRadius: "16px 16px 4px 4px",
     boxShadow: "0 5px 10px 0px rgba(30,30,70,.3)",
-    marginBottom: props.noMargin ? 0 : "15px",
+    marginBottom: "15px",
     "& h2": {
       display: "Flex",
       fontWeight: 600,

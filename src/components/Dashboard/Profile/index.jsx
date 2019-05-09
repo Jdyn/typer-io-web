@@ -50,7 +50,7 @@ const DashboardProfile = props => {
       setState(session.isLoggedIn ? view.USER : view.GUEST);
     }
   }, [session.isLoggedIn]);
-  
+
   const submitForm = (event, type) => {
     event.preventDefault();
     if (!session.isAuthenticating) {
@@ -82,7 +82,7 @@ const DashboardProfile = props => {
         return (
           <div className={classes.wrapper}>
             <ProfileHeader updateClient={updateClient} username={client.username} />
-            <Button secondary noShadow width="85%" onClick={() => changeView("LOG_OUT")}>
+            <Button secondary noShadow width="85%" margin="0 0 15px 0" onClick={() => changeView("LOG_OUT")}>
               log out
             </Button>
           </div>
@@ -166,6 +166,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    // border: "2px solid #e5e5e5",
+    // borderRadius: 16,
     width: "100%",
     flexGrow: 1,
     zIndex: 100

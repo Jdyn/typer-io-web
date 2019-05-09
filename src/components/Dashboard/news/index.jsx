@@ -79,6 +79,7 @@ const styles = theme => ({
     overflowY: "auto",
     overflowX: "hidden",
     color: theme.color,
+    height: "365px",
     border: "2px solid #e5e5e5",
     borderRadius: 16,
     padding: "10px",
@@ -108,8 +109,9 @@ const styles = theme => ({
   },
   list: {
     color: theme.color,
-    display: "flex",
-    flexDirection: "row",
+    // display: "flex",
+    position: "relative",
+    // flexDirection: "row",
     maxWidth: "85%",
     "& ul": {
       paddingLeft: "25px",

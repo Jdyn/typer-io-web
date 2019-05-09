@@ -26,7 +26,7 @@ const Feed = props => {
   ];
 
   useEffect(() => {
-    fetchFeed("/forum/posts");
+    
   }, []);
 
   return (

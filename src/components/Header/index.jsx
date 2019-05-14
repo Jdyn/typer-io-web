@@ -19,7 +19,7 @@ const Header = props => {
             <Link to="/">home</Link>
           </li>
           <li>
-            <Link to={{ pathname: "/forum" }}>discussion</Link>
+            <Link to={{ pathname: "/forum" }}>discuss</Link>
           </li>
         </ul>
       </div>
@@ -57,7 +57,6 @@ const styles = theme => ({
     "& a": {
       color: theme.white,
       textDecoration: "none"
-      // fontFamily: "DIN Next Rounded"
     }
   },
   nav: {

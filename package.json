@@ -2,7 +2,7 @@
   "name": "typer.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "http://typer-io-web.s3-website-us-west-1.amazonaws.com/",
   "dependencies": {
     "@sentry/browser": "^5.2.1",
     "phoenix": "^1.4.6",
@@ -22,7 +22,6 @@
     "start": "react-scripts start",
     "analyze": "source-map-explorer build/static/js/main.*",
     "build": "react-scripts build",
-    "postbuild": "rimraf build/**/*.map",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

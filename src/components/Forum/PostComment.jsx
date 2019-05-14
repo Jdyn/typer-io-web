@@ -28,8 +28,15 @@ const PostComment = props => {
   return (
     <>
       <div className={classes.container}>
-        <h3 className={classes.username}>{comment.user.username}</h3>
-        <p className={classes.body}>{comment.body}</p>
+        <div className={classes.wrapper}>
+          <div className={classes.portrait} />
+
+          <div className={classes.content}>
+            <h3 className={classes.username}>{comment.user.username}</h3>
+            <p className={classes.body}>{comment.body}</p>
+          </div>
+        </div>
+
         <div className={classes.statusBar}>
           {comment.replyable ? (
             <a className={classes.replyButton} onClick={onChange}>
@@ -63,21 +70,38 @@ const PostComment = props => {
 };
 const styles = theme => ({
   container: props => ({
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
     borderTop: "2px solid #e5e5e5",
-    marginLeft: `${35 * props.comment.depth}px`,
-    padding: "8px 35px",
-    marginBottom: "15px"
+    marginLeft: `${60 * props.comment.depth}px`,
+    padding: "20px 0 10px 60px",
+    minHeight: "125px"
   }),
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    wordWrap: "break-word",
+    marginLeft: "15px",
+  },
   username: {
     display: "flex",
     alignItems: "center",
     fontSize: 15,
     color: theme.accent,
     fontWeight: 700,
-    margin: 0,
-    height: "26px"
+    margin: 0
+  },
+  content: {
+    flexWrap: "wrap"
   },
   body: {
+    display: "flex",
+    overflowWrap: "break-word",
+    wordWrap: "break-word",
+    wordBreak: "break-all",
+    wordBreak: "break-word",
     margin: 0,
     marginBottom: "15px"
   },
@@ -85,8 +109,8 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     fontWeight: 500,
+    marginLeft: "15px",
     paddingTop: "6px",
-    paddingLeft: "8px",
     color: theme.secondaryColor,
     height: "30px"
   },
@@ -101,6 +125,16 @@ const styles = theme => ({
   },
   seperator: {
     padding: "0 8px"
+  },
+  portrait: {
+    position: "absolute",
+    top: "15px",
+    left: 0,
+    width: "60px",
+    height: "60px",
+    // marginLeft: "-60px",
+    borderRadius: "50%",
+    border: "3px solid #e5e5e5"
   }
 });
 

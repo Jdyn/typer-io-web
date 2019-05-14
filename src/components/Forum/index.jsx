@@ -93,7 +93,8 @@ const styles = theme => ({
   },
   container: {
     gridArea: "main",
-    display: "flex"
+    display: "flex",
+    maxWidth: "565px"
   },
   messages: {
     display: "flex",

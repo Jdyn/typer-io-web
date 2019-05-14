@@ -15,58 +15,64 @@ const FeedItem = props => {
     console.log("log");
   };
 
-  console.log(post);
-
   return (
     <li className={classes.container}>
+      <div className={classes.portrait} />
       <div className={classes.wrapper}>
-        <h3>
-          <Link to={`/forum/post/${post.id}`}>{post.title}</Link>
-        </h3>
-
+        <Link className={classes.titleLink} to={`/forum/post/${post.id}`}>
+          {post.title}
+        </Link>
         <span>
           {formatTime(post.created_at)} by {post.user.username}
         </span>
+        <Link className={classes.commentLink} to={`/forum/post/${post.id}`}>
+          {post.comment_count} comments
+        </Link>
       </div>
-      <span>
-        <Link to={`/forum/post/${post.id}`}>{post.comment_count} comments</Link>
-      </span>
     </li>
   );
 };
 
 const styles = theme => ({
   container: {
+    display: "flex",
+    flexDirection: "row",
     position: "relative",
-    height: "115px",
+    minHeight: "110px",
     borderBottom: "2px solid #e5e5e5",
-    padding: "20px 0 20px 80px",
-    "& span": {
-      display: "flex",
-      color: theme.secondaryColor,
-      marginTop: "5px"
-    },
-    "& a": {
-      // textDecoration: "none",
-      color: theme.secondaryColor,
-    }
+    padding: "20px 0 20px 60px"
   },
   wrapper: {
-    "& h3": {
-      fontSize: 17,
-      margin: 0,
-      color: theme.color,
-      textDecoration: "none"
-    },
-    "& a": {
-      textDecoration: "none",
-      color: theme.color
-    },
+    display: "flex",
+    flexDirection: "column",
+    marginLeft: "15px",
     "& span": {
-      display: "flex",
-      margin: 0,
       color: theme.secondaryColor
     }
+  },
+  titleLink: {
+    fontWeight: 700,
+    fontSize: "18px",
+    margin: 0,
+    color: theme.color,
+    textDecoration: "none",
+    overflowWrap: "break-word",
+    wordWrap: "break-word",
+    wordBreak: "break-all",
+    wordBreak: "break-word",
+  },
+  commentLink: {
+    color: theme.secondaryColor,
+    marginTop: "auto"
+  },
+  portrait: {
+    position: "absolute",
+    top: "20px",
+    left: 0,
+    width: "60px",
+    height: "60px",
+    borderRadius: "50%",
+    border: "3px solid #e5e5e5"
   }
 });
 

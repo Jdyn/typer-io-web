@@ -42,7 +42,7 @@ const Post = props => {
   const submitComment = (event, id, form, setForm) => {
     let payload = { ...form };
 
-    if (id) {
+    if (typeof id === "number") {
       payload["parent_id"] = id;
     }
 
@@ -51,7 +51,9 @@ const Post = props => {
         if (response.ok) {
           fetchPostLocal();
           setNewComment({ body: "" });
-          setForm({ body: "" });
+          if (typeof setForm === "function") {
+            setForm({ body: "" });
+          }
         }
       }
     );
@@ -89,7 +91,9 @@ const Post = props => {
               >
                 cancel
               </Button>
-              <Button onClick={e => submitComment(e, null, newComment)}>post</Button>
+              <Button onClick={e => submitComment(e, null, newComment, null)}>
+                post
+              </Button>
             </div>
           </div>
         ) : (
@@ -127,10 +131,17 @@ const styles = theme => ({
     minHeight: "400px",
     width: "100%"
   },
+  formatText: {
+    overflowWrap: "break-word",
+    wordWrap: "break-word",
+    wordBreak: "break-all",
+    wordBreak: "break-word"
+  },
   header: {
     padding: "20px 0px 20px 0",
     "& h2": {
-      margin: 0
+      margin: 0,
+      extend: "formatText"
     },
     "& span": {
       color: theme.secondaryColor,
@@ -141,7 +152,8 @@ const styles = theme => ({
     margin: 0,
     marginBottom: "30px",
     fontSize: 17,
-    lineHeight: "24px"
+    lineHeight: "24px",
+    extend: "formatText"
   },
   rating: {
     height: "40px"

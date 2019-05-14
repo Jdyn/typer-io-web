@@ -8,7 +8,7 @@ export default function configureStore(initialState) {
     thunk,
     socket(
       process.env.NODE_ENV === "production"
-        ? "ec2-54-89-213-209.compute-1.amazonaws.com:8000/"
+        ? "ec2-54-227-31-237.compute-1.amazonaws.com:8000/"
         : "192.168.0.14:8000/"
     )
   ];

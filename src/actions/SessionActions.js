@@ -122,8 +122,8 @@ export const clearSessionErrors = () => ({
 });
 
 const setCurrentSession = (dispatch, response) => {
-  if (response.result.token) {
-    const jsonToken = response.result.token;
+  if (response.result.user.token) {
+    const jsonToken = response.result.user.token;
     localStorage.setItem("token", JSON.stringify(jsonToken));
   }
   dispatch({

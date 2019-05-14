@@ -13,13 +13,13 @@ const cards = [
   {
     title: "Quick Play",
     text: "Play against others",
-    color: "#555AFF",
+    color: "#6772e5",
     route: "/play"
   },
   {
     title: "Solo Play",
     text: "Practice on your own",
-    color: "#46C864",
+    color: "#3ecf8e",
     route: "/"
   },
   {

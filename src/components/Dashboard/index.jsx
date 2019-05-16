@@ -14,7 +14,6 @@ const propTypes = {
   matches: PropTypes.array,
   updateClient: PropTypes.func.isRequired,
   initSocket: PropTypes.func.isRequired,
-  deleteMatch: PropTypes.func.isRequired,
   handleAuth: PropTypes.func.isRequired
 };
 
@@ -24,10 +23,8 @@ const Dashboard = props => {
     client,
     session,
     socket,
-    matches,
     updateClient,
     initSocket,
-    deleteMatch,
     handleAuth
   } = props;
 

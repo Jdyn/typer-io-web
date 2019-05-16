@@ -24,7 +24,8 @@ class ForumContainer extends Component {
 
 const mapStateToProps = state => ({
   isLoggedIn: state.session.isLoggedIn,
-  feed: state.forum.feed
+  feed: state.forum.feed,
+  post: state.forum.post.post
 });
 
 const mapDispatchToProps = dispatch => ({

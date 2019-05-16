@@ -5,7 +5,6 @@ import PostComments from "./PostComments";
 import formatTime from "../../lib/formatTime";
 import TextBox from "../reusable/TextBox";
 import Button from "../reusable/Button";
-import ApiService from "../../services/ApiService";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
@@ -39,11 +38,11 @@ const PostComment = props => {
 
         <div className={classes.statusBar}>
           {comment.replyable ? (
-            <a className={classes.replyButton} onClick={onChange}>
+            <button className={classes.replyButton} onClick={onChange}>
               reply
-            </a>
+            </button>
           ) : (
-            <a className={classes.replyButton} />
+            <button className={classes.replyButton} />
           )}
           <span className={classes.seperator}>•</span>
           <span>{formatTime(comment.created_at)}</span>
@@ -83,7 +82,7 @@ const styles = theme => ({
     flexDirection: "row",
     flexWrap: "wrap",
     wordWrap: "break-word",
-    marginLeft: "15px",
+    marginLeft: "15px"
   },
   username: {
     display: "flex",
@@ -101,7 +100,6 @@ const styles = theme => ({
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break-all",
-    wordBreak: "break-word",
     margin: 0,
     marginBottom: "15px"
   },
@@ -111,6 +109,7 @@ const styles = theme => ({
     fontWeight: 500,
     marginLeft: "15px",
     paddingTop: "6px",
+    fontSize: 16,
     color: theme.secondaryColor,
     height: "30px"
   },

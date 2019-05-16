@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Filter from "../reusable/Filter";
@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const Feed = props => {
-  const { classes, posts, fetchFeed, view, isLoggedIn } = props;
+  const { classes, posts, view, isLoggedIn } = props;
 
   const filters = [
     {

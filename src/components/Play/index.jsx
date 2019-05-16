@@ -27,7 +27,6 @@ const Play = props => {
     socket,
     gameboard,
     leaveRoom,
-    saveMatch,
     sendChatMessage,
     classes
   } = props;

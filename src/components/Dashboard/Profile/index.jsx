@@ -43,7 +43,7 @@ const DashboardProfile = props => {
   const { classes, session, client, updateClient, handleAuth } = props;
   const [state, setState] = useState(session.isLoggedIn ? view.USER : view.GUEST);
   const [form, setForm] = useState({});
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (!session.isAuthenticating) {
@@ -58,14 +58,14 @@ const DashboardProfile = props => {
     }
   };
 
-  const validate = (form, type) => {};
+  // const validate = (form, type) => {};
 
   const changeView = state => {
     const { isLoggedIn } = session;
     switch (state) {
       case "BACK":
         setForm({});
-        setErrors({});
+        // setErrors({});
         return setState(isLoggedIn ? view.USER : view.GUEST);
       case "LOG_OUT":
         handleAuth(form, "LOG OUT");

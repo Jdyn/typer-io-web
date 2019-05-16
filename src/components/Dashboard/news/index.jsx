@@ -85,10 +85,12 @@ const styles = theme => ({
     padding: "10px",
     "& p, h3, div, span": {
       margin: 0,
-      marginBottom: "15px"
+      marginBottom: "15px",
+      fontSize: 16
     },
     "& h2": {
       margin: 0,
+      fontSize: 24,
       marginBottom: "5px"
     },
     "& span": {

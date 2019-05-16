@@ -14,7 +14,7 @@ const propTypes = {
 };
 
 const Post = props => {
-  const { classes, view, match, history, isLoggedIn, fetchPost } = props;
+  const { classes, view, match, history, isLoggedIn } = props;
   const [post, set] = useState(null);
   const [newComment, setNewComment] = useState({
     body: ""
@@ -46,17 +46,15 @@ const Post = props => {
       payload["parent_id"] = id;
     }
 
-    ApiService.post(`/forum/post/${match.params.post_id}/comment`, payload).then(
-      response => {
-        if (response.ok) {
-          fetchPostLocal();
-          setNewComment({ body: "" });
-          if (typeof setForm === "function") {
-            setForm({ body: "" });
-          }
+    ApiService.post(`/forum/post/${match.params.post_id}/comment`, payload).then(response => {
+      if (response.ok) {
+        fetchPostLocal();
+        setNewComment({ body: "" });
+        if (typeof setForm === "function") {
+          setForm({ body: "" });
         }
       }
-    );
+    });
   };
 
   return (
@@ -84,16 +82,10 @@ const Post = props => {
               onChange={e => setNewComment({ body: e.target.value })}
             />
             <div>
-              <Button
-                secondary
-                margin="0 10px 0 0"
-                onClick={() => setNewComment({ body: "" })}
-              >
+              <Button secondary margin="0 10px 0 0" onClick={() => setNewComment({ body: "" })}>
                 cancel
               </Button>
-              <Button onClick={e => submitComment(e, null, newComment, null)}>
-                post
-              </Button>
+              <Button onClick={e => submitComment(e, null, newComment, null)}>post</Button>
             </div>
           </div>
         ) : (
@@ -103,7 +95,7 @@ const Post = props => {
       <div className={classes.comments}>
         <Banner>Comments</Banner>
         <div className={classes.commentsInfo}>
-          <h2>Comments</h2>
+          <h2>{post && post.comment_count} Comments</h2>
         </div>
         <PostComments
           submitComment={submitComment}
@@ -122,30 +114,33 @@ const styles = theme => ({
     width: "100%"
   },
   wrapper: {
-    padding: "0 15px",
     flexGrow: 1,
     padding: "24px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,
     minHeight: "400px",
-    width: "100%"
+    width: "100%",
+    "& div": {
+      fontSize: 16
+    }
   },
   formatText: {
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break-all",
-    wordBreak: "break-word"
   },
   header: {
     padding: "20px 0px 20px 0",
     "& h2": {
       margin: 0,
+      fontSize: 24,
       extend: "formatText"
     },
     "& span": {
       color: theme.secondaryColor,
-      margin: 0
+      margin: 0,
+      fontSize: 17
     }
   },
   body: {
@@ -170,8 +165,10 @@ const styles = theme => ({
     width: "100%"
   },
   commentsInfo: {
-    height: "75px"
-    // borderBottom: "2px solid #e5e5e5"
+    "& h2": {
+      margin: "15px 0",
+      fontSize: 22
+    }
   }
 });
 

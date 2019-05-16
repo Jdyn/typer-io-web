@@ -63,7 +63,8 @@ const styles = {
     height: "75px",
     "& h2": {
       margin: 0,
-      flexGrow: 1
+      flexGrow: 1,
+      fontSize: 22,
     }
   },
   post: {

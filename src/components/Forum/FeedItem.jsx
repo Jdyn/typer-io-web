@@ -11,10 +11,6 @@ const propTypes = {
 const FeedItem = props => {
   const { classes, post } = props;
 
-  const handleClick = () => {
-    console.log("log");
-  };
-
   return (
     <li className={classes.container}>
       <div className={classes.portrait} />
@@ -59,7 +55,6 @@ const styles = theme => ({
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break-all",
-    wordBreak: "break-word",
   },
   commentLink: {
     color: theme.secondaryColor,

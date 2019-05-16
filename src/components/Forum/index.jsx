@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 import Feed from "./Feed";
-import Navigator from "./Navigator";
 import Banner from "../reusable/Banner";
 import PostForm from "./PostForm";
 import Post from "./Post";
@@ -12,7 +11,7 @@ const propTypes = {
 };
 
 const Forum = props => {
-  const { classes, fetchFeed, feed, fetchPost, view, match, history, isLoggedIn } = props;
+  const { classes, fetchFeed, feed, fetchPost, view, match, history, isLoggedIn, post } = props;
 
   const renderView = () => ({
     FEED: (
@@ -36,6 +35,7 @@ const Forum = props => {
           view={view}
           match={match}
           fetchPost={fetchPost}
+          post={post}
           history={history}
           isLoggedIn={isLoggedIn}
         />

@@ -63,7 +63,7 @@ const PostComment = props => {
         )}
       </div>
 
-      <PostComments submitComment={submitComment} comments={comment.comments} />
+      <PostComments submitComment={submitComment} comments={comment.comments} isLoggedIn={isLoggedIn} />
     </>
   );
 };
@@ -95,12 +95,12 @@ const styles = theme => ({
   content: {
     flexWrap: "wrap"
   },
-  body: {
+  body: { 
     display: "flex",
     overflowWrap: "break-word",
-    wordWrap: "break-word",
-    wordBreak: "break-all",
+    wordBreak: "break-word",
     margin: 0,
+    fontSize: 16,
     marginBottom: "15px"
   },
   statusBar: {

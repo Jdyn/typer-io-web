@@ -128,7 +128,7 @@ const styles = theme => ({
   formatText: {
     overflowWrap: "break-word",
     wordWrap: "break-word",
-    wordBreak: "break-all",
+    wordBreak: "break-word",
   },
   header: {
     padding: "20px 0px 20px 0",

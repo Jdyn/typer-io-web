@@ -55,7 +55,6 @@ const styles = theme => ({
     textDecoration: "none",
     overflowWrap: "break-word",
     wordWrap: "break-word",
-    wordBreak: "break-all",
   },
   commentLink: {
     color: theme.secondaryColor,

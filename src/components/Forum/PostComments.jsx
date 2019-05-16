@@ -8,10 +8,10 @@ const propTypes = {
 };
 
 const PostComments = props => {
-  const { comments, submitComment } = props;
+  const { comments, submitComment, isLoggedIn } = props;
 
   return comments.map((comment, index) => (
-    <PostComment submitComment={submitComment} key={index} comment={comment} />
+    <PostComment submitComment={submitComment} key={index} isLoggedIn={isLoggedIn} comment={comment} />
   ));
 };
 

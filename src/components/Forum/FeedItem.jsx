@@ -22,7 +22,7 @@ const FeedItem = props => {
           {formatTime(post.created_at)} by {post.user.username}
         </span>
         <Link className={classes.commentLink} to={`/forum/post/${post.id}`}>
-          {post.comment_count} comments
+          {post.comment_count} comment{post.comment_count === 1 ? "" : "s"}
         </Link>
       </div>
     </li>
@@ -43,12 +43,13 @@ const styles = theme => ({
     flexDirection: "column",
     marginLeft: "15px",
     "& span": {
-      color: theme.secondaryColor
-    }
+      color: theme.secondaryColor,
+      fontSize: 16
+    },
   },
   titleLink: {
     fontWeight: 700,
-    fontSize: "18px",
+    fontSize: 20,
     margin: 0,
     color: theme.color,
     textDecoration: "none",
@@ -58,7 +59,8 @@ const styles = theme => ({
   },
   commentLink: {
     color: theme.secondaryColor,
-    marginTop: "auto"
+    marginTop: "auto",
+    fontSize: 16
   },
   portrait: {
     position: "absolute",

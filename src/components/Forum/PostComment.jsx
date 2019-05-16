@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const PostComment = props => {
-  const { classes, comment, submitComment } = props;
+  const { classes, comment, submitComment, isLoggedIn } = props;
   const [showReplyBox, set] = useState(false);
   const [form, setForm] = useState({ body: "" });
 
@@ -37,7 +37,7 @@ const PostComment = props => {
         </div>
 
         <div className={classes.statusBar}>
-          {comment.replyable ? (
+          {comment.replyable && isLoggedIn ? (
             <button className={classes.replyButton} onClick={onChange}>
               reply
             </button>
@@ -117,6 +117,9 @@ const styles = theme => ({
     cursor: "pointer",
     fontWeight: 700,
     width: "50px",
+    border: "none",
+    outline: "none",
+    color: theme.secondaryColor,
     textTransform: "uppercase",
     "&:hover": {
       textDecoration: "underline"

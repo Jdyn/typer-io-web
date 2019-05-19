@@ -90,7 +90,8 @@ const styles = theme => ({
     fontSize: 15,
     color: theme.accent,
     fontWeight: 700,
-    margin: 0
+    margin: 0,
+    marginBottom: "10px"
   },
   content: {
     flexWrap: "wrap"
@@ -100,7 +101,7 @@ const styles = theme => ({
     overflowWrap: "break-word",
     wordBreak: "break-word",
     margin: 0,
-    fontSize: 16,
+    fontSize: 17,
     marginBottom: "15px"
   },
   statusBar: {

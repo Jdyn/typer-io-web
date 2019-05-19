@@ -74,7 +74,7 @@ const styles = theme => ({
     border: `2px solid rgba(0, 0, 0, 0.1)`,
     backgroundClip: "border-box",
     backgroundColor: theme.white,
-    color: theme.accent,
+    color: "#5d66ce",
     height: props => props.height,
     margin: props => props.margin,
     width: props => props.width

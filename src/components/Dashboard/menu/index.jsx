@@ -31,25 +31,27 @@ const cards = [
 ];
 
 const DashboardMenu = props => {
-  const { classes, initSocket, socket } = props;
+  const { classes, initSocket, socket, client, session } = props;
   const [currentIndex, set] = useState(null);
 
   const handleOnClick = (event, index) => {
     event.preventDefault();
-    const { username } = props.client.username;
+
+    const token = session.token || null
+    const username = client.username || session.username
 
     if (!socket.pending) {
       if (!socket.connected) {
         switch (index) {
           case 0:
             set(index);
-            return initSocket(username, { mode: "MULTIPLAYER" });
+            return initSocket({ username, token }, { mode: "MULTIPLAYER" });
           case 1:
             set(index);
-            return initSocket(username, { mode: "SOLO" });
+            return initSocket({ username, token }, { mode: "SOLO" });
           case 2:
             set(index);
-            return initSocket(username, { mode: "CUSTOM" });
+            return initSocket({ username, token }, { mode: "CUSTOM" });
           default:
             break;
         }

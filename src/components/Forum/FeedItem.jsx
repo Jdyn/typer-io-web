@@ -58,7 +58,7 @@ const styles = theme => ({
   },
   commentLink: {
     color: theme.secondaryColor,
-    marginTop: "auto",
+    marginTop: "8px",
     fontSize: 16
   },
   portrait: {

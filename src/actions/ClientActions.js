@@ -14,10 +14,12 @@ export const sendChatMessage = payload => silentEmit(actions.SEND_CHAT_MESSAGE, 
 export const leaveRoom = payload => silentClose();
 // silentEmit(types.DISCONNECT_SOCKET, payload);
 
-export const initSocket = (username, payload) => ({
-  type: types.INIT_SOCKET_REQUEST,
-  payload: {
-    username,
-    ...payload
-  }
-});
+export const initSocket = (user, config) => {
+  return {
+    type: types.INIT_SOCKET_REQUEST,
+    payload: {
+      user,
+      config
+    }
+  };
+};

@@ -28,6 +28,7 @@ const ProfileHeader = props => {
 
   return (
     <div className={classes.container}>
+      <div className={classes.portrait} />
       <form onSubmit={handleSubmit} className={classes.container}>
         <input
           className={classes.input}
@@ -56,13 +57,23 @@ const styles = theme => ({
   input: {
     textAlign: "center",
     backgroundColor: theme.primaryWhite,
-    width: "70%",
+    width: "85%",
     color: "#8E8D8F",
-    margin: "25px auto 0 auto",
-    padding: "10px 10px 0px 10px",
+    margin: "5px auto",
+    padding: "0 10px",
+    borderBottom: "2px solid #e5e5e5",
     fontSize: 24,
     border: "none",
     outline: "none"
+  },
+  portrait: {
+    position: "relative",
+    margin: "10px 0",
+    width: "100px",
+    height: "100px",
+    alignSelf: "center",
+    borderRadius: "50%",
+    border: "3px solid #e5e5e5"
   }
 });
 

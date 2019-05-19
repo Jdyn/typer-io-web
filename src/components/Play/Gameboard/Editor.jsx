@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
@@ -7,38 +7,41 @@ const propTypes = {
 };
 
 const Editor = props => {
-  const {
-    classes,
-    currentWord,
-    gameboard,
-    input,
-    inputDidUpdate,
-    submitWord,
-    setEditorState,
-    gameState
-  } = props;
+  const { classes, gameboard, inputDidUpdate, submitWord, setEditorState, gameState } = props;
+  const [isComplete, setComplete] = useState(false);
 
   const keydown = event => {
+    const { currentInput, currentWord, wordsRemaining } = gameState;
+
     if (!gameboard.isStarted) {
       event.preventDefault();
     }
 
+    if (gameboard.isOver) {
+      event.preventDefault();
+      setComplete(true);
+      return;
+    }
+
+    if (wordsRemaining.length === 0) {
+      event.preventDefault();
+      setComplete(true);
+      return;
+    }
+
     if (event.key !== "Backspace") {
-      if (
-        gameState.currentInput !==
-        gameState.currentWord.substring(0, gameState.currentInput.length)
-      ) {
+      if (currentInput !== currentWord.substring(0, currentInput.length)) {
         setEditorState(prev => ({ ...prev, errors: prev.errors + 1 }));
       }
     }
 
     if (event.key === " ") {
-      if (input !== currentWord) {
+      if (currentInput !== currentWord) {
         event.preventDefault();
-      } else if (input.trim() === currentWord) {
+      } else if (currentInput.trim() === currentWord) {
         event.preventDefault();
-        submitWord();
         document.getElementById("input").innerText = "";
+        submitWord();
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
@@ -61,10 +64,11 @@ const Editor = props => {
           tabIndex="0"
           autoComplete="off"
           autoCorrect="off"
-          maxLength={`${currentWord ? currentWord.length + 3 : 524288}`}
+          readOnly={isComplete}
+          maxLength={`${gameState.currentWord ? gameState.currentWord.length + 5 : 524288}`}
           autoCapitalize="off"
           spellCheck="false"
-          value={input}
+          value={gameState.currentInput}
           onChange={e => inputDidUpdate(e)}
           onKeyDown={e => keydown(e)}
         />

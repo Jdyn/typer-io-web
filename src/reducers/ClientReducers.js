@@ -102,7 +102,7 @@ export default (state = initialState, action) => {
         socket: {
           ...state.socket,
           pending: true,
-          mode: action.payload.mode
+          mode: action.payload.config.mode
         }
       };
 

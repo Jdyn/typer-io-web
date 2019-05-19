@@ -21,15 +21,7 @@ const propTypes = {
 };
 
 const Play = props => {
-  const {
-    client,
-    room,
-    socket,
-    gameboard,
-    leaveRoom,
-    sendChatMessage,
-    classes
-  } = props;
+  const { client, room, socket, gameboard, leaveRoom, sendChatMessage, classes } = props;
 
   const [gameState, setGameState] = useState({
     currentInput: "",
@@ -116,12 +108,10 @@ const Play = props => {
         />
         <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
         <Editor
-          currentWord={gameState.currentWord}
           gameboard={gameboard}
           gameState={gameState}
           setEditorState={setEditorState}
           isWrong={editorState.wrongIndex !== null}
-          input={gameState.currentInput}
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
@@ -138,10 +128,10 @@ const styles = theme => ({
     gridTemplateColumns: "265px auto 265px",
     gridTemplateRows: "min-content min-content auto 1fr",
     gridTemplateAreas: `
-    'clientlist clientlist clientlist'
-    'status gameboard chat'
-    'leaderboard gameboard chat'
-    'leaderboard editor chat'
+    'clientlist  clientlist clientlist'
+    'status      gameboard  chat'
+    'leaderboard gameboard  chat'
+    'leaderboard editor     chat'
     `,
     maxWidth: "1125px",
     flexDirection: "row",

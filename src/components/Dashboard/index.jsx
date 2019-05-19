@@ -55,6 +55,7 @@ const Dashboard = props => {
           initSocket={initSocket}
           socket={socket}
           client={client}
+          session={session}
         />
       </div>
     </>

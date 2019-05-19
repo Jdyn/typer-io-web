@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateClient: object => dispatch(updateClient(object)),
-  initSocket: (username, params) => dispatch(initSocket(username, params)),
+  initSocket: (user, config) => dispatch(initSocket(user, config)),
   handleAuth: (form, type) => dispatch(handleAuth(form, type)),
   deleteMatch: index => dispatch(deleteMatch(index))
 });

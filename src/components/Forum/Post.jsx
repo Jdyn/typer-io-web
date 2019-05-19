@@ -95,7 +95,7 @@ const Post = props => {
       <div className={classes.comments}>
         <Banner>Comments</Banner>
         <div className={classes.commentsInfo}>
-          <h2>{post && post.comment_count} Comment {post && post.comment_count === 1 ? "" : "s"}</h2>
+          <h2>{post && post.comment_count} Comment{post && post.comment_count === 1 ? "" : "s"}</h2>
         </div>
         <PostComments
           submitComment={submitComment}

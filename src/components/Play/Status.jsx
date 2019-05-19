@@ -33,7 +33,7 @@ const PlayStatus = props => {
       if (time > 10) {
         return gameboard.isStarted
           ? { color: "#81C784", text: "GO!" }
-          : { color: "#1c91ff", text: "Looking for Players..." };
+          : { color: "#469cd0", text: "Looking for Players..." };
       } else if (time > 5) {
         return gameboard.isStarted
           ? { color: "#e5a03e", text: "GO!" }
@@ -45,10 +45,10 @@ const PlayStatus = props => {
       } else {
         return gameboard.isStarted
           ? { color: "#81C784", text: "GO!" }
-          : { color: "#1c91ff", text: "Looking for Players..." };
+          : { color: "#469cd0", text: "Looking for Players..." };
       }
     } else if (gameboard.isOver) {
-      return { color: "#555abf", text: "Game has Ended" };
+      return { color: "#6772e5", text: "Game has Ended" };
     }
 
     if (socket.errored) {

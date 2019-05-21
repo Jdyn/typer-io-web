@@ -73,6 +73,8 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
+    height: "410px",
+    maxHeight: "410px",
     position: "relative",
     margin: "0 15px",
     marginBottom: "15px",
@@ -80,7 +82,6 @@ const styles = theme => ({
     backgroundColor: theme.white,
     borderRadius: 16,
     gridArea: "gameboard",
-    // zIndex: 100,
     "&:before": {
       top: 0,
       left: 0,
@@ -97,9 +98,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    flexGrow: 1,
     alignContent: "flex-start",
     position: "relative",
-    height: "305px",
     padding: "20px",
     border: "2px solid #e5e5e5",
     borderRadius: 16,

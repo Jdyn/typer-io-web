@@ -104,6 +104,8 @@ const styles = theme => ({
     gridArea: "status",
     marginBottom: "15px", 
     zIndex: 100,
+    height: "115px",
+    maxHeight: "115px"
   },
   inner: {
     display: "flex",

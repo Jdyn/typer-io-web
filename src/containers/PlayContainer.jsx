@@ -6,12 +6,14 @@ import { initSocket, sendChatMessage, leaveRoom } from "../actions/ClientActions
 
 class PlayContainer extends Component {
   componentWillMount() {
+    console.log(this.props.session.token)
+
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
         {
           username: localUsername ? localUsername : this.props.client.username,
-          token: this.props.session.token
+          token: this.props.session.token || null
         },
         { mode: "MULTIPLAYER", ...this.props.match.params }
       );

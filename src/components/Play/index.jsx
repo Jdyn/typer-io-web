@@ -6,7 +6,7 @@ import Gameboard from "./Gameboard";
 import Chat from "./Chat";
 import { silentEmit } from "../../services/socket";
 import PlayStatus from "./Status";
-import Leaderboard from "./Leaderboard";
+import Leaderboard from "./leaderboard";
 import Editor from "./Gameboard/Editor";
 
 const propTypes = {
@@ -71,10 +71,15 @@ const Play = props => {
     const newEntries = words[currentIndex].length + 1;
     const newIndex = currentIndex;
 
+    const timestamp = Date.now();
+
+    console.log("hello")
+
     const payload = {
       entries: newEntries,
       position: newIndex,
-      errors: editorState.errors
+      errors: editorState.errors,
+      timestamp
     };
 
     silentEmit("CLIENT_UPDATE", payload);
@@ -95,7 +100,7 @@ const Play = props => {
       <div className={classes.root}>
         <ClientList room={room} gameboard={gameboard} socket={socket} />
         <PlayStatus gameboard={gameboard} room={room} socket={socket} />
-        <Leaderboard />
+        <Leaderboard snippet={room.snippet} />
         <Gameboard
           gameState={gameState}
           editorState={editorState}

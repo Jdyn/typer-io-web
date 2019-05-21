@@ -44,8 +44,8 @@ const styles = theme => ({
     gridArea: "chat",
     boxShadow: "0px 10px 15px 0px rgba(30,30,70,.3)",
     padding: "24px",
-    // height: "400px",
-    // maxHeight: "400px",
+    height: "560px",
+    maxHeight: "560px",
     backgroundColor: theme.white,
     borderRadius: 16
   },

@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
-import Banner from "../reusable/Banner";
+import Banner from "../../reusable/Banner";
+import ApiService from "../../../services/ApiService";
+import formatTime from "../../../lib/formatTime";
+import LeaderboardCard from "./LeaderboardCard";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const Leaderboard = props => {
-  const { classes } = props;
+  const { classes, snippet } = props;
+
+  const [state, set] = useState([]);
+
+  useEffect(() => {
+    if (snippet.id) {
+      ApiService.fetch(`/snippet/${snippet.id}/matches`).then(response => {
+        if (response.ok) {
+          const temp = [...response.result.matches];
+
+          for (let match of temp) {
+            match.created_at = formatTime(match.created_at);
+          }
+
+          set(temp);
+        }
+      });
+    }
+  }, [snippet.id]);
+
   return (
     <div className={classes.container}>
       <Banner>Leaderboard</Banner>
@@ -17,6 +39,12 @@ const Leaderboard = props => {
         <li className={classes.category}>month</li>
         <li className={classes.category}>all time</li>
       </ul>
+
+      <div className={classes.wrapper}>
+        {state.map((card, index) => (
+          <LeaderboardCard key={index} card={card} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -30,7 +58,8 @@ const styles = theme => ({
     gridArea: "leaderboard",
     boxShadow: "0px 10px 15px 0px rgba(30,30,70,.3)",
     borderRadius: 16,
-    // height: "425px",
+    // height: "430px",
+    // maxHeight: "430px",
     padding: "24px",
     backgroundColor: theme.white
   }),
@@ -43,6 +72,30 @@ const styles = theme => ({
     marginTop: "15px",
     marginLeft: "-24px",
     width: "calc(100% + 48px)"
+  },
+  wrapper: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    flexGrow: 1,
+    marginRight: "-24px",
+    height: "1px",
+    overflow: "auto",
+    marginLeft: "-24px",
+    width: "calc(100% + 48px)",
+    "&::-webkit-scrollbar": {
+      width: "10px",
+      height: "16px"
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,0.2)"
+    },
+    "&::-webkit-scrollbar-button": {
+      width: "0",
+      height: "0",
+      display: "none"
+    }
   },
   category: {
     display: "flex",

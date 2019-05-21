@@ -5,10 +5,14 @@ import { initSocket, leaveRoom } from "../actions/ClientActions";
 
 class SoloContainer extends Component {
   componentWillMount() {
+    console.log(this.props.session.token)
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
-        localUsername ? localUsername : this.props.client.username,
+        {
+          username: localUsername ? localUsername : this.props.client.username,
+          token: this.props.session.token || null
+        },
         { mode: "SOLO", ...this.props.match.params }
       );
     }
@@ -23,6 +27,7 @@ const mapStateToProps = state => {
   return {
     client: state.client.meta,
     room: state.client.room,
+    session: state.session,
     gameboard: state.client.room.gameboard,
     socket: state.client.socket
   };

@@ -38,7 +38,7 @@ const styles = theme => ({
     paddingTop: "3px",
     overflow: "hidden",
     backgroundColor: theme.accent,
-    boxShadow: "0 5px 10px 0px rgba(35,35,80,.4)",
+    boxShadow: "0 0px 10px rgba(30,30,70,.3)",
     borderBottom: "3px solid rgb(0,0,0,.1)"
   },
   container: {

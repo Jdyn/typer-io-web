@@ -44,7 +44,7 @@ const styles = theme => ({
     fontWeight: 700
   },
   timestamp: {
-    fontSize: 16,
+    fontSize: 14,
     color: theme.secondaryColor
   },
   portrait: {
@@ -61,7 +61,7 @@ const styles = theme => ({
     justifyContent: "flex-end",
     color: theme.secondaryColor,
     flexGrow: 1,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 500
   }
 });

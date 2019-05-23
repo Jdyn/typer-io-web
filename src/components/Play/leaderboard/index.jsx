@@ -5,15 +5,35 @@ import Banner from "../../reusable/Banner";
 import ApiService from "../../../services/ApiService";
 import formatTime from "../../../lib/formatTime";
 import LeaderboardCard from "./LeaderboardCard";
+import Filter from "../../reusable/Filter";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+const filters = [
+  {
+    name: "week",
+    selected: true
+  },
+  {
+    name: "month",
+    selected: false
+  },
+  {
+    name: "all time",
+    selected: false
+  }
+];
+
 const Leaderboard = props => {
   const { classes, snippet } = props;
 
   const [state, set] = useState([]);
+
+  const handleFilter = (event, selectedIndex) => {
+    console.log(selectedIndex);
+  };
 
   useEffect(() => {
     if (snippet.id) {
@@ -34,11 +54,13 @@ const Leaderboard = props => {
   return (
     <div className={classes.container}>
       <Banner>Leaderboard</Banner>
-      <ul className={classes.categories}>
-        <li className={classes.category}>week</li>
-        <li className={classes.category}>month</li>
-        <li className={classes.category}>all time</li>
-      </ul>
+      <Filter
+        extended
+        padding="0 0 10px 0"
+        fontSize={15}
+        filters={filters}
+        onClick={handleFilter}
+      />
 
       <div className={classes.wrapper}>
         {state.map((card, index) => (
@@ -56,7 +78,7 @@ const styles = theme => ({
     flexGrow: 1,
     position: "relative",
     gridArea: "leaderboard",
-    boxShadow: "0px 10px 15px 0px rgba(30,30,70,.3)",
+    boxShadow: "0px 5px 10px 0px rgba(30,30,70,.3)",
     borderRadius: 16,
     // height: "430px",
     // maxHeight: "430px",

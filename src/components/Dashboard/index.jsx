@@ -18,15 +18,7 @@ const propTypes = {
 };
 
 const Dashboard = props => {
-  const {
-    classes,
-    client,
-    session,
-    socket,
-    updateClient,
-    initSocket,
-    handleAuth
-  } = props;
+  const { classes, client, session, socket, updateClient, initSocket, handleAuth } = props;
 
   // useEffect(() => {
   //   let socket = new PhoenixSocket("ws://localhost:4000/socket", {});
@@ -51,12 +43,7 @@ const Dashboard = props => {
           client={client}
           session={session}
         />
-        <DashboardMenu
-          initSocket={initSocket}
-          socket={socket}
-          client={client}
-          session={session}
-        />
+        <DashboardMenu initSocket={initSocket} socket={socket} client={client} session={session} />
       </div>
     </>
   );
@@ -89,7 +76,7 @@ const styles = theme => ({
       'menu menu'
       `
     },
-    "@media (min-width: 1000px)": { 
+    "@media (min-width: 1000px)": {
       gridTemplateColumns: "1.3fr 270px 1fr",
       gridTemplateRows: "465px",
       maxWidth: "1125px",
@@ -101,7 +88,7 @@ const styles = theme => ({
   stripe: {
     zIndex: -1,
     width: "100%",
-    height: "95%",
+    height: "90%",
     top: 0,
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",

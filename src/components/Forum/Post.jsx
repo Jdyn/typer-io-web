@@ -115,7 +115,7 @@ const styles = theme => ({
   },
   wrapper: {
     flexGrow: 1,
-    padding: "24px",
+    padding: "20px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,
@@ -157,7 +157,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     marginTop: "30px",
-    padding: "24px",
+    padding: "20px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,

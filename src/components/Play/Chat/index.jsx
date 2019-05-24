@@ -43,7 +43,7 @@ const styles = theme => ({
     position: "relative",
     gridArea: "chat",
     boxShadow: "0px 10px 15px 0px rgba(30,30,70,.3)",
-    padding: "24px",
+    padding: "20px",
     height: "560px",
     maxHeight: "560px",
     backgroundColor: theme.white,

@@ -55,7 +55,7 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "24px",
+    padding: "20px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,

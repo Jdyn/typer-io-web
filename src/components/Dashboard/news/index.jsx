@@ -68,7 +68,7 @@ const styles = theme => ({
     position: "relative",
     gridArea: "matchHistory",
     margin: 0,
-    padding: "24px",
+    padding: "20px",
     borderRadius: 16,
     backgroundColor: theme.white,
     boxShadow: "0 10px 20px 0px rgba(30,30,70,.4)"

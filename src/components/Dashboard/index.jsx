@@ -88,7 +88,7 @@ const styles = theme => ({
   stripe: {
     zIndex: -1,
     width: "100%",
-    height: "90%",
+    height: "95%",
     top: 0,
     overflow: "hidden",
     WebkitTransform: "skwY(-12deg)",

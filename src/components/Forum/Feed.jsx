@@ -25,16 +25,14 @@ const Feed = props => {
     }
   ];
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className={classes.container}>
       <Banner>Forum</Banner>
       <Navigator view={view} isLoggedIn={isLoggedIn} />
       <div className={classes.filter}>
-        <Filter filters={filters} padding="0 15px 15px 15px" />
+        <Filter extended filters={filters} padding="0 15px 15px 15px" onClick={() => {}} />
       </div>
       <ul className={classes.feed}>
         {posts.map((post, index) => (
@@ -49,7 +47,7 @@ const styles = theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "24px",
+    padding: "20px",
     borderRadius: 16,
     boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     backgroundColor: theme.primary,

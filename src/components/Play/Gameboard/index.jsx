@@ -78,7 +78,7 @@ const styles = theme => ({
     position: "relative",
     margin: "0 15px",
     marginBottom: "15px",
-    padding: "24px",
+    padding: "20px",
     backgroundColor: theme.white,
     borderRadius: 16,
     gridArea: "gameboard",

@@ -157,7 +157,7 @@ const styles = theme => ({
     gridArea: "profile",
     position: "relative",
     margin: 0,
-    padding: "24px",
+    padding: "20px",
     backgroundColor: theme.white,
     borderRadius: 16,
     boxShadow: "0px 10px 20px 0 rgba(30,30,70,.4)"

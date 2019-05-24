@@ -130,7 +130,7 @@ Play.propTypes = propTypes;
 const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "265px auto 265px",
+    gridTemplateColumns: "275px auto 275px",
     gridTemplateRows: "min-content min-content auto 1fr",
     gridTemplateAreas: `
     'clientlist  clientlist clientlist'
@@ -138,7 +138,7 @@ const styles = theme => ({
     'leaderboard gameboard  chat'
     'leaderboard editor     chat'
     `,
-    maxWidth: "1125px",
+    maxWidth: "1140px",
     flexDirection: "row",
     position: "relative",
     padding: "15px",

@@ -32,7 +32,7 @@ const Leaderboard = props => {
   const [state, set] = useState([]);
 
   const handleFilter = (event, selectedIndex) => {
-    console.log(selectedIndex);
+    console.log(selectedIndex)
   };
 
   useEffect(() => {
@@ -78,11 +78,11 @@ const styles = theme => ({
     flexGrow: 1,
     position: "relative",
     gridArea: "leaderboard",
-    boxShadow: "0px 5px 10px 0px rgba(30,30,70,.3)",
+    boxShadow: "0px 10px 15px rgba(30,30,70,.3)",
     borderRadius: 16,
     // height: "430px",
     // maxHeight: "430px",
-    padding: "24px",
+    padding: "20px",
     backgroundColor: theme.white
   }),
   categories: {
@@ -105,7 +105,7 @@ const styles = theme => ({
     height: "1px",
     overflow: "auto",
     marginLeft: "-24px",
-    width: "calc(100% + 48px)",
+    width: "calc(100% + 44px)",
     "&::-webkit-scrollbar": {
       width: "10px",
       height: "16px"

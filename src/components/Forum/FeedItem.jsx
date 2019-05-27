@@ -45,7 +45,7 @@ const styles = theme => ({
     "& span": {
       color: theme.secondaryColor,
       fontSize: 16
-    },
+    }
   },
   titleLink: {
     fontWeight: 700,
@@ -54,7 +54,8 @@ const styles = theme => ({
     color: theme.color,
     textDecoration: "none",
     overflowWrap: "break-word",
-    wordWrap: "break-word",
+    wordBreak: "break-word",
+    wordWrap: "break-word"
   },
   commentLink: {
     color: theme.secondaryColor,

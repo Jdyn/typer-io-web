@@ -138,7 +138,7 @@ const styles = theme => ({
     'leaderboard gameboard  chat'
     'leaderboard editor     chat'
     `,
-    maxWidth: "1140px",
+    maxWidth: "1105px",
     flexDirection: "row",
     position: "relative",
     padding: "15px",

@@ -16,10 +16,10 @@ const News = props => {
     <div className={classes.container}>
       <Banner>News</Banner>
       <div className={classes.wrapper}>
-        <h2>Demo Release</h2>
-        <span>updated {formatTime(1556905192689)}</span>
+        <h2>This is a Demo.</h2>
+        <span>updated {formatTime(1558843788770)}</span>
         <p>
-          Thank you for taking a look at this demo. Some features are currently disabled,
+          Thanks for taking a look. Some features are currently disabled,
           see below.
         </p>
         <h3>
@@ -27,31 +27,33 @@ const News = props => {
         </h3>
         <div className={classes.list}>
           <ul>
-            <li>Match History</li>
+            <li>Individual Match History</li>
             <li>Private Matches</li>
-            <li>Discussions</li>
-            <li>Leaderboards</li>
-          </ul>
-          <ul>
-            <li>Accounts</li>
+            <li>D̶i̶s̶c̶u̶s̶s̶i̶o̶n̶s̶</li>
+            <li>L̶e̶a̶d̶e̶r̶b̶o̶a̶r̶d̶s̶</li>
+            <li>A̶c̶c̶o̶u̶n̶t̶s̶</li>
           </ul>
         </div>
         <p>
           Public forums and leaderboards are the primary focus right now and are actively
           being developed. <br />
-          Forums soon™
+          <br />
+          Forums and per quote leaderboards (by week only) are now enabled.
         </p>
 
-        <h3>Hot Fixes:</h3>
+        <h3>Latest Fixes:</h3>
         <div className={classes.list}>
           <ul>
-            <li>Errors are now tracked properly</li>
+            <li>Continuing to type after the game ends should not cause a crash.</li>
+            <li>All bodies of text in the forums should no longer break the layout</li>
+            <li>a lot of small fixes</li>
+            {/* <li>Errors are now tracked properly</li>
             <li>Text no longer shifts when encountering certain characters.</li>
             <li>
               Correct font is displayed on devices shipped without Sogue UI by default.
             </li>
             <li>Menu button style slightly updated.</li>
-            <li>Clearer warning when attempting to create a private match.</li>
+            <li>Clearer warning when attempting to create a private match.</li> */}
           </ul>
         </div>
       </div>

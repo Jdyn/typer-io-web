@@ -34,7 +34,6 @@ const Post = props => {
           }
         })
         .catch(error => {
-          console.log(error);
         });
     }
   };

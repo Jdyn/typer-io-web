@@ -27,7 +27,6 @@ const Dashboard = props => {
   //   let channel = socket.channel("leaderboard:latest", {});
 
   //   channel.join().receive("ok", res => {
-  //     console.log(res)
   //     setState(res);
   //   });
   // }, []);

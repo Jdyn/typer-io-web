@@ -6,7 +6,6 @@ import { initSocket, sendChatMessage, leaveRoom } from "../actions/ClientActions
 
 class PlayContainer extends Component {
   componentWillMount() {
-    console.log(this.props.session.token)
 
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
@@ -19,11 +18,6 @@ class PlayContainer extends Component {
       );
     }
   }
-
-  // componentWillUnmount() {
-  //   console.log("component did unmount")
-  //   this.props.leaveRoom({ id: this.props.room.id, errored: false });
-  // }
 
   render() {
     return <Play {...this.props} />;

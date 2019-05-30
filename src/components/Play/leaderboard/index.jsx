@@ -32,7 +32,6 @@ const Leaderboard = props => {
   const [state, set] = useState([]);
 
   const handleFilter = (event, selectedIndex) => {
-    console.log(selectedIndex)
   };
 
   useEffect(() => {
@@ -99,7 +98,6 @@ const styles = theme => ({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: "100%",
     flexGrow: 1,
     marginRight: "-24px",
     height: "1px",

@@ -11,13 +11,13 @@ import Header from "../components/Header";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
-    dsn: "https://429f27fd7aab4c2dac9d534a38ccfaf8@sentry.io/1396899",
-    beforeSend(event) {
-      if (event.exception) {
-        Sentry.showReportDialog();
-      }
-      return event;
-    }
+    dsn: "https://429f27fd7aab4c2dac9d534a38ccfaf8@sentry.io/1396899"
+    // beforeSend(event) {
+    //   if (event.exception) {
+    //     Sentry.showReportDialog();
+    //   }
+    //   return event;
+    // }
   });
 }
 

@@ -5,7 +5,6 @@ import { initSocket, leaveRoom } from "../actions/ClientActions";
 
 class SoloContainer extends Component {
   componentWillMount() {
-    console.log(this.props.session.token)
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(

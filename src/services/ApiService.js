@@ -16,7 +16,7 @@ function parseResponse(response) {
   if (response.ok) {
     return response.json().then(json => json);
   }
-  return response
+  return response;
 }
 
 function queryString(params) {
@@ -31,7 +31,9 @@ export default {
     return fetch(`${API}${url}${queryString(params)}`, {
       method: "GET",
       headers: headers()
-    }).then(parseResponse);
+    })
+      .then(parseResponse)
+      .catch(error => error);
   },
 
   post(url, data) {

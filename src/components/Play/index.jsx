@@ -73,8 +73,6 @@ const Play = props => {
 
     const timestamp = Date.now();
 
-    console.log("hello")
-
     const payload = {
       entries: newEntries,
       position: newIndex,

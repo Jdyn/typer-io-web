@@ -84,7 +84,7 @@ export const signup = form => dispatch => {
 
 export const authenticate = () => dispatch => {
   dispatch({ type: actions.AUTHENTICATION_REQUEST });
-  ApiService.post("/refresh")
+  ApiService.fetch("/refresh")
     .then(response => {
       if (response.ok) {
         if (response.result.token) {

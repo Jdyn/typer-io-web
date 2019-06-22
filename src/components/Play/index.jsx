@@ -17,11 +17,20 @@ const propTypes = {
   socket: PropTypes.object.isRequired,
   initSocket: PropTypes.func.isRequired,
   leaveRoom: PropTypes.func.isRequired,
-  sendChatMessage: PropTypes.func.isRequired
+  sendChatMessage: PropTypes.func
 };
 
 const Play = props => {
-  const { client, room, socket, gameboard, leaveRoom, sendChatMessage, classes } = props;
+  const {
+    client,
+    room,
+    socket,
+    gameboard,
+    leaveRoom,
+    sendChatMessage,
+    classes,
+    isSolo
+  } = props;
 
   const [gameState, setGameState] = useState({
     currentInput: "",
@@ -109,7 +118,9 @@ const Play = props => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        {!isSolo && (
+          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
+        )}
         <Editor
           gameboard={gameboard}
           gameState={gameState}
@@ -118,6 +129,11 @@ const Play = props => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
+        {!gameboard.isStarted ? (
+          <span className={classes.notice}>
+            Tip: Type the words in the box above when the game starts.
+          </span>
+        ) : null}
       </div>
     </>
   );
@@ -126,23 +142,31 @@ const Play = props => {
 Play.propTypes = propTypes;
 
 const styles = theme => ({
-  root: {
+  root: props => ({
     display: "grid",
     gridTemplateColumns: "275px auto 275px",
-    gridTemplateRows: "min-content min-content auto 1fr",
-    gridTemplateAreas: `
+    gridTemplateRows: "min-content min-content auto 1fr min-content",
+    gridTemplateAreas: props.isSolo
+      ? `
+    'status gameboard leaderboard'
+    'clientlist gameboard leaderboard'
+    'clientlist editor leaderboard'
+    '. notice .'
+    `
+      : `
     'clientlist  clientlist clientlist'
     'status      gameboard  chat'
     'leaderboard gameboard  chat'
     'leaderboard editor     chat'
+    '. notice .'
     `,
     maxWidth: "1105px",
     flexDirection: "row",
     position: "relative",
     padding: "15px",
-    margin: "75px auto 115px auto",
+    margin: "75px auto 0px auto",
     height: "100%"
-  },
+  }),
   stripe: {
     zIndex: -1,
     width: "100%",
@@ -154,6 +178,19 @@ const styles = theme => ({
     transformOrigin: 0,
     backgroundColor: theme.tertiary,
     position: "absolute"
+  },
+  notice: {
+    position: "relative",
+    gridArea: "notice",
+    padding: "10px 5px",
+    backgroundColor: theme.accent,
+    color: theme.white,
+    border: "3px solid #5d66ce",
+    textAlign: "center",
+    borderRadius: 8,
+    zIndex: 0,
+    margin: "15px"
+    // width: "100%"
   }
 });
 

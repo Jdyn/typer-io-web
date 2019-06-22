@@ -16,11 +16,13 @@ const Gameboard = props => {
   } = props;
 
   useEffect(() => {
-    if (gameState.currentInput.length > gameState.currentWord.length) {
-      setEditorState(prev => ({
-        ...prev,
-        wrongIndex: -1
-      }));
+    if (gameState.currentWord) {
+      if (gameState.currentInput.length > gameState.currentWord.length) {
+        setEditorState(prev => ({
+          ...prev,
+          wrongIndex: -1
+        }));
+      }
     }
 
     if (editorState.wrongIndex !== null) {

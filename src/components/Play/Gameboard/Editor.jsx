@@ -7,12 +7,19 @@ const propTypes = {
 };
 
 const Editor = props => {
-  const { classes, gameboard, inputDidUpdate, submitWord, setEditorState, gameState } = props;
+  const {
+    classes,
+    gameboard,
+    inputDidUpdate,
+    submitWord,
+    setEditorState,
+    gameState
+  } = props;
   const [isComplete, setComplete] = useState(false);
 
   useEffect(() => {
-    focusInput()
-  }, [])
+    focusInput();
+  }, []);
 
   const keydown = event => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
@@ -69,21 +76,16 @@ const Editor = props => {
           autoComplete="off"
           autoCorrect="off"
           readOnly={isComplete}
-          maxLength={`${gameState.currentWord ? gameState.currentWord.length + 5 : 524288}`}
+          maxLength={`${
+            gameState.currentWord ? gameState.currentWord.length + 5 : 524288
+          }`}
           autoCapitalize="off"
           spellCheck="false"
           value={gameState.currentInput}
           onChange={e => inputDidUpdate(e)}
           onKeyDown={e => keydown(e)}
         />
-        <span>{gameboard.isStarted ? "" : "Type the words from above when the race begins"}</span>
       </div>
-
-      {/* {document.activeElement.id !== "input" ? (
-        gameboard.isStarted ? null : (
-          <div>{gameboard.isStarted ? "" : "click here to type"}</div>
-        )
-      ) : null} */}
     </div>
   );
 };
@@ -122,14 +124,9 @@ const styles = theme => ({
       left: -2,
       zIndex: 0,
       borderRadius: 16,
-      // border: "2px solid #e5e5e5",
       backgroundColor: props.isWrong ? "#f4433666" : "transparent",
       width: "calc(100% + 4px)",
       height: "calc(100% + 4px)"
-    },
-    "& span": {
-      position: "absolute",
-      bottom: 5
     }
   }),
   input: {

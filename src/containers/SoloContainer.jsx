@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Solo from "../components/Solo";
 import { initSocket, leaveRoom } from "../actions/ClientActions";
+import Play from "../components/Play";
 
 class SoloContainer extends Component {
   componentWillMount() {
@@ -18,7 +18,7 @@ class SoloContainer extends Component {
   }
 
   render() {
-    return <Solo {...this.props} />;
+    return <Play isSolo {...this.props} />;
   }
 }
 

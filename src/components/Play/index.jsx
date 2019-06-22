@@ -129,7 +129,7 @@ const Play = props => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        {!gameboard.isStarted ? (
+        {!gameboard.isStarted && !gameboard.isOver ? (
           <span className={classes.notice}>
             Tip: Type the words in the box above when the game starts.
           </span>
@@ -145,7 +145,7 @@ const styles = theme => ({
   root: props => ({
     display: "grid",
     gridTemplateColumns: "275px auto 275px",
-    gridTemplateRows: "min-content min-content auto 1fr min-content",
+    gridTemplateRows: "min-content min-content auto 1fr 75px",
     gridTemplateAreas: props.isSolo
       ? `
     'status gameboard leaderboard'
@@ -164,7 +164,7 @@ const styles = theme => ({
     flexDirection: "row",
     position: "relative",
     padding: "15px",
-    margin: "75px auto 0px auto",
+    margin: "75px auto 115px auto",
     height: "100%"
   }),
   stripe: {

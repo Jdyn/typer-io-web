@@ -16,6 +16,13 @@ const Gameboard = props => {
   } = props;
 
   useEffect(() => {
+    if (gameState.currentInput.length > gameState.currentWord.length) {
+      setEditorState(prev => ({
+        ...prev,
+        wrongIndex: -1
+      }));
+    }
+
     if (editorState.wrongIndex !== null) {
       if (gameState.currentWord) {
         if (
@@ -43,7 +50,9 @@ const Gameboard = props => {
         {gameboard.words.map((word, wordIndex) => (
           <div key={wordIndex} className={classes.wrapper}>
             <Word
-              input={gameState.currentInput ? gameState.currentInput.split("") : []}
+              input={
+                gameState.currentInput ? gameState.currentInput.split("") : []
+              }
               currentIndex={gameState.currentIndex}
               word={word}
               index={wordIndex}
@@ -56,7 +65,9 @@ const Gameboard = props => {
                 const { position, color } = client.gamePiece;
 
                 if (wordIndex === 0 && position === null)
-                  return <Piece key={pieceIndex} color={color} position={position} />;
+                  return (
+                    <Piece key={pieceIndex} color={color} position={position} />
+                  );
 
                 return position === wordIndex ? (
                   <Piece key={pieceIndex} color={color} position={position} />

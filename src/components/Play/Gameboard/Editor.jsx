@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
 
@@ -9,6 +9,10 @@ const propTypes = {
 const Editor = props => {
   const { classes, gameboard, inputDidUpdate, submitWord, setEditorState, gameState } = props;
   const [isComplete, setComplete] = useState(false);
+
+  useEffect(() => {
+    focusInput()
+  }, [])
 
   const keydown = event => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
@@ -72,6 +76,7 @@ const Editor = props => {
           onChange={e => inputDidUpdate(e)}
           onKeyDown={e => keydown(e)}
         />
+        <span>{gameboard.isStarted ? "" : "Type the words from above when the race begins"}</span>
       </div>
 
       {/* {document.activeElement.id !== "input" ? (
@@ -101,6 +106,7 @@ const styles = theme => ({
   }),
   inner: props => ({
     display: "flex",
+    flexDirection: "column",
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
@@ -120,11 +126,16 @@ const styles = theme => ({
       backgroundColor: props.isWrong ? "#f4433666" : "transparent",
       width: "calc(100% + 4px)",
       height: "calc(100% + 4px)"
+    },
+    "& span": {
+      position: "absolute",
+      bottom: 5
     }
   }),
   input: {
     display: "inline-block",
     lineHeight: "40px",
+    width: "100%",
     whiteSpace: "nowrap",
     border: "none",
     textAlign: "center",

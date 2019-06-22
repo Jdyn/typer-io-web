@@ -33,6 +33,7 @@ const Word = props => {
         return "#f44336";
       }
     }
+    
     return "#555abf";
   };
 

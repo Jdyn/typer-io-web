@@ -36,7 +36,7 @@ const styles = theme => ({
     margin: "-20px",
     padding: "15px",
     borderRadius: "16px 16px 4px 4px",
-    boxShadow: "0 5px 10px 0px rgba(30,30,70,.3)",
+    boxShadow: "0 0px 10px 0px rgba(30,30,70,.3)",
     marginBottom: "15px",
     "& h2": {
       display: "Flex",

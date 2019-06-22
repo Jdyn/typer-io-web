@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import withStyles from "react-jss";
 import PropTypes from "prop-types";
 import ChatMessage from "./ChatMessage";
@@ -15,20 +15,26 @@ const propTypes = {
 const Chat = props => {
   const { classes, room, client, sendChatMessage } = props;
 
+  useEffect(() => {
+    const display = document.getElementById("chat");
+
+    display.scrollTop = display.scrollHeight;
+  }, [room.messages]);
+
   return (
     <div className={classes.container}>
       <Banner>Chat</Banner>
-        <div id="chat" className={classes.display}>
-          {room.messages.map((message, index) => (
-            <ChatMessage
-              message={message}
-              key={index}
-              color={message.color}
-              align={client.id === message.id ? "flex-end" : "flex-start"}
-            />
-          ))}
-        </div>
-        <ChatInput sendChatMessage={sendChatMessage} client={client} />
+      <div id="chat" className={classes.display}>
+        {room.messages.map((message, index) => (
+          <ChatMessage
+            message={message}
+            key={index}
+            color={message.color}
+            align={client.id === message.id ? "flex-end" : "flex-start"}
+          />
+        ))}
+      </div>
+      <ChatInput sendChatMessage={sendChatMessage} client={client} />
     </div>
   );
 };
@@ -62,11 +68,18 @@ const styles = theme => ({
     // boxShadow: "0px 0px 5px rgba(30,30,70,.3) inset",
     borderRadius: 16,
     "&::-webkit-scrollbar": {
-      width: "10px",
-      height: "16px"
+      width: "8px",
+      height: "16px",
+      // backgroundColor: "#ddd"
     },
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "rgba(0,0,0,0.2)"
+      backgroundColor: "#b4b4b4",
+      borderRadius: 16,
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,.2)"
+    },
+    "&::-webkit-scrollbar-track": {
+      // backgroundColor: theme.primary, 
+      // webkitBoxShadow: "inset 0 0 6px transparent",
     },
     "&::-webkit-scrollbar-button": {
       width: "0",

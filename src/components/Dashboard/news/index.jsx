@@ -99,11 +99,18 @@ const styles = theme => ({
       fontSize: "14px"
     },
     "&::-webkit-scrollbar": {
-      width: "10px",
-      height: "16px"
+      width: "8px",
+      height: "16px",
+      // backgroundColor: "#ddd"
     },
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "rgba(0,0,0,0.2)"
+      backgroundColor: "#b4b4b4",
+      borderRadius: 16,
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,.2)"
+    },
+    "&::-webkit-scrollbar-track": {
+      // backgroundColor: theme.primary, 
+      // webkitBoxShadow: "inset 0 0 6px transparent",
     },
     "&::-webkit-scrollbar-button": {
       width: "0",

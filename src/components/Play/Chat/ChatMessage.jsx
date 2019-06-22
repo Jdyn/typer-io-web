@@ -25,8 +25,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    minHeight: "60px",
-    margin: "10px 0px 10px 0px",
+    // minHeight: "60px",
+    margin: "10px 5px 10px 0px",
     borderRadius: 16
   },
   inner: props => ({

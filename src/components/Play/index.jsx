@@ -189,7 +189,8 @@ const styles = theme => ({
     textAlign: "center",
     borderRadius: 8,
     zIndex: 0,
-    margin: "15px"
+    margin: "15px",
+    fontSize: 16
     // width: "100%"
   }
 });

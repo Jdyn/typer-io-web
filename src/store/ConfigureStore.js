@@ -8,11 +8,12 @@ export default function configureStore(initialState) {
     thunk,
     socket(
       process.env.NODE_ENV === "production"
-        ? "ec2-54-227-31-237.compute-1.amazonaws.com:8000/"
-        : "localhost:8000/"
+        ? "54.84.200.205:8000/"
+        : "54.84.200.205:8000/"
     )
   ];
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(
     rootReducer,

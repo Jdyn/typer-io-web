@@ -1,7 +1,7 @@
 const API =
   process.env.NODE_ENV === "production"
-    ? "http://ec2-54-227-31-237.compute-1.amazonaws.com:4000/api/v1"
-    : "http://localhost:4000/api/v1";
+    ? "http://54.84.200.205:4000/api/v1"
+    : "http://54.84.200.205:4000/api/v1";
 
 function headers() {
   const token = JSON.parse(localStorage.getItem("token"));

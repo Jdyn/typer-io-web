@@ -17,10 +17,15 @@ const News = props => {
       <Banner>News</Banner>
       <div className={classes.wrapper}>
         <h2>This is a Demo.</h2>
-        <span>updated {formatTime(1558843788770)}</span>
+        <span>updated {formatTime(1570494746858)}</span>
         <p>
-          Thanks for taking a look. Some features are currently disabled,
-          see below.
+          UPDATE: I've turned off the servers for the foreseeable future; until
+          I have time to work on the project more. I would keep it up anyway, but
+          there are AWS costs. If you want to test it, you can contact me and we
+          can play together. Are you faster than me?
+          <br></br>
+          <br></br>
+          Thanks for taking a look.
         </p>
         <h3>
           <b>Disabled features:</b>
@@ -29,31 +34,21 @@ const News = props => {
           <ul>
             <li>Individual Match History</li>
             <li>Private Matches</li>
-            <li>D̶i̶s̶c̶u̶s̶s̶i̶o̶n̶s̶</li>
-            <li>L̶e̶a̶d̶e̶r̶b̶o̶a̶r̶d̶s̶</li>
-            <li>A̶c̶c̶o̶u̶n̶t̶s̶</li>
           </ul>
         </div>
         <p>
-          Public forums and leaderboards are the primary focus right now and are actively
-          being developed. <br />
-          <br />
           Forums and per quote leaderboards (by week only) are now enabled.
         </p>
 
         <h3>Latest Fixes:</h3>
         <div className={classes.list}>
           <ul>
-            <li>Continuing to type after the game ends should not cause a crash.</li>
-            <li>All bodies of text in the forums should no longer break the layout</li>
-            <li>a lot of small fixes</li>
-            {/* <li>Errors are now tracked properly</li>
-            <li>Text no longer shifts when encountering certain characters.</li>
             <li>
-              Correct font is displayed on devices shipped without Sogue UI by default.
+              Continuing to type after the game ends should not cause a crash.
             </li>
-            <li>Menu button style slightly updated.</li>
-            <li>Clearer warning when attempting to create a private match.</li> */}
+            <li>
+              All bodies of text in the forums should no longer break the layout
+            </li>
           </ul>
         </div>
       </div>
@@ -100,7 +95,7 @@ const styles = theme => ({
     },
     "&::-webkit-scrollbar": {
       width: "8px",
-      height: "16px",
+      height: "16px"
       // backgroundColor: "#ddd"
     },
     "&::-webkit-scrollbar-thumb": {
@@ -109,7 +104,7 @@ const styles = theme => ({
       webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,.2)"
     },
     "&::-webkit-scrollbar-track": {
-      // backgroundColor: theme.primary, 
+      // backgroundColor: theme.primary,
       // webkitBoxShadow: "inset 0 0 6px transparent",
     },
     "&::-webkit-scrollbar-button": {

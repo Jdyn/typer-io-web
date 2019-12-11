@@ -19,9 +19,8 @@ const News = props => {
         <h2>This is a Demo.</h2>
         <span>updated {formatTime(1570494746858)}</span>
         <p>
-          UPDATE: I've turned off the servers for the foreseeable future; until
-          I have time to work on the project more. I would keep it up anyway, but
-          there are AWS costs. If you want to test it, you can contact me and we
+          UPDATE: I've turned off the servers for the foreseeable future while I find the time to work on the project more. I would keep it up, but
+          there are small server costs that aren't worth it. If you want to test it, you can contact me and we
           can play together. Are you faster than me?
           <br></br>
           <br></br>
@@ -36,10 +35,6 @@ const News = props => {
             <li>Private Matches</li>
           </ul>
         </div>
-        <p>
-          Forums and per quote leaderboards (by week only) are now enabled.
-        </p>
-
         <h3>Latest Fixes:</h3>
         <div className={classes.list}>
           <ul>
@@ -47,7 +42,7 @@ const News = props => {
               Continuing to type after the game ends should not cause a crash.
             </li>
             <li>
-              All bodies of text in the forums should no longer break the layout
+              All bodies of text in the forums should no longer stretch the layout.
             </li>
           </ul>
         </div>

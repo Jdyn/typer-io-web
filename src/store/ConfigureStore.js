@@ -8,8 +8,8 @@ export default function configureStore(initialState) {
     thunk,
     socket(
       process.env.NODE_ENV === "production"
-        ? "54.84.200.205:8000/"
-        : "54.84.200.205:8000/"
+        ? "https://typer-io-node.herokuapp.com/"
+        : "http://localhost:8000/"
     )
   ];
   const composeEnhancers =

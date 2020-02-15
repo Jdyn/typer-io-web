@@ -17,11 +17,9 @@ const News = props => {
       <Banner>News</Banner>
       <div className={classes.wrapper}>
         <h2>This is a Demo.</h2>
-        <span>updated {formatTime(1570494746858)}</span>
+        <span>updated {formatTime(1581811030519)}</span>
         <p>
-          UPDATE: I've turned off the servers for the foreseeable future while I find the time to work on the project more. I would keep it up, but
-          there are small server costs that aren't worth it. If you want to test it, you can contact me and we
-          can play together. Are you faster than me?
+          UPDATE: Servers are back on for free. Things may be slow as a result, but atleast it works.
           <br></br>
           <br></br>
           Thanks for taking a look.
@@ -42,7 +40,7 @@ const News = props => {
               Continuing to type after the game ends should not cause a crash.
             </li>
             <li>
-              All bodies of text in the forums should no longer stretch the layout.
+              Text in the forums should no longer stretch the layout.
             </li>
           </ul>
         </div>

@@ -1,7 +1,7 @@
 const API =
   process.env.NODE_ENV === "production"
     ? "https://typer-io-server.herokuapp.com/api/v1"
-    : "http://localhost:4000/api/v1";
+    : "https://typer-io-server.herokuapp.com/api/v1";
 
 function headers() {
   const token = JSON.parse(localStorage.getItem("token"));

@@ -8,8 +8,8 @@ export default function configureStore(initialState) {
     thunk,
     socket(
       process.env.NODE_ENV === "production"
-        ? "typer-io-node.herokuapp.com/"
-        : "typer-io-node.herokuapp.com/"
+        ? "https://typer-io-node.herokuapp.com"
+        : "https://typer-io-node.herokuapp.com"
     )
   ];
   const composeEnhancers =

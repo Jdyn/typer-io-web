@@ -78,10 +78,10 @@ const styles = theme => ({
   search: {
     diplay: "flex",
     position: "sticky",
-    top: "90px",
+    top: "25px",
     flexGrow: 1,
     gridArea: "search",
-    backgroundColor: "#f7f7f7",
+    backgroundColor: theme.white,
     border: "2px solid #e5e5e5",
     borderRadius: 16,
     fontSize: "17px",
@@ -99,7 +99,7 @@ const styles = theme => ({
   messages: {
     display: "flex",
     position: "sticky",
-    top: "90px",
+    top: "25px",
     flexDirection: "column",
     gridArea: "messages",
     padding: "20px",
@@ -111,7 +111,7 @@ const styles = theme => ({
   subjects: {
     display: "flex",
     position: "sticky",
-    top: "165px",
+    top: "90px",
     flexDirection: "column",
     gridArea: "subjects",
     padding: "20px",

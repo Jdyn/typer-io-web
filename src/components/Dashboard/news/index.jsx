@@ -19,7 +19,7 @@ const News = props => {
         <h2>This is a WIP.</h2>
         <span>updated {formatTime(1581811030519)}</span>
         <p>
-          UPDATE: Servers are back on for free. Things may be slow as a result, but atleast it works.
+          UPDATE: Servers are back on. Things may be slow, but atleast it works.
           <br></br>
           <br></br>
           Thanks for taking a look.

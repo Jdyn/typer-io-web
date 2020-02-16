@@ -53,19 +53,19 @@ const Play = props => {
     return () => {
       leaveRoom({ id: room.id, errored: false });
     };
-  }, []);
+  }, [leaveRoom, room.id]);
 
   // Once the quote has loaded, update the gameboard accordingly.
   useEffect(() => {
-    setGameState({
-      ...gameState,
+    setGameState(prev => ({
+      ...prev,
       currentWord: gameboard.words[0] || "",
       currentIndex: 0,
       words: gameboard.words,
       wordsRemaining: gameboard.words,
       wordsComplete: []
-    });
-  }, [gameboard.words]);
+    }));
+  }, [gameboard.words, setGameState]);
 
   const inputDidUpdate = event => {
     setGameState({ ...gameState, currentInput: event.target.value });
@@ -191,7 +191,6 @@ const styles = theme => ({
     zIndex: 0,
     margin: "15px",
     fontSize: 16
-    // width: "100%"
   }
 });
 

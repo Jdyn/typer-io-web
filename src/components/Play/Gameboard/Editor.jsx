@@ -52,7 +52,9 @@ const Editor = props => {
       } else if (currentInput.trim() === currentWord) {
         event.preventDefault();
         document.getElementById("input").innerText = "";
-        submitWord();
+        if (wordsRemaining.length !== 0) {
+          submitWord();
+        }
       }
     } else if (event.key === "Enter") {
       event.preventDefault();

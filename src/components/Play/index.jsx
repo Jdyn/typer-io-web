@@ -69,10 +69,6 @@ const Play = props => {
     }));
   }, [gameboard.words, setGameState]);
 
-  const inputDidUpdate = event => {
-    setGameState({ ...gameState, currentInput: event.target.value });
-  };
-
   const submitWord = () => {
     const { wordsRemaining, words, currentIndex } = gameState;
     const temp = [...wordsRemaining];
@@ -92,7 +88,6 @@ const Play = props => {
     };
 
     silentEmit("CLIENT_UPDATE", payload);
-
     setGameState(prev => ({
       ...gameState,
       currentInput: "",
@@ -101,6 +96,17 @@ const Play = props => {
       wordsRemaining: temp,
       wordsComplete: [...prev.wordsComplete, removed]
     }));
+  };
+
+  const inputDidUpdate = event => {
+    setGameState({ ...gameState, currentInput: event.target.value });
+
+    if (gameState.wordsRemaining.length === 1) {
+      if (event.target.value.trim() === gameState.currentWord) {
+        document.getElementById("input").value = "";
+        submitWord();
+      }
+    }
   };
 
   return (

@@ -12,7 +12,10 @@ const LeaderboardCard = props => {
     <div className={classes.container}>
       <div className={classes.portrait} />
       <div className={classes.wrapper}>
-        <span className={classes.username}>{card.user.username}</span>
+        <span className={classes.username}>
+          {card.user.isAdmin && <span>Admin</span>}
+          {card.user.username}
+        </span>
         <span className={classes.timestamp}>{card.created_at}</span>
       </div>
       <div className={classes.wpm}>
@@ -39,8 +42,18 @@ const styles = theme => ({
     }
   },
   username: {
+    justifyContent: "center",
+    alignItems: "center",
     fontSize: 17,
-    fontWeight: 700
+    fontWeight: 700,
+    "& span": {
+      padding: "3px 5px",
+      color: theme.white,
+      borderRadius: "8px",
+      fontSize: 14,
+      marginRight: "5px",
+      backgroundColor: theme.red
+    }
   },
   timestamp: {
     fontSize: 14,

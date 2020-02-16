@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Play from "../components/Play";
 import { saveMatch } from "../actions/MatchHistoryActions";
-import { initSocket, sendChatMessage, leaveRoom } from "../actions/ClientActions";
+import {
+  initSocket,
+  sendChatMessage,
+  leaveRoom
+} from "../actions/ClientActions";
 
 class PlayContainer extends Component {
   componentWillMount() {
-
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
         {
-          username: localUsername ? localUsername : this.props.client.username,
+          username: localUsername || this.props.client.username,
           token: this.props.session.token || null
         },
         { mode: "MULTIPLAYER", ...this.props.match.params }
@@ -44,7 +47,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlayContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayContainer);

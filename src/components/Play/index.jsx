@@ -51,7 +51,9 @@ const Play = props => {
   // When the component unmounts, signal the server that the client is leaving.
   useEffect(() => {
     return () => {
-      leaveRoom({ id: room.id, errored: false });
+      if (room.id !== null) {
+        leaveRoom({ id: room.id, errored: false });
+      }
     };
   }, [leaveRoom, room.id]);
 

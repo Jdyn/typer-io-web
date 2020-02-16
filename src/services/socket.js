@@ -71,7 +71,7 @@ const defaultListeners = dispatch => {
           }
         },
         error: reason,
-        errored: true // reason === "io server disconnect" ? false : true
+        errored: true
       });
     });
 

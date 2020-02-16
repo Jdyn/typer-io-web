@@ -29,7 +29,7 @@ const Header = props => {
 
 const styles = theme => ({
   root: {
-    position: "fixed",
+    position: "relative",
     top: 0,
     left: 0,
     width: "100%",

@@ -64,7 +64,7 @@ const styles = theme => ({
   root: {
     display: "grid",
     position: "relative",
-    margin: "210px auto 30px auto",
+    margin: "135px auto 30px auto",
     padding: "15px",
     zIndex: 100,
     gridTemplateColumns: "265px auto 265px",

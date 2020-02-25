@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ReactGA from "react-ga";
 import { initSocket, leaveRoom } from "../actions/ClientActions";
 import Play from "../components/Play";
 
 class SoloContainer extends Component {
   componentWillMount() {
+    ReactGA.pageview("/solo");
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(
@@ -39,7 +41,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SoloContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SoloContainer);

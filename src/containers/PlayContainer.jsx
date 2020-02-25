@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Play from "../components/Play";
 import { saveMatch } from "../actions/MatchHistoryActions";
+import ReactGA from "react-ga";
 import {
   initSocket,
   sendChatMessage,
@@ -9,7 +10,8 @@ import {
 } from "../actions/ClientActions";
 
 class PlayContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    ReactGA.pageview("/play");
     if (!this.props.socket.connected) {
       const localUsername = localStorage.getItem("username");
       this.props.initSocket(

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ReactGA from "react-ga";
 import Forum from "../components/Forum";
 import { fetchFeed, fetchPost } from "../actions/ForumActions";
 
 class ForumContainer extends Component {
   componentWillMount() {
+    ReactGA.pageview("/forum");
     this.props.fetchFeed("/forum/posts");
   }
 
@@ -33,7 +35,4 @@ const mapDispatchToProps = dispatch => ({
   fetchPost: id => dispatch(fetchPost(id))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ForumContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ForumContainer);

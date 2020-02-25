@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 class App extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const token = localStorage.getItem("token");
     const localUsername = localStorage.getItem("username");
 

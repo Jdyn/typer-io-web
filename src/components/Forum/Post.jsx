@@ -20,10 +20,6 @@ const Post = props => {
     body: ""
   });
 
-  useEffect(() => {
-    fetchPostLocal();
-  }, []);
-
   const fetchPostLocal = () => {
     const id = match.params.post_id;
     if (id) {
@@ -33,10 +29,13 @@ const Post = props => {
             set(response.result.post);
           }
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     }
   };
+
+  useEffect(() => {
+    fetchPostLocal();
+  }, []);
 
   const submitComment = (event, id, form, setForm) => {
     let payload = { ...form };
@@ -45,7 +44,10 @@ const Post = props => {
       payload["parent_id"] = id;
     }
 
-    ApiService.post(`/forum/post/${match.params.post_id}/comment`, payload).then(response => {
+    ApiService.post(
+      `/forum/post/${match.params.post_id}/comment`,
+      payload
+    ).then(response => {
       if (response.ok) {
         fetchPostLocal();
         setNewComment({ body: "" });
@@ -81,10 +83,16 @@ const Post = props => {
               onChange={e => setNewComment({ body: e.target.value })}
             />
             <div>
-              <Button secondary margin="0 10px 0 0" onClick={() => setNewComment({ body: "" })}>
+              <Button
+                secondary
+                margin="0 10px 0 0"
+                onClick={() => setNewComment({ body: "" })}
+              >
                 cancel
               </Button>
-              <Button onClick={e => submitComment(e, null, newComment, null)}>post</Button>
+              <Button onClick={e => submitComment(e, null, newComment, null)}>
+                post
+              </Button>
             </div>
           </div>
         ) : (
@@ -94,7 +102,10 @@ const Post = props => {
       <div className={classes.comments}>
         <Banner>Comments</Banner>
         <div className={classes.commentsInfo}>
-          <h2>{post && post.comment_count} Comment{post && post.comment_count === 1 ? "" : "s"}</h2>
+          <h2>
+            {post && post.comment_count} Comment
+            {post && post.comment_count === 1 ? "" : "s"}
+          </h2>
         </div>
         <PostComments
           submitComment={submitComment}
@@ -127,7 +138,7 @@ const styles = theme => ({
   formatText: {
     overflowWrap: "break-word",
     wordWrap: "break-word",
-    wordBreak: "break-word",
+    wordBreak: "break-word"
   },
   header: {
     padding: "20px 0px 20px 0",

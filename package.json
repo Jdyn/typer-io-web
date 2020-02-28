@@ -18,6 +18,26 @@
     "redux-thunk": "^2.3.0",
     "socket.io-client": "^2.3.0"
   },
+  "devDependencies": {
+    "@types/braintree-web-drop-in": "^1.18.0",
+    "@types/js-cookie": "^2.2.4",
+    "@types/node": "^12.12.28",
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "^16.9.22",
+    "@types/react-redux": "^7.1.7",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "prettier": "^1.19.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "analyze": "source-map-explorer build/static/js/main.*",

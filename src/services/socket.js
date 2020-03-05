@@ -1,18 +1,18 @@
-import io from "socket.io-client";
-import keyMirror from "../lib/keyMirror";
+import io from 'socket.io-client';
+import keyMirror from '../lib/keyMirror';
 
 export const types = keyMirror(
-  "ROOM_UPDATE",
-  "ROOM_TIMER",
-  "START_GAME",
-  "END_GAME",
-  "GAMEBOARD_UPDATE",
-  "RECIEVE_CHAT_MESSAGE",
-  "INIT_SOCKET_REQUEST",
-  "INIT_SOCKET_SUCCESS",
-  "INIT_SOCKET_FAILURE",
-  "DISCONNECT_SOCKET",
-  "ROOM_NOT_FOUND"
+  'ROOM_UPDATE',
+  'ROOM_TIMER',
+  'START_GAME',
+  'END_GAME',
+  'GAMEBOARD_UPDATE',
+  'RECIEVE_CHAT_MESSAGE',
+  'INIT_SOCKET_REQUEST',
+  'INIT_SOCKET_SUCCESS',
+  'INIT_SOCKET_FAILURE',
+  'DISCONNECT_SOCKET',
+  'ROOM_NOT_FOUND'
 );
 
 export default url => {
@@ -32,9 +32,9 @@ export default url => {
 let socket;
 
 const init = (url, dispatch, payload) => {
-  socket = io(url, { transports: ["websocket"] });
+  socket = io(url, { transports: ['websocket'] });
   defaultListeners(dispatch);
-  socket.emit("REGISTER", payload);
+  socket.emit('REGISTER', payload);
   socket.on(types.INIT_SOCKET_SUCCESS, payload => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });
     Object.keys(types).forEach(key =>
@@ -47,7 +47,7 @@ const init = (url, dispatch, payload) => {
 
 const defaultListeners = dispatch => {
   if (socket) {
-    socket.on("disconnect", reason => {
+    socket.on('disconnect', reason => {
       if (socket) {
         socket.close();
         socket = null;
@@ -60,7 +60,7 @@ const defaultListeners = dispatch => {
           roomTime: null,
           clients: [],
           messages: [],
-          snippet: "",
+          snippet: '',
           isSearching: true,
           gameboard: {
             words: [],
@@ -75,18 +75,18 @@ const defaultListeners = dispatch => {
       });
     });
 
-    socket.on("INIT_SOCKET_FAILURE", payload => {
+    socket.on('INIT_SOCKET_FAILURE', payload => {
       dispatch({
         type: types.INIT_SOCKET_FAILURE,
         payload: {
           errored: true,
           pending: false,
-          error: payload.error || "Error connecting to server"
+          error: payload.error || 'Error connecting to server'
         }
       });
     });
 
-    socket.on("ROOM_NOT_FOUND", payload => {
+    socket.on('ROOM_NOT_FOUND', payload => {
       dispatch({
         type: types.ROOM_NOT_FOUND,
         payload: {
@@ -97,13 +97,13 @@ const defaultListeners = dispatch => {
       });
     });
 
-    socket.on("connect_error", payload => {
+    socket.on('connect_error', payload => {
       dispatch({
         type: types.INIT_SOCKET_FAILURE,
         payload: {
           errored: true,
           pending: false,
-          error: "Error connecting to server."
+          error: 'Error connecting to server.'
         }
       });
       if (socket) {

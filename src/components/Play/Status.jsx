@@ -23,7 +23,7 @@ const PlayStatus = props => {
         case states.room:
           if (roomTime) {
             const seconds = roomTime.substring(roomTime.length - 2, roomTime.length);
-            const time = parseInt(seconds);
+            const time = parseInt(seconds, 0);
             if (time <= 0) {
               setState(states.game);
             }
@@ -101,7 +101,7 @@ const PlayStatus = props => {
   );
 };
 
-const styles = theme => ({
+export default withStyles(theme => ({
   container: {
     position: 'relative',
     gridArea: 'status',
@@ -131,6 +131,4 @@ const styles = theme => ({
       fontWeight: 600
     }
   }
-});
-
-export default withStyles(styles)(PlayStatus);
+}))(PlayStatus);

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import withStyles from "react-jss";
-import PropTypes from "prop-types";
-import MenuCard from "./MenuCard";
+import React, { useState } from 'react';
+import withStyles from 'react-jss';
+import PropTypes from 'prop-types';
+import MenuCard from './MenuCard';
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -11,22 +11,22 @@ const propTypes = {
 
 const cards = [
   {
-    title: "Quick Play",
-    text: "Play against others",
-    color: "#6772e5",
-    route: "/play"
+    title: 'Quick Play',
+    text: 'Play against others',
+    color: '#6772e5',
+    route: '/play'
   },
   {
-    title: "Solo Play",
-    text: "Practice on your own",
-    color: "#3ecf8e",
-    route: "/"
+    title: 'Solo Play',
+    text: 'Practice on your own',
+    color: '#3ecf8e',
+    route: '/solo'
   },
   {
-    title: "Friends",
-    text: "Create a private match",
-    color: "#DC6AC8",
-    route: "/"
+    title: 'Friends',
+    text: 'Create a private match',
+    color: '#DC6AC8',
+    route: '/'
   }
 ];
 
@@ -37,26 +37,26 @@ const DashboardMenu = props => {
   const handleOnClick = (event, index) => {
     event.preventDefault();
 
-    const token = session.token || null
-    const username = client.username || session.username
+    // const token = session.token || null;
+    // const username = client.username || session.username;
 
-    if (!socket.pending) {
-      if (!socket.connected) {
-        switch (index) {
-          case 0:
-            set(index);
-            return initSocket({ username, token }, { mode: "MULTIPLAYER" });
-          case 1:
-            set(index);
-            return initSocket({ username, token }, { mode: "SOLO" });
-          case 2:
-            set(index);
-            return initSocket({ username, token }, { mode: "CUSTOM" });
-          default:
-            break;
-        }
-      }
-    }
+    // if (!socket.pending) {
+    //   if (!socket.connected) {
+    //     switch (index) {
+    //       case 0:
+    //         set(index);
+    //         return initSocket({ username, token }, { mode: 'MULTIPLAYER' });
+    //       case 1:
+    //         set(index);
+    //         return initSocket({ username, token }, { mode: 'SOLO' });
+    //       case 2:
+    //         set(index);
+    //         return initSocket({ username, token }, { mode: 'CUSTOM' });
+    //       default:
+    //         break;
+    //     }
+    //   }
+    // }
   };
 
   return (
@@ -81,10 +81,10 @@ DashboardMenu.propTypes = propTypes;
 
 const styles = {
   container: {
-    display: "flex",
-    flexDirection: "column",
-    gridArea: "menu",
-    minWidth: "275px"
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'menu',
+    minWidth: '275px'
   }
 };
 

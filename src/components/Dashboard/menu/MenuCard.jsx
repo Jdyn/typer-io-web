@@ -1,6 +1,7 @@
-import React from "react";
-import withStyless from "react-jss";
-import PropTypes from "prop-types";
+import React from 'react';
+import withStyless from 'react-jss';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -15,7 +16,7 @@ const MenuCard = props => {
   const { classes, card, socket, onClick, index, currentIndex } = props;
 
   return (
-    <button className={classes.container} onClick={e => onClick(e, index)}>
+    <Link to={card.route} className={classes.container}>
       <h2>{card.title}</h2>
       <span>{card.text}</span>
 
@@ -28,47 +29,48 @@ const MenuCard = props => {
       ) : (
         <span />
       )}
-    </button>
+    </Link>
   );
 };
 
 const styles = theme => ({
   container: props => ({
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     flexGrow: 1,
-    position: "relative",
-    cursor: "pointer",
-    marginBottom: "14px",
-    outline: "none",
-    padding: "35px",
-    justifyContent: "center",
+    position: 'relative',
+    cursor: 'pointer',
+    marginBottom: '14px',
+    outline: 'none',
+    padding: '35px',
+    justifyContent: 'center',
     backgroundColor: props.card.color,
     color: theme.white,
-    textAlign: "left",
-    border: "3px solid rgba(0,0,0,.1)",
+    textAlign: 'left',
+    textDecoration: 'none',
+    border: '3px solid rgba(0,0,0,.1)',
     borderRadius: 16,
-    transitionDuration: ".15s",
-    boxShadow: "0 13px 27px -5px rgba(30,30,70,.4), 0 8px 16px -8px rgba(0,0,0,.3)",
-    "&:hover": {
-      transform: "translateY(-2px)",
-      boxShadow: "0 30px 60px -12px rgba(30,30,70,.4),0 18px 36px -18px rgba(0,0,0,.3)"
+    transitionDuration: '.15s',
+    boxShadow: '0 13px 27px -5px rgba(30,30,70,.4), 0 8px 16px -8px rgba(0,0,0,.3)',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 30px 60px -12px rgba(30,30,70,.4),0 18px 36px -18px rgba(0,0,0,.3)'
     },
-    "&:active": {
-      transform: "translateY(2px)"
+    '&:active': {
+      transform: 'translateY(2px)'
     },
-    "&:last-child": {
+    '&:last-child': {
       marginBottom: 0
     },
-    "& h2": {
+    '& h2': {
       margin: 0,
       fontSize: 20,
       fontWeight: 700,
-      height: "20px",
-      marginBottom: "5px"
+      height: '20px',
+      marginBottom: '5px'
     },
-    "& span": {
-      height: "20px",
+    '& span': {
+      height: '20px',
       fontSize: 17
     }
   })

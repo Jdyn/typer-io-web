@@ -69,7 +69,7 @@ const styles = theme => ({
     extend: "word",
     padding: 0,
     zIndex: 10,
-    textDecoration: props.currentIndex === props.index ? "underline" : "none",
+    // textDecoration: props.currentIndex === props.index ? "underline" : "none",
     color: props.currentIndex === props.index ? theme.white : "black"
   }),
   letter: {

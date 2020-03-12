@@ -17,7 +17,9 @@ const News = props => {
       <Banner>News</Banner>
       <div className={classes.wrapper}>
         <h2>Race Your Friends!</h2>
-        <span>updated {formatTime(1583901688156)}</span>
+        <br />
+        <span>updated {formatTime(1583986514069)}</span>
+        <br />
         <p>
           Hello, this is a realtime multiplayer typing race. When you click play, it may take a few
           moments to start the first time (around 45 seconds)... Just know that it does currently

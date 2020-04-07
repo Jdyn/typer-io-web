@@ -1,4 +1,7 @@
-const API = true ? 'https://typer-io-server.herokuapp.com/api/v1' : 'http://localhost:4000/api/v1';
+const API =
+  process.env.NODE_ENV === 'production'
+    ? 'https://typer-io-server.herokuapp.com/api/v1'
+    : 'http://localhost:4000/api/v1';
 
 function headers() {
   const token = JSON.parse(localStorage.getItem('token'));
@@ -30,7 +33,7 @@ export default {
       headers: headers()
     })
       .then(parseResponse)
-      .catch(error => error);
+      .catch((error) => error);
   },
 
   post(url, data) {

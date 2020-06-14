@@ -24,7 +24,7 @@ const Router = () => (
     <Route exact path={routes.play} component={PlayContainer} />
     <Route exact path={routes.solo} component={SoloContainer} />
     <Route exact path={routes.lobby} component={LobbyContainer} />
-    <Route exact path={`${routes.play}/:room_id`} component={PlayContainer} />
+    <Route exact path={`${routes.lobby}/:room_id`} component={LobbyContainer} />
 
     <Route exact path={routes.forum.feed} component={ForumContainer} />
     <Route exact path={`${routes.forum.post}/:post_id`} component={ForumContainer} />

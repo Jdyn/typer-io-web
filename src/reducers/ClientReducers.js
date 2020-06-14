@@ -1,15 +1,16 @@
-import { types } from "../services/socket";
+import { types } from '../services/socket';
 
 const initialState = {
   meta: {
     id: null,
-    username: "",
+    username: '',
     isInRoom: false
   },
   room: {
     id: null,
     playerCount: null,
     roomTime: null,
+    isStarting: false,
     gameboard: {
       words: [],
       isStarted: false,
@@ -32,7 +33,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "CLIENT_UPDATE":
+    case 'CLIENT_UPDATE':
       return {
         ...state,
         meta: {
@@ -96,6 +97,15 @@ export default (state = initialState, action) => {
         }
       };
 
+    case types.STARTING_CUSTOM_GAME:
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          isStarting: true
+        }
+      };
+
     case types.INIT_SOCKET_REQUEST:
       return {
         ...state,
@@ -129,7 +139,7 @@ export default (state = initialState, action) => {
           ...action.payload.room,
           gameboard: {
             ...state.room.gameboard,
-            words: action.payload.room.snippet.quote.split(" ") || []
+            words: action.payload.room.snippet.quote.split(' ') || []
           }
         },
         socket: {
@@ -160,7 +170,7 @@ export default (state = initialState, action) => {
           messages: updateRoomChat(action.payload, state.room.messages)
         }
       };
-    case "ROOM_NOT_FOUND":
+    case 'ROOM_NOT_FOUND':
       return {
         ...state,
         socket: {

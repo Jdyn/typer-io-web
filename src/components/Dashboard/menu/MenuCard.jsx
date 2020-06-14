@@ -12,10 +12,24 @@ const propTypes = {
   currentIndex: PropTypes.number
 };
 
-const MenuCard = props => {
+const MenuCard = (props) => {
   const { classes, card, socket, onClick, index, currentIndex } = props;
 
   return (
+    // <div className={classes.container} onClick={e => onClick(e, index)}>
+    //   <h2>{card.title}</h2>
+    //   <span>{card.text}</span>
+
+    //   {currentIndex === index ? (
+    //     socket.pending ? (
+    //       <span>Connecting to server...</span>
+    //     ) : (
+    //       <span>{socket.errored && socket.error}</span>
+    //     )
+    //   ) : (
+    //     <span />
+    //   )}
+    // </div>
     <Link to={card.route} className={classes.container}>
       <h2>{card.title}</h2>
       <span>{card.text}</span>
@@ -33,8 +47,8 @@ const MenuCard = props => {
   );
 };
 
-const styles = theme => ({
-  container: props => ({
+const styles = (theme) => ({
+  container: (props) => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,

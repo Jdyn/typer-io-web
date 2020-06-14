@@ -26,7 +26,7 @@ const cards = [
     title: 'Friends',
     text: 'Create a private match',
     color: '#DC6AC8',
-    route: '/'
+    route: '/lobby'
   }
 ];
 
@@ -37,26 +37,26 @@ const DashboardMenu = props => {
   const handleOnClick = (event, index) => {
     event.preventDefault();
 
-    // const token = session.token || null;
-    // const username = client.username || session.username;
+    const token = session.token || null;
+    const username = client.username || session.username;
 
-    // if (!socket.pending) {
-    //   if (!socket.connected) {
-    //     switch (index) {
-    //       case 0:
-    //         set(index);
-    //         return initSocket({ username, token }, { mode: 'MULTIPLAYER' });
-    //       case 1:
-    //         set(index);
-    //         return initSocket({ username, token }, { mode: 'SOLO' });
-    //       case 2:
-    //         set(index);
-    //         return initSocket({ username, token }, { mode: 'CUSTOM' });
-    //       default:
-    //         break;
-    //     }
-    //   }
-    // }
+    if (!socket.pending) {
+      if (!socket.connected) {
+        switch (index) {
+          case 0:
+            set(index);
+            return initSocket({ username, token }, { mode: 'MULTIPLAYER' });
+          case 1:
+            set(index);
+            return initSocket({ username, token }, { mode: 'SOLO' });
+          case 2:
+            set(index);
+            return initSocket({ username, token }, { mode: 'CUSTOM' });
+          default:
+            break;
+        }
+      }
+    }
   };
 
   return (

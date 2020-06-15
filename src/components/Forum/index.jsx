@@ -48,13 +48,13 @@ const Forum = props => {
       <div className={classes.stripe} />
       <div className={classes.root}>
         {renderView()[view]}
-        <div className={classes.messages} style={{ height: "425px" }}>
+        {/* <div className={classes.messages} style={{ height: "425px" }}>
           <Banner>Messages</Banner>
-        </div>
-        <input className={classes.search} placeholder="Search" />
-        <div className={classes.subjects} style={{ height: "425px" }}>
+        </div> */}
+        {/* <input className={classes.search} placeholder="Search" /> */}
+        {/* <div className={classes.subjects} style={{ height: "425px" }}>
           <Banner>Subjects</Banner>
-        </div>
+        </div> */}
       </div>
     </>
   );

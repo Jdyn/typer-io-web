@@ -9,7 +9,7 @@ const propTypes = {
   matches: PropTypes.array
 };
 
-const News = props => {
+const News = (props) => {
   const { classes } = props;
 
   return (
@@ -18,15 +18,10 @@ const News = props => {
       <div className={classes.wrapper}>
         <h2>Race Your Friends!</h2>
         <br />
-        <span>updated {formatTime(1583986514069)}</span>
-        <br />
+        <span>updated {formatTime(1592249062431)} </span>
         <p>
-          Hello, this is a realtime multiplayer typing race. When you click play, it may take a few
-          moments to start the first time (around 45 seconds)... Just know that it does currently
-          work.
-          <br />
-          <br />
-          Thanks for taking a look.
+          This is a realtime multiplayer typing race. It may take a few moments to connect to the
+          server for the first time (around 45 seconds).
         </p>
         <h3>
           <b>Disabled features:</b>
@@ -34,14 +29,12 @@ const News = props => {
         <div className={classes.list}>
           <ul>
             <li>Individual Match History</li>
-            <li>Private Matches</li>
           </ul>
         </div>
         <h3>Latest Fixes:</h3>
         <div className={classes.list}>
           <ul>
-            <li>Continuing to type after the game ends should not cause a crash.</li>
-            <li>Text in the forums should no longer stretch the layout.</li>
+            <li>Enabled private matches</li>
           </ul>
         </div>
       </div>
@@ -51,7 +44,7 @@ const News = props => {
 
 News.propTypes = propTypes;
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',

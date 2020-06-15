@@ -38,16 +38,16 @@ const Lobby = (props) => {
             <>
               <span>Share this link to invite players.</span>
               <div>{`https://typer.io/lobby/${room.id}`}</div>
+              {currrentClient.isHost ? (
+                <Button margin="10px 0px" onClick={() => handleStart()}>
+                  Start Game
+                </Button>
+              ) : (
+                <span>Waiting for the host to start the game.</span>
+              )}
             </>
           ) : (
             <div>{socket.error}</div>
-          )}
-          {currrentClient.isHost ? (
-            <Button margin="10px 0px" onClick={() => handleStart()}>
-              Start Game
-            </Button>
-          ) : (
-            <span>Waiting for the host to start the game.</span>
           )}
         </div>
         <div></div>

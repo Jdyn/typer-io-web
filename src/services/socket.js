@@ -71,8 +71,8 @@ const defaultListeners = (dispatch) => {
             gameTime: null
           }
         },
-        error: reason,
-        errored: true
+        error: null,
+        errored: false
       });
     });
 

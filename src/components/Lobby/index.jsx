@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import MatchSettings from './MatchSettings';
-import Chat from '../Play/Chat';
 import ClientList from '../Play/ClientList';
 import { silentEmit } from '../../services/socket';
 import Button from '../reusable/Button';
@@ -12,7 +10,7 @@ const propTypes = {
 };
 
 const Lobby = (props) => {
-  const { classes, history, client, room, gameboard, socket } = props;
+  const { classes, history, client, room, gameboard, socket, leaveRoom } = props;
 
   const [form, setForm] = useState({
     isRandom: false,
@@ -21,9 +19,9 @@ const Lobby = (props) => {
     customQuote: ''
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  const currrentClient = useMemo(
+    () => room.clients.filter((item) => item.id == client.id)[0] || {}
+  );
 
   const handleStart = () => {
     silentEmit('START_CUSTOM_GAME', {});
@@ -40,12 +38,16 @@ const Lobby = (props) => {
             <>
               <span>Share this link to invite players.</span>
               <div>{`https://typer.io/lobby/${room.id}`}</div>
-              <Button margin="10px 0px" onClick={() => handleStart()}>
-                Start Game
-              </Button>
             </>
           ) : (
-          <div>{socket.error}</div>
+            <div>{socket.error}</div>
+          )}
+          {currrentClient.isHost ? (
+            <Button margin="10px 0px" onClick={() => handleStart()}>
+              Start Game
+            </Button>
+          ) : (
+            <span>Waiting for the host to start the game.</span>
           )}
         </div>
         <div></div>
@@ -78,7 +80,8 @@ const styles = (theme) => ({
     backgroundColor: theme.white,
     boxShadow: '0 10px 20px 0px rgba(30,30,70,.4)',
     '& span': {
-      textAlign: 'center'
+      textAlign: 'center',
+      padding: '10px 0px'
     },
     '& div': {
       padding: '10px',

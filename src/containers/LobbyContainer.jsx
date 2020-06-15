@@ -1,40 +1,43 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Lobby from '../components/Lobby';
 import { initSocket, sendChatMessage, leaveRoom } from '../actions/ClientActions';
-import Play from "../components/Play";
+import Play from '../components/Play';
 
-class LobbyContainer extends Component {
-  componentDidMount() {
-    if (!this.props.socket.connected) {
+const LobbyContainer = (props) => {
+  const { room, leaveRoom, socket, match, initSocket, session } = props;
+
+  useEffect(() => {
+    if (!socket.connected) {
       const localUsername = localStorage.getItem('username');
 
-      if (this.props.match.params.room_id) {
-        this.props.initSocket(
+      if (match.params.room_id) {
+        initSocket(
           {
-            username: localUsername || this.props.client.username,
-            token: this.props.session.token || null
+            username: localUsername || props.client.username,
+            token: session.token || null
           },
-          { mode: 'PRIVATE', ...this.props.match.params }
+          { mode: 'PRIVATE', ...props.match.params }
         );
       } else {
-        this.props.initSocket(
+        initSocket(
           {
-            username: localUsername || this.props.client.username,
-            token: this.props.session.token || null
+            username: localUsername || props.client.username,
+            token: props.session.token || null
           },
-          { mode: 'CUSTOM', ...this.props.match.params }
+          { mode: 'CUSTOM', ...props.match.params }
         );
       }
     }
-  }
+    return () => {
+      if (room.id !== null) {
+        leaveRoom({ id: room.id, errored: false });
+      }
+    };
+  }, [room.id]);
 
-  render() {
-    const { room } = this.props;
-
-    return room.isStarting ? <Play {...this.props} /> : <Lobby {...this.props} />;
-  }
-}
+  return room.isStarting ? <Play {...props} /> : <Lobby {...props} />;
+};
 
 const mapStateToProps = (state) => ({
   client: state.client.meta,

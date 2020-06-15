@@ -46,19 +46,19 @@ const PlayStatus = props => {
       const time = getTime(state);
       const { connected, errored, error } = socket;
 
+      if (errored) {
+        return {
+          color: '#e57373',
+          text: error || 'Connection error occured'
+        };
+      }
+
       if (isOver) {
         return { color: '#6772e5', text: 'Game has Ended' };
       }
 
       if (!connected) {
         return { color: '#469cd0', text: 'Connecting to server...' };
-      }
-
-      if (errored) {
-        return {
-          color: '#e57373',
-          text: error || 'Connection error occured'
-        };
       }
 
       if (!isOver && connected) {

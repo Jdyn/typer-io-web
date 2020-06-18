@@ -18,13 +18,13 @@ const cards = [
   },
   {
     title: 'Solo Play',
-    text: 'Practice on your own',
+    text: 'Play on your own',
     color: '#3ecf8e',
     route: '/solo'
   },
   {
-    title: 'Friends',
-    text: 'Create a private match',
+    title: 'Group Play',
+    text: 'Play against friends',
     color: '#DC6AC8',
     route: '/lobby'
   }

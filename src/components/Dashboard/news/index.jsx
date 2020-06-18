@@ -20,21 +20,22 @@ const News = (props) => {
         <br />
         <span>updated {formatTime(1592249062431)} </span>
         <p>
-          This is a realtime multiplayer typing race. It may take a few moments to connect to the
-          server for the first time (around 45 seconds).
+          This is a realtime typing game where you can race other players. It may take around 25
+          seconds when connecting to the server for the first time. Thank you for playing.
         </p>
         <h3>
-          <b>Disabled features:</b>
+          <b>WIP features:</b>
         </h3>
         <div className={classes.list}>
           <ul>
+            <li>Recent high scores</li>
             <li>Individual Match History</li>
           </ul>
         </div>
-        <h3>Latest Fixes:</h3>
+        <h3>Latest Updates:</h3>
         <div className={classes.list}>
           <ul>
-            <li>Enabled private matches</li>
+            <li>Enabled group play</li>
           </ul>
         </div>
       </div>

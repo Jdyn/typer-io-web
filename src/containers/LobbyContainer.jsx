@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Lobby from '../components/Lobby';
+import ReactGA from "react-ga";
 import { initSocket, sendChatMessage, leaveRoom } from '../actions/ClientActions';
 import Play from '../components/Play';
 
@@ -8,6 +9,7 @@ const LobbyContainer = (props) => {
   const { room, leaveRoom, socket, match, initSocket, session } = props;
 
   useEffect(() => {
+    ReactGA.pageview("/lobby");
     if (!socket.connected) {
       const localUsername = localStorage.getItem('username');
 

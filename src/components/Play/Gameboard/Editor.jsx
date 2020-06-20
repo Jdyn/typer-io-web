@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "react-jss";
+import ReactGA from "react-ga";
 
 const propTypes = {
   classes: PropTypes.object.isRequired
@@ -31,12 +32,14 @@ const Editor = props => {
     if (gameboard.isOver) {
       event.preventDefault();
       setComplete(true);
+      ReactGA.event({category: 'game', action: 'game-ended-no-time'})
       return;
     }
 
     if (wordsRemaining.length === 0) {
       event.preventDefault();
       setComplete(true);
+      ReactGA.event({category: 'game', action: 'game-ended-finished'})
       return;
     }
 

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import withStyles from "react-jss";
-import ClientList from "./ClientList";
-import Gameboard from "./Gameboard";
-import Chat from "./Chat";
-import { silentEmit } from "../../services/socket";
-import PlayStatus from "./Status";
-import Leaderboard from "./leaderboard";
-import Editor from "./Gameboard/Editor";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import withStyles from 'react-jss';
+import ClientList from './ClientList';
+import Gameboard from './Gameboard';
+import Chat from './Chat';
+import { silentEmit } from '../../services/socket';
+import PlayStatus from './Status';
+import Leaderboard from './leaderboard';
+import Editor from './Gameboard/Editor';
+import ReactGA from 'react-ga';
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
@@ -20,21 +21,12 @@ const propTypes = {
   sendChatMessage: PropTypes.func
 };
 
-const Play = props => {
-  const {
-    client,
-    room,
-    socket,
-    gameboard,
-    leaveRoom,
-    sendChatMessage,
-    classes,
-    isSolo
-  } = props;
+const Play = (props) => {
+  const { client, room, socket, gameboard, leaveRoom, sendChatMessage, classes, isSolo } = props;
 
   const [gameState, setGameState] = useState({
-    currentInput: "",
-    currentWord: "",
+    currentInput: '',
+    currentWord: '',
     currentIndex: 0,
     words: [],
     wordsRemaining: [],
@@ -48,6 +40,12 @@ const Play = props => {
     errors: 0
   });
 
+  useEffect(() => {
+    if (gameboard.isStarted) {
+      ReactGA.event({ category: 'game', action: 'game-started' });
+    }
+  }, [gameboard.isStarted]);
+
   // When the component unmounts, signal the server that the client is leaving.
   useEffect(() => {
     return () => {
@@ -59,9 +57,9 @@ const Play = props => {
 
   // Once the quote has loaded, update the gameboard accordingly.
   useEffect(() => {
-    setGameState(prev => ({
+    setGameState((prev) => ({
       ...prev,
-      currentWord: gameboard.words[0] || "",
+      currentWord: gameboard.words[0] || '',
       currentIndex: 0,
       words: gameboard.words,
       wordsRemaining: gameboard.words,
@@ -87,10 +85,10 @@ const Play = props => {
       timestamp
     };
 
-    silentEmit("CLIENT_UPDATE", payload);
-    setGameState(prev => ({
+    silentEmit('CLIENT_UPDATE', payload);
+    setGameState((prev) => ({
       ...gameState,
-      currentInput: "",
+      currentInput: '',
       currentIndex: prev.currentIndex + 1,
       currentWord: prev.words[prev.currentIndex + 1],
       wordsRemaining: temp,
@@ -98,12 +96,12 @@ const Play = props => {
     }));
   };
 
-  const inputDidUpdate = event => {
+  const inputDidUpdate = (event) => {
     setGameState({ ...gameState, currentInput: event.target.value });
 
     if (gameState.wordsRemaining.length === 1) {
       if (event.target.value.trim() === gameState.currentWord) {
-        document.getElementById("input").value = "";
+        document.getElementById('input').value = '';
         submitWord();
       }
     }
@@ -126,9 +124,7 @@ const Play = props => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        {!isSolo && (
-          <Chat client={client} room={room} sendChatMessage={sendChatMessage} />
-        )}
+        {!isSolo && <Chat client={client} room={room} sendChatMessage={sendChatMessage} />}
         <Editor
           gameboard={gameboard}
           gameState={gameState}
@@ -149,11 +145,11 @@ const Play = props => {
 
 Play.propTypes = propTypes;
 
-const styles = theme => ({
-  root: props => ({
-    display: "grid",
-    gridTemplateColumns: "275px auto 275px",
-    gridTemplateRows: "min-content min-content auto 1fr 75px",
+const styles = (theme) => ({
+  root: (props) => ({
+    display: 'grid',
+    gridTemplateColumns: '275px auto 275px',
+    gridTemplateRows: 'min-content min-content auto 1fr 75px',
     gridTemplateAreas: props.isSolo
       ? `
     'status gameboard leaderboard'
@@ -168,36 +164,36 @@ const styles = theme => ({
     'leaderboard editor     chat'
     '. notice .'
     `,
-    maxWidth: "1105px",
-    flexDirection: "row",
-    position: "relative",
-    padding: "15px",
-    margin: "0px auto 115px auto",
-    height: "100%"
+    maxWidth: '1105px',
+    flexDirection: 'row',
+    position: 'relative',
+    padding: '15px',
+    margin: '0px auto 115px auto',
+    height: '100%'
   }),
   stripe: {
     zIndex: -1,
-    width: "100%",
-    height: "85%",
-    overflow: "hidden",
-    WebkitTransform: "skwY(-12deg)",
-    transform: "skewY(-12deg)",
+    width: '100%',
+    height: '85%',
+    overflow: 'hidden',
+    WebkitTransform: 'skwY(-12deg)',
+    transform: 'skewY(-12deg)',
     WebkitTransformOrigin: 0,
     transformOrigin: 0,
     backgroundColor: theme.tertiary,
-    position: "absolute"
+    position: 'absolute'
   },
   notice: {
-    position: "relative",
-    gridArea: "notice",
-    padding: "10px 5px",
+    position: 'relative',
+    gridArea: 'notice',
+    padding: '10px 5px',
     backgroundColor: theme.accent,
     color: theme.white,
-    border: "3px solid #5d66ce",
-    textAlign: "center",
+    border: '3px solid #5d66ce',
+    textAlign: 'center',
     borderRadius: 8,
     zIndex: 0,
-    margin: "15px",
+    margin: '15px',
     fontSize: 16
   }
 });

@@ -87,9 +87,6 @@ const Home = (): JSX.Element => {
           <Banner>
             <h1>Recent Posts</h1>
           </Banner>
-            <div>
-                
-            </div>
         </section>
         <Hiscores />
       </div>

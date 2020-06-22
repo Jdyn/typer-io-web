@@ -1,13 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { NextPage } from 'next';
+import { EnhancedStore } from '@reduxjs/toolkit';
 import withRedux from '../lib/WithRedux';
 import '../public/static/styles/global.css';
 
 interface Props {
   Component: NextPage;
   pageProps: object;
-  store: object;
+  store: EnhancedStore;
 }
 
 export const App = (props: Props): JSX.Element => {

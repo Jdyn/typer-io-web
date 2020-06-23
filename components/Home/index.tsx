@@ -4,6 +4,7 @@ import Banner from '../Shared/Banner';
 import Hiscores from './Hiscores';
 import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
+import Link from 'next/link';
 
 interface Props {
   children?: React.ReactNode;
@@ -71,15 +72,17 @@ const Home = (): JSX.Element => {
           <div className={styles.menu}>
             {cards.map((card) => {
               return (
-                <button
-                  type="button"
-                  className={styles.card}
-                  key={card.route}
-                  style={{ background: card.color }}
-                >
-                  <h3>{card.title}</h3>
-                  <p>{card.text}</p>
-                </button>
+                <Link href={card.route}>
+                  <button
+                    type="button"
+                    className={styles.card}
+                    key={card.route}
+                    style={{ background: card.color }}
+                  >
+                    <h3>{card.title}</h3>
+                    <p>{card.text}</p>
+                  </button>
+                </Link>
               );
             })}
           </div>

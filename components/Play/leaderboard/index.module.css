@@ -1,0 +1,29 @@
+.root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  grid-area: leaderboard;
+  border-radius: 16px;
+  height: 450px;
+  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
+}
+
+.container {
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 100%;
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px -5px;
+  padding: 0px 10px;
+  height: 259px;
+  overflow-x: none;
+  overflow-y: auto;
+  overflow-y: overlay;
+}

@@ -93,7 +93,7 @@ const init = (url, dispatch, payload) => {
   socket.emit('REGISTER', payload);
   socket.on(types.INIT_SOCKET_SUCCESS, (payload) => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });
-    ReactGA.event({ category: 'game', action: 'socket-connected' });
+    // ReactGA.event({ category: 'game', action: 'socket-connected' });
     Object.keys(types).forEach((key) =>
       socket.on(key, (payload) => {
         dispatch({ type: key, payload });

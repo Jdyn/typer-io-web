@@ -1,0 +1,39 @@
+.root {
+  display: grid;
+  grid-template-columns: 275px auto 275px;
+  grid-template-rows: min-content min-content auto 1fr 75px;
+  grid-template-areas:
+    'clientlist  clientlist clientlist'
+    'status      gameboard  chat'
+    'leaderboard gameboard  chat'
+    'leaderboard editor     chat'
+    '. notice .';
+  max-width: 1140px;
+  flex-direction: row;
+  position: relative;
+  padding: 15px;
+  margin: 0px auto 115px auto;
+  height: 100%;
+}
+
+.soloRoot {
+  grid-template-areas:
+    'status gameboard leaderboard'
+    'clientlist gameboard leaderboard'
+    'clientlist editor leaderboard'
+    '. notice .';
+}
+
+.notice {
+  position: relative;
+  grid-area: notice;
+  padding: 10px 5px;
+  background-color: var(--acccent);
+  color: white;
+  border: 3px solid #5d66ce;
+  text-align: center;
+  border-radius: 8px;
+  z-index: 0;
+  margin: 15px;
+  font-size: 16px;
+}

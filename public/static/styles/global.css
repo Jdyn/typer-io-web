@@ -26,7 +26,7 @@
 *::before,
 *::after {
   box-sizing: inherit;
-  scrollbar-color: #999 #353535;
+  scrollbar-color: var(--border) transparent;
   font-family: inherit;
   scrollbar-width: thin;
 }

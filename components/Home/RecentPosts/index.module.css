@@ -4,14 +4,14 @@
   flex-direction: column;
   position: relative;
   margin: 0;
-  grid-area: scores;
+  grid-area: posts;
   border-radius: 16px;
   height: 600px;
   box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
 }
 
 .container {
-  margin: 20px;
+  margin: 0px 20px 20px 20px;
   border: 2px solid var(--border);
   height: 100%;
   border-radius: 16px;
@@ -22,40 +22,56 @@
   flex-direction: column;
   margin: 10px -5px;
   padding: 0px 10px;
+  height: 479px;
   overflow-x: none;
   overflow-y: auto;
-  height: 409px;
+  overflow-y: overlay;
 }
 
-.entry {
+.post {
   display: flex;
   flex-direction: row;
   position: relative;
+  align-content: center;
+  justify-content: center;
   border-bottom: 2px solid #e5e5e5;
-  padding: 12px 12px 12px 24px;
-  color: var(--text);
-}
-
-.entry:last-child {
-  border: none;
+  padding: 12px 12px 12px 12px;
 }
 
 .content {
   display: flex;
-  flex: 2;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 17px;
-  font-weight: 700;
+  flex: 1;
+  flex-direction: column;
 }
 
-.timestamp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
+.content > span {
   color: var(--subtext);
-  flex: 1.3;
+  font-size: 16px;
+}
+
+.content > h3 {
+  color: var(--subtext);
+  margin: 0;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.content > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  color: var(--text);
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 
 .portrait {
@@ -66,23 +82,4 @@
   align-self: center;
   border: 2px solid #e5e5e5;
   margin: -3px 10px -3px -3px;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  justify-content: flex-end;
-  color: var(--subtext);
-  flex-grow: 1;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-  flex: 0.3;
 }

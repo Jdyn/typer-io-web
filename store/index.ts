@@ -8,8 +8,9 @@ import {
 import request from './request/reducers';
 import session from './session/reducers';
 import hiscores from './hiscores/reducers';
+import forum from './forum/reducers';
 
-export const reducer = combineReducers({ request, session, hiscores });
+export const reducer = combineReducers({ request, session, hiscores, forum });
 export type AppState = ReturnType<typeof reducer>;
 
 const store = (preloadedState: object = {}): EnhancedStore =>

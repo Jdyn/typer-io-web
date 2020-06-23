@@ -13,7 +13,7 @@
     'news hub posts'
     'news scores posts'
     '. scores .';
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1.1fr 2fr 1.1fr;
 }
 
 .news {
@@ -40,6 +40,8 @@
   flex-direction: column;
   margin: 10px -5px;
   padding: 0 15px;
+  overflow-x: none;
+  overflow-y: auto;
   overflow-y: overlay;
   height: 379px;
 }

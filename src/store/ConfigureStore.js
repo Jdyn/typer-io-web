@@ -9,7 +9,7 @@ export default function configureStore(initialState) {
     socket(
       process.env.NODE_ENV === "production"
         ? "https://typer-io-node.herokuapp.com"
-        : "http://localhost:8000/"
+        : "https://typer-io-node.herokuapp.com"
     )
   ];
   const composeEnhancers =

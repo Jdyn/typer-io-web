@@ -186,12 +186,24 @@ export default (state = initialState, action) => {
 const gameboardUpdate = (clients, gamePieces) => {
   if (gamePieces) {
     return clients.map((client, index) => {
+      const newPiece = gamePieces[index];
+      // const oldPosition = client.gamePiece.position;
+      // const newPosition = newPiece.position;
+
+      // const newQueue = [];
+      // if (typeof oldPosition === 'number' && typeof newPosition === 'number') {
+      //   for (let i = oldPosition + 1; i <= newPosition; i += 1) {
+      //     newQueue.push(i);
+      //   }
+      // }
+
       return {
         ...client,
         gamePiece: {
           ...client.gamePiece,
-          ...gamePieces[index],
+          ...newPiece,
           color: client.gamePiece.color
+          // positionQueue: [...(client.gamePiece.positionQueue || []), ...newQueue]
         }
       };
     });

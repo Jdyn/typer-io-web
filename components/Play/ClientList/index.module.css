@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   grid-area: clientlist;
-  margin-bottom: 15px;
   position: relative;
   height: 120px;
   background-clip: padding-box;

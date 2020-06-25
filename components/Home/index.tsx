@@ -72,7 +72,7 @@ const Home = (): JSX.Element => {
           <div className={styles.menu}>
             {cards.map((card) => {
               return (
-                <Link href={card.route}>
+                <Link href={card.route} key={card.route}>
                   <button
                     type="button"
                     className={styles.card}

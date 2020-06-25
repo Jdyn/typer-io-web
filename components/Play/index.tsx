@@ -7,7 +7,7 @@ import Chat from './Chat';
 import { silentEmit } from '../../services/socket';
 import PlayStatus from './Status/Status';
 import Leaderboard from './leaderboard';
-import Editor from './Gameboard/Editor';
+import Editor from './Editor';
 import { AppState } from '../../store';
 import styles from './index.module.css';
 
@@ -42,7 +42,6 @@ const Play = (props: Props): JSX.Element => {
     }
   }, [gameboard.isStarted]);
 
-  // Once the quote has loaded, update the gameboard accordingly.
   useEffect(() => {
     setGameState((prev) => ({
       ...prev,
@@ -83,12 +82,13 @@ const Play = (props: Props): JSX.Element => {
     }));
   };
 
-  const inputDidUpdate = (event) => {
+  const inputDidUpdate = (event): void => {
     setGameState({ ...gameState, currentInput: event.target.value });
 
     if (gameState.wordsRemaining.length === 1) {
       if (event.target.value.trim() === gameState.currentWord) {
-        document.getElementById('input').value = '';
+        const input = document.getElementById('input') as HTMLInputElement;
+        input.value = '';
         submitWord();
       }
     }
@@ -100,17 +100,14 @@ const Play = (props: Props): JSX.Element => {
         <ClientList />
         <PlayStatus gameboard={gameboard} />
         <Leaderboard />
-        {/* <Gameboard
-          gameState={gameState}
-          editorState={editorState}
-          client={client}
-          room={room}
-          gameboard={gameboard}
+        <Gameboard
+          wrongIndex={editorState.wrongIndex}
+          currentInput={gameState.currentInput}
+          currentWord={gameState.currentWord}
+          currentIndex={gameState.currentIndex}
+          words={gameboard.words}
           setEditorState={setEditorState}
-          inputDidUpdate={inputDidUpdate}
-          submitWord={submitWord}
         />
-        {!isSolo && <Chat client={client} room={room} sendChatMessage={sendChatMessage} />}
         <Editor
           gameboard={gameboard}
           gameState={gameState}
@@ -119,7 +116,8 @@ const Play = (props: Props): JSX.Element => {
           inputDidUpdate={inputDidUpdate}
           submitWord={submitWord}
         />
-        {!gameboard.isStarted && !gameboard.isOver ? (
+        {!isSolo && <Chat />}
+        {/* {!gameboard.isStarted && !gameboard.isOver ? (
           <span className={styles.notice}>
             Tip: Type the words in the box above when the game starts.
           </span>

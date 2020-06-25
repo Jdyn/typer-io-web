@@ -47,7 +47,7 @@ const Filter = (props: Props): JSX.Element => {
         const select = state === index && !noSelect;
         return (
           <button
-            key={filter.key}
+            key={filter.name}
             type="button"
             className={`${styles.item} ${select ? styles.selected : ''} ${
               disabled ? styles.disabled : ''

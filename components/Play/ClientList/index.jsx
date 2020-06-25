@@ -30,7 +30,7 @@ const ClientList = () => {
       {users.length > 0 && (
         <div className={styles.container}>
           {transitions.map(({ item, props, key }) => (
-            <animated.div className={styles.card} style={{ width: props.width }} key={key}>
+            <animated.div className={styles.card} style={{ width: props.width }} key={item.id}>
               <animated.div
                 className={styles.cardWrapper}
                 style={{ transform: props.transform, opacity: props.opacity }}

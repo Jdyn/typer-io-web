@@ -13,8 +13,8 @@ const LeaderboardCard = props => {
       <div className={classes.portrait} />
       <div className={classes.wrapper}>
         <span className={classes.username}>
-          {card.user.isAdmin && <span>Admin</span>}
-          {card.user.username}
+          {card.user?.isAdmin && <span>Admin</span>}
+          {card.user?.username}
         </span>
         <span className={classes.timestamp}>{card.created_at}</span>
       </div>

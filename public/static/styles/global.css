@@ -1,4 +1,11 @@
 @font-face {
+  font-family: "Segoe";
+  src: url("/static/fonts/segoe.otf") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'dinn';
   src: url('/static/fonts/dinn-300.woff2') format('woff2');
   font-weight: 300;
@@ -34,7 +41,7 @@
 :root {
   --accent: #6772e5;
   --text: #3c3c3c;
-  --subtext: #999999;
+  --subtext: #afafaf;
   --border: #e5e5e5;
 }
 
@@ -73,7 +80,7 @@ body {
 
 @media (min-width: 1025px) {
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-thumb {

@@ -119,7 +119,6 @@ export default (url) => {
 
 export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
-
 export const silentClose = () => socket && socket.close();
 
 export const emitAction = (action) => {

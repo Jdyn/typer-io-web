@@ -1,0 +1,88 @@
+.root {
+  display: grid;
+  position: relative;
+  margin: 145px auto 30px auto;
+  padding: 0px 10px;
+  z-index: 100;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  max-width: 1100px;
+  gap: 30px;
+  grid-template-areas: 'messages main subjects';
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  grid-area: main;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  background-color: white;
+  height: 600px;
+  flex-grow: 1;
+}
+
+.feedContainer {
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 100%;
+  border-radius: 16px;
+}
+
+.feedWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px -5px;
+  padding: 0px 10px;
+  overflow-x: none;
+  overflow-y: auto;
+}
+
+.feedItem {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 110px;
+  justify-content: flex-start;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 12px 12px 12px 24px;
+}
+
+.portrait {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  align-self: center;
+  border: 2px solid var(--border);
+  margin: -3px 10px -3px -3px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--text);
+  text-decoration: underline;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.feedContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  margin-left: 15px;
+}
+
+.feedContent > span {
+  color: var(--subtext);
+  font-size: 1rem;
+}
+
+.comment {
+  margin-top: auto;
+  text-decoration: underline;
+}

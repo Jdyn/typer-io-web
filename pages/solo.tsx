@@ -19,7 +19,7 @@ const PlayContainer = (): JSX.Element => {
         token: ''
       };
 
-      const config = { mode: 'MULTIPLAYER' };
+      const config = { mode: 'SOLO' };
 
       dispatch(initSocket(payload, config));
     }
@@ -33,7 +33,7 @@ const PlayContainer = (): JSX.Element => {
 
   return (
     <Layout striped>
-      <Play />;
+      <Play isSolo />;
     </Layout>
   );
 };

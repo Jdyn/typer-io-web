@@ -6,7 +6,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Index = (_props: Props): JSX.Element => {
+const HomeContainer = (_props: Props): JSX.Element => {
   return (
     <Layout striped>
       <Home />
@@ -14,4 +14,4 @@ const Index = (_props: Props): JSX.Element => {
   );
 };
 
-export default Index;
+export default HomeContainer;

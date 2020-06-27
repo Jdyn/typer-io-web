@@ -1,34 +1,25 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
 import { NextPage } from 'next';
-import { EnhancedStore } from '@reduxjs/toolkit';
-import withRedux from '../lib/WithRedux';
+import cookies from 'js-cookie';
+import { wrapper } from '../store';
 import '../public/static/styles/global.css';
+import { useDispatch } from 'react-redux';
+import { handleAuth, authenticate } from '../store/session/actions';
 
 interface Props {
   Component: NextPage;
   pageProps: object;
-  store: EnhancedStore;
 }
 
 export const App = (props: Props): JSX.Element => {
-  const { Component, store, pageProps } = props;
+  const { Component, pageProps } = props;
+  const dispatch = useDispatch();
 
-  return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  );
+  useEffect(() => {
+    dispatch(authenticate());
+  }, [dispatch]);
+
+  return <Component {...pageProps} />;
 };
 
-App.getInitialProps = async ({ Component, ctx }): Promise<object> => {
-  let pageProps = {};
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return { pageProps };
-};
-
-export default withRedux(App);
+export default wrapper.withRedux(App);

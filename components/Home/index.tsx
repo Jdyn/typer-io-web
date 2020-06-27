@@ -1,10 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './index.module.css';
 import Banner from '../Shared/Banner';
 import Hiscores from './Hiscores';
 import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
-import Link from 'next/link';
+import Profile from './Profile';
 
 interface Props {
   children?: React.ReactNode;
@@ -64,11 +65,7 @@ const Home = (): JSX.Element => {
           </div>
         </section>
         <section className={styles.hub}>
-          <div className={styles.profile}>
-            <Banner>
-              <h1>Profile</h1>
-            </Banner>
-          </div>
+          <Profile />
           <div className={styles.menu}>
             {cards.map((card) => {
               return (

@@ -19,7 +19,8 @@
   font-weight: 600;
   font-size: 1.3rem;
   text-align: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
   align-items: center;
   margin: 0;
 }

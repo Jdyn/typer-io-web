@@ -21,13 +21,17 @@ const filters = [
 const Hiscores = (): JSX.Element => {
   const [filterIndex, setFilterIndex] = useState(0);
   const dispatch = useDispatch();
+  const request = useSelector((state: AppState) => state.request);
   const hiscores = useSelector(
     (state: AppState) => state.hiscores[filters[filterIndex].key.toLowerCase()]
   );
 
   useEffect(() => {
-    dispatch(fetchHiscores(filters[filterIndex].key as HiscoreQueryTypes));
-  }, [filterIndex, dispatch]);
+    const query = filters[filterIndex].key;
+    if (!request[`FETCH_HISCORES_${query}`]) {
+      dispatch(fetchHiscores(query as HiscoreQueryTypes));
+    }
+  }, [filterIndex, dispatch, request]);
 
   return (
     <section className={styles.root}>

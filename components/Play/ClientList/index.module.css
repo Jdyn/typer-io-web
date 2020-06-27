@@ -3,10 +3,15 @@
   flex-direction: row;
   grid-area: clientlist;
   position: relative;
-  height: 120px;
+  height: 100px;
   background-clip: padding-box;
   border-radius: 8px;
+  margin-top: 25px;
   background-color: transparent;
+}
+
+.soloRoot {
+  margin-top: 0px;
 }
 
 .container {
@@ -33,10 +38,9 @@
   width: 100%;
   z-index: -1;
   height: 100%;
-  box-shadow: 0px 10px 20px 0px rgba(30, 30, 70, 0.3);
+  box-shadow: var(--shadow);
   border-radius: 16px;
 }
-
 .card:first-child {
   border-radius: 16px 0 0 16px;
 }
@@ -56,26 +60,27 @@
   grid-template-columns: 1fr;
   margin: 0;
   z-index: 5;
+  padding: 5px;
   height: 100%;
   overflow: hidden;
   max-width: 265px;
 }
 
 .stats {
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .username {
   display: flex;
   flex-direction: row;
-  box-shadow: 0 1px 5px rgba(30, 30, 70, 0.3);
-  font-weight: 700;
-  font-size: 20px;
+  box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
+  font-weight: 500;
+  font-size: 1.1rem;
   align-items: center;
   height: 40px;
   overflow: hidden;
-  margin: 8px 5px;
+  align-self: flex-end;
   border-radius: 12px;
   color: white;
   padding: 5px 10px 5px 10px;
@@ -99,13 +104,13 @@ flex-direction: row;
 .stat {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
   text-align: center;
-  vertical-align: middle;
   color: var(--subtext);
   font-weight: 600;
   flex: 1;
   font-size: 18px;
-  padding: 2px;
-  height: 50%;
-  margin: auto;
+  /* padding: 2px; */
+  height: 100%;
 }

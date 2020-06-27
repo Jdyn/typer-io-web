@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  post: {},
+  post: null,
   feed: {
     recent: {
       posts: null
@@ -14,6 +14,9 @@ const initialState = {
 const reducers = {
   postsFetched: (state, action) => {
     state.feed[action.payload.key] = action.payload[action.payload.key];
+  },
+  postUpdated: (state, action) => {
+    state.post = action.payload.post;
   }
 };
 
@@ -23,6 +26,6 @@ const forum = createSlice({
   reducers
 });
 
-export const { postsFetched } = forum.actions;
+export const { postsFetched, postUpdated } = forum.actions;
 
 export default forum.reducer;

@@ -1,10 +1,10 @@
-// import cookie from 'js-cookie';
+import cookies from 'js-cookie';
 // import nextCookie from 'next-cookies';
 
 const { API_URL } = process.env;
 
 function headers() {
-  const token = ''; // cookie.get('token');
+  const token = cookies.get('token') || '';
 
   return {
     Accept: 'application/json',

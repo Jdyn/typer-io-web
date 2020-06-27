@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { useTransition, config, animated } from 'react-spring';
 import styles from './index.module.css';
 
-const ClientList = () => {
+const ClientList = (props) => {
+  const { isSolo } = props;
   const users = useSelector((state) => state.game.room.clients);
 
   const transitions = useTransition(users, (client) => client.id, {
@@ -14,7 +15,7 @@ const ClientList = () => {
       transform: 'translate3d(0, -100%, 0)'
     },
     enter: () => async (next, _cancel) => {
-      await next({ width: '25%' });
+      await next({ width: isSolo ? '100%' : '25%' });
       await next({ opacity: 1, transform: 'translate3d(0, 0%, 0)' });
     },
     leave: {
@@ -26,11 +27,11 @@ const ClientList = () => {
   });
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
       {users.length > 0 && (
         <div className={styles.container}>
           {transitions.map(({ item, props, key }) => (
-            <animated.div className={styles.card} style={{ width: props.width }} key={item.id}>
+            <animated.div className={styles.card} style={{ width: props.width }} key={key}>
               <animated.div
                 className={styles.cardWrapper}
                 style={{ transform: props.transform, opacity: props.opacity }}

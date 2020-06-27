@@ -3,13 +3,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  nickname: null
 };
 
 const reducers = {
-  LoggedIn: (state, action) => {
+  userLoggedIn: (state, action) => {
+    state.isLoggedIn = true;
+    state.user = action.payload.user;
+  },
+  userSignedUp: (state, action) => {
+    state.isLoggedIn = true;
+    state.user = action.payload.user;
+  },
+  userRefreshed: (state, action) => {
     state.isLoggedIn = action.payload.isLoggedIn;
     state.user = action.payload.user;
+  },
+  nicknameChanged: (state, action) => {
+    state.nickname = action.payload;
+  },
+  userLoggedOut: (state, action) => {
+    state.user = null;
+    state.isLoggedIn = false;
   }
 };
 
@@ -19,6 +35,12 @@ const session = createSlice({
   reducers
 });
 
-// export const {} = session.actions;
+export const {
+  nicknameChanged,
+  userLoggedIn,
+  userSignedUp,
+  userLoggedOut,
+  userRefreshed
+} = session.actions;
 
 export default session.reducer;

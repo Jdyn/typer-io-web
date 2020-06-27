@@ -22,7 +22,7 @@ const Piece = (props: Props): JSX.Element => {
 
   return (
     <animated.div
-      style={{ ...movement, background: color, left: position === null ? '-15%' : '-5%' }}
+      style={{ ...movement, background: color, left: position === null ? '-10%' : '-5%' }}
       className={styles.gamePiece}
     />
   );

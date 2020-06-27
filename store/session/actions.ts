@@ -4,6 +4,7 @@ import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
 import { actions, requests } from './types';
+import { userLoggedIn, userSignedUp, userLoggedOut, userRefreshed } from './reducers';
 
 const setCurrentSession = (user): void => {
   if (user.token) {
@@ -11,12 +12,6 @@ const setCurrentSession = (user): void => {
     cookie.set('token', jsonToken);
   }
 };
-
-const setLogin = (user) => ({
-  type: actions.LOG_IN,
-  isLoggedIn: true,
-  user
-});
 
 const login = (
   form: object,
@@ -29,14 +24,14 @@ const login = (
 
   dispatch(setRequest(true, requestType));
 
-  Api.post('/account/login', form)
+  Api.post('/signin', form)
     .then((response): void => {
       const { ok, result } = response;
 
       if (ok) {
         const { user } = result;
         setCurrentSession(user);
-        dispatch(setLogin(user));
+        dispatch(userLoggedIn({ user }));
         dispatch(setRequest(false, requestType));
         if (redirect) {
           Router.push(redirect);
@@ -52,10 +47,6 @@ const login = (
     });
 };
 
-const setLogout = () => ({
-  type: actions.LOG_OUT
-});
-
 const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
   dispatch,
   getState
@@ -70,25 +61,19 @@ const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
   Api.delete('/account/logout')
     .then((): void => {
       dispatch(setRequest(false, requestType));
-      dispatch(setLogout());
+      dispatch(userLoggedOut({}));
       cookie.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     })
     .catch((): void => {
       dispatch(setRequest(false, requestType, ''));
-      dispatch(setLogout());
+      dispatch(userLoggedOut({}));
       cookie.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     });
 };
-
-const setSignup = (user) => ({
-  type: actions.SIGN_UP,
-  isLoggedIn: true,
-  user
-});
 
 const signup = (
   form: object,
@@ -108,7 +93,7 @@ const signup = (
       if (ok) {
         const { user } = result;
         setCurrentSession(user);
-        dispatch(setSignup(user));
+        dispatch(userSignedUp({ user }));
         dispatch(setRequest(false, requestType));
         if (redirect) {
           Router.push(redirect);
@@ -146,12 +131,6 @@ export const handleAuth = (
   }
 };
 
-const setRefresh = (user, isLoggedIn: boolean) => ({
-  type: actions.REFRESH,
-  isLoggedIn,
-  user
-});
-
 export const authenticate = (): ((dispatch: any, getState: () => AppState) => void) => (
   dispatch,
   getState
@@ -163,25 +142,25 @@ export const authenticate = (): ((dispatch: any, getState: () => AppState) => vo
 
   dispatch(setRequest(true, requestType));
 
-  Api.fetch('/account')
+  Api.fetch('/refresh')
     .then((response): void => {
       if (response.ok) {
         const { user } = response.result;
         setCurrentSession(user);
 
-        dispatch(setRefresh(user, true));
+        dispatch(userRefreshed({ user, isLoggedIn: true }));
         dispatch(setRequest(false, requestType));
       } else {
         cookie.remove('token');
 
-        dispatch(setRefresh(null, false));
+        dispatch(userRefreshed({ user: null, isLoggedIn: false }));
         dispatch(setRequest(false, requestType));
       }
     })
     .catch((): void => {
       cookie.remove('token');
 
-      dispatch(setRefresh(null, false));
+      dispatch(userRefreshed({ user: null, isLoggedIn: false }));
       dispatch(setRequest(false, requestType));
     });
 };

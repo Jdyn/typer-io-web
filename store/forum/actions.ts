@@ -4,7 +4,28 @@ import { forumRequests } from './types';
 import { emptyRequest } from '../request/types';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
-import { postsFetched } from './reducers';
+import { postsFetched, postUpdated } from './reducers';
+
+export const fetchPost = (postId: string) => async (
+  dispatch: Dispatch,
+  getState: () => AppState
+): Promise<void> => {
+  const requestType = forumRequests.FETCH_POST_BY_ID;
+  const request = getState().request[requestType] ?? emptyRequest;
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  const response = await Api.fetch(`/forum/post/${postId}`);
+
+  if (response.ok) {
+    dispatch(postUpdated({ post: response.result.post }));
+    dispatch(setRequest(false, requestType));
+  } else {
+    dispatch(setRequest(false, requestType, response.error));
+  }
+};
 
 export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
   dispatch: Dispatch,
@@ -28,5 +49,7 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
 
     dispatch(postsFetched(payload));
     dispatch(setRequest(false, requestType));
+  } else {
+    dispatch(setRequest(false, requestType, response.error));
   }
 };

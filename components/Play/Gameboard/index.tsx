@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import Word from './Word';
@@ -20,6 +20,12 @@ const Gameboard = (props: Props): JSX.Element => {
   const { words, wrongIndex, currentInput, currentWord, currentIndex, setEditorState } = props;
   const clientId = useSelector((state: AppState) => state.game.meta.id);
   const clients = useSelector((state: AppState) => state.game.room.clients);
+  const snippet = useSelector((state: AppState) => state.game.room.snippet);
+
+  const client = useMemo(() => clients?.filter((client) => client.id === clientId)[0], [
+    clientId,
+    clients
+  ]);
 
   useEffect(() => {
     if (currentWord) {
@@ -51,7 +57,14 @@ const Gameboard = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <Banner>
-        <h1>Gameboard</h1>
+        <h1>
+          Quote
+          {client?.gamePiece && (
+            <span className={styles.header}>
+              you are <div style={{ background: client?.gamePiece?.color || 'transparent' }} />
+            </span>
+          )}
+        </h1>
       </Banner>
       <div className={styles.container}>
         {words.map((word, wordIndex) => (
@@ -83,6 +96,26 @@ const Gameboard = (props: Props): JSX.Element => {
               })}
           </div>
         ))}
+      </div>
+      <div className={styles.content}>
+        {snippet.title && (
+          <>
+            <h1>
+              {snippet.title}
+              <span>{snippet.difficulty}</span>
+            </h1>
+            <span>
+              Said by{' '}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://www.google.com/search?q=${snippet.author}`}
+              >
+                {snippet.author}
+              </a>
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

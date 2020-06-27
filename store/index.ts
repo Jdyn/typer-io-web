@@ -5,6 +5,8 @@ import {
   combineReducers
 } from '@reduxjs/toolkit';
 
+import { HYDRATE, createWrapper } from 'next-redux-wrapper';
+
 import request from './request/reducers';
 import session from './session/reducers';
 import hiscores from './hiscores/reducers';
@@ -12,15 +14,34 @@ import forum from './forum/reducers';
 import game from './game/reducers';
 import socket from '../services/socket';
 
-export const reducer = combineReducers({ request, session, hiscores, forum, game });
-export type AppState = ReturnType<typeof reducer>;
+export const stateReducer = combineReducers({
+  request,
+  session,
+  hiscores,
+  forum,
+  game
+});
+
+export type AppState = ReturnType<typeof stateReducer>;
+
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case HYDRATE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    default:
+      return stateReducer(state, action);
+  }
+};
 
 const store = (preloadedState: object = {}): EnhancedStore =>
   configureStore({
-    reducer,
+    reducer: appReducer,
     middleware: [...getDefaultMiddleware(), socket(process.env.SOCKET_URL)],
     devTools: process.env.NODE_ENV !== 'production',
     preloadedState
   });
 
-export default store;
+export const wrapper = createWrapper(store);

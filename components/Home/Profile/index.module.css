@@ -1,58 +1,57 @@
-.profileRoot {
+.root {
+  background: white;
   display: flex;
   flex-direction: column;
-  grid-area: profile;
   position: relative;
   margin: 0;
-  padding: 20px;
-  background-color: white;
+  height: 400px;
   border-radius: 16px;
-  box-shadow: 0px 10px 20px 0 rgba(30, 30, 70, 0.4);
+  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
 }
 
-.profileWrapper {
+.container {
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 100%;
+  border-radius: 16px;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  flex-grow: 1;
-  z-index: 100;
+  margin: 10px -5px;
+  padding: 0 15px;
+  overflow-x: none;
+  overflow-y: auto;
+  overflow-y: overlay;
+  flex: 1;
 }
 
-.profileForm {
-  display: flex;
+.portrait {
   position: relative;
-  flex-direction: column;
-  align-items: center;
-  margin: 15px 15px;
-  justify-content: center;
-}
-
-.headerContainer {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.headerInput {
-  text-align: center;
-  background-color: white;
-  width: 85%;
-  color: #8e8d8f;
-  margin: 5px auto;
-  padding: 0 10px;
-  border-bottom: 2px solid #e5e5e5;
-  font-size: 24px;
-  border: none;
-  outline: none;
-}
-
-.headerPortrait {
-  position: relative;
-  margin-bottom: 10px;
-  width: 100px;
-  height: 100px;
+  margin: 10px 0px;
+  width: 75px;
+  height: 75px;
   align-self: center;
   border-radius: 50%;
-  border: 3px solid #e5e5e5;
+  border: 2px solid var(--border);
+}
+
+.input {
+  display: flex;
+  border: none;
+  outline: none;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  width: 85%;
+  text-align: center;
+  color: var(--text);
+  align-self: center;
+  padding: 5px;
+  margin: 10px 0px;
+}
+
+.input::placeholder {
+  color: var(--subtext);
+  font: 'dinn' !important;
 }

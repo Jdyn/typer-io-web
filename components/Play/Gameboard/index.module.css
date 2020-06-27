@@ -5,6 +5,7 @@
   position: relative;
   background-color: white;
   border-radius: 16px;
+  /* border: 2px solid var(--border); */
   grid-area: gameboard;
 }
 
@@ -15,7 +16,7 @@
   content: '';
   position: absolute;
   border-radius: 16px;
-  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
+  box-shadow: var(--shadow);
   width: 100%;
   height: 100%;
 }
@@ -24,7 +25,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 1;
+  flex-grow: 2;
   align-content: flex-start;
   position: relative;
   padding: 10px;
@@ -41,22 +42,70 @@
   align-items: center;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header > div {
+  width: 30px;
+  height: 15px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.content {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  color: var(--text);
+  margin: 0px 20px 20px 20px;
+}
+
+.content > h1 {
+  display: inline-block;
+  font-size: 1.2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0px 0px 5px 0px;
+}
+
+.content > h1 > span {
+  font-size: 1rem;
+  padding: 3px;
+  background: var(--accent);
+  border-radius: 6px;
+  margin-left: 10px;
+  color: white;
+}
+
+.content > span {
+  color: var(--subtext);
+}
+
+.content > span > a {
+  color: var(--accent);
+}
+
 .gamePiece {
   position: absolute;
-  width: 5px;
-  border: 0l.5px solid rgb(0, 0, 0, 0.6);
+  width: 3px;
+  /* border: 0.5px solid rgb(0, 0, 0, 0.6); */
   opacity: 1;
   z-index: 50;
   box-shadow: 0 0 1px rgb(0, 0, 0, 0.5);
-  height: 90%;
-  border-radius: 2px;
+  height: 75%;
+  border-radius: 25%;
 }
 
 .word {
   margin: 0;
-  padding: 2px 5px 2px 5px;
+  padding: 0px 3px 0px 3px;
   font-family: 'dinn' !important;
   font-size: 20px;
+  font-weight: 500;
   z-index: 10;
   border-radius: 4px;
   /* line-height: 25px; */
@@ -70,7 +119,7 @@
 
 .letter {
   padding-top: 2px;
-  padding-bottom: 2px;
+  padding-bottom: 0px;
   transition-duration: 0.02s;
   color: var(--text);
   font-family: 'dinn' !important;
@@ -78,16 +127,16 @@
 }
 
 .letter:first-child {
-  padding-left: 5px;
+  padding-left: 3px;
   border-radius: 4px 0 0 4px;
 }
 
 .letter:last-child {
-  padding-right: 5px;
+  padding-right: 3px;
   border-radius: 0 4px 4px 0;
 }
 
 .letter:only-child {
-  padding: 0 5px;
+  padding: 0 3px;
   border-radius: 4px;
 }

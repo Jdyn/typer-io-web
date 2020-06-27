@@ -21,6 +21,14 @@ const Header = (): JSX.Element => {
             <li>discuss</li>
           </Link>
         </ul>
+        <div className={styles.authContainer}>
+          <Link href="/login">
+            <li>log in</li>
+          </Link>
+          <Link href="/signup">
+            <li>sign up</li>
+          </Link>
+        </div>
       </div>
     </header>
   );

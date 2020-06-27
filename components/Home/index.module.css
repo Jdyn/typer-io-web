@@ -9,11 +9,11 @@
   margin: 0 auto 0 auto;
   padding: 0px 10px;
   grid-template-rows: min-content min-content 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas:
     'news hub posts'
     'news scores posts'
     '. scores .';
-  grid-template-columns: 1.1fr 2fr 1.1fr;
 }
 
 .news {
@@ -74,33 +74,6 @@
   grid-area: hub;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-}
-
-.profile {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
-  z-index: 1;
-  height: 400px;
-  border-radius: 16px;
-}
-
-.profile > h1 {
-  font-size: 1.5rem;
-}
-
-.profile::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  height: 100%;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
 }
 
 .menu {

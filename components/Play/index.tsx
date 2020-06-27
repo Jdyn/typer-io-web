@@ -96,8 +96,8 @@ const Play = (props: Props): JSX.Element => {
 
   return (
     <>
-      <div className={styles.root}>
-        <ClientList />
+      <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
+        <ClientList isSolo={isSolo} />
         <PlayStatus gameboard={gameboard} />
         <Leaderboard />
         <Gameboard

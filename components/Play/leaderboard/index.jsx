@@ -26,8 +26,8 @@ const Leaderboard = () => {
   const [state, set] = useState([]);
 
   useEffect(() => {
-    if (true) {
-      ApiService.fetch(`/snippet/${1}/matches`).then((response) => {
+    if (snippet.id) {
+      ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
         if (response.ok) {
           set(response.result.matches);
         }

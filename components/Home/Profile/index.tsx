@@ -9,7 +9,7 @@ import { handleAuth } from '../../../store/session/actions';
 const Profile = (_props): JSX.Element => {
   const session = useSelector((state: AppState) => state.session);
 
-  const [name, setName] = useState(session.nickname ?? session.user?.username ?? null);
+  const [name, setName] = useState(session.nickname ?? session.user?.username ?? '');
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -19,7 +19,7 @@ const Profile = (_props): JSX.Element => {
   // }, [session.user]);
 
   useEffect(() => {
-    if (name !== session.user?.username && name !== session.nickname && name !== null) {
+    if (name !== session.user?.username && name !== session.nickname && name !== '') {
       dispatch(nicknameChanged(name));
     }
   }, [dispatch, name, session.nickname, session.user]);

@@ -10,7 +10,7 @@ const PostPage = (): JSX.Element => {
   return (
     <>
       <Layout striped>
-        <Post postId={postId} />
+        <Post postId={postId as string} />
       </Layout>
     </>
   );

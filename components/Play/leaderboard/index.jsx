@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
-// import LeaderboardCard from './LeaderboardCard';
 import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
 
@@ -27,16 +26,10 @@ const Leaderboard = () => {
   const [state, set] = useState([]);
 
   useEffect(() => {
-    if (snippet.id) {
-      ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
+    if (true) {
+      ApiService.fetch(`/snippet/${1}/matches`).then((response) => {
         if (response.ok) {
-          const temp = [...response.result.matches];
-
-          for (const match of temp) {
-            match.created_at = formatTime(match.created_at);
-          }
-
-          set(temp);
+          set(response.result.matches);
         }
       });
     }
@@ -50,9 +43,17 @@ const Leaderboard = () => {
       <Filter extended padding="0 0 10px 0" fontSize={15} filters={filters} onClick={() => {}} />
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          {/* {state.map((card, index) => (
-            <LeaderboardCard key={index} card={card} />
-          ))} */}
+          {state.map((item, index) => (
+            <div className={styles.entry} key={item.id}>
+              {/* <div className={styles.count}>{index + 1}.</div> */}
+              <div className={styles.portrait} />
+              <div className={styles.content}>
+                <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
+                <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
+              </div>
+              <div className={styles.item}>{item.wpm} WPM</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

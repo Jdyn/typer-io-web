@@ -23,18 +23,18 @@ const Forum = (_props): JSX.Element => {
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
             {posts.map((post) => (
-              <li className={styles.feedItem}>
+              <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
                   <Link href={`/forum/post/${post.id}`}>
                     <h1 className={styles.title}>{post.title}</h1>
                   </Link>
                   <span>
-                    {formatTime(post.created_at)} by {post.user.username}
+                    {formatTime(post.createdAt)} by {post.user.username}
                   </span>
                   <Link href={`/forum/post/${post.id}`}>
                     <span className={styles.comment}>
-                      {post.comment_count} comment{post.comment_count === 1 ? '' : 's'}
+                      {post.commentCount} comment{post.commentCount === 1 ? '' : 's'}
                     </span>
                   </Link>
                 </div>

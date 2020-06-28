@@ -42,8 +42,8 @@ const Home = (): JSX.Element => {
           </Banner>
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
-              <h2>Race Your Friends!</h2>
-              <span>updated {formatTime(1592249062431)} </span>
+              <h2>Improve your typing speed and race your friends!</h2>
+              <span>updated {formatTime(1593327181928)} </span>
               <p>
                 This is a realtime typing game where you can race other players. It may take around
                 25 seconds when connecting to the server for the first time. Thank you for playing.
@@ -51,16 +51,25 @@ const Home = (): JSX.Element => {
               <h3>WIP features:</h3>
               <div className={styles.list}>
                 <ul>
-                  <li>Recent high scores</li>
                   <li>Individual Match History</li>
                 </ul>
               </div>
               <h3>Latest Updates:</h3>
               <div className={styles.list}>
                 <ul>
+                  <li>Highscores are now reported for all users</li>
+                  <li>Overhauled homepage</li>
+                  <li>Recent high scores</li>
                   <li>Enabled group play</li>
+                  <li>Fixed commenting on posts</li>
                 </ul>
               </div>
+              <p>
+                As of now, I have rewritten the site from the ground up and it should be faster with
+                increased functionality. I think my next steps are improving the gameboard and
+                working on providing more information to users that help track their improvement
+                over time.
+              </p>
             </div>
           </div>
         </section>

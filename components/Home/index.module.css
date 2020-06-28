@@ -5,11 +5,11 @@
 .container {
   display: grid;
   gap: 30px;
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto 0 auto;
   padding: 0px 10px;
   grid-template-rows: min-content min-content 1fr;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1.1fr 2fr 1.1fr;
   grid-template-areas:
     'news hub posts'
     'news scores posts'
@@ -22,7 +22,7 @@
   flex-direction: column;
   position: relative;
   margin: 0;
-  height: 500px;
+  height: 650px;
   grid-area: news;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
@@ -43,14 +43,14 @@
   overflow-x: none;
   overflow-y: auto;
   overflow-y: overlay;
-  height: 379px;
+  height: 529px;
 }
 
-/* .newsWrapper > h3 {
+.newsWrapper > h3 {
+  font-size: 1.3rem;
   margin: 0;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-} */
+  margin-bottom: 10px;
+}
 
 .list {
   color: var(--text);
@@ -61,6 +61,7 @@
 .list > ul {
   padding-left: 25px;
   margin: 0;
+  margin-bottom: 10px;
 }
 
 .list > ul > li {

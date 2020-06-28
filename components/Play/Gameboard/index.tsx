@@ -58,7 +58,7 @@ const Gameboard = (props: Props): JSX.Element => {
     <div className={styles.root}>
       <Banner>
         <h1>
-          Quote
+          Gameboard
           {client?.gamePiece && (
             <span className={styles.header}>
               you are <div style={{ background: client?.gamePiece?.color || 'transparent' }} />

@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  color: var(--secondary-white);
+}
+
+.form > p {
+  margin: 0 0 10px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--secondary-white);
+  margin: 0;
+  text-align: left;
+}
+
+.container > span {
+  text-align: left !important;
+}
+
+.input {
+  display: flex;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  background: white;
+  color: var(--text);
+  transition: all 0.2s ease;
+  border: 2px solid var(--border);
+}
+
+.input:focus {
+  box-shadow: 0px 0 0px 1px var(--accent);
+}

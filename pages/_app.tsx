@@ -5,6 +5,7 @@ import { wrapper } from '../store';
 import '../public/static/styles/global.css';
 import { useDispatch } from 'react-redux';
 import { handleAuth, authenticate } from '../store/session/actions';
+import { userRefreshed } from '../store/session/reducers';
 
 interface Props {
   Component: NextPage;
@@ -16,7 +17,13 @@ export const App = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authenticate());
+    const token = cookies.get('token');
+
+    if (token) {
+      dispatch(authenticate());
+    } else {
+      dispatch(userRefreshed({ isLoggedIn: false, user: null }));
+    }
   }, [dispatch]);
 
   return <Component {...pageProps} />;

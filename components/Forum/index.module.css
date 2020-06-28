@@ -64,6 +64,7 @@
   margin: 0;
   color: var(--text);
   text-decoration: underline;
+  cursor: pointer;
   overflow-wrap: break-word;
   word-break: break-word;
   word-wrap: break-word;
@@ -84,5 +85,6 @@
 
 .comment {
   margin-top: auto;
+  cursor: pointer;
   text-decoration: underline;
 }

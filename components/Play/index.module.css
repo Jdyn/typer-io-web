@@ -1,13 +1,13 @@
 .root {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1.1fr 2fr 1.1fr;
   grid-template-rows: min-content min-content min-content 1fr;
   grid-template-areas:
     'clientlist  clientlist clientlist'
     'status      gameboard  leaderboard'
     'chat gameboard  leaderboard'
     'chat editor     leaderboard';
-  max-width: 1100px;
+  max-width: 1140px;
   flex-direction: row;
   position: relative;
   padding: 0px 10px;

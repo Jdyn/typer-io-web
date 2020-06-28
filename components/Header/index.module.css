@@ -57,8 +57,10 @@
 .authContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  color: white;
   justify-self: flex-end;
-  margin-left: auto;
+  margin: 0px 15px 0px auto;
   padding: 0;
   list-style: none;
 }
@@ -70,6 +72,21 @@
   font-weight: 700;
   color: white;
   cursor: pointer;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   margin: 0 15px;

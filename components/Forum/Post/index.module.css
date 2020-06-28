@@ -61,3 +61,14 @@
   width: 100%;
   grid-area: comments;
 }
+
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

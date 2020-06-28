@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 import { fetchPost } from '../../../store/forum/actions';
 import formatTime from '../../../util/formatTime';
+import Comments from './Comments';
+import TextBox from '../../Shared/TextBox';
+import Button from '../../Shared/Button';
+import Api from '../../../services/api';
 
 interface Props {
   postId: string;
@@ -13,6 +17,7 @@ interface Props {
 const Post = (props: Props): JSX.Element => {
   const { postId } = props;
   const dispatch = useDispatch();
+  const [newComment, setComment] = useState({ body: '', parentId: null });
 
   useEffect(() => {
     if (postId) {
@@ -21,7 +26,16 @@ const Post = (props: Props): JSX.Element => {
   }, [dispatch, postId]);
 
   const post = useSelector((state: AppState) => state.forum?.post);
-  const session = useSelector((state: AppState) => state.session);
+  const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
+
+  const submitComment = (): void => {
+    Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
+      if (response.ok) {
+        dispatch(fetchPost(postId));
+        setComment((prev) => ({ ...prev, body: '' }));
+      }
+    });
+  };
 
   return (
     <div className={styles.root}>
@@ -39,19 +53,21 @@ const Post = (props: Props): JSX.Element => {
             </div>
             <p className={styles.body}>{post.body}</p>
             <div className={styles.rating} />
-            {session.isLoggedIn ? (
+            {isLoggedIn ? (
               <div className={styles.createComment}>
-                {/* <TextBox
+                <TextBox
                   placeholder="Leave a comment"
                   value={newComment.body}
-                  onChange={(e) => setNewComment({ body: e.target.value })}
+                  onChange={(e) => setComment({ body: e.target.value })}
                 />
-                <div>
-                  <Button secondary margin="0 10px 0 0" onClick={() => setNewComment({ body: '' })}>
+                <div className={styles.buttons}>
+                  <Button margin="0 10px 0 0" onClick={submitComment}>
+                    comment
+                  </Button>
+                  <Button margin="0 0px 0 0" onClick={() => setComment({ body: '' })}>
                     cancel
                   </Button>
-                  <Button onClick={(e) => submitComment(e, null, newComment, null)}>post</Button>
-                </div> */}
+                </div>
               </div>
             ) : (
               <div>Log in to comment on this post.</div>
@@ -63,17 +79,14 @@ const Post = (props: Props): JSX.Element => {
         <Banner>
           <h1>Comments</h1>
         </Banner>
-        <div className={styles.commentsInfo}>
+        <div className={styles.commentsContainer}>
+          {!isLoggedIn && <span>Log in to comment on this post</span>}
           <h2>
-            {post && post.comment_count} Comment
-            {post && post.comment_count === 1 ? '' : 's'}
+            {post && post.commentCount}
+            {post && post.commentCount === 1 ? ' Comment' : ' Comments'}
           </h2>
+          <Comments comments={post?.comments || []} />
         </div>
-        {/* <PostComments
-          submitComment={submitComment}
-          comments={post ? post.comments : []}
-          isLoggedIn={isLoggedIn}
-        /> */}
       </div>
     </div>
   );

@@ -9,14 +9,17 @@ const PlayContainer = (): JSX.Element => {
   const dispatch = useDispatch();
   const RoomId = useSelector((state: AppState) => state.game.room.id);
   const socket = useSelector((state: AppState) => state.game.socket);
+  const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
     if (!socket.connected) {
-      const localName = localStorage.getItem('username');
+      const token = localStorage.getItem('token') || '';
+
+      const username = session.nickname || session.user?.username;
 
       const payload = {
-        username: localName,
-        token: ''
+        username,
+        token
       };
 
       const config = { mode: 'MULTIPLAYER' };

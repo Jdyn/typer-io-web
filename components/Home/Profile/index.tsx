@@ -9,24 +9,20 @@ import { handleAuth } from '../../../store/session/actions';
 const Profile = (_props): JSX.Element => {
   const session = useSelector((state: AppState) => state.session);
 
-  const [name, setName] = useState(session.user?.username ?? session.nickname ?? '');
+  const [name, setName] = useState(session.nickname ?? session.user?.username ?? null);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      dispatch(nicknameChanged(name));
-    };
-  }, [dispatch, name]);
-
-  useEffect(() => {
-    if (session?.user?.username) {
-      dispatch(nicknameChanged(session?.user?.username));
-    }
-  }, [dispatch, session]);
-
   // useEffect(() => {
-  //   dispatch(handleAuth('login', { username: 'Jdyn', password: 'password' }));
-  // }, [dispatch]);
+  //   if (session.user?.username) {
+  //     setName(session.user?.username);
+  //   }
+  // }, [session.user]);
+
+  useEffect(() => {
+    if (name !== session.user?.username && name !== session.nickname && name !== null) {
+      dispatch(nicknameChanged(name));
+    }
+  }, [dispatch, name, session.nickname, session.user]);
 
   return (
     <div className={styles.root}>

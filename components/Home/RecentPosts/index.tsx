@@ -15,9 +15,12 @@ const RecentPosts = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const posts = useSelector((state: AppState) => state.forum.feed.recent.posts || []);
+  const recentPostsRequest = useSelector((state: AppState) => state.request.FETCH_POSTS_BY_RECENT);
   useEffect(() => {
-    dispatch(fetchPosts('RECENT'));
-  }, [dispatch]);
+    if (!recentPostsRequest) {
+      dispatch(fetchPosts('RECENT'));
+    }
+  }, [dispatch, recentPostsRequest]);
 
   return (
     <section className={styles.root}>
@@ -34,12 +37,12 @@ const RecentPosts = (): JSX.Element => {
                   <h1 className={styles.title}>{post.title}</h1>
                 </Link>
                 <span>
-                  {formatTime(post.created_at)} by {post.user.username}
+                  {formatTime(post.createdAt)} by {post.user.username}
                 </span>
                 <p>{post.body}</p>
                 <Link href={`/forum/post/${post.id}`}>
                   <h3>
-                    {post.comment_count} comment{post.comment_count === 1 ? '' : 's'}
+                    {post.commentCount} {post.commentCount === 1 ? 'comment' : 'comments'}
                   </h3>
                 </Link>
               </div>

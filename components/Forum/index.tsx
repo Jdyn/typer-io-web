@@ -9,7 +9,7 @@ import formatTime from '../../util/formatTime';
 
 const Forum = (_props): JSX.Element => {
   const dispatch = useDispatch();
-  const posts = useSelector((state: AppState) => state.forum.feed.page.posts || []);
+  const posts = useSelector((state: AppState) => state.forum.feed.page?.posts || []);
   useEffect(() => {
     dispatch(fetchPosts('PAGE'));
   }, [dispatch]);

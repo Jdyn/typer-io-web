@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from './Comment';
 
 const Comments = (props): JSX.Element => {
-  const { comments, parentId } = props;
+  const { comments } = props;
 
   return (
     <>

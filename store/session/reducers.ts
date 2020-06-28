@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: false,
-  nickname: null
+  nickname: null,
+  user: null
 };
 
 const reducers = {

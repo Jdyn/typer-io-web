@@ -11,7 +11,7 @@ import Api from '../../../../services/api';
 import { fetchPost } from '../../../../store/forum/actions';
 
 interface Props {
-  comment: object;
+  comment: any;
 }
 
 const Comment = (props: Props): JSX.Element => {

@@ -7,7 +7,9 @@ const initialState = {
     recent: {
       posts: null
     },
-    page: {}
+    page: {
+      posts: null
+    }
   }
 };
 

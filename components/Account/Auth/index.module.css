@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 75px);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 10px;
+  padding: 30px;
+  color: var(--white);
+  text-align: center;
+  flex: 1;
+  width: 100%;
+  max-width: 300px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.container > h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--white);
+}
+
+.container > span {
+  color: var(--white);
+}
+
+.container > p {
+  color: var(--secondary-white);
+}
+
+.link {
+  color: var(--grey);
+}
+
+.error {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+}

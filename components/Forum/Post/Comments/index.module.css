@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-top: 2px solid #e5e5e5;
+  padding: 20px 0 10px 60px;
+  min-height: 125px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  margin-left: 15px;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.content {
+  flex-wrap: wrap;
+}
+
+.body {
+  display: flex;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0;
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-left: 15px;
+  padding-top: 6px;
+  font-size: 16px;
+  color: var(--subtext);
+  height: 30px;
+}
+
+.replyButton {
+  cursor: pointer;
+  font-weight: 700;
+  width: 50px;
+  border: none;
+  outline: none;
+  background: white;
+  color: var(--subtext);
+  text-transform: uppercase;
+}
+
+.replyButton:hover {
+  text-decoration: underline;
+}
+
+.seperator {
+  padding: 0 8px;
+}
+
+.portrait {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+}

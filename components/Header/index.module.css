@@ -1,0 +1,93 @@
+.root {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 500;
+  padding-top: 3px;
+  overflow: hidden;
+  background-color: var(--accent);
+  box-shadow: 0 5px 5px rgba(30, 30, 70, 0.3);
+  border-bottom: 3px solid rgb(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  justify-content: flex-start;
+  max-width: 1065px;
+}
+
+.logo {
+  display: Flex;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  margin-left: 15px;
+  list-style: none;
+}
+
+.nav > li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+
+.authContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  justify-self: flex-end;
+  margin: 0px 15px 0px auto;
+  padding: 0;
+  list-style: none;
+}
+
+.authContainer > li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 15px;
+}

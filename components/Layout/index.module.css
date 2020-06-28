@@ -1,0 +1,13 @@
+.stripe {
+  display: flex;
+  position: absolute;
+  height: 660px;
+  top: 75px;
+  z-index: -5;
+  width: 100%;
+  overflow: hidden;
+  transform-origin: 0;
+  background: #eef2f7;
+  /* background:linear-gradient(90deg, #252525 15%, #303030 70%, #353535 95%); */
+  transform: skewY(-8deg);
+}

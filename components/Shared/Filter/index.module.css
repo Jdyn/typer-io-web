@@ -1,0 +1,49 @@
+.root {
+  margin: 0;
+  padding: 17px 0 0 0;
+  display: flex;
+  position: relative;
+  border-top: 2px solid var(--border);
+  flex-direction: row;
+}
+
+.extended {
+  flex: 1;
+}
+
+.item {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--subtext);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+  transition-duration: 0.25s;
+  pointer-events: all;
+}
+
+.item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.selected {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--primary-grey);
+}

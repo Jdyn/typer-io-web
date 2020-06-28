@@ -1,0 +1,116 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  grid-area: clientlist;
+  position: relative;
+  height: 100px;
+  background-clip: padding-box;
+  border-radius: 8px;
+  margin-top: 25px;
+  background-color: transparent;
+}
+
+.soloRoot {
+  margin-top: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 0;
+}
+
+.card {
+  position: relative;
+  margin: 0;
+  max-width: 265px;
+  background-color: white;
+  border-right: 2px solid #e5e5e5;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+}
+.card:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.card:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+.card:only-child {
+  border-radius: 16px;
+}
+
+.cardWrapper {
+  display: grid;
+  position: relative;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  margin: 0;
+  z-index: 5;
+  padding: 5px;
+  height: 100%;
+  overflow: hidden;
+  max-width: 265px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+}
+
+.username {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
+  font-weight: 500;
+  font-size: 1.1rem;
+  align-items: center;
+  height: 40px;
+  overflow: hidden;
+  align-self: flex-end;
+  border-radius: 12px;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+}
+
+.wpm {
+  margin: auto 0px auto auto;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+
+.statHeader {
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  color: var(--subtext);
+  font-weight: 600;
+  flex: 1;
+  font-size: 18px;
+  /* padding: 2px; */
+  height: 100%;
+}

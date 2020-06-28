@@ -1,0 +1,103 @@
+.root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  grid-area: leaderboard;
+  border-radius: 16px;
+  height: 545px;
+  box-shadow: var(--shadow);
+}
+
+.container {
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 100%;
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px -5px;
+  padding: 0px 10px 0px 5px;
+  overflow-x: none;
+  overflow-y: auto;
+  overflow-y: overlay;
+  height: 370px;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 12px;
+  color: var(--text);
+}
+
+.entry:last-child {
+  border: none;
+}
+
+.entry:only-child {
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.content {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.content > span {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0px;
+  justify-self: flex-start;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.timestamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--subtext);
+  flex: 1.4;
+}
+
+.portrait {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  align-self: center;
+  border: 2px solid #e5e5e5;
+  margin: -3px 10px -3px -3px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  color: var(--subtext);
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 10px;
+  flex: 0.3;
+}

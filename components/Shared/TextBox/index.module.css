@@ -1,0 +1,14 @@
+.root {
+    font-size: 1rem;
+    line-height: 24px;
+    padding: 15px;
+    border: 2px solid #e5e5e5;
+    margin: 15px 0;
+    white-space: pre-wrap;
+    width: 100%;
+    border-radius: 6px;
+    resize: vertical;
+    outline: none;
+    background-color: #fafafa;
+    height: props.height;
+}

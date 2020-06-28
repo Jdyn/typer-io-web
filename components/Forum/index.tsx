@@ -32,7 +32,7 @@ const Forum = (_props): JSX.Element => {
                   <span>
                     {formatTime(post.createdAt)} by {post.user.username}
                   </span>
-                  <Link href={`/forum/post/${post.id}`}>
+                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <span className={styles.comment}>
                       {post.commentCount} comment{post.commentCount === 1 ? '' : 's'}
                     </span>

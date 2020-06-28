@@ -26,7 +26,7 @@ const Forum = (_props): JSX.Element => {
               <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
-                  <Link href={`/forum/post/${post.id}`}>
+                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <h1 className={styles.title}>{post.title}</h1>
                   </Link>
                   <span>

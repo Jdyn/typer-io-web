@@ -5,11 +5,11 @@
 .container {
   display: grid;
   gap: 30px;
-  max-width: 1140px;
+  max-width: 1100px;
   margin: 0 auto 0 auto;
   padding: 0px 10px;
   grid-template-rows: min-content min-content 1fr;
-  grid-template-columns: 1.1fr 2fr 1.1fr;
+  grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-areas:
     'news hub posts'
     'news scores posts'

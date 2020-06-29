@@ -1,15 +1,28 @@
 import React, { useEffect } from 'react';
 import { NextPage } from 'next';
+import { useDispatch } from 'react-redux';
+import * as Sentry from '@sentry/react';
+import ReactGA from 'react-ga';
 import cookies from 'js-cookie';
 import { wrapper } from '../store';
 import '../public/static/styles/global.css';
-import { useDispatch } from 'react-redux';
-import { handleAuth, authenticate } from '../store/session/actions';
-import { userRefreshed } from '../store/session/reducers';
+import { authenticate } from '../store/session/actions';
+import { userRefreshed, nicknameChanged } from '../store/session/reducers';
 
 interface Props {
   Component: NextPage;
   pageProps: object;
+}
+
+((): void => {
+  ReactGA.initialize('UA-135635293-4');
+  ReactGA.pageview('/');
+})();
+
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({
+    dsn: 'https://429f27fd7aab4c2dac9d534a38ccfaf8@sentry.io/1396899'
+  });
 }
 
 export const App = (props: Props): JSX.Element => {
@@ -24,9 +37,19 @@ export const App = (props: Props): JSX.Element => {
     } else {
       dispatch(userRefreshed({ isLoggedIn: false, user: null }));
     }
+
+    const username = localStorage.getItem('username');
+    console.log(username);
+    if (username) {
+      dispatch(nicknameChanged(username));
+    }
   }, [dispatch]);
 
-  return <Component {...pageProps} />;
+  return (
+    <Sentry.ErrorBoundary showDialog>
+      <Component {...pageProps} />
+    </Sentry.ErrorBoundary>
+  );
 };
 
-export default wrapper.withRedux(App);
+export default Sentry.withProfiler(wrapper.withRedux(App));

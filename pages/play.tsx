@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactGA from 'react-ga';
 import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';
 import { AppState } from '../store';
@@ -12,10 +13,12 @@ const PlayContainer = (): JSX.Element => {
   const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
+    ReactGA.pageview('/play');
     if (!socket.connected) {
       const token = localStorage.getItem('token') || '';
 
-      const username = session.nickname || session.user?.username;
+      const username =
+        localStorage.getItem('username') || session.nickname || session.user?.username;
 
       const payload = {
         username,

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ReactGA from 'react-ga';
 import { useDispatch, useSelector } from 'react-redux';
 import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';
@@ -11,6 +12,7 @@ const PlayContainer = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
 
   useEffect(() => {
+    ReactGA.pageview('/solo');
     if (!socket.connected) {
       const localName = localStorage.getItem('username');
 

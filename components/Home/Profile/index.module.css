@@ -24,7 +24,12 @@
   overflow-x: none;
   overflow-y: auto;
   overflow-y: overlay;
+  text-align: center;
   flex: 1;
+}
+
+.wrapper > span {
+  font-size: 0.9rem;
 }
 
 .portrait {
@@ -44,10 +49,11 @@
   border: 2px solid var(--border);
   border-radius: 16px;
   width: 85%;
+  font-size: 1rem;
   text-align: center;
   color: var(--text);
   align-self: center;
-  padding: 5px;
+  padding: 5px 5px;
   margin: 10px 0px;
 }
 

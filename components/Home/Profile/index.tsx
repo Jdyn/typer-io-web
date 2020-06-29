@@ -4,25 +4,15 @@ import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
-import { handleAuth } from '../../../store/session/actions';
 
 const Profile = (_props): JSX.Element => {
-  const session = useSelector((state: AppState) => state.session);
-
-  const [name, setName] = useState(session.nickname ?? session.user?.username ?? '');
+  const nickname = useSelector((state: AppState) => state.session.nickname);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (session.user?.username) {
-  //     setName(session.user?.username);
-  //   }
-  // }, [session.user]);
-
-  useEffect(() => {
-    if (name !== session.user?.username && name !== session.nickname && name !== '') {
-      dispatch(nicknameChanged(name));
-    }
-  }, [dispatch, name, session.nickname, session.user]);
+  const changed = (e) => {
+    dispatch(nicknameChanged(e.target.value));
+    localStorage.setItem('username', e.target.value);
+  };
 
   return (
     <div className={styles.root}>
@@ -32,11 +22,12 @@ const Profile = (_props): JSX.Element => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.portrait} />
+          <span>Set your name to be seen!</span>
           <input
             className={styles.input}
-            placeholder="enter nickname here"
-            value={name}
-            onChange={(e): void => setName(e.target.value)}
+            value={nickname || ''}
+            placeholder="enter nickname"
+            onChange={changed}
           />
         </div>
       </div>

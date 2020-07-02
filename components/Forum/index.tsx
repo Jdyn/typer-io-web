@@ -27,15 +27,15 @@ const Forum = (_props): JSX.Element => {
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                    <h1 className={styles.title}>{post.title}</h1>
+                    <a className={styles.title}>{post.title}</a>
                   </Link>
                   <span>
                     {formatTime(post.createdAt)} by {post.user.username}
                   </span>
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                    <span className={styles.comment}>
+                    <a className={styles.comment}>
                       {post.commentCount} comment{post.commentCount === 1 ? '' : 's'}
-                    </span>
+                    </a>
                   </Link>
                 </div>
               </li>

@@ -34,16 +34,16 @@ const RecentPosts = (): JSX.Element => {
               {/* <div className={styles.portrait} /> */}
               <div className={styles.content}>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                  <h1 className={styles.title}>{post.title}</h1>
+                  <a className={styles.title}>{post.title}</a>
                 </Link>
                 <span>
                   {formatTime(post.createdAt)} by {post.user.username}
                 </span>
                 <p>{post.body}</p>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                  <h3>
+                  <a className={styles.comment}>
                     {post.commentCount} {post.commentCount === 1 ? 'comment' : 'comments'}
-                  </h3>
+                  </a>
                 </Link>
               </div>
             </div>

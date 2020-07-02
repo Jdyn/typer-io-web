@@ -86,5 +86,6 @@
 .comment {
   margin-top: auto;
   cursor: pointer;
+  color: var(--subtext);
   text-decoration: underline;
 }

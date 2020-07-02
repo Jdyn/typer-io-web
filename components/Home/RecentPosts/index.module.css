@@ -38,13 +38,25 @@
   margin-bottom: 15px;
 }
 
+.title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--text);
+  text-decoration: underline;
+  cursor: pointer;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
 .content {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
-.content > span {
+.comment {
   color: var(--subtext);
   font-size: 1rem;
   font-weight: 300;
@@ -66,18 +78,6 @@
   -webkit-line-clamp: 3;
   color: var(--text);
   overflow: hidden;
-}
-
-.title {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin: 0;
-  color: var(--text);
-  text-decoration: underline;
-  cursor: pointer;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  word-wrap: break-word;
 }
 
 .portrait {

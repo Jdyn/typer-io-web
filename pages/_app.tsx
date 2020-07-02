@@ -39,14 +39,13 @@ export const App = (props: Props): JSX.Element => {
     }
 
     const username = localStorage.getItem('username');
-    console.log(username);
     if (username) {
       dispatch(nicknameChanged(username));
     }
   }, [dispatch]);
 
   return (
-    <Sentry.ErrorBoundary showDialog>
+    <Sentry.ErrorBoundary>
       <Component {...pageProps} />
     </Sentry.ErrorBoundary>
   );

@@ -27,10 +27,10 @@ const Header = (): JSX.Element => {
         </Link>
         <ul className={styles.nav}>
           <Link href="/">
-            <li>home</li>
+            <a>home</a>
           </Link>
           <Link href="/forum">
-            <li>discuss</li>
+            <a>discuss</a>
           </Link>
         </ul>
         {!authenticationRequest?.isPending ? (
@@ -45,10 +45,10 @@ const Header = (): JSX.Element => {
             ) : (
               <div className={styles.authContainer}>
                 <Link href="/login">
-                  <li>log in</li>
+                  <a>log in</a>
                 </Link>
                 <Link href="/signup">
-                  <li>sign up</li>
+                  <a>sign up</a>
                 </Link>
               </div>
             )}

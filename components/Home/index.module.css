@@ -95,6 +95,7 @@
   color: white;
   outline: none;
   z-index: 1;
+  text-decoration: none;
   border: 2px solid rgba(0, 0, 0, 0.1);
   transition-duration: 0.15s;
   border-radius: 16px;

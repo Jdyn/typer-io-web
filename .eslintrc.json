@@ -25,6 +25,7 @@
     "import/prefer-default-export": "off",
     "no-shadow": [0],
     "react/proptypes": [0],
+    "jsx-a11y/anchor-is-valid": [0],
     "@typescript-eslint/no-empty-function": "off",
     "jsx-a11y/href-no-hash": ["off"],
     "@typescript-eslint/explicit-function-return-type": "off",

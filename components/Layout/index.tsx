@@ -14,7 +14,7 @@ const Layout = (props: Props): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Typer.io</title>
+        <title>Typer.io | Multiplayer Typing Competition - Race Your Friends</title>
         <link
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"

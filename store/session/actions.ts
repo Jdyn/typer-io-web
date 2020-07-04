@@ -58,7 +58,7 @@ const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
 
   dispatch(setRequest(true, requestType));
 
-  Api.delete('/account/logout')
+  Api.delete('/logout')
     .then((): void => {
       dispatch(setRequest(false, requestType));
       dispatch(userLoggedOut({}));
@@ -86,7 +86,7 @@ const signup = (
 
   dispatch(setRequest(true, requestType));
 
-  Api.post('/account/signup', form)
+  Api.post('/signup', form)
     .then((response): void => {
       const { ok, result } = response;
 

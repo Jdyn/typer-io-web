@@ -48,7 +48,7 @@ const Post = (props: Props): JSX.Element => {
             <div className={styles.header}>
               <h1>{post.title}</h1>
               <span>
-                posted by {post?.user?.username} {formatTime(post.inserted_at)}
+                posted by {post?.user?.username} {formatTime(post.createdAt)}
               </span>
             </div>
             <p className={styles.body}>{post.body}</p>

@@ -4,7 +4,7 @@ import { forumRequests } from './types';
 import { emptyRequest } from '../request/types';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
-import { postsFetched, postUpdated } from './reducers';
+import { postsFetched, postUpdated, postCreated } from './reducers';
 
 export const fetchPost = (postId: string) => async (
   dispatch: Dispatch,
@@ -51,5 +51,34 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
     dispatch(setRequest(false, requestType));
   } else {
     dispatch(setRequest(false, requestType, response.error));
+  }
+};
+
+export const createPost = (form) => async (
+  dispatch: Dispatch,
+  getState: () => AppState
+): Promise<void> => {
+  const requestType = forumRequests.CREATE_NEW_POST;
+  const request = getState().request[requestType] ?? emptyRequest;
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  const response = await Api.post(`/forum/post`, form);
+
+  if (response.ok) {
+    dispatch(postCreated({ post: response.result.post }));
+    dispatch(setRequest(false, requestType));
+  } else {
+    dispatch(
+      setRequest(
+        false,
+        requestType,
+        `${Object.keys(response?.errors)[0]} ${
+          response?.errors[Object.keys(response?.errors)[0]][0]
+        }`
+      )
+    );
   }
 };

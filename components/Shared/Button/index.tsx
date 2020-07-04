@@ -9,7 +9,6 @@ interface Props {
   secondary?: boolean;
   margin?: string;
   green?: boolean;
-  grow?: boolean;
   width?: string;
   maxWidth?: string;
   padding?: string;

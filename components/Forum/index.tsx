@@ -6,6 +6,7 @@ import Banner from '../Shared/Banner';
 import { fetchPosts } from '../../store/forum/actions';
 import { AppState } from '../../store';
 import formatTime from '../../util/formatTime';
+import Button from '../Shared/Button';
 
 const Forum = (_props): JSX.Element => {
   const dispatch = useDispatch();
@@ -16,6 +17,11 @@ const Forum = (_props): JSX.Element => {
 
   return (
     <div className={styles.root}>
+      <div className={styles.create}>
+        <Link href="/forum/post">
+          <Button padding="10px">Create Post</Button>
+        </Link>
+      </div>
       <div className={styles.feed}>
         <Banner>
           <h1>Forum</h1>

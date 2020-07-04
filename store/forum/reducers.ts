@@ -19,6 +19,9 @@ const reducers = {
   },
   postUpdated: (state, action) => {
     state.post = action.payload.post;
+  },
+  postCreated: (state, action) => {
+    state.post = action.payload.post;
   }
 };
 
@@ -28,6 +31,6 @@ const forum = createSlice({
   reducers
 });
 
-export const { postsFetched, postUpdated } = forum.actions;
+export const { postsFetched, postUpdated, postCreated } = forum.actions;
 
 export default forum.reducer;

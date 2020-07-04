@@ -1,0 +1,37 @@
+.root {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1.15fr 2fr 1.15fr;
+  grid-template-areas:
+    'clientlist clientlist clientlist'
+    '. main .';
+  grid-gap: 15px;
+  padding: 15px;
+  max-width: 1185px;
+  margin: 0px auto 115px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  grid-area: main;
+  align-items: center;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+.container > span {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.container > div {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}

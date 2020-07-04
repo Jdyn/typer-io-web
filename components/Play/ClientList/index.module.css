@@ -76,7 +76,7 @@
   flex-direction: row;
   box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   align-items: center;
   overflow: hidden;
   align-self: flex-end;
@@ -88,10 +88,15 @@
   grid-column: 1 / 4;
 }
 
+.username > span {
+  display: flex;
+  flex: 2.5;
+}
+
 .wpm {
-  margin: auto 0px auto auto;
   font-size: 20px;
   text-align: center;
+  flex: 1.2;
   color: white;
 }
 

@@ -10,14 +10,16 @@ const PlayContainer = (): JSX.Element => {
   const dispatch = useDispatch();
   const RoomId = useSelector((state: AppState) => state.game.room.id);
   const socket = useSelector((state: AppState) => state.game.socket);
+  const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
     ReactGA.pageview('/solo');
     if (!socket.connected) {
-      const localName = localStorage.getItem('username');
+      const username =
+        localStorage.getItem('username') || session.nickname || session.user?.username;
 
       const payload = {
-        username: localName,
+        username,
         token: ''
       };
 

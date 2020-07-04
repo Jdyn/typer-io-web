@@ -51,7 +51,7 @@ const ClientList = (props) => {
                   </span>
                 </div>
                 <div className={styles.username} style={{ background: item.gamePiece.color }}>
-                  {item.username}
+                  <span>{item.username}</span>
                   <div className={styles.wpm}>
                     {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
                   </div>

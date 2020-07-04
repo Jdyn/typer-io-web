@@ -11,7 +11,10 @@ import { useRouter } from 'next/router';
 const CreatePost = (): JSX.Element => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const createPostRequest = useSelector((state: AppState) => state.request.CREATE_NEW_POST || {});
+  const createPostRequest = useSelector(
+    (state: AppState) =>
+      state.request.CREATE_NEW_POST || { success: false, errored: false, error: null }
+  );
   const newPostId = useSelector((state: AppState) => state.forum.post?.id || null);
   const [form, setForm] = useState({
     title: '',

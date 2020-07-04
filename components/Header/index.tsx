@@ -21,18 +21,18 @@ const Header = (): JSX.Element => {
 
   return (
     <header className={styles.root}>
-      <div className={styles.container}>
+      <nav className={styles.container}>
         <Link href="/">
-          <h1 className={styles.logo}>typer.io</h1>
+          <a className={styles.logo}>typer.io</a>
         </Link>
-        <ul className={styles.nav}>
+        <div className={styles.nav}>
           <Link href="/">
             <a>home</a>
           </Link>
           <Link href="/forum">
             <a>discuss</a>
           </Link>
-        </ul>
+        </div>
         {!authenticationRequest?.isPending ? (
           <>
             {session.isLoggedIn ? (
@@ -54,7 +54,7 @@ const Header = (): JSX.Element => {
             )}
           </>
         ) : null}
-      </div>
+      </nav>
     </header>
   );
 };

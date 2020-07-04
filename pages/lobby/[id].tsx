@@ -43,7 +43,9 @@ const JoinLobby = (props) => {
   }, [roomId]);
 
   return isStarting ? (
-    <Layout striped>{/* <Play /> */}</Layout>
+    <Layout striped>
+      <Play />
+    </Layout>
   ) : (
     <Layout striped>
       <Lobby />

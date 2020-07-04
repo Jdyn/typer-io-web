@@ -102,7 +102,7 @@
 
 .word {
   margin: 0;
-  padding: 0px 3px 0px 3px;
+  padding: 2px 4px 2px 4px;
   font-family: 'dinn' !important;
   font-size: 20px;
   font-weight: 500;
@@ -127,16 +127,16 @@
 }
 
 .letter:first-child {
-  padding-left: 3px;
+  padding-left: 4px;
   border-radius: 4px 0 0 4px;
 }
 
 .letter:last-child {
-  padding-right: 3px;
+  padding-right: 4px;
   border-radius: 0 4px 4px 0;
 }
 
 .letter:only-child {
-  padding: 0 3px;
+  padding: 0 4px;
   border-radius: 4px;
 }

@@ -3,13 +3,14 @@ import Router from 'next/router';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
-import { actions, requests } from './types';
+import { requests } from './types';
 import { userLoggedIn, userSignedUp, userLoggedOut, userRefreshed } from './reducers';
 
 const setCurrentSession = (user): void => {
   if (user.token) {
     const jsonToken = user.token;
     cookie.set('token', jsonToken);
+    cookie.set('username', user.username);
   }
 };
 

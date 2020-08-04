@@ -43,7 +43,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1593893130945)} </span>
+              <span>updated {formatTime(1596518576715)} </span>
               <p>
                 This is a realtime typing game where you can race other players. It may take around
                 25 seconds when connecting to the server for the first time. Thank you for playing.

@@ -35,6 +35,18 @@ const Leaderboard = () => {
     }
   }, [snippet.id]);
 
+  const renderBadge = (user) => {
+    if (user) {
+      if (user.isAdmin) {
+        return <span className={styles.admin}>Admin</span>;
+      }
+
+      return <span className={styles.user}>Verified</span>;
+    }
+
+    return null;
+  };
+
   return (
     <div className={styles.root}>
       <Banner>
@@ -43,12 +55,14 @@ const Leaderboard = () => {
       <Filter extended padding="0 0 10px 0" fontSize={15} filters={filters} onClick={() => {}} />
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          {state.map((item, index) => (
+          {state.map((item) => (
             <div className={styles.entry} key={item.id}>
               {/* <div className={styles.count}>{index + 1}.</div> */}
               <div className={styles.portrait} />
               <div className={styles.content}>
-                <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
+                <div>
+                  {item.user?.username ?? item.nickname ?? 'Guest'} {renderBadge(item.user)}
+                </div>
                 <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
               </div>
               <div className={styles.item}>{item.wpm} WPM</div>

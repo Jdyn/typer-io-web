@@ -33,10 +33,23 @@ const Hiscores = (): JSX.Element => {
     }
   }, [filterIndex, dispatch, request]);
 
+  const renderBadge = (user): React.ReactNode => {
+    if (user) {
+      if (user.isAdmin) {
+        return <span className={styles.admin}>Admin</span>;
+      }
+
+      return <span className={styles.user}>Verified</span>;
+    }
+
+    return null;
+  };
+
   return (
     <section className={styles.root}>
       <Banner>
         <h1>Hiscores</h1>
+        <span>create an account to be verified</span>
       </Banner>
       <Filter
         onClick={(index): void => setFilterIndex(index)}
@@ -50,7 +63,8 @@ const Hiscores = (): JSX.Element => {
               <div className={styles.count}>{index + 1}.</div>
               <div className={styles.portrait} />
               <div className={styles.content}>
-                {item.user?.username ?? item.nickname ?? 'Guest'}
+                <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
+                {renderBadge(item.user)}
               </div>
               <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
               <div className={styles.item}>{item.wpm} WPM</div>

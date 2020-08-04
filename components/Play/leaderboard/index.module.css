@@ -53,14 +53,33 @@
   align-items: flex-start;
 }
 
-.content > span {
+.content > div {
   font-size: 1rem;
   font-weight: 500;
-  padding: 5px 0px;
+  margin: 5px 0px;
+  position: relative;
   justify-self: flex-start;
   overflow-wrap: break-word;
   word-break: break-word;
   word-wrap: break-word;
+}
+
+.admin {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
+.user {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  margin: 5px;
+  background: var(--accent);
 }
 
 .timestamp {

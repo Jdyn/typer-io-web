@@ -68,6 +68,24 @@
   margin: -3px 10px -3px -3px;
 }
 
+.admin {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
+.user {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  margin: 5px;
+  background: var(--accent);
+}
+
 .item {
   display: flex;
   align-items: center;

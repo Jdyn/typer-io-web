@@ -43,26 +43,22 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1596518576715)} </span>
+              <span>updated {formatTime(1596520485704)} </span>
               <p>
-                This is a realtime typing game where you can race other players. It may take around
-                25 seconds when connecting to the server for the first time. Thank you for playing.
+                This is a realtime typing game where you can race other players. It may take a short
+                time to connect initially. Thank you for playing.
               </p>
               <h3>Latest Updates:</h3>
               <div className={styles.list}>
                 <ul>
                   <li>Highscores are now reported for all users</li>
                   <li>Overhauled homepage</li>
-                  <li>Recent high scores</li>
                 </ul>
               </div>
               <h3>Recent Fixes:</h3>
               <div className={styles.list}>
                 <ul>
-                  <li>Now able to create accounts again</li>
-                  <li>Forum shows correct date</li>
-                  <li>Fixed commenting on posts</li>
-                  <li>Group play now works again</li>
+                  <li>No longer appear logged out after refreshing</li>
                 </ul>
               </div>
             </div>

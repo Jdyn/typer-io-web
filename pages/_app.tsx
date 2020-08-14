@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 import * as Sentry from '@sentry/react';
@@ -51,4 +51,4 @@ export const App = (props: Props): JSX.Element => {
   );
 };
 
-export default Sentry.withProfiler(wrapper.withRedux(App));
+export default Sentry.withProfiler(wrapper.withRedux(App) as FunctionComponent);

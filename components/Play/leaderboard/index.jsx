@@ -38,7 +38,7 @@ const Leaderboard = () => {
   const renderBadge = (user) => {
     if (user) {
       if (user.isAdmin) {
-        return <span className={styles.admin}>Admin</span>;
+        return <span className={styles.admin}>Creator</span>;
       }
 
       return <span className={styles.user}>Verified</span>;

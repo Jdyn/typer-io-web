@@ -52,6 +52,10 @@
   margin-bottom: 10px;
 }
 
+.newsWrapper > span {
+  color: var(--subtext)
+}
+
 .list {
   color: var(--text);
   position: relative;

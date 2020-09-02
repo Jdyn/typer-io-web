@@ -49,7 +49,6 @@ const Hiscores = (): JSX.Element => {
     <section className={styles.root}>
       <Banner>
         <h1>Hiscores</h1>
-        <span>log in to be verified</span>
       </Banner>
       <Filter
         onClick={(index): void => setFilterIndex(index)}

@@ -117,11 +117,11 @@ const Play = (props: Props): JSX.Element => {
           submitWord={submitWord}
         />
         {!isSolo && <Chat />}
-        {/* {!gameboard.isStarted && !gameboard.isOver ? (
+        {!gameboard.isStarted && !gameboard.isOver ? (
           <span className={styles.notice}>
-            Tip: Type the words in the box above when the game starts.
+            Tip: Type the words in the box above when the game begins.
           </span>
-        ) : null} */}
+        ) : null}
       </div>
     </>
   );

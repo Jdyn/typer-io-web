@@ -1,12 +1,13 @@
 .root {
   display: grid;
   grid-template-columns: 1.2fr 2fr 1.2fr;
-  grid-template-rows: min-content min-content min-content 1fr;
+  grid-template-rows: min-content min-content min-content 1fr min-content;
   grid-template-areas:
     'clientlist  clientlist clientlist'
     'status      gameboard  leaderboard'
     'chat gameboard  leaderboard'
-    'chat editor     leaderboard';
+    'chat editor     leaderboard'
+    '. notice .';
   max-width: 1100px;
   flex-direction: row;
   position: relative;
@@ -29,7 +30,7 @@
   position: relative;
   grid-area: notice;
   padding: 10px 5px;
-  background-color: var(--acccent);
+  background-color: var(--accent);
   color: white;
   border: 3px solid #5d66ce;
   text-align: center;

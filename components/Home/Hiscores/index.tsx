@@ -36,7 +36,7 @@ const Hiscores = (): JSX.Element => {
   const renderBadge = (user): React.ReactNode => {
     if (user) {
       if (user.isAdmin) {
-        return <span className={styles.admin}>Admin</span>;
+        return <span className={styles.admin}>Creator</span>;
       }
 
       return <span className={styles.user}>Verified</span>;

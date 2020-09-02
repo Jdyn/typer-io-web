@@ -27,22 +27,22 @@ if (process.env.NODE_ENV === 'production') {
 
 export const App = (props: Props): JSX.Element => {
   const { Component, pageProps } = props;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = cookies.get('token');
+  // useEffect(() => {
+  //   const token = cookies.get('token');
 
-    if (token) {
-      dispatch(authenticate());
-    } else {
-      dispatch(userRefreshed({ isLoggedIn: false, user: null }));
-    }
+  //   if (token) {
+  //     dispatch(authenticate());
+  //   } else {
+  //     dispatch(userRefreshed({ isLoggedIn: false, user: null }));
+  //   }
 
-    const username = localStorage.getItem('username');
-    if (username) {
-      dispatch(nicknameChanged(username));
-    }
-  }, [dispatch]);
+  //   const username = localStorage.getItem('username');
+  //   if (username) {
+  //     dispatch(nicknameChanged(username));
+  //   }
+  // }, [dispatch]);
 
   return (
     <Sentry.ErrorBoundary>

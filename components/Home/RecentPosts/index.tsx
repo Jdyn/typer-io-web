@@ -48,6 +48,7 @@ const RecentPosts = (): JSX.Element => {
               </div>
             </div>
           ))}
+          {posts.length === 0 && <div className={styles.empty}>No Recent Posts.</div>}
         </div>
       </div>
     </section>

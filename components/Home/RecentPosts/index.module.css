@@ -72,6 +72,10 @@
   font-size: 1rem;
 }
 
+.empty {
+  text-align: center;
+}
+
 .content > p {
   display: -webkit-box;
   -webkit-box-orient: vertical;

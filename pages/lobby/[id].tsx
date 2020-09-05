@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import ReactGA from 'react-ga';
+import cookie from 'js-cookie';
 import Lobby from '../../components/Play/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
@@ -14,22 +15,24 @@ const JoinLobby = (props) => {
   const socket = useSelector((state: AppState) => state.game.socket);
   const isStarting = useSelector((state: AppState) => state.game.room.isStarting);
   const roomId = useSelector((state: AppState) => state.game.room.id);
+  const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
     ReactGA.pageview('/lobby');
     if (!socket.isConected) {
-      const localUsername = localStorage.getItem('username');
-      const token = localStorage.getItem('token') || '';
+      const token = cookie.get('token') || '';
+      const nickname = cookie.get('username') || null;
+      const username =
+        localStorage.getItem('username') || session.nickname || nickname || session.user?.username;
+
+      const config = { mode: 'PRIVATE', roomId: id };
+      const payload = {
+        username,
+        token
+      };
+
       if (id) {
-        dispatch(
-          initSocket(
-            {
-              username: localUsername,
-              token: token || null
-            },
-            { mode: 'PRIVATE', roomId: id }
-          )
-        );
+        dispatch(initSocket(payload, config));
       }
     }
   }, [dispatch, id, socket.isConected]);

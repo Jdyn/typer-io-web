@@ -13,26 +13,28 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
   margin: 0;
   grid-area: main;
-  align-items: center;
-  padding: 20px;
   border-radius: 16px;
   background-color: white;
   box-shadow: var(--shadow);
 }
 
-.container > span {
-  text-align: center;
-  padding: 10px 0px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
 }
 
-.container > div {
+.wrapper > div {
   padding: 10px;
   text-align: center;
   border: 2px solid var(--border);
   border-radius: 16px;
+}
+
+.wrapper > span {
+  text-align: center;
+  padding: 10px 0px;
 }

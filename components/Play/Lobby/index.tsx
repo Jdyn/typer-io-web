@@ -6,8 +6,9 @@ import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import styles from './index.module.css';
 import Chat from '../Chat';
+import Banner from '../../Shared/Banner';
 
-const Lobby = (props) => {
+const Lobby = (_props): JSX.Element => {
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
   const socket = useSelector((state: AppState) => state.game.socket);
@@ -16,7 +17,7 @@ const Lobby = (props) => {
     [room.clients, game.meta]
   );
 
-  const handleStart = () => {
+  const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
   };
 
@@ -25,21 +26,26 @@ const Lobby = (props) => {
       <div className={styles.root}>
         <ClientList />
         <div className={styles.container}>
-          {room.id ? (
-            <>
-              <span>Share this link to invite players.</span>
-              <div>{`https://typer.io/lobby/${room.id}`}</div>
-              {currrentClient.isHost ? (
-                <Button padding="10px" margin="10px 0px" onClick={() => handleStart()}>
-                  Start Game
-                </Button>
-              ) : (
-                <span>Waiting for the host to start the game.</span>
-              )}
-            </>
-          ) : (
-            <div>{socket.error}</div>
-          )}
+          <Banner>
+            <h3>Custom Lobby</h3>
+          </Banner>
+          <div className={styles.wrapper}>
+            {room.id ? (
+              <>
+                <span>Share this link to invite players.</span>
+                <div>{`https://typer.io/lobby/${room.id}`}</div>
+                {currrentClient.isHost ? (
+                  <Button padding="10px" margin="10px 0px" onClick={(): void => handleStart()}>
+                    Start Game
+                  </Button>
+                ) : (
+                  <span>Waiting for the host to start the game.</span>
+                )}
+              </>
+            ) : (
+              <div>{socket.error}</div>
+            )}
+          </div>
         </div>
         <Chat />
       </div>

@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ClientList from '../ClientList';
 import { silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import styles from './index.module.css';
+import Chat from '../Chat';
 
 const Lobby = (props) => {
   const room = useSelector((state: AppState) => state.game.room);
@@ -40,6 +41,7 @@ const Lobby = (props) => {
             <div>{socket.error}</div>
           )}
         </div>
+        <Chat />
       </div>
     </main>
   );

@@ -43,7 +43,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1596520485704)} </span>
+              <span>updated {formatTime(1599285728835)} </span>
               <p>
                 Notice: It may take a short time to connect initially but the service is online.
               </p>
@@ -52,6 +52,7 @@ const Home = (): JSX.Element => {
                 <ul>
                   <li>Highscores are now reported for all users</li>
                   <li>Overhauled homepage</li>
+                  <li>Fixed custom lobbies not reporting high scores. (sorry)</li>
                 </ul>
               </div>
               {/* <h3>Recent Fixes:</h3>

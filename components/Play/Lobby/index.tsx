@@ -7,6 +7,7 @@ import { AppState } from '../../../store';
 import styles from './index.module.css';
 import Chat from '../Chat';
 import Banner from '../../Shared/Banner';
+import Loader from '../../Shared/Loader';
 
 const Lobby = (_props): JSX.Element => {
   const room = useSelector((state: AppState) => state.game.room);
@@ -30,7 +31,12 @@ const Lobby = (_props): JSX.Element => {
             <h3>Custom Lobby</h3>
           </Banner>
           <div className={styles.wrapper}>
-            {room.id ? (
+            {socket.pending ? (
+              <div>
+                <Loader width="36px" height="36px" color="black" />
+              </div>
+            ) : null}
+            {room.id && (
               <>
                 <span>Share this link to invite players.</span>
                 <div>{`https://typer.io/lobby/${room.id}`}</div>
@@ -42,9 +48,8 @@ const Lobby = (_props): JSX.Element => {
                   <span>Waiting for the host to start the game.</span>
                 )}
               </>
-            ) : (
-              <div>{socket.error}</div>
             )}
+            {socket.errored && <div>{socket.error}</div>}
           </div>
         </div>
         <Chat />

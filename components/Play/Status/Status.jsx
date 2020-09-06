@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import styles from './index.module.css';
 import { useSelector } from 'react-redux';
+import styles from './index.module.css';
+import Loader from '../../Shared/Loader';
 
 const states = {
   room: 'ROOM',
@@ -98,7 +99,11 @@ const PlayStatus = (props) => {
   return (
     <div className={styles.root}>
       <div className={styles.container} style={{ backgroundColor: header.color }}>
-        <h3>{gameboard.gameTime || room.roomTime}</h3>
+        <h2>
+          {gameboard.gameTime || room.roomTime || (
+            <Loader width="36px" height="36px" color="white" />
+          )}
+        </h2>
         <h3>{header.text}</h3>
       </div>
     </div>

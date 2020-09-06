@@ -27,3 +27,7 @@
   line-height: 25px;
   font-weight: 600;
 }
+
+.container > h2 {
+  margin: 0;
+}

@@ -31,16 +31,26 @@ export const App = (props: Props): JSX.Element => {
 
   useEffect(() => {
     const token = cookies.get('token');
+    const username = cookies.get('username');
 
     if (token) {
+      dispatch(
+        userRefreshed({
+          isLoggedIn: true,
+          user: {
+            username,
+            token
+          }
+        })
+      );
       dispatch(authenticate());
     } else {
       dispatch(userRefreshed({ isLoggedIn: false, user: null }));
     }
 
-    const username = localStorage.getItem('username');
-    if (username) {
-      dispatch(nicknameChanged(username));
+    const nickname = localStorage.getItem('username');
+    if (nickname) {
+      dispatch(nicknameChanged(nickname));
     }
   }, [dispatch]);
 

@@ -148,22 +148,15 @@ export const authenticate = (): ((dispatch: any, getState: () => AppState) => vo
       if (response.ok) {
         const { user } = response.result;
         setCurrentSession(user);
-
         dispatch(userRefreshed({ user, isLoggedIn: true }));
         dispatch(setRequest(false, requestType));
-      } else {
+      } else if (response.ok !== null && response.ok === false) {
         cookie.remove('token');
-
         dispatch(userRefreshed({ user: null, isLoggedIn: false }));
         dispatch(setRequest(false, requestType));
       }
     })
-    .catch((): void => {
-      cookie.remove('token');
-
-      dispatch(userRefreshed({ user: null, isLoggedIn: false }));
-      dispatch(setRequest(false, requestType));
-    });
+    .catch((): void => {});
 };
 
 export const clearSessionErrors = (): object => ({

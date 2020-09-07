@@ -33,7 +33,7 @@ const Lobby = (_props): JSX.Element => {
           <div className={styles.wrapper}>
             {socket.pending ? (
               <div>
-                <Loader width="36px" height="36px" color="black" />
+                <Loader width="36px" height="36px" color="#6772e5" />
               </div>
             ) : null}
             {room.id && (

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://typer.io/sitemap.xml

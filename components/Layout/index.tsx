@@ -21,7 +21,7 @@ const Layout = (props: Props): JSX.Element => {
         />
         <meta
           name="description"
-          content="Free multiplayer Typer Race - Improve your typing speed and race your friends. Test your typing speed and learn to type faster. Free typing game and competition. Who is a faster typer?"
+          content="Online Multiplayer Typing Race - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster."
         />
         <meta
           name="keywords"

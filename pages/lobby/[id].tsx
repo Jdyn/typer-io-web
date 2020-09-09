@@ -20,8 +20,8 @@ const JoinLobby = (props) => {
   useEffect(() => {
     ReactGA.pageview('/lobby');
     if (!socket.isConected) {
-      const token = cookie.get('token') || '';
-      const nickname = cookie.get('username') || null;
+      const token = localStorage.getItem('token') || '';
+      const nickname = localStorage.getItem('username') || null;
       const username =
         localStorage.getItem('username') || session.nickname || nickname || session.user?.username;
 

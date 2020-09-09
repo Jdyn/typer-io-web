@@ -11,7 +11,7 @@ const Profile = (): JSX.Element => {
 
   const didChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(nicknameChanged(event.target.value));
-    localStorage.setItem('username', event.target.value);
+    localStorage.setItem('nickname', event.target.value);
   };
 
   return (

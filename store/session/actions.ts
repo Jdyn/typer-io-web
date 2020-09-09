@@ -1,4 +1,3 @@
-import cookie from 'js-cookie';
 import Router from 'next/router';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
@@ -9,8 +8,8 @@ import { userLoggedIn, userSignedUp, userLoggedOut, userRefreshed } from './redu
 const setCurrentSession = (user): void => {
   if (user.token) {
     const jsonToken = user.token;
-    cookie.set('token', jsonToken);
-    cookie.set('username', user.username);
+    localStorage.setItem('token', jsonToken);
+    localStorage.setItem('username', user.username);
   }
 };
 
@@ -63,14 +62,14 @@ const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
     .then((): void => {
       dispatch(setRequest(false, requestType));
       dispatch(userLoggedOut({}));
-      cookie.remove('token');
+      localStorage.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     })
     .catch((): void => {
       dispatch(setRequest(false, requestType, ''));
       dispatch(userLoggedOut({}));
-      cookie.remove('token');
+      localStorage.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     });
@@ -151,7 +150,7 @@ export const authenticate = (): ((dispatch: any, getState: () => AppState) => vo
         dispatch(userRefreshed({ user, isLoggedIn: true }));
         dispatch(setRequest(false, requestType));
       } else if (response.ok !== null && response.ok === false) {
-        cookie.remove('token');
+        localStorage.remove('token');
         dispatch(userRefreshed({ user: null, isLoggedIn: false }));
         dispatch(setRequest(false, requestType));
       }

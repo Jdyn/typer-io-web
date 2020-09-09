@@ -1,10 +1,7 @@
-import cookies from 'js-cookie';
-// import nextCookie from 'next-cookies';
-
 const { API_URL } = process.env;
 
 function headers() {
-  const token = cookies.get('token') || '';
+  const token = localStorage.getItem('token') || '';
 
   return {
     Accept: 'application/json',

@@ -30,8 +30,8 @@ export const App = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = cookies.get('token');
-    const username = cookies.get('username');
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
 
     if (token) {
       dispatch(
@@ -48,7 +48,7 @@ export const App = (props: Props): JSX.Element => {
       dispatch(userRefreshed({ isLoggedIn: false, user: null }));
     }
 
-    const nickname = localStorage.getItem('username');
+    const nickname = localStorage.getItem('nickname');
     if (nickname) {
       dispatch(nicknameChanged(nickname));
     }

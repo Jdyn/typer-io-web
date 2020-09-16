@@ -6,11 +6,11 @@
   z-index: 100;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: min-content 1fr;
-  max-width: 1100px;
+  max-width: 1250px;
   gap: 30px;
   grid-template-areas:
     '. create .'
-    'messages main subjects';
+    'main main main';
 }
 
 .create {

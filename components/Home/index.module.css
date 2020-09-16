@@ -5,7 +5,7 @@
 .container {
   display: grid;
   gap: 30px;
-  max-width: 1100px;
+  max-width: 1250px;
   margin: 0 auto 0 auto;
   padding: 0px 10px;
   grid-template-rows: min-content min-content 1fr;

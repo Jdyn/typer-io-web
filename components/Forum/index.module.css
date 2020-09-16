@@ -10,7 +10,7 @@
   gap: 30px;
   grid-template-areas:
     '. create .'
-    'main main main';
+    '. main .';
 }
 
 .create {

@@ -7,30 +7,26 @@
   grid-area: scores;
   border-radius: 16px;
   height: 600px;
+  max-height: 600px;
   box-shadow: 0 11px 30px 0 rgba(30, 30, 70, 0.2), 0 2px 10px 0 rgba(30, 30, 70, 0.2);
 }
 
 .container {
-  margin: 20px;
-  border: 2px solid var(--border);
-  height: 100%;
-  border-radius: 16px;
-}
-
-.wrapper {
   display: flex;
   flex-direction: column;
-  margin: 10px -5px;
-  padding: 0px 10px;
+  flex: 1;
+  margin: 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
   overflow-x: none;
   overflow-y: auto;
-  height: 425px;
 }
 
 .entry {
   display: flex;
   flex-direction: row;
-  position: relative;
+  width: 100%;
+  min-height: 75px;
   border-bottom: 2px solid #e5e5e5;
   padding: 12px 12px 12px 24px;
   color: var(--text);
@@ -42,6 +38,7 @@
 
 .content {
   display: flex;
+  position: relative;
   flex: 2;
   justify-content: flex-start;
   align-items: center;

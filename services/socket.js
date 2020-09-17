@@ -103,7 +103,7 @@ const init = (url, dispatch, payload) => {
   });
 };
 
-export default (url) => {
+const middleware = (url) => {
   return (store) => (next) => (action) => {
     const { dispatch } = store;
     const { payload } = action;
@@ -131,3 +131,5 @@ export const emitAction = (action) => {
     return result;
   };
 };
+
+export default middleware;

@@ -56,7 +56,6 @@ const Hiscores = (): JSX.Element => {
         selectedIndex={filterIndex}
       />
       <div className={styles.container}>
-        <div className={styles.wrapper}>
           {hiscores.map((item, index) => (
             <div className={styles.entry} key={item.id}>
               <div className={styles.count}>{index + 1}.</div>
@@ -69,7 +68,6 @@ const Hiscores = (): JSX.Element => {
               <div className={styles.item}>{item.wpm} WPM</div>
             </div>
           ))}
-        </div>
       </div>
     </section>
   );

@@ -9,6 +9,8 @@
  * @param {String} ...keys
  * @return {Object}
  */
-export default (...keys) => {
+const keyMirror = (...keys) => {
   return keys.reduce((obj, key) => ({ ...obj, [key]: key }), {});
 };
+
+export default keyMirror;

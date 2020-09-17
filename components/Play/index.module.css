@@ -8,7 +8,7 @@
     'chat gameboard  leaderboard'
     'chat editor     leaderboard'
     '. notice .';
-  max-width: 1100px;
+  max-width: 1250px;
   flex-direction: row;
   position: relative;
   padding: 0px 10px;

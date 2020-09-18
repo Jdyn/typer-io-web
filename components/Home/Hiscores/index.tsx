@@ -18,7 +18,7 @@ const filters = [
   { name: 'all time', key: 'ALL' }
 ];
 
-const Hiscores = (): JSX.Element => {
+const Hiscores = (_props: Props): JSX.Element => {
   const [filterIndex, setFilterIndex] = useState(0);
   const dispatch = useDispatch();
   const request = useSelector((state: AppState) => state.request);
@@ -56,6 +56,7 @@ const Hiscores = (): JSX.Element => {
         selectedIndex={filterIndex}
       />
       <div className={styles.container}>
+        <div className={styles.wrapper}>
           {hiscores.map((item, index) => (
             <div className={styles.entry} key={item.id}>
               <div className={styles.count}>{index + 1}.</div>
@@ -64,10 +65,13 @@ const Hiscores = (): JSX.Element => {
                 <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
                 {renderBadge(item.user)}
               </div>
-              <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
+              <div className={styles.timestamp}>
+                {formatTime(item.created_at)}
+              </div>
               <div className={styles.item}>{item.wpm} WPM</div>
             </div>
           ))}
+        </div>
       </div>
     </section>
   );

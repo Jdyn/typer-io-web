@@ -52,7 +52,7 @@ const Leaderboard = () => {
       <Banner>
         <h1>Leaderboard</h1>
       </Banner>
-      <Filter extended padding="0 0 10px 0" fontSize={15} filters={filters} onClick={() => {}} />
+      <Filter padding="0 0 10px 0" fontSize={15} filters={filters} onClick={() => {}} />
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {state.map((item) => (

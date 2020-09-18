@@ -18,8 +18,8 @@
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(1fr);
   margin: 10px -5px;
   padding: 0px 10px 0px 5px;
   overflow-x: none;

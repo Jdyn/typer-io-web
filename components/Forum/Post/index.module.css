@@ -4,7 +4,7 @@
   margin: 145px auto 30px auto;
   padding: 0px 10px;
   z-index: 100;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2.5fr 1fr;
   grid-template-rows: minmax(450px, max-content) 1fr;
   max-width: 1100px;
   gap: 30px;
@@ -70,5 +70,5 @@
 
 .buttons {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
 }

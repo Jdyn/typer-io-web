@@ -91,18 +91,20 @@
 
 .gamePiece {
   position: absolute;
-  width: 3px;
-  /* border: 0.5px solid rgb(0, 0, 0, 0.6); */
-  opacity: 1;
-  z-index: 50;
-  box-shadow: 0 0 1px rgb(0, 0, 0, 0.5);
-  height: 75%;
+  width: 0px;
+  opacity: 0.8;
+  z-index: 0; 
+  height: 190%;
   border-radius: 25%;
+}
+
+.gamePiece > span {
+  font-size: 11px;
 }
 
 .word {
   margin: 0;
-  padding: 2px 4px 2px 4px;
+  padding: 2px 4px 4px 4px;
   font-family: 'dinn' !important;
   font-size: 18px;
   font-weight: 500;

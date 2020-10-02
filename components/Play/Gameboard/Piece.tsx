@@ -12,7 +12,7 @@ const Piece = (props: Props): JSX.Element => {
 
   const movement = useSpring({
     to: {
-      marginLeft: position === null ? '0%' : position === 0 ? '110%' : '100%'
+      marginLeft: position === null ? '0%' : position === 0 ? '40%' : '40%'
     },
     from: {
       marginLeft: '0%'
@@ -22,9 +22,17 @@ const Piece = (props: Props): JSX.Element => {
 
   return (
     <animated.div
-      style={{ ...movement, background: color, left: position === null ? '-10%' : '-5%' }}
+      style={{
+        ...movement,
+        background: color,
+        left: position === null ? '-10%' : '-5%'
+      }}
       className={styles.gamePiece}
-    />
+    >
+      <span role="img" aria-label="sheep">
+      🙈
+      </span>
+    </animated.div>
   );
 };
 

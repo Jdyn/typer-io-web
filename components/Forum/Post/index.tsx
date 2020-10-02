@@ -64,12 +64,12 @@ const Post = (props: Props): JSX.Element => {
                   <Button margin="0 10px 0 0" onClick={submitComment}>
                     comment
                   </Button>
-                  <Button
+                  {/* <Button
                     margin="0 0px 0 0"
                     onClick={() => setComment({ ...newComment, body: '' })}
                   >
                     cancel
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             ) : (

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Picker } from 'emoji-mart';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
@@ -7,7 +8,10 @@ import { AppState } from '../../../store';
 
 const Profile = (): JSX.Element => {
   const nickname = useSelector((state: AppState) => state.session.nickname);
+  const [isOpen, setOpen] = useState(true);
   const dispatch = useDispatch();
+
+  let window;
 
   const didChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(nicknameChanged(event.target.value));
@@ -21,7 +25,10 @@ const Profile = (): JSX.Element => {
       </Banner>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <div className={styles.portrait} />
+          <div className={styles.portrait}></div>
+          <div className={styles.emojiPicker} style={{display: isOpen ? "block" : "none"}}>
+                <Picker theme="light" />
+          </div>
           <span>Set nickname:</span>
           <input
             className={styles.input}

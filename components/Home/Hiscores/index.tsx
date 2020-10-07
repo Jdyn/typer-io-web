@@ -55,12 +55,17 @@ const Hiscores = (_props: Props): JSX.Element => {
         filters={filters}
         selectedIndex={filterIndex}
       />
+      <div className={styles.header}>
+        <div className={styles.headerItem}>Name</div>
+        <div className={styles.headerItem}>Date</div>
+        <div className={styles.headerItem}>Accuracy</div>
+        <div className={styles.headerItem}>WPM</div>
+      </div>
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {hiscores.map((item, index) => (
             <div className={styles.entry} key={item.id}>
               <div className={styles.count}>{index + 1}.</div>
-              <div className={styles.portrait} />
               <div className={styles.content}>
                 <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
                 {renderBadge(item.user)}
@@ -68,7 +73,8 @@ const Hiscores = (_props: Props): JSX.Element => {
               <div className={styles.timestamp}>
                 {formatTime(item.created_at)}
               </div>
-              <div className={styles.item}>{item.wpm} WPM</div>
+              <div className={styles.item}>{item.accuracy} %</div>
+              <div className={styles.item}>{item.wpm}</div>
             </div>
           ))}
         </div>

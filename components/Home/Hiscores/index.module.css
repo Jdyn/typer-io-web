@@ -6,12 +6,12 @@
   margin: 0;
   grid-area: scores;
   border-radius: 16px;
-  height: 600px;
+  height: 650px;
   box-shadow: 0 11px 30px 0 rgba(30, 30, 70, 0.2), 0 2px 10px 0 rgba(30, 30, 70, 0.2);
 }
 
 .container {
-  margin: 20px;
+  margin: 5px 20px 20px 20px;
   border: 2px solid var(--border);
   height: 100%;
   border-radius: 16px;
@@ -24,7 +24,7 @@
   padding: 0px 10px;
   overflow-x: none;
   overflow-y: auto;
-  height: 425px;
+  height: 445px;
 }
 
 .entry {
@@ -32,7 +32,7 @@
   flex-direction: row;
   position: relative;
   border-bottom: 2px solid #e5e5e5;
-  padding: 12px 12px 12px 24px;
+  padding: 16px 12px 16px 12px;
   color: var(--text);
 }
 
@@ -104,4 +104,28 @@
   justify-content: center;
   margin-right: 10px;
   flex: 0.3;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 0 20px;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 12px 12px 12px 12px;
+  color: var(--text);
+}
+
+.headerItem {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.headerItem:first-child {
+  flex: 2.2;
 }

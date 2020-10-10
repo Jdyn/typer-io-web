@@ -115,12 +115,14 @@
 .current {
   padding: 0;
   z-index: 10;
+  text-decoration: underline;
 }
 
 .letter {
-  padding-top: 2px;
-  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 2px;
   transition-duration: 0.02s;
+  /* border-bottom: 1px solid black; */
   color: var(--text);
   font-family: 'dinn' !important;
   transition: background-color ease-out;
@@ -128,15 +130,12 @@
 
 .letter:first-child {
   padding-left: 4px;
-  border-radius: 4px 0 0 4px;
 }
 
 .letter:last-child {
   padding-right: 4px;
-  border-radius: 0 4px 4px 0;
 }
 
 .letter:only-child {
   padding: 0 4px;
-  border-radius: 4px;
 }

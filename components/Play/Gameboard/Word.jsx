@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import styles from './index.module.css';
 
 const Word = (props) => {
-  const { word, index, currentIndex, input, wrongIndex, setEditorState } = props;
+  const {
+    word,
+    index,
+    currentIndex,
+    input,
+    wrongIndex,
+    setEditorState
+  } = props;
 
   const [wordArray] = useState(word.split(''));
 
@@ -14,7 +21,7 @@ const Word = (props) => {
             return '#f44336';
           }
         }
-        return '#4CAF50';
+        return '#00c805';
       }
 
       if (index < wrongIndex || wrongIndex === null) {
@@ -23,7 +30,7 @@ const Word = (props) => {
       return '#f44336';
     }
 
-    return '#555abf';
+    return 'black';
   };
 
   return currentIndex === index ? (
@@ -33,8 +40,9 @@ const Word = (props) => {
           key={index}
           className={styles.letter}
           style={{
-            backgroundColor: validateLetter(index),
-            color: currentIndex === props.index ? 'white' : 'black'
+            // backgroundColor: validateLetter(index),
+            color:
+              currentIndex === props.index ? validateLetter(index) : 'black'
           }}
         >
           {letter}

@@ -17,15 +17,22 @@ interface Props {
 }
 
 const Gameboard = (props: Props): JSX.Element => {
-  const { words, wrongIndex, currentInput, currentWord, currentIndex, setEditorState } = props;
+  const {
+    words,
+    wrongIndex,
+    currentInput,
+    currentWord,
+    currentIndex,
+    setEditorState
+  } = props;
   const clientId = useSelector((state: AppState) => state.game.meta.id);
   const clients = useSelector((state: AppState) => state.game.room.clients);
   const snippet = useSelector((state: AppState) => state.game.room.snippet);
 
-  const client = useMemo(() => clients?.filter((client) => client.id === clientId)[0], [
-    clientId,
-    clients
-  ]);
+  const client = useMemo(
+    () => clients?.filter((client) => client.id === clientId)[0],
+    [clientId, clients]
+  );
 
   useEffect(() => {
     if (currentWord) {
@@ -61,7 +68,12 @@ const Gameboard = (props: Props): JSX.Element => {
           Gameboard
           {client?.gamePiece && (
             <span className={styles.header}>
-              you are <div style={{ background: client?.gamePiece?.color || 'transparent' }} />
+              you are{' '}
+              <div
+                style={{
+                  background: client?.gamePiece?.color || 'transparent'
+                }}
+              />
             </span>
           )}
         </h1>
@@ -88,7 +100,9 @@ const Gameboard = (props: Props): JSX.Element => {
                 }
 
                 if (wordIndex === 0 && position === null)
-                  return <Piece key={pieceIndex} color={color} position={position} />;
+                  return (
+                    <Piece key={pieceIndex} color={color} position={position} />
+                  );
 
                 return position === wordIndex ? (
                   <Piece key={pieceIndex} color={color} position={test} />

@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Footer = (): JSX.Element => {
-  return <footer></footer>;
+  return <footer />;
 };
 
 export default Footer;

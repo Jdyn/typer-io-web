@@ -10,7 +10,14 @@ const focusInput = (): void => {
 };
 
 const Editor = (props) => {
-  const { gameboard, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } = props;
+  const {
+    gameboard,
+    inputDidUpdate,
+    submitWord,
+    setEditorState,
+    gameState,
+    isWrong
+  } = props;
   const [isComplete, setComplete] = useState(false);
 
   useEffect(() => {
@@ -72,7 +79,9 @@ const Editor = (props) => {
           autoComplete="off"
           autoCorrect="off"
           readOnly={isComplete}
-          maxLength={gameState.currentWord ? gameState.currentWord.length + 5 : 524288}
+          maxLength={
+            gameState.currentWord ? gameState.currentWord.length + 5 : 524288
+          }
           autoCapitalize="off"
           spellCheck="false"
           value={gameState.currentInput}

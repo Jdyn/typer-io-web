@@ -12,9 +12,11 @@ interface Props {
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
   const session = useSelector((state: AppState) => state.session);
-  const authenticationRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
+  const authenticationRequest = useSelector(
+    (state: AppState) => state.request.AUTHENTICATE
+  );
 
-  const logout = (event) => {
+  const logout = (event): void => {
     event.preventDefault();
     dispatch(handleAuth('logout', {}));
   };
@@ -38,7 +40,11 @@ const Header = (): JSX.Element => {
             {session.isLoggedIn ? (
               <div className={styles.authContainer}>
                 Logged in as {session?.user?.username}{' '}
-                <button type="button" className={styles.button} onClick={logout}>
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={logout}
+                >
                   log out
                 </button>
               </div>

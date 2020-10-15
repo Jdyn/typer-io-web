@@ -30,7 +30,7 @@ const Piece = (props: Props): JSX.Element => {
       className={styles.gamePiece}
     >
       <span role="img" aria-label="sheep">
-      🙈
+        🙈
       </span>
     </animated.div>
   );

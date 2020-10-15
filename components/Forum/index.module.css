@@ -37,7 +37,6 @@
   border-radius: 16px;
   box-shadow: var(--shadow);
   background-color: white;
-  height: 600px;
   flex-grow: 1;
 }
 

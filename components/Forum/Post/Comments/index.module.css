@@ -70,7 +70,8 @@
   border: none;
   outline: none;
   background: white;
-  color: var(--subtext);
+  color: var(--text);
+  text-decoration: underline;
   text-transform: uppercase;
 }
 

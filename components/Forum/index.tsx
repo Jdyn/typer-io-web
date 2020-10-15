@@ -10,7 +10,9 @@ import Button from '../Shared/Button';
 
 const Forum = (_props): JSX.Element => {
   const dispatch = useDispatch();
-  const posts = useSelector((state: AppState) => state.forum.feed.page?.posts || []);
+  const posts = useSelector(
+    (state: AppState) => state.forum.feed.page?.posts || []
+  );
   useEffect(() => {
     dispatch(fetchPosts('PAGE'));
   }, [dispatch]);
@@ -28,7 +30,7 @@ const Forum = (_props): JSX.Element => {
         </Banner>
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
-            {posts.map((post) => (
+            {posts.map(post => (
               <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
@@ -36,11 +38,15 @@ const Forum = (_props): JSX.Element => {
                     <a className={styles.title}>{post.title}</a>
                   </Link>
                   <span>
-                    {formatTime(post.createdAt)} by {post.user.username}
+                    {formatTime(post.createdAt)} by {post.user.username}{' '}
+                    {post.user.isAdmin && (
+                      <span className={styles.admin}>Creator</span>
+                    )}
                   </span>
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <a className={styles.comment}>
-                      {post.commentCount} comment{post.commentCount === 1 ? '' : 's'}
+                      {post.commentCount} comment
+                      {post.commentCount === 1 ? '' : 's'}
                     </a>
                   </Link>
                 </div>

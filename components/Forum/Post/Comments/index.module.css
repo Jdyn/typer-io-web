@@ -29,6 +29,15 @@
   flex-wrap: wrap;
 }
 
+.admin {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
 .body {
   display: flex;
   overflow-wrap: break-word;

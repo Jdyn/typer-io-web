@@ -21,6 +21,15 @@
   grid-area: create;
 }
 
+.admin {
+  padding: 2px 2px 0px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
 .feed {
   display: flex;
   flex-direction: column;

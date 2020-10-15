@@ -60,7 +60,6 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 110px;
   justify-content: flex-start;
   border-bottom: 2px solid #e5e5e5;
   padding: 12px 12px 12px 24px;
@@ -80,6 +79,7 @@
   font-weight: 700;
   font-size: 1.3rem;
   margin: 0;
+  margin-bottom: 5px;
   color: var(--text);
   text-decoration: underline;
   cursor: pointer;
@@ -98,6 +98,7 @@
 
 .feedContent > span {
   color: var(--subtext);
+  margin-bottom: 15px;
   font-size: 1rem;
 }
 

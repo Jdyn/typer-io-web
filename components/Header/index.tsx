@@ -5,14 +5,12 @@ import styles from './index.module.css';
 import { AppState } from '../../store';
 import { handleAuth } from '../../store/session/actions';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
   const session = useSelector((state: AppState) => state.session);
-  const authenticationRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
+  const authenticationRequest = useSelector(
+    (state: AppState) => state.request.AUTHENTICATE
+  );
 
   const logout = (event) => {
     event.preventDefault();
@@ -38,7 +36,11 @@ const Header = (): JSX.Element => {
             {session.isLoggedIn ? (
               <div className={styles.authContainer}>
                 Logged in as {session?.user?.username}{' '}
-                <button type="button" className={styles.button} onClick={logout}>
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={logout}
+                >
                   log out
                 </button>
               </div>

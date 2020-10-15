@@ -8,7 +8,7 @@ import { AppState } from '../../store';
 import formatTime from '../../util/formatTime';
 import Button from '../Shared/Button';
 
-const Forum = (_props): JSX.Element => {
+const Forum = (): JSX.Element => {
   const dispatch = useDispatch();
   const posts = useSelector(
     (state: AppState) => state.forum.feed.page?.posts || []
@@ -30,7 +30,7 @@ const Forum = (_props): JSX.Element => {
         </Banner>
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
-            {posts.map(post => (
+            {posts.map((post) => (
               <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
@@ -38,11 +38,14 @@ const Forum = (_props): JSX.Element => {
                     <a className={styles.title}>{post.title}</a>
                   </Link>
                   <span>
-                    {formatTime(post.createdAt)} by {post.user.username}{' '}
+                    Posted {formatTime(post.createdAt)} by {post.user.username}{' '}
                     {post.user.isAdmin && (
                       <span className={styles.admin}>Creator</span>
                     )}
                   </span>
+                  {post.commentCount > 0 && (
+                    <span>Last comment {formatTime(post.updatedAt)}</span>
+                  )}
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <a className={styles.comment}>
                       {post.commentCount} comment

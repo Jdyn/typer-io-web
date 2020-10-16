@@ -26,7 +26,7 @@ const Forum = (): JSX.Element => {
       </div>
       <div className={styles.feed}>
         <Banner>
-          <h1>Forum</h1>
+          <h1>Discussions</h1>
         </Banner>
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>

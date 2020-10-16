@@ -23,14 +23,14 @@ const Comment = (props: Props): JSX.Element => {
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
 
   const onChange = () => {
-    set(prev => !prev);
+    set((prev) => !prev);
   };
 
   const submitComment = (): void => {
-    Api.post(`/forum/post/${postId}/comment`, newComment).then(response => {
+    Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
       if (response.ok) {
         dispatch(fetchPost(postId as string));
-        setComment(prev => ({ ...prev, body: '' }));
+        setComment((prev) => ({ ...prev, body: '' }));
         set(false);
       }
     });
@@ -48,7 +48,9 @@ const Comment = (props: Props): JSX.Element => {
           <div className={styles.content}>
             <h3 className={styles.username}>
               {comment.user.username}
-              {comment.user.isAdmin && <span className={styles.admin}>Creator</span>}
+              {comment.user.isAdmin && (
+                <span className={styles.admin}>Creator</span>
+              )}
             </h3>
             <p className={styles.body}>{comment.body}</p>
           </div>
@@ -73,7 +75,7 @@ const Comment = (props: Props): JSX.Element => {
             <TextBox
               placeholder="Leave a comment"
               value={newComment.body}
-              onChange={e =>
+              onChange={(e) =>
                 setComment({ ...newComment, body: e.target.value })
               }
             />

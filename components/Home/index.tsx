@@ -39,7 +39,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1602808250625)} </span>
+              <span>updated {formatTime(1602882225158)} </span>
               <p>
                 Notice: It may take a short time to connect initially but the
                 service is online.

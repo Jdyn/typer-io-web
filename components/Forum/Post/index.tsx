@@ -58,7 +58,9 @@ const Post = (props: Props): JSX.Element => {
                 <TextBox
                   placeholder="Leave a comment"
                   value={newComment.body}
-                  onChange={(e) => setComment({ ...newComment, body: e.target.value })}
+                  onChange={(e) =>
+                    setComment({ ...newComment, body: e.target.value })
+                  }
                 />
                 <div className={styles.buttons}>
                   <Button margin="0 10px 0 0" onClick={submitComment}>

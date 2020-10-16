@@ -14,8 +14,12 @@ interface Props {
 const RecentPosts = (): JSX.Element => {
   const dispatch = useDispatch();
 
-  const posts = useSelector((state: AppState) => state.forum.feed.recent.posts || []);
-  const recentPostsRequest = useSelector((state: AppState) => state.request.FETCH_POSTS_BY_RECENT);
+  const posts = useSelector(
+    (state: AppState) => state.forum.feed.recent.posts || []
+  );
+  const recentPostsRequest = useSelector(
+    (state: AppState) => state.request.FETCH_POSTS_BY_RECENT
+  );
   useEffect(() => {
     if (!recentPostsRequest) {
       dispatch(fetchPosts('RECENT'));
@@ -31,7 +35,6 @@ const RecentPosts = (): JSX.Element => {
         <div className={styles.wrapper}>
           {posts.map((post) => (
             <div className={styles.post} key={post.id}>
-              {/* <div className={styles.portrait} /> */}
               <div className={styles.content}>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>
                   <a className={styles.title}>{post.title}</a>
@@ -42,13 +45,16 @@ const RecentPosts = (): JSX.Element => {
                 <p>{post.body}</p>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>
                   <a className={styles.comment}>
-                    {post.commentCount} {post.commentCount === 1 ? 'comment' : 'comments'}
+                    {post.commentCount}{' '}
+                    {post.commentCount === 1 ? 'comment' : 'comments'}
                   </a>
                 </Link>
               </div>
             </div>
           ))}
-          {posts.length === 0 && <div className={styles.empty}>No Recent Posts.</div>}
+          {posts.length === 0 && (
+            <div className={styles.empty}>No Recent Posts.</div>
+          )}
         </div>
       </div>
     </section>

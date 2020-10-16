@@ -1,1 +1,79 @@
+.root {
+  display: grid;
+  position: relative;
+  margin: 145px auto 30px auto;
+  padding: 0px 10px;
+  z-index: 100;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: min-content 1fr;
+  max-width: 1250px;
+  gap: 30px;
+  grid-template-areas:
+    'header header'
+    'posts history';
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  grid-area: header;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  background-color: white;
   flex-grow: 1;
+}
+
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  grid-area: posts;
+  box-shadow: var(--shadow);
+  background-color: white;
+  flex-grow: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.portrait {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  align-self: center;
+  border: 2px solid var(--border);
+  margin: -3px 10px -3px -3px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin: 0 15px;
+  align-items: center;
+}
+
+.postsWrapper {
+  display: flex;
+  padding: 20px;
+  flex-basis: 200px;
+}
+
+.historyContainer {
+	display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  grid-area: history;
+  box-shadow: var(--shadow);
+  background-color: white;
+  flex-grow: 1;
+}
+
+.historyWrapper {
+  display: flex;
+  padding: 20px;
+  flex-basis: 200px;
+}

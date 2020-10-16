@@ -7,10 +7,6 @@ import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
 import Profile from './Profile';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 const cards = [
   {
     title: 'Quick Play',
@@ -43,9 +39,10 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1602800459871)} </span>
+              <span>updated {formatTime(1602808250625)} </span>
               <p>
-                Notice: It may take a short time to connect initially but the service is online.
+                Notice: It may take a short time to connect initially but the
+                service is online.
               </p>
               <h3>Latest Updates (10/6/20):</h3>
               <div className={styles.list}>

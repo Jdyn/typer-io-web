@@ -33,7 +33,8 @@ const RecentPosts = (): JSX.Element => {
       </Banner>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          {posts.map((post) => (
+          The forums have been disabled for the forseeable future.
+          {/* {posts.map((post) => (
             <div className={styles.post} key={post.id}>
               <div className={styles.content}>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>
@@ -54,7 +55,7 @@ const RecentPosts = (): JSX.Element => {
           ))}
           {posts.length === 0 && (
             <div className={styles.empty}>No Recent Posts.</div>
-          )}
+          )} */}
         </div>
       </div>
     </section>

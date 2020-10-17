@@ -27,9 +27,6 @@ const Header = (): JSX.Element => {
           <Link href="/">
             <a>home</a>
           </Link>
-          <Link href="/forum">
-            <a>discuss</a>
-          </Link>
         </div>
         {!authenticationRequest?.isPending ? (
           <>

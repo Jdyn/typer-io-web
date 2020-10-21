@@ -1,14 +1,15 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 30px auto;
+  margin: 100px auto 30px auto;
   padding: 0px 10px;
   z-index: 100;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: min-content min-content 1fr;
   max-width: 700px;
   gap: 30px;
   grid-template-areas:
+    'notice'
     'create'
     'main';
 }
@@ -107,4 +108,8 @@
   cursor: pointer;
   color: var(--subtext);
   text-decoration: underline;
+}
+
+.rules {
+  grid-area: notice;
 }

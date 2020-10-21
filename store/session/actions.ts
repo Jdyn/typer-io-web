@@ -62,14 +62,14 @@ const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
     .then((): void => {
       dispatch(setRequest(false, requestType));
       dispatch(userLoggedOut({}));
-      localStorage.remove('token');
+      localStorage.removeItem('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     })
     .catch((): void => {
       dispatch(setRequest(false, requestType, ''));
       dispatch(userLoggedOut({}));
-      localStorage.remove('token');
+      localStorage.removeItem('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     });
@@ -150,7 +150,7 @@ export const authenticate = (): ((dispatch: any, getState: () => AppState) => vo
         dispatch(userRefreshed({ user, isLoggedIn: true }));
         dispatch(setRequest(false, requestType));
       } else if (response.ok !== null && response.ok === false) {
-        localStorage.remove('token');
+        localStorage.removeItem('token');
         dispatch(userRefreshed({ user: null, isLoggedIn: false }));
         dispatch(setRequest(false, requestType));
       }

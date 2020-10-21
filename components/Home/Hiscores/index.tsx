@@ -25,6 +25,7 @@ const Hiscores = (_props: Props): JSX.Element => {
   const hiscores = useSelector(
     (state: AppState) => state.hiscores[filters[filterIndex].key.toLowerCase()]
   );
+  const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
     const query = filters[filterIndex].key;
@@ -75,6 +76,9 @@ const Hiscores = (_props: Props): JSX.Element => {
               </div>
               <div className={styles.item}>{item.accuracy} %</div>
               <div className={styles.item}>{item.wpm}</div>
+              {session.user?.is_admin && (
+                <div className={styles.item}>{`ID:  (${item.id})`}</div>
+              )}
             </div>
           ))}
         </div>

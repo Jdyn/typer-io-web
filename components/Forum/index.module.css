@@ -1,16 +1,17 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 30px auto;
+  margin: 100px auto 30px auto;
   padding: 0px 10px;
   z-index: 100;
-  grid-template-columns: 1fr 2.5fr 1fr;
-  grid-template-rows: min-content 1fr;
-  max-width: 1250px;
-  /* gap: 30px; */
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content 1fr;
+  max-width: 700px;
+  gap: 30px;
   grid-template-areas:
-    '. create .'
-    '. main .';
+    'notice'
+    'create'
+    'main';
 }
 
 .create {
@@ -21,6 +22,15 @@
   grid-area: create;
 }
 
+.admin {
+  padding: 2px 2px 0px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
 .feed {
   display: flex;
   flex-direction: column;
@@ -28,7 +38,6 @@
   border-radius: 16px;
   box-shadow: var(--shadow);
   background-color: white;
-  height: 600px;
   flex-grow: 1;
 }
 
@@ -52,7 +61,6 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 110px;
   justify-content: flex-start;
   border-bottom: 2px solid #e5e5e5;
   padding: 12px 12px 12px 24px;
@@ -72,6 +80,7 @@
   font-weight: 700;
   font-size: 1.3rem;
   margin: 0;
+  margin-bottom: 5px;
   color: var(--text);
   text-decoration: underline;
   cursor: pointer;
@@ -90,6 +99,7 @@
 
 .feedContent > span {
   color: var(--subtext);
+  margin-bottom: 15px;
   font-size: 1rem;
 }
 
@@ -98,4 +108,8 @@
   cursor: pointer;
   color: var(--subtext);
   text-decoration: underline;
+}
+
+.rules {
+  grid-area: notice;
 }

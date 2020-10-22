@@ -38,19 +38,31 @@ const Comment = (props: Props): JSX.Element => {
 
   return (
     <>
-      <div className={styles.container} style={{ marginLeft: 50 * comment.depth }}>
+      <div
+        className={styles.container}
+        style={{ marginLeft: 50 * comment.depth }}
+      >
         <div className={styles.wrapper}>
           <div className={styles.portrait} />
 
           <div className={styles.content}>
-            <h3 className={styles.username}>{comment.user.username}</h3>
+            <h3 className={styles.username}>
+              {comment.user.username}
+              {comment.user.isAdmin && (
+                <span className={styles.admin}>Creator</span>
+              )}
+            </h3>
             <p className={styles.body}>{comment.body}</p>
           </div>
         </div>
 
         <div className={styles.statusBar}>
           {comment.replyable && isLoggedIn && (
-            <button type="button" className={styles.replyButton} onClick={onChange}>
+            <button
+              type="button"
+              className={styles.replyButton}
+              onClick={onChange}
+            >
               reply
             </button>
           )}
@@ -63,7 +75,9 @@ const Comment = (props: Props): JSX.Element => {
             <TextBox
               placeholder="Leave a comment"
               value={newComment.body}
-              onChange={(e) => setComment({ ...newComment, body: e.target.value })}
+              onChange={(e) =>
+                setComment({ ...newComment, body: e.target.value })
+              }
             />
             <div className={styles.buttons}>
               <Button onClick={submitComment}>post</Button>

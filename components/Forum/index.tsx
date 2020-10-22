@@ -8,15 +8,33 @@ import { AppState } from '../../store';
 import formatTime from '../../util/formatTime';
 import Button from '../Shared/Button';
 
-const Forum = (_props): JSX.Element => {
+const Forum = (): JSX.Element => {
   const dispatch = useDispatch();
-  const posts = useSelector((state: AppState) => state.forum.feed.page?.posts || []);
+  const posts = useSelector(
+    (state: AppState) => state.forum.feed.page?.posts || []
+  );
   useEffect(() => {
     dispatch(fetchPosts('PAGE'));
   }, [dispatch]);
 
   return (
     <div className={styles.root}>
+      <div className={styles.rules}>
+        Please adhere to the following rules if you intend on using the forum. I
+        have had to delete too many discussions...
+        <ul>
+          <li>
+            Do not discuss inappropriate topics or be inappropriate toward
+            others. The entire discussion will be removed.
+          </li>
+          <li>Do not post personal information</li>
+          <li>Make meaningful titles and bodies to posts</li>
+          <li>
+            Try to use the &quot;reply&quot; feature when responding to
+            others...
+          </li>
+        </ul>
+      </div>
       <div className={styles.create}>
         <Link href="/forum/post">
           <Button padding="10px">Create Post</Button>
@@ -24,7 +42,7 @@ const Forum = (_props): JSX.Element => {
       </div>
       <div className={styles.feed}>
         <Banner>
-          <h1>Forum</h1>
+          <h1>Discussions</h1>
         </Banner>
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
@@ -36,11 +54,18 @@ const Forum = (_props): JSX.Element => {
                     <a className={styles.title}>{post.title}</a>
                   </Link>
                   <span>
-                    {formatTime(post.createdAt)} by {post.user.username}
+                    Posted {formatTime(post.createdAt)} by {post.user.username}{' '}
+                    {post.user.isAdmin && (
+                      <span className={styles.admin}>Creator</span>
+                    )}
                   </span>
+                  {post.commentCount > 0 && (
+                    <span>Last comment {formatTime(post.updatedAt)}</span>
+                  )}
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <a className={styles.comment}>
-                      {post.commentCount} comment{post.commentCount === 1 ? '' : 's'}
+                      {post.commentCount} comment
+                      {post.commentCount === 1 ? '' : 's'}
                     </a>
                   </Link>
                 </div>

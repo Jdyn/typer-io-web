@@ -6,7 +6,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const HomeContainer = (_props: Props): JSX.Element => {
+const LoginContainer = (_props: Props): JSX.Element => {
   return (
     <Layout striped>
       <AccountAuth type="login" />
@@ -14,4 +14,4 @@ const HomeContainer = (_props: Props): JSX.Element => {
   );
 };
 
-export default HomeContainer;
+export default LoginContainer;

@@ -5,10 +5,6 @@ import styles from './index.module.css';
 import { AppState } from '../../store';
 import { handleAuth } from '../../store/session/actions';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
   const session = useSelector((state: AppState) => state.session);

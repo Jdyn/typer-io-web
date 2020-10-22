@@ -14,15 +14,14 @@
   margin: 20px 5px 15px 20px;
   height: 100%;
   overflow-x: none;
-  overflow-y: scroll;
-  /* overflow-y: overlay; */
+  overflow-y: overlay;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   /* margin: 10px -5px; */
-  padding: 0px 5px 0px 0px;
+  padding: 0px 15px 0px 0px;
   height: 460px;
 }
 
@@ -81,6 +80,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   color: var(--text);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
   overflow: hidden;
 }
 

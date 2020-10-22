@@ -27,6 +27,7 @@
     "react/proptypes": [0],
     "jsx-a11y/anchor-is-valid": [0],
     "@typescript-eslint/no-empty-function": "off",
+    "no-use-before-define": "off",
     "jsx-a11y/href-no-hash": ["off"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],

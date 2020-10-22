@@ -5,10 +5,11 @@ import styles from './index.module.css';
 interface Props {
   position: number | null;
   color: string;
+  emoji: string;
 }
 
 const Piece = (props: Props): JSX.Element => {
-  const { position, color } = props;
+  const { position, color, emoji } = props;
 
   const movement = useSpring({
     to: {
@@ -24,13 +25,12 @@ const Piece = (props: Props): JSX.Element => {
     <animated.div
       style={{
         ...movement,
-        background: color,
         left: position === null ? '-10%' : '-5%'
       }}
       className={styles.gamePiece}
     >
-      <span role="img" aria-label="sheep">
-        🙈
+      <span style={{ background: color }} role="img" aria-label="sheep">
+        {emoji}
       </span>
     </animated.div>
   );

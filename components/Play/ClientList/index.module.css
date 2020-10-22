@@ -24,8 +24,9 @@
 
 .card {
   position: relative;
-  margin: 0;
+  /* margin: 0 5px 0 5px; */
   max-width: 265px;
+  /* border-radius: 16px; */
   background-color: white;
   border-right: 2px solid #e5e5e5;
 }
@@ -41,6 +42,7 @@
   box-shadow: var(--shadow);
   border-radius: 16px;
 }
+
 .card:first-child {
   border-radius: 16px 0 0 16px;
 }
@@ -90,7 +92,12 @@
 
 .username > span {
   display: flex;
+  align-items: center;
   flex: 2.5;
+}
+
+.username > span > span {
+  margin-right: 6px;
 }
 
 .wpm {

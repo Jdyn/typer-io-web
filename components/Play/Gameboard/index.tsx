@@ -101,11 +101,21 @@ const Gameboard = (props: Props): JSX.Element => {
 
                 if (wordIndex === 0 && position === null)
                   return (
-                    <Piece key={pieceIndex} color={color} position={position} />
+                    <Piece
+                      emoji={client.emoji}
+                      key={pieceIndex}
+                      color={color}
+                      position={position}
+                    />
                   );
 
                 return position === wordIndex ? (
-                  <Piece key={pieceIndex} color={color} position={test} />
+                  <Piece
+                    emoji={client.emoji}
+                    key={pieceIndex}
+                    color={color}
+                    position={position}
+                  />
                 ) : null;
               })}
           </div>

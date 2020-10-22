@@ -45,7 +45,7 @@
   --border: #e5e5e5;
   --red: #e57373;
   --subwhite: #eef2f7;
-  --shadow: 0 5px 15px 0px rgba(30, 30, 70, 0.3);
+  --shadow: 0 11px 20px rgba(30, 30, 70, 0.2), 0 10px 20px rgba(30, 30, 70, 0.2);
 }
 
 html {

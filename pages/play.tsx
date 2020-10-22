@@ -19,9 +19,14 @@ const PlayContainer = (): JSX.Element => {
       const token = localStorage.getItem('token') || '';
       const nickname = localStorage.getItem('username') || null;
       const username =
-        localStorage.getItem('username') || session.nickname || nickname || session.user?.username;
+        localStorage.getItem('username') ||
+        session.nickname ||
+        nickname ||
+        session.user?.username;
+      const emoji = localStorage.getItem('emoji') || '🐌';
 
       const payload = {
+        emoji,
         username,
         token
       };

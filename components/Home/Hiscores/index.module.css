@@ -7,10 +7,13 @@
   grid-area: scores;
   border-radius: 16px;
   height: 650px;
-  box-shadow: 0 11px 30px 0 rgba(30, 30, 70, 0.2), 0 2px 10px 0 rgba(30, 30, 70, 0.2);
+  box-shadow: var(--shadow)
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   margin: 5px 20px 20px 20px;
   border: 2px solid var(--border);
   height: 100%;
@@ -20,11 +23,9 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(1fr);
-  margin: 10px -5px;
   padding: 0px 10px;
   overflow-x: none;
   overflow-y: auto;
-  height: 445px;
 }
 
 .entry {

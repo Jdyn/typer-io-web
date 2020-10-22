@@ -4,9 +4,9 @@
   flex-direction: column;
   position: relative;
   margin: 0;
-  height: 400px;
+  height: 450px;
   border-radius: 16px;
-  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
+  box-shadow: var(--shadow);
 }
 
 .container {
@@ -43,7 +43,11 @@
   margin: 10px 0px;
   width: 75px;
   height: 75px;
+  display: flex;
   align-self: center;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   border: 2px solid var(--border);
 }
@@ -66,4 +70,32 @@
 .input::placeholder {
   color: var(--subtext);
   font: 'dinn' !important;
+}
+
+.emojis {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.emoji {  
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: var(--subwhite);
+  padding: 5px;
+  font-size: 16px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.emoji:hover {
+  border-color: var(--accent);
+  transition-duration: .15s;
+}
+
+.selected {
+  border-color: var(--accent);
 }

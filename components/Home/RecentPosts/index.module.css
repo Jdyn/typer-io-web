@@ -7,11 +7,11 @@
   grid-area: posts;
   border-radius: 16px;
   height: 550px;
-  box-shadow: 0 5px 20px 0px rgba(30, 30, 70, 0.4);
+  box-shadow: var(--shadow);
 }
 
 .container {
-  margin: 20px 5px 15px 20px;
+  margin: 20px 5px 20px 20px;
   height: 100%;
   overflow-x: none;
   overflow-y: overlay;

@@ -11,8 +11,6 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@sentry/react": "^5.23.0",
-    "emoji-mart": "^3.0.0",
-    "emoji-picker-react": "^3.2.4",
     "js-cookie": "^2.2.1",
     "next": "^9.5.5",
     "next-cookies": "^2.0.3",

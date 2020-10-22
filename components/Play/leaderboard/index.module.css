@@ -11,21 +11,22 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   margin: 20px;
   border: 2px solid var(--border);
-  height: 100%;
+  flex-grow: 1;
   border-radius: 16px;
+  overflow: hidden;
 }
 
 .wrapper {
   display: grid;
   grid-template-columns: repeat(1fr);
-  margin: 10px -5px;
-  padding: 0px 10px 0px 5px;
+  margin: 0px 0px;
+  padding: 0px 5px 0px 5px;
   overflow-x: none;
-  overflow-y: auto;
   overflow-y: overlay;
-  height: 370px;
 }
 
 .entry {

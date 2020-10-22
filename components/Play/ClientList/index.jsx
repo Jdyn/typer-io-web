@@ -31,7 +31,11 @@ const ClientList = (props) => {
       {users.length > 0 && (
         <div className={styles.container}>
           {transitions.map(({ item, props, key }) => (
-            <animated.div className={styles.card} style={{ width: props.width }} key={key}>
+            <animated.div
+              className={styles.card}
+              style={{ width: props.width }}
+              key={key}
+            >
               <animated.div
                 className={styles.cardWrapper}
                 style={{ transform: props.transform, opacity: props.opacity }}
@@ -50,10 +54,17 @@ const ClientList = (props) => {
                     {item.gamePiece.time}
                   </span>
                 </div>
-                <div className={styles.username} style={{ background: item.gamePiece.color }}>
-                  <span>{item.username}</span>
+                <div
+                  className={styles.username}
+                  style={{ background: item.gamePiece.color }}
+                >
+                  <span>
+                    <span>{item.emoji}</span>
+                    {item.username}
+                  </span>
                   <div className={styles.wpm}>
-                    {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
+                    {item.gamePiece.wpm}{' '}
+                    <span className={styles.statHeader}>WPM</span>
                   </div>
                 </div>
               </animated.div>

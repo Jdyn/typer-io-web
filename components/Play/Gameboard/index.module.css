@@ -92,25 +92,26 @@
 .gamePiece {
   position: absolute;
   width: 0px;
-  opacity: 0.8;
   z-index: 0; 
   height: 190%;
   border-radius: 25%;
 }
 
 .gamePiece > span {
-  font-size: 11px;
+  font-size: 12px;
+  border-radius: 50%;
+  border: 1px solid black;
+  opacity: 0.8;
 }
 
 .word {
   margin: 0;
-  padding: 2px 4px 4px 4px;
+  padding: 0px 4px 4px 4px;
   font-family: 'dinn' !important;
   font-size: 18px;
   font-weight: 500;
   z-index: 10;
-  border-radius: 4px;
-  /* line-height: 25px; */
+  line-height: 25px;
   user-select: none;
 }
 
@@ -121,10 +122,13 @@
 }
 
 .letter {
+  display: inline-flex;
   padding-top: 0px;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   transition-duration: 0.02s;
-  /* border-bottom: 1px solid black; */
+  font-size: 18px;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--text);
   font-family: 'dinn' !important;
   transition: background-color ease-out;

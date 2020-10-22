@@ -40,7 +40,7 @@ const Comment = (props: Props): JSX.Element => {
     <>
       <div
         className={styles.container}
-        style={{ marginLeft: 50 * comment.depth }}
+        style={{ marginLeft: `${4 * comment.depth}vw` }}
       >
         <div className={styles.wrapper}>
           <div className={styles.portrait} />

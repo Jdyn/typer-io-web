@@ -29,7 +29,7 @@ const Piece = (props: Props): JSX.Element => {
       }}
       className={styles.gamePiece}
     >
-      <span style={{ background: color }}>
+      <span>
         <span role="img" aria-label="sheep">
           {emoji}
         </span>

@@ -16,9 +16,13 @@ const PlayContainer = (): JSX.Element => {
     ReactGA.pageview('/solo');
     if (!socket.connected) {
       const username =
-        localStorage.getItem('username') || session.nickname || session.user?.username;
+        localStorage.getItem('username') ||
+        session.nickname ||
+        session.user?.username;
+      const emoji = localStorage.getItem('emoji') || '🐌';
 
       const payload = {
+        emoji,
         username,
         token: ''
       };

@@ -39,16 +39,22 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1602882225158)} </span>
+              <span>updated {formatTime(1603346885147)} </span>
               <p>
                 Notice: It may take a short time to connect initially but the
                 service is online.
               </p>
-              <h3>Latest Updates (10/6/20):</h3>
+              <h3>Latest Updates (10/21/20):</h3>
               <div className={styles.list}>
                 <ul>
-                  <li>Fixed custom lobbies not reporting high scores</li>
-                  <li>Hiscores now display the users accuracy</li>
+                  <li>
+                    EMOJIS have now been added to the game and have replaced the
+                    old markers. selection is currently limited but it will
+                    increase over time. Cheers!
+                  </li>
+                  <li>
+                    Fixed a bug where attempting to log out would not work.
+                  </li>
                 </ul>
               </div>
             </div>

@@ -98,18 +98,22 @@
 }
 
 .gamePiece > span {
-  font-size: 12px;
   border-radius: 50%;
-  border: 1px solid black;
-  opacity: 0.8;
+
+}
+
+.gamePiece > span > span {
+  font-size: 15px !important;
+  opacity: 1;
 }
 
 .word {
   margin: 0;
   padding: 0px 4px 4px 4px;
   font-family: 'dinn' !important;
-  font-size: 18px;
   font-weight: 500;
+  font-size: 17px;
+  border-radius: 50%;
   z-index: 10;
   line-height: 25px;
   user-select: none;
@@ -126,8 +130,6 @@
   padding-top: 0px;
   padding-bottom: 4px;
   transition-duration: 0.02s;
-  font-size: 18px;
-  font-size: 18px;
   font-weight: 500;
   color: var(--text);
   font-family: 'dinn' !important;
@@ -143,5 +145,5 @@
 }
 
 .letter:only-child {
-  padding: 0 4px;
+  padding: 0 4px 4px 4px;
 }

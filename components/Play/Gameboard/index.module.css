@@ -97,10 +97,6 @@
   border-radius: 25%;
 }
 
-.gamePiece > span {
-  border-radius: 50%;
-}
-
 .gamePiece > span > span {
   font-size: 12px !important;
   opacity: 1;
@@ -108,34 +104,28 @@
 
 .word {
   margin: 0;
-  padding: 0px 4px 4px 4px;
+  padding: 0px 4px 0px 4px;
   font-family: 'dinn' !important;
-  font-weight: 500;
-  font-size: 17px;
-  border-radius: 50%;
+  font-size: 18px;
   z-index: 10;
+  color: var(--text);
   line-height: 25px;
   user-select: none;
 }
 
 .current {
-  padding: 0;
   z-index: 10;
-  text-decoration: underline;
 }
 
 .letter {
-  display: inline-flex;
+  display: inline-block;
   padding-top: 0px;
-  padding-bottom: 4px;
   transition-duration: 0.02s;
-  font-weight: 500;
-  color: var(--text);
-  font-family: 'dinn' !important;
+  text-decoration: underline;
   transition: background-color ease-out;
 }
 
-.letter:first-child {
+/* .letter:first-child {
   padding-left: 4px;
 }
 
@@ -145,4 +135,4 @@
 
 .letter:only-child {
   padding: 0 4px 4px 4px;
-}
+} */

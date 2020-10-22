@@ -40,7 +40,6 @@ const Word = (props) => {
           key={index}
           className={styles.letter}
           style={{
-            // backgroundColor: validateLetter(index),
             color:
               currentIndex === props.index ? validateLetter(index) : 'black'
           }}

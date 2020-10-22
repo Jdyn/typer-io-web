@@ -8,12 +8,13 @@
   max-width: 1250px;
   margin: 0 auto 0 auto;
   padding: 0px 10px;
-  grid-template-rows: min-content min-content 1fr;
+  grid-template-rows: min-content min-content min-content 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-areas:
     'news hub posts'
     'news scores posts'
-    '. scores .';
+    'news scores matches'
+    '. scores matches';
 }
 
 @media only screen and (max-width: 814px) {

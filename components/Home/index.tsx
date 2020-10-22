@@ -6,6 +6,7 @@ import Hiscores from './Hiscores';
 import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
 import Profile from './Profile';
+import RecentMatches from './RecentMatches';
 
 const cards = [
   {
@@ -39,7 +40,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1603346885147)} </span>
+              <span>updated {formatTime(1603362434165)} </span>
               <p>
                 Notice: It may take a short time to connect initially but the
                 service is online.
@@ -52,9 +53,7 @@ const Home = (): JSX.Element => {
                     old markers. selection is currently limited but it will
                     increase over time. Cheers!
                   </li>
-                  <li>
-                    Fixed a bug where attempting to log out would not work.
-                  </li>
+                  <li>Added the most recent matches to the home page!</li>
                 </ul>
               </div>
             </div>
@@ -82,6 +81,7 @@ const Home = (): JSX.Element => {
         </section>
         <Hiscores />
         <RecentPosts />
+        <RecentMatches />
       </div>
     </main>
   );

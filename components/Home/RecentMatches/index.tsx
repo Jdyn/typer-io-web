@@ -1,39 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import Banner from '../../Shared/Banner';
-import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
-import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
+import ApiService from '../../../services/api';
 
-const filters = [
-  {
-    name: 'week',
-    selected: true
-  },
-  {
-    name: 'month',
-    selected: false
-  },
-  {
-    name: 'all time',
-    selected: false
-  }
-];
+interface Props {
+  children?: React.ReactNode;
+}
 
-const Leaderboard = () => {
-  const snippet = useSelector((state) => state.game.room.snippet);
+const RecentMatches = (): JSX.Element => {
   const [state, set] = useState([]);
 
   useEffect(() => {
-    if (snippet.id) {
-      ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
-        if (response.ok) {
-          set(response.result.matches);
-        }
-      });
-    }
-  }, [snippet.id]);
+    ApiService.fetch(`/matches?query=recent`).then((response) => {
+      if (response.ok) {
+        set(response.result.matches);
+      }
+    });
+  }, []);
 
   const renderBadge = (user) => {
     if (user) {
@@ -48,22 +32,15 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className={styles.root}>
+    <section className={styles.root}>
       <Banner>
-        <h1>Leaderboard</h1>
+        <h1>Recent Games</h1>
       </Banner>
-      <Filter
-        padding="0 0 10px 0"
-        fontSize={15}
-        filters={filters}
-        onClick={() => {}}
-      />
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          {state.map((item) => (
+          {state.map((item, index) => (
             <div className={styles.entry} key={item.id}>
-              {/* <div className={styles.count}>{index + 1}.</div> */}
-              <div className={styles.portrait} />
+              <div className={styles.count}>{index + 1}.</div>
               <div className={styles.content}>
                 <div>
                   {item.user?.username ?? item.nickname ?? 'Guest'}{' '}
@@ -78,8 +55,8 @@ const Leaderboard = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Leaderboard;
+export default RecentMatches;

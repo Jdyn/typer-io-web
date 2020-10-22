@@ -25,7 +25,7 @@
   grid-template-columns: repeat(1fr);
   padding: 0px 10px;
   overflow-x: none;
-  overflow-y: auto;
+  overflow-y: overlay;
 }
 
 .entry {

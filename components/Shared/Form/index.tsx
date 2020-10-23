@@ -45,13 +45,16 @@ const Form = (props: Props): JSX.Element => {
             type={field.type || field.key}
             placeholder={field.placeholder}
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
-              setForm({ ...form, [field.key || field.name]: event.target.value })
+              setForm({
+                ...form,
+                [field.key || field.name]: event.target.value
+              })
             }
           />
         </div>
       ))}
-      <Button margin="5px 0 0 0">
-        {isPending ? <Loader width="36px" height="36px" /> : template.submit}
+      <Button color="#fff" margin="5px 0 0 0">
+        {template.submit}
       </Button>
     </form>
   );

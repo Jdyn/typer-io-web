@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import Banner from '../../Shared/Banner';
 import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import { createPost } from '../../../store/forum/actions';
 import { AppState } from '../../../store';
-import { useRouter } from 'next/router';
 
 const CreatePost = (): JSX.Element => {
   const dispatch = useDispatch();
   const router = useRouter();
   const createPostRequest = useSelector(
     (state: AppState) =>
-      state.request.CREATE_NEW_POST || { success: false, errored: false, error: null }
+      state.request.CREATE_NEW_POST || {
+        success: false,
+        errored: false,
+        error: null
+      }
   );
-  const newPostId = useSelector((state: AppState) => state.forum.post?.id || null);
+  const newPostId = useSelector(
+    (state: AppState) => state.forum.post?.id || null
+  );
   const [form, setForm] = useState({
     title: '',
     body: ''
@@ -54,7 +60,13 @@ const CreatePost = (): JSX.Element => {
             onChange={(e): void => setForm({ ...form, body: e.target.value })}
             placeholder="The contents of your post."
           />
-          <Button onClick={handleClick}>create post</Button>
+          <Button
+            color="#fff"
+            isPending={createPostRequest?.isPending || false}
+            onClick={handleClick}
+          >
+            create post
+          </Button>
         </div>
       </div>
     </div>

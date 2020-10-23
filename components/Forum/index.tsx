@@ -13,6 +13,8 @@ const Forum = (): JSX.Element => {
   const posts = useSelector(
     (state: AppState) => state.forum.feed.page?.posts || []
   );
+  const session = useSelector((state: AppState) => state.session);
+
   useEffect(() => {
     dispatch(fetchPosts('PAGE'));
   }, [dispatch]);
@@ -35,11 +37,15 @@ const Forum = (): JSX.Element => {
           </li>
         </ul>
       </div>
-      <div className={styles.create}>
-        <Link href="/forum/post">
-          <Button padding="10px">Create Post</Button>
-        </Link>
-      </div>
+      {session?.isLoggedIn && (
+        <div className={styles.create}>
+          <Link href="/forum/post">
+            <Button color="#fff" padding="10px">
+              Create Post
+            </Button>
+          </Link>
+        </div>
+      )}
       <div className={styles.feed}>
         <Banner>
           <h1>Discussions</h1>

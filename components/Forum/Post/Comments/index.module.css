@@ -51,6 +51,8 @@
 .buttons {
   display: flex;
   flex-direction: row;
+  flex: 1;
+  height: 50px;
 }
 
 .statusBar {

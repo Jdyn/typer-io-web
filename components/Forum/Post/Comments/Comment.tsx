@@ -21,17 +21,21 @@ const Comment = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
   const { postId } = useRouter().query;
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
-
+  const [isPending, setPending] = useState(false);
   const onChange = () => {
     set((prev) => !prev);
   };
 
   const submitComment = (): void => {
+    setPending(true);
     Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
       if (response.ok) {
         dispatch(fetchPost(postId as string));
         setComment((prev) => ({ ...prev, body: '' }));
         set(false);
+        setPending(false);
+      } else {
+        setPending(false);
       }
     });
   };
@@ -80,7 +84,9 @@ const Comment = (props: Props): JSX.Element => {
               }
             />
             <div className={styles.buttons}>
-              <Button onClick={submitComment}>post</Button>
+              <Button isPending={isPending} onClick={submitComment}>
+                post
+              </Button>
               <Button onClick={onChange}>cancel</Button>
             </div>
           </div>

@@ -15,6 +15,7 @@ interface Props {
   isPending?: boolean;
   large?: boolean;
   href?: string;
+  color: string;
 }
 
 const Button: React.FC<Props> = React.forwardRef(
@@ -27,10 +28,13 @@ const Button: React.FC<Props> = React.forwardRef(
       padding,
       isPending,
       width,
+      color,
       large,
       href,
       green
     } = props;
+
+    console.log(isPending);
 
     return href ? (
       <Link href={href}>
@@ -38,6 +42,7 @@ const Button: React.FC<Props> = React.forwardRef(
           type="submit"
           ref={ref}
           onClick={onClick}
+          disabled={isPending || false}
           className={`
         ${styles.button}
         ${secondary ? styles.secondary : styles.primary}
@@ -45,7 +50,11 @@ const Button: React.FC<Props> = React.forwardRef(
         ${green ? styles.green : ''}`}
           style={{ margin, padding, width }}
         >
-          {isPending ? <Loader width="36px" height="36px" /> : children}
+          {isPending ? (
+            <Loader width="36px" height="36px" color={color} />
+          ) : (
+            children
+          )}
         </button>
       </Link>
     ) : (
@@ -53,6 +62,7 @@ const Button: React.FC<Props> = React.forwardRef(
         type="submit"
         ref={ref}
         onClick={onClick}
+        disabled={isPending || false}
         className={`
         ${styles.button}
         ${secondary ? styles.secondary : styles.primary}
@@ -60,7 +70,11 @@ const Button: React.FC<Props> = React.forwardRef(
         ${green ? styles.green : ''}`}
         style={{ margin, padding, width }}
       >
-        {isPending ? <Loader width="36px" height="36px" /> : children}
+        {isPending ? (
+          <Loader width="36px" height="36px" color={color} />
+        ) : (
+          children
+        )}
       </button>
     );
   }

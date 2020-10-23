@@ -38,7 +38,9 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.fetch(`/forum/posts?query=${query.toLowerCase()} ${page ?? ''}`);
+  const response = await Api.fetch(
+    `/forum/posts?query=${query.toLowerCase()} ${page ?? ''}`
+  );
 
   if (response.ok) {
     const key = query === 'RECENT' ? 'recent' : 'page';
@@ -71,14 +73,12 @@ export const createPost = (form) => async (
     dispatch(postCreated({ post: response.result.post }));
     dispatch(setRequest(false, requestType));
   } else {
-    dispatch(
-      setRequest(
-        false,
-        requestType,
-        `${Object.keys(response?.errors)[0]} ${
+    const error = response?.errors
+      ? `${Object.keys(response?.errors)[0] || ''} ${
           response?.errors[Object.keys(response?.errors)[0]][0]
         }`
-      )
-    );
+      : 'An error has occured. Please ensure you are logged in.';
+
+    dispatch(setRequest(false, requestType, error));
   }
 };

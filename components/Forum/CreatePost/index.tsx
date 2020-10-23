@@ -16,9 +16,11 @@ const CreatePost = (): JSX.Element => {
       state.request.CREATE_NEW_POST || {
         success: false,
         errored: false,
+        isPending: false,
         error: null
       }
   );
+
   const newPostId = useSelector(
     (state: AppState) => state.forum.post?.id || null
   );

@@ -39,8 +39,6 @@ const Hiscores = (_props: Props): JSX.Element => {
       if (user.isAdmin) {
         return <span className={styles.admin}>Creator</span>;
       }
-
-      return <span className={styles.user}>Verified</span>;
     }
 
     return null;
@@ -68,7 +66,9 @@ const Hiscores = (_props: Props): JSX.Element => {
             <div className={styles.entry} key={item.id}>
               <div className={styles.count}>{index + 1}.</div>
               <div className={styles.content}>
-                <span>{item.user?.username ?? item.nickname ?? 'Guest'}</span>
+                <span className={item.user ? styles.verified : ''}>
+                  {item.user?.username ?? item.nickname ?? 'Guest'}
+                </span>
                 {renderBadge(item.user)}
               </div>
               <div className={styles.timestamp}>

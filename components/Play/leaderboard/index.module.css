@@ -20,6 +20,10 @@
   overflow: hidden;
 }
 
+.verified {
+  color: var(--accent);
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(1fr);

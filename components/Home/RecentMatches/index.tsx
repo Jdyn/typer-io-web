@@ -24,8 +24,6 @@ const RecentMatches = (): JSX.Element => {
       if (user.isAdmin) {
         return <span className={styles.admin}>Creator</span>;
       }
-
-      return <span className={styles.user}>Verified</span>;
     }
 
     return null;
@@ -43,7 +41,9 @@ const RecentMatches = (): JSX.Element => {
               <div className={styles.count}>{index + 1}.</div>
               <div className={styles.content}>
                 <div>
-                  {item.user?.username ?? item.nickname ?? 'Guest'}{' '}
+                  <span className={item.user ? styles.verified : ''}>
+                    {item.user?.username ?? item.nickname ?? 'Guest'}
+                  </span>
                   {renderBadge(item.user)}
                 </div>
                 <div className={styles.timestamp}>

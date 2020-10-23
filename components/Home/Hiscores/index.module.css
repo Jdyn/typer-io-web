@@ -7,7 +7,7 @@
   grid-area: scores;
   border-radius: 16px;
   height: 650px;
-  box-shadow: var(--shadow)
+  box-shadow: var(--shadow);
 }
 
 .container {
@@ -26,6 +26,10 @@
   padding: 0px 10px;
   overflow-x: none;
   overflow-y: overlay;
+}
+
+.verified {
+  color: var(--accent);
 }
 
 .entry {

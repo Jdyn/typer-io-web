@@ -19,6 +19,10 @@
     height: 100%;
     border-radius: 16px;
   }
+
+  .verified {
+    color: var(--accent);
+  }
   
   .wrapper {
     display: grid;

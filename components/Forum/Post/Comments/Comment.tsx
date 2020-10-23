@@ -84,7 +84,7 @@ const Comment = (props: Props): JSX.Element => {
               }
             />
             <div className={styles.buttons}>
-              <Button isPending={isPending} onClick={submitComment}>
+              <Button color="#fff" isPending={isPending} onClick={submitComment}>
                 post
               </Button>
               <Button onClick={onChange}>cancel</Button>

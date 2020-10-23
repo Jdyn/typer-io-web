@@ -15,7 +15,7 @@ interface Props {
   isPending?: boolean;
   large?: boolean;
   href?: string;
-  color: string;
+  color?: string;
 }
 
 const Button: React.FC<Props> = React.forwardRef(

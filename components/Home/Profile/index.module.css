@@ -23,7 +23,7 @@
   padding: 0 15px;
   overflow-x: none;
   overflow-y: auto;
-  overflow-y: overlay;
+  overflow-y: scroll;
   text-align: center;
   flex: 1;
 }

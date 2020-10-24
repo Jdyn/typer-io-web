@@ -56,7 +56,7 @@
   padding: 0 15px;
   overflow-x: none;
   overflow-y: auto;
-  overflow-y: overlay;
+  overflow-y: scroll;
   height: 529px;
 }
 

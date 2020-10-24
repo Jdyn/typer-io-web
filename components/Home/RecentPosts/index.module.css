@@ -14,7 +14,7 @@
   margin: 20px 5px 20px 20px;
   height: 100%;
   overflow-x: none;
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 
 .wrapper {

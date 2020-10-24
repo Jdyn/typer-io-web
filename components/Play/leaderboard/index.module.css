@@ -28,9 +28,9 @@
   display: grid;
   grid-template-columns: repeat(1fr);
   margin: 0px 0px;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 0px 0px 10px;
   overflow-x: none;
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 
 .entry {

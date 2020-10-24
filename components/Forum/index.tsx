@@ -59,6 +59,7 @@ const Forum = (): JSX.Element => {
                   <Link prefetch={false} href={`/forum/post/${post.id}`}>
                     <a className={styles.title}>{post.title}</a>
                   </Link>
+                  {session?.user?.is_admin && <span>ID: {post.id}</span>}
                   <span>
                     Posted {formatTime(post.createdAt)} by {post.user.username}{' '}
                     {post.user.isAdmin && (

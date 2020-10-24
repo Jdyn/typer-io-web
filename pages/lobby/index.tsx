@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ReactGA from 'react-ga';
 import cookie from 'js-cookie';
 import Lobby from '../../components/Play/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
@@ -16,7 +15,6 @@ const LobbyContainer = (props) => {
   const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
-    ReactGA.pageview('/lobby');
     if (!socket.isConected) {
       const token = localStorage.getItem('token') || '';
       const nickname = localStorage.getItem('username') || null;

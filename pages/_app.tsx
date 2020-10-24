@@ -15,7 +15,11 @@ interface Props {
 }
 
 ((): void => {
-  ReactGA.initialize('UA-135635293-4');
+  ReactGA.initialize('UA-135635293-4', {
+    gaOptions: {
+      siteSpeedSampleRate: 100
+    }
+  });
   ReactGA.pageview('/');
 })();
 

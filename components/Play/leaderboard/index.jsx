@@ -8,14 +8,6 @@ import styles from './index.module.css';
 
 const filters = [
   {
-    name: 'week',
-    selected: true
-  },
-  {
-    name: 'month',
-    selected: false
-  },
-  {
     name: 'all time',
     selected: false
   }

@@ -2,4 +2,5 @@
   "printWidth": 80,
   "singleQuote": true,
   "trailingComma": "none"
+  ,"endOfLine": "lf"
 }

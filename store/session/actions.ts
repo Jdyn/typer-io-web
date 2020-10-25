@@ -3,7 +3,12 @@ import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
 import { requests } from './types';
-import { userLoggedIn, userSignedUp, userLoggedOut, userRefreshed } from './reducers';
+import {
+  userLoggedIn,
+  userSignedUp,
+  userLoggedOut,
+  userRefreshed
+} from './reducers';
 
 const setCurrentSession = (user): void => {
   if (user.token) {
@@ -14,9 +19,12 @@ const setCurrentSession = (user): void => {
 };
 
 const login = (
-  form: object,
+  form,
   redirect?: string
-): ((dispatch: Function, getState: () => AppState) => void) => (dispatch, getState): void => {
+): ((dispatch, getState: () => AppState) => void) => (
+  dispatch,
+  getState
+): void => {
   const requestType = requests.AUTHENTICATE;
   const request = getState().request[requestType] || { isPending: false };
 
@@ -43,11 +51,13 @@ const login = (
       }
     })
     .catch((): void => {
-      dispatch(setRequest(false, requestType, 'Error connecting to the server.'));
+      dispatch(
+        setRequest(false, requestType, 'Error connecting to the server.')
+      );
     });
 };
 
-const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
+const logout = (): ((dispatch, getState: () => AppState) => void) => (
   dispatch,
   getState
 ): void => {
@@ -76,9 +86,12 @@ const logout = (): ((dispatch: Function, getState: () => AppState) => void) => (
 };
 
 const signup = (
-  form: object,
+  form,
   redirect?: string
-): ((dispatch: Function, getState: () => AppState) => void) => (dispatch, getState): void => {
+): ((dispatch, getState: () => AppState) => void) => (
+  dispatch,
+  getState
+): void => {
   const requestType = requests.AUTHENTICATE;
   const request = getState().request[requestType] || { isPending: false };
 
@@ -102,20 +115,28 @@ const signup = (
         const { errors } = response;
         if (Object.keys(errors).length > 0) {
           const firstKey = Object.keys(errors)[0];
-          dispatch(setRequest(false, requestType, `${firstKey} ${errors[firstKey][0]}`));
+          dispatch(
+            setRequest(false, requestType, `${firstKey} ${errors[firstKey][0]}`)
+          );
         }
       }
     })
     .catch((): void => {
-      dispatch(setRequest(false, requestType, 'An error has occurred. Try again later.'));
+      dispatch(
+        setRequest(
+          false,
+          requestType,
+          'An error has occurred. Try again later.'
+        )
+      );
     });
 };
 
 export const handleAuth = (
   type: 'login' | 'logout' | 'signup',
-  form: object,
+  form: Record<string, unknown>,
   redirect?: string
-): ((dispatch: Function) => void) => (dispatch): void => {
+): ((dispatch) => void) => (dispatch): void => {
   switch (type) {
     case 'login':
       dispatch(login(form, redirect));
@@ -131,10 +152,10 @@ export const handleAuth = (
   }
 };
 
-export const authenticate = (): ((dispatch: any, getState: () => AppState) => void) => (
-  dispatch,
-  getState
-): void => {
+export const authenticate = (): ((
+  dispatch: any,
+  getState: () => AppState
+) => void) => (dispatch, getState): void => {
   const requestType = requests.AUTHENTICATE;
   const request = getState().request[requestType] || { isPending: false };
 
@@ -157,12 +178,3 @@ export const authenticate = (): ((dispatch: any, getState: () => AppState) => vo
     })
     .catch((): void => {});
 };
-
-export const clearSessionErrors = (): object => ({
-  type: 'CLEAR_SESSION_ERRORS',
-  payload: {
-    message: '',
-    errors: {},
-    errored: false
-  }
-});

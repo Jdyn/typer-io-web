@@ -24,7 +24,7 @@ const reducers = {
   nicknameChanged: (state, action) => {
     state.nickname = action.payload;
   },
-  userLoggedOut: (state, action) => {
+  userLoggedOut: (state, _action) => {
     state.user = null;
     state.isLoggedIn = false;
   }

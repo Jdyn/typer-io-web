@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../../components/Layout';
 import Post from '../../../components/Forum/Post';

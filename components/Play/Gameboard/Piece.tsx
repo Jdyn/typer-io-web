@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import styles from './index.module.css';
 
@@ -13,7 +13,7 @@ const Piece = (props: Props): JSX.Element => {
 
   const movement = useSpring({
     to: {
-      marginLeft: position === null ? '0%' : position === 0 ? '40%' : '40%'
+      marginLeft: position === null || position === 0 ? '0%' : '40%'
     },
     from: {
       marginLeft: '0%'
@@ -36,4 +36,4 @@ const Piece = (props: Props): JSX.Element => {
   );
 };
 
-export default React.memo(Piece);
+export default memo(Piece);

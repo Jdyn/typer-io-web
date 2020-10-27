@@ -4,10 +4,6 @@ import formatTime from '../../../util/formatTime';
 import styles from './index.module.css';
 import ApiService from '../../../services/api';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 const RecentMatches = (): JSX.Element => {
   const [state, set] = useState([]);
 
@@ -19,7 +15,7 @@ const RecentMatches = (): JSX.Element => {
     });
   }, []);
 
-  const renderBadge = (user) => {
+  const renderBadge = (user): JSX.Element => {
     if (user) {
       if (user.isAdmin) {
         return <span className={styles.admin}>Creator</span>;

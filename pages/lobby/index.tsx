@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import cookie from 'js-cookie';
 import Lobby from '../../components/Play/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
 import { AppState } from '../../store';
 import Layout from '../../components/Layout';
 
-const LobbyContainer = (props) => {
+const LobbyContainer = (): JSX.Element => {
   const dispatch = useDispatch();
   const socket = useSelector((state: AppState) => state.game.socket);
-  const isStarting = useSelector((state: AppState) => state.game.room.isStarting);
+  const isStarting = useSelector(
+    (state: AppState) => state.game.room.isStarting
+  );
   const roomId = useSelector((state: AppState) => state.game.room.id);
   const session = useSelector((state: AppState) => state.session);
 
@@ -19,7 +20,10 @@ const LobbyContainer = (props) => {
       const token = localStorage.getItem('token') || '';
       const nickname = localStorage.getItem('username') || null;
       const username =
-        localStorage.getItem('username') || session.nickname || nickname || session.user?.username;
+        localStorage.getItem('username') ||
+        session.nickname ||
+        nickname ||
+        session.user?.username;
 
       const config = { mode: 'CUSTOM' };
       const payload = {

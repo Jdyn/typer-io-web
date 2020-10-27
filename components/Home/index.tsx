@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 import Banner from '../Shared/Banner';

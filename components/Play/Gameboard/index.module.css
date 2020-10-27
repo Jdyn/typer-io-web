@@ -97,9 +97,14 @@
   border-radius: 25%;
 }
 
-.gamePiece > span > span {
+.gamePiece > span {
   font-size: 12px !important;
+  border-radius: 16px;
   opacity: 1;
+}
+
+.gamePiece > span > span {
+  opacity: 0.8;
 }
 
 .word {
@@ -108,6 +113,7 @@
   font-family: 'dinn' !important;
   font-size: 18px;
   z-index: 10;
+  font-kerning: none;
   color: var(--text);
   line-height: 25px;
   user-select: none;
@@ -120,6 +126,7 @@
 .letter {
   display: inline-block;
   padding-top: 0px;
+  font-kerning: none;
   transition-duration: 0.02s;
   text-decoration: underline;
   transition: background-color ease-out;

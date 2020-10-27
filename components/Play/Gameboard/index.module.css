@@ -116,6 +116,7 @@
   font-kerning: none;
   color: var(--text);
   line-height: 25px;
+  letter-spacing: 0.25px;
   user-select: none;
 }
 
@@ -127,6 +128,7 @@
   display: inline-block;
   padding-top: 0px;
   font-kerning: none;
+  letter-spacing: 0.25px;
   transition-duration: 0.02s;
   text-decoration: underline;
   transition: background-color ease-out;

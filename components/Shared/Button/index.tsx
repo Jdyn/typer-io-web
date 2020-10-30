@@ -1,10 +1,10 @@
-import React from 'react';
+import { ReactNode, forwardRef } from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 import Loader from '../Loader';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   onClick?: (event: React.MouseEvent) => void;
   secondary?: boolean;
   margin?: string;
@@ -18,7 +18,7 @@ interface Props {
   color?: string;
 }
 
-const Button: React.FC<Props> = React.forwardRef(
+const Button = forwardRef(
   (props: Props, ref: React.RefObject<HTMLButtonElement>): JSX.Element => {
     const {
       children,
@@ -33,8 +33,6 @@ const Button: React.FC<Props> = React.forwardRef(
       href,
       green
     } = props;
-
-    console.log(isPending);
 
     return href ? (
       <Link href={href}>

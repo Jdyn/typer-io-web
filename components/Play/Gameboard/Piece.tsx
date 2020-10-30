@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import styles from './index.module.css';
 
@@ -13,7 +13,7 @@ const Piece = (props: Props): JSX.Element => {
 
   const movement = useSpring({
     to: {
-      marginLeft: position === null ? '0%' : position === 0 ? '40%' : '40%'
+      marginLeft: position === null || position === 0 ? '0%' : '40%'
     },
     from: {
       marginLeft: '0%'
@@ -29,13 +29,11 @@ const Piece = (props: Props): JSX.Element => {
       }}
       className={styles.gamePiece}
     >
-      <span>
-        <span role="img" aria-label="sheep">
-          {emoji}
-        </span>
+      <span style={{ background: color }} role="img" aria-label="sheep">
+        <span>{emoji}</span>
       </span>
     </animated.div>
   );
 };
 
-export default React.memo(Piece);
+export default memo(Piece);

@@ -75,6 +75,7 @@ const Editor = (props) => {
         <input
           id="input"
           className={styles.input}
+          onClick={() => focusInput()}
           tabIndex={0}
           autoComplete="off"
           autoCorrect="off"

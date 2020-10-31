@@ -5,7 +5,7 @@ import { AppState } from '../../../store';
 import styles from './index.module.css';
 
 interface Props {
-  isSolo: boolean;
+  isSolo?: boolean;
 }
 
 const ClientList = (props: Props): JSX.Element => {
@@ -82,6 +82,10 @@ const ClientList = (props: Props): JSX.Element => {
       )}
     </div>
   );
+};
+
+ClientList.defaultProps = {
+  isSolo: false
 };
 
 export default memo(ClientList);

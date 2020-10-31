@@ -1,30 +1,25 @@
-import { memo } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useTransition, config, animated } from 'react-spring';
-import { AppState } from '../../../store';
 import styles from './index.module.css';
 
-interface Props {
-  isSolo: boolean;
-}
-
-const ClientList = (props: Props): JSX.Element => {
+const ClientList = (props) => {
   const { isSolo } = props;
-  const users = useSelector((state: AppState) => state.game.room.clients);
+  const users = useSelector((state) => state.game.room.clients);
 
-  const transition = useTransition(users, {
-    keys: (users) => users.id,
+  const transitions = useTransition(users, (client) => client.id, {
     from: {
-      opacity: '0',
+      opacity: 0,
       width: '0%',
       transform: 'translate3d(0, -100%, 0)'
     },
-    enter: (_item) => async (next, _cancel): Promise<void> => {
+    enter: () => async (next, _cancel) => {
       await next({ width: isSolo ? '100%' : '25%' });
-      await next({ opacity: '1', transform: 'translate3d(0, 0%, 0)' });
+      await next({ opacity: 1, transform: 'translate3d(0, 0%, 0)' });
     },
     leave: {
-      opacity: '0',
+      opacity: 0,
       transform: 'translate3d(0, -100%, 0)',
       width: '0%'
     },
@@ -35,18 +30,15 @@ const ClientList = (props: Props): JSX.Element => {
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
       {users.length > 0 && (
         <div className={styles.container}>
-          {transition((style, item) => (
+          {transitions.map(({ item, props, key }) => (
             <animated.div
               className={styles.card}
-              style={{ width: style.width }}
-              key={item.key}
+              style={{ width: props.width }}
+              key={key}
             >
               <animated.div
                 className={styles.cardWrapper}
-                style={{
-                  transform: style.transform,
-                  opacity: style.opacity as any
-                }}
+                style={{ transform: props.transform, opacity: props.opacity }}
               >
                 <div className={styles.stats}>
                   <span className={styles.stat}>
@@ -84,4 +76,4 @@ const ClientList = (props: Props): JSX.Element => {
   );
 };
 
-export default memo(ClientList);
+export default React.memo(ClientList);

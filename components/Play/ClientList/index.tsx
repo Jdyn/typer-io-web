@@ -43,7 +43,10 @@ const ClientList = (props: Props): JSX.Element => {
             >
               <animated.div
                 className={styles.cardWrapper}
-                style={{ transform: style.transform, opacity: style.opacity }}
+                style={{
+                  transform: style.transform,
+                  opacity: style.opacity as any
+                }}
               >
                 <div className={styles.stats}>
                   <span className={styles.stat}>

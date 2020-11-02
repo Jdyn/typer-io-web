@@ -4,13 +4,13 @@
   margin: 145px auto 30px auto;
   padding: 0px 10px;
   z-index: 100;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2.5fr;
   grid-template-rows: min-content 1fr;
   max-width: 1250px;
   gap: 30px;
   grid-template-areas:
-    'header header'
-    'stats history';
+    'header stats'
+    'header history';
 }
 
 .headerContainer {
@@ -33,13 +33,22 @@
   flex-grow: 1;
 }
 
-.wrapper {
+.container {
   display: flex;
-  flex-direction: row;
   margin: 20px;
+  height: 100%;
   border: 2px solid var(--border);
   border-radius: 16px;
   padding: 25px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min-content;
+  width: 100%;
+  flex-direction: column;
 }
 
 .portrait {
@@ -47,23 +56,22 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  align-self: center;
   border: 2px solid var(--border);
-  margin: -3px 10px -3px -3px;
+  margin: -3px -3px 10px -3px;
 }
 
 .content {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 0 15px;
-  align-items: flex-start;
 }
 
 .postsWrapper {
   display: flex;
   padding: 20px;
-  flex-basis: 200px;
 }
 
 .historyContainer {
@@ -86,20 +94,28 @@
   padding: 10px;
 }
 
-.statContainer {
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px;
-  grid-area: stats;
-  box-shadow: var(--shadow);
-  background-color: white;
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-template-rows: 1fr;
 }
 
-.statWrapper {
+.statsItem {
   display: flex;
-  flex: 1;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  margin: 20px;
+  flex-direction: row;
   padding: 10px;
+  height: 200px;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+}
+
+.statItemWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--border);
+  padding: 10px;
+  border-radius: 16px;
+  width: 100%;
 }

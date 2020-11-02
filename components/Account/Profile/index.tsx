@@ -6,19 +6,35 @@ const Profile = (): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.headerContainer}>
-        <div className={styles.wrapper}>
-          <div className={styles.portrait} />
-          <div className={styles.content}>
-            <span>Username</span>
-            <span>Joined 3 years ago</span>
+        <Banner>
+          <h3>Profile</h3>
+        </Banner>
+        <div className={styles.container}>
+          <div className={styles.wrapper}>
+            <div className={styles.portrait} />
+            <div className={styles.content}>
+              <span>Username</span>
+              <span>Joined 3 years ago</span>
+            </div>
           </div>
         </div>
       </div>
-      <div className={styles.statContainer}>
-        <Banner>
-          <h3>Stats</h3>
-        </Banner>
-        <div className={styles.statWrapper}>hello</div>
+      <div className={styles.statsContainer}>
+        <div className={styles.statsItem}>
+          <div className={styles.statItemWrapper}>
+            <span>Games Played</span>
+            <span>Games Played</span>
+          </div>
+        </div>
+        <div className={styles.statsItem}>
+          <div className={styles.statItemWrapper}>Total Time</div>
+        </div>
+        <div className={styles.statsItem}>
+          <div className={styles.statItemWrapper}>Total Time</div>
+        </div>
+        {/* <div className={styles.statsItem}>
+          <div className={styles.statItemWrapper}>Total Time</div>
+        </div> */}
       </div>
       <div className={styles.historyContainer}>
         <Banner>

@@ -20,8 +20,7 @@ const initialState = {
     },
     clients: [],
     messages: [],
-    snippet: {},
-    isSearching: true
+    snippet: {}
   },
   socket: {
     connected: false,
@@ -47,7 +46,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         room: {
           ...state.room,
-          clients: action.payload.clients
+          ...action.payload
         }
       };
 
@@ -93,7 +92,10 @@ const reducer = (state = initialState, action) => {
             ...state.room.gameboard,
             gameTime: action.payload.gameTime
           },
-          clients: gameboardUpdate([...state.room.clients], action.payload.gamePieces)
+          clients: gameboardUpdate(
+            [...state.room.clients],
+            action.payload.gamePieces
+          )
         }
       };
 
@@ -102,7 +104,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         room: {
           ...state.room,
-          isStarting: true
+          ...action.payload
+        }
+      };
+
+    case 'RESETTING_GAME':
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          ...action.payload
         }
       };
 
@@ -139,7 +150,7 @@ const reducer = (state = initialState, action) => {
           ...action.payload.room,
           gameboard: {
             ...state.room.gameboard,
-            words: action.payload.room.snippet.quote.split(' ') || []
+            ...action.payload.room.gameboard
           }
         },
         socket: {
@@ -187,15 +198,6 @@ const gameboardUpdate = (clients, gamePieces) => {
   if (gamePieces) {
     return clients.map((client, index) => {
       const newPiece = gamePieces[index];
-      // const oldPosition = client.gamePiece.position;
-      // const newPosition = newPiece.position;
-
-      // const newQueue = [];
-      // if (typeof oldPosition === 'number' && typeof newPosition === 'number') {
-      //   for (let i = oldPosition + 1; i <= newPosition; i += 1) {
-      //     newQueue.push(i);
-      //   }
-      // }
 
       return {
         ...client,
@@ -203,7 +205,6 @@ const gameboardUpdate = (clients, gamePieces) => {
           ...client.gamePiece,
           ...newPiece,
           color: client.gamePiece.color
-          // positionQueue: [...(client.gamePiece.positionQueue || []), ...newQueue]
         }
       };
     });

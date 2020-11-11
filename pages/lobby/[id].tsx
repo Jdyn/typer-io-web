@@ -7,37 +7,46 @@ import Play from '../../components/Play';
 import { AppState } from '../../store';
 import Layout from '../../components/Layout';
 
-const JoinLobby = (): JSX.Element => {
-  const { id } = useRouter().query;
+const LobbyContainer = (): JSX.Element => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const socket = useSelector((state: AppState) => state.game.socket);
-  const isStarting = useSelector(
-    (state: AppState) => state.game.room.isStarting
-  );
+  const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
   const roomId = useSelector((state: AppState) => state.game.room.id);
   const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
-    if (!socket.isConected) {
+    if (!socket.connected && !socket.pending) {
+      const { id } = router.query;
       const token = localStorage.getItem('token') || '';
-      const nickname = localStorage.getItem('username') || null;
+
+      let config;
+
+      if (id) {
+        config = { mode: 'PRIVATE', roomId: id };
+      } else {
+        config = { mode: 'CUSTOM' };
+      }
+
       const username =
         localStorage.getItem('username') ||
         session.nickname ||
-        nickname ||
         session.user?.username;
 
-      const config = { mode: 'PRIVATE', roomId: id };
       const payload = {
         username,
         token
       };
 
-      if (id) {
-        dispatch(initSocket(payload, config));
-      }
+      dispatch(initSocket(payload, config));
     }
-  }, [dispatch, id, socket.isConected]);
+  }, [dispatch, router.query, session, socket]);
+
+  // useEffect(() => {
+  //   if (roomId !== router.query.id && socket.connected && roomId) {
+  //     router.replace(`/lobby/${roomId}`);
+  //   }
+  // }, [roomId, router, socket.connected]);
 
   useEffect(() => {
     return (): void => {
@@ -47,9 +56,9 @@ const JoinLobby = (): JSX.Element => {
     };
   }, [roomId]);
 
-  return isStarting ? (
+  return isStarted ? (
     <Layout striped>
-      <Play />
+      <Play isCustom />
     </Layout>
   ) : (
     <Layout striped>
@@ -58,4 +67,9 @@ const JoinLobby = (): JSX.Element => {
   );
 };
 
-export default JoinLobby;
+export async function getServerSideProps(_context) {
+  return {
+    props: {} // will be passed to the page component as props
+  };
+}
+export default LobbyContainer;

@@ -13,10 +13,11 @@ import styles from './index.module.css';
 
 interface Props {
   isSolo?: boolean;
+  isCustom?: boolean;
 }
 
 const Play = (props: Props): JSX.Element => {
-  const { isSolo } = props;
+  const { isSolo, isCustom } = props;
 
   const gameboard = useSelector((state: AppState) => state.game.room.gameboard);
 
@@ -98,7 +99,7 @@ const Play = (props: Props): JSX.Element => {
     <>
       <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
         <ClientList isSolo={isSolo} />
-        <PlayStatus gameboard={gameboard} />
+        <PlayStatus gameboard={gameboard} isCustom={isCustom} />
         <Leaderboard />
         <Gameboard
           wrongIndex={editorState.wrongIndex}

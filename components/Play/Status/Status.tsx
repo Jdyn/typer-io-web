@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
 import { silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
+import { AppState } from '../../../store';
 
 const states = {
   room: 'ROOM',
@@ -16,10 +17,10 @@ interface Props {
   gameboard?: any;
 }
 
-const PlayStatus = (props: Props) => {
+const PlayStatus = (props: Props): JSX.Element => {
   const { gameboard, isCustom } = props;
-  const socket = useSelector((state) => state.game.socket);
-  const room = useSelector((state) => state.game.room);
+  const socket = useSelector((state: AppState) => state.game.socket);
+  const room = useSelector((state: AppState) => state.game.room);
   const [state, setState] = useState(states.room);
   const [header, setHeader] = useState({
     color: '#469cd0',
@@ -36,7 +37,7 @@ const PlayStatus = (props: Props) => {
     const { roomTime } = room;
     const { gameTime, isStarted, isOver } = gameboard;
 
-    const getTime = (currentState) => {
+    const getTime = (currentState): number => {
       switch (currentState) {
         case states.room:
           if (roomTime) {
@@ -44,7 +45,7 @@ const PlayStatus = (props: Props) => {
               roomTime.length - 2,
               roomTime.length
             );
-            const time = parseInt(seconds, 0);
+            const time = parseInt(seconds, 10);
             if (time <= 0) {
               setState(states.game);
             }
@@ -58,7 +59,7 @@ const PlayStatus = (props: Props) => {
               gameTime.length - 2,
               gameTime.length
             );
-            return parseInt(seconds, 0) + parseInt(minutes, 0) * 60;
+            return parseInt(seconds, 10) + parseInt(minutes, 10) * 60;
           }
           return null;
         default:

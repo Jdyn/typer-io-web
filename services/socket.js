@@ -14,7 +14,8 @@ export const types = keyMirror(
   'INIT_SOCKET_FAILURE',
   'DISCONNECT_SOCKET',
   'ROOM_NOT_FOUND',
-  'STARTING_CUSTOM_GAME'
+  'STARTING_CUSTOM_GAME',
+  'RESETTING_GAME'
 );
 
 let socket;
@@ -35,7 +36,6 @@ const defaultListeners = (dispatch) => {
           clients: [],
           messages: [],
           snippet: '',
-          isSearching: true,
           gameboard: {
             words: [],
             wordsRemaining: [],
@@ -118,8 +118,11 @@ const middleware = (url) => {
   };
 };
 
-export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
+export const silentEmit = (type, payload) =>
+  socket && socket.emit(type, payload);
+
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
+
 export const silentClose = () => socket && socket.close();
 
 export const emitAction = (action) => {

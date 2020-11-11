@@ -25,7 +25,7 @@ const Lobby = (_props): JSX.Element => {
   return (
     <main>
       <div className={styles.root}>
-        <ClientList />
+        <ClientList isSolo={false} />
         <div className={styles.container}>
           <Banner>
             <h3>Custom Lobby</h3>
@@ -39,9 +39,13 @@ const Lobby = (_props): JSX.Element => {
             {room.id && (
               <>
                 <span>Share this link to invite players.</span>
-                <div>{`https://typer.io/lobby/${room.id}`}</div>
+                <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                 {currrentClient.isHost ? (
-                  <Button padding="10px" margin="10px 0px" onClick={(): void => handleStart()}>
+                  <Button
+                    padding="10px"
+                    margin="10px 0px"
+                    onClick={(): void => handleStart()}
+                  >
                     Start Game
                   </Button>
                 ) : (

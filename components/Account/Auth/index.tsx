@@ -32,10 +32,14 @@ interface Props {
 
 const AccountAuth = (props: Props): JSX.Element => {
   const { type } = props;
-  const dispatch = useDispatch();
-  const sessionRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
 
-  const handle = (type, form) => {
+  const dispatch = useDispatch();
+
+  const sessionRequest = useSelector(
+    (state: AppState) => state.request.AUTHENTICATE
+  );
+
+  const handle = (type: string, form): void => {
     dispatch(handleAuth(type, form, '/'));
   };
 
@@ -44,15 +48,12 @@ const AccountAuth = (props: Props): JSX.Element => {
       <div className={styles.container}>
         <Form
           template={templates[type]}
-          onSubmit={(formType, form): void => handle(type, form)}
+          onSubmit={(_formType, form): void => handle(type, form)}
           isPending={sessionRequest?.isPending}
         />
-        <div className={styles.error}>{sessionRequest?.errored && sessionRequest.error}</div>
-        {/* <Link href="/account/recover">
-          <a className={styles.link} href="/account/recover">
-            Forgot Password?
-          </a>
-        </Link> */}
+        <div className={styles.error}>
+          {sessionRequest?.errored && sessionRequest.error}
+        </div>
       </div>
     </div>
   );

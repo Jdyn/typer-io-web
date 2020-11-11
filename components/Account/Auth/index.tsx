@@ -39,7 +39,7 @@ const AccountAuth = (props: Props): JSX.Element => {
     (state: AppState) => state.request.AUTHENTICATE
   );
 
-  const handle = (type: string, form): void => {
+  const handle = (type: 'signup' | 'login' | 'logout', form): void => {
     dispatch(handleAuth(type, form, '/'));
   };
 

@@ -39,20 +39,22 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1603825439591)} </span>
+              <span>updated {formatTime(1605119973596)} </span>
               <p>
                 Notice: It may take a short time to connect initially but the
                 service is online.
               </p>
-              <h3>Latest Updates (10/21/20):</h3>
+              <h3>Latest Updates (11/11/20):</h3>
               <div className={styles.list}>
                 <ul>
                   <li>
-                    EMOJIS have now been added to the game and have replaced the
-                    old markers. selection is currently limited but it will
-                    increase over time. Cheers!
+                    You can now continue playing with your friends without
+                    having to create a new lobby.
                   </li>
-                  <li>Added the most recent matches to the home page!</li>
+                  <li>
+                    Custom lobbies have been reworked behind the scenes to
+                    hopefully make them more customizable
+                  </li>
                 </ul>
               </div>
             </div>

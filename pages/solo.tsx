@@ -18,11 +18,11 @@ const PlayContainer = (): JSX.Element => {
         session.nickname ||
         session.user?.username;
       const emoji = localStorage.getItem('emoji') || '🐌';
-
+      const token = localStorage.getItem('token') || '';
       const payload = {
         emoji,
         username,
-        token: ''
+        token
       };
 
       const config = { mode: 'SOLO' };

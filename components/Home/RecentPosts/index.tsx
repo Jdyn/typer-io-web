@@ -32,30 +32,28 @@ const RecentPosts = (): JSX.Element => {
         <h1>Recent Posts</h1>
       </Banner>
       <div className={styles.container}>
-        <div className={styles.wrapper}>
-          {posts.map((post) => (
-            <div className={styles.post} key={post.id}>
-              <div className={styles.content}>
-                <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                  <a className={styles.title}>{post.title}</a>
-                </Link>
-                <span>
-                  {formatTime(post.createdAt)} by {post.user.username}
-                </span>
-                <p>{post.body}</p>
-                <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                  <a className={styles.comment}>
-                    {post.commentCount}{' '}
-                    {post.commentCount === 1 ? 'comment' : 'comments'}
-                  </a>
-                </Link>
-              </div>
+        {posts.map((post) => (
+          <div className={styles.post} key={post.id}>
+            <div className={styles.content}>
+              <Link prefetch={false} href={`/forum/post/${post.id}`}>
+                <a className={styles.title}>{post.title}</a>
+              </Link>
+              <span>
+                {formatTime(post.createdAt)} by {post.user.username}
+              </span>
+              <p>{post.body}</p>
+              <Link prefetch={false} href={`/forum/post/${post.id}`}>
+                <a className={styles.comment}>
+                  {post.commentCount}{' '}
+                  {post.commentCount === 1 ? 'comment' : 'comments'}
+                </a>
+              </Link>
             </div>
-          ))}
-          {posts.length === 0 && (
-            <div className={styles.empty}>No Recent Posts.</div>
-          )}
-        </div>
+          </div>
+        ))}
+        {posts.length === 0 && (
+          <div className={styles.empty}>No Recent Posts.</div>
+        )}
       </div>
     </section>
   );

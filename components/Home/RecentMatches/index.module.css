@@ -19,19 +19,19 @@
     height: 100%;
     border-radius: 16px;
   }
-
-  .verified {
-    color: var(--accent);
-  }
   
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
     padding-left: 10px;
     overflow-x: none;
     overflow-y: scroll;
   }
   
+  .verified {
+    color: var(--accent);
+  }
+
   .entry {
     display: flex;
     flex-direction: row;

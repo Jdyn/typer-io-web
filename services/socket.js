@@ -64,7 +64,7 @@ const defaultListeners = (dispatch) => {
       dispatch({
         type: types.ROOM_NOT_FOUND,
         payload: {
-          errored: false,
+          errored: true,
           pending: false,
           error: payload
         }

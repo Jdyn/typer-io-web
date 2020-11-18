@@ -40,7 +40,7 @@ const LobbyContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch, router.query, session, socket]);
+  }, [dispatch, router.query]);
 
   // useEffect(() => {
   //   if (roomId !== router.query.id && socket.connected && roomId) {

@@ -86,29 +86,25 @@ const PlayStatus = (props: Props): JSX.Element => {
         return { color: '#469cd0', text: 'Connecting to server...' };
       }
 
+      if (isStarted) {
+        return { color: '#81C784', text: 'GO!' };
+      }
+
       if (!isOver && connected) {
         if (time > 10) {
-          return isStarted
-            ? { color: '#81C784', text: 'GO!' }
-            : { color: '#469cd0', text: 'Looking for Players...' };
+          return { color: '#469cd0', text: 'Looking for Players...' };
         }
 
         if (time > 5) {
-          return isStarted
-            ? { color: '#e5a03e', text: 'GO!' }
-            : { color: '#e5a03e', text: 'Get Ready...' };
+          return { color: '#e5a03e', text: 'Get Ready...' };
         }
 
         if (time > 0) {
-          return isStarted
-            ? { color: '#e57373', text: 'GO!' }
-            : { color: '#e57373', text: 'Get Set...' };
+          return { color: '#e57373', text: 'Get Set...' };
         }
 
         if (time <= 0) {
-          return isStarted
-            ? { color: '#81C784', text: 'GO!' }
-            : { color: '#469cd0', text: 'Connecting to server...' };
+          return { color: '#469cd0', text: 'Connecting to server...' };
         }
       }
 

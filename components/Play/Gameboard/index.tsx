@@ -92,12 +92,7 @@ const Gameboard = (props: Props): JSX.Element => {
             {clients
               .filter((object) => object.id !== clientId)
               .map((client) => {
-                const { position, color, oldPosition } = client.gamePiece;
-                let predictivePosition = position;
-
-                if (position - oldPosition >= 2) {
-                  predictivePosition = oldPosition + 1;
-                }
+                const { position, color } = client.gamePiece;
 
                 if (wordIndex === 0 && position === null)
                   return (
@@ -105,7 +100,7 @@ const Gameboard = (props: Props): JSX.Element => {
                       emoji={client.emoji}
                       key={client.id}
                       color={color}
-                      position={predictivePosition}
+                      position={position}
                     />
                   );
 

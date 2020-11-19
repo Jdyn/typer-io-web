@@ -17,28 +17,28 @@ const Profile = (): JSX.Element => {
               <span>Joined 3 years ago</span>
             </div>
           </div>
+          <div>This is the about section that is looking pretty good.</div>
         </div>
       </div>
       <div className={styles.statsContainer}>
-        <div className={styles.statsItem}>
-          <div className={styles.statItemWrapper}>
-            <span>Games Played</span>
-            <span>Games Played</span>
-          </div>
+        <Banner>
+          <h3>Overview</h3>
+        </Banner>
+        <div className={styles.statItemWrapper}>
+          <div className={styles.statsItem}>Games Played</div>
+          <div className={styles.statsItem}>Average Speed</div>
+          <div className={styles.statsItem}>Top Speed</div>
         </div>
-        <div className={styles.statsItem}>
-          <div className={styles.statItemWrapper}>Total Time</div>
-        </div>
-        <div className={styles.statsItem}>
-          <div className={styles.statItemWrapper}>Total Time</div>
-        </div>
-        {/* <div className={styles.statsItem}>
-          <div className={styles.statItemWrapper}>Total Time</div>
-        </div> */}
+      </div>
+      <div className={styles.friendsList}>
+        <Banner>
+          <h3>Friends</h3>
+        </Banner>
+        <div className={styles.friendsListWrapper}></div>
       </div>
       <div className={styles.historyContainer}>
         <Banner>
-          <h3>Match History</h3>
+          <h3>Matches</h3>
         </Banner>
         <div className={styles.historyWrapper}>Hello</div>
       </div>

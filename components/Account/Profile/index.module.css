@@ -4,13 +4,14 @@
   margin: 145px auto 30px auto;
   padding: 0px 10px;
   z-index: 100;
-  grid-template-columns: 1fr 2.5fr;
-  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1.2fr 2fr 1.2fr;
+  grid-template-rows: min-content min-content 1fr;
   max-width: 1250px;
   gap: 30px;
   grid-template-areas:
-    'header stats'
-    'header history';
+    'header stats friends'
+    'header history friends'
+    '. history friends';
 }
 
 .headerContainer {
@@ -35,6 +36,7 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   margin: 20px;
   height: 100%;
   border: 2px solid var(--border);
@@ -48,13 +50,13 @@
   align-items: center;
   height: min-content;
   width: 100%;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .portrait {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   border: 2px solid var(--border);
   margin: -3px -3px 10px -3px;
@@ -65,7 +67,7 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 15px;
 }
 
@@ -95,27 +97,47 @@
 }
 
 .statsContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  grid-template-rows: 1fr;
+  background: white;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  grid-area: stats;
+  width: 100%;
 }
 
 .statsItem {
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  height: 200px;
-  box-shadow: var(--shadow);
+  height: 125px;
+  border: 2px solid var(--border);
   border-radius: 16px;
+  padding: 20px;
 }
 
 .statItemWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-template-rows: 1fr;
+  margin: 20px;
+}
+
+.friendsList {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: 2px solid var(--border);
-  padding: 10px;
+  background: white;
+  box-shadow: var(--shadow);
   border-radius: 16px;
+  grid-area: stats;
   width: 100%;
+  grid-area: friends;
+}
+
+.friendsListWrapper {
+  display: flex;
+  padding: 20px;
+  flex: 1;
+  border: 2px solid var(--border);
+  margin: 20px;
+  border-radius: 16px;
+  padding: 10px;
 }

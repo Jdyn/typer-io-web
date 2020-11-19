@@ -10,6 +10,7 @@ import Leaderboard from './leaderboard';
 import Editor from './Editor';
 import { AppState } from '../../store';
 import styles from './index.module.css';
+import { Socket } from 'dgram';
 
 interface Props {
   isSolo?: boolean;
@@ -20,7 +21,7 @@ const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
 
   const gameboard = useSelector((state: AppState) => state.game.room.gameboard);
-
+  const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
   const [gameState, setGameState] = useState({
     currentInput: '',
     currentWord: '',
@@ -44,15 +45,17 @@ const Play = (props: Props): JSX.Element => {
   }, [gameboard.isStarted]);
 
   useEffect(() => {
-    setGameState((prev) => ({
-      ...prev,
-      currentWord: gameboard.words[0] || '',
-      currentIndex: 0,
-      words: gameboard.words,
-      wordsRemaining: gameboard.words,
-      wordsComplete: []
-    }));
-  }, [gameboard.words, setGameState]);
+    if (!isStarted) {
+      setGameState((prev) => ({
+        ...prev,
+        currentWord: gameboard.words[0] || '',
+        currentIndex: 0,
+        words: gameboard.words,
+        wordsRemaining: gameboard.words,
+        wordsComplete: []
+      }));
+    }
+  }, [isStarted, setGameState, gameboard]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

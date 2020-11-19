@@ -55,6 +55,10 @@
   margin: 0 15px;
 }
 
+.nav > a:hover {
+  text-decoration: underline;
+}
+
 .authContainer {
   display: flex;
   flex-direction: row;
@@ -92,4 +96,8 @@
   letter-spacing: 0.8px;
   text-transform: uppercase;
   margin: 0 15px;
+}
+
+.button:hover {
+  text-decoration: underline;
 }

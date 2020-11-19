@@ -47,14 +47,8 @@ const Home = (): JSX.Element => {
               <h3>Latest Updates (11/11/20):</h3>
               <div className={styles.list}>
                 <ul>
-                  <li>
-                    You can now continue playing with your friends without
-                    having to create a new lobby.
-                  </li>
-                  <li>
-                    Custom lobbies have been reworked behind the scenes to
-                    hopefully make them more customizable
-                  </li>
+                  <li>You can now restart custom games faster</li>
+                  <li>Custom games have been reworked to make them better</li>
                 </ul>
               </div>
             </div>

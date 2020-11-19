@@ -47,7 +47,6 @@ const Profile = (): JSX.Element => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.portrait}>{currentEmoji}</div>
-          <span>Set nickname:</span>
           <input
             className={styles.input}
             value={nickname || ''}
@@ -58,6 +57,7 @@ const Profile = (): JSX.Element => {
         <div className={styles.emojis}>
           {emojiList.map((item, index) => (
             <button
+              type="button"
               key={item}
               onClick={() => handleEmojiPick(item)}
               className={`${styles.emoji} ${

@@ -39,16 +39,22 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1605119973596)} </span>
+              <span>updated {formatTime(1605819837331)} </span>
               <p>
-                Notice: It may take a short time to connect initially but the
-                service is online.
+                Thank you for visiting my website! If you have any suggestions,
+                let me know on the forums!
               </p>
-              <h3>Latest Updates (11/11/20):</h3>
+              <h3>Updates (Nov. 19th, 2020):</h3>
               <div className={styles.list}>
                 <ul>
-                  <li>You can now restart custom games faster</li>
-                  <li>Custom games have been reworked to make them better</li>
+                  <li>
+                    You can now restart custom games without creating a new
+                    lobby
+                  </li>
+                  <li>
+                    Custom lobbies no longer reset if someone leaves mid game.
+                  </li>
+                  <li>Small bug fixes</li>
                 </ul>
               </div>
             </div>

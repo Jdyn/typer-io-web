@@ -25,6 +25,7 @@ const Gameboard = (props: Props): JSX.Element => {
     currentIndex,
     setEditorState
   } = props;
+
   const clientId = useSelector((state: AppState) => state.game.meta.id);
   const clients = useSelector((state: AppState) => state.game.room.clients);
   const snippet = useSelector((state: AppState) => state.game.room.snippet);

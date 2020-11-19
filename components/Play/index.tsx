@@ -24,10 +24,10 @@ const Play = (props: Props): JSX.Element => {
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
   const [gameState, setGameState] = useState({
     currentInput: '',
-    currentWord: '',
+    currentWord: gameboard?.words[0] || '',
     currentIndex: 0,
-    words: [],
-    wordsRemaining: [],
+    words: gameboard?.words || [],
+    wordsRemaining: gameboard?.words || [],
     wordsComplete: []
   });
 
@@ -55,7 +55,7 @@ const Play = (props: Props): JSX.Element => {
         wordsComplete: []
       }));
     }
-  }, [isStarted, setGameState, gameboard]);
+  }, [isStarted, setGameState, gameboard.words]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

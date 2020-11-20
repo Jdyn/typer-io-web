@@ -1,126 +1,131 @@
 .root {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 0;
-    grid-area: matches;
-    border-radius: 16px;
-    height: 550px;
-    box-shadow: var(--shadow);
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin: 20px;
-    border: 2px solid var(--border);
-    height: 100%;
-    border-radius: 16px;
-  }
-  
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 1fr);
-    padding-left: 10px;
-    overflow-x: none;
-    overflow-y: scroll;
-  }
-  
-  .verified {
-    color: var(--accent);
-  }
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  grid-area: matches;
+  border-radius: 16px;
+  height: 550px;
+  box-shadow: var(--shadow);
+}
 
-  .entry {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    border-bottom: 2px solid #e5e5e5;
-    padding: 12px;
-    color: var(--text);
-  }
-  
-  .entry:last-child {
-    border: none;
-  }
-  
-  .entry:only-child {
-    border-bottom: 2px solid #e5e5e5;
-  }
-  
-  .content {
-    display: flex;
-    flex: 2.5;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  
-  .content > div {
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 5px 0px;
-    position: relative;
-    justify-self: flex-start;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    word-wrap: break-word;
-  }
-  
-  .admin {
-    padding: 4px 4px 2px 4px;
-    border-radius: 8px;
-    color: white;
-    margin: 5px;
-    font-size: 0.9rem;
-    background: var(--red);
-  }
-  
-  .user {
-    padding: 4px 4px 2px 4px;
-    border-radius: 8px;
-    color: white;
-    font-size: 0.9rem;
-    margin: 5px;
-    background: var(--accent);
-  }
-  
-  .timestamp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px !important;
-    font-weight: 300;
-    color: var(--subtext);
-    flex: 1.4;
-  }
-  
-  .portrait {
-    position: relative;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    align-self: center;
-    border: 2px solid #e5e5e5;
-    margin: -3px 10px -3px -3px;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    justify-content: flex-end;
-    color: var(--subtext);
-    flex: 1;
-    font-size: 0.8rem;
-    font-weight: 300;
-  }
-  
-  .count {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-right: 10px;
-    flex: 0.3;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 100%;
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1fr);
+  padding-left: 10px;
+  overflow-x: none;
+  overflow-y: scroll;
+}
+
+.verified {
+  color: var(--accent);
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 12px;
+  color: var(--text);
+}
+
+.entry:last-child {
+  border: none;
+}
+
+.entry:only-child {
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex: 2.5;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.content > div {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 5px 0px;
+  position: relative;
+  justify-self: flex-start;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.admin {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
+.user {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  margin: 5px;
+  background: var(--accent);
+}
+
+.timestamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px !important;
+  font-weight: 300;
+  color: var(--subtext);
+  flex: 1.4;
+}
+
+.portrait {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  align-self: center;
+  border: 2px solid #e5e5e5;
+  margin: -3px 10px -3px -3px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  color: var(--subtext);
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 10px;
+  flex: 0.3;
+}

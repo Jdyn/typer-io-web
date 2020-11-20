@@ -83,6 +83,11 @@
   background: var(--red);
 }
 
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .user {
   padding: 4px 4px 2px 4px;
   border-radius: 8px;

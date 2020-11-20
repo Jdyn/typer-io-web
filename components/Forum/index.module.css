@@ -31,6 +31,11 @@
   background: var(--red);
 }
 
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .feed {
   display: flex;
   flex-direction: column;

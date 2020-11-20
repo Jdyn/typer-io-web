@@ -25,6 +25,11 @@
   margin-bottom: 10px;
 }
 
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .content {
   flex-wrap: wrap;
 }

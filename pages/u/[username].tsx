@@ -1,9 +1,16 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import Profile from '../../components/Account/Profile';
 import Layout from '../../components/Layout';
 
 const ProfileContainer = () => {
-  return <Layout striped>{/* <Profile /> */}</Layout>;
+  const { username } = useRouter().query;
+
+  return (
+    <Layout striped>
+      <Profile username={username as string} />
+    </Layout>
+  );
 };
 
 export default ProfileContainer;

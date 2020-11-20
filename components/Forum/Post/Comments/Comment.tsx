@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Comments from '.';
 import formatTime from '../../../../util/formatTime';
 import styles from './index.module.css';
@@ -51,7 +52,11 @@ const Comment = (props: Props): JSX.Element => {
 
           <div className={styles.content}>
             <h3 className={styles.username}>
-              {comment.user.username}
+              <Link href={`/u/${comment.user.username}`}>
+                <span className={styles.nameLink}>
+                  {comment.user?.username}
+                </span>
+              </Link>{' '}
               {comment.user.isAdmin && (
                 <span className={styles.admin}>Creator</span>
               )}
@@ -84,7 +89,11 @@ const Comment = (props: Props): JSX.Element => {
               }
             />
             <div className={styles.buttons}>
-              <Button color="#fff" isPending={isPending} onClick={submitComment}>
+              <Button
+                color="#fff"
+                isPending={isPending}
+                onClick={submitComment}
+              >
                 post
               </Button>
               <Button onClick={onChange}>cancel</Button>

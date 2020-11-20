@@ -3,6 +3,7 @@ import Banner from '../../Shared/Banner';
 import formatTime from '../../../util/formatTime';
 import styles from './index.module.css';
 import ApiService from '../../../services/api';
+import Link from 'next/link';
 
 const RecentMatches = (): JSX.Element => {
   const [state, set] = useState([]);
@@ -38,7 +39,15 @@ const RecentMatches = (): JSX.Element => {
               <div className={styles.content}>
                 <div>
                   <span className={item.user ? styles.verified : ''}>
-                    {item.user?.username ?? item.nickname ?? 'Guest'}
+                    {item.user?.username ? (
+                      <Link href={`/u/${item.user.username}`}>
+                        <span className={styles.nameLink}>
+                          {item.user?.username}
+                        </span>
+                      </Link>
+                    ) : (
+                      item.nickname
+                    )}
                   </span>
                   {renderBadge(item.user)}
                 </div>

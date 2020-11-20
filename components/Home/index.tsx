@@ -47,12 +47,10 @@ const Home = (): JSX.Element => {
               <h3>Updates (Nov. 19th, 2020):</h3>
               <div className={styles.list}>
                 <ul>
+                  <li>User profiles have been added to the game</li>
                   <li>
-                    You can now restart custom games without creating a new
-                    lobby
-                  </li>
-                  <li>
-                    Custom lobbies no longer reset if someone leaves mid game.
+                    Players with accounts can now see their match history and
+                    some basic stats about their typing. More features coming...
                   </li>
                   <li>Small bug fixes</li>
                 </ul>

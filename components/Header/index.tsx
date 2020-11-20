@@ -1,11 +1,16 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './index.module.css';
 import { AppState } from '../../store';
 import { handleAuth } from '../../store/session/actions';
+import { useRouter } from 'next/router';
 
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const [form, setForm] = useState({ search: '' });
+
   const session = useSelector((state: AppState) => state.session);
   const authenticationRequest = useSelector(
     (state: AppState) => state.request.AUTHENTICATE
@@ -14,6 +19,13 @@ const Header = (): JSX.Element => {
   const logout = (event): void => {
     event.preventDefault();
     dispatch(handleAuth('logout', {}));
+  };
+
+  const navigate = (event): void => {
+    event.preventDefault();
+
+    setForm({ ...form, search: '' });
+    router.push(`/u/${form.search}`);
   };
 
   return (
@@ -30,11 +42,28 @@ const Header = (): JSX.Element => {
             <a>discuss</a>
           </Link>
         </div>
+        <div className={styles.searchContainer}>
+          <form onSubmit={navigate}>
+            <input
+              placeholder="Search for players..."
+              className={styles.search}
+              value={form.search}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+                setForm({
+                  ...form,
+                  search: event.target.value
+                })
+              }
+            />
+          </form>
+        </div>
         {!authenticationRequest?.isPending ? (
           <>
             {session.isLoggedIn ? (
               <div className={styles.authContainer}>
-                Logged in as {session?.user?.username}{' '}
+                <Link href={`/u/${session?.user?.username}`}>
+                  <span className={styles.button}>Profile</span>
+                </Link>
                 <button
                   type="button"
                   className={styles.button}

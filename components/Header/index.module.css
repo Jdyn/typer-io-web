@@ -101,3 +101,25 @@
 .button:hover {
   text-decoration: underline;
 }
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto 0px 5vw;
+  justify-content: center;
+}
+
+.search {
+  display: flex;
+  width: 15vw;
+  background: #5d66ce;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 16px;
+  padding: 10px 15px;
+}
+
+.search::placeholder {
+  color: white;
+}

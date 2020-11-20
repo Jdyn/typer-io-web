@@ -7,6 +7,7 @@ import Filter from '../../Shared/Filter';
 import { HiscoreQueryTypes } from '../../../store/hiscores/types';
 import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
+import Link from 'next/link';
 
 interface Props {
   children?: React.ReactNode;
@@ -67,7 +68,15 @@ const Hiscores = (_props: Props): JSX.Element => {
               <div className={styles.count}>{index + 1}.</div>
               <div className={styles.content}>
                 <span className={item.user ? styles.verified : ''}>
-                  {item.user?.username ?? item.nickname ?? 'Guest'}
+                  {item.user?.username ? (
+                    <Link href={`/u/${item.user.username}`}>
+                      <span className={styles.nameLink}>
+                        {item.user?.username}
+                      </span>
+                    </Link>
+                  ) : (
+                    item.nickname
+                  )}
                 </span>
                 {renderBadge(item.user)}
               </div>

@@ -22,6 +22,11 @@
   width: 100%;
 }
 
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .postContainer {
   border: 2px solid var(--border);
   padding: 10px;

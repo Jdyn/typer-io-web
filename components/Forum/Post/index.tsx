@@ -9,6 +9,7 @@ import Comments from './Comments';
 import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import Api from '../../../services/api';
+import Link from 'next/link';
 
 interface Props {
   postId: string;
@@ -48,7 +49,11 @@ const Post = (props: Props): JSX.Element => {
             <div className={styles.header}>
               <h1>{post.title}</h1>
               <span>
-                posted by {post?.user?.username} {formatTime(post.createdAt)}
+                posted by{' '}
+                <Link href={`/u/${post.user.username}`}>
+                  <span className={styles.nameLink}>{post.user?.username}</span>
+                </Link>{' '}
+                {formatTime(post.createdAt)}
               </span>
             </div>
             <p className={styles.body}>{post.body}</p>
@@ -66,12 +71,6 @@ const Post = (props: Props): JSX.Element => {
                   <Button margin="0 10px 0 0" onClick={submitComment}>
                     comment
                   </Button>
-                  {/* <Button
-                    margin="0 0px 0 0"
-                    onClick={() => setComment({ ...newComment, body: '' })}
-                  >
-                    cancel
-                  </Button> */}
                 </div>
               </div>
             ) : (

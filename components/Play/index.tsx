@@ -31,6 +31,8 @@ const Play = (props: Props): JSX.Element => {
     wordsComplete: []
   });
 
+  console.log(gameState);
+
   const [editorState, setEditorState] = useState({
     key: null,
     wrongIndex: null,
@@ -45,7 +47,7 @@ const Play = (props: Props): JSX.Element => {
   }, [gameboard.isStarted]);
 
   useEffect(() => {
-    if (!isStarted) {
+    if (!isStarted || isSolo) {
       setGameState((prev) => ({
         ...prev,
         currentWord: gameboard.words[0] || '',
@@ -55,7 +57,7 @@ const Play = (props: Props): JSX.Element => {
         wordsComplete: []
       }));
     }
-  }, [isStarted, setGameState, gameboard.words]);
+  }, [isStarted, setGameState, gameboard.words, isSolo]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

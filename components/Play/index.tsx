@@ -31,8 +31,6 @@ const Play = (props: Props): JSX.Element => {
     wordsComplete: []
   });
 
-  console.log(gameState);
-
   const [editorState, setEditorState] = useState({
     key: null,
     wrongIndex: null,

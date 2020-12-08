@@ -6,6 +6,7 @@ import Piece from './Piece';
 import { AppState } from '../../../store';
 import styles from './index.module.css';
 import { EditorState } from '../types';
+import formatTime from '../../../util/formatTime';
 
 interface Props {
   words: string[];
@@ -133,6 +134,9 @@ const Gameboard = (props: Props): JSX.Element => {
               >
                 {snippet.author}
               </a>
+              {snippet.createdAt && (
+                <span> • Added {formatTime(snippet.createdAt)}</span>
+              )}
             </span>
           </>
         )}

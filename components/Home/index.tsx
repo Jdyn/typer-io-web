@@ -39,12 +39,17 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1605846483477)} </span>
+              <span>updated {formatTime(1607390724518)} </span>
               <p>
                 Thank you for visiting my website! If you have any suggestions,
                 let me know on the forums!
               </p>
-              <h3>Updates (Nov. 19th, 2020):</h3>
+              <h3>Updates (Dec. 7th, 2020):</h3>
+              UPDATE: The site has been gaining a lot of users recently and
+              thus, costs are increasing for me. To counter this for now, I am
+              deleting all matches without an account and where WPM was less
+              than 120 to preserve those who were exceptionally fast! Please
+              create an account if you want to save your matches!
               <div className={styles.list}>
                 <ul>
                   <li>User profiles have been added to the game</li>

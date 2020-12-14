@@ -74,12 +74,14 @@ const logout = (): ((dispatch, getState: () => AppState) => void) => (
       dispatch(userLoggedOut({}));
       localStorage.removeItem('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
+      window.localStorage.removeItem('username');
       Router.push('/');
     })
     .catch((): void => {
       dispatch(setRequest(false, requestType, ''));
       dispatch(userLoggedOut({}));
       localStorage.removeItem('token');
+      localStorage.removeItem('username');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     });

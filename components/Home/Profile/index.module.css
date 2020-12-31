@@ -4,7 +4,6 @@
   flex-direction: column;
   position: relative;
   margin: 0;
-  height: 450px;
   border-radius: 16px;
   box-shadow: var(--shadow);
 }
@@ -13,6 +12,7 @@
   margin: 20px;
   border: 2px solid var(--border);
   height: 100%;
+  justify-content: center;
   border-radius: 16px;
 }
 
@@ -30,12 +30,11 @@
 
 .emojiPicker {
   position: absolute;
-  
 }
 
 .wrapper > span {
   font-size: 0.9rem;
-  color: var(--subtext)
+  color: var(--subtext);
 }
 
 .portrait {
@@ -80,7 +79,7 @@
   padding: 10px;
 }
 
-.emoji {  
+.emoji {
   outline: none;
   border: 2px solid transparent;
   border-radius: 50%;
@@ -93,9 +92,14 @@
 
 .emoji:hover {
   border-color: var(--accent);
-  transition-duration: .15s;
+  transition-duration: 0.15s;
 }
 
 .selected {
   border-color: var(--accent);
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
 }

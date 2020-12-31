@@ -10,7 +10,6 @@ import Leaderboard from './leaderboard';
 import Editor from './Editor';
 import { AppState } from '../../store';
 import styles from './index.module.css';
-import { Socket } from 'dgram';
 
 interface Props {
   isSolo?: boolean;
@@ -21,6 +20,7 @@ const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
 
   const gameboard = useSelector((state: AppState) => state.game.room.gameboard);
+  const roomSnippet = useSelector((state: AppState) => state.game.room.snippet);
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
   const [gameState, setGameState] = useState({
     currentInput: '',
@@ -28,7 +28,8 @@ const Play = (props: Props): JSX.Element => {
     currentIndex: 0,
     words: gameboard?.words || [],
     wordsRemaining: gameboard?.words || [],
-    wordsComplete: []
+    wordsComplete: [],
+    snippetId: roomSnippet?.id
   });
 
   const [editorState, setEditorState] = useState({
@@ -52,10 +53,35 @@ const Play = (props: Props): JSX.Element => {
         currentIndex: 0,
         words: gameboard.words,
         wordsRemaining: gameboard.words,
-        wordsComplete: []
+        wordsComplete: [],
+        snippetId: roomSnippet?.id
       }));
     }
-  }, [isStarted, setGameState, gameboard.words, isSolo]);
+  }, [isStarted, setGameState, gameboard.words, isSolo, roomSnippet?.id]);
+
+  useEffect(() => {
+    if (roomSnippet?.id !== gameState.snippetId) {
+      setGameState({
+        currentInput: '',
+        currentWord: gameboard.words[0] || '',
+        currentIndex: 0,
+        words: gameboard.words,
+        wordsRemaining: gameboard.words,
+        wordsComplete: [],
+        snippetId: roomSnippet?.id
+      });
+
+      setEditorState({
+        key: null,
+        wrongIndex: null,
+        entries: 0,
+        errors: 0
+      });
+    }
+  }, [gameState.snippetId, gameboard.words, roomSnippet?.id]);
+
+  console.log(gameboard);
+  console.log(gameState);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;
@@ -109,7 +135,7 @@ const Play = (props: Props): JSX.Element => {
           currentInput={gameState.currentInput}
           currentWord={gameState.currentWord}
           currentIndex={gameState.currentIndex}
-          words={gameboard.words}
+          words={gameState.words}
           setEditorState={setEditorState}
         />
         <Editor

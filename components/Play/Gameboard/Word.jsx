@@ -11,11 +11,9 @@ const Word = (props) => {
     setEditorState
   } = props;
 
-  const [wordArray] = useState(word.split(''));
-
   const validateLetter = (index) => {
     if (input[index]) {
-      if (input[index] === wordArray[index]) {
+      if (input[index] === word.split('')[index]) {
         if (wrongIndex !== null) {
           if (wrongIndex < index) {
             return '#f44336';
@@ -35,7 +33,7 @@ const Word = (props) => {
 
   return currentIndex === index ? (
     <div className={`${styles.word} ${styles.current}`}>
-      {wordArray.map((letter, index) => (
+      {word.split('').map((letter, index) => (
         <span
           key={index}
           className={styles.letter}

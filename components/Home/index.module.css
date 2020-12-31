@@ -92,6 +92,7 @@
   display: grid;
   gap: 10px;
   grid-area: hub;
+  height: 450px;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
 }

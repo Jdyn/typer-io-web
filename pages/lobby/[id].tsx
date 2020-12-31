@@ -29,13 +29,16 @@ const LobbyContainer = (): JSX.Element => {
       }
 
       const username =
-        localStorage.getItem('username') ||
-        session.nickname ||
-        session.user?.username;
+        localStorage.getItem('nickname') ||
+        session.user?.username ||
+        session.nickname;
+
+      const emoji = localStorage.getItem('emoji') || '🐌';
 
       const payload = {
         username,
-        token
+        token,
+        emoji
       };
 
       dispatch(initSocket(payload, config));

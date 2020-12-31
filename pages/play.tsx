@@ -28,7 +28,7 @@ const PlayContainer = (): JSX.Element => {
         token
       };
 
-      const config = { roomType: 'MULTIPLAYER', quoteDifficulty: 'random' };
+      const config = { roomType: 'MULTIPLAYER' };
 
       dispatch(initSocket(payload, config));
     }

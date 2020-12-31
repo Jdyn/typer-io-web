@@ -80,9 +80,6 @@ const Play = (props: Props): JSX.Element => {
     }
   }, [gameState.snippetId, gameboard.words, roomSnippet?.id]);
 
-  console.log(gameboard);
-  console.log(gameState);
-
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;
     const temp = [...wordsRemaining];

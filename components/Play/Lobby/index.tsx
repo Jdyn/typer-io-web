@@ -48,6 +48,7 @@ const Lobby = (_props): JSX.Element => {
                 {difficulties.map((key) => (
                   <button
                     type="button"
+                    key={key}
                     className={`${styles.difficultyButton} ${
                       room.difficulty === key ? styles.selected : ''
                     }`}

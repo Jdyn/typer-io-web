@@ -152,7 +152,7 @@ const Profile = (props: Props): JSX.Element => {
             {user?.matchMaxPage}
           </button>
         </div>
-      </div>
+      </div>  
     </div>
   );
 };

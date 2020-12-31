@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../store';
 import styles from './index.module.css';
 
 const focusInput = (): void => {
@@ -18,7 +20,6 @@ const Editor = (props) => {
     gameState,
     isWrong
   } = props;
-  const [isComplete, setComplete] = useState(false);
 
   useEffect(() => {
     focusInput();
@@ -33,14 +34,12 @@ const Editor = (props) => {
 
     if (gameboard.isOver) {
       event.preventDefault();
-      setComplete(true);
       ReactGA.event({ category: 'game', action: 'game-ended-no-time' });
       return;
     }
 
     if (wordsRemaining.length === 0) {
       event.preventDefault();
-      setComplete(true);
       ReactGA.event({ category: 'game', action: 'game-ended-finished' });
       return;
     }
@@ -71,6 +70,7 @@ const Editor = (props) => {
       <div
         className={styles.container}
         style={{ background: isWrong ? '#f4433666' : 'transparent' }}
+        onClick={() => focusInput()}
       >
         <input
           id="input"
@@ -79,7 +79,6 @@ const Editor = (props) => {
           tabIndex={0}
           autoComplete="off"
           autoCorrect="off"
-          readOnly={isComplete}
           maxLength={
             gameState.currentWord ? gameState.currentWord.length + 5 : 524288
           }

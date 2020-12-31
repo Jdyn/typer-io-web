@@ -8,6 +8,9 @@ import styles from './index.module.css';
 import Chat from '../Chat';
 import Banner from '../../Shared/Banner';
 import Loader from '../../Shared/Loader';
+import Profile from '../../Home/Profile';
+
+const difficulties = ['easy', 'medium', 'hard', 'random'];
 
 const Lobby = (_props): JSX.Element => {
   const room = useSelector((state: AppState) => state.game.room);
@@ -22,10 +25,41 @@ const Lobby = (_props): JSX.Element => {
     silentEmit('START_CUSTOM_GAME', {});
   };
 
+  const handleSettingsUpdate = (payload) => {
+    silentEmit('UPDATE_CUSTOM_GAME', payload);
+  };
+
+  const handleUserUpdate = (payload) => {
+    silentEmit('CLIENT_SETTINGS_UPDATE', payload);
+  };
+
   return (
     <main>
       <div className={styles.root}>
         <ClientList isSolo={false} />
+        <div className={styles.settingsRoot}>
+          <Banner>
+            <h3>Settings</h3>
+          </Banner>
+          <div className={styles.settingsContainer}>
+            <div className={styles.setting}>
+              <h3>Difficulty</h3>
+              <div className={styles.difficultyWrapper}>
+                {difficulties.map((key) => (
+                  <button
+                    type="button"
+                    className={`${styles.difficultyButton} ${
+                      room.difficulty === key ? styles.selected : ''
+                    }`}
+                    onClick={() => handleSettingsUpdate({ difficulty: key })}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className={styles.container}>
           <Banner>
             <h3>Custom Lobby</h3>
@@ -42,8 +76,9 @@ const Lobby = (_props): JSX.Element => {
                 <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                 {currrentClient.isHost ? (
                   <Button
-                    padding="10px"
+                    padding="8px"
                     margin="10px 0px"
+                    width="125px"
                     onClick={(): void => handleStart()}
                   >
                     Start Game
@@ -57,6 +92,12 @@ const Lobby = (_props): JSX.Element => {
           </div>
         </div>
         <Chat />
+        <div className={styles.profileContainer}>
+          <Profile
+            requireSave
+            onClick={(payload) => handleUserUpdate(payload)}
+          />
+        </div>
       </div>
     </main>
   );

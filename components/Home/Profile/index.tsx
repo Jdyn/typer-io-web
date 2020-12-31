@@ -4,6 +4,7 @@ import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
+import Button from '../../Shared/Button';
 
 const emojiList = [
   '🦍',
@@ -20,10 +21,18 @@ const emojiList = [
   '🦽'
 ];
 
-const Profile = (): JSX.Element => {
+const Profile = (props): JSX.Element => {
+  const { requireSave, onClick } = props;
+
   const nickname = useSelector((state: AppState) => state.session.nickname);
+  const sessionName = useSelector(
+    (state: AppState) => state.game.meta.username
+  );
+
   const dispatch = useDispatch();
+
   const [currentEmoji, setEmoji] = useState('');
+
   const didChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(nicknameChanged(event.target.value));
     localStorage.setItem('nickname', event.target.value);
@@ -37,6 +46,19 @@ const Profile = (): JSX.Element => {
   const handleEmojiPick = (emoji) => {
     localStorage.setItem('emoji', emoji);
     setEmoji(emoji);
+  };
+
+  const handleUpdate = () => {
+    let username = localStorage?.getItem('nickname');
+
+    if (username === '' || !username) {
+      username = sessionName;
+    }
+
+    onClick({
+      emoji: currentEmoji,
+      username
+    });
   };
 
   return (
@@ -55,7 +77,7 @@ const Profile = (): JSX.Element => {
           />
         </div>
         <div className={styles.emojis}>
-          {emojiList.map((item, index) => (
+          {emojiList.map((item) => (
             <button
               type="button"
               key={item}
@@ -68,6 +90,13 @@ const Profile = (): JSX.Element => {
             </button>
           ))}
         </div>
+        {requireSave && (
+          <div className={styles.buttonWrapper}>
+            <Button padding="8px" onClick={() => handleUpdate()}>
+              save
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

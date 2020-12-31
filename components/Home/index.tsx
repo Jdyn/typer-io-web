@@ -44,18 +44,16 @@ const Home = (): JSX.Element => {
                 Thank you for visiting my website! If you have any suggestions,
                 let me know on the forums!
               </p>
-              <h3>Updates (Dec. 8th, 2020):</h3>
-              UPDATE: The website has been gaining a lot of users recently and
-              thus, costs are increasing for me. To counter this, I have deleted
-              all matches without an account and where the WPM was less than 120
-              to preserve those who were exceptionally fast! Please create an
-              account if you want to save your matches!
+              <h3>Updates (Dec. 31th, 2020):</h3>
               <div className={styles.list}>
                 <ul>
+                  <li>You can now select the difficulty in custom lobbies.</li>
                   <li>
-                    You can now see when I added the quote to the website.
+                    You can now change your name and emoji in custom lobbies.
                   </li>
-                  <li>Small bug fixes</li>
+                  <li>
+                    You can now quickly start a new game in custom lobbies.
+                  </li>
                 </ul>
               </div>
             </div>

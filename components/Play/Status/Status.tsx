@@ -34,6 +34,14 @@ const PlayStatus = (props: Props): JSX.Element => {
   );
 
   useEffect(() => {
+    if (game.room.gameboard.gameTime === '') {
+      setState(states.room);
+    } else {
+      setState(states.game);
+    }
+  }, [game.room.roomTime, game.room.gameboard.gameTime]);
+
+  useEffect(() => {
     const { roomTime } = room;
     const { gameTime, isStarted, isOver } = gameboard;
 
@@ -118,11 +126,22 @@ const PlayStatus = (props: Props): JSX.Element => {
     silentEmit('RESET_CUSTOM_GAME', {});
   };
 
+  const handleNewGame = () => {
+    silentEmit('START_CUSTOM_GAME', {});
+  };
+
   return (
     <>
       <div className={styles.root}>
         {isCustom && currrentClient.isHost && (
-          <Button onClick={(): void => handleClick()}>reset game</Button>
+          <div className={styles.buttonContainer}>
+            <Button padding="8px" onClick={(): void => handleClick()}>
+              lobby
+            </Button>
+            <Button padding="8px" onClick={(): void => handleNewGame()}>
+              new game
+            </Button>
+          </div>
         )}
         <div
           className={styles.container}

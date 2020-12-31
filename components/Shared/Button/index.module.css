@@ -1,41 +1,33 @@
 .button {
-  display: block;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  min-height: 36px;
-  font-weight: 500;
-  font-size: 1rem;
+  display: flex;
   flex: 1;
-  color: #fff;
+  background: var(--accent);
   border-radius: 8px;
+  outline: none;
+  border: 3px solid #5d66ce;
+  margin: 0px 5px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
   text-transform: uppercase;
-  text-align: center;
-  transition: all 0.15s ease;
+  font-weight: 800;
+  justify-content: center;
+  transition-duration: 0.15s;
 }
 
 .button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(10, 10, 10, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
-  background: var(--accent);
+  transform: translateY(-2px);
 }
 
 .button:active {
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px -4px rgba(10, 10, 10, 0.3), 0 3px 7px -5px rgba(0, 0, 0, 0.3);
-  background: var(--accent);
+  transform: translateY(2px);
 }
 
 .primary {
   background: var(--accent);
 }
 
-/* .primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(81, 127, 243, 0.5);
-  } */
-
 .large {
-  /* height: 45px; */
   padding: 15px 20px !important;
 }
 

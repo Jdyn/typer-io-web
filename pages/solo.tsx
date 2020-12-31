@@ -25,7 +25,7 @@ const PlayContainer = (): JSX.Element => {
         token
       };
 
-      const config = { mode: 'SOLO' };
+      const config = { roomType: 'SOLO' };
 
       dispatch(initSocket(payload, config));
     }

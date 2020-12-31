@@ -23,9 +23,14 @@ const LobbyContainer = (): JSX.Element => {
       let config;
 
       if (id) {
-        config = { mode: 'PRIVATE', roomId: id };
+        config = { roomType: 'PRIVATE', roomId: id };
       } else {
-        config = { mode: 'CUSTOM' };
+        config = {
+          roomType: 'CUSTOM',
+          quoteDifficulty: 'random',
+          maxRoomSize: 5,
+          isCustomQuote: false
+        };
       }
 
       const username =

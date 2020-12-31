@@ -91,12 +91,13 @@ const Comment = (props: Props): JSX.Element => {
             <div className={styles.buttons}>
               <Button
                 color="#fff"
+                padding="8px"
                 isPending={isPending}
                 onClick={submitComment}
               >
                 post
               </Button>
-              <Button onClick={onChange}>cancel</Button>
+              <Button padding="8px" onClick={onChange}>cancel</Button>
             </div>
           </div>
         )}

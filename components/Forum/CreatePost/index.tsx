@@ -64,6 +64,7 @@ const CreatePost = (): JSX.Element => {
           />
           <Button
             color="#fff"
+            padding="10px"
             isPending={createPostRequest?.isPending || false}
             onClick={handleClick}
           >

@@ -68,7 +68,7 @@ const Post = (props: Props): JSX.Element => {
                   }
                 />
                 <div className={styles.buttons}>
-                  <Button margin="0 10px 0 0" onClick={submitComment}>
+                  <Button padding="8px" onClick={submitComment}>
                     comment
                   </Button>
                 </div>

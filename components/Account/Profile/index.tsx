@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import ApiService from '../../../services/api';
@@ -13,10 +12,7 @@ interface Props {
 const Profile = (props: Props): JSX.Element => {
   const { username } = props;
 
-  const { matchPage } = useRouter().query;
-
   const [user, set] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -32,19 +28,12 @@ const Profile = (props: Props): JSX.Element => {
     }
   }, [username]);
 
-  useEffect(() => {
-    if (matchPage) {
-      setCurrentPage(parseInt(matchPage as string, 10));
-    }
-  }, [matchPage]);
-
   const fetchMatches = (page: number): void => {
     if (page <= user.matchMaxPage && page >= 1 && page !== user.matchPage) {
       ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
         (response) => {
           if (response.ok && response.result.matches) {
             set({ ...user, ...response.result });
-            setCurrentPage(page);
           }
         }
       );
@@ -152,7 +141,7 @@ const Profile = (props: Props): JSX.Element => {
             {user?.matchMaxPage}
           </button>
         </div>
-      </div>  
+      </div>
     </div>
   );
 };

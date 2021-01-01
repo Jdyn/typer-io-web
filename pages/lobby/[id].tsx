@@ -33,10 +33,13 @@ const LobbyContainer = (): JSX.Element => {
         };
       }
 
-      const username =
-        localStorage.getItem('nickname') ||
-        session.user?.username ||
-        session.nickname;
+      let username;
+
+      if (localStorage.getItem('nickname') !== '') {
+        username = localStorage.getItem('nickname');
+      } else {
+        username = session.user?.username || session.nickname;
+      }
 
       const emoji = localStorage.getItem('emoji') || '🐌';
 

@@ -26,7 +26,7 @@ const Profile = (props): JSX.Element => {
 
   const nickname = useSelector((state: AppState) => state.session.nickname);
   const sessionName = useSelector(
-    (state: AppState) => state.game.meta.username
+    (state: AppState) => state.session.user?.username
   );
 
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Profile = (props): JSX.Element => {
   const handleUpdate = () => {
     let username = localStorage?.getItem('nickname');
 
-    if (username === '' || !username) {
+    if (username == '' || !username) {
       username = sessionName;
     }
 

@@ -1,0 +1,17 @@
+{
+  "name": "Typer.io - Multiplayer Typing Competition",
+  "short_name": "Typer.io",
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/icons/typer.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

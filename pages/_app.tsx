@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 import * as Sentry from '@sentry/react';
 import ReactGA from 'react-ga';
-import cookies from 'js-cookie';
+import Head from 'next/head';
 import { wrapper } from '../store';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
@@ -60,6 +60,15 @@ export const App = (props: Props): JSX.Element => {
 
   return (
     <Sentry.ErrorBoundary>
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="application-name" content="typer.io" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
       <Component {...pageProps} />
     </Sentry.ErrorBoundary>
   );

@@ -25,7 +25,6 @@ const Layout = (props: Props): JSX.Element => {
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Online Multiplayer Typing Test - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster."

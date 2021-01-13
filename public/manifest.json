@@ -9,7 +9,7 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/icons/typer.png",
+      "src": "/static/icons/typer.png",
       "sizes": "512x512",
       "type": "image/png"
     }

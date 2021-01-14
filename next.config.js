@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
 
-module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    runtimeCaching
-  },
+module.exports = {
   reactStrictMode: true,
   env: {
     BASE_URL: true ? 'https://typer.io' : 'http://localhost:3000',
@@ -15,4 +9,4 @@ module.exports = withPWA({
       : 'http://localhost:4000/api/v1',
     SOCKET_URL: true ? 'https://typer-io-node.herokuapp.com' : 'localhost:8000'
   }
-});
+};

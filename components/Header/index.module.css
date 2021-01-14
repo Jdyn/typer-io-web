@@ -65,7 +65,7 @@
   align-items: center;
   color: white;
   justify-self: flex-end;
-  margin: 0px 15px 0px auto;
+  margin: 0px 15px 0px 0px;
   padding: 0;
   list-style: none;
 }
@@ -105,13 +105,13 @@
 .searchContainer {
   display: flex;
   flex-direction: column;
-  margin: 0px auto 0px 5vw;
+  margin: 0 auto;
   justify-content: center;
 }
 
 .search {
   display: flex;
-  width: 15vw;
+  width: 20vw;
   background: #5d66ce;
   outline: none;
   border: none;

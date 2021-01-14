@@ -154,4 +154,9 @@ const Play = (props: Props): JSX.Element => {
   );
 };
 
+Play.defaultProps = {
+  isSolo: false,
+  isCustom: false
+};
+
 export default Play;

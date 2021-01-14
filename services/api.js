@@ -10,17 +10,6 @@ function headers() {
   };
 }
 
-// function nextAuth(ctx) {
-//   if (ctx) {
-//     const { token } = nextCookie(ctx);
-//     return {
-//       Authorization: `Bearer ${token || ''}`
-//     };
-//   }
-
-//   return {};
-// }
-
 function parseResponse(response) {
   return response.json().then((json) => json);
 }

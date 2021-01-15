@@ -63,6 +63,7 @@
 .body {
   overflow-wrap: break-word;
   word-break: break-word;
+  font-size: 17px;
   word-wrap: break-word;
 }
 

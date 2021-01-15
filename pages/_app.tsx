@@ -3,7 +3,6 @@ import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 import * as Sentry from '@sentry/react';
 import ReactGA from 'react-ga';
-import Head from 'next/head';
 import { wrapper } from '../store';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
@@ -60,12 +59,6 @@ export const App = (props: Props): JSX.Element => {
 
   return (
     <Sentry.ErrorBoundary>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-        />
-      </Head>
       <Component {...pageProps} />
     </Sentry.ErrorBoundary>
   );

@@ -37,6 +37,10 @@ const Layout = (props: Props): JSX.Element => {
           name="google-site-verification"
           content="Pww56fm4UvyzFeLppncS1u27xlhznlaFsSzwpVrtbqE"
         />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
       </Head>
       <Header />
       {striped && <div className={styles.stripe} />}

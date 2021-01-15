@@ -33,11 +33,12 @@
 
 :root {
   --accent: #6772e5;
-  --text: #3c4257;
+  --text: #4c4c4c;
   --subtext: #afafaf;
   --border: #e5e5e5;
   --red: #e57373;
   --subwhite: #eef2f7;
+  --black: #4c4c4c;
   --shadow: 0 10px 10px rgba(20, 10, 70, 0.2), 0 10px 50px rgba(30, 10, 70, 0.2);
 }
 
@@ -54,7 +55,7 @@ body {
   margin: 0;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   font-family: 'dinn';
-  color: #3c3c3c;
+  color: #4c4c4c;
   font-size: 100%;
   font-weight: normal;
   font-style: normal;

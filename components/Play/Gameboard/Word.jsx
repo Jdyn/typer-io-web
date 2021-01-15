@@ -28,7 +28,7 @@ const Word = (props) => {
       return '#f44336';
     }
 
-    return 'black';
+    return '#4c4c4c';
   };
 
   return currentIndex === index ? (
@@ -39,7 +39,7 @@ const Word = (props) => {
           className={styles.letter}
           style={{
             color:
-              currentIndex === props.index ? validateLetter(index) : 'black'
+              currentIndex === props.index ? validateLetter(index) : '#4c4c4c'
           }}
         >
           {letter}

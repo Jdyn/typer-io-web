@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'Segoe';
-  src: url('/static/fonts/segoe.otf') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'dinn';
   src: url('/static/fonts/dinn-300.woff2') format('woff2');
   font-weight: 300;
@@ -54,12 +47,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   font-size: 1rem;
+  font-family: 'dinn';
 }
 
 body {
   margin: 0;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  font-family: 'dinn', 'Open Sans', 'sans-serif';
+  font-family: 'dinn';
   color: #3c3c3c;
   font-size: 100%;
   font-weight: normal;

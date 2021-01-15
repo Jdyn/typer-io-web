@@ -61,13 +61,10 @@ export const App = (props: Props): JSX.Element => {
   return (
     <Sentry.ErrorBoundary>
       <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="application-name" content="typer.io" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <link rel="manifest" href="/manifest.json" />
       </Head>
       <Component {...pageProps} />
     </Sentry.ErrorBoundary>

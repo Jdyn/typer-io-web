@@ -22,6 +22,7 @@ const Play = (props: Props): JSX.Element => {
   const gameboard = useSelector((state: AppState) => state.game.room.gameboard);
   const roomSnippet = useSelector((state: AppState) => state.game.room.snippet);
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
+
   const [gameState, setGameState] = useState({
     currentInput: '',
     currentWord: gameboard?.words[0] || '',

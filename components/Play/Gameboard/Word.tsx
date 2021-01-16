@@ -6,7 +6,7 @@ interface Props {
   word: string;
   index: number;
   currentIndex: number;
-  input: string;
+  input: string[];
   wrongIndex: number;
   setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
 }
@@ -21,7 +21,7 @@ const Word = (props: Props): JSX.Element => {
     setEditorState
   } = props;
 
-  const validateLetter = (index) => {
+  const validateLetter = (index: number): string => {
     if (input[index]) {
       if (input[index] === word.split('')[index]) {
         if (wrongIndex !== null) {

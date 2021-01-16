@@ -131,7 +131,7 @@
   color: #4c4c4c;
   font-kerning: none;
   text-decoration: underline;
-  transition: color 0.075s ease-in;
+  transition: color 0.045s ease-in;
 }
 
 .correct {

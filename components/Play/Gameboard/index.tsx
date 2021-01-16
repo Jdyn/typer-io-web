@@ -126,14 +126,18 @@ const Gameboard = (props: Props): JSX.Element => {
               <span>{snippet.difficulty}</span>
             </h1>
             <span>
-              Said by{' '}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://www.google.com/search?q=${snippet.author}`}
-              >
-                {snippet.author}
-              </a>
+              {snippet.author && (
+                <>
+                  <span>Said by </span>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://www.google.com/search?q=${snippet.author}`}
+                  >
+                    {snippet.author}
+                  </a>
+                </>
+              )}
               {snippet.createdAt && (
                 <span> • Added {formatTime(snippet.createdAt)}</span>
               )}

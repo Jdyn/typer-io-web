@@ -92,7 +92,7 @@
 .gamePiece {
   position: absolute;
   width: 0px;
-  z-index: 0; 
+  z-index: 0;
   height: 190%;
   border-radius: 25%;
 }
@@ -112,7 +112,7 @@
   padding: 0px 4px 0px 4px;
   font-family: 'dinn' !important;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 500;
   z-index: 10;
   font-kerning: none;
   letter-spacing: 0.025rem;
@@ -128,20 +128,20 @@
 .letter {
   display: inline-block;
   padding-top: 0px;
+  color: #4c4c4c;
   font-kerning: none;
-  transition-duration: 0.02s;
   text-decoration: underline;
-  transition: background-color ease-out;
+  transition: color 0.075s ease-in;
 }
 
-/* .letter:first-child {
-  padding-left: 4px;
+.correct {
+  color: #00c805;
 }
 
-.letter:last-child {
-  padding-right: 4px;
+.wrong {
+  color: #f44336;
 }
 
-.letter:only-child {
-  padding: 0 4px 4px 4px;
-} */
+.base {
+  color: #4c4c4c;
+}

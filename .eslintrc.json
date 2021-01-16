@@ -32,6 +32,7 @@
     "jsx-a11y/href-no-hash": ["off"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
+    "react/no-array-index-key": [0],
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "max-len": [
       "warn",

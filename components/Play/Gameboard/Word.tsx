@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.module.css';
+import { EditorState } from '../types';
 
-const Word = (props) => {
+interface Props {
+  word: string;
+  index: number;
+  currentIndex: number;
+  input: string;
+  wrongIndex: number;
+  setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
+}
+
+const Word = (props: Props): JSX.Element => {
   const {
     word,
     index,
@@ -16,19 +26,19 @@ const Word = (props) => {
       if (input[index] === word.split('')[index]) {
         if (wrongIndex !== null) {
           if (wrongIndex < index) {
-            return '#f44336';
+            return styles.wrong;
           }
         }
-        return '#00c805';
+        return styles.correct;
       }
 
       if (index < wrongIndex || wrongIndex === null) {
         setEditorState((prev) => ({ ...prev, wrongIndex: index }));
       }
-      return '#f44336';
+      return styles.wrong;
     }
 
-    return '#4c4c4c';
+    return styles.base;
   };
 
   return currentIndex === index ? (
@@ -36,11 +46,9 @@ const Word = (props) => {
       {word.split('').map((letter, index) => (
         <span
           key={index}
-          className={styles.letter}
-          style={{
-            color:
-              currentIndex === props.index ? validateLetter(index) : '#4c4c4c'
-          }}
+          className={`${styles.letter} ${
+            currentIndex === props.index ? validateLetter(index) : styles.base
+          }`}
         >
           {letter}
         </span>

@@ -4,7 +4,7 @@
 
 .container {
   display: grid;
-  gap: 30px;
+  gap: 20px;
   max-width: 1250px;
   margin: 0 auto 0 auto;
   padding: 0px 10px;

@@ -22,11 +22,11 @@
     grid-template-rows: min-content min-content 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
-    'news'
-    'hub'
-    'posts'
-    'scores'
-    'matches';
+      'news'
+      'hub'
+      'posts'
+      'scores'
+      'matches';
   }
 }
 
@@ -67,7 +67,7 @@
 }
 
 .newsWrapper > span {
-  color: var(--subtext)
+  color: var(--subtext);
 }
 
 .list {
@@ -133,7 +133,8 @@
 }
 
 .card:hover::before {
-  box-shadow: 0 30px 60px -12px rgba(30, 30, 70, 0.4), 0 18px 36px -18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px -12px rgba(30, 30, 70, 0.4),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3);
 }
 
 .card:active {
@@ -176,4 +177,24 @@
 
 .posts > h1 {
   font-size: 1.5rem;
+}
+
+.support {
+  background: #bd5fff;
+  border-radius: 12px;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 20px;
+  transition-duration: 0.15s;
+}
+
+.support:hover {
+  transform: translateY(-2px);
+  background: #c779ff;
+}
+
+.support:active {
+  transform: translateY(2px);
 }

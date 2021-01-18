@@ -6,6 +6,7 @@ import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
 import Profile from './Profile';
 import RecentMatches from './RecentMatches';
+import Button from '../Shared/Button';
 
 const cards = [
   {
@@ -39,12 +40,26 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1610823915197)} </span>
+              <span>updated {formatTime(1611002077279)} </span>
               <p>
-                Thank you for visiting my website! If you have any suggestions,
-                let me know on the forums!
+                Hello, I started typer.io as a side project and have worked on
+                it over the years by myself. It has been cost free for me to run
+                up until now, since a lot more users have been playing recently.
               </p>
-              <h3>Updates (Dec. 31th, 2020):</h3>
+              <p>
+                Currently it costs about $15 dollars a month to keep it running.
+                Any amount would help. You can donate as little as $1 below.
+                Thank you!
+              </p>
+              <a
+                className={styles.support}
+                href="https://www.buymeacoffee.com/typer"
+                target="_blank"
+                rel="noreferrer"
+              >
+                support the creator here ➜
+              </a>
+              <h3>Changes (Dec. 31th, 2020):</h3>
               <div className={styles.list}>
                 <ul>
                   <li>You can now select the difficulty in custom lobbies.</li>

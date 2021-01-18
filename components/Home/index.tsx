@@ -6,7 +6,6 @@ import formatTime from '../../util/formatTime';
 import RecentPosts from './RecentPosts';
 import Profile from './Profile';
 import RecentMatches from './RecentMatches';
-import Button from '../Shared/Button';
 
 const cards = [
   {
@@ -57,7 +56,7 @@ const Home = (): JSX.Element => {
                 target="_blank"
                 rel="noreferrer"
               >
-                support the creator here ➜
+                support the creator ➜
               </a>
               <h3>Changes (Dec. 31th, 2020):</h3>
               <div className={styles.list}>

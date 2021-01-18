@@ -41,6 +41,13 @@ const Header = (): JSX.Element => {
           <Link href="/forum">
             <a>discuss</a>
           </Link>
+          <a
+            href="https://www.buymeacoffee.com/typer"
+            target="_blank"
+            rel="noreferrer"
+          >
+            support
+          </a>
         </div>
         <div className={styles.searchContainer}>
           <form onSubmit={navigate}>

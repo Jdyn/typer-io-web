@@ -19,7 +19,7 @@
   height: 100%;
   margin: 0 auto;
   justify-content: flex-start;
-  max-width: 1065px;
+  max-width: 1250px;
 }
 
 .logo {
@@ -112,6 +112,7 @@
 .search {
   display: flex;
   width: 20vw;
+  max-width: 300px;
   background: #5d66ce;
   outline: none;
   border: none;

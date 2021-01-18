@@ -180,8 +180,8 @@
 }
 
 .support {
-  background: #bd5fff;
-  border-radius: 12px;
+  background: #fd5151;
+  border-radius: 16px;
   padding: 10px;
   color: white;
   text-decoration: none;
@@ -192,7 +192,7 @@
 
 .support:hover {
   transform: translateY(-2px);
-  background: #c779ff;
+  background: #ff5f5f;
 }
 
 .support:active {

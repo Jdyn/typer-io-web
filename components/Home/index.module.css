@@ -180,10 +180,11 @@
 }
 
 .support {
-  background: #fd5151;
+  background: white;
   border-radius: 16px;
   padding: 8px;
-  color: white;
+  color: var(--text);
+  border: 2px solid var(--border);
   text-decoration: none;
   text-align: center;
   margin-bottom: 20px;
@@ -192,7 +193,6 @@
 
 .support:hover {
   transform: translateY(-2px);
-  background: #ff5f5f;
 }
 
 .support:active {

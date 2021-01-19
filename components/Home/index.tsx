@@ -85,7 +85,7 @@ const Home = (): JSX.Element => {
                     key={card.route}
                     style={{ background: card.color }}
                   >
-                    <h3>{card.title}</h3>
+                    <h3>{card.title} ➜</h3>
                     <p>{card.text}</p>
                   </a>
                 </Link>

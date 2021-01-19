@@ -1,17 +1,11 @@
-import React, { useEffect, FunctionComponent } from 'react';
-import { NextPage } from 'next';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import * as Sentry from '@sentry/react';
 import ReactGA from 'react-ga';
 import { wrapper } from '../store';
+import { init } from '../util/sentry';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
-
-interface Props {
-  Component: NextPage;
-  pageProps: object;
-}
 
 ((): void => {
   ReactGA.initialize('UA-135635293-4', {
@@ -22,14 +16,10 @@ interface Props {
   ReactGA.pageview('/');
 })();
 
-if (process.env.NODE_ENV === 'production') {
-  Sentry.init({
-    dsn: 'https://429f27fd7aab4c2dac9d534a38ccfaf8@sentry.io/1396899'
-  });
-}
+init();
 
-export const App = (props: Props): JSX.Element => {
-  const { Component, pageProps } = props;
+export const App = (props): JSX.Element => {
+  const { Component, pageProps, err } = props;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,11 +47,7 @@ export const App = (props: Props): JSX.Element => {
     }
   }, [dispatch]);
 
-  return (
-    <Sentry.ErrorBoundary>
-      <Component {...pageProps} />
-    </Sentry.ErrorBoundary>
-  );
+  return <Component {...pageProps} err={err} />;
 };
 
-export default Sentry.withProfiler(wrapper.withRedux(App) as FunctionComponent);
+export default wrapper.withRedux(App);

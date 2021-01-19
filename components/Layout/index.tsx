@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Header from '../Header';
-import Footer from '../Footer';
 import styles from './index.module.css';
 
 interface Props {
@@ -25,11 +24,6 @@ const Layout = (props: Props): JSX.Element => {
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
         />
-        <script
-          data-ad-client="ca-pub-3148839588626786"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        />
         <meta
           name="description"
           content="Online Multiplayer Typing Test - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster."
@@ -50,7 +44,6 @@ const Layout = (props: Props): JSX.Element => {
       <Header />
       {striped && <div className={styles.stripe} />}
       {children}
-      <Footer />
     </>
   );
 };

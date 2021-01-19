@@ -17,7 +17,7 @@ const formatTime = (date: string | number): string => {
 
   for (let t = 0; t < times.length; t += 1) {
     if (diff < times[t][1]) {
-      if (t === 0) {
+      if (t === 1) {
         return 'Just now';
       }
 

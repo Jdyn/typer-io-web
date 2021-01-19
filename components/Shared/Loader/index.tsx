@@ -63,4 +63,10 @@ const Loader = (props: Props): JSX.Element => {
   );
 };
 
+Loader.defaultProps = {
+  width: '32px',
+  height: '32px',
+  color: '#6772e5'
+};
+
 export default Loader;

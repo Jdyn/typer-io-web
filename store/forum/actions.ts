@@ -42,6 +42,8 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
     `/forum/posts?query=${query.toLowerCase()} ${page ?? ''}`
   );
 
+  console.log(response);
+
   if (response.ok) {
     const key = query === 'RECENT' ? 'recent' : 'page';
     const payload = {
@@ -52,7 +54,9 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
     dispatch(postsFetched(payload));
     dispatch(setRequest(false, requestType));
   } else {
-    dispatch(setRequest(false, requestType, response.error));
+    dispatch(
+      setRequest(false, requestType, response.error || 'Failed to fetch')
+    );
   }
 };
 

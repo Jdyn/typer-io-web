@@ -21,7 +21,7 @@ const Forum = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.rules}>
+      {/* <div className={styles.rules}>
         Please adhere to the following rules if you intend on using the forum. I
         have had to delete too many discussions...
         <ul>
@@ -36,7 +36,7 @@ const Forum = (): JSX.Element => {
             others...
           </li>
         </ul>
-      </div>
+      </div> */}
       {session?.isLoggedIn && (
         <div className={styles.create}>
           <Link href="/forum/post">

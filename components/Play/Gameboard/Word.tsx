@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './index.module.css';
-import { EditorState } from '../types';
 
 interface Props {
   word: string;
@@ -8,18 +7,10 @@ interface Props {
   currentIndex: number;
   input: string[];
   wrongIndex: number;
-  setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
 }
 
 const Word = (props: Props): JSX.Element => {
-  const {
-    word,
-    index,
-    currentIndex,
-    input,
-    wrongIndex,
-    setEditorState
-  } = props;
+  const { word, index, currentIndex, input, wrongIndex } = props;
 
   const validateLetter = (index: number): string => {
     if (input[index]) {
@@ -32,9 +23,6 @@ const Word = (props: Props): JSX.Element => {
         return styles.correct;
       }
 
-      if (index < wrongIndex || wrongIndex === null) {
-        setEditorState((prev) => ({ ...prev, wrongIndex: index }));
-      }
       return styles.wrong;
     }
 
@@ -42,7 +30,7 @@ const Word = (props: Props): JSX.Element => {
   };
 
   const calculateWidth = (): number => {
-    let newLeft = 0;
+    let newLeft = 1;
 
     const currentLetter = input.length;
 

@@ -37,14 +37,14 @@ const Gameboard = (props: Props): JSX.Element => {
   );
 
   useEffect(() => {
-    if (currentWord) {
-      if (currentInput.length > currentWord.length) {
-        setEditorState((prev) => ({
-          ...prev,
-          wrongIndex: -1
-        }));
-      }
-    }
+    // if (currentWord) {
+    //   if (currentInput.length > currentWord.length) {
+    //     setEditorState((prev) => ({
+    //       ...prev,
+    //       wrongIndex: -1
+    //     }));
+    //   }
+    // }
 
     if (wrongIndex !== null) {
       if (currentWord) {
@@ -73,7 +73,6 @@ const Gameboard = (props: Props): JSX.Element => {
             word={word}
             index={wordIndex}
             wrongIndex={wrongIndex}
-            setEditorState={setEditorState}
           />
           {clients
             .filter((object) => object.id !== clientId)
@@ -101,15 +100,7 @@ const Gameboard = (props: Props): JSX.Element => {
             })}
         </div>
       )),
-    [
-      clientId,
-      clients,
-      currentIndex,
-      currentInput,
-      setEditorState,
-      words,
-      wrongIndex
-    ]
+    [clientId, clients, currentIndex, currentInput, words, wrongIndex]
   );
 
   return (

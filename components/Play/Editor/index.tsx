@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../../store';
+import { GameboardState } from '../../../store/game/types';
+import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
 
 const focusInput = (): void => {
@@ -11,7 +11,16 @@ const focusInput = (): void => {
   }
 };
 
-const Editor = (props) => {
+interface Props {
+  gameboard: GameboardState;
+  gameState: GameState;
+  setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
+  submitWord: () => void;
+  isWrong: boolean;
+  inputDidUpdate: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Editor = (props: Props): JSX.Element => {
   const {
     gameboard,
     inputDidUpdate,
@@ -25,7 +34,7 @@ const Editor = (props) => {
     focusInput();
   }, []);
 
-  const keydown = (event) => {
+  const keydown = (event: React.KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
     if (!gameboard.isStarted) {
@@ -66,27 +75,36 @@ const Editor = (props) => {
   };
 
   return (
-    <div className={styles.root} onClick={() => focusInput()}>
+    <div
+      role="button"
+      tabIndex={0}
+      className={styles.root}
+      onClick={focusInput}
+      onKeyUp={focusInput}
+    >
       <div
+        role="button"
+        tabIndex={0}
         className={styles.container}
         style={{ background: isWrong ? '#f4433666' : 'transparent' }}
-        onClick={() => focusInput()}
+        onClick={focusInput}
+        onKeyUp={focusInput}
       >
         <input
           id="input"
           className={styles.input}
-          onClick={() => focusInput()}
+          onClick={(): void => focusInput()}
           tabIndex={0}
           autoComplete="off"
           autoCorrect="off"
           maxLength={
-            gameState.currentWord ? gameState.currentWord.length + 5 : 524288
+            gameState.currentWord ? gameState.currentWord.length : 524288
           }
           autoCapitalize="off"
           spellCheck="false"
           value={gameState.currentInput}
-          onChange={(e) => inputDidUpdate(e)}
-          onKeyDown={(e) => keydown(e)}
+          onChange={inputDidUpdate}
+          onKeyDown={keydown}
         />
       </div>
     </div>

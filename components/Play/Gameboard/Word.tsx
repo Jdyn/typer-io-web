@@ -41,22 +41,74 @@ const Word = (props: Props): JSX.Element => {
     return styles.base;
   };
 
+  const calculateWidth = (): number => {
+    let newLeft = 0;
+
+    const currentLetter = input.length;
+
+    for (let i = 0; i < word.length; i += 1) {
+      if (i < currentLetter) {
+        const element = document.getElementById(`letter-${i}`);
+        newLeft += element.getBoundingClientRect().width;
+      }
+    }
+
+    const caret = document.getElementById('caret');
+
+    if (currentLetter === word.length && wrongIndex === null) {
+      return newLeft + 8 + caret?.offsetWidth / 2 || 0;
+    }
+
+    return newLeft + caret?.offsetWidth / 2 || 0;
+  };
+
   return currentIndex === index ? (
     <div className={`${styles.word} ${styles.current}`}>
-      {word.split('').map((letter, index) => (
+      {currentIndex === index && (
+        <div
+          id="caret"
+          className={styles.caret}
+          style={{
+            left: calculateWidth()
+          }}
+        />
+      )}
+      {word.split('').map((letter, letterIndex) => (
         <span
-          key={index}
+          key={letterIndex}
+          id={`letter-${letterIndex}`}
           className={`${styles.letter} ${
-            currentIndex === props.index ? validateLetter(index) : styles.base
+            currentIndex === props.index
+              ? validateLetter(letterIndex)
+              : styles.base
           }`}
+          style={{
+            textDecoration: currentIndex === index ? 'underline' : 'none'
+          }}
         >
           {letter}
         </span>
       ))}
     </div>
   ) : (
-    <span className={styles.word}>{word}</span>
+    <span className={styles.word}>
+      {word.split('').map((letter, letterIndex) => (
+        <span
+          key={letterIndex}
+          className={`${styles.letter} ${
+            currentIndex === props.index
+              ? validateLetter(letterIndex)
+              : styles.base
+          }`}
+          style={{
+            textDecoration: currentIndex === index ? 'underline' : 'none'
+          }}
+        >
+          {letter}
+        </span>
+      ))}
+    </span>
   );
 };
 
-export default Word;
+export default React.memo(Word);

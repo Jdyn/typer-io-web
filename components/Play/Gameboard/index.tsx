@@ -63,6 +63,55 @@ const Gameboard = (props: Props): JSX.Element => {
     setEditorState((prev) => ({ ...prev, wrongIndex: null }));
   }, [currentWord, setEditorState]);
 
+  const wordElements = React.useMemo(
+    () =>
+      words.map((word, wordIndex) => (
+        <div key={wordIndex} className={styles.wrapper}>
+          <Word
+            input={currentInput ? currentInput.split('') : []}
+            currentIndex={currentIndex}
+            word={word}
+            index={wordIndex}
+            wrongIndex={wrongIndex}
+            setEditorState={setEditorState}
+          />
+          {clients
+            .filter((object) => object.id !== clientId)
+            .map((client) => {
+              const { position, color } = client.gamePiece;
+
+              if (wordIndex === 0 && position === null)
+                return (
+                  <Piece
+                    emoji={client.emoji}
+                    key={client.id}
+                    color={color}
+                    position={position}
+                  />
+                );
+
+              return position === wordIndex ? (
+                <Piece
+                  emoji={client.emoji}
+                  key={client.id}
+                  color={color}
+                  position={position}
+                />
+              ) : null;
+            })}
+        </div>
+      )),
+    [
+      clientId,
+      clients,
+      currentIndex,
+      currentInput,
+      setEditorState,
+      words,
+      wrongIndex
+    ]
+  );
+
   return (
     <div className={styles.root}>
       <Banner>
@@ -80,44 +129,7 @@ const Gameboard = (props: Props): JSX.Element => {
           )}
         </h1>
       </Banner>
-      <div className={styles.container}>
-        {words.map((word, wordIndex) => (
-          <div key={wordIndex} className={styles.wrapper}>
-            <Word
-              input={currentInput ? currentInput.split('') : []}
-              currentIndex={currentIndex}
-              word={word}
-              index={wordIndex}
-              wrongIndex={wrongIndex}
-              setEditorState={setEditorState}
-            />
-            {clients
-              .filter((object) => object.id !== clientId)
-              .map((client) => {
-                const { position, color } = client.gamePiece;
-
-                if (wordIndex === 0 && position === null)
-                  return (
-                    <Piece
-                      emoji={client.emoji}
-                      key={client.id}
-                      color={color}
-                      position={position}
-                    />
-                  );
-
-                return position === wordIndex ? (
-                  <Piece
-                    emoji={client.emoji}
-                    key={client.id}
-                    color={color}
-                    position={position}
-                  />
-                ) : null;
-              })}
-          </div>
-        ))}
-      </div>
+      <div className={styles.container}>{wordElements}</div>
       <div className={styles.content}>
         {snippet.title && (
           <>

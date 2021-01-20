@@ -32,7 +32,7 @@
   margin: 20px;
   border: 2px solid #e5e5e5;
   border-radius: 16px;
-  overflow-y: auto;
+  overflow-y: none;
 }
 
 .wrapper {
@@ -108,8 +108,7 @@
 }
 
 .word {
-  margin: 0;
-  padding: 0px 4px 0px 4px;
+  margin: 0px 4px;
   font-family: 'dinn' !important;
   font-size: 18px;
   font-weight: 500;
@@ -117,7 +116,7 @@
   font-kerning: none;
   letter-spacing: 0.025rem;
   color: var(--text);
-  line-height: 25px;
+  line-height: 27px;
   user-select: none;
 }
 
@@ -144,4 +143,16 @@
 
 .base {
   color: #4c4c4c;
+}
+
+.caret {
+  display: flex;
+  background: var(--accent);
+  position: absolute;
+  width: 2px;
+  top: 4px;
+  border-radius: 25%;
+  transition: 0.1s;
+  z-index: 1000;
+  height: 18px;
 }

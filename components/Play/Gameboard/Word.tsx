@@ -55,9 +55,9 @@ const Word = (props: Props): JSX.Element => {
 
     const caret = document.getElementById('caret');
 
-    if (currentLetter === word.length && wrongIndex === null) {
-      return newLeft + 8 + caret?.offsetWidth / 2 || 0;
-    }
+    // if (currentLetter === word.length && wrongIndex === null) {
+    //   return newLeft + 8 + caret?.offsetWidth / 2 || 0;
+    // }
 
     return newLeft + caret?.offsetWidth / 2 || 0;
   };

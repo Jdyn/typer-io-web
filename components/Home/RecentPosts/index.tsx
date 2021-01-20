@@ -42,6 +42,9 @@ const RecentPosts = (): JSX.Element => {
                 </Link>
                 <span>
                   {formatTime(post.createdAt)} by {post.user.username}
+                  {post.user.isAdmin && (
+                    <span className={styles.admin}>Creator</span>
+                  )}
                 </span>
                 <p>{post.body}</p>
                 <Link prefetch={false} href={`/forum/post/${post.id}`}>

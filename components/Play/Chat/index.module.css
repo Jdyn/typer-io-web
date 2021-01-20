@@ -6,6 +6,7 @@
   grid-area: chat;
   box-shadow: var(--shadow);
   background-color: white;
+  height: 400px;
   border-radius: 16px;
 }
 

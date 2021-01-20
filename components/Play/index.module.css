@@ -3,10 +3,10 @@
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-rows: min-content min-content min-content 1fr min-content;
   grid-template-areas:
-    'clientlist  clientlist clientlist'
-    'status      gameboard  leaderboard'
-    'chat gameboard  leaderboard'
-    'chat editor     leaderboard'
+    'clientlist clientlist clientlist'
+    'status gameboard leaderboard'
+    'chat gameboard leaderboard'
+    'chat editor leaderboard'
     '. notice .';
   max-width: 1250px;
   flex-direction: row;

@@ -42,8 +42,6 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
     `/forum/posts?query=${query.toLowerCase()} ${page ?? ''}`
   );
 
-  console.log(response);
-
   if (response.ok) {
     const key = query === 'RECENT' ? 'recent' : 'page';
     const payload = {

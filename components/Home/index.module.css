@@ -73,7 +73,7 @@
 .list {
   color: var(--text);
   position: relative;
-  max-width: 85%;
+  max-width: 100%;
 }
 
 .list > ul {

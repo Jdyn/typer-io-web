@@ -39,7 +39,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1611002077279)} </span>
+              <span>updated {formatTime(1611165483074)} </span>
               <p>
                 Hello, I started typer.io as a side project and have worked on
                 it over the years by myself. It has been cost free for me to run
@@ -58,9 +58,13 @@ const Home = (): JSX.Element => {
               >
                 support the creator ➜
               </a>
-              <h3>Changes (Dec. 31th, 2020):</h3>
+              <h3>Changes (Jan. 20th, 2021):</h3>
               <div className={styles.list}>
                 <ul>
+                  <li>
+                    I have added an experimental custom typing &quot;caret&quot;
+                    that hopefully improves the typing experience
+                  </li>
                   <li>You can now select the difficulty in custom lobbies.</li>
                   <li>
                     You can now change your name and emoji in custom lobbies.

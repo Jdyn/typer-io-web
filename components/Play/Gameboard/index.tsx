@@ -72,6 +72,7 @@ const Gameboard = (props: Props): JSX.Element => {
             currentIndex={currentIndex}
             word={word}
             index={wordIndex}
+            setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
           {clients
@@ -100,7 +101,15 @@ const Gameboard = (props: Props): JSX.Element => {
             })}
         </div>
       )),
-    [clientId, clients, currentIndex, currentInput, words, wrongIndex]
+    [
+      clientId,
+      clients,
+      currentIndex,
+      currentInput,
+      setEditorState,
+      words,
+      wrongIndex
+    ]
   );
 
   return (

@@ -7,10 +7,18 @@ interface Props {
   currentIndex: number;
   input: string[];
   wrongIndex: number;
+  setEditorState: any;
 }
 
 const Word = (props: Props): JSX.Element => {
-  const { word, index, currentIndex, input, wrongIndex } = props;
+  const {
+    word,
+    index,
+    currentIndex,
+    input,
+    wrongIndex,
+    setEditorState
+  } = props;
 
   const validateLetter = (index: number): string => {
     if (input[index]) {
@@ -21,6 +29,10 @@ const Word = (props: Props): JSX.Element => {
           }
         }
         return styles.correct;
+      }
+
+      if (index < wrongIndex || wrongIndex === null) {
+        setEditorState((prev) => ({ ...prev, wrongIndex: index }));
       }
 
       return styles.wrong;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
 import styles from './index.module.css';
 import Banner from '../../Shared/Banner';
 import { fetchHiscores } from '../../../store/hiscores/actions';
@@ -7,15 +8,15 @@ import Filter from '../../Shared/Filter';
 import { HiscoreQueryTypes } from '../../../store/hiscores/types';
 import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
-import Link from 'next/link';
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const filters = [
-  { name: 'week', key: 'WEEK' },
-  { name: 'month', key: 'MONTH' },
+  { name: 'daily', key: 'DAY' },
+  { name: 'weekly', key: 'WEEK' },
+  { name: 'monthly', key: 'MONTH' },
   { name: 'all time', key: 'ALL' }
 ];
 
@@ -24,7 +25,8 @@ const Hiscores = (_props: Props): JSX.Element => {
   const dispatch = useDispatch();
   const request = useSelector((state: AppState) => state.request);
   const hiscores = useSelector(
-    (state: AppState) => state.hiscores[filters[filterIndex].key.toLowerCase()]
+    (state: AppState) =>
+      state.hiscores[filters[filterIndex].key.toLowerCase()] || []
   );
   const session = useSelector((state: AppState) => state.session);
 
@@ -56,10 +58,11 @@ const Hiscores = (_props: Props): JSX.Element => {
         selectedIndex={filterIndex}
       />
       <div className={styles.header}>
-        <div className={styles.headerItem}>Name</div>
-        <div className={styles.headerItem}>Date</div>
-        <div className={styles.headerItem}>Accuracy</div>
-        <div className={styles.headerItem}>WPM</div>
+        <div className={`${styles.count} ${styles.headerItem}`}>#</div>
+        <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
+        <div className={styles.timestamp}>Date</div>
+        <div className={styles.item}>Accuracy</div>
+        <div className={styles.item}>WPM</div>
       </div>
       <div className={styles.container}>
         <div className={styles.wrapper}>

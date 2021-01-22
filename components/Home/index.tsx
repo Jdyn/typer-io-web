@@ -39,7 +39,7 @@ const Home = (): JSX.Element => {
           <div className={styles.newsContainer}>
             <div className={styles.newsWrapper}>
               <h2>Improve your typing speed and race your friends!</h2>
-              <span>updated {formatTime(1611165483074)} </span>
+              <span>updated {formatTime(1611341617300)} </span>
               <p>
                 Hello, I started typer.io as a side project and have worked on
                 it over the years by myself. It has been cost free for me to run

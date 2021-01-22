@@ -55,6 +55,12 @@
   font-weight: 700;
 }
 
+.headerItem {
+  font-weight: 500;
+  color: var(--subtext);
+  font-size: 14px;
+}
+
 .timestamp {
   display: flex;
   justify-content: center;
@@ -118,24 +124,12 @@
 
 .header {
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
   position: relative;
-  margin: 0 20px;
+  margin: 0 auto;
+  width: 480px;
   border-bottom: 2px solid #e5e5e5;
   padding: 12px 12px 12px 12px;
   color: var(--text);
-}
-
-.headerItem {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  justify-content: center;
-  flex-grow: 1;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.headerItem:first-child {
-  flex: 2.2;
 }

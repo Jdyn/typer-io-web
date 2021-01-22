@@ -9,11 +9,11 @@ const RecentMatches = (): JSX.Element => {
   const [state, set] = useState([]);
 
   useEffect(() => {
-    // ApiService.fetch(`/matches?query=recent`).then((response) => {
-    //   if (response.ok) {
-    //     set(response.result.matches);
-    //   }
-    // });
+    ApiService.fetch(`/matches?query=recent`).then((response) => {
+      if (response.ok) {
+        set(response.result.matches);
+      }
+    });
   }, []);
 
   const renderBadge = (user): JSX.Element => {

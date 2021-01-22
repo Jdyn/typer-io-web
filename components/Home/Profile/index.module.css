@@ -9,32 +9,40 @@
 }
 
 .container {
-  margin: 20px;
+  display: flex;
+  position: relative;
   border: 2px solid var(--border);
   height: 100%;
   justify-content: center;
-  border-radius: 16px;
+  border-radius: 0px 0px 16px 16px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin: 10px -5px;
-  padding: 0 15px;
+  flex: 1;
+  margin: 20px;
+  border: 2px solid var(--border);
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
   overflow-x: none;
-  overflow-y: auto;
-  overflow-y: scroll;
   text-align: center;
   flex: 1;
 }
 
-.emojiPicker {
-  position: absolute;
-}
-
-.wrapper > span {
+.header > span {
   font-size: 0.9rem;
   color: var(--subtext);
+}
+
+.emojiPicker {
+  position: absolute;
 }
 
 .portrait {

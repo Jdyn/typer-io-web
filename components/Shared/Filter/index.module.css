@@ -3,7 +3,7 @@
   padding: 17px 0 0 0;
   display: flex;
   position: relative;
-  border-top: 2px solid var(--border);
+  /* border-top: 2px solid var(--border); */
   flex-direction: row;
 }
 

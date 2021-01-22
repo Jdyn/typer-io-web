@@ -21,35 +21,19 @@ const Forum = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
-      {/* <div className={styles.rules}>
-        Please adhere to the following rules if you intend on using the forum. I
-        have had to delete too many discussions...
-        <ul>
-          <li>
-            Do not discuss inappropriate topics or be inappropriate toward
-            others. The entire discussion will be removed.
-          </li>
-          <li>Do not post personal information</li>
-          <li>Make meaningful titles and bodies to posts</li>
-          <li>
-            Try to use the &quot;reply&quot; feature when responding to
-            others...
-          </li>
-        </ul>
-      </div> */}
-      {session?.isLoggedIn && (
-        <div className={styles.create}>
-          <Link href="/forum/post">
-            <Button color="#fff" padding="10px">
-              Create Post
-            </Button>
-          </Link>
-        </div>
-      )}
       <div className={styles.feed}>
         <Banner>
           <h1>Discussions</h1>
         </Banner>
+        {session?.isLoggedIn && (
+          <div className={styles.create}>
+            <Link href="/forum/post">
+              <Button color="#fff" padding="10px" margin="10px 20px 10px 10px">
+                Create Post
+              </Button>
+            </Link>
+          </div>
+        )}
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
             {posts.map((post) => (

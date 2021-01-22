@@ -1,22 +1,15 @@
 .root {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
   grid-area: scores;
-  border-radius: 16px;
   height: 650px;
-  box-shadow: var(--shadow);
 }
 
 .container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  height: inherit;
   margin: 5px 20px 20px 20px;
   border: 2px solid var(--border);
-  height: 100%;
   border-radius: 16px;
 }
 
@@ -25,7 +18,7 @@
   grid-template-columns: repeat(1fr);
   padding-left: 10px;
   overflow-x: none;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .verified {
@@ -92,6 +85,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
+  color: var(--accent);
 }
 
 .user {
@@ -127,8 +121,8 @@
   flex-grow: 1;
   flex-direction: row;
   position: relative;
-  margin: 0 auto;
-  width: 480px;
+  margin: 0 30px;
+  /* width: 480px; */
   border-bottom: 2px solid #e5e5e5;
   padding: 12px 12px 12px 12px;
   color: var(--text);

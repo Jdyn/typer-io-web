@@ -6,9 +6,9 @@
     'clientlist clientlist clientlist'
     'settings main profile'
     'settings chat profile';
-  grid-gap: 15px;
-  padding: 15px;
-  max-width: 1185px;
+  grid-gap: 20px;
+  padding: 0px 15px;
+  max-width: 1250px;
   margin: 0px auto 115px auto;
 }
 

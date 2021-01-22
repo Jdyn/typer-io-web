@@ -1,13 +1,6 @@
 .root {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
   grid-area: posts;
-  border-radius: 16px;
   height: 550px;
-  box-shadow: var(--shadow);
 }
 
 .container {

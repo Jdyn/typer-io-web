@@ -1,0 +1,25 @@
+.root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  overflow-x: none;
+  overflow-y: auto;
+  height: inherit;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  /* border: 2px solid #cfcece; */
+  height: 100%;
+  overflow-x: none;
+  overflow-y: auto;
+  justify-content: center;
+  border-radius: 0px 0px 16px 16px;
+}

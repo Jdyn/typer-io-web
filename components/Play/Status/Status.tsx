@@ -6,6 +6,7 @@ import Loader from '../../Shared/Loader';
 import { silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
+import { GameboardState } from '../../../store/game/types';
 
 const states = {
   room: 'ROOM',
@@ -14,11 +15,12 @@ const states = {
 
 interface Props {
   isCustom?: boolean;
-  gameboard?: any;
+  isSolo?: boolean;
+  gameboard: GameboardState;
 }
 
 const PlayStatus = (props: Props): JSX.Element => {
-  const { gameboard, isCustom } = props;
+  const { gameboard, isCustom, isSolo } = props;
   const socket = useSelector((state: AppState) => state.game.socket);
   const room = useSelector((state: AppState) => state.game.room);
   const [state, setState] = useState(states.room);
@@ -111,8 +113,8 @@ const PlayStatus = (props: Props): JSX.Element => {
           return { color: '#e57373', text: 'Get Set...' };
         }
 
-        if (time <= 0) {
-          return { color: '#469cd0', text: 'Connecting to server...' };
+        if (time <= 0 && !isCustom && !isSolo) {
+          return { color: '#469cd0', text: 'Looking for Players...' };
         }
       }
 
@@ -120,7 +122,7 @@ const PlayStatus = (props: Props): JSX.Element => {
     };
 
     setHeader(updateHeader());
-  }, [gameboard, state, socket, room, setHeader]);
+  }, [gameboard, state, socket, room, setHeader, isCustom]);
 
   const handleClick = () => {
     silentEmit('RESET_CUSTOM_GAME', {});
@@ -157,6 +159,11 @@ const PlayStatus = (props: Props): JSX.Element => {
       </div>
     </>
   );
+};
+
+PlayStatus.defaultProps = {
+  isCustom: false,
+  isSolo: false
 };
 
 export default PlayStatus;

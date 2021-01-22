@@ -31,14 +31,14 @@ const Header = (): JSX.Element => {
   return (
     <header className={styles.root}>
       <nav className={styles.container}>
-        <Link href="/">
+        <Link prefetch={false} href="/">
           <a className={styles.logo}>typer.io</a>
         </Link>
         <div className={styles.nav}>
-          <Link href="/">
+          <Link prefetch={false} href="/">
             <a>home</a>
           </Link>
-          <Link href="/forum">
+          <Link prefetch={false} href="/forum">
             <a>discuss</a>
           </Link>
           <a

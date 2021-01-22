@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
+import Paper from '../../Shared/Paper';
+
+interface Props {
+  requireSave?: boolean;
+  onClick?: (object) => void | null;
+}
 
 const emojiList = [
   '🦍',
@@ -21,7 +26,7 @@ const emojiList = [
   '🦽'
 ];
 
-const Profile = (props): JSX.Element => {
+const Profile = (props: Props): JSX.Element => {
   const { requireSave, onClick } = props;
 
   const nickname = useSelector((state: AppState) => state.session.nickname);
@@ -51,23 +56,24 @@ const Profile = (props): JSX.Element => {
   const handleUpdate = () => {
     let username = localStorage?.getItem('nickname');
 
+    // Necessary comparison operator
+    // eslint-disable-next-line eqeqeq
     if (username == '' || !username) {
       username = sessionName;
     }
 
-    onClick({
-      emoji: currentEmoji,
-      username
-    });
+    if (typeof onClick === 'function') {
+      onClick({
+        emoji: currentEmoji,
+        username
+      });
+    }
   };
 
   return (
-    <div className={styles.root}>
-      <Banner>
-        <h1>Profile</h1>
-      </Banner>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
+    <Paper title="Profile">
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
           <div className={styles.portrait}>{currentEmoji}</div>
           <input
             className={styles.input}
@@ -81,7 +87,7 @@ const Profile = (props): JSX.Element => {
             <button
               type="button"
               key={item}
-              onClick={() => handleEmojiPick(item)}
+              onClick={(): void => handleEmojiPick(item)}
               className={`${styles.emoji} ${
                 currentEmoji === item ? styles.selected : ''
               }`}
@@ -92,14 +98,19 @@ const Profile = (props): JSX.Element => {
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>
-            <Button padding="8px" onClick={() => handleUpdate()}>
+            <Button padding="8px" onClick={(): void => handleUpdate()}>
               save
             </Button>
           </div>
         )}
       </div>
-    </div>
+    </Paper>
   );
+};
+
+Profile.defaultProps = {
+  requireSave: false,
+  onClick: null
 };
 
 export default Profile;

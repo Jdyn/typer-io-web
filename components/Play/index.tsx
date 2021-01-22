@@ -135,7 +135,7 @@ const Play = (props: Props): JSX.Element => {
     <>
       <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
         <ClientList isSolo={isSolo} />
-        <PlayStatus gameboard={gameboard} isCustom={isCustom} />
+        <PlayStatus gameboard={gameboard} isCustom={isCustom} isSolo={isSolo} />
         <Leaderboard />
         <Gameboard
           wrongIndex={editorState.wrongIndex}

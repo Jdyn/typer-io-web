@@ -19,7 +19,7 @@
 
 @media only screen and (max-width: 814px) {
   .container {
-    grid-template-rows: min-content min-content 1fr;
+    grid-template-rows: min-content min-content min-content min-content 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
       'news'
@@ -31,15 +31,7 @@
 }
 
 .news {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
-  height: 650px;
   grid-area: news;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
 }
 
 .newsContainer {
@@ -99,7 +91,8 @@
 
 @media only screen and (max-width: 814px) {
   .hub {
-    grid-template-rows: min-content min-content 1fr;
+    grid-template-rows: min-content 1fr;
+    height: auto;
     grid-template-columns: 1fr;
   }
 }

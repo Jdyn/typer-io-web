@@ -39,15 +39,10 @@ const Home = (): JSX.Element => {
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {formatTime(1611341617300)} </span>
                 <p>
-                  Hello, I started typer.io as a side project and have worked on
-                  it over the years by myself. It has been cost free for me to
-                  run up until now, since a lot more users have been playing
-                  recently.
-                </p>
-                <p>
-                  Currently it costs about $15 dollars a month to keep it
-                  running. Any amount would help. You can donate as little as $1
-                  below. Thank you!
+                  Hello, the site has been gaining a lot of traction lately
+                  which has increased costs significantly. Please consider
+                  supporting development with as a little as $1 if you enjoyed
+                  your time here!
                 </p>
                 <a
                   className={styles.support}

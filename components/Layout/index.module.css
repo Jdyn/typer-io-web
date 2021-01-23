@@ -9,5 +9,5 @@
   transform-origin: 0;
   background: #eef2f7;
   /* background:linear-gradient(90deg, #252525 15%, #303030 70%, #353535 95%); */
-  transform: skewY(-12deg);
+  transform: skewY(-10deg);
 }

@@ -39,10 +39,9 @@ const Home = (): JSX.Element => {
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {formatTime(1611341617300)} </span>
                 <p>
-                  Hello, the site has been gaining a lot of traction lately
-                  which has increased costs significantly. Please consider
-                  supporting development with as a little as $1 if you enjoyed
-                  your time here!
+                  Hello, the site has gained a lot of traction lately which has
+                  increased costs significantly. Please consider supporting
+                  development with as a little as $1 if you enjoyed playing!
                 </p>
                 <a
                   className={styles.support}

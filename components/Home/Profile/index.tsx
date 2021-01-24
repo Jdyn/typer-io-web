@@ -38,7 +38,9 @@ const Profile = (props: Props): JSX.Element => {
 
   const [currentEmoji, setEmoji] = useState('');
 
-  const didChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const didChange = (event): void => {
+    event.preventDefault();
+
     dispatch(nicknameChanged(event.target.value));
     localStorage.setItem('nickname', event.target.value);
   };
@@ -75,10 +77,14 @@ const Profile = (props: Props): JSX.Element => {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={styles.portrait}>{currentEmoji}</div>
+          <label hidden htmlFor="nicknameInput">
+            Nickname:
+          </label>
           <input
+            id="nicknameInput"
             className={styles.input}
             value={nickname || ''}
-            placeholder="Enter Nickname"
+            placeholder="John Smith"
             onChange={didChange}
           />
         </div>

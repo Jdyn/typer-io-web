@@ -71,7 +71,7 @@
   color: var(--text);
   align-self: center;
   padding: 5px 5px;
-  margin: 10px 0px;
+  margin: 10px auto;
 }
 
 .input::placeholder {

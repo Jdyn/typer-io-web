@@ -13,7 +13,6 @@ const LobbyContainer = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
   const roomId = useSelector((state: AppState) => state.game.room.id);
-  const session = useSelector((state: AppState) => state.session);
 
   useEffect(() => {
     if (!socket.connected && !socket.pending) {
@@ -34,12 +33,7 @@ const LobbyContainer = (): JSX.Element => {
       }
 
       const nickname = localStorage.getItem('nickname') || null;
-      const username =
-        nickname ||
-        session.user?.username ||
-        localStorage.getItem('username') ||
-        session.nickname ||
-        nickname;
+      const username = nickname || localStorage.getItem('username') || nickname;
 
       const emoji = localStorage.getItem('emoji') || '🐌';
 
@@ -51,7 +45,7 @@ const LobbyContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch, router.query]);
+  }, [dispatch, router.query, socket.connected, socket.pending]);
 
   // useEffect(() => {
   //   if (roomId !== router.query.id && socket.connected && roomId) {

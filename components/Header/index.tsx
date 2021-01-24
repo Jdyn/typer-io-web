@@ -52,6 +52,8 @@ const Header = (): JSX.Element => {
         <div className={styles.searchContainer}>
           <form onSubmit={navigate}>
             <input
+              id="header-search"
+              type="text"
               placeholder="Search for players..."
               className={styles.search}
               value={form.search}
@@ -62,6 +64,7 @@ const Header = (): JSX.Element => {
                 })
               }
             />
+            <label hidden htmlFor="header-search">Search for users</label>
           </form>
         </div>
         {!authenticationRequest?.isPending ? (

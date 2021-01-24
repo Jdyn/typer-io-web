@@ -83,46 +83,46 @@ const PlayStatus = (props: Props): JSX.Element => {
 
       if (errored) {
         return {
-          color: '#e57373',
+          color: styles.red,
           text: error || 'Connection error occured'
         };
       }
 
       if (isOver) {
-        return { color: '#6772e5', text: 'Game has Ended' };
+        return { color: styles.blue, text: 'Game has Ended' };
       }
 
       if (!connected) {
-        return { color: '#469cd0', text: 'Connecting to server...' };
+        return { color: styles.blue, text: 'Connecting to server...' };
       }
 
       if (isStarted) {
-        return { color: '#81C784', text: 'GO!' };
+        return { color: styles.green, text: 'GO!' };
       }
 
       if (!isOver && connected) {
         if (time > 10) {
-          return { color: '#469cd0', text: 'Looking for Players...' };
+          return { color: styles.blue, text: 'Looking for Players...' };
         }
 
         if (time > 5) {
-          return { color: '#e5a03e', text: 'Get Ready...' };
+          return { color: styles.orange, text: 'Get Ready...' };
         }
 
         if (time > 0) {
-          return { color: '#e57373', text: 'Get Set...' };
+          return { color: styles.red, text: 'Get Set...' };
         }
 
         if (time <= 0 && !isCustom && !isSolo) {
-          return { color: '#469cd0', text: 'Looking for Players...' };
+          return { color: styles.blue, text: 'Looking for Players...' };
         }
       }
 
-      return { color: '#469cd0', text: 'Connecting to server...' };
+      return { color: styles.blue, text: 'Connecting to server...' };
     };
 
     setHeader(updateHeader());
-  }, [gameboard, state, socket, room, setHeader, isCustom]);
+  }, [gameboard, state, socket, room, setHeader, isCustom, isSolo]);
 
   const handleClick = () => {
     silentEmit('RESET_CUSTOM_GAME', {});
@@ -145,10 +145,7 @@ const PlayStatus = (props: Props): JSX.Element => {
             </Button>
           </div>
         )}
-        <div
-          className={styles.container}
-          style={{ backgroundColor: header.color }}
-        >
+        <div className={`${styles.container} ${header.color}`}>
           <h2>
             {gameboard.gameTime || room.roomTime || (
               <Loader width="36px" height="36px" color="white" />

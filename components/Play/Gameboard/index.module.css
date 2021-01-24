@@ -74,8 +74,7 @@
 
 .content > h1 > span {
   font-size: 1rem;
-  padding: 3px;
-  background: var(--accent);
+  padding: 3px 6px;
   border-radius: 6px;
   margin-left: 10px;
   color: white;
@@ -155,4 +154,16 @@
   transition: 0.1s;
   z-index: 1000;
   height: 18px;
+}
+
+.easy {
+  background: var(--green);
+}
+
+.medium {
+  background: var(--orange);
+}
+
+.hard {
+  background: var(--red);
 }

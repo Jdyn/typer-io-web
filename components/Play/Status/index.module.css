@@ -37,3 +37,19 @@
 .container > h2 {
   margin: 0;
 }
+
+.green {
+  background: var(--green);
+}
+
+.blue {
+  background: var(--accent);
+}
+
+.orange {
+  background: var(--orange);
+}
+
+.red {
+  background: var(--red);
+}

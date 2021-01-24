@@ -113,7 +113,7 @@
   display: flex;
   width: 20vw;
   max-width: 300px;
-  background: #5d66ce;
+  background: var(--banner-accent);
   outline: none;
   border: none;
   color: white;

@@ -11,19 +11,19 @@ const cards = [
   {
     title: 'Quick Play',
     text: 'Play against others',
-    color: '#6772e5',
+    color: 'blue',
     route: '/play'
   },
   {
     title: 'Solo Play',
     text: 'Play on your own',
-    color: '#3ECF8E',
+    color: 'green',
     route: '/solo'
   },
   {
     title: 'Group Play',
     text: 'Play against friends',
-    color: '#DC6AC8',
+    color: 'pink',
     route: '/lobby'
   }
 ];
@@ -83,9 +83,8 @@ const Home = (): JSX.Element => {
                 <Link prefetch={false} href={card.route} key={card.route}>
                   <a
                     type="button"
-                    className={styles.card}
+                    className={`${styles.card} ${styles[card.color]}`}
                     key={card.route}
-                    style={{ background: card.color }}
                   >
                     <h3>{card.title} ➜</h3>
                     <p>{card.text}</p>

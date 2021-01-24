@@ -194,3 +194,15 @@
 .support:active {
   transform: translateY(2px);
 }
+
+.blue {
+  background: var(--accent);
+}
+
+.green {
+  background: var(--green);
+}
+
+.pink {
+  background: var(--pink);
+}

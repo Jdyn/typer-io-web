@@ -135,7 +135,9 @@ const Gameboard = (props: Props): JSX.Element => {
           <>
             <h1>
               {snippet.title}
-              <span>{snippet.difficulty}</span>
+              <span className={`${styles[snippet.difficulty]}`}>
+                {snippet.difficulty}
+              </span>
             </h1>
             <span>
               {snippet.author && (

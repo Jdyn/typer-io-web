@@ -12,7 +12,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "@sentry/browser": "^6.0.2",
     "@sentry/integrations": "^6.0.2",
-    "@sentry/node": "^6.6.2",
+    "@sentry/node": "^6.0.2",
     "@sentry/webpack-plugin": "^1.14.0",
     "js-cookie": "^2.2.1",
     "next": "^10.0.5",

@@ -48,4 +48,9 @@ const Layout = (props: Props): JSX.Element => {
   );
 };
 
+Layout.defaultProps = {
+  children: null,
+  striped: false
+};
+
 export default Layout;

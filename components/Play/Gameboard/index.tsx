@@ -37,15 +37,6 @@ const Gameboard = (props: Props): JSX.Element => {
   );
 
   useEffect(() => {
-    // if (currentWord) {
-    //   if (currentInput.length > currentWord.length) {
-    //     setEditorState((prev) => ({
-    //       ...prev,
-    //       wrongIndex: -1
-    //     }));
-    //   }
-    // }
-
     if (wrongIndex !== null) {
       if (currentWord) {
         if (currentInput === currentWord.substring(0, currentInput.length)) {

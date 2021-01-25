@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './index.module.css';
-import { AppState } from '../../store';
-import { handleAuth } from '../../store/session/actions';
-import { useRouter } from 'next/router';
+import { AppState } from '../../../store';
+import { handleAuth } from '../../../store/session/actions';
 
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -64,7 +65,9 @@ const Header = (): JSX.Element => {
                 })
               }
             />
-            <label hidden htmlFor="header-search">Search for users</label>
+            <label hidden htmlFor="header-search">
+              Search for users
+            </label>
           </form>
         </div>
         {!authenticationRequest?.isPending ? (

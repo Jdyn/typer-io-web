@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import Layout from '../components/Shared/Layout';
 import AccountAuth from '../components/Account/Auth';
 
 interface Props {

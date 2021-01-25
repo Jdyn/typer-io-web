@@ -112,9 +112,7 @@
   font-size: 18px;
   font-weight: 500;
   z-index: 10;
-  font-kerning: none;
   letter-spacing: 0.025rem;
-  color: var(--text);
   line-height: 27px;
   user-select: none;
 }

@@ -4,6 +4,14 @@ import { useSelector } from 'react-redux';
 import { useTransition, config, animated } from 'react-spring';
 import styles from './index.module.css';
 
+const placements = {
+  1: '1st',
+  2: '2nd',
+  3: '3rd',
+  4: '4th',
+  5: '5th'
+};
+
 const ClientList = (props) => {
   const { isSolo } = props;
   const users = useSelector((state) => state.game.room.clients);
@@ -54,17 +62,22 @@ const ClientList = (props) => {
                     {item.gamePiece.time}
                   </span>
                 </div>
-                <div
-                  className={styles.username}
-                  style={{ background: item.gamePiece.color }}
-                >
-                  <span>
-                    <span>{item.emoji}</span>
-                    {item.username}
-                  </span>
-                  <div className={styles.wpm}>
-                    {item.gamePiece.wpm}{' '}
-                    <span className={styles.statHeader}>WPM</span>
+                <div className={styles.username}>
+                  <div
+                    className={styles.usernameWrapper}
+                    style={{ background: item.gamePiece.color }}
+                  >
+                    <span>
+                      <span>{item.emoji}</span>
+                      {item.username}
+                    </span>
+                    <div className={styles.wpm}>
+                      {item.gamePiece.wpm}{' '}
+                      <span className={styles.statHeader}>WPM</span>
+                    </div>
+                  </div>
+                  <div className={styles.placement}>
+                    {placements[item.gamePiece?.rank] || '-'}
                   </div>
                 </div>
               </animated.div>

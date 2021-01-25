@@ -84,6 +84,7 @@ const Profile = (props: Props): JSX.Element => {
             id="nicknameInput"
             className={styles.input}
             value={nickname || ''}
+            maxLength={21}
             placeholder="John Smith"
             onChange={didChange}
           />

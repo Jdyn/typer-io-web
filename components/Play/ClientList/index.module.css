@@ -85,27 +85,60 @@
   border-radius: 12px;
   color: white;
   height: 100%;
-  padding: 5px 10px 5px 10px;
   grid-row: 2 / 3;
   grid-column: 1 / 4;
 }
 
-.username > span {
+.usernameWrapper {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
+  font-weight: 500;
+  align-items: center;
+  overflow: hidden;
+  align-self: flex-end;
+  color: white;
+  height: 100%;
+  width: 100%;
+  text-overflow: ellipsis;
+  padding: 5px 5px 5px 10px;
+}
+
+.usernameWrapper > span {
   display: flex;
   align-items: center;
+  max-width: 130px;
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
   flex: 2.5;
 }
 
-.username > span > span {
+.usernameWrapper > span > span {
   font-size: 20px;
   margin-right: 6px;
 }
 
 .wpm {
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
-  flex: 1.2;
+  flex: 1;
   color: white;
+}
+
+.placement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: var(--accent);
+  box-shadow: var(--shadow);
+  width: 35px;
+  font-size: 14px;
+  font-weight: 700;
+  height: 100%;
+  padding: 3px;
 }
 
 .statHeader {

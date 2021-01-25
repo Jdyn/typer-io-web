@@ -6,7 +6,6 @@ import formatTime from '../../../util/formatTime';
 
 interface Props {
   username: string;
-  // matchesPageQuery: string;
 }
 
 const Profile = (props: Props): JSX.Element => {
@@ -22,14 +21,17 @@ const Profile = (props: Props): JSX.Element => {
         if (response.ok) {
           set(response?.result?.user);
         } else {
-          setError('There was an error finding this player.');
+          set(null);
+          setError(
+            'There was an error finding this player. This player likely does not exist.'
+          );
         }
       });
     }
   }, [username]);
 
   const fetchMatches = (page: number): void => {
-    if (page <= user.matchMaxPage && page >= 1 && page !== user.matchPage) {
+    if (page <= user?.matchMaxPage && page >= 1 && page !== user?.matchPage) {
       ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
         (response) => {
           if (response.ok && response.result.matches) {
@@ -138,7 +140,7 @@ const Profile = (props: Props): JSX.Element => {
             onClick={() => fetchMatches(user?.matchMaxPage)}
             type="button"
           >
-            {user?.matchMaxPage}
+            {user?.matchMaxPage || 1}
           </button>
         </div>
       </div>

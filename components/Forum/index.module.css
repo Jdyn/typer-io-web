@@ -8,8 +8,7 @@
   grid-template-rows: 1fr;
   max-width: 700px;
   gap: 30px;
-  grid-template-areas:
-    'main';
+  grid-template-areas: 'main';
 }
 
 .create {
@@ -32,6 +31,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
+  color: var(--accent);
 }
 
 .feed {

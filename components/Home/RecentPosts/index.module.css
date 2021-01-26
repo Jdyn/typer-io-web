@@ -79,6 +79,10 @@
   color: var(--subtext);
 }
 
+.content > span > a{
+  color: var(--accent);
+}
+
 .portrait {
   position: relative;
   width: 46px;

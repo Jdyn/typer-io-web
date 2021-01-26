@@ -43,6 +43,10 @@ const Profile = (props: Props): JSX.Element => {
         (response) => {
           if (response.ok && response.result.matches) {
             set({ ...user, ...response.result });
+            const element = document.getElementById('profile-matches-wrapper');
+            if (element) {
+              element.scrollTop = 0;
+            }
           }
         }
       );
@@ -120,10 +124,17 @@ const Profile = (props: Props): JSX.Element => {
           <div className={styles.headerItem}>WPM</div>
         </div>
         <div className={styles.historyContainer}>
-          <div className={styles.historyWrapper}>
+          <div id="profile-matches-wrapper" className={styles.historyWrapper}>
             {user?.matches?.map((item, index) => (
               <div className={styles.entry} key={item.id}>
-                <div className={styles.count}>{index + 1}.</div>
+                <div className={styles.count}>
+                  {user?.matchPage > 1 ? (
+                    <span>{25 * (user?.matchPage - 1) + index + 1}</span>
+                  ) : (
+                    <span>{index + 1}</span>
+                  )}
+                  .
+                </div>
                 <div className={styles.historyContent}>
                   <span className={item.user ? styles.verified : ''}>
                     {item.user?.username ?? item.nickname ?? 'Guest'}

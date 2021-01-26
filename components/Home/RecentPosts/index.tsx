@@ -39,7 +39,10 @@ const RecentPosts = (): JSX.Element => {
                     <a className={styles.title}>{post.title}</a>
                   </Link>
                   <span>
-                    {formatTime(post.createdAt)} by {post.user.username}
+                    {formatTime(post.createdAt)} by{' '}
+                    <Link href={`/u/${post.user.username}`}>
+                      <a>{post.user.username}</a>
+                    </Link>
                     {post.user.isAdmin && (
                       <span className={styles.admin}>Creator</span>
                     )}

@@ -47,9 +47,7 @@ const Forum = (): JSX.Element => {
                   <span>
                     Posted {formatTime(post.createdAt)} by{' '}
                     <Link href={`/u/${post.user.username}`}>
-                      <span className={styles.nameLink}>
-                        {post.user?.username}
-                      </span>
+                      <a className={styles.nameLink}>{post.user?.username}</a>
                     </Link>{' '}
                     {post.user.isAdmin && (
                       <span className={styles.admin}>Creator</span>

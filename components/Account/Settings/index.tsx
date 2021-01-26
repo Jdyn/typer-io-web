@@ -50,7 +50,7 @@ const ProfileSettings = (): JSX.Element => {
                 <span className={styles.content}>
                   <TextBox
                     value={form.bio}
-                    height="100px"
+                    height="200px"
                     onChange={(e): void =>
                       setForm({ ...form, bio: e.target.value })
                     }

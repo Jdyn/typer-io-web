@@ -40,7 +40,6 @@ const Profile = (props: Props): JSX.Element => {
 
   const fetchMatches = (page: number): void => {
     if (page <= user?.matchMaxPage && page >= 1 && page !== user?.matchPage) {
-      set(null);
       ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
         (response) => {
           if (response.ok && response.result.matches) {

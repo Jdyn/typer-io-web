@@ -2,9 +2,9 @@
   display: flex;
   flex: 1;
   background: var(--accent);
-  border-radius: 8px;
+  border-radius: 16px;
   outline: none;
-  border: 3px solid #5d66ce;
+  border: 3px solid var(--banner-accent);
   margin: 0px 5px;
   padding: 5px 10px;
   color: white;
@@ -12,7 +12,7 @@
   text-transform: uppercase;
   font-weight: 800;
   justify-content: center;
-  transition-duration: 0.15s;
+  transition-duration: 0.25s;
 }
 
 .button:hover {

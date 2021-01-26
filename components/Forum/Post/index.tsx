@@ -51,7 +51,7 @@ const Post = (props: Props): JSX.Element => {
               <span>
                 posted by{' '}
                 <Link href={`/u/${post.user.username}`}>
-                  <span className={styles.nameLink}>{post.user?.username}</span>
+                  <a className={styles.nameLink}>{post.user?.username}</a>
                 </Link>{' '}
                 {formatTime(post.createdAt)}
               </span>

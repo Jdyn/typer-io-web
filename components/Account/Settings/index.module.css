@@ -1,0 +1,47 @@
+.root {
+  display: grid;
+  position: relative;
+  margin: 145px auto 30px auto;
+  padding: 0px 10px;
+  z-index: 100;
+  grid-template-columns: 1.2fr 2fr 1.2fr;
+  grid-template-rows: 1fr;
+  max-width: 1250px;
+  gap: 20px;
+  grid-template-areas: '. settings .';
+}
+
+.settings {
+  grid-area: settings;
+}
+
+.container {
+  margin: 20px;
+  border: 2px solid var(--border);
+  height: 535px;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.label {
+  display: flex;
+  flex: 1;
+}
+.content {
+  display: flex;
+  flex: 2;
+}
+
+.save {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

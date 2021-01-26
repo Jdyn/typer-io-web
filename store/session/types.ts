@@ -1,9 +1,11 @@
 export interface SessionRequests {
   AUTHENTICATE: 'AUTHENTICATE';
+  UPDATE_USER: 'UPDATE_USER';
 }
 
 export const requests: SessionRequests = {
-  AUTHENTICATE: 'AUTHENTICATE'
+  AUTHENTICATE: 'AUTHENTICATE',
+  UPDATE_USER: 'UPDATE_USER'
 };
 
 interface SessionActions {

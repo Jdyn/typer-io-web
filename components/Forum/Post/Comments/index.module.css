@@ -48,6 +48,7 @@
   overflow-wrap: break-word;
   word-break: break-word;
   word-wrap: break-word;
+  white-space: pre-wrap;
   margin: 0;
   font-size: 17px;
   margin-bottom: 15px;

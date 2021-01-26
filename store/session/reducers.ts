@@ -27,6 +27,9 @@ const reducers = {
   userLoggedOut: (state, _action) => {
     state.user = null;
     state.isLoggedIn = false;
+  },
+  userUpdated: (state, action) => {
+    state.user = { ...state.user, ...action.payload.user };
   }
 };
 
@@ -41,7 +44,8 @@ export const {
   userLoggedIn,
   userSignedUp,
   userLoggedOut,
-  userRefreshed
+  userRefreshed,
+  userUpdated
 } = session.actions;
 
 export default session.reducer;

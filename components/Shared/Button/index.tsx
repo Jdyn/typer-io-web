@@ -69,7 +69,7 @@ const Button = forwardRef(
         style={{ margin, padding, width }}
       >
         {isPending ? (
-          <Loader width="36px" height="36px" color={color} />
+          <Loader width="20px" height="20px" color={color} />
         ) : (
           children
         )}

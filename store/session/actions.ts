@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import cookies from 'js-cookie';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
@@ -7,13 +8,16 @@ import {
   userLoggedIn,
   userSignedUp,
   userLoggedOut,
-  userRefreshed
+  userRefreshed,
+  userUpdated
 } from './reducers';
+import { Dispatch } from 'redux';
 
 const setCurrentSession = (user): void => {
   if (user.token) {
     const jsonToken = user.token;
     localStorage.setItem('token', jsonToken);
+    cookies.set('token', user.token);
     localStorage.setItem('username', user.username);
   }
 };
@@ -73,6 +77,7 @@ const logout = (): ((dispatch, getState: () => AppState) => void) => (
       dispatch(setRequest(false, requestType));
       dispatch(userLoggedOut({}));
       localStorage.removeItem('token');
+      cookies.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       window.localStorage.removeItem('username');
       Router.push('/');
@@ -82,6 +87,7 @@ const logout = (): ((dispatch, getState: () => AppState) => void) => (
       dispatch(userLoggedOut({}));
       localStorage.removeItem('token');
       localStorage.removeItem('username');
+      cookies.remove('token');
       window.localStorage.setItem('logout', JSON.stringify(Date.now()));
       Router.push('/');
     });
@@ -174,9 +180,31 @@ export const authenticate = (): ((
         dispatch(setRequest(false, requestType));
       } else if (response.ok !== null && response.ok === false) {
         localStorage.removeItem('token');
+        cookies.remove('token');
         dispatch(userRefreshed({ user: null, isLoggedIn: false }));
         dispatch(setRequest(false, requestType));
       }
     })
     .catch((): void => {});
+};
+
+export const updateUser = (payload) => async (
+  dispatch: Dispatch,
+  getState: () => AppState
+): Promise<void> => {
+  const requestType = requests.UPDATE_USER;
+  const request = getState().request[requestType] || { isPending: false };
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  const response = await Api.post('/user', payload);
+
+  if (response.ok) {
+    dispatch(userUpdated({ user: response.result.user }));
+    dispatch(setRequest(false, requestType));
+  } else {
+    dispatch(setRequest(false, requestType, 'Failed to save.'));
+  }
 };

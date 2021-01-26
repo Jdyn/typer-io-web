@@ -25,6 +25,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
+  color: var(--accent);
 }
 
 .postContainer {
@@ -65,6 +66,7 @@
   word-break: break-word;
   font-size: 17px;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .comments {

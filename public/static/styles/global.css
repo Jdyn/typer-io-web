@@ -31,16 +31,18 @@
   scrollbar-width: thin;
 }
 
-:root { 
-  --accent: #4E6EDD;
-  --banner-accent: #4865CD;
+:root {
+  --accent: #4e6edd;
+  --banner-accent: #4865cd;
   --green: #208340;
-  --pink: #BE4D78;  
+  --pink: #be4d78;
   --text: #4c4c4c;
-  --orange: #E37800;
+  --orange: #e37800;
   --subtext: #787575;
-  --border: #DCDCDC;
-  --red: #D73C42;
+  /* --border: #DCDCDC; */
+  --border: #e5e5e5;
+  --border-fill: #f7f7f7;
+  --red: #d73c42;
   --subwhite: #eef2f7;
   --black: #4c4c4c;
   /* --shadow: 0 10px 10px rgba(0, 0, 0, 0.2), 0 10px 50px rgba(0, 0, 0, 0.2); */
@@ -57,7 +59,7 @@ html {
 }
 
 body {
-  margin: 0;  
+  margin: 0;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   font-family: 'dinn';
   color: #4c4c4c;

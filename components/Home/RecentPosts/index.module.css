@@ -18,6 +18,7 @@
   flex-direction: row;
   position: relative;
   align-content: center;
+  background: white;
   justify-content: center;
   border: 2px solid var(--border);
   border-radius: 16px;

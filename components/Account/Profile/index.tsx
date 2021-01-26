@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
+import Button from '../../Shared/Button';
+import { AppState } from '../../../store';
+import Link from 'next/link';
 
 interface Props {
   username: string;
@@ -13,6 +17,9 @@ const Profile = (props: Props): JSX.Element => {
 
   const [user, set] = useState(null);
   const [error, setError] = useState(null);
+  const sessionUser = useSelector((state: AppState) => state.session.user);
+
+  console.log(user);
 
   useEffect(() => {
     if (username) {
@@ -48,14 +55,29 @@ const Profile = (props: Props): JSX.Element => {
         <Banner>
           <h3>Profile</h3>
         </Banner>
-        <div className={styles.container}>
+        <div className={styles.profileContainer}>
           <div className={styles.wrapper}>
             <div className={styles.profilePortrait} />
             <div className={styles.content}>
-              <h3>{user?.username}</h3>
+              <h3>
+                {user?.username}{' '}
+                {user?.isAdmin && <span className={styles.admin}>Creator</span>}
+              </h3>
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
             </div>
+            {user && (
+              <div className={styles.bio}>
+                {user.bio || "We don't know much about this person yet."}
+              </div>
+            )}
           </div>
+          {user && user.id === sessionUser?.id && (
+            <div className={styles.settings}>
+              <Link href="/u/settings">
+                <Button padding="6px 20px">Edit Profile</Button>
+              </Link>
+            </div>
+          )}
           <div>{error && error}</div>
         </div>
       </div>

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
-import Link from 'next/link';
+import MiniListPost from '../../Home/RecentPosts/Post';
 
 interface Props {
   username: string;
@@ -18,6 +19,8 @@ const Profile = (props: Props): JSX.Element => {
   const [user, set] = useState(null);
   const [error, setError] = useState(null);
   const sessionUser = useSelector((state: AppState) => state.session.user);
+
+  useEffect(() => {});
 
   useEffect(() => {
     if (username) {
@@ -37,6 +40,7 @@ const Profile = (props: Props): JSX.Element => {
 
   const fetchMatches = (page: number): void => {
     if (page <= user?.matchMaxPage && page >= 1 && page !== user?.matchPage) {
+      set(null);
       ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
         (response) => {
           if (response.ok && response.result.matches) {
@@ -107,9 +111,19 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.friendsList}>
         <Banner>
-          <h3>Friends</h3>
+          <h3>Posts</h3>
         </Banner>
-        <div className={styles.friendsListWrapper}>Coming soon...</div>
+        <div className={styles.friendsListWrapper}>
+          {user?.posts.length > 0 ? (
+            user?.posts.map((post) => (
+              <MiniListPost key={post.id} post={post} />
+            ))
+          ) : (
+            <>
+              {user && <span>{user?.username} has not created any posts.</span>}
+            </>
+          )}
+        </div>
       </div>
       <div className={styles.historyRoot}>
         <Banner>

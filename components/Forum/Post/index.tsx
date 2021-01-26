@@ -49,10 +49,10 @@ const Post = (props: Props): JSX.Element => {
             <div className={styles.header}>
               <h1>{post.title}</h1>
               <span>
-                posted by
+                posted by{' '}
                 <Link href={`/u/${post.user.username}`}>
                   <a className={styles.nameLink}>{post.user?.username}</a>
-                </Link>
+                </Link>{' '}
                 {post.user?.isAdmin && (
                   <span className={styles.admin}>Creator</span>
                 )}

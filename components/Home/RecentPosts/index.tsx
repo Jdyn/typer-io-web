@@ -7,6 +7,7 @@ import { AppState } from '../../../store';
 import { fetchPosts } from '../../../store/forum/actions';
 import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
+import MiniListPost from './Post';
 
 interface Props {
   children?: React.ReactNode;
@@ -33,29 +34,7 @@ const RecentPosts = (): JSX.Element => {
         {recentPostsRequest?.success && (
           <div className={styles.container}>
             {posts.map((post) => (
-              <div className={styles.post} key={post.id}>
-                <div className={styles.content}>
-                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                    <a className={styles.title}>{post.title}</a>
-                  </Link>
-                  <span>
-                    {formatTime(post.createdAt)} by{' '}
-                    <Link href={`/u/${post.user.username}`}>
-                      <a>{post.user.username}</a>
-                    </Link>
-                    {post.user.isAdmin && (
-                      <span className={styles.admin}>Creator</span>
-                    )}
-                  </span>
-                  <p>{post.body}</p>
-                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                    <a className={styles.comment}>
-                      {post.commentCount}{' '}
-                      {post.commentCount === 1 ? 'comment' : 'comments'}
-                    </a>
-                  </Link>
-                </div>
-              </div>
+              <MiniListPost post={post} />
             ))}
           </div>
         )}

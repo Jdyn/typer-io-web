@@ -19,8 +19,6 @@ const Profile = (props: Props): JSX.Element => {
   const [error, setError] = useState(null);
   const sessionUser = useSelector((state: AppState) => state.session.user);
 
-  console.log(user);
-
   useEffect(() => {
     if (username) {
       setError(null);

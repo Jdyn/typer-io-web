@@ -46,7 +46,7 @@ const defaultListeners = (dispatch) => {
           }
         },
         error: null,
-        errored: true
+        errored: false
       });
     });
 

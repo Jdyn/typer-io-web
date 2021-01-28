@@ -15,7 +15,8 @@ export const types = keyMirror(
   'DISCONNECT_SOCKET',
   'ROOM_NOT_FOUND',
   'STARTING_CUSTOM_GAME',
-  'RESETTING_GAME'
+  'RESETTING_GAME',
+  'KICKED'
 );
 
 let socket;
@@ -45,7 +46,7 @@ const defaultListeners = (dispatch) => {
           }
         },
         error: null,
-        errored: false
+        errored: true
       });
     });
 
@@ -58,6 +59,32 @@ const defaultListeners = (dispatch) => {
           error: payload.error || 'Error connecting to server'
         }
       });
+    });
+
+    socket.on('KICKED', (payload) => {
+      dispatch({
+        type: types.DISCONNECT_SOCKET,
+        room: {
+          id: null,
+          count: null,
+          roomTime: null,
+          clients: [],
+          messages: [],
+          snippet: '',
+          gameboard: {
+            words: [],
+            wordsRemaining: [],
+            wordsComplete: [],
+            isStarted: false,
+            gameTime: null
+          }
+        },
+        error: payload,
+        errored: true,
+        kicked: true
+      });
+
+      // socket.disconnect();
     });
 
     socket.on('ROOM_NOT_FOUND', (payload) => {

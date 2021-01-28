@@ -170,7 +170,8 @@ const reducer = (state = initialState, action) => {
           pending: false,
           connected: false,
           error: action.error ? action.error : state.socket.error,
-          errored: action.errored
+          errored: action.errored,
+          kicked: action.kicked || false
         }
       };
     case types.RECIEVE_CHAT_MESSAGE:

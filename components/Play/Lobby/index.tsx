@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import ClientList from '../ClientList';
 import { silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
@@ -9,10 +10,12 @@ import Chat from '../Chat';
 import Banner from '../../Shared/Banner';
 import Loader from '../../Shared/Loader';
 import Profile from '../../Home/Profile';
+import Paper from '../../Shared/Paper';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
 const Lobby = (_props): JSX.Element => {
+  const router = useRouter();
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
   const socket = useSelector((state: AppState) => state.game.socket);
@@ -20,6 +23,8 @@ const Lobby = (_props): JSX.Element => {
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
   );
+
+  const [hidden, setHidden] = useState(true);
 
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
@@ -32,6 +37,18 @@ const Lobby = (_props): JSX.Element => {
   const handleUserUpdate = (payload) => {
     silentEmit('CLIENT_SETTINGS_UPDATE', payload);
   };
+
+  const handleKick = (event, id): void => {
+    event.preventDefault();
+
+    silentEmit('KICK_PLAYER_CUSTOM_GAME', { id });
+  };
+
+  useEffect(() => {
+    if (socket.kicked) {
+      router.replace('/');
+    }
+  }, [router, socket.kicked]);
 
   return (
     <main>
@@ -61,6 +78,26 @@ const Lobby = (_props): JSX.Element => {
             </div>
           </div>
         </div>
+        {currrentClient.isHost && (
+          <section className={styles.kick}>
+            <Paper title="Kick Players">
+              <div className={styles.clients}>
+                {game?.room?.clients?.map((client) => (
+                  <div key={client.id} className={styles.client}>
+                    <span style={{ color: client.gamePiece.color }}>
+                      {client.username}
+                    </span>
+                    {client.id !== currrentClient.id && (
+                      <Button onClick={(e) => handleKick(e, client.id)}>
+                        kick
+                      </Button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Paper>
+          </section>
+        )}
         <div className={styles.container}>
           <Banner>
             <h3>Custom Lobby</h3>
@@ -74,7 +111,19 @@ const Lobby = (_props): JSX.Element => {
             {room.id && (
               <>
                 <span>Share this link to invite players.</span>
-                <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
+                <span>(you can copy the link while hidden)</span>
+                <div className={styles.linkContainer}>
+                  <div
+                    style={{ filter: hidden ? 'blur(4px)' : '' }}
+                  >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
+                  <Button
+                    margin="0px"
+                    padding="0px 5px"
+                    onClick={() => setHidden(!hidden)}
+                  >
+                    {hidden ? 'show' : 'hide'}
+                  </Button>
+                </div>
                 {currrentClient.isHost ? (
                   <Button
                     padding="8px"

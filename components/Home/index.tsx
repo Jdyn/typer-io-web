@@ -37,7 +37,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1611648866686)} </span>
+                <span>updated {formatTime(1611844109466)} </span>
                 <p>
                   Hello, the site has gained a lot of traction lately which has
                   increased costs significantly. Please consider supporting
@@ -51,17 +51,14 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (Jan. 26th, 2021):</h3>
+                <h3>Changes (Jan. 28th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>You can now kick players from custom lobbies</li>
                     <li>Users can now add bios to their profile.</li>
                     <li>
                       I have added rankings in multiplayer matches to better
                       identify who won.
-                    </li>
-                    <li>
-                      I have added an custom typing &quot;caret&quot; that
-                      should improves the typing experience
                     </li>
                   </ul>
                 </div>

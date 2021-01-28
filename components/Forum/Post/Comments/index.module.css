@@ -57,7 +57,7 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  flex: 1;
+  align-items: flex-end;
   height: 50px;
 }
 

@@ -44,7 +44,9 @@ const CreatePost = (): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        <Banner>Forum</Banner>
+        <Banner>
+          <h3>Create Post</h3>
+        </Banner>
         <div className={styles.wrapper}>
           {createPostRequest.errored && <span>{createPostRequest.error}</span>}
           <TextBox

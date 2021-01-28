@@ -34,7 +34,7 @@ const RecentPosts = (): JSX.Element => {
         {recentPostsRequest?.success && (
           <div className={styles.container}>
             {posts.map((post) => (
-              <MiniListPost post={post} />
+              <MiniListPost key={post.id} post={post} />
             ))}
           </div>
         )}

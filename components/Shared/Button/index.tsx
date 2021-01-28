@@ -9,6 +9,7 @@ interface Props {
   secondary?: boolean;
   margin?: string;
   green?: boolean;
+  grey?: boolean;
   width?: string;
   maxWidth?: string;
   padding?: string;
@@ -31,7 +32,8 @@ const Button = forwardRef(
       color,
       large,
       href,
-      green
+      green,
+      grey
     } = props;
 
     return href ? (

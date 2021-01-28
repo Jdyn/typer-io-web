@@ -19,6 +19,7 @@
   border-radius: 16px;
   box-shadow: 0px 10px 15px rgba(30, 30, 70, 0.3);
   background-color: white;
+  transition: 2s;
   width: 100%;
 }
 
@@ -30,7 +31,7 @@
 
 .postContainer {
   border: 2px solid var(--border);
-  padding: 10px;
+  padding: 20px;
   border-radius: 16px;
   margin: 20px;
 }
@@ -96,5 +97,11 @@
 
 .buttons {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.buttons > div {
+  display: flex;
+  flex-direction: row;
 }

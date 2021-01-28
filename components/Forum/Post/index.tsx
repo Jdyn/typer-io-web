@@ -10,6 +10,7 @@ import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import Api from '../../../services/api';
 import Link from 'next/link';
+import { postUpdated } from '../../../store/forum/reducers';
 
 interface Props {
   postId: string;
@@ -28,6 +29,12 @@ const Post = (props: Props): JSX.Element => {
 
   const post = useSelector((state: AppState) => state.forum?.post);
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
+
+  useEffect(() => {
+    return () => {
+      dispatch(postUpdated({ post: null }));
+    };
+  }, [dispatch]);
 
   const submitComment = (): void => {
     Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
@@ -71,9 +78,18 @@ const Post = (props: Props): JSX.Element => {
                   }
                 />
                 <div className={styles.buttons}>
-                  <Button padding="8px" onClick={submitComment}>
-                    comment
-                  </Button>
+                    <Button padding="6px 20px" onClick={submitComment}>
+                      comment
+                    </Button>
+                    <Button
+                      padding="6px 27px"
+                      secondary
+                      onClick={() =>
+                        setComment((prev) => ({ ...prev, body: '' }))
+                      }
+                    >
+                      cancel
+                    </Button>
                 </div>
               </div>
             ) : (

@@ -97,7 +97,9 @@ const Comment = (props: Props): JSX.Element => {
               >
                 post
               </Button>
-              <Button padding="8px" onClick={onChange}>cancel</Button>
+              <Button padding="8px" secondary onClick={onChange}>
+                cancel
+              </Button>
             </div>
           </div>
         )}

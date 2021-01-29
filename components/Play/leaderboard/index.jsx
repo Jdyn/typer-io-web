@@ -18,14 +18,14 @@ const Leaderboard = () => {
   const [state, set] = useState([]);
 
   useEffect(() => {
-    if (snippet.id) {
+    if (snippet?.id) {
       ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
         if (response.ok) {
           set(response.result.matches);
         }
       });
     }
-  }, [snippet.id]);
+  }, [snippet?.id]);
 
   const renderBadge = (user) => {
     if (user) {

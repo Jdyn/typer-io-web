@@ -7,7 +7,7 @@
     'settings main profile'
     'settings chat profile'
     'kick chat profile'
-    'kick chat .';
+    'kick chat content';
   grid-gap: 20px;
   padding: 0px 10px;
   max-width: 1250px;
@@ -20,6 +20,10 @@
   border-radius: 16px;
   background-color: white;
   box-shadow: var(--shadow);
+}
+
+.aContainer {
+  grid-area: content;
 }
 
 .wrapper {

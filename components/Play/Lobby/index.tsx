@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import AdSense from 'react-adsense';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ClientList from '../ClientList';
@@ -148,6 +149,15 @@ const Lobby = (_props): JSX.Element => {
             onClick={(payload) => handleUserUpdate(payload)}
           />
         </div>
+        <section className={styles.aContainer}>
+          <AdSense.Google
+            client="ca-pub-3148839588626786"
+            slot="8048104115"
+            style={{ display: 'block' }}
+            format="auto"
+            responsive="true"
+          />
+        </section>
       </div>
     </main>
   );

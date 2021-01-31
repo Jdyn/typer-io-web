@@ -29,8 +29,10 @@ const Adsense = (props: Props): JSX.Element => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      setLoaded(window.adsbygoogle.loaded || false);
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      );
+      setLoaded((window as any).adsbygoogle.loaded || false);
     }
   }, []);
 

@@ -77,12 +77,9 @@ const Lobby = (_props): JSX.Element => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        {currrentClient.isHost && (
-          <section className={styles.kick}>
-            <Paper title="Kick Players">
-              <div className={styles.clients}>
+            {currrentClient.isHost && (
+              <div className={styles.setting}>
+                <h3>Kick Players</h3>
                 {game?.room?.clients?.map((client) => (
                   <div key={client.id} className={styles.client}>
                     <span style={{ color: client.gamePiece.color }}>
@@ -96,9 +93,9 @@ const Lobby = (_props): JSX.Element => {
                   </div>
                 ))}
               </div>
-            </Paper>
-          </section>
-        )}
+            )}
+          </div>
+        </div>
         <div className={styles.container}>
           <Banner>
             <h3>Custom Lobby</h3>

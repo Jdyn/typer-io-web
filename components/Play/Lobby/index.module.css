@@ -75,7 +75,6 @@
   margin: 0;
   grid-area: settings;
   border-radius: 16px;
-  height: 350px;
   background-color: white;
   box-shadow: var(--shadow);
 }
@@ -95,6 +94,7 @@
 .settingsContainer {
   margin: 20px;
   display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 20px;
   border: 2px solid var(--border);

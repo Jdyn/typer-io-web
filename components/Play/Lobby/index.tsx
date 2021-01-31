@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import AdSense from 'react-adsense';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ClientList from '../ClientList';
@@ -8,10 +7,10 @@ import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import styles from './index.module.css';
 import Chat from '../Chat';
+import Adsense from '../../Shared/Adsense';
 import Banner from '../../Shared/Banner';
 import Loader from '../../Shared/Loader';
 import Profile from '../../Home/Profile';
-import Paper from '../../Shared/Paper';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
@@ -147,7 +146,7 @@ const Lobby = (_props): JSX.Element => {
           />
         </div>
         <section className={styles.aContainer}>
-          <AdSense.Google
+          <Adsense
             client="ca-pub-3148839588626786"
             slot="8048104115"
             style={{ display: 'block' }}

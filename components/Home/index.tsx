@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import AdSense from 'react-adsense';
+import Adsense from '../Shared/Adsense';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
 import Hiscores from './Hiscores';
@@ -68,7 +68,7 @@ const Home = (): JSX.Element => {
           </Paper>
         </section>
         <section className={styles.aContainer}>
-          <AdSense.Google
+          <Adsense
             client="ca-pub-3148839588626786"
             slot="2539792412"
             style={{ display: 'block', textAlign: 'center' }}
@@ -109,7 +109,7 @@ const Home = (): JSX.Element => {
           padding: '0px 10px'
         }}
       >
-        <AdSense.Google
+        <Adsense
           client="ca-pub-3148839588626786"
           slot="7924266447"
           style={{ display: 'block', textAlign: 'center' }}

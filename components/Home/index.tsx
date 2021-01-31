@@ -104,7 +104,7 @@ const Home = (): JSX.Element => {
         className={styles.aContainer}
         style={{
           maxHeight: '200px',
-          maxWidth: '1200px',
+          maxWidth: '780px',
           margin: '0 auto',
           padding: '0px 10px'
         }}

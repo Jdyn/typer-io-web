@@ -24,6 +24,7 @@
     grid-template-areas:
       'news'
       'hub'
+      'content'
       'posts'
       'scores'
       'matches';

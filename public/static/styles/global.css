@@ -84,7 +84,7 @@ body {
   height: 2px;
 } */
 
-@media (min-width: 1025px) {
+@media (min-width: 480px) {
   ::-webkit-scrollbar {
     width: 10px;
   }

@@ -8,23 +8,21 @@
   box-shadow: var(--shadow);
 }
 
-.container {
-  display: flex;
-  position: relative;
-  border: 2px solid var(--border);
-  height: 100%;
-  justify-content: center;
-  border-radius: 0px 0px 16px 16px;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 100%;
   margin: 20px;
+  overflow: hidden;
   border: 2px solid var(--border);
   justify-content: center;
   border-radius: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .header {

@@ -75,41 +75,40 @@ const Profile = (props: Props): JSX.Element => {
   return (
     <Paper title="Profile">
       <div className={styles.wrapper}>
-        <div className={styles.header}>
-          <div className={styles.portrait}>{currentEmoji}</div>
-          <label hidden htmlFor="nicknameInput">
-            Nickname:
-          </label>
-          <input
-            id="nicknameInput"
-            className={styles.input}
-            value={nickname || ''}
-            maxLength={21}
-            placeholder="John Smith"
-            onChange={didChange}
-          />
-        </div>
-        <div className={styles.emojis}>
-          {emojiList.map((item) => (
-            <button
-              type="button"
-              key={item}
-              onClick={(): void => handleEmojiPick(item)}
-              className={`${styles.emoji} ${
-                currentEmoji === item ? styles.selected : ''
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-        {requireSave && (
-          <div className={styles.buttonWrapper}>
-            <Button padding="8px" onClick={(): void => handleUpdate()}>
-              save
-            </Button>
+        <div className={styles.content}>
+          <div className={styles.header}>
+            <div className={styles.portrait}>{currentEmoji}</div>
+            <input
+              id="nicknameInput"
+              className={styles.input}
+              value={nickname || ''}
+              maxLength={21}
+              placeholder="John Smith"
+              onChange={didChange}
+            />
           </div>
-        )}
+          <div className={styles.emojis}>
+            {emojiList.map((item) => (
+              <button
+                type="button"
+                key={item}
+                onClick={(): void => handleEmojiPick(item)}
+                className={`${styles.emoji} ${
+                  currentEmoji === item ? styles.selected : ''
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          {requireSave && (
+            <div className={styles.buttonWrapper}>
+              <Button padding="8px" onClick={(): void => handleUpdate()}>
+                save
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </Paper>
   );

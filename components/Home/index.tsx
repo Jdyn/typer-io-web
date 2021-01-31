@@ -71,10 +71,9 @@ const Home = (): JSX.Element => {
           <AdSense.Google
             client="ca-pub-3148839588626786"
             slot="2539792412"
-            style={{ display: 'block' }}
-            format="auto"
-            responsive="true"
-            layoutKey="-gw-1+2a-9x+5c"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
           />
         </section>
 

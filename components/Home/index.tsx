@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import AdSense from 'react-adsense';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
 import Hiscores from './Hiscores';
@@ -65,6 +66,16 @@ const Home = (): JSX.Element => {
               </div>
             </div>
           </Paper>
+        </section>
+        <section className={styles.aContainer}>
+          <AdSense.Google
+            client="ca-pub-7292810486004926"
+            slot="7806394673"
+            style={{ display: 'block' }}
+            format="auto"
+            responsive="true"
+            layoutKey="-gw-1+2a-9x+5c"
+          />
         </section>
 
         <section className={styles.hub}>

@@ -100,6 +100,23 @@ const Home = (): JSX.Element => {
         <RecentPosts />
         <RecentMatches />
       </div>
+      <section
+        className={styles.aContainer}
+        style={{
+          maxHeight: '200px',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0px 10px'
+        }}
+      >
+        <AdSense.Google
+          client="ca-pub-3148839588626786"
+          slot="7924266447"
+          style={{ display: 'block', textAlign: 'center' }}
+          format="fluid"
+          layout="in-article"
+        />
+      </section>
     </main>
   );
 };

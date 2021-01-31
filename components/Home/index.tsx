@@ -69,8 +69,8 @@ const Home = (): JSX.Element => {
         </section>
         <section className={styles.aContainer}>
           <AdSense.Google
-            client="ca-pub-7292810486004926"
-            slot="7806394673"
+            client="ca-pub-3148839588626786"
+            slot="2539792412"
             style={{ display: 'block' }}
             format="auto"
             responsive="true"

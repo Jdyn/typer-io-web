@@ -14,7 +14,7 @@
     'news hub posts'
     'news scores posts'
     'news scores matches'
-    '. scores matches';
+    'content scores matches';
 }
 
 @media only screen and (max-width: 814px) {
@@ -49,6 +49,10 @@
   overflow-x: none;
   overflow-y: auto;
   height: 100%;
+}
+
+.aContainer {
+  grid-area: content;
 }
 
 .newsWrapper > h3 {

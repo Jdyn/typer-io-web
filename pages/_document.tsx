@@ -11,6 +11,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <script
+            data-ad-client="ca-pub-3148839588626786"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />

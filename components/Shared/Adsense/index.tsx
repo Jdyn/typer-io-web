@@ -24,32 +24,37 @@ export default class Adsense extends React.Component<Props, {}> {
     responsive: string;
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (typeof window !== 'undefined') {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
-      //   console.log((window as any).adsbygoogle?.loaded || false);
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
+      } catch (e) {
+        // rip
+      }
     }
-
-    // this.setState({ loaded: false });
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps): boolean {
     const { path } = this.props;
 
     return nextProps.path !== path;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     if (typeof window !== 'undefined') {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
+      } catch (e) {
+        // rip
+      }
     }
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       className,
       style,
@@ -66,6 +71,7 @@ export default class Adsense extends React.Component<Props, {}> {
       (window as any)?.adsbygoogle?.loaded ? (
       <div key={path} className={styles.root}>
         <ins
+          key={path}
           className={`${className} adsbygoogle`}
           style={{ ...style }}
           data-ad-client={client}

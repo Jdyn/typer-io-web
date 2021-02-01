@@ -147,6 +147,7 @@ const Lobby = (_props): JSX.Element => {
         </div>
         <section className={styles.aContainer}>
           <Adsense
+            path={router.pathname}
             client="ca-pub-3148839588626786"
             slot="8048104115"
             style={{ display: 'block' }}

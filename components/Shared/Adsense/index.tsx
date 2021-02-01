@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useStore } from 'react-redux';
+/* eslint-disable react/static-property-placement */
+import React from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -10,47 +10,75 @@ interface Props {
   layout?: string;
   layoutKey?: string;
   format?: string;
+  path: string;
   responsive?: 'true' | 'false';
 }
 
-const Adsense = (props: Props): JSX.Element => {
-  const {
-    className,
-    style,
-    client,
-    slot,
-    layout,
-    layoutKey,
-    format,
-    responsive
-  } = props;
+export default class Adsense extends React.Component<Props, {}> {
+  static defaultProps: {
+    className: string;
+    style: { display: string };
+    format: string;
+    layout: string;
+    layoutKey: string;
+    responsive: string;
+  };
 
-  const [loaded, setLoaded] = useState(true);
-
-  useEffect(() => {
+  componentDidMount() {
     if (typeof window !== 'undefined') {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}
       );
-      setLoaded((window as any).adsbygoogle.loaded || false);
+      //   console.log((window as any).adsbygoogle?.loaded || false);
     }
-  }, []);
 
-  return loaded ? (
-    <div className={styles.root}>
-      <ins
-        className={`${className} adsbygoogle`}
-        style={{ ...style }}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-layout={layout}
-        data-ad-layout-key={layoutKey}
-        data-ad-format={format}
-        data-full-width-responsive={responsive}
-      />
-    </div>
-  ) : null;
-};
+    // this.setState({ loaded: false });
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const { path } = this.props;
+
+    return nextProps.path !== path;
+  }
+
+  componentDidUpdate() {
+    if (typeof window !== 'undefined') {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      );
+    }
+  }
+
+  render() {
+    const {
+      className,
+      style,
+      client,
+      slot,
+      layout,
+      layoutKey,
+      format,
+      responsive,
+      path
+    } = this.props;
+
+    return typeof window !== 'undefined' &&
+      (window as any)?.adsbygoogle?.loaded ? (
+      <div key={path} className={styles.root}>
+        <ins
+          className={`${className} adsbygoogle`}
+          style={{ ...style }}
+          data-ad-client={client}
+          data-ad-slot={slot}
+          data-ad-layout={layout}
+          data-ad-layout-key={layoutKey}
+          data-ad-format={format}
+          data-full-width-responsive={responsive}
+        />
+      </div>
+    ) : null;
+  }
+}
 
 Adsense.defaultProps = {
   className: '',
@@ -60,5 +88,3 @@ Adsense.defaultProps = {
   layoutKey: '',
   responsive: 'false'
 };
-
-export default Adsense;

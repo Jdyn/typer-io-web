@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Adsense from '../Shared/Adsense';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
@@ -30,6 +31,8 @@ const cards = [
 ];
 
 const Home = (): JSX.Element => {
+  const { pathname } = useRouter();
+
   return (
     <main className={styles.root}>
       <div className={styles.container}>
@@ -68,6 +71,7 @@ const Home = (): JSX.Element => {
         </section>
         <section className={styles.aContainer}>
           <Adsense
+            path={pathname}
             client="ca-pub-3148839588626786"
             slot="2539792412"
             style={{ display: 'block', textAlign: 'center' }}
@@ -109,6 +113,7 @@ const Home = (): JSX.Element => {
         }}
       >
         <Adsense
+          path={pathname}
           client="ca-pub-3148839588626786"
           slot="7924266447"
           style={{ display: 'block', textAlign: 'center' }}

@@ -6,8 +6,8 @@
     'clientlist clientlist clientlist'
     'settings main profile'
     'settings chat profile'
-    'kick chat profile'
-    'kick chat content';
+    'content3 chat profile'
+    'content3 chat content2';
   grid-gap: 20px;
   padding: 0px 10px;
   max-width: 1250px;
@@ -22,8 +22,12 @@
   box-shadow: var(--shadow);
 }
 
-.aContainer {
-  grid-area: content;
+.aContainer2 {
+  grid-area: content2;
+}
+
+.aContainer3 {
+  grid-area: content3;
 }
 
 .wrapper {

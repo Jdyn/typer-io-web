@@ -145,14 +145,24 @@ const Lobby = (_props): JSX.Element => {
             onClick={(payload) => handleUserUpdate(payload)}
           />
         </div>
-        <section className={styles.aContainer}>
+        <section className={styles.aContainer2}>
           <Adsense
             path={router.pathname}
             client="ca-pub-3148839588626786"
-            slot="8048104115"
-            style={{ display: 'block' }}
-            format="auto"
-            responsive="true"
+            slot="7384036938"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
+          />
+        </section>
+        <section className={styles.aContainer3}>
+          <Adsense
+            path={router.pathname}
+            client="ca-pub-3148839588626786"
+            slot="6675614018"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
           />
         </section>
       </div>

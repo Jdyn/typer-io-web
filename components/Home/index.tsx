@@ -35,8 +35,41 @@ const Home = (): JSX.Element => {
 
   return (
     <main className={styles.root}>
+      <section
+        style={{
+          margin: '20px auto 20px auto',
+          height: '105px',
+          padding: '0px 10px',
+          maxWidth: '900px'
+        }}
+      >
+        <Adsense
+          path={pathname}
+          client="ca-pub-3148839588626786"
+          slot="9751481292"
+          format="horizontal"
+          responsive="true"
+        />
+      </section>
       <div className={styles.container}>
         <section className={styles.news}>
+          <section
+            className={styles.aContainer}
+            style={{
+              maxHeight: '300px',
+              gridArea: 'content'
+            }}
+          >
+            <Adsense
+              path={pathname}
+              wrapperStyles={{ marginBottom: '20px' }}
+              client="ca-pub-3148839588626786"
+              slot="8439040257"
+              style={{ display: 'block', textAlign: 'center' }}
+              format="fluid"
+              layout="in-article"
+            />
+          </section>
           <Paper title="News">
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
@@ -67,10 +100,8 @@ const Home = (): JSX.Element => {
           <section
             className={styles.aContainer}
             style={{
-              maxHeight: '300px',
-              maxWidth: '780px',
-              margin: '20px auto',
-              padding: '0px 10px'
+              maxHeight: '800px',
+              margin: '20px auto'
             }}
           >
             <Adsense

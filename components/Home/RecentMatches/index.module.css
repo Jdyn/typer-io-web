@@ -1,5 +1,6 @@
 .root {
   grid-area: matches;
+  height: 500px;
 }
 
 .container {
@@ -8,7 +9,6 @@
   overflow: hidden;
   margin: 20px;
   border: 2px solid var(--border);
-  height: 455px;
   border-radius: 16px;
 }
 

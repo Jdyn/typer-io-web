@@ -1,20 +1,24 @@
 .root {
-  margin-bottom: 65px;
+  margin-bottom: 145px;
 }
 
 .container {
   display: grid;
   gap: 20px;
   max-width: 1250px;
-  margin: 145px auto 25px auto;
+  margin: 0px auto 25px auto;
   padding: 0px 10px;
-  grid-template-rows: min-content min-content min-content 1fr;
+  grid-template-rows: min-content min-content 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-areas:
     'news hub posts'
     'news scores posts'
-    'news scores matches'
-    '. scores matches';
+    'news scores matches';
+}
+
+.test {
+  width: 750px;
+  height: 110px;
 }
 
 @media only screen and (max-width: 814px) {
@@ -24,8 +28,8 @@
     grid-template-areas:
       'news'
       'hub'
-      'content'
       'posts'
+      'content'
       'scores'
       'matches';
   }
@@ -33,6 +37,7 @@
 
 .news {
   grid-area: news;
+  padding: 0;
 }
 
 .newsContainer {
@@ -49,10 +54,6 @@
   overflow-x: none;
   overflow-y: auto;
   height: 100%;
-}
-
-.aContainer {
-  grid-area: content;
 }
 
 .newsWrapper > h3 {

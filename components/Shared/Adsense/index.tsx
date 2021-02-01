@@ -11,12 +11,14 @@ interface Props {
   layoutKey?: string;
   format?: string;
   path: string;
+  wrapperStyles?: object;
   responsive?: 'true' | 'false';
 }
 
 export default class Adsense extends React.Component<Props, {}> {
   static defaultProps: {
     className: string;
+    wrapperStyles: object;
     style: { display: string };
     format: string;
     layout: string;
@@ -64,15 +66,16 @@ export default class Adsense extends React.Component<Props, {}> {
       layoutKey,
       format,
       responsive,
-      path
+      path,
+      wrapperStyles
     } = this.props;
 
     return typeof window !== 'undefined' &&
       (window as any)?.adsbygoogle?.loaded ? (
-      <div key={path} className={styles.root}>
+      <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
         <ins
           key={path}
-          className={`${className} adsbygoogle`}
+          className={`adsbygoogle ${className}`}
           style={{ ...style }}
           data-ad-client={client}
           data-ad-slot={slot}
@@ -89,6 +92,7 @@ export default class Adsense extends React.Component<Props, {}> {
 Adsense.defaultProps = {
   className: '',
   style: { display: 'block' },
+  wrapperStyles: {},
   format: 'auto',
   layout: '',
   layoutKey: '',

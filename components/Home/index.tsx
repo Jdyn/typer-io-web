@@ -59,27 +59,30 @@ const Home = (): JSX.Element => {
                   <ul>
                     <li>You can now kick players from custom lobbies</li>
                     <li>Users can now add bios to their profile.</li>
-                    <li>
-                      I have added rankings in multiplayer matches to better
-                      identify who won.
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
           </Paper>
+          <section
+            className={styles.aContainer}
+            style={{
+              maxHeight: '300px',
+              maxWidth: '780px',
+              margin: '20px auto',
+              padding: '0px 10px'
+            }}
+          >
+            <Adsense
+              path={pathname}
+              client="ca-pub-3148839588626786"
+              slot="7924266447"
+              style={{ display: 'block', textAlign: 'center' }}
+              format="fluid"
+              layout="in-article"
+            />
+          </section>
         </section>
-        <section className={styles.aContainer}>
-          <Adsense
-            path={pathname}
-            client="ca-pub-3148839588626786"
-            slot="2539792412"
-            style={{ display: 'block', textAlign: 'center' }}
-            format="fluid"
-            layout="in-article"
-          />
-        </section>
-
         <section className={styles.hub}>
           <Profile />
           <div className={styles.menu}>

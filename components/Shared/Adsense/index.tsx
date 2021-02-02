@@ -75,7 +75,7 @@ export default class Adsense extends React.Component<Props, {}> {
       <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
         <ins
           key={path}
-          className={`adsbygoogle ${className}`}
+          className="adsbygoogle"
           style={{ ...style }}
           data-ad-client={client}
           data-ad-slot={slot}
@@ -85,7 +85,19 @@ export default class Adsense extends React.Component<Props, {}> {
           data-full-width-responsive={responsive}
         />
       </div>
-    ) : null;
+    ) : (
+      <ins
+        key={path}
+        className={`adsbygoogle ${className}`}
+        style={{ ...style }}
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-layout={layout}
+        data-ad-layout-key={layoutKey}
+        data-ad-format={format}
+        data-full-width-responsive={responsive}
+      />
+    );
   }
 }
 

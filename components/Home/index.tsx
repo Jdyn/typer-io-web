@@ -57,12 +57,12 @@ const Home = (): JSX.Element => {
             className={styles.aContainer}
             style={{
               maxHeight: '300px',
-              gridArea: 'content'
+              gridArea: 'content',
+              marginBottom: '20px'
             }}
           >
             <Adsense
               path={pathname}
-              wrapperStyles={{ marginBottom: '20px' }}
               client="ca-pub-3148839588626786"
               slot="8439040257"
               style={{ display: 'block', textAlign: 'center' }}

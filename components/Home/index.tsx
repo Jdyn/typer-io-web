@@ -43,13 +43,13 @@ const Home = (): JSX.Element => {
           maxWidth: '900px'
         }}
       >
-        <Adsense
+        {/* <Adsense
           path={pathname}
           client="ca-pub-3148839588626786"
           slot="9751481292"
           format="horizontal"
           responsive="true"
-        />
+        /> */}
       </section>
       <div className={styles.container}>
         <section className={styles.news}>

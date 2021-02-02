@@ -76,8 +76,9 @@ export default class Adsense extends React.Component<Props, {}> {
 
     return (typeof window !== 'undefined' &&
       (window as any)?.adsbygoogle?.loaded) ||
-      !Array.isArray((window as any).adsbygoogle) ||
-      typeof (window as any).adsbygoogle === 'undefined' ? (
+      (typeof window !== 'undefined' &&
+        !Array.isArray((window as any).adsbygoogle) &&
+        typeof (window as any).adsbygoogle !== 'undefined') ? (
       <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
         <ins
           key={path}

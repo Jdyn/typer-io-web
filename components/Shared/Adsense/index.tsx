@@ -1,5 +1,4 @@
-/* eslint-disable react/static-property-placement */
-import React from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -15,80 +14,36 @@ interface Props {
   responsive?: 'true' | 'false';
 }
 
-export default class Adsense extends React.Component<Props, {}> {
-  static defaultProps: {
-    className: string;
-    wrapperStyles: object;
-    style: { display: string };
-    format: string;
-    layout: string;
-    layoutKey: string;
-    responsive: string;
-  };
+const Adsense = (props: Props): JSX.Element => {
+  const {
+    className,
+    style,
+    client,
+    slot,
+    layout,
+    layoutKey,
+    format,
+    responsive,
+    path,
+    wrapperStyles
+  } = props;
 
-  componentDidMount(): void {
-    if (typeof window !== 'undefined') {
-      try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-          {}
-        );
-      } catch (e) {
-        // rip
-      }
+  useEffect(() => {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      );
+    } catch (e) {
+      // rip
     }
-  }
+  }, []);
 
-  shouldComponentUpdate(nextProps): boolean {
-    const { path } = this.props;
-
-    return nextProps.path !== path;
-  }
-
-  componentDidUpdate(): void {
-    if (typeof window !== 'undefined') {
-      try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-          {}
-        );
-      } catch (e) {
-        // rip
-      }
-    }
-  }
-
-  render(): JSX.Element {
-    const {
-      className,
-      style,
-      client,
-      slot,
-      layout,
-      layoutKey,
-      format,
-      responsive,
-      path,
-      wrapperStyles
-    } = this.props;
-
-    return typeof window !== 'undefined' &&
-      (window as any)?.adsbygoogle?.loaded ? (
-      <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
-        <ins
-          key={path}
-          className="adsbygoogle"
-          style={{ ...style }}
-          data-ad-client={client}
-          data-ad-slot={slot}
-          data-ad-layout={layout}
-          data-ad-layout-key={layoutKey}
-          data-ad-format={format}
-          data-full-width-responsive={responsive}
-        />
-      </div>
-    ) : (
+  return typeof window !== 'undefined' &&
+    (window as any)?.adsbygoogle?.loaded ? (
+    <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
       <ins
         key={path}
-        className={`adsbygoogle ${className}`}
+        className="adsbygoogle"
         style={{ ...style }}
         data-ad-client={client}
         data-ad-slot={slot}
@@ -97,9 +52,21 @@ export default class Adsense extends React.Component<Props, {}> {
         data-ad-format={format}
         data-full-width-responsive={responsive}
       />
-    );
-  }
-}
+    </div>
+  ) : (
+    <ins
+      key={path}
+      className={`adsbygoogle ${className}`}
+      style={{ ...style }}
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-layout={layout}
+      data-ad-layout-key={layoutKey}
+      data-ad-format={format}
+      data-full-width-responsive={responsive}
+    />
+  );
+};
 
 Adsense.defaultProps = {
   className: '',
@@ -110,3 +77,5 @@ Adsense.defaultProps = {
   layoutKey: '',
   responsive: 'false'
 };
+
+export default memo(Adsense);

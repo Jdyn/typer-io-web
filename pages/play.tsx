@@ -39,7 +39,7 @@ const PlayContainer = (): JSX.Element => {
 
   return (
     <Layout striped>
-      <Play />;
+      <Play />
     </Layout>
   );
 };

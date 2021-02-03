@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import ReactGA from 'react-ga';
 import ClientList from './ClientList';
 import Gameboard from './Gameboard';
@@ -11,6 +12,7 @@ import Editor from './Editor';
 import { AppState } from '../../store';
 import styles from './index.module.css';
 import { GameboardState, SnippetState } from '../../store/game/types';
+import Adsense from '../Shared/Adsense';
 
 interface Props {
   isSolo?: boolean;
@@ -19,6 +21,7 @@ interface Props {
 
 const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
+  const { pathname } = useRouter();
 
   const gameboard: GameboardState = useSelector(
     (state: AppState) => state.game.room.gameboard
@@ -132,8 +135,8 @@ const Play = (props: Props): JSX.Element => {
   };
 
   return (
-    <>
-      <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
+    <div className={styles.root}>
+      <div className={`${styles.container} ${isSolo && styles.soloContainer}`}>
         <ClientList isSolo={isSolo} />
         <PlayStatus gameboard={gameboard} isCustom={isCustom} isSolo={isSolo} />
         <Leaderboard />
@@ -154,13 +157,32 @@ const Play = (props: Props): JSX.Element => {
           submitWord={submitWord}
         />
         {!isSolo && <Chat />}
-        {!gameboard.isStarted && !gameboard.isOver ? (
+        {/* {!gameboard.isStarted && !gameboard.isOver ? (
           <span className={styles.notice}>
             Tip: Type the words in the box above when the game begins.
           </span>
-        ) : null}
+        ) : (
+          <span style={{ height: '45px' }} />
+        )} */}
       </div>
-    </>
+      <section
+        style={{
+          margin: '20px auto',
+          height: '105px',
+          padding: '0px 10px',
+          maxWidth: '900px',
+          gridArea: 'content'
+        }}
+      >
+        <Adsense
+          path={pathname}
+          client="ca-pub-3148839588626786"
+          slot="9751481292"
+          format="horizontal"
+          responsive="true"
+        />
+      </section>
+    </div>
   );
 };
 

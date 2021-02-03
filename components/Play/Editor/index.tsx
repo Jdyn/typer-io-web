@@ -1,4 +1,10 @@
-import React, { useEffect } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  KeyboardEvent
+} from 'react';
 import ReactGA from 'react-ga';
 import { GameboardState } from '../../../store/game/types';
 import { EditorState, GameState } from '../types';
@@ -14,10 +20,10 @@ const focusInput = (): void => {
 interface Props {
   gameboard: GameboardState;
   gameState: GameState;
-  setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
+  setEditorState: Dispatch<SetStateAction<EditorState>>;
   submitWord: () => void;
   isWrong: boolean;
-  inputDidUpdate: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputDidUpdate: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Editor = (props: Props): JSX.Element => {
@@ -34,7 +40,7 @@ const Editor = (props: Props): JSX.Element => {
     focusInput();
   }, []);
 
-  const keydown = (event: React.KeyboardEvent): void => {
+  const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
     if (!gameboard.isStarted) {

@@ -1,38 +1,47 @@
+import { motion } from 'framer-motion';
 import { memo } from 'react';
-import { useSpring, animated, config } from 'react-spring';
 import styles from './index.module.css';
 
 interface Props {
   position: number | null;
   color: string;
   emoji: string;
+  id: string;
 }
 
-const Piece = (props: Props): JSX.Element => {
-  const { position, color, emoji } = props;
+const spring = {
+  left: { type: 'spring', stiffness: 300, damping: 30 }
+};
 
-  const movement = useSpring({
-    to: {
-      marginLeft: position === null || position === 0 ? '0%' : '40%'
-    },
-    from: {
-      marginLeft: '0%'
-    },
-    config: config.stiff
-  });
+const variants = {
+  enter: {
+    left: '0%'
+  },
+  center: (position: number): object => {
+    return {
+      left: position === null ? '0%' : '100%'
+    };
+  }
+};
+
+const Piece = (props: Props): JSX.Element => {
+  const { position, color, emoji, id } = props;
 
   return (
-    <animated.div
-      style={{
-        ...movement,
-        left: position === null ? '-10%' : '-5%'
-      }}
+    <motion.div
+      layoutId={id}
+      key={id}
+      custom={position}
+      transition={spring}
+      variants={variants}
+      initial="enter"
+      animate="center"
       className={styles.gamePiece}
     >
       <span style={{ background: color }} role="img" aria-label="sheep">
         <span>{emoji}</span>
       </span>
-    </animated.div>
+    </motion.div>
   );
 };
 

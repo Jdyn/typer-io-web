@@ -19,39 +19,39 @@
   width: 100%;
   justify-content: center;
   margin: 0;
+  border-radius: 16px;
 }
 
 .card {
   position: relative;
-  /* margin: 0 5px 0 5px; */
-  max-width: 265px;
-  /* border-radius: 16px; */
   background-color: white;
-  border-right: 2px solid #e5e5e5;
+  z-index: 100;
+  border-right: 2px solid var(--border);
 }
 
 .card::before {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
   width: 100%;
-  z-index: -1;
   height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
   box-shadow: var(--shadow);
-  border-radius: 16px;
+  z-index: -1;
 }
 
 .card:first-child {
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px 0 0 16px !important;
 }
 
 .card:last-child {
-  border-radius: 0 16px 16px 0;
+  border-radius: 0 16px 16px 0 !important;
+  border: none;
 }
 
 .card:only-child {
-  border-radius: 16px;
+  border-radius: 16px !important;
 }
 
 .cardWrapper {
@@ -60,11 +60,10 @@
   grid-template-rows: 1.5fr 1fr;
   grid-template-columns: 1fr;
   margin: 0;
-  z-index: 5;
   padding: 5px;
   height: 100%;
   overflow: hidden;
-  max-width: 265px;
+  width: 100%;
 }
 
 .stats {
@@ -106,11 +105,10 @@
 .usernameWrapper > span {
   display: flex;
   align-items: center;
-  max-width: 130px;
   overflow: hidden;
   font-size: 16px;
   text-overflow: ellipsis;
-  flex: 2.5;
+  flex: 3;
 }
 
 .usernameWrapper > span > span {
@@ -119,9 +117,9 @@
 }
 
 .wpm {
+  display: flex;
   font-size: 17px;
   text-align: center;
-  flex: 1;
   color: white;
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState } from 'react';
+import { useEffect, memo } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   layout?: string;
   layoutKey?: string;
   format?: string;
-  path: string;
+  path?: string;
   wrapperStyles?: object;
   responsive?: 'true' | 'false';
 }
@@ -75,6 +75,7 @@ Adsense.defaultProps = {
   format: 'auto',
   layout: '',
   layoutKey: '',
+  path: '',
   responsive: 'false'
 };
 

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
-import Link from 'next/link';
+import { useEffect, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
-import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
 import { fetchPosts } from '../../../store/forum/actions';
 import styles from './index.module.css';
@@ -10,7 +8,7 @@ import Loader from '../../Shared/Loader';
 import MiniListPost from './Post';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const RecentPosts = (): JSX.Element => {

@@ -1,11 +1,11 @@
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef, RefObject, MouseEvent } from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 import Loader from '../Loader';
 
 interface Props {
   children?: ReactNode;
-  onClick?: (event: React.MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
   secondary?: boolean;
   margin?: string;
   green?: boolean;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Button = forwardRef(
-  (props: Props, ref: React.RefObject<HTMLButtonElement>): JSX.Element => {
+  (props: Props, ref: RefObject<HTMLButtonElement>): JSX.Element => {
     const {
       children,
       secondary,

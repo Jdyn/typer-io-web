@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Banner from '../../Shared/Banner';
@@ -58,7 +58,7 @@ const Profile = (props: Props): JSX.Element => {
     <div className={styles.root}>
       <div className={styles.headerContainer}>
         <Banner>
-          <h3>Profile</h3>
+          <h1>Profile</h1>
         </Banner>
         <div className={styles.profileContainer}>
           <div className={styles.wrapper}>
@@ -88,7 +88,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.statsContainer}>
         <Banner>
-          <h3>Overview</h3>
+          <h1>Overview</h1>
         </Banner>
         <div className={styles.statItemWrapper}>
           <div className={styles.statsItem}>
@@ -110,7 +110,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.friendsList}>
         <Banner>
-          <h3>Posts</h3>
+          <h1>Posts</h1>
         </Banner>
         <div className={styles.friendsListWrapper}>
           {user?.posts.length > 0 ? (
@@ -126,7 +126,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.historyRoot}>
         <Banner>
-          <h3>Matches</h3>
+          <h1>Matches</h1>
         </Banner>
         <div className={styles.header}>
           <div className={styles.headerItem}>Name</div>

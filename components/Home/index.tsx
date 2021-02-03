@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Adsense from '../Shared/Adsense';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
@@ -31,26 +30,25 @@ const cards = [
 ];
 
 const Home = (): JSX.Element => {
-  const { pathname } = useRouter();
-
   return (
     <main className={styles.root}>
-
       <div className={styles.container}>
         <section className={styles.news}>
           <section
             className={styles.aContainer}
             style={{
               maxHeight: '300px',
-              gridArea: 'content',
-              marginBottom: '20px'
+              gridArea: 'content'
             }}
           >
             <Adsense
-              path={pathname}
               client="ca-pub-3148839588626786"
               slot="8439040257"
-              style={{ display: 'block', textAlign: 'center' }}
+              wrapperStyles={{ marginBottom: '20px' }}
+              style={{
+                display: 'block',
+                textAlign: 'center'
+              }}
               format="fluid"
               layout="in-article"
             />
@@ -59,7 +57,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1612138892623)} </span>
+                <span>updated {formatTime(1612395710881)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -72,11 +70,17 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (Jan. 28th, 2021):</h3>
+                <h3>Changes (Feb. 3rd, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>You can now kick players from custom lobbies</li>
-                    <li>Users can now add bios to their profile.</li>
+                    <li>
+                      Smoothed out the moving animaton of Game Pieces on the
+                      text
+                    </li>
+                    <li>
+                      Experimenting with the animation of users entering and
+                      exiting lobbies
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -90,7 +94,6 @@ const Home = (): JSX.Element => {
             }}
           >
             <Adsense
-              path={pathname}
               client="ca-pub-3148839588626786"
               slot="7924266447"
               style={{ display: 'block', textAlign: 'center' }}
@@ -132,7 +135,6 @@ const Home = (): JSX.Element => {
         }}
       >
         <Adsense
-          path={pathname}
           client="ca-pub-3148839588626786"
           slot="7924266447"
           style={{ display: 'block', textAlign: 'center' }}

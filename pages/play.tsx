@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';

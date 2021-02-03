@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ClientList from '../ClientList';
@@ -56,7 +56,7 @@ const Lobby = (_props): JSX.Element => {
         <ClientList isSolo={false} />
         <div className={styles.settingsRoot}>
           <Banner>
-            <h3>Settings</h3>
+            <h1>Settings</h1>
           </Banner>
           <div className={styles.settingsContainer}>
             <div className={styles.setting}>
@@ -97,7 +97,7 @@ const Lobby = (_props): JSX.Element => {
         </div>
         <div className={styles.container}>
           <Banner>
-            <h3>Custom Lobby</h3>
+            <h1>Lobby</h1>
           </Banner>
           <div className={styles.wrapper}>
             {socket.pending ? (
@@ -111,7 +111,7 @@ const Lobby = (_props): JSX.Element => {
                 <span>(you can copy the link while hidden)</span>
                 <div className={styles.linkContainer}>
                   <div
-                    style={{ filter: hidden ? 'blur(4px)' : '' }}
+                    style={{ filter: hidden ? 'blur(5px)' : '' }}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                   <Button
                     margin="0px"

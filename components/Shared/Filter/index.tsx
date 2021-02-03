@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import styles from './index.module.css';
 
 interface Filter {
@@ -70,4 +70,4 @@ Filter.defaultProps = {
   untargetableIndices: []
 } as Partial<Props>;
 
-export default React.memo(Filter);
+export default memo(Filter);

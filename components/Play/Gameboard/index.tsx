@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, memo, Dispatch, SetStateAction } from 'react';
 import { useSelector } from 'react-redux';
+import { AnimateSharedLayout } from 'framer-motion';
 import Banner from '../../Shared/Banner';
 import Word from './Word';
 import Piece from './Piece';
@@ -14,7 +15,7 @@ interface Props {
   currentInput: string;
   currentWord: string;
   currentIndex: number;
-  setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
+  setEditorState: Dispatch<SetStateAction<EditorState>>;
 }
 
 const Gameboard = (props: Props): JSX.Element => {
@@ -54,7 +55,7 @@ const Gameboard = (props: Props): JSX.Element => {
     setEditorState((prev) => ({ ...prev, wrongIndex: null }));
   }, [currentWord, setEditorState]);
 
-  const wordElements = React.useMemo(
+  const wordElements = useMemo(
     () =>
       words.map((word, wordIndex) => (
         <div key={wordIndex} className={styles.wrapper}>
@@ -66,30 +67,37 @@ const Gameboard = (props: Props): JSX.Element => {
             setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
-          {clients
-            .filter((object) => object.id !== clientId)
-            .map((client) => {
-              const { position, color } = client.gamePiece;
+          <AnimateSharedLayout>
+            {clients
+              .filter((object) => object.id !== clientId)
+              .map((client) => {
+                const { position, color } = client.gamePiece;
 
-              if (wordIndex === 0 && position === null)
+                if (wordIndex === 0 && position === null) {
+                  return (
+                    <Piece
+                      key={client.id}
+                      id={client.id}
+                      emoji={client.emoji}
+                      color={color}
+                      position={position}
+                    />
+                  );
+                }
+
                 return (
-                  <Piece
-                    emoji={client.emoji}
-                    key={client.id}
-                    color={color}
-                    position={position}
-                  />
+                  position === wordIndex && (
+                    <Piece
+                      key={client.id}
+                      id={client.id}
+                      emoji={client.emoji}
+                      color={color}
+                      position={position}
+                    />
+                  )
                 );
-
-              return position === wordIndex ? (
-                <Piece
-                  emoji={client.emoji}
-                  key={client.id}
-                  color={color}
-                  position={position}
-                />
-              ) : null;
-            })}
+              })}
+          </AnimateSharedLayout>
         </div>
       )),
     [
@@ -154,4 +162,4 @@ const Gameboard = (props: Props): JSX.Element => {
   );
 };
 
-export default React.memo(Gameboard);
+export default memo(Gameboard);

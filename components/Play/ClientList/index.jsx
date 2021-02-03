@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import {memo} from 'react';
 import { useSelector } from 'react-redux';
-import { useTransition, config, animated } from 'react-spring';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
 
 const placements = {
@@ -16,77 +16,87 @@ const ClientList = (props) => {
   const { isSolo } = props;
   const users = useSelector((state) => state.game.room.clients);
 
-  const transitions = useTransition(users, (client) => client.id, {
-    from: {
+  const variants = {
+    initial: {
       opacity: 0,
       width: '0%',
-      transform: 'translate3d(0, -100%, 0)'
+      y: '-100%'
     },
-    enter: () => async (next, _cancel) => {
-      await next({ width: isSolo ? '100%' : '25%' });
-      await next({ opacity: 1, transform: 'translate3d(0, 0%, 0)' });
+    enter: (isSolo) => {
+      return {
+        width: isSolo ? '100%' : '25%',
+        maxWidth: isSolo ? 'auto' : '265px',
+        opacity: 1,
+        zIndex: 5,
+        y: '0%'
+      };
     },
-    leave: {
+    exit: {
       opacity: 0,
-      transform: 'translate3d(0, -100%, 0)',
+      y: '-100%',
       width: '0%'
-    },
-    config: config.default
-  });
+    }
+  };
 
   return (
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
       {users.length > 0 && (
         <div className={styles.container}>
-          {transitions.map(({ item, props, key }) => (
-            <animated.div
-              className={styles.card}
-              style={{ width: props.width }}
-              key={key}
-            >
-              <animated.div
-                className={styles.cardWrapper}
-                style={{ transform: props.transform, opacity: props.opacity }}
+          <AnimatePresence>
+            {users.map((item) => (
+              <motion.div
+                className={styles.card}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                variants={variants}
+                custom={isSolo}
+                transition={{
+                  type: 'spring'
+                }}
+                key={item.id}
               >
-                <div className={styles.stats}>
-                  <span className={styles.stat}>
-                    <span className={styles.statHeader}>ERRORS</span>
-                    {item.gamePiece.errors}
-                  </span>
-                  <span className={styles.stat}>
-                    <span className={styles.statHeader}>ACCURACY</span>
-                    {item.gamePiece.accuracy}
-                  </span>
-                  <span className={styles.stat}>
-                    <span className={styles.statHeader}>TIME</span>
-                    {item.gamePiece.time}
-                  </span>
-                </div>
-                <div className={styles.username}>
-                  <div
-                    className={styles.usernameWrapper}
-                    style={{ background: item.gamePiece.color }}
-                  >
-                    <span>
-                      <span>{item.emoji}</span>
-                      {item.username}
+                <div className={styles.cardWrapper}>
+                  <div className={styles.stats}>
+                    <span className={styles.stat}>
+                      <span className={styles.statHeader}>ERRORS</span>
+                      {item.gamePiece.errors}
                     </span>
-                    <div className={styles.wpm}>
-                      {item.gamePiece.wpm}{' '}
-                      <span className={styles.statHeader}>WPM</span>
+                    <span className={styles.stat}>
+                      <span className={styles.statHeader}>ACCURACY</span>
+                      {item.gamePiece.accuracy}
+                    </span>
+                    <span className={styles.stat}>
+                      <span className={styles.statHeader}>TIME</span>
+                      {item.gamePiece.time}
+                    </span>
+                  </div>
+                  <div className={styles.username}>
+                    <div
+                      className={styles.usernameWrapper}
+                      style={{ background: item.gamePiece.color }}
+                    >
+                      <span>
+                        <span>{item.emoji}</span>
+                        {item.username}
+                      </span>
+                      <div className={styles.wpm}>
+                        {item.gamePiece.wpm}{' '}
+                        <span className={styles.statHeader}>WPM</span>
+                      </div>
+                    </div>
+                    <div className={styles.placement}>
+                      {placements[item.gamePiece?.rank] || '-'}
                     </div>
                   </div>
-                  <div className={styles.placement}>
-                    {placements[item.gamePiece?.rank] || '-'}
-                  </div>
                 </div>
-              </animated.div>
-            </animated.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       )}
     </div>
   );
 };
 
-export default React.memo(ClientList);
+export default memo(ClientList);

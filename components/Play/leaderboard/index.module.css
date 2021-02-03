@@ -26,10 +26,10 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(1fr);
+  grid-auto-columns: 1fr;
   margin: 0px 0px;
   padding: 0px 0px 0px 10px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 

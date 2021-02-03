@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import ReactGA from 'react-ga';
 import ClientList from './ClientList';
 import Gameboard from './Gameboard';
@@ -21,7 +20,6 @@ interface Props {
 
 const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
-  const { pathname } = useRouter();
 
   const gameboard: GameboardState = useSelector(
     (state: AppState) => state.game.room.gameboard
@@ -175,7 +173,6 @@ const Play = (props: Props): JSX.Element => {
         }}
       >
         <Adsense
-          path={pathname}
           client="ca-pub-3148839588626786"
           slot="9751481292"
           format="horizontal"

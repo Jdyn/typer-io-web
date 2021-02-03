@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
@@ -73,7 +73,7 @@ const Profile = (props: Props): JSX.Element => {
   };
 
   return (
-    <Paper title="Profile">
+    <Paper title="You">
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <div className={styles.header}>

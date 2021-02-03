@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect, ReactNode } from 'react';
 import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Header from '../Header';
 import styles from './index.module.css';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   striped?: boolean;
 }
 

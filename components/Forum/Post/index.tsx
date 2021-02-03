@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
@@ -9,7 +10,6 @@ import Comments from './Comments';
 import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import Api from '../../../services/api';
-import Link from 'next/link';
 import { postUpdated } from '../../../store/forum/reducers';
 
 interface Props {
@@ -78,18 +78,18 @@ const Post = (props: Props): JSX.Element => {
                   }
                 />
                 <div className={styles.buttons}>
-                    <Button padding="6px 20px" onClick={submitComment}>
-                      comment
-                    </Button>
-                    <Button
-                      padding="6px 27px"
-                      secondary
-                      onClick={() =>
-                        setComment((prev) => ({ ...prev, body: '' }))
-                      }
-                    >
-                      cancel
-                    </Button>
+                  <Button padding="6px 20px" onClick={submitComment}>
+                    comment
+                  </Button>
+                  <Button
+                    padding="6px 27px"
+                    secondary
+                    onClick={() =>
+                      setComment((prev) => ({ ...prev, body: '' }))
+                    }
+                  >
+                    cancel
+                  </Button>
                 </div>
               </div>
             ) : (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import ApiService from '../../../services/api';
@@ -40,14 +40,14 @@ const Leaderboard = () => {
   return (
     <div className={styles.root}>
       <Banner>
-        <h1>Leaderboard</h1>
+        <h1>Hiscores</h1>
       </Banner>
-      {/* <Filter
+      <Filter
         padding="0 0 10px 0"
         fontSize={15}
         filters={filters}
         onClick={() => {}}
-      /> */}
+      />
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {state.map((item) => (

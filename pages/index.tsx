@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import Layout from '../components/Shared/Layout';
 import Home from '../components/Home';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const HomeContainer = (_props: Props): JSX.Element => {

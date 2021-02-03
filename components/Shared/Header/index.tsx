@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { ChangeEvent, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
@@ -58,7 +58,7 @@ const Header = (): JSX.Element => {
               placeholder="Search for players..."
               className={styles.search}
               value={form.search}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+              onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                 setForm({
                   ...form,
                   search: event.target.value

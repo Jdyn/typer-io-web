@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import Banner from '../Banner';
 import styles from './index.module.css';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   title: string;
 }
 
@@ -12,7 +13,7 @@ const Paper = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <Banner>
-        <h3>{title}</h3>
+        <h1>{title}</h1>
       </Banner>
       <div className={styles.container}>{children}</div>
     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -111,4 +111,4 @@ const Word = (props: Props): JSX.Element => {
   );
 };
 
-export default React.memo(Word);
+export default memo(Word);

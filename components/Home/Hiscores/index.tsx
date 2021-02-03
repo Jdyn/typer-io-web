@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from './index.module.css';
@@ -10,7 +10,7 @@ import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const filters = [
@@ -25,8 +25,7 @@ const Hiscores = (_props: Props): JSX.Element => {
   const dispatch = useDispatch();
   const request = useSelector((state: AppState) => state.request);
   const hiscores = useSelector(
-    (state: AppState) =>
-      state.hiscores[filters[filterIndex].key.toLowerCase()]
+    (state: AppState) => state.hiscores[filters[filterIndex].key.toLowerCase()]
   );
   const session = useSelector((state: AppState) => state.session);
 
@@ -37,7 +36,7 @@ const Hiscores = (_props: Props): JSX.Element => {
     }
   }, [dispatch, filterIndex, request]);
 
-  const renderBadge = (user): React.ReactNode => {
+  const renderBadge = (user): ReactNode => {
     if (user) {
       if (user.isAdmin) {
         return <span className={styles.admin}>Creator</span>;
@@ -83,10 +82,10 @@ const Hiscores = (_props: Props): JSX.Element => {
                   {formatTime(item.created_at)}
                 </div>
                 <div className={styles.item}>{item.accuracy} %</div>
-                <div className={styles.item}>{item.wpm}</div>
-                {session.user?.is_admin && (
-                  <div className={styles.item}>{`ID:  (${item.id})`}</div>
-                )}
+                <div className={styles.item}>
+                  {item.wpm}{' '}
+                  {session.user?.is_admin && <span>{`(${item.id})`}</span>}
+                </div>
               </div>
             ))}
           </div>

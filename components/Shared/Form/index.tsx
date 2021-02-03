@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import Button from '../Button';
 import Loader from '../Loader';
 import styles from './index.module.css';
@@ -27,7 +27,7 @@ const Form = (props: Props): JSX.Element => {
 
   const [form, setForm] = useState({});
 
-  const submitForm = (event: React.FormEvent): void => {
+  const submitForm = (event: FormEvent): void => {
     event.preventDefault();
     onSubmit(template.type, form);
   };
@@ -44,7 +44,7 @@ const Form = (props: Props): JSX.Element => {
             value={form[field.key || field.name] || ''}
             type={field.type || field.key}
             placeholder={field.placeholder}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+            onChange={(event: ChangeEvent<HTMLInputElement>): void =>
               setForm({
                 ...form,
                 [field.key || field.name]: event.target.value

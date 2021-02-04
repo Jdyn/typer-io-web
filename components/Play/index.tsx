@@ -166,17 +166,17 @@ const Play = (props: Props): JSX.Element => {
       <section
         style={{
           margin: '20px auto',
-          height: '105px',
           padding: '0px 10px',
+          height: '225px',
           maxWidth: '900px',
           gridArea: 'content'
         }}
       >
         <Adsense
           client="ca-pub-3148839588626786"
-          slot="9751481292"
-          format="horizontal"
-          responsive="true"
+          layout="in-article"
+          slot="6958577240"
+          format="fluid"
         />
       </section>
     </div>

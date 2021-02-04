@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import {memo} from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
@@ -52,7 +52,10 @@ const ClientList = (props) => {
                 variants={variants}
                 custom={isSolo}
                 transition={{
-                  type: 'spring'
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 25,
+                  velocity: 2
                 }}
                 key={item.id}
               >

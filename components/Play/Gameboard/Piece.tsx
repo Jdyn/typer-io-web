@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { memo } from 'react';
 import styles from './index.module.css';
 
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const spring = {
-  left: { type: 'spring', stiffness: 300, damping: 30 }
+  left: { type: 'spring', stiffness: 300, damping: 30, velocity: 2 }
 };
 
 const variants = {
@@ -28,20 +28,22 @@ const Piece = (props: Props): JSX.Element => {
   const { position, color, emoji, id } = props;
 
   return (
-    <motion.div
-      layoutId={id}
-      key={id}
-      custom={position}
-      transition={spring}
-      variants={variants}
-      initial="enter"
-      animate="center"
-      className={styles.gamePiece}
-    >
-      <span style={{ background: color }} role="img" aria-label="sheep">
-        <span>{emoji}</span>
-      </span>
-    </motion.div>
+    <AnimatePresence>
+      <motion.div
+        layoutId={id}
+        key={id}
+        custom={position}
+        transition={spring}
+        variants={variants}
+        initial="enter"
+        animate="center"
+        className={styles.gamePiece}
+      >
+        <span style={{ background: color }} role="img" aria-label="sheep">
+          <span>{emoji}</span>
+        </span>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

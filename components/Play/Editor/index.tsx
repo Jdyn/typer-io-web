@@ -104,7 +104,7 @@ const Editor = (props: Props): JSX.Element => {
           autoComplete="off"
           autoCorrect="off"
           maxLength={
-            gameState.currentWord ? gameState.currentWord.length : 524288
+            gameState.currentWord ? gameState.currentWord.length + 5 : 524288
           }
           autoCapitalize="off"
           spellCheck="false"

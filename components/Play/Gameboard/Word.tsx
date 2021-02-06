@@ -1,38 +1,47 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import styles from './index.module.css';
 
 interface Props {
   word: string;
-  index: number;
+  wordIndex: number;
   currentIndex: number;
   input: string[];
   wrongIndex: number;
+  currentWord: string;
   setEditorState: any;
 }
 
 const Word = (props: Props): JSX.Element => {
   const {
     word,
-    index,
+    wordIndex,
     currentIndex,
     input,
     wrongIndex,
+    currentWord,
     setEditorState
   } = props;
 
-  const validateLetter = (index: number): string => {
-    if (input[index]) {
-      if (input[index] === word.split('')[index]) {
+  useEffect(() => {
+    if (input.length > currentWord.length) {
+      setEditorState((prev) => ({ ...prev, wrongIndex: 1000 }));
+    }
+  }, [input, currentWord, setEditorState]);
+
+  const validateLetter = (letterIndex: number): string => {
+    if (input[letterIndex]) {
+      if (input[letterIndex] === word.split('')[letterIndex]) {
         if (wrongIndex !== null) {
-          if (wrongIndex < index) {
+          if (wrongIndex < letterIndex) {
             return styles.wrong;
           }
         }
+
         return styles.correct;
       }
 
-      if (index < wrongIndex || wrongIndex === null) {
-        setEditorState((prev) => ({ ...prev, wrongIndex: index }));
+      if (letterIndex < wrongIndex || wrongIndex === null) {
+        setEditorState((prev) => ({ ...prev, wrongIndex: letterIndex }));
       }
 
       return styles.wrong;
@@ -62,9 +71,20 @@ const Word = (props: Props): JSX.Element => {
     return newLeft + caret?.offsetWidth / 2 || 0;
   };
 
-  return currentIndex === index ? (
+  const validateNextWord = (letterIndex) => {
+    if (input.length > currentWord.length) {
+      const diff = input.length - currentWord.length;
+      if (letterIndex <= diff - 1) {
+        return styles.wrong;
+      }
+    }
+
+    return '';
+  };
+
+  return currentIndex === wordIndex ? (
     <div className={`${styles.word} ${styles.current}`}>
-      {currentIndex === index && (
+      {currentIndex === wordIndex && (
         <div
           id="caret"
           className={styles.caret}
@@ -78,12 +98,12 @@ const Word = (props: Props): JSX.Element => {
           key={letterIndex}
           id={`letter-${letterIndex}`}
           className={`${styles.letter} ${
-            currentIndex === props.index
+            currentIndex === wordIndex
               ? validateLetter(letterIndex)
               : styles.base
           }`}
           style={{
-            textDecoration: currentIndex === index ? 'underline' : 'none'
+            textDecoration: currentIndex === wordIndex ? 'underline' : 'none'
           }}
         >
           {letter}
@@ -96,12 +116,10 @@ const Word = (props: Props): JSX.Element => {
         <span
           key={letterIndex}
           className={`${styles.letter} ${
-            currentIndex === props.index
-              ? validateLetter(letterIndex)
-              : styles.base
+            currentIndex + 1 === wordIndex ? validateNextWord(letterIndex) : ''
           }`}
           style={{
-            textDecoration: currentIndex === index ? 'underline' : 'none'
+            textDecoration: currentIndex === wordIndex ? 'underline' : 'none'
           }}
         >
           {letter}

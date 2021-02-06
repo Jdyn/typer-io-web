@@ -62,8 +62,9 @@ const Gameboard = (props: Props): JSX.Element => {
           <Word
             input={currentInput ? currentInput.split('') : []}
             currentIndex={currentIndex}
+            currentWord={currentWord}
             word={word}
-            index={wordIndex}
+            wordIndex={wordIndex}
             setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
@@ -105,6 +106,7 @@ const Gameboard = (props: Props): JSX.Element => {
       clients,
       currentIndex,
       currentInput,
+      currentWord,
       setEditorState,
       words,
       wrongIndex

@@ -67,7 +67,7 @@ const Editor = (props: Props): JSX.Element => {
 
     if (event.key === ' ') {
       if (currentInput !== currentWord) {
-        event.preventDefault();
+        // event.preventDefault();
       } else if (currentInput.trim() === currentWord) {
         event.preventDefault();
         document.getElementById('input').innerText = '';

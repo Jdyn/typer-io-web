@@ -113,13 +113,13 @@ const Lobby = (_props): JSX.Element => {
                   <div
                     style={{ filter: hidden ? 'blur(5px)' : '' }}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
-                  <Button
+                  {/* <Button
                     margin="0px"
                     padding="0px 5px"
                     onClick={() => setHidden(!hidden)}
                   >
                     {hidden ? 'show' : 'hide'}
-                  </Button>
+                  </Button> */}
                 </div>
                 {currrentClient.isHost ? (
                   <Button

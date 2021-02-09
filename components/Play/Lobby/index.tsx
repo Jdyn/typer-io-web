@@ -111,7 +111,6 @@ const Lobby = (_props): JSX.Element => {
                 <span>(you can copy the link while hidden)</span>
                 <div className={styles.linkContainer}>
                   <div
-                    style={{ filter: hidden ? 'blur(5px)' : '' }}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                   {/* <Button
                     margin="0px"

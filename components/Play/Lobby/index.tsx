@@ -108,7 +108,6 @@ const Lobby = (_props): JSX.Element => {
             {room.id && (
               <>
                 <span>Share this link to invite players.</span>
-                <span>(you can copy the link while hidden)</span>
                 <div className={styles.linkContainer}>
                   <div
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>

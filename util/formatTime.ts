@@ -25,6 +25,13 @@ const formatTime = (date: string | number): string => {
       diff = Math.round(diff / time);
       return `${diff}  ${times[t - 1][0]}${diff === 1 ? ' ago' : 's ago'}`;
     }
+
+    // If time is greater than a year...
+    if (diff > times[6][1]) {
+      const time = times[6][1] as number;
+      diff = Math.round(diff / time);
+      return `${diff}  ${times[6][0]}${diff === 1 ? ' ago' : 's ago'}`;
+    }
   }
 
   return '';

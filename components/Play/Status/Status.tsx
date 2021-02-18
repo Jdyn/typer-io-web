@@ -132,10 +132,23 @@ const PlayStatus = (props: Props): JSX.Element => {
     silentEmit('START_CUSTOM_GAME', {});
   };
 
+  const handleNewPublicGame = () => {
+    silentEmit('FIND_NEW_GAME', {});
+  };
+
   return (
     <>
       <div className={styles.root}>
-        {isCustom && currrentClient.isHost && (
+        {!isCustom &&
+          (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) && (
+            <div className={styles.buttonContainer}>
+              <Button padding="8px" onClick={(): void => handleNewPublicGame()}>
+                new game
+              </Button>
+            </div>
+          )}
+
+        {isCustom && (currrentClient.isHost || room?.gameboard?.isOver) && (
           <div className={styles.buttonContainer}>
             <Button padding="8px" onClick={(): void => handleClick()}>
               lobby

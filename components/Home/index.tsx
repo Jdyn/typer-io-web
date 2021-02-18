@@ -57,7 +57,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1612395710881)} </span>
+                <span>updated {formatTime(1613688029084)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -70,9 +70,13 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (Feb. 3rd, 2021):</h3>
+                <h3>Changes (Feb. 18th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>
+                      You can now start a new game after you complete a game in
+                      quick play and solo play
+                    </li>
                     <li>
                       Smoothed out the moving animaton of Game Pieces on the
                       text

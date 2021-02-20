@@ -148,7 +148,7 @@ const PlayStatus = (props: Props): JSX.Element => {
             </div>
           )}
 
-        {isCustom && (currrentClient.isHost || room?.gameboard?.isOver) && (
+        {isCustom && currrentClient.isHost && (
           <div className={styles.buttonContainer}>
             <Button padding="8px" onClick={(): void => handleClick()}>
               lobby

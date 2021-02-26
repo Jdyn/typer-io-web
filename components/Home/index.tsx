@@ -74,16 +74,12 @@ const Home = (): JSX.Element => {
                 <div className={styles.list}>
                   <ul>
                     <li>
-                      You can now start a new game after you complete a game in
-                      quick play and solo play
+                      You can now start a new game quickly after you finish in
+                      solo and quick play.
                     </li>
                     <li>
                       Smoothed out the moving animaton of Game Pieces on the
-                      text
-                    </li>
-                    <li>
-                      Experimenting with the animation of users entering and
-                      exiting lobbies
+                      text.
                     </li>
                   </ul>
                 </div>

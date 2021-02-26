@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ReactGA from 'react-ga';
 import { wrapper } from '../store';
-import { init } from '../util/sentry';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
@@ -15,8 +14,6 @@ import { userRefreshed, nicknameChanged } from '../store/session/reducers';
   });
   ReactGA.pageview('/');
 })();
-
-init();
 
 export const App = (props): JSX.Element => {
   const { Component, pageProps, err } = props;

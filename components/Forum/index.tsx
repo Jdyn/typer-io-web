@@ -17,8 +17,10 @@ const Forum = (): JSX.Element => {
   const { page: pageNumber } = router.query;
 
   useEffect(() => {
-    dispatch(fetchPosts(pageNumber as string));
-  }, [dispatch, pageNumber]);
+    if (router.isReady) {
+      dispatch(fetchPosts(pageNumber as string));
+    }
+  }, [dispatch, pageNumber, router.isReady]);
 
   const setPage = (index) => {
     if (index <= page?.postMaxPage && index >= 1 && index !== page?.postPage) {

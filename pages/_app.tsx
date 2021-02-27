@@ -12,7 +12,6 @@ import { userRefreshed, nicknameChanged } from '../store/session/reducers';
       siteSpeedSampleRate: 100
     }
   });
-  ReactGA.pageview('/');
 })();
 
 export const App = (props): JSX.Element => {

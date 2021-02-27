@@ -117,3 +117,39 @@
 .rules {
   grid-area: notice;
 }
+
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px 10px 0px;
+  justify-content: center;
+}
+
+.pagination > span {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageButton {
+  display: flex;
+  background: var(--accent);
+  border-radius: 8px;
+  outline: none;
+  border: 3px solid #5d66ce;
+  margin: 0px 5px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  transition-duration: 0.15s;
+}
+
+.pageButton:hover {
+  transform: translateY(-2px);
+}
+
+.pageButton:active {
+  transform: translateY(2px);
+}

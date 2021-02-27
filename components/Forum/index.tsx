@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './index.module.css';
 import Banner from '../Shared/Banner';
@@ -9,15 +10,21 @@ import formatTime from '../../util/formatTime';
 import Button from '../Shared/Button';
 
 const Forum = (): JSX.Element => {
+  const router = useRouter();
   const dispatch = useDispatch();
-  const posts = useSelector(
-    (state: AppState) => state.forum.feed.page?.posts || []
-  );
+  const page = useSelector((state: AppState) => state.forum.feed.page);
   const session = useSelector((state: AppState) => state.session);
+  const { page: pageNumber } = router.query;
 
   useEffect(() => {
-    dispatch(fetchPosts('PAGE'));
-  }, [dispatch]);
+    dispatch(fetchPosts('PAGE', (pageNumber as string) || '1'));
+  }, [dispatch, pageNumber]);
+
+  const setPage = (index) => {
+    if (index <= page?.postMaxPage && index >= 1 && index !== page?.postPage) {
+      router.push(`/forum?page=${index}`);
+    }
+  };
 
   return (
     <div className={styles.root}>
@@ -36,7 +43,7 @@ const Forum = (): JSX.Element => {
         )}
         <div className={styles.feedContainer}>
           <div className={styles.feedWrapper}>
-            {posts.map((post) => (
+            {page.posts?.map((post) => (
               <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
@@ -67,6 +74,33 @@ const Forum = (): JSX.Element => {
             ))}
           </div>
         </div>
+      </div>
+      <div className={styles.pagination}>
+        <button
+          className={styles.pageButton}
+          onClick={() => setPage(1)}
+          type="button"
+        >
+          1
+        </button>
+        <button
+          className={styles.pageButton}
+          onClick={() => setPage(page?.postPage - 1)}
+          type="button"
+        >{`<`}</button>
+        <span>{page?.postPage}</span>
+        <button
+          className={styles.pageButton}
+          onClick={() => setPage(page?.postPage + 1)}
+          type="button"
+        >{`>`}</button>
+        <button
+          className={styles.pageButton}
+          onClick={() => setPage(page?.postMaxPage)}
+          type="button"
+        >
+          {page?.postMaxPage || 1}
+        </button>
       </div>
     </div>
   );

@@ -8,6 +8,8 @@ const initialState = {
       posts: null
     },
     page: {
+      postPage: 1,
+      postMaxPage: 1,
       posts: null
     }
   }

@@ -27,7 +27,7 @@ export const fetchPost = (postId: string) => async (
   }
 };
 
-export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
+export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: string) => async (
   dispatch: Dispatch,
   getState: () => AppState
 ): Promise<void> => {
@@ -38,9 +38,8 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: number) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.fetch(
-    `/forum/posts?query=${query.toLowerCase()} ${page ?? ''}`
-  );
+  const item = `${query.toLowerCase()}${page}`;
+  const response = await Api.fetch(`/forum/posts?query=${item}`);
 
   if (response.ok) {
     const key = query === 'RECENT' ? 'recent' : 'page';

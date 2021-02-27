@@ -17,7 +17,7 @@ const Forum = (): JSX.Element => {
   const { page: pageNumber } = router.query;
 
   useEffect(() => {
-    dispatch(fetchPosts('PAGE', (pageNumber as string) || '1'));
+    dispatch(fetchPosts(pageNumber as string));
   }, [dispatch, pageNumber]);
 
   const setPage = (index) => {

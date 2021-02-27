@@ -6,27 +6,18 @@ import Word from './Word';
 import Piece from './Piece';
 import { AppState } from '../../../store';
 import styles from './index.module.css';
-import { EditorState } from '../types';
+import { EditorState, GameState } from '../types';
 import formatTime from '../../../util/formatTime';
 
 interface Props {
-  words: string[];
+  gameState: GameState;
   wrongIndex: number;
-  currentInput: string;
-  currentWord: string;
-  currentIndex: number;
   setEditorState: Dispatch<SetStateAction<EditorState>>;
 }
 
 const Gameboard = (props: Props): JSX.Element => {
-  const {
-    words,
-    wrongIndex,
-    currentInput,
-    currentWord,
-    currentIndex,
-    setEditorState
-  } = props;
+  const { wrongIndex, gameState, setEditorState } = props;
+  const { currentWord, currentInput, currentIndex, words } = gameState;
 
   const clientId = useSelector((state: AppState) => state.game.meta.id);
   const clients = useSelector((state: AppState) => state.game.room.clients);
@@ -49,7 +40,7 @@ const Gameboard = (props: Props): JSX.Element => {
         }
       }
     }
-  }, [wrongIndex, currentInput, currentWord, setEditorState]);
+  }, [wrongIndex, setEditorState, currentWord, currentInput]);
 
   useEffect(() => {
     setEditorState((prev) => ({ ...prev, wrongIndex: null }));

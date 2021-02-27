@@ -26,7 +26,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .postContainer {

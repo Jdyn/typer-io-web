@@ -28,6 +28,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
+  color: var(--text);
 }
 
 .content {

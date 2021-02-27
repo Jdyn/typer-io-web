@@ -140,10 +140,7 @@ const Play = (props: Props): JSX.Element => {
         <Leaderboard />
         <Gameboard
           wrongIndex={editorState.wrongIndex}
-          currentInput={gameState.currentInput}
-          currentWord={gameState.currentWord}
-          currentIndex={gameState.currentIndex}
-          words={gameState.words}
+          gameState={gameState}
           setEditorState={setEditorState}
         />
         <Editor
@@ -155,13 +152,6 @@ const Play = (props: Props): JSX.Element => {
           submitWord={submitWord}
         />
         {!isSolo && <Chat />}
-        {/* {!gameboard.isStarted && !gameboard.isOver ? (
-          <span className={styles.notice}>
-            Tip: Type the words in the box above when the game begins.
-          </span>
-        ) : (
-          <span style={{ height: '45px' }} />
-        )} */}
       </div>
       <section
         style={{

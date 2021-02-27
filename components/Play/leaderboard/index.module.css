@@ -1,13 +1,6 @@
 .root {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
   grid-area: leaderboard;
-  border-radius: 16px;
   height: 545px;
-  box-shadow: var(--shadow);
 }
 
 .container {
@@ -30,7 +23,7 @@
   margin: 0px 0px;
   padding: 0px 0px 0px 10px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .entry {
@@ -38,7 +31,7 @@
   flex-direction: row;
   position: relative;
   border-bottom: 2px solid #e5e5e5;
-  padding: 12px;
+  padding: 10px 10px 10px 0px;
   color: var(--text);
 }
 
@@ -52,7 +45,7 @@
 
 .content {
   display: flex;
-  flex: 2.5;
+  flex: 2.8;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -113,7 +106,6 @@
   flex: 1;
   justify-content: flex-end;
   color: var(--subtext);
-  flex: 1;
   font-size: 0.8rem;
   font-weight: 300;
 }
@@ -122,6 +114,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-right: 10px;
-  flex: 0.3;
+  width: 22px;
+  margin-right: 5px;
 }

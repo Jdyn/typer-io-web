@@ -38,7 +38,7 @@ export const fetchPosts = (query: 'RECENT' | 'PAGE', page?: string) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const item = `${query.toLowerCase()}${page}`;
+  const item = `${query.toLowerCase()}${page || ''}`;
   const response = await Api.fetch(`/forum/posts?query=${item}`);
 
   if (response.ok) {

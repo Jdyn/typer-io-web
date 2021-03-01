@@ -7,11 +7,7 @@ import { authenticate } from '../store/session/actions';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
 
 ((): void => {
-  ReactGA.initialize('UA-135635293-4', {
-    gaOptions: {
-      siteSpeedSampleRate: 100
-    }
-  });
+  ReactGA.initialize('UA-135635293-4', {});
 })();
 
 export const App = (props): JSX.Element => {

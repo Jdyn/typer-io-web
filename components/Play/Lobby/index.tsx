@@ -76,6 +76,23 @@ const Lobby = (_props): JSX.Element => {
                 ))}
               </div>
             </div>
+            <div className={styles.setting}>
+              <h3>Maximum Players</h3>
+              <div className={styles.difficultyWrapper}>
+                {[5, 10, 15, 20, 25, 30].map((key) => (
+                  <button
+                    type="button"
+                    key={key}
+                    className={`${styles.difficultyButton} ${
+                      room.maxSize === key ? styles.selected : ''
+                    }`}
+                    onClick={() => handleSettingsUpdate({ maxSize: key })}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
             {currrentClient.isHost && (
               <div className={styles.setting}>
                 <h3>Kick Players</h3>
@@ -109,8 +126,7 @@ const Lobby = (_props): JSX.Element => {
               <>
                 <span>Share this link to invite players.</span>
                 <div className={styles.linkContainer}>
-                  <div
-                  >{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
+                  <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                   {/* <Button
                     margin="0px"
                     padding="0px 5px"

@@ -3,7 +3,7 @@
   flex-direction: row;
   grid-area: clientlist;
   position: relative;
-  height: 105px;
+  min-height: 106px;
   background-clip: padding-box;
   border-radius: 8px;
   background-color: transparent;
@@ -20,6 +20,18 @@
   justify-content: center;
   margin: 0;
   border-radius: 16px;
+}
+
+.miniCardWrapper {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  position: relative;
+  margin: 0;
+  padding: 5px;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .card {
@@ -64,6 +76,7 @@
   border-radius: 12px;
   color: white;
   height: 100%;
+  width: 100%;
   grid-row: 2 / 3;
   grid-column: 1 / 4;
 }
@@ -80,7 +93,7 @@
   height: 100%;
   width: 100%;
   text-overflow: ellipsis;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 5px;
 }
 
 .usernameWrapper > span {
@@ -88,9 +101,10 @@
   align-items: center;
   overflow: hidden;
   font-size: 16px;
+  margin-right: 10px;
   text-overflow: ellipsis;
-  /* white-space: nowrap;
-  margin-right: 5px; */
+  white-space: nowrap;
+  margin-right: 5px;
   flex: 3;
 }
 
@@ -101,7 +115,9 @@
 
 .wpm {
   display: flex;
-  font-size: 17px;
+  flex-direction: column;
+  font-size: 15px;
+  line-height: 12px;
   text-align: center;
   color: white;
 }

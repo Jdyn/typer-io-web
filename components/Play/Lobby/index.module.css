@@ -31,6 +31,20 @@
   grid-area: content3;
 }
 
+.input {
+  display: flex;
+  border: none;
+  outline: none;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  width: 85%;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--text);
+  align-self: center;
+  padding: 5px 5px;
+}
+
 .wrapper {
   justify-content: center;
   align-items: center;

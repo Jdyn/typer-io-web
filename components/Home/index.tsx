@@ -70,7 +70,7 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (Feb. 18th, 2021):</h3>
+                <h3>Changes (Mar. 2nd, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
                     <li>

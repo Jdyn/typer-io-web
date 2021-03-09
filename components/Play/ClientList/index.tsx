@@ -3,18 +3,24 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
+import { AppState } from '../../../store';
 
-const placements = {
-  1: '1st',
-  2: '2nd',
-  3: '3rd',
-  4: '4th',
-  5: '5th'
+const placements = (rank: number): string => {
+  if (typeof rank !== 'number') return '-';
+
+  let suffix = '';
+
+  if (rank % 10 === 1) suffix = 'st';
+  else if (rank % 10 === 2) suffix = 'nd';
+  else if (rank % 10 === 3) suffix = 'rd';
+  else suffix = 'th';
+
+  return `${rank}${suffix}`;
 };
 
-const ClientList = (props) => {
+const ClientList = (props): JSX.Element => {
   const { isSolo } = props;
-  const users = useSelector((state) => state.game.room.clients);
+  const users = useSelector((state: AppState) => state.game.room.clients);
 
   const variants = {
     initial: {
@@ -80,7 +86,7 @@ const ClientList = (props) => {
                         </div>
                       </div>
                       <div className={styles.placement}>
-                        {placements[item.gamePiece?.rank] || '-'}
+                        {placements(item.gamePiece?.rank)}
                       </div>
                     </div>
                   </div>
@@ -135,7 +141,7 @@ const ClientList = (props) => {
                         </div>
                       </div>
                       <div className={styles.placement}>
-                        {placements[item.gamePiece?.rank] || '-'}
+                        {placements(item.gamePiece?.rank)}
                       </div>
                     </div>
                   </div>

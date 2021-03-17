@@ -85,9 +85,11 @@ const ClientList = (props): JSX.Element => {
                           <span className={styles.statHeader}>WPM</span>
                         </div>
                       </div>
-                      <div className={styles.placement}>
-                        {placements(item.gamePiece?.rank)}
-                      </div>
+                      {!isSolo && (
+                        <div className={styles.placement}>
+                          {placements[item.gamePiece?.rank] || '-'}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -140,9 +142,11 @@ const ClientList = (props): JSX.Element => {
                           <span className={styles.statHeader}>WPM</span>
                         </div>
                       </div>
-                      <div className={styles.placement}>
-                        {placements(item.gamePiece?.rank)}
-                      </div>
+                      {!isSolo && (
+                        <div className={styles.placement}>
+                          {placements[item.gamePiece?.rank] || '-'}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>

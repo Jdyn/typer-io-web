@@ -30,9 +30,7 @@ const Profile = (props: Props): JSX.Element => {
           set(response?.result?.user);
         } else {
           set(null);
-          setError(
-            'There was an error finding this player. This player likely does not exist.'
-          );
+          setError('This player does not exist.');
         }
       });
     }

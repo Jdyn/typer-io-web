@@ -5,7 +5,7 @@
   color: white;
   -webkit-background-clip: border-box;
   background-clip: border-box;
-  background-color: var(--accent);
+  background: var(--accent);
   height: 55px;
   padding: 15px 20px 10px 20px;
   border-radius: 16px 16px 0px 0px;

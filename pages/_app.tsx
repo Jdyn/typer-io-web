@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ReactGA from 'react-ga';
 import { wrapper } from '../store';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
+import { ThemeProvider } from '../util/getInitialColorMode';
 
 ((): void => {
   ReactGA.initialize('UA-135635293-4', {});
@@ -13,6 +14,7 @@ import { userRefreshed, nicknameChanged } from '../store/session/reducers';
 export const App = (props): JSX.Element => {
   const { Component, pageProps, err } = props;
   const dispatch = useDispatch();
+  const [isReady, setReady] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -37,9 +39,15 @@ export const App = (props): JSX.Element => {
     if (nickname) {
       dispatch(nicknameChanged(nickname));
     }
+
+    setReady(true);
   }, [dispatch]);
 
-  return <Component {...pageProps} err={err} />;
+  return isReady ? (
+    <ThemeProvider>
+      <Component {...pageProps} err={err} />
+    </ThemeProvider>
+  ) : null;
 };
 
 export default wrapper.withRedux(App);

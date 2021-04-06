@@ -18,7 +18,7 @@
   flex-direction: row;
   position: relative;
   align-content: center;
-  background: white;
+  background: var(--primary-main);
   justify-content: center;
   border: 2px solid var(--border);
   border-radius: 16px;
@@ -89,7 +89,7 @@
   height: 46px;
   border-radius: 50%;
   align-self: center;
-  border: 2px solid #e5e5e5;
+  border: 2px solid var(--border);
   margin: -3px 10px -3px -3px;
 }
 

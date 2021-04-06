@@ -1,8 +1,8 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 30px auto;
-  padding: 0px 10px;
+  margin: 145px auto 0 auto;
+  padding: 0px 10px 25px 0px;
   z-index: 100;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-rows: min-content 1fr 100px 1fr;
@@ -22,7 +22,7 @@
   grid-area: profile;
   min-height: 400px;
   box-shadow: var(--shadow);
-  background-color: white;
+  background: var(--primary-main);
   flex-grow: 1;
 }
 
@@ -32,7 +32,7 @@
   border-radius: 16px;
   grid-area: posts;
   box-shadow: var(--shadow);
-  background-color: white;
+  background: var(--primary-main);
   flex-grow: 1;
 }
 
@@ -106,7 +106,7 @@
   grid-area: history;
   height: 550px;
   box-shadow: var(--shadow);
-  background-color: white;
+  background: var(--primary-main);
   flex-grow: 1;
 }
 
@@ -132,7 +132,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  border-bottom: 2px solid #e5e5e5;
+  border-bottom: 2px solid var(--border);
   padding: 16px 12px 16px 12px;
   color: var(--text);
 }
@@ -156,7 +156,7 @@
   height: 46px;
   border-radius: 50%;
   align-self: center;
-  border: 2px solid #e5e5e5;
+  border: 2px solid var(--border);
   margin: -3px 10px -3px -3px;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .statsContainer {
-  background: white;
+  background: var(--primary-main);
   box-shadow: var(--shadow);
   border-radius: 16px;
   grid-area: stats;
@@ -247,7 +247,7 @@
 .friendsList {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--primary-main);
   box-shadow: var(--shadow);
   border-radius: 16px;
   grid-area: stats;
@@ -275,7 +275,7 @@
   flex-direction: row;
   position: relative;
   margin: 0 20px;
-  border-bottom: 2px solid #e5e5e5;
+  border-bottom: 2px solid var(--border);
   padding: 12px 12px 12px 12px;
   color: var(--text);
 }

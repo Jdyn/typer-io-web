@@ -5,8 +5,9 @@
   position: relative;
   grid-area: chat;
   box-shadow: var(--shadow);
-  background-color: white;
+  background: var(--primary-main);
   height: 400px;
+  z-index: 1;
   border-radius: 16px;
 }
 
@@ -21,7 +22,7 @@
   display: flex;
   position: relative;
   flex-grow: 1;
-  max-height: 240px;
+  max-height: 250px;
   flex-direction: column;
   overflow-y: scroll;
   padding: 15px;
@@ -52,16 +53,19 @@
   display: flex;
   position: relative;
   z-index: 25;
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .input {
   position: relative;
   width: 100%;
   border: none;
-  border-bottom: 2px solid #e5e5e5;
-  margin: 10px;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: var(--primary-main);
+  margin: 10px 0px;
   outline: none;
   font-size: 1rem;
-  padding: 5px 10px;
+  padding: 10px 20px;
 }

@@ -4,10 +4,10 @@
   left: 0;
   width: 100%;
   height: 75px;
-  z-index: 500;
+  z-index: 5;
   padding-top: 3px;
   overflow: hidden;
-  background-color: var(--accent);
+  background: var(--accent);
   box-shadow: 0 5px 5px rgba(30, 30, 70, 0.3);
   border-bottom: 3px solid rgb(0, 0, 0, 0.1);
 }

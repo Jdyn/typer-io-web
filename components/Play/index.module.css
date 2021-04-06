@@ -1,5 +1,6 @@
 .root {
-  margin: 20px 0px 100px 0px;
+  margin: 20px 0px 0 0px;
+  padding-bottom: 125px;
 }
 
 .container {
@@ -32,7 +33,7 @@
   position: relative;
   grid-area: notice;
   padding: 10px 5px;
-  background-color: var(--accent);
+  background: var(--accent);
   color: white;
   border: 3px solid #5d66ce;
   text-align: center;

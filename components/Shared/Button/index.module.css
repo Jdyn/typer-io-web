@@ -37,7 +37,7 @@
 
 .secondary {
   border: 3px solid var(--border);
-  background: white;
+  background: var(--primary-main);
   color: var(--subtext);
 }
 

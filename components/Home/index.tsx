@@ -57,7 +57,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1616000280065)} </span>
+                <span>updated {formatTime(1617696334800)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -70,15 +70,12 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (Mar. 2nd, 2021):</h3>
+                <h3>Changes (April 5th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>I have added dark mode. (experimental)</li>
                     <li>
                       Custom lobbies can now go up to 30 players, up from 5.
-                    </li>
-                    <li>
-                      You can now start a new game quickly after you finish in
-                      solo and quick play.
                     </li>
                   </ul>
                 </div>

@@ -1,12 +1,13 @@
 .root {
-  background: white;
   display: flex;
   flex-direction: column;
   position: relative;
   margin: 0;
-  overflow-x: none;
+  z-index: 5;
+  overflow-x: hidden;
   overflow-y: auto;
   height: inherit;
+  background: var(--primary-main);
   border-radius: 16px;
   box-shadow: var(--shadow);
 }
@@ -18,7 +19,9 @@
   position: relative;
   /* border: 2px solid #cfcece; */
   height: 100%;
-  overflow-x: none;
+  opacity: 1;
+  background: var(--primary-main);
+  overflow-x: hidden;
   overflow-y: auto;
   justify-content: center;
   border-radius: 0px 0px 16px 16px;

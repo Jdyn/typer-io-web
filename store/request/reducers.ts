@@ -2,7 +2,10 @@ import { RequestState, RequestActionTypes, requestActions } from './types';
 
 const initialState = {};
 
-const setRequest = (state: RequestState, action: RequestActionTypes): RequestState => {
+const setRequest = (
+  state: RequestState,
+  action: RequestActionTypes
+): RequestState => {
   const { isPending, requestType, error, errored } = action;
   const requestObject = {};
 
@@ -15,7 +18,10 @@ const setRequest = (state: RequestState, action: RequestActionTypes): RequestSta
   return { ...state, ...requestObject };
 };
 
-const reducer = (state: RequestState = initialState, action: RequestActionTypes): RequestState => {
+const reducer = (
+  state: RequestState = initialState,
+  action: RequestActionTypes
+): RequestState => {
   switch (action.type) {
     case requestActions.SET_REQUEST:
       return setRequest(state, action);

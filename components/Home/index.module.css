@@ -1,13 +1,14 @@
 .root {
-  margin: 145px 0px;
+  margin: 145px 0 0 0;
+  padding-bottom: 125px;
 }
 
 .container {
   display: grid;
   gap: 20px;
   max-width: 1250px;
-  margin: 0px auto 25px auto;
-  padding: 0px 10px;
+  margin: 0px auto 0 auto;
+  padding: 0px 10px 45px 0px;
   grid-template-rows: min-content min-content 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-areas:
@@ -113,7 +114,7 @@
 }
 
 .card {
-  background: white;
+  background: var(--primary-main);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -165,7 +166,7 @@
 }
 
 .posts {
-  background: white;
+  background: var(--primary-main);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -181,7 +182,7 @@
 }
 
 .support {
-  background: white;
+  background: var(--primary-main);
   border-radius: 16px;
   padding: 8px;
   color: var(--text);

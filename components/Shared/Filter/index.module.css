@@ -3,7 +3,6 @@
   padding: 17px 0 0 0;
   display: flex;
   position: relative;
-  /* border-top: 2px solid var(--border); */
   flex-direction: row;
 }
 
@@ -25,7 +24,7 @@
   cursor: pointer;
   outline: none;
   border: none;
-  background-color: transparent;
+  background: transparent;
   color: var(--subtext);
   border-bottom: 2px solid var(--border);
   padding-bottom: 15px;
@@ -45,5 +44,5 @@
 
 .disabled {
   pointer-events: none;
-  color: var(--primary-grey);
+  color: var(--primary-main-grey);
 }

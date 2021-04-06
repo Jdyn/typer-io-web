@@ -1,8 +1,8 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 30px auto;
-  padding: 0px 10px;
+  margin: 145px auto 0px auto;
+  padding: 0px 10px 30px 0px;
   z-index: 100;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(450px, max-content) 1fr;
@@ -17,8 +17,8 @@
   flex-grow: 1;
   grid-area: main;
   border-radius: 16px;
-  box-shadow: 0px 10px 15px rgba(30, 30, 70, 0.3);
-  background-color: white;
+  box-shadow: var(--shadow);
+  background: var(--primary-main);
   transition: 2s;
   width: 100%;
 }
@@ -83,8 +83,8 @@
   flex-grow: 1;
   grid-area: main;
   border-radius: 16px;
-  box-shadow: 0px 10px 15px rgba(30, 30, 70, 0.3);
-  background-color: white;
+  box-shadow: var(--shadow);
+  background: var(--primary-main);
   width: 100%;
   grid-area: comments;
 }

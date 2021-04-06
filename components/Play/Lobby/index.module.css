@@ -12,14 +12,15 @@
   grid-gap: 20px;
   padding: 0px 10px;
   max-width: 1250px;
-  margin: 20px auto 115px auto;
+  margin: 20px auto 0 auto;
+  padding-bottom: 125px;
 }
 
 .container {
   margin: 0;
   grid-area: main;
   border-radius: 16px;
-  background-color: white;
+  background: var(--primary-main);
   box-shadow: var(--shadow);
 }
 
@@ -94,7 +95,7 @@
   margin: 0;
   grid-area: settings;
   border-radius: 16px;
-  background-color: white;
+  background: var(--primary-main);
   box-shadow: var(--shadow);
 }
 
@@ -141,7 +142,7 @@
 
 .difficultyButton {
   display: flex;
-  background: white;
+  background: var(--primary-main);
   border-radius: 8px;
   outline: none;
   border: 3px solid var(--border);

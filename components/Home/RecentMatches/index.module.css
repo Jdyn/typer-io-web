@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  border-bottom: 2px solid #e5e5e5;
+  border-bottom: 2px solid var(--border);
   padding: 12px;
   color: var(--text);
 }
@@ -38,7 +38,7 @@
 }
 
 .entry:only-child {
-  border-bottom: 2px solid #e5e5e5;
+  border-bottom: 2px solid var(--border);
 }
 
 .nameLink {
@@ -100,7 +100,7 @@
   height: 42px;
   border-radius: 50%;
   align-self: center;
-  border: 2px solid #e5e5e5;
+  border: 2px solid var(--border);
   margin: -3px 10px -3px -3px;
 }
 

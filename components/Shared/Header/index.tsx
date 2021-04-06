@@ -80,7 +80,7 @@ const Header = (): JSX.Element => {
                   className={styles.button}
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 >
-                  {theme}
+                  {theme === 'dark' ? 'light' : 'dark'}
                 </button>
                 {session.isLoggedIn ? (
                   <div className={styles.authContainer}>

@@ -73,7 +73,9 @@ const Home = (): JSX.Element => {
                 <h3>Changes (April 5th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>I have added dark mode. (experimental)</li>
+                    <li>
+                      I have finally added dark mode. LETS GOO (experimental)
+                    </li>
                     <li>
                       Custom lobbies can now go up to 30 players, up from 5.
                     </li>

@@ -1,13 +1,11 @@
 .root {
   display: grid;
-  grid-template-rows: min-content min-content min-content 1fr min-content;
+  grid-template-rows: min-content min-content 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-areas:
     'clientlist clientlist clientlist'
-    'settings main profile'
-    'settings chat profile'
-    'settings chat content2'
-    'content3 chat content2';
+    'leftContent main rightContent'
+    'leftContent chat rightContent';
   grid-gap: 20px;
   padding: 0px 10px;
   max-width: 1250px;
@@ -23,11 +21,15 @@
 }
 
 .aContainer2 {
-  grid-area: content2;
+  grid-area: leftContent;
 }
 
 .aContainer3 {
-  grid-area: content3;
+  grid-area: rightContent;
+}
+
+.profileContainer {
+  margin-bottom: 20px;
 }
 
 .input {
@@ -69,10 +71,6 @@
   padding: 0px;
 }
 
-.profileContainer {
-  grid-area: profile;
-}
-
 .clients {
   margin: 20px;
   display: flex;
@@ -83,15 +81,10 @@
   border-radius: 16px;
 }
 
-.kick {
-  grid-area: kick;
-}
-
 .settingsRoot {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  grid-area: settings;
+  margin-bottom: 20px;
   border-radius: 16px;
   background: var(--primary-main);
   box-shadow: var(--shadow);

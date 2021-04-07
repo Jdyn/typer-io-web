@@ -54,64 +54,75 @@ const Lobby = (_props): JSX.Element => {
     <main>
       <div className={styles.root}>
         <ClientList isSolo={false} />
-        <div className={styles.settingsRoot}>
-          <Banner>
-            <h1>Settings</h1>
-          </Banner>
-          <div className={styles.settingsContainer}>
-            <div className={styles.setting}>
-              <h3>Difficulty</h3>
-              <div className={styles.difficultyWrapper}>
-                {difficulties.map((key) => (
-                  <button
-                    type="button"
-                    key={key}
-                    className={`${styles.difficultyButton} ${
-                      room.difficulty === key ? styles.selected : ''
-                    }`}
-                    onClick={() => handleSettingsUpdate({ difficulty: key })}
-                  >
-                    {key}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className={styles.setting}>
-              <h3>Maximum Players</h3>
-              <div className={styles.difficultyWrapper}>
-                {[5, 10, 15, 20, 25, 30].map((key) => (
-                  <button
-                    type="button"
-                    key={key}
-                    className={`${styles.difficultyButton} ${
-                      room.maxSize === key ? styles.selected : ''
-                    }`}
-                    onClick={() => handleSettingsUpdate({ maxSize: key })}
-                  >
-                    {key}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {currrentClient.isHost && (
+
+        <section className={styles.aContainer2}>
+          <div className={styles.settingsRoot}>
+            <Banner>
+              <h1>Settings</h1>
+            </Banner>
+            <div className={styles.settingsContainer}>
               <div className={styles.setting}>
-                <h3>Kick Players</h3>
-                {game?.room?.clients?.map((client) => (
-                  <div key={client.id} className={styles.client}>
-                    <span style={{ color: client.gamePiece.color }}>
-                      {client.username}
-                    </span>
-                    {client.id !== currrentClient.id && (
-                      <Button onClick={(e) => handleKick(e, client.id)}>
-                        kick
-                      </Button>
-                    )}
-                  </div>
-                ))}
+                <h3>Difficulty</h3>
+                <div className={styles.difficultyWrapper}>
+                  {difficulties.map((key) => (
+                    <button
+                      type="button"
+                      key={key}
+                      className={`${styles.difficultyButton} ${
+                        room.difficulty === key ? styles.selected : ''
+                      }`}
+                      onClick={() => handleSettingsUpdate({ difficulty: key })}
+                    >
+                      {key}
+                    </button>
+                  ))}
+                </div>
               </div>
-            )}
+              <div className={styles.setting}>
+                <h3>Maximum Players</h3>
+                <div className={styles.difficultyWrapper}>
+                  {[5, 10, 15, 20, 25, 30].map((key) => (
+                    <button
+                      type="button"
+                      key={key}
+                      className={`${styles.difficultyButton} ${
+                        room.maxSize === key ? styles.selected : ''
+                      }`}
+                      onClick={() => handleSettingsUpdate({ maxSize: key })}
+                    >
+                      {key}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {currrentClient.isHost && (
+                <div className={styles.setting}>
+                  <h3>Kick Players</h3>
+                  {game?.room?.clients?.map((client) => (
+                    <div key={client.id} className={styles.client}>
+                      <span style={{ color: client.gamePiece.color }}>
+                        {client.username}
+                      </span>
+                      {client.id !== currrentClient.id && (
+                        <Button onClick={(e) => handleKick(e, client.id)}>
+                          kick
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+          <Adsense
+            path={router.pathname}
+            client="ca-pub-3148839588626786"
+            slot="7384036938"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
+          />
+        </section>
         <div className={styles.container}>
           <Banner>
             <h1>Lobby</h1>
@@ -153,23 +164,13 @@ const Lobby = (_props): JSX.Element => {
           </div>
         </div>
         <Chat />
-        <div className={styles.profileContainer}>
-          <Profile
-            requireSave
-            onClick={(payload) => handleUserUpdate(payload)}
-          />
-        </div>
-        <section className={styles.aContainer2}>
-          <Adsense
-            path={router.pathname}
-            client="ca-pub-3148839588626786"
-            slot="7384036938"
-            style={{ display: 'block', textAlign: 'center' }}
-            format="fluid"
-            layout="in-article"
-          />
-        </section>
         <section className={styles.aContainer3}>
+          <div className={styles.profileContainer}>
+            <Profile
+              requireSave
+              onClick={(payload) => handleUserUpdate(payload)}
+            />
+          </div>
           <Adsense
             path={router.pathname}
             client="ca-pub-3148839588626786"

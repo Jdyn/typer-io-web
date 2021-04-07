@@ -1,7 +1,7 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 0 auto;
+  margin: 145px auto 125px auto;
   padding: 0px 10px;
   z-index: 100;
   grid-template-columns: 1fr;
@@ -138,9 +138,9 @@
   background: var(--accent);
   border-radius: 8px;
   outline: none;
-  border: 3px solid #5d66ce;
   margin: 0px 5px;
   padding: 5px 10px;
+  border: none;
   color: white;
   cursor: pointer;
   transition-duration: 0.15s;

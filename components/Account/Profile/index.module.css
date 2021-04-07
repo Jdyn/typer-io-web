@@ -1,8 +1,8 @@
 .root {
   display: grid;
   position: relative;
-  margin: 145px auto 0 auto;
-  padding: 0px 10px 25px 0px;
+  margin: 145px auto 125px auto;
+  padding: 0px 10px;
   z-index: 100;
   grid-template-columns: 1.2fr 2fr 1.2fr;
   grid-template-rows: min-content 1fr 100px 1fr;
@@ -313,7 +313,7 @@
   background: var(--accent);
   border-radius: 8px;
   outline: none;
-  border: 3px solid #5d66ce;
+  border: none;
   margin: 0px 5px;
   padding: 5px 10px;
   color: white;

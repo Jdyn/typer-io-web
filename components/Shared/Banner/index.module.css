@@ -8,6 +8,7 @@
   border-radius: 16px 16px 0px 0px;
   text-align: center;
   align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0px 5px 5px rgba(30, 30, 70, 0.2);
 }
 

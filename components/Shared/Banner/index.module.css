@@ -5,6 +5,7 @@
   background: var(--accent);
   height: 55px !important;
   padding: 10px 20px;
+  z-index: 10;
   border-radius: 16px 16px 0px 0px;
   text-align: center;
   align-items: center;

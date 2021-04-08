@@ -22,7 +22,9 @@ const Comment = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
   const { postId } = useRouter().query;
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
-  const isAdmin = useSelector((state: AppState) => state.session.user.is_admin);
+  const isAdmin = useSelector(
+    (state: AppState) => state.session?.user?.is_admin || false
+  );
   const [isPending, setPending] = useState(false);
   const onChange = () => {
     set((prev) => !prev);
@@ -81,7 +83,7 @@ const Comment = (props: Props): JSX.Element => {
           {isAdmin && (
             <>
               <span className={styles.seperator}>•</span>
-              <span>ID: {comment.id}</span>
+              <span>ID: {comment?.id}</span>
             </>
           )}
         </div>

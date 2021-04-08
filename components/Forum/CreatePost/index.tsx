@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import Banner from '../../Shared/Banner';
@@ -7,7 +8,6 @@ import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import { createPost } from '../../../store/forum/actions';
 import { AppState } from '../../../store';
-import Link from 'next/link';
 
 const CreatePost = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -75,7 +75,9 @@ const CreatePost = (): JSX.Element => {
               create post
             </Button>
             <Link href="/forum">
-              <Button secondary padding="10px">cancel</Button>
+              <Button secondary padding="10px">
+                cancel
+              </Button>
             </Link>
           </div>
         </div>

@@ -9,7 +9,6 @@
   overflow: hidden;
   background: var(--accent);
   box-shadow: 0 5px 5px rgba(30, 30, 70, 0.3);
-  border-bottom: 3px solid rgb(0, 0, 0, 0.1);
 }
 
 .container {
@@ -67,6 +66,7 @@
   justify-self: flex-end;
   margin: 0px 15px 0px 0px;
   padding: 0;
+  width: 310px;
   list-style: none;
 }
 

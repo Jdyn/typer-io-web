@@ -57,7 +57,7 @@
   margin: 10px -5px;
   padding: 0px 10px;
   min-height: 500px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 

@@ -73,40 +73,44 @@ const Header = (): JSX.Element => {
                 </label>
               </form>
             </div>
-            {!authenticationRequest?.isPending ? (
-              <>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                >
-                  {theme === 'dark' ? 'light' : 'dark'}
-                </button>
-                {session.isLoggedIn ? (
-                  <div className={styles.authContainer}>
-                    <Link href={`/u/${session?.user?.username}`}>
-                      <span className={styles.button}>Profile</span>
-                    </Link>
-                    <button
-                      type="button"
-                      className={styles.button}
-                      onClick={logout}
-                    >
-                      log out
-                    </button>
-                  </div>
-                ) : (
-                  <div className={styles.authContainer}>
-                    <Link href="/login">
-                      <a>log in</a>
-                    </Link>
-                    <Link href="/signup">
-                      <a>sign up</a>
-                    </Link>
-                  </div>
-                )}
-              </>
-            ) : null}
+
+            <div className={styles.authContainer}>
+              <button
+                type="button"
+                className={styles.button}
+                style={{ width: '60px' }}
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? 'light' : 'dark'}
+              </button>
+              {!authenticationRequest?.isPending ? (
+                <>
+                  {session.isLoggedIn ? (
+                    <>
+                      <Link href={`/u/${session?.user?.username}`}>
+                        <span className={styles.button}>Profile</span>
+                      </Link>
+                      <button
+                        type="button"
+                        className={styles.button}
+                        onClick={logout}
+                      >
+                        log out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/login">
+                        <a>log in</a>
+                      </Link>
+                      <Link href="/signup">
+                        <a>sign up</a>
+                      </Link>
+                    </>
+                  )}
+                </>
+              ) : null}
+            </div>
           </nav>
         </header>
       )}

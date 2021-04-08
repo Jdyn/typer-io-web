@@ -87,7 +87,7 @@ const ClientList = (props): JSX.Element => {
                       </div>
                       {!isSolo && (
                         <div className={styles.placement}>
-                          {placements[item.gamePiece?.rank] || '-'}
+                          {placements(item.gamePiece?.rank) || '-'}
                         </div>
                       )}
                     </div>
@@ -144,7 +144,7 @@ const ClientList = (props): JSX.Element => {
                       </div>
                       {!isSolo && (
                         <div className={styles.placement}>
-                          {placements[item.gamePiece?.rank] || '-'}
+                          {placements(item.gamePiece?.rank) || '-'}
                         </div>
                       )}
                     </div>

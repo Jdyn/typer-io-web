@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   padding: 0px 10px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: auto;
   height: 100%;
 }

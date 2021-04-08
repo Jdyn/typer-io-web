@@ -112,6 +112,7 @@
 
 .historyContainer {
   display: flex;
+  flex: 1;
   flex-direction: column;
   overflow: hidden;
   margin: 5px 20px 0px 20px;
@@ -124,7 +125,7 @@
   display: grid;
   grid-template-columns: repeat(1fr);
   padding-left: 10px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
@@ -258,9 +259,10 @@
 
 .friendsListWrapper {
   display: grid;
+  flex: 1;
   grid-template-columns: repeat(auto-fill, 1fr);
   padding-left: 10px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: auto;
   padding: 0px 5px 0px 0px;
   margin: 20px 5px 20px 20px;

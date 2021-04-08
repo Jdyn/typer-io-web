@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 1fr);
   padding-left: 10px;
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 

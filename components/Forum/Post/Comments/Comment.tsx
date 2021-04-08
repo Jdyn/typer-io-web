@@ -22,6 +22,7 @@ const Comment = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
   const { postId } = useRouter().query;
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
+  const isAdmin = useSelector((state: AppState) => state.session.user.is_admin);
   const [isPending, setPending] = useState(false);
   const onChange = () => {
     set((prev) => !prev);
@@ -77,6 +78,12 @@ const Comment = (props: Props): JSX.Element => {
           )}
           <span className={styles.seperator}>•</span>
           <span>{formatTime(comment.createdAt)}</span>
+          {isAdmin && (
+            <>
+              <span className={styles.seperator}>•</span>
+              <span>ID: {comment.id}</span>
+            </>
+          )}
         </div>
 
         {showReplyBox && (

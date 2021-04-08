@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: var(--accent);
+  color: var(--subtext);
   font-weight: 700;
   margin: 0;
   margin-bottom: 10px;

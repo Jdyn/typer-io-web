@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
@@ -7,6 +7,7 @@ import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import { createPost } from '../../../store/forum/actions';
 import { AppState } from '../../../store';
+import Link from 'next/link';
 
 const CreatePost = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -64,14 +65,19 @@ const CreatePost = (): JSX.Element => {
             onChange={(e): void => setForm({ ...form, body: e.target.value })}
             placeholder="The contents of your post."
           />
-          <Button
-            color="#fff"
-            padding="10px"
-            isPending={createPostRequest?.isPending || false}
-            onClick={handleClick}
-          >
-            create post
-          </Button>
+          <div className={styles.buttonContainer}>
+            <Button
+              color="#fff"
+              padding="10px"
+              isPending={createPostRequest?.isPending || false}
+              onClick={handleClick}
+            >
+              create post
+            </Button>
+            <Link href="/forum">
+              <Button secondary padding="10px">cancel</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

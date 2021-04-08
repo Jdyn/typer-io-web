@@ -19,8 +19,8 @@
   border-radius: 16px;
   box-shadow: var(--shadow);
   background: var(--primary-main);
-  transition: 2s;
   width: 100%;
+  min-height: 300px;
 }
 
 .nameLink {

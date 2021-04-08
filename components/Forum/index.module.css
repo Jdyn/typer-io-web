@@ -143,7 +143,6 @@
   border: none;
   color: white;
   cursor: pointer;
-  transition-duration: 0.15s;
 }
 
 .pageButton:hover {

@@ -29,6 +29,7 @@ const Adsense = (props: Props): JSX.Element => {
   } = props;
 
   useEffect(() => {
+    console.log(window.adsbygoogle);
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}
@@ -39,7 +40,7 @@ const Adsense = (props: Props): JSX.Element => {
   }, []);
 
   return typeof window !== 'undefined' &&
-    (window as any)?.adsbygoogle?.loaded ? (
+    typeof (window as any).adsbygoogle !== 'undefined' ? (
     <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
       <ins
         key={path}

@@ -29,7 +29,6 @@ const Adsense = (props: Props): JSX.Element => {
   } = props;
 
   useEffect(() => {
-    console.log(window.adsbygoogle);
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}

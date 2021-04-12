@@ -39,8 +39,10 @@ const Adsense = (props: Props): JSX.Element => {
   }, []);
 
   return typeof window !== 'undefined' &&
-    (typeof (window as any).adsbygoogle !== 'undefined' ||
-      !Array.isArray((window as any).adsbygoogle)) ? (
+    (
+      typeof (window as any).adsbygoogle !== 'undefined' ||
+      (window as any).adsbygoogle
+    ).constructor !== Array ? (
     <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
       <ins
         key={path}

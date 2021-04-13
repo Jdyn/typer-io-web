@@ -28,21 +28,16 @@ const Adsense = (props: Props): JSX.Element => {
     wrapperStyles
   } = props;
 
-  const [display, setDisplay] = useState(false);
-
   useEffect(() => {
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}
       );
     } catch (e) {}
-
-    setDisplay(
-      document?.getElementById(slot)?.childNodes[0]?.childNodes?.length !== 0
-    );
   }, [slot]);
 
-  return display ? (
+  return typeof window !== 'undefined' &&
+    typeof (window as any).adsbygoogle !== 'undefined' ? (
     <div
       id={slot}
       key={path}

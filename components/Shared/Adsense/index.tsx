@@ -1,4 +1,4 @@
-import { useEffect, memo } from 'react';
+import { useEffect, memo, useState } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -28,19 +28,27 @@ const Adsense = (props: Props): JSX.Element => {
     wrapperStyles
   } = props;
 
+  const [display, setDisplay] = useState(true);
+
   useEffect(() => {
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}
       );
-    } catch (e) {
-      // rip
-    }
-  }, []);
+    } catch (e) {}
 
-  return typeof window !== 'undefined' &&
-    typeof (window as any).adsbygoogle !== 'undefined' ? (
-    <div key={path} className={styles.root} style={{ ...wrapperStyles }}>
+    setDisplay(
+      document.getElementById(slot).childNodes[0].childNodes.length !== 0
+    );
+  }, [slot]);
+
+  return display ? (
+    <div
+      id={slot}
+      key={path}
+      className={styles.root}
+      style={{ ...wrapperStyles }}
+    >
       <ins
         key={path}
         className="adsbygoogle"

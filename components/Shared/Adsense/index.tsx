@@ -34,7 +34,7 @@ const Adsense = (props: Props): JSX.Element => {
         {}
       );
     } catch (e) {}
-  }, [slot]);
+  }, []);
 
   return typeof window !== 'undefined' &&
     typeof (window as any).adsbygoogle !== 'undefined' ? (

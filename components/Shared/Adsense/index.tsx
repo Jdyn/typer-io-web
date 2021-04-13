@@ -28,7 +28,7 @@ const Adsense = (props: Props): JSX.Element => {
     wrapperStyles
   } = props;
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     try {

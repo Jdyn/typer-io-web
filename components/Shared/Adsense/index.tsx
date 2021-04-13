@@ -28,7 +28,7 @@ const Adsense = (props: Props): JSX.Element => {
     wrapperStyles
   } = props;
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     try {
@@ -38,7 +38,7 @@ const Adsense = (props: Props): JSX.Element => {
     } catch (e) {}
 
     setDisplay(
-      document.getElementById(slot).childNodes[0].childNodes.length !== 0
+      document?.getElementById(slot)?.childNodes[0]?.childNodes?.length !== 0
     );
   }, [slot]);
 
@@ -62,17 +62,19 @@ const Adsense = (props: Props): JSX.Element => {
       />
     </div>
   ) : (
-    <ins
-      key={path}
-      className={`adsbygoogle ${className}`}
-      style={{ ...style }}
-      data-ad-client={client}
-      data-ad-slot={slot}
-      data-ad-layout={layout}
-      data-ad-layout-key={layoutKey}
-      data-ad-format={format}
-      data-full-width-responsive={responsive}
-    />
+    <div id={slot}>
+      <ins
+        key={path}
+        className={`adsbygoogle ${className}`}
+        style={{ ...style }}
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-layout={layout}
+        data-ad-layout-key={layoutKey}
+        data-ad-format={format}
+        data-full-width-responsive={responsive}
+      />
+    </div>
   );
 };
 

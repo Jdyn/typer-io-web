@@ -7,6 +7,7 @@ import styles from './index.module.css';
 import { AppState } from '../../../store';
 import { handleAuth } from '../../../store/session/actions';
 import { ThemeContext } from '../../../util/getInitialColorMode';
+import Dropdown from './Dropdown/AuthDisplay';
 
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -73,8 +74,12 @@ const Header = (): JSX.Element => {
                 </label>
               </form>
             </div>
-
-            <div className={styles.authContainer}>
+            <Dropdown
+              handleAuth={handleAuth}
+              session={session}
+              sessionRequest={authenticationRequest}
+            />
+            {/* <div className={styles.authContainer}>
               <button
                 type="button"
                 className={styles.button}
@@ -110,7 +115,7 @@ const Header = (): JSX.Element => {
                   )}
                 </>
               ) : null}
-            </div>
+            </div> */}
           </nav>
         </header>
       )}

@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  flex-grow: 1;
+  max-width: 250px;
+}
+
+@media (min-width: 1025px) {
+  .root {
+    padding: 0px 30px 0px 0px;
+  }
+}

@@ -33,7 +33,6 @@ const ClientList = (props): JSX.Element => {
         width: isSolo ? '100%' : '25%',
         maxWidth: isSolo ? 'auto' : '235px',
         opacity: 1,
-        zIndex: 5,
         y: '0%'
       };
     },

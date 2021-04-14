@@ -3,7 +3,6 @@
   position: relative;
   margin: 145px auto 125px auto;
   padding: 0px 10px;
-  z-index: 100;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   max-width: 700px;

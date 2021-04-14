@@ -110,6 +110,16 @@
   justify-content: center;
 }
 
+@media (max-width: 480px) {
+  .searchContainer {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }
+}
+
 .search {
   display: flex;
   width: 20vw;

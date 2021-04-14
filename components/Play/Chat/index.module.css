@@ -7,7 +7,6 @@
   box-shadow: var(--shadow);
   background: var(--primary-main);
   height: 400px;
-  z-index: 1;
   border-radius: 16px;
 }
 
@@ -40,7 +39,6 @@
 
 .message > div {
   position: relative;
-  z-index: 21;
   padding: 10px;
   font-size: 16px;
   word-wrap: break-word;
@@ -52,7 +50,6 @@
 .form {
   display: flex;
   position: relative;
-  z-index: 25;
   margin-top: 0px;
 }
 

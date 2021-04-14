@@ -3,7 +3,6 @@
   flex-direction: column;
   position: relative;
   grid-area: status;
-  z-index: 5;
   height: 125px;
 }
 

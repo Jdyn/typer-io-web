@@ -42,7 +42,7 @@ const Layout = (props: Props): JSX.Element => {
         />
       </Head>
       <Header />
-      {striped && <div className={styles.stripe} />}
+      {/* {striped && <div className={styles.stripe} />} */}
       {children}
       <footer />
     </>

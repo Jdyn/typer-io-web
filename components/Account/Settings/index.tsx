@@ -30,6 +30,10 @@ const ProfileSettings = (): JSX.Element => {
   const onClick = (event): void => {
     event.preventDefault();
 
+    if (form.username === '') {
+      delete form.username;
+    }
+
     dispatch(updateUser(form));
   };
 
@@ -78,6 +82,9 @@ const ProfileSettings = (): JSX.Element => {
                 save
               </Button>
               {updateUserRequest?.success && <span>Saved.</span>}
+              {updateUserRequest?.errored && (
+                <span>{updateUserRequest?.error}</span>
+              )}
             </div>
           </div>
         </Paper>

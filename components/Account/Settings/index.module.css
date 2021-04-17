@@ -43,11 +43,10 @@
 
 .input {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
   border-radius: 8px;
   width: 100%;
-  padding: 5px 20px;
+  padding: 10px 15px;
   color: var(--text);
   outline: none;
   border: 2px solid var(--border);

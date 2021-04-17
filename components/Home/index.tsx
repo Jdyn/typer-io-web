@@ -74,6 +74,10 @@ const Home = (): JSX.Element => {
                 <div className={styles.list}>
                   <ul>
                     <li>
+                      The daily hiscores on the homepage refresh instantly now.
+                      You no longer need to refresh the page.
+                    </li>
+                    <li>
                       You can now change your username in your profile settings.
                     </li>
                     <li>

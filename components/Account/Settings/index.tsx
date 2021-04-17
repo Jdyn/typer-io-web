@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../store';
@@ -49,17 +48,6 @@ const ProfileSettings = (): JSX.Element => {
                 <span className={styles.content}>{sessionUser?.email}</span>
               </div>
               <div className={styles.item}>
-                <div className={styles.label}>Username:</div>
-                <span className={styles.content}>
-                  <input
-                    className={styles.input}
-                    onChange={(e): void =>
-                      setForm({ ...form, username: e.target.value })
-                    }
-                  />
-                </span>
-              </div>
-              <div className={styles.item}>
                 <div className={styles.label}>Bio:</div>
                 <span className={styles.content}>
                   <TextBox
@@ -69,6 +57,18 @@ const ProfileSettings = (): JSX.Element => {
                       setForm({ ...form, bio: e.target.value })
                     }
                     placeholder="Enter your bio..."
+                  />
+                </span>
+              </div>
+              <div className={styles.item}>
+                <div className={styles.label}>Change Username:</div>
+                <span className={styles.content}>
+                  <input
+                    className={styles.input}
+                    placeholder="New Username"
+                    onChange={(e): void =>
+                      setForm({ ...form, username: e.target.value })
+                    }
                   />
                 </span>
               </div>

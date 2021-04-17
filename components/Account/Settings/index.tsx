@@ -17,7 +17,10 @@ const ProfileSettings = (): JSX.Element => {
     (state: AppState) => state.request[requests.UPDATE_USER]
   );
 
-  const [form, setForm] = useState({ bio: sessionUser?.bio || '' });
+  const [form, setForm] = useState({
+    bio: sessionUser?.bio || '',
+    username: ''
+  });
 
   useEffect(() => {
     if (sessionUser?.bio) {
@@ -44,6 +47,17 @@ const ProfileSettings = (): JSX.Element => {
               <div className={styles.item}>
                 <div className={styles.label}>Email:</div>
                 <span className={styles.content}>{sessionUser?.email}</span>
+              </div>
+              <div className={styles.item}>
+                <div className={styles.label}>Username:</div>
+                <span className={styles.content}>
+                  <input
+                    className={styles.input}
+                    onChange={(e): void =>
+                      setForm({ ...form, username: e.target.value })
+                    }
+                  />
+                </span>
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Bio:</div>

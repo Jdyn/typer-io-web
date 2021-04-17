@@ -39,6 +39,16 @@
   flex: 2;
 }
 
+.input {
+  border-radius: 16px;
+  width: 100%;
+  padding: 5px 20px;
+  color: var(--text);
+  outline: none;
+  border: 2px solid var(--border);
+  background: var(--secondary-main);
+}
+
 .save {
   display: flex;
   flex-direction: column;

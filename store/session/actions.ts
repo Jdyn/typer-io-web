@@ -205,6 +205,12 @@ export const updateUser = (payload) => async (
     dispatch(userUpdated({ user: response.result.user }));
     dispatch(setRequest(false, requestType));
   } else {
-    dispatch(setRequest(false, requestType, 'Failed to save.'));
+    const error = response?.errors
+      ? `${Object.keys(response?.errors)[0] || ''} ${
+          response?.errors[Object.keys(response?.errors)[0]][0]
+        }`
+      : 'Failed to save.';
+
+    dispatch(setRequest(false, requestType, error));
   }
 };

@@ -53,6 +53,10 @@ const AuthMenu = (props: Props): JSX.Element => {
   const { modalRef, updateModal, isOpen, type, sessionRequest } = props;
   const dispatch = useDispatch();
 
+  const authenticate = (formType, form) => {
+    dispatch(handleAuth(formType, form, '/'));
+  };
+
   return (
     <>
       <div className={styles.container} ref={modalRef}>
@@ -94,9 +98,7 @@ const AuthMenu = (props: Props): JSX.Element => {
                 ) : (
                   <Form
                     template={templates[type]}
-                    onSubmit={(formType, form): void =>
-                      dispatch(handleAuth(formType, form, '/'))
-                    }
+                    onSubmit={(formType, form) => authenticate(formType, form)}
                     isPending={sessionRequest?.isPending}
                   />
                 )}

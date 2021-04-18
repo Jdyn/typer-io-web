@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../store';
@@ -17,7 +16,10 @@ const ProfileSettings = (): JSX.Element => {
     (state: AppState) => state.request[requests.UPDATE_USER]
   );
 
-  const [form, setForm] = useState({ bio: sessionUser?.bio || '' });
+  const [form, setForm] = useState({
+    bio: sessionUser?.bio || '',
+    username: ''
+  });
 
   useEffect(() => {
     if (sessionUser?.bio) {
@@ -27,6 +29,10 @@ const ProfileSettings = (): JSX.Element => {
 
   const onClick = (event): void => {
     event.preventDefault();
+
+    if (form.username === '') {
+      delete form.username;
+    }
 
     dispatch(updateUser(form));
   };
@@ -58,12 +64,27 @@ const ProfileSettings = (): JSX.Element => {
                   />
                 </span>
               </div>
+              <div className={styles.item}>
+                <div className={styles.label}>Change Username:</div>
+                <span className={styles.content}>
+                  <input
+                    className={styles.input}
+                    placeholder="New Username"
+                    onChange={(e): void =>
+                      setForm({ ...form, username: e.target.value })
+                    }
+                  />
+                </span>
+              </div>
             </div>
             <div className={styles.save}>
               <Button padding="5px 20px" onClick={onClick}>
                 save
               </Button>
               {updateUserRequest?.success && <span>Saved.</span>}
+              {updateUserRequest?.errored && (
+                <span>{updateUserRequest?.error}</span>
+              )}
             </div>
           </div>
         </Paper>

@@ -1,5 +1,4 @@
 .root {
-  grid-area: matches;
   height: 500px;
 }
 
@@ -29,7 +28,7 @@
   flex-direction: row;
   position: relative;
   border-bottom: 2px solid var(--border);
-  padding: 12px;
+  padding: 10px 12px;
   color: var(--text);
 }
 

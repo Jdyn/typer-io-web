@@ -31,11 +31,25 @@
 
 .label {
   display: flex;
+  align-items: center;
   flex: 1;
 }
+
 .content {
   display: flex;
   flex: 2;
+}
+
+.input {
+  display: flex;
+  justify-content: center !important;
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px 15px;
+  color: var(--text);
+  outline: none;
+  border: 2px solid var(--border);
+  background: var(--secondary-main);
 }
 
 .save {

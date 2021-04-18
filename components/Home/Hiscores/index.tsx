@@ -31,7 +31,8 @@ const Hiscores = (_props: Props): JSX.Element => {
 
   useEffect(() => {
     const query = filters[filterIndex].key;
-    if (!request[`FETCH_HISCORES_${query}`]) {
+
+    if (!request[`FETCH_HISCORES_${query}`] || request.FETCH_HISCORES_RECENT) {
       dispatch(fetchHiscores(query as HiscoreQueryTypes));
     }
   }, [dispatch, filterIndex, request]);

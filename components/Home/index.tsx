@@ -33,22 +33,12 @@ const Home = (): JSX.Element => {
   return (
     <main className={styles.root}>
       <div className={styles.container}>
-        <section className={styles.news}>
-          <section
-            className={styles.aContainer}
-            style={{
-              maxHeight: '300px',
-              gridArea: 'content'
-            }}
-          >
+        <section className={styles.leftColumn}>
+          <section>
             <Adsense
               client="ca-pub-3148839588626786"
-              slot="8439040257"
-              wrapperStyles={{ marginBottom: '20px' }}
-              style={{
-                display: 'block',
-                textAlign: 'center'
-              }}
+              slot="7114370741"
+              style={{ display: 'block', textAlign: 'center' }}
               format="fluid"
               layout="in-article"
             />
@@ -57,7 +47,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1618433504227)} </span>
+                <span>updated {formatTime(1618778351949)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -70,9 +60,16 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (April 14th, 2021):</h3>
+                <h3>Changes (April 18th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>
+                      The daily hiscores on the homepage refresh instantly now.
+                      You no longer need to refresh the page.
+                    </li>
+                    <li>
+                      You can now change your username in your profile settings.
+                    </li>
                     <li>
                       Custom lobbies can now go up to 60 players, up from 30.
                     </li>
@@ -82,13 +79,7 @@ const Home = (): JSX.Element => {
               </div>
             </div>
           </Paper>
-          <section
-            className={styles.aContainer}
-            style={{
-              maxHeight: '800px',
-              margin: '20px auto'
-            }}
-          >
+          <section>
             <Adsense
               client="ca-pub-3148839588626786"
               slot="7924266447"
@@ -98,7 +89,7 @@ const Home = (): JSX.Element => {
             />
           </section>
         </section>
-        <section className={styles.hub}>
+        <section className={styles.centerColumn}>
           <Profile />
           <div className={styles.menu}>
             {cards.map((card) => {
@@ -116,24 +107,33 @@ const Home = (): JSX.Element => {
               );
             })}
           </div>
+          <Hiscores />
         </section>
-        <Hiscores />
-        <RecentPosts />
-        <RecentMatches />
+        <section className={styles.rightColumn}>
+          <RecentPosts />
+          <section>
+            <Adsense
+              client="ca-pub-3148839588626786"
+              slot="8439040257"
+              style={{ display: 'block', textAlign: 'center' }}
+              format="fluid"
+              layout="in-article"
+            />
+          </section>
+          <RecentMatches />
+        </section>
       </div>
       <section
-        className={styles.aContainer}
         style={{
-          maxHeight: '200px',
           maxWidth: '780px',
-          margin: '0 auto',
+          margin: '20px auto',
           padding: '0px 10px'
         }}
       >
         <Adsense
           client="ca-pub-3148839588626786"
           slot="7924266447"
-          style={{ display: 'block', textAlign: 'center' }}
+          style={{ display: 'block', width: '100%' }}
           format="fluid"
           layout="in-article"
         />

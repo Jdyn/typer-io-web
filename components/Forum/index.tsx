@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import { fetchPosts } from '../../store/forum/actions';
 import { AppState } from '../../store';
 import formatTime from '../../util/formatTime';
 import Button from '../Shared/Button';
+import Adsense from '../Shared/Adsense';
 
 const Forum = (): JSX.Element => {
   const router = useRouter();
@@ -30,6 +31,15 @@ const Forum = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="1319118588"
+          style={{ display: 'block' }}
+          format="auto"
+          responsive="true"
+        />
+      </section>
       <div className={styles.feed}>
         <Banner>
           <h1>Discussions</h1>
@@ -76,34 +86,43 @@ const Forum = (): JSX.Element => {
             ))}
           </div>
         </div>
+        <div className={styles.pagination}>
+          <button
+            className={styles.pageButton}
+            onClick={() => setPage(1)}
+            type="button"
+          >
+            1
+          </button>
+          <button
+            className={styles.pageButton}
+            onClick={() => setPage(page?.postPage - 1)}
+            type="button"
+          >{`<`}</button>
+          <span>{page?.postPage}</span>
+          <button
+            className={styles.pageButton}
+            onClick={() => setPage(page?.postPage + 1)}
+            type="button"
+          >{`>`}</button>
+          <button
+            className={styles.pageButton}
+            onClick={() => setPage(page?.postMaxPage)}
+            type="button"
+          >
+            {page?.postMaxPage || 1}
+          </button>
+        </div>
       </div>
-      <div className={styles.pagination}>
-        <button
-          className={styles.pageButton}
-          onClick={() => setPage(1)}
-          type="button"
-        >
-          1
-        </button>
-        <button
-          className={styles.pageButton}
-          onClick={() => setPage(page?.postPage - 1)}
-          type="button"
-        >{`<`}</button>
-        <span>{page?.postPage}</span>
-        <button
-          className={styles.pageButton}
-          onClick={() => setPage(page?.postPage + 1)}
-          type="button"
-        >{`>`}</button>
-        <button
-          className={styles.pageButton}
-          onClick={() => setPage(page?.postMaxPage)}
-          type="button"
-        >
-          {page?.postMaxPage || 1}
-        </button>
-      </div>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="4985533875"
+          style={{ display: 'block' }}
+          format="auto"
+          responsive="true"
+        />
+      </section>
     </div>
   );
 };

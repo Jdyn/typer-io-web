@@ -1,13 +1,14 @@
 .root {
+}
+
+.container {
   display: grid;
-  grid-template-rows: 1fr min-content;
+  grid-template-rows: 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
-  grid-template-areas:
-    'leftColumn centerColumn rightColumn'
-    'ad ad ad';
+  grid-template-areas: 'leftColumn centerColumn rightColumn';
   gap: 20px;
   max-width: 1250px;
-  margin: 145px auto;
+  margin: 145px auto 20px auto;
   padding: 0px 10px;
 }
 
@@ -38,7 +39,7 @@
 }
 
 @media only screen and (max-width: 814px) {
-  .root {
+  .container {
     grid-template-rows: min-content min-content min-content min-content;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -56,6 +57,13 @@
       'menu'
       'scores';
   }
+}
+
+.ad {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  grid-area: ad;
 }
 
 .news {

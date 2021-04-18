@@ -47,7 +47,7 @@ const Leaderboard = (): JSX.Element => {
             {state.map((item, index) => (
               <div className={styles.entry} key={item.id}>
                 <div className={styles.count}>{index + 1}.</div>
-                <div className={styles.portrait} />
+                {/* <div className={styles.portrait} /> */}
                 <div className={styles.content}>
                   <div>
                     <span className={item.user ? styles.verified : ''}>

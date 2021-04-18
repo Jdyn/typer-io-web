@@ -29,3 +29,10 @@ export const fetchHiscores = (query: HiscoreQueryTypes) => async (
     dispatch(setRequest(false, requestType));
   }
 };
+
+export const fetchUserHiscores = (query) => async (
+  dispatch,
+  getState
+) => {
+  
+}

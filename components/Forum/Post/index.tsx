@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../../Shared/Banner';
@@ -11,6 +11,7 @@ import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import Api from '../../../services/api';
 import { postUpdated } from '../../../store/forum/reducers';
+import Adsense from '../../Shared/Adsense';
 
 interface Props {
   postId: string;
@@ -47,6 +48,15 @@ const Post = (props: Props): JSX.Element => {
 
   return (
     <div className={styles.root}>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="1319118588"
+          style={{ display: 'block' }}
+          format="auto"
+          responsive="true"
+        />
+      </section>
       <div className={styles.post}>
         <Banner>
           <h1>Post</h1>
@@ -98,6 +108,15 @@ const Post = (props: Props): JSX.Element => {
           </div>
         )}
       </div>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="1319118588"
+          style={{ display: 'block' }}
+          format="auto"
+          responsive="true"
+        />
+      </section>
       <div className={styles.comments}>
         <Banner>
           <h1>Comments</h1>

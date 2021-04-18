@@ -1,6 +1,6 @@
 .root {
   grid-area: scores;
-  height: 625px;
+  height: 775px;
 }
 
 .container {
@@ -30,7 +30,7 @@
   flex-direction: row;
   position: relative;
   border-bottom: 2px solid var(--border);
-  padding: 16px 12px 16px 12px;
+  padding: 12px 12px;
   color: var(--text);
 }
 

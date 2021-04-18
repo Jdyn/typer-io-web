@@ -46,13 +46,15 @@ const AccountAuth = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        <Form
-          template={templates[type]}
-          onSubmit={(_formType, form): void => handle(type, form)}
-          isPending={sessionRequest?.isPending}
-        />
-        <div className={styles.error}>
-          {sessionRequest?.errored && sessionRequest.error}
+        <div className={styles.wrapper}>
+          <Form
+            template={templates[type]}
+            onSubmit={(_formType, form): void => handle(type, form)}
+            isPending={sessionRequest?.isPending}
+          />
+          <div className={styles.error}>
+            {sessionRequest?.errored && sessionRequest.error}
+          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ interface Props {
 export type Types = 'login' | 'signup' | 'profile' | 'menu' | '';
 
 const AuthDisplay: React.FC<Props> = (props: Props) => {
-  const { handleAuth, session, sessionRequest } = props;
+  const { session, sessionRequest } = props;
 
   const [type, setType] = useState<Types>('');
   const [isOpen, setOpen] = useState(false);
@@ -51,19 +51,17 @@ const AuthDisplay: React.FC<Props> = (props: Props) => {
 
     if (typeof window !== 'undefined') {
       if (isOpen) {
-        if (window.innerWidth < 650) {
+        if (window.innerWidth < 815) {
           document.body.style.position = 'fixed';
-          if (typeof window !== 'undefined') {
-            document.body.style.top = `-${window.scrollY}px`;
-          }
+          document.body.style.width = '100vw';
+          document.body.style.top = `-${window.scrollY}px`;
         }
       } else {
         const scrollY = document.body.style.top;
         document.body.style.position = '';
         document.body.style.top = '';
-        if (typeof window !== 'undefined') {
-          window.scrollTo(0, parseInt(scrollY || '0', 0) * -1);
-        }
+        document.body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0', 2) * -1);
       }
     }
 
@@ -84,7 +82,6 @@ const AuthDisplay: React.FC<Props> = (props: Props) => {
       case true:
         return (
           <AuthProfile
-            handleAuth={handleAuth}
             modalRef={modalRef}
             isOpen={isOpen}
             updateModal={updateModal}
@@ -96,7 +93,6 @@ const AuthDisplay: React.FC<Props> = (props: Props) => {
       case false:
         return (
           <AuthMenu
-            handleAuth={handleAuth}
             modalRef={modalRef}
             isOpen={isOpen}
             updateModal={updateModal}

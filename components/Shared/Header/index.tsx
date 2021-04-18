@@ -19,11 +19,6 @@ const Header = (): JSX.Element => {
     (state: AppState) => state.request.AUTHENTICATE
   );
 
-  const logout = (event): void => {
-    event.preventDefault();
-    dispatch(handleAuth('logout', {}));
-  };
-
   const navigate = (event): void => {
     event.preventDefault();
 
@@ -37,22 +32,20 @@ const Header = (): JSX.Element => {
         <header className={styles.root}>
           <nav className={styles.container}>
             <Link prefetch={false} href="/">
-              <a className={styles.logo}>typer.io</a>
+              <a href="/" className={styles.logo}>
+                typer.io
+              </a>
             </Link>
             <div className={styles.nav}>
               <Link prefetch={false} href="/">
-                <a>home</a>
+                <a href="/">home</a>
               </Link>
               <Link prefetch={false} href="/forum">
-                <a>discuss</a>
+                <a href="/forum">discuss</a>
               </Link>
-              <a
-                href="https://www.buymeacoffee.com/typer"
-                target="_blank"
-                rel="noreferrer"
-              >
-                support
-              </a>
+              <Link prefetch={false} href="/hiscores?query=top-matches">
+                <a href="/hiscores?query=top-matches">hiscores</a>
+              </Link>
             </div>
             <div className={styles.searchContainer}>
               <form onSubmit={navigate}>
@@ -74,48 +67,19 @@ const Header = (): JSX.Element => {
                 </label>
               </form>
             </div>
+            <button
+              type="button"
+              className={styles.button}
+              style={{ width: '60px' }}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? 'light' : 'dark'}
+            </button>
             <Dropdown
               handleAuth={handleAuth}
               session={session}
               sessionRequest={authenticationRequest}
             />
-            {/* <div className={styles.authContainer}>
-              <button
-                type="button"
-                className={styles.button}
-                style={{ width: '60px' }}
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              >
-                {theme === 'dark' ? 'light' : 'dark'}
-              </button>
-              {!authenticationRequest?.isPending ? (
-                <>
-                  {session.isLoggedIn ? (
-                    <>
-                      <Link href={`/u/${session?.user?.username}`}>
-                        <span className={styles.button}>Profile</span>
-                      </Link>
-                      <button
-                        type="button"
-                        className={styles.button}
-                        onClick={logout}
-                      >
-                        log out
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <Link href="/login">
-                        <a>log in</a>
-                      </Link>
-                      <Link href="/signup">
-                        <a>sign up</a>
-                      </Link>
-                    </>
-                  )}
-                </>
-              ) : null}
-            </div> */}
           </nav>
         </header>
       )}

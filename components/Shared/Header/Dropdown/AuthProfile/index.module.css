@@ -21,49 +21,41 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.container:hover {
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
 }
 
 .wrapper {
-  color: var(--secondary-white);
+  color: var(--white);
   height: 100%;
   display: none;
   flex-grow: 1;
-  font-size: 16px ;
+  font-size: 16px;
   padding: 10px 22px 10px 10px;
   max-height: 37px;
   align-items: center;
   text-align: center;
   font-weight: 600;
-  margin-right: -20px;
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px;
+  margin-right: -10px;
   justify-content: center;
-  background-color: var(--primary-main);
+  background: var(--banner-accent);
 }
 
 .portrait {
   width: 44px;
   height: 44px;
-  border: 1px solid #999;
+  border: 2px solid #999;
   border-radius: 50%;
-  background-color: var(--primary-main);
+  background: var(--banner-accent);
 }
 
 .modal {
   display: flex;
   position: fixed;
   right: 0;
-  left: 0;
-  top: 75px;
   width: 100vw;
   height: 100vh;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 50;
   padding: 15px;
   background: var(--primary-main);
 }
@@ -71,7 +63,17 @@
 .modalList {
   display: flex;
   flex-direction: column;
-  background: var(--secondary-main);
+  background-color: var(--secondary-grey);
+  padding: 20px;
+  margin: 0;
+  border-radius: 12px;
+  list-style: none;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-grey);
   padding: 20px;
   margin: 0;
   border-radius: 12px;
@@ -80,15 +82,15 @@
 
 .modalListItem {
   display: flex;
-  padding: 10px;
-  background-color: var(--primary-main);
+  padding: 5px 10px;
   border-radius: 8px;
+  border: 2px solid var(--border);
   margin-bottom: 10px;
-  color: var(--text);
+  color: var(--secondary-white);
   cursor: pointer;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 815px) {
   .root {
     position: relative;
     flex: 1.5;
@@ -103,7 +105,6 @@
   .container {
     flex-grow: 1;
     max-width: 250px;
-    grid-area: profile;
     width: auto;
   }
 
@@ -116,10 +117,8 @@
     padding: 0;
     position: relative;
     grid-area: modal;
-    width: 100%;
-    z-index: 100;
-    height: 100%;
-    background: white;
+    width: auto;
+    height: auto;
     box-shadow: var(--shadow);
     border-radius: 0px 0px 12px 12px;
     flex-direction: column;
@@ -128,5 +127,9 @@
 
   .modalList {
     border-radius: 0 0 12px 12px;
+  }
+
+  .menuList {
+    display: none;
   }
 }

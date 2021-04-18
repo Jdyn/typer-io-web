@@ -47,7 +47,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1618778351949)} </span>
+                <span>updated {formatTime(1618789658282)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -63,6 +63,9 @@ const Home = (): JSX.Element => {
                 <h3>Changes (April 18th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>
+                      The header has been updated and is more mobile friendly.
+                    </li>
                     <li>
                       The daily hiscores on the homepage refresh instantly now.
                       You no longer need to refresh the page.

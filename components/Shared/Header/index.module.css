@@ -5,8 +5,6 @@
   width: 100%;
   height: 75px;
   z-index: 5;
-  padding-top: 3px;
-  overflow: hidden;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   background: var(--accent);
   box-shadow: 0 5px 5px rgba(30, 30, 70, 0.3);
@@ -19,6 +17,7 @@
   height: 100%;
   margin: 0 auto;
   justify-content: flex-start;
+  padding: 0px 10px;
   max-width: 1250px;
 }
 
@@ -110,7 +109,7 @@
   justify-content: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 815px) {
   .searchContainer {
     display: none;
   }

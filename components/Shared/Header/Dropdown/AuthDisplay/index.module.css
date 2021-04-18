@@ -4,7 +4,7 @@
   max-width: 250px;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 815px) {
   .root {
     padding: 0px 30px 0px 0px;
   }

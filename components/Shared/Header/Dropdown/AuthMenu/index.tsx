@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import Form from '../../../Form';
 import { Request } from '../../../../../store/request/types';
 import styles from './index.module.css';
+import { handleAuth } from '../../../../../store/session/actions';
 
 const templates = {
   signup: {
@@ -27,13 +29,11 @@ const templates = {
   menu: {
     type: 'menu',
     title: 'Menu',
-    fields: [],
-    items: [
+    fields: [
       { title: 'Home', link: '/' },
-      { title: 'Order', link: '/boost' },
-      { title: 'Demo', link: '/demo' },
-      { title: 'Log In', link: '/account/login' },
-      { title: 'Sign Up', link: '/account/signup' }
+      { title: 'Discuss', link: '/forum' },
+      { title: 'Log In', link: '/login' },
+      { title: 'Sign Up', link: '/signup' }
     ],
     submit: 'ok'
   }
@@ -42,7 +42,6 @@ const templates = {
 export type Types = 'login' | 'signup' | 'profile' | 'menu' | '';
 
 interface Props {
-  handleAuth: (type: string, form: object, redirect?: string) => void;
   modalRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
   type: Types;
@@ -51,14 +50,8 @@ interface Props {
 }
 
 const AuthMenu = (props: Props): JSX.Element => {
-  const {
-    modalRef,
-    updateModal,
-    isOpen,
-    type,
-    handleAuth,
-    sessionRequest
-  } = props;
+  const { modalRef, updateModal, isOpen, type, sessionRequest } = props;
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -92,7 +85,7 @@ const AuthMenu = (props: Props): JSX.Element => {
               <div className={styles.form}>
                 {type === 'menu' ? (
                   <ul className={styles.modalList}>
-                    {templates[type].items.map((item) => (
+                    {templates[type].fields.map((item) => (
                       <Link key={item.title} href={item.link}>
                         <li className={styles.modalListItem}>{item.title}</li>
                       </Link>
@@ -102,7 +95,7 @@ const AuthMenu = (props: Props): JSX.Element => {
                   <Form
                     template={templates[type]}
                     onSubmit={(formType, form): void =>
-                      handleAuth(formType, form, '/account/dashboard')
+                      dispatch(handleAuth(formType, form, '/'))
                     }
                     isPending={sessionRequest?.isPending}
                   />
@@ -112,9 +105,6 @@ const AuthMenu = (props: Props): JSX.Element => {
                     <span>{sessionRequest?.error}</span>
                   )}
                 </div>
-                <Link href="/account/recover">
-                  <span>Forgot Password?</span>
-                </Link>
               </div>
             </div>
           </>

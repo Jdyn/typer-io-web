@@ -1,9 +1,9 @@
 .root {
   position: absolute;
   height: 100%;
-  max-width: 200px;
+  max-width: 250px;
   right: 0;
-  margin: 0px 0px 0px 25px;
+  margin: 0px;
   width: 64px;
 }
 
@@ -34,7 +34,7 @@
   align-items: center;
   text-align: center;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 8px 0px 0px 8px;
   margin-right: -10px;
   justify-content: center;
   background: var(--banner-accent);
@@ -43,9 +43,9 @@
 .portrait {
   width: 44px;
   height: 44px;
-  border: 2px solid #999;
+  border: 2px solid var(--banner-accent);
   border-radius: 50%;
-  background: var(--banner-accent);
+  background: var(--accent);
 }
 
 .modal {

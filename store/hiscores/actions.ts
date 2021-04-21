@@ -30,9 +30,26 @@ export const fetchHiscores = (query: HiscoreQueryTypes) => async (
   }
 };
 
-export const fetchUserHiscores = (query) => async (
+export const fetchUserHiscores = (query, page) => async (
   dispatch,
   getState
-) => {
-  
-}
+): Promise<void> => {
+  const requestType = hiscoresRequests[`FETCH_USER_HISCORES_${query}`];
+  const request = getState().request[requestType] ?? emptyRequest;
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  const response = await Api.fetch(`/leaderboards/${query.toLowerCase()}?page=${page}`);
+
+  if (response.ok) {
+    const payload = {
+      key: query.toLowerCase(),
+      matches: [...response.result.matches]
+    };
+
+    dispatch(hiscoresFetched(payload));
+    dispatch(setRequest(false, requestType));
+  }
+};

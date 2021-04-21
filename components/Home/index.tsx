@@ -47,7 +47,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
-                <span>updated {formatTime(1618789658282)} </span>
+                <span>updated {formatTime(1619044621572)} </span>
                 <p>
                   Hello, thank you for using my site. if you have any
                   suggestions, please let me know on the forums!
@@ -60,9 +60,13 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (April 18th, 2021):</h3>
+                <h3>Changes (April 21th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>
+                      top matches hiscores has been added. I will add more
+                      hiscores in the future.
+                    </li>
                     <li>
                       The header has been updated and is more mobile friendly.
                     </li>
@@ -70,13 +74,6 @@ const Home = (): JSX.Element => {
                       The daily hiscores on the homepage refresh instantly now.
                       You no longer need to refresh the page.
                     </li>
-                    <li>
-                      You can now change your username in your profile settings.
-                    </li>
-                    <li>
-                      Custom lobbies can now go up to 60 players, up from 30.
-                    </li>
-                    <li>I have finally added dark mode.</li>
                   </ul>
                 </div>
               </div>

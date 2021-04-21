@@ -53,7 +53,13 @@ const Hiscores = (): JSX.Element => {
             <div className={styles.wrapper}>
               {itemPage?.users?.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
-                  <div className={styles.count}>{index + 1}.</div>
+                  <div className={styles.count}>
+                    {itemPage.page > 1 ? (
+                      <span>{50 * (itemPage?.page - 1) + index + 1}</span>
+                    ) : (
+                      <span>{index + 1}</span>
+                    )}
+                  </div>
                   <div className={styles.content}>
                     <span className={styles.verified}>
                       <Link href={`/u/${item.username}`}>

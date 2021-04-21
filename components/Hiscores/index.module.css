@@ -1,9 +1,13 @@
 .root {
+  margin: 145px auto 125px auto;
+}
+
+.hiscores {
   display: grid;
   position: relative;
-  margin: 145px auto 125px auto;
   padding: 0px 10px;
   z-index: 100;
+  margin: 0 auto;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   max-width: 700px;
@@ -16,7 +20,119 @@
   flex-direction: column;
   grid-area: main;
   border-radius: 16px;
+  padding-left: 10px;
+  overflow-y: scroll;
   border: 2px solid var(--border);
-  padding: 20px;
+  height: 750px;
   margin: 20px;
+}
+
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-bottom: 2px solid var(--border);
+  padding: 12px 12px;
+  color: var(--text);
+}
+
+.entry:last-child {
+  border: none;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex: 2;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.header {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  position: relative;
+  margin: 0 30px;
+  /* width: 480px; */
+  border-bottom: 2px solid var(--border);
+  padding: 12px 12px 12px 12px;
+  color: var(--text);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  color: var(--subtext);
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.headerItem {
+  font-weight: 500;
+  color: var(--subtext);
+  font-size: 14px;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex: 0.3;
+}
+
+.timestamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: var(--subtext);
+  flex: 1.4;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px 10px 0px;
+  justify-content: center;
+}
+
+.pagination > span {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageButton {
+  display: flex;
+  background: var(--accent);
+  border-radius: 8px;
+  outline: none;
+  margin: 0px 5px;
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.pageButton:hover {
+  transform: translateY(-2px);
+}
+
+.pageButton:active {
+  transform: translateY(2px);
 }

@@ -6,12 +6,16 @@ const initialState = {
   day: [],
   week: [],
   month: [],
-  user: []
+  user: [],
+  topMatches: {}
 };
 
 const reducers = {
   hiscoresFetched: (state, action) => {
     state[action.payload.key] = action.payload.matches;
+  },
+  userHiscoresFetched: (state, action) => {
+    state[action.payload.key] = action.payload[action.payload.key];
   }
 };
 
@@ -21,6 +25,6 @@ const hiscores = createSlice({
   reducers
 });
 
-export const { hiscoresFetched } = hiscores.actions;
+export const { hiscoresFetched, userHiscoresFetched } = hiscores.actions;
 
 export default hiscores.reducer;

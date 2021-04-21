@@ -4,7 +4,8 @@ import { HiscoreQueryTypes, hiscoresRequests } from './types';
 import { emptyRequest } from '../request/types';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
-import { hiscoresFetched } from './reducers';
+import { hiscoresFetched, userHiscoresFetched } from './reducers';
+import snakeToCamel from '../../util/snakeToCamel';
 
 export const fetchHiscores = (query: HiscoreQueryTypes) => async (
   dispatch: Dispatch,
@@ -41,15 +42,21 @@ export const fetchUserHiscores = (query, page) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.fetch(`/leaderboards/${query.toLowerCase()}?page=${page}`);
+  const response = await Api.fetch(
+    `/leaderboards/${query.toLowerCase()}?page=${page}`
+  );
+
+  const key = snakeToCamel(query.toLowerCase());
 
   if (response.ok) {
     const payload = {
-      key: query.toLowerCase(),
-      matches: [...response.result.matches]
+      key,
+      [key]: {
+        ...response.result
+      }
     };
 
-    dispatch(hiscoresFetched(payload));
+    dispatch(userHiscoresFetched(payload));
     dispatch(setRequest(false, requestType));
   }
 };

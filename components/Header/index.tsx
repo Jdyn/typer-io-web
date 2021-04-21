@@ -42,9 +42,9 @@ const Header = (): JSX.Element => {
               <Link prefetch={false} href="/forum">
                 <a href="/forum">discuss</a>
               </Link>
-              {/* <Link prefetch={false} href="/hiscores?query=top-matches">
-                <a href="/hiscores?query=top-matches">hiscores</a>
-              </Link> */}
+              <Link prefetch={false} href="/hiscores?query=top_matches&page=1">
+                <a href="/hiscores?query=top_matches&page=1">hiscores</a>
+              </Link>
             </div>
             <div className={styles.searchContainer}>
               <form onSubmit={navigate}>

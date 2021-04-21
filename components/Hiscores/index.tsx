@@ -6,7 +6,6 @@ import styles from './index.module.css';
 import { fetchUserHiscores } from '../../store/hiscores/actions';
 import { AppState } from '../../store';
 import Paper from '../Shared/Paper';
-import formatTime from '../../util/formatTime';
 import snakeToCamel from '../../util/snakeToCamel';
 
 const Hiscores = (): JSX.Element => {
@@ -17,8 +16,6 @@ const Hiscores = (): JSX.Element => {
     (state: AppState) => state.hiscores[snakeToCamel((query as string) || '')]
   );
 
-  const session = useSelector((state: AppState) => state.session);
-
   useEffect(() => {
     if (router.isReady) {
       dispatch(
@@ -28,11 +25,7 @@ const Hiscores = (): JSX.Element => {
   }, [dispatch, page, query, router.isReady]);
 
   const setPage = (index: number): void => {
-    if (
-      index <= itemPage?.postMaxPage &&
-      index >= 1 &&
-      index !== itemPage?.postPage
-    ) {
+    if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
       router.push(`/hiscores?query=${query}&page=${index}`);
     }
   };

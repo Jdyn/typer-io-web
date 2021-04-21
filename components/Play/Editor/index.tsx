@@ -5,7 +5,6 @@ import {
   useEffect,
   KeyboardEvent
 } from 'react';
-import ReactGA from 'react-ga';
 import { GameboardState } from '../../../store/game/types';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
@@ -49,13 +48,11 @@ const Editor = (props: Props): JSX.Element => {
 
     if (gameboard.isOver) {
       event.preventDefault();
-      ReactGA.event({ category: 'game', action: 'game-ended-no-time' });
       return;
     }
 
     if (wordsRemaining.length === 0) {
       event.preventDefault();
-      ReactGA.event({ category: 'game', action: 'game-ended-finished' });
       return;
     }
 

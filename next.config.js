@@ -33,6 +33,9 @@ const DEV_BASE_URL = 'http://localhost:3000';
 
 module.exports = {
   productionBrowserSourceMaps: false,
+  future: {
+    webpack5: true,
+  },
   env: {
     BASE_URL: true ? PROD_BASE_URL : DEV_BASE_URL,
     API_URL: true ? PROD_API_URL : DEV_API_URL,

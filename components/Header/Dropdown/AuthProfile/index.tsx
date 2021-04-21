@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
-import Button from '../../../Button';
+import Button from '../../../Shared/Button';
 import styles from './index.module.css';
-import { handleAuth } from '../../../../../store/session/actions';
+import { handleAuth } from '../../../../store/session/actions';
 
 interface Props {
   modalRef: React.RefObject<HTMLDivElement>;

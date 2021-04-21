@@ -1,7 +1,7 @@
 import { useEffect, ReactNode } from 'react';
 import ReactGA from 'react-ga';
 import Head from 'next/head';
-import Header from '../Header';
+import Header from '../../Header';
 import styles from './index.module.css';
 
 interface Props {
@@ -42,7 +42,7 @@ const Layout = (props: Props): JSX.Element => {
         />
       </Head>
       <Header />
-      {/* {striped && <div className={styles.stripe} />} */}
+      {striped && <div className={styles.stripe} />}
       {children}
       <footer />
     </>

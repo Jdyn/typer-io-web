@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import AuthProfile from '../AuthProfile';
 import AuthMenu from '../AuthMenu';
 import styles from './index.module.css';
-import { Request } from '../../../../../store/request/types';
+import { Request } from '../../../../store/request/types';
 
 interface Props {
   children?: React.ReactNode;

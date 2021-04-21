@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ReactGA from 'react-ga';
 import ClientList from './ClientList';
 import Gameboard from './Gameboard';
 import Chat from './Chat';
@@ -49,12 +48,6 @@ const Play = (props: Props): JSX.Element => {
     entries: 0,
     errors: 0
   });
-
-  useEffect(() => {
-    if (gameboard.isStarted) {
-      ReactGA.event({ category: 'game', action: 'game-started' });
-    }
-  }, [gameboard.isStarted]);
 
   useEffect(() => {
     if (!isStarted || isSolo) {

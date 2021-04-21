@@ -1,0 +1,135 @@
+.root {
+  position: absolute;
+  height: 100%;
+  max-width: 250px;
+  right: 0;
+  margin: 0px;
+  width: 64px;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  height: 75px;
+  max-width: 250px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  color: var(--white);
+  height: 100%;
+  display: none;
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 10px 22px 10px 10px;
+  max-height: 37px;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 8px 0px 0px 8px;
+  margin-right: -10px;
+  justify-content: center;
+  background: var(--banner-accent);
+}
+
+.portrait {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--banner-accent);
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  z-index: 50;
+  padding: 15px;
+  background: var(--primary-main);
+}
+
+.modalList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-grey);
+  padding: 20px;
+  margin: 0;
+  border-radius: 12px;
+  list-style: none;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-grey);
+  padding: 20px;
+  margin: 0;
+  border-radius: 12px;
+  list-style: none;
+}
+
+.modalListItem {
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  margin-bottom: 10px;
+  color: var(--secondary-white);
+  cursor: pointer;
+}
+
+@media (min-width: 815px) {
+  .root {
+    position: relative;
+    flex: 1.5;
+    display: grid;
+    grid-template-rows: 75px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'profile profile'
+      'modal modal';
+  }
+
+  .container {
+    flex-grow: 1;
+    max-width: 250px;
+    width: auto;
+  }
+
+  .wrapper {
+    display: flex;
+  }
+
+  .modal {
+    display: flex;
+    padding: 0;
+    position: relative;
+    grid-area: modal;
+    width: auto;
+    height: auto;
+    box-shadow: var(--shadow);
+    border-radius: 0px 0px 12px 12px;
+    flex-direction: column;
+    transition-duration: 0.2s;
+  }
+
+  .modalList {
+    border-radius: 0 0 12px 12px;
+  }
+
+  .menuList {
+    display: none;
+  }
+}

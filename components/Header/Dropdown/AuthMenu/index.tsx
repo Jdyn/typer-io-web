@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import Form from '../../../Form';
-import { Request } from '../../../../../store/request/types';
+import Form from '../../../Shared/Form';
+import { Request } from '../../../../store/request/types';
 import styles from './index.module.css';
-import { handleAuth } from '../../../../../store/session/actions';
+import { handleAuth } from '../../../../store/session/actions';
 
 const templates = {
   signup: {

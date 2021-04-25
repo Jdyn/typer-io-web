@@ -34,7 +34,7 @@ const Home = (): JSX.Element => {
     <main className={styles.root}>
       <div className={styles.container}>
         <section className={styles.leftColumn}>
-          <section>
+          {/* <section>
             <Adsense
               client="ca-pub-3148839588626786"
               slot="7114370741"
@@ -42,7 +42,7 @@ const Home = (): JSX.Element => {
               format="fluid"
               layout="in-article"
             />
-          </section>
+          </section> */}
           <Paper title="News">
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>

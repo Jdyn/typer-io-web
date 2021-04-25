@@ -69,10 +69,10 @@ const Header = (): JSX.Element => {
             <button
               type="button"
               className={styles.button}
-              style={{ width: '60px' }}
+              style={{ width: 'auto' }}
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              {theme === 'dark' ? 'light' : 'dark'}
+              {theme === 'dark' ? 'light mode' : 'dark mode'}
             </button>
             <Dropdown
               handleAuth={handleAuth}

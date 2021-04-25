@@ -13,10 +13,10 @@ export default function getInitialTheme() {
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   const hasMediaQueryPreference = typeof mql.matches === 'boolean';
   if (hasMediaQueryPreference) {
-    return mql.matches ? 'dark' : 'light';
+    return mql.matches ? 'dark' : 'dark';
   }
 
-  return 'light';
+  return 'dark';
 }
 
 export const ThemeContext = createContext(null);

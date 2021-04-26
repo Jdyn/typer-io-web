@@ -5,6 +5,7 @@ import Form from '../../../Shared/Form';
 import { Request } from '../../../../store/request/types';
 import styles from './index.module.css';
 import { handleAuth } from '../../../../store/session/actions';
+import { ThemeContext } from '../../../../util/getInitialColorMode';
 
 const templates = {
   signup: {
@@ -58,61 +59,77 @@ const AuthMenu = (props: Props): JSX.Element => {
   };
 
   return (
-    <>
-      <div className={styles.container} ref={modalRef}>
-        <button
-          type="button"
-          className={styles.menuWrapper}
-          onClick={(): void => updateModal('menu')}
-        >
-          <div className={styles.menu} />
-        </button>
-        <button
-          type="button"
-          className={styles.button}
-          style={{ gridArea: 'signup' }}
-          onClick={(): void => updateModal('signup')}
-        >
-          sign up
-        </button>
-        <button
-          type="button"
-          className={styles.button}
-          style={{ gridArea: 'login' }}
-          onClick={(): void => updateModal('login')}
-        >
-          log in
-        </button>
-        {isOpen ? (
-          <>
-            <div className={styles.modal}>
-              <div className={styles.form}>
-                {type === 'menu' ? (
-                  <ul className={styles.modalList}>
-                    {templates[type].fields.map((item) => (
-                      <Link key={item.title} href={item.link}>
-                        <li className={styles.modalListItem}>{item.title}</li>
-                      </Link>
-                    ))}
-                  </ul>
-                ) : (
-                  <Form
-                    template={templates[type]}
-                    onSubmit={(formType, form) => authenticate(formType, form)}
-                    isPending={sessionRequest?.isPending}
-                  />
-                )}
-                <div className={styles.error}>
-                  {sessionRequest?.errored && (
-                    <span>{sessionRequest?.error}</span>
+    <ThemeContext.Consumer>
+      {({ theme, setTheme }) => (
+        <div className={styles.container} ref={modalRef}>
+          <button
+            type="button"
+            className={styles.menuWrapper}
+            onClick={(): void => updateModal('menu')}
+          >
+            <div className={styles.menu} />
+          </button>
+          <button
+            type="button"
+            className={styles.button}
+            style={{ gridArea: 'signup' }}
+            onClick={(): void => updateModal('signup')}
+          >
+            sign up
+          </button>
+          <button
+            type="button"
+            className={styles.button}
+            style={{ gridArea: 'login' }}
+            onClick={(): void => updateModal('login')}
+          >
+            log in
+          </button>
+          {isOpen ? (
+            <>
+              <div className={styles.modal}>
+                <div className={styles.form}>
+                  {type === 'menu' ? (
+                    <ul className={styles.modalList}>
+                      {templates[type].fields.map((item) => (
+                        <Link key={item.title} href={item.link}>
+                          <li className={styles.modalListItem}>
+                            <a href={item.link}>{item.title}</a>
+                          </li>
+                        </Link>
+                      ))}
+                      <li className={styles.modalListItem}>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setTheme(theme === 'dark' ? 'light' : 'dark')
+                          }
+                        >
+                          Change Theme
+                        </button>
+                      </li>
+                    </ul>
+                  ) : (
+                    <Form
+                      template={templates[type]}
+                      onSubmit={(formType, form) =>
+                        authenticate(formType, form)
+                      }
+                      isPending={sessionRequest?.isPending}
+                    />
                   )}
+                  <div className={styles.error}>
+                    {sessionRequest?.errored && (
+                      <span>{sessionRequest?.error}</span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        ) : null}
-      </div>
-    </>
+            </>
+          ) : null}
+        </div>
+      )}
+    </ThemeContext.Consumer>
   );
 };
 

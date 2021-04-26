@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Button from '../../../Shared/Button';
 import styles from './index.module.css';
 import { handleAuth } from '../../../../store/session/actions';
+import { ThemeContext } from '../../../../util/getInitialColorMode';
 
 interface Props {
   modalRef: React.RefObject<HTMLDivElement>;
@@ -64,41 +65,55 @@ const AuthProfile = (props: Props): JSX.Element => {
   };
 
   return (
-    <div className={styles.root} ref={modalRef}>
-      <button
-        className={styles.container}
-        type="button"
-        onClick={(): void => updateModal('profile')}
-      >
-        <div className={styles.wrapper}>{session.user.username}</div>
-        <div className={styles.portrait} />
-      </button>
-      {isOpen ? (
-        <div className={styles.modal}>
-          {type === 'profile' && (
-            <>
-              <ul className={styles.menuList}>
-                {templates.menu.items.map((item) => (
-                  <Link key={item.title} href={item.link}>
-                    <li className={styles.modalListItem}>{item.title}</li>
-                  </Link>
-                ))}
-              </ul>
-              <ul className={styles.modalList}>
-                {templates[type].items.map((item) => (
-                  <Link key={item.title} href={item.link}>
-                    <li className={styles.modalListItem}>{item.title}</li>
-                  </Link>
-                ))}
-                <Button padding="5px" onClick={(): void => logout()}>
-                  {templates[type].logout}
-                </Button>
-              </ul>
-            </>
-          )}
+    <ThemeContext.Consumer>
+      {({ theme, setTheme }) => (
+        <div className={styles.root} ref={modalRef}>
+          <button
+            className={styles.container}
+            type="button"
+            onClick={(): void => updateModal('profile')}
+          >
+            <div className={styles.wrapper}>{session.user.username}</div>
+            <div className={styles.portrait} />
+          </button>
+          {isOpen ? (
+            <div className={styles.modal}>
+              {type === 'profile' && (
+                <>
+                  <ul className={styles.menuList}>
+                    {templates.menu.items.map((item) => (
+                      <Link key={item.title} href={item.link}>
+                        <li className={styles.modalListItem}>{item.title}</li>
+                      </Link>
+                    ))}
+                    <li className={styles.modalListItem}>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setTheme(theme === 'dark' ? 'light' : 'dark')
+                        }
+                      >
+                        Change Theme
+                      </button>
+                    </li>
+                  </ul>
+                  <ul className={styles.modalList}>
+                    {templates[type].items.map((item) => (
+                      <Link key={item.title} href={item.link}>
+                        <li className={styles.modalListItem}>{item.title}</li>
+                      </Link>
+                    ))}
+                    <Button padding="5px" onClick={(): void => logout()}>
+                      {templates[type].logout}
+                    </Button>
+                  </ul>
+                </>
+              )}
+            </div>
+          ) : null}
         </div>
-      ) : null}
-    </div>
+      )}
+    </ThemeContext.Consumer>
   );
 };
 

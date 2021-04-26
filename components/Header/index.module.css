@@ -117,6 +117,10 @@
   .nav {
     display: none;
   }
+
+  .button {
+    display: none;
+  }
 }
 
 .search {

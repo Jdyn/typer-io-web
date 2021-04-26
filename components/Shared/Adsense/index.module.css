@@ -3,11 +3,14 @@
   border: 2px solid var(--border);
   background: var(--seconary-main);
   border-radius: 16px;
+  max-width: 355px !important;
+  min-width: none;
 }
 
 
 @media (min-width: 815px) {
   .root {
     min-width: 275px !important;
+    max-width: none;
   }
 }

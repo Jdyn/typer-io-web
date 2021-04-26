@@ -120,7 +120,7 @@ const ClientList = (props): JSX.Element => {
                       </span>
                       <span className={styles.stat}>
                         <span className={styles.statHeader}>ACCURACY</span>
-                        {item.gamePiece.accuracy}
+                        {item.gamePiece.accuracy}%
                       </span>
                       <span className={styles.stat}>
                         <span className={styles.statHeader}>TIME</span>

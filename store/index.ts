@@ -22,8 +22,6 @@ export const stateReducer = combineReducers({
   game
 });
 
-export type AppState = ReturnType<typeof stateReducer>;
-
 const appReducer = (state, action) => {
   switch (action.type) {
     case HYDRATE:
@@ -43,5 +41,7 @@ const store = (preloadedState: object = {}): EnhancedStore =>
     devTools: process.env.NODE_ENV !== 'production',
     preloadedState
   });
+
+export type AppState = ReturnType<typeof stateReducer>;
 
 export const wrapper = createWrapper(store);

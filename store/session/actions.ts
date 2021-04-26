@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import { Dispatch } from 'redux';
 import cookies from 'js-cookie';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
@@ -11,7 +12,6 @@ import {
   userRefreshed,
   userUpdated
 } from './reducers';
-import { Dispatch } from 'redux';
 
 const setCurrentSession = (user): void => {
   if (user.token) {

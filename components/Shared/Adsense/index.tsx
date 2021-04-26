@@ -53,7 +53,7 @@ const Adsense = (props: Props): JSX.Element => {
         data-ad-layout={layout}
         data-ad-layout-key={layoutKey}
         data-ad-format={format}
-        data-full-width-responsive={responsive}
+        data-full-width-responsive={false}
       />
     </div>
   ) : (

@@ -1,7 +1,13 @@
 .root {
   padding: 10px;
-  min-width: 275px !important;
   border: 2px solid var(--border);
   background: var(--seconary-main);
   border-radius: 16px;
+}
+
+
+@media (max-width: 815px) {
+  .root {
+    min-width: 275px !important;
+  }
 }

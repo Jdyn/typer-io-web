@@ -4,7 +4,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-rows: 1fr;
   padding-left: 10px;
   overflow-x: hidden;
   overflow-y: auto;

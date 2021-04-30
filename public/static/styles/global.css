@@ -32,6 +32,8 @@
 }
 
 .light {
+  --primary-main: #fff;
+  --secondary-main: #eef2f7;
   --accent: #4e6edd;
   --banner-accent: #4865cd;
   --green: #208340;
@@ -39,7 +41,6 @@
   --text: #4c4c4c;
   --orange: #e37800;
   --subtext: #787575;
-  --primary-main: #fff;
   --border: #e5e5e5;
   --border-fill: #f7f7f7;
   --red: #d73c42;

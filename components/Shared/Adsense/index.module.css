@@ -7,7 +7,6 @@
   min-width: none;
 }
 
-
 @media (min-width: 815px) {
   .root {
     min-width: 275px !important;

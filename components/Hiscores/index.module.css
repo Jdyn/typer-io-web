@@ -15,16 +15,22 @@
   grid-template-areas: 'main';
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   grid-area: main;
-  border-radius: 16px;
   padding-left: 10px;
   overflow-y: scroll;
-  border: 2px solid var(--border);
   height: 750px;
-  margin: 20px;
 }
 
 .nameLink {

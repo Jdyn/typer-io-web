@@ -246,6 +246,7 @@
 
 .friendsList {
   display: flex;
+  flex: 1;
   flex-direction: column;
   background: var(--primary-main);
   box-shadow: var(--shadow);
@@ -258,11 +259,10 @@
 
 .friendsListWrapper {
   display: grid;
-  flex: 1;
-  grid-template-columns: repeat(auto-fill, 1fr);
-  padding-left: 10px;
+  grid-template-rows: min-content;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: 100%;
   padding: 0px 5px 0px 0px;
   margin: 20px 5px 20px 20px;
 }
@@ -336,6 +336,9 @@
   color: var(--text);
   text-align: center;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 
 .admin {

@@ -29,13 +29,13 @@ const Header = (): JSX.Element => {
     <ThemeContext.Consumer>
       {({ theme, setTheme }) => (
         <header className={styles.root}>
-          <nav className={styles.container}>
+          <div className={styles.container}>
             <Link prefetch={false} href="/">
               <a href="/" className={styles.logo}>
                 typer.io
               </a>
             </Link>
-            <div className={styles.nav}>
+            <nav className={styles.nav}>
               <Link prefetch={false} href="/">
                 <a href="/">home</a>
               </Link>
@@ -45,7 +45,7 @@ const Header = (): JSX.Element => {
               <Link prefetch={false} href="/hiscores?query=top_matches&page=1">
                 <a href="/hiscores?query=top_matches&page=1">hiscores</a>
               </Link>
-            </div>
+            </nav>
             <div className={styles.searchContainer}>
               <form onSubmit={navigate}>
                 <input
@@ -79,7 +79,7 @@ const Header = (): JSX.Element => {
               session={session}
               sessionRequest={authenticationRequest}
             />
-          </nav>
+          </div>
         </header>
       )}
     </ThemeContext.Consumer>

@@ -7,7 +7,7 @@ const ProfileContainer = () => {
   const { username } = useRouter().query;
 
   return (
-    <Layout striped>
+    <Layout striped title={`Profile - ${username as string}`}>
       <Profile username={username as string} />
     </Layout>
   );

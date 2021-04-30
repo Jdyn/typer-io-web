@@ -8,7 +8,7 @@ interface Props {
 
 const HomeContainer = (_props: Props): JSX.Element => {
   return (
-    <Layout striped>
+    <Layout striped title="Home | The Modern Multiplayer Typing Experience">
       <Home />
     </Layout>
   );

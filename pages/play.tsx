@@ -38,7 +38,7 @@ const PlayContainer = (): JSX.Element => {
   }, [dispatch, RoomId, socket.connected, socket.pending]);
 
   return (
-    <Layout striped>
+    <Layout striped title="Quick Play | Race against random players">
       <Play />
     </Layout>
   );

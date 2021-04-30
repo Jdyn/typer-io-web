@@ -4,7 +4,7 @@ import Forum from '../../components/Forum';
 const ForumPage = (_props): JSX.Element => {
   return (
     <>
-      <Layout striped>
+      <Layout striped title="Forums | Interact with the community">
         <Forum />
       </Layout>
     </>

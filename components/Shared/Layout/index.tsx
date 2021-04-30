@@ -7,19 +7,24 @@ import styles from './index.module.css';
 interface Props {
   children?: ReactNode;
   striped?: boolean;
+  title?: string;
 }
 
 const Layout = (props: Props): JSX.Element => {
-  const { children, striped } = props;
+  const { children, striped, title } = props;
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    if (window.location.pathname === 'lobby') {
+      ReactGA.pageview(`lobby/*${window.location.search}`);
+    } else {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
   }, []);
 
   return (
     <>
       <Head>
-        <title>Typer.io | Multiplayer Typing Test - Race Your Friends</title>
+        <title>{title} | Typer.io</title>
         <link
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
@@ -51,7 +56,8 @@ const Layout = (props: Props): JSX.Element => {
 
 Layout.defaultProps = {
   children: null,
-  striped: false
+  striped: false,
+  title: 'Typer.io | Multiplayer Typing Test - Race Your Friends'
 };
 
 export default Layout;

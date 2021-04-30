@@ -26,7 +26,8 @@ const initialState = {
     connected: false,
     pending: false,
     errored: false,
-    error: null
+    error: null,
+    mode: null
   }
 };
 
@@ -123,7 +124,7 @@ const reducer = (state = initialState, action) => {
         socket: {
           ...state.socket,
           pending: true,
-          mode: action.payload.config.mode
+          mode: action.payload.config.mode || null
         }
       };
 

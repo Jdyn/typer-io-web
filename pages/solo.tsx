@@ -37,7 +37,7 @@ const PlayContainer = (): JSX.Element => {
   }, [dispatch, RoomId, socket.connected]);
 
   return (
-    <Layout striped>
+    <Layout striped title="Solo Play | Improve on your own">
       <Play isSolo />;
     </Layout>
   );

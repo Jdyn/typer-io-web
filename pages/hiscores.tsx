@@ -8,7 +8,7 @@ interface Props {
 
 const HiscoresContainer = (_props: Props): JSX.Element => {
   return (
-    <Layout striped>
+    <Layout striped title="Hiscores | Multiplayer leaderboards">
       <Hiscores />
     </Layout>
   );

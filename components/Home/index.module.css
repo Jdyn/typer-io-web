@@ -23,7 +23,7 @@
 .rightColumn {
   display: grid;
   gap: 20px;
-  grid-template-rows: min-content min-content;
+  grid-template-rows: min-content min-content min-content;
   grid-template-columns: 1fr;
   grid-area: rightColumn;
 }

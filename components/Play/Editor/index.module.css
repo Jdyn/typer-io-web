@@ -2,7 +2,6 @@
   display: flex;
   position: relative;
   height: 125px;
-  grid-area: editor;
   padding: 20px;
   flex-direction: column;
   background: var(--primary-main);

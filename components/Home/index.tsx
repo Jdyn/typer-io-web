@@ -34,23 +34,14 @@ const Home = (): JSX.Element => {
     <main className={styles.root}>
       <div className={styles.container}>
         <section className={styles.leftColumn}>
-          {/* <section>
-            <Adsense
-              client="ca-pub-3148839588626786"
-              slot="7114370741"
-              style={{ display: 'block', textAlign: 'center' }}
-              format="fluid"
-              layout="in-article"
-            />
-          </section> */}
           <Paper title="News">
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
-                <h2>Improve your typing speed and race your friends!</h2>
+                <h1>Improve your typing speed and race your friends!</h1>
                 <span>updated {formatTime(1619044621572)} </span>
                 <p>
-                  Hello, thank you for using my site. if you have any
-                  suggestions, please let me know on the forums!
+                  Hello, if you have any suggestions, please let me know on the
+                  forums!
                 </p>
                 <a
                   className={styles.support}
@@ -121,6 +112,15 @@ const Home = (): JSX.Element => {
             />
           </section>
           <RecentMatches />
+          <section>
+            <Adsense
+              client="ca-pub-3148839588626786"
+              slot="7114370741"
+              style={{ display: 'block', textAlign: 'center' }}
+              format="fluid"
+              layout="in-article"
+            />
+          </section>
         </section>
       </div>
       <section

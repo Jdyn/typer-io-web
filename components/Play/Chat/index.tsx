@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 import { sendChatMessage } from '../../../store/game/actions';
+import Adsense from '../../Shared/Adsense';
 
 const Chat = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -40,7 +41,8 @@ const Chat = (): JSX.Element => {
             <div className={styles.message} key={index}>
               <span
                 style={{
-                  alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
+                  alignSelf:
+                    client.id === message.id ? 'flex-end' : 'flex-start'
                 }}
               >
                 {message.username}
@@ -48,7 +50,8 @@ const Chat = (): JSX.Element => {
               <div
                 style={{
                   background: message.color,
-                  alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
+                  alignSelf:
+                    client.id === message.id ? 'flex-end' : 'flex-start'
                 }}
               >
                 {message.message}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
 import ApiService from '../../../services/api';
@@ -6,6 +6,7 @@ import formatTime from '../../../util/formatTime';
 import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
+import Adsense from '../../Shared/Adsense';
 
 const filters = [
   {
@@ -65,6 +66,19 @@ const Leaderboard = (): JSX.Element => {
           </div>
         </div>
       </Paper>
+      <section
+        style={{
+          margin: '20px 0px',
+          maxWidth: '540px !important'
+        }}
+      >
+        <Adsense
+          client="ca-pub-3148839588626786"
+          layout="in-article"
+          slot="6958577240"
+          format="fluid"
+        />
+      </section>
     </div>
   );
 };

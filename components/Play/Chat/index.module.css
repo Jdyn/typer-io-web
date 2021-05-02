@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 0px 0px 0px 0px;
   position: relative;
-  grid-area: chat;
+  /* grid-area: chat; */
   box-shadow: var(--shadow);
   background: var(--primary-main);
   height: 400px;

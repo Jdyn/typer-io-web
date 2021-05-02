@@ -29,6 +29,14 @@
     'clientlist editor leaderboard' !important;
 }
 
+.editor {
+  grid-area: editor;
+}
+
+.left {
+  grid-area: chat;
+}
+
 .notice {
   position: relative;
   grid-area: notice;

@@ -136,32 +136,46 @@ const Play = (props: Props): JSX.Element => {
           gameState={gameState}
           setEditorState={setEditorState}
         />
-        <Editor
-          gameboard={gameboard}
-          gameState={gameState}
-          setEditorState={setEditorState}
-          isWrong={editorState.wrongIndex !== null}
-          inputDidUpdate={inputDidUpdate}
-          submitWord={submitWord}
-        />
-        {!isSolo && <Chat />}
+        <div className={styles.editor}>
+          <Editor
+            gameboard={gameboard}
+            gameState={gameState}
+            setEditorState={setEditorState}
+            isWrong={editorState.wrongIndex !== null}
+            inputDidUpdate={inputDidUpdate}
+            submitWord={submitWord}
+          />
+          <section
+            style={{
+              margin: '20px 0px',
+              maxWidth: '540px !important'
+            }}
+          >
+            <Adsense
+              client="ca-pub-3148839588626786"
+              layout="in-article"
+              slot="6958577240"
+              format="fluid"
+            />
+          </section>
+        </div>
+        <section className={styles.left}>
+          {!isSolo && <Chat />}
+          <section
+            style={{
+              margin: '20px 0px',
+              maxWidth: '540px !important'
+            }}
+          >
+            <Adsense
+              client="ca-pub-3148839588626786"
+              layout="in-article"
+              slot="6958577240"
+              format="fluid"
+            />
+          </section>
+        </section>
       </div>
-      <section
-        style={{
-          margin: '20px auto',
-          padding: '0px 10px',
-          height: '225px',
-          maxWidth: '900px',
-          gridArea: 'content'
-        }}
-      >
-        <Adsense
-          client="ca-pub-3148839588626786"
-          layout="in-article"
-          slot="6958577240"
-          format="fluid"
-        />
-      </section>
     </div>
   );
 };

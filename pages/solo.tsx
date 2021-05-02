@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';
 import { AppState } from '../store';
-import Layout from '../components/Shared/Layout';
+import Layout from '../components/Layout';
 
 const PlayContainer = (): JSX.Element => {
   const dispatch = useDispatch();

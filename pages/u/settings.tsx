@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileSettings from '../../components/Account/Settings';
-import Layout from '../../components/Shared/Layout';
+import Layout from '../../components/Layout';
 import PrivateRoute from '../../components/Shared/PrivateRoute';
 
 const ProfileSettingsPage = () => {

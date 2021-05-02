@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Shared/Layout';
+import Layout from '../../../components/Layout';
 import Post from '../../../components/Forum/Post';
 
 const PostPage = (): JSX.Element => {

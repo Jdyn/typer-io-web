@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Layout from '../components/Shared/Layout';
+import Layout from '../components/Layout';
 import Home from '../components/Home';
 
 interface Props {

@@ -1,4 +1,4 @@
-import Layout from '../components/Shared/Layout';
+import Layout from '../components/Layout';
 
 const Error404 = () => {
   return (

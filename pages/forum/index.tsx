@@ -1,4 +1,4 @@
-import Layout from '../../components/Shared/Layout';
+import Layout from '../../components/Layout';
 import Forum from '../../components/Forum';
 
 const ForumPage = (_props): JSX.Element => {

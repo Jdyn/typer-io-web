@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import Profile from '../../components/Account/Profile';
-import Layout from '../../components/Shared/Layout';
+import Layout from '../../components/Layout';
 
 const ProfileContainer = () => {
   const { username } = useRouter().query;

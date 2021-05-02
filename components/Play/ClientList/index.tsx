@@ -31,7 +31,7 @@ const ClientList = (props): JSX.Element => {
     enter: (isSolo) => {
       return {
         width: isSolo ? '100%' : '25%',
-        maxWidth: isSolo ? 'auto' : '235px',
+        maxWidth: isSolo ? '275px' : '235px',
         opacity: 1,
         y: '0%'
       };

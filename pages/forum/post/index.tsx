@@ -1,4 +1,4 @@
-import Layout from '../../../components/Shared/Layout';
+import Layout from '../../../components/Layout';
 import CreatePost from '../../../components/Forum/CreatePost';
 
 const CreatePostPage = (): JSX.Element => {

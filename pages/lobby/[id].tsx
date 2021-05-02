@@ -5,7 +5,7 @@ import Lobby from '../../components/Play/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
 import { AppState } from '../../store';
-import Layout from '../../components/Shared/Layout';
+import Layout from '../../components/Layout';
 
 const LobbyContainer = (): JSX.Element => {
   const dispatch = useDispatch();

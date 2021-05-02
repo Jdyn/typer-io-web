@@ -38,7 +38,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h1>Improve your typing speed and race your friends!</h1>
-                <span>updated {formatTime(1619044621572)} </span>
+                <span>updated {formatTime(1619919631489)} </span>
                 <p>
                   Hello, if you have any suggestions, please let me know on the
                   forums!

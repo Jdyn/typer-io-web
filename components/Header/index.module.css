@@ -126,12 +126,12 @@
 .search {
   display: flex;
   width: 20vw;
-  max-width: 300px;
+  max-width: 250px;
   background: var(--banner-accent);
   outline: none;
   border: none;
   color: white;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 10px 15px;
 }
 

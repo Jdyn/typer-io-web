@@ -159,22 +159,24 @@ const Play = (props: Props): JSX.Element => {
             />
           </section>
         </div>
-        <section className={styles.left}>
-          {!isSolo && <Chat />}
-          <section
-            style={{
-              margin: '20px 0px',
-              maxWidth: '540px !important'
-            }}
-          >
-            <Adsense
-              client="ca-pub-3148839588626786"
-              layout="in-article"
-              slot="6958577240"
-              format="fluid"
-            />
+        {!isSolo && (
+          <section className={styles.left}>
+            <Chat />
+            <section
+              style={{
+                margin: '20px 0px',
+                maxWidth: '540px !important'
+              }}
+            >
+              <Adsense
+                client="ca-pub-3148839588626786"
+                layout="in-article"
+                slot="6958577240"
+                format="fluid"
+              />
+            </section>
           </section>
-        </section>
+        )}
       </div>
     </div>
   );

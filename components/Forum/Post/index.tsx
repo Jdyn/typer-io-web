@@ -87,12 +87,11 @@ const Post = (props: Props): JSX.Element => {
                     setComment({ ...newComment, body: e.target.value })
                   }
                 />
-                <div className={styles.buttons}>
-                  <Button padding="6px 20px" onClick={submitComment}>
+                <div className="flex flex-1 space-x-2">
+                  <Button onClick={submitComment}>
                     comment
                   </Button>
                   <Button
-                    padding="6px 27px"
                     secondary
                     onClick={() =>
                       setComment((prev) => ({ ...prev, body: '' }))

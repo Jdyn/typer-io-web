@@ -139,20 +139,13 @@ const Lobby = (_props): JSX.Element => {
                 <div className={styles.linkContainer}>
                   <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
                   {/* <Button
-                    margin="0px"
-                    padding="0px 5px"
                     onClick={() => setHidden(!hidden)}
                   >
                     {hidden ? 'show' : 'hide'}
                   </Button> */}
                 </div>
                 {currrentClient.isHost ? (
-                  <Button
-                    padding="8px"
-                    margin="10px 0px"
-                    width="125px"
-                    onClick={(): void => handleStart()}
-                  >
+                  <Button onClick={(): void => handleStart()}>
                     Start Game
                   </Button>
                 ) : (

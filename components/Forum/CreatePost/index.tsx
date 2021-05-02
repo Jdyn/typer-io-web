@@ -65,19 +65,16 @@ const CreatePost = (): JSX.Element => {
             onChange={(e): void => setForm({ ...form, body: e.target.value })}
             placeholder="The contents of your post."
           />
-          <div className={styles.buttonContainer}>
+          <div className="flex flex-1 space-x-2">
             <Button
               color="#fff"
-              padding="10px"
               isPending={createPostRequest?.isPending || false}
               onClick={handleClick}
             >
               create post
             </Button>
             <Link href="/forum">
-              <Button secondary padding="10px">
-                cancel
-              </Button>
+              <Button secondary>cancel</Button>
             </Link>
           </div>
         </div>

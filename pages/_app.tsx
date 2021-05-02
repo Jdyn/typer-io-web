@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import 'tailwindcss/tailwind.css';
 import { useDispatch, Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import { useStore } from '../store';

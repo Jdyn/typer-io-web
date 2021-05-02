@@ -141,21 +141,17 @@ const PlayStatus = (props: Props): JSX.Element => {
       <div className={styles.root}>
         {!isCustom &&
           (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) && (
-            <div className={styles.buttonContainer}>
-              <Button padding="8px" onClick={(): void => handleNewPublicGame()}>
+            <div className="flex flex-1 mb-1 space-x-2">
+              <Button onClick={(): void => handleNewPublicGame()}>
                 new game
               </Button>
             </div>
           )}
 
         {isCustom && currrentClient.isHost && (
-          <div className={styles.buttonContainer}>
-            <Button padding="8px" onClick={(): void => handleClick()}>
-              lobby
-            </Button>
-            <Button padding="8px" onClick={(): void => handleNewGame()}>
-              new game
-            </Button>
+          <div className="flex flex-1 mb-1 space-x-2">
+            <Button onClick={(): void => handleClick()}>lobby</Button>
+            <Button onClick={(): void => handleNewGame()}>new game</Button>
           </div>
         )}
         <div className={`${styles.container} ${header.color}`}>

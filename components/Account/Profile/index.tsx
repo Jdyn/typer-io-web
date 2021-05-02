@@ -77,7 +77,7 @@ const Profile = (props: Props): JSX.Element => {
           {user && user.id === sessionUser?.id && (
             <div className={styles.settings}>
               <Link href="/u/settings">
-                <Button padding="6px 20px">Edit Profile</Button>
+                <Button>Edit Profile</Button>
               </Link>
             </div>
           )}

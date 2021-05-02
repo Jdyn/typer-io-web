@@ -22,13 +22,12 @@ const Button = forwardRef(
           ref={ref}
           onClick={onClick}
           disabled={isPending || false}
-          className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-md transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ' +
-          ${
+          className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-lg transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ${
             secondary
-              ? 'bg-primary-light dark:bg-primary-dark border-gray-600 dark:text-white'
-              : 'bg-accent border-accentBorder'
+              ? 'bg-primary-light dark:bg-primary-dark dark:border-gray-600 border-gray-300 dark:text-white'
+              : 'text-white bg-accent border-accentBorder'
           }
-        `}
+          `}
         >
           {isPending ? (
             <Loader width="36px" height="36px" color={color} />
@@ -43,12 +42,11 @@ const Button = forwardRef(
         ref={ref}
         onClick={onClick}
         disabled={isPending || false}
-        className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-lg transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ' +
-          ${
-            secondary
-              ? 'bg-primary-light dark:bg-primary-dark dark:border-gray-600 border-gray-300 dark:text-white'
-              : 'text-white bg-accent border-accentBorder'
-          }
+        className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-lg transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ${
+          secondary
+            ? 'bg-primary-light dark:bg-primary-dark dark:border-gray-600 border-gray-300 dark:text-white'
+            : 'text-white bg-accent border-accentBorder'
+        }
         `}
       >
         {isPending ? (

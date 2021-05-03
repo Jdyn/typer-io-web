@@ -1,19 +1,40 @@
 import { ReactNode, forwardRef, RefObject, MouseEvent } from 'react';
 import Link from 'next/link';
-import Loader from './Loader';
+import styles from './index.module.css';
+import Loader from '../Loader';
 
 interface Props {
   children?: ReactNode;
   onClick?: (event: MouseEvent) => void;
   secondary?: boolean;
+  margin?: string;
+  green?: boolean;
+  grey?: boolean;
+  width?: string;
+  maxWidth?: string;
+  padding?: string;
   isPending?: boolean;
+  large?: boolean;
   href?: string;
   color?: string;
 }
 
 const Button = forwardRef(
   (props: Props, ref: RefObject<HTMLButtonElement>): JSX.Element => {
-    const { children, secondary, onClick, isPending, color, href } = props;
+    const {
+      children,
+      secondary,
+      onClick,
+      margin,
+      padding,
+      isPending,
+      width,
+      color,
+      large,
+      href,
+      green,
+      grey
+    } = props;
 
     return href ? (
       <Link href={href}>
@@ -22,13 +43,12 @@ const Button = forwardRef(
           ref={ref}
           onClick={onClick}
           disabled={isPending || false}
-          className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-md transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ' +
-          ${
-            secondary
-              ? 'bg-primary-light dark:bg-primary-dark border-gray-600 dark:text-white'
-              : 'bg-accent border-accentBorder'
-          }
-        `}
+          className={`
+        ${styles.button}
+        ${secondary ? styles.secondary : styles.primary}
+        ${large ? styles.large : ''}
+        ${green ? styles.green : ''}`}
+          style={{ margin, padding, width }}
         >
           {isPending ? (
             <Loader width="36px" height="36px" color={color} />
@@ -43,13 +63,12 @@ const Button = forwardRef(
         ref={ref}
         onClick={onClick}
         disabled={isPending || false}
-        className={`flex flex-1 justify-center uppercase font-bold outline-none focus:outline-none text-sm border-2 p-2.5 rounded-lg transition duration-100 transform hover:-translate-y-0.5 active:translate-y-0.5 ' +
-          ${
-            secondary
-              ? 'bg-primary-light dark:bg-primary-dark dark:border-gray-600 border-gray-300 dark:text-white'
-              : 'text-white bg-accent border-accentBorder'
-          }
-        `}
+        className={`
+        ${styles.button}
+        ${secondary ? styles.secondary : styles.primary}
+        ${large ? styles.large : ''}
+        ${green ? styles.green : ''}`}
+        style={{ margin, padding, width }}
       >
         {isPending ? (
           <Loader width="20px" height="20px" color={color} />
@@ -62,12 +81,12 @@ const Button = forwardRef(
 );
 
 Button.defaultProps = {
+  margin: '5px',
+  width: 'auto',
+  padding: '0px 0',
   secondary: false,
   onClick: null,
-  isPending: false,
-  children: null,
-  color: 'white',
-  href: ''
+  large: false
 };
 
 export default Button;

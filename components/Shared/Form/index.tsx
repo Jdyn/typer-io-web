@@ -53,7 +53,9 @@ const Form = (props: Props): JSX.Element => {
           />
         </div>
       ))}
-      <Button color="#fff">{template.submit}</Button>
+      <Button color="#fff" padding="8px">
+        {template.submit}
+      </Button>
     </form>
   );
 };

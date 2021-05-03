@@ -78,7 +78,7 @@ const ProfileSettings = (): JSX.Element => {
               </div>
             </div>
             <div className={styles.save}>
-              <Button onClick={onClick}>
+              <Button padding="5px 20px" onClick={onClick}>
                 save
               </Button>
               {updateUserRequest?.success && <span>Saved.</span>}

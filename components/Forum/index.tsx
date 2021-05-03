@@ -47,7 +47,9 @@ const Forum = (): JSX.Element => {
         {session?.isLoggedIn && (
           <div className={styles.create}>
             <Link href="/forum/post">
-              <Button color="#fff">Create Post</Button>
+              <Button color="#fff" padding="10px" margin="10px 20px 0px 10px">
+                Create Post
+              </Button>
             </Link>
           </div>
         )}

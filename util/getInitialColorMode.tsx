@@ -35,7 +35,7 @@ export const ThemeProvider = ({ children }: Props): JSX.Element => {
   };
 
   useEffect(() => {
-    document.documentElement.classList.value = theme;
+    document.body.className = theme;
   }, [theme]);
 
   return (

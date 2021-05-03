@@ -97,15 +97,16 @@ const Comment = (props: Props): JSX.Element => {
                 setComment({ ...newComment, body: e.target.value })
               }
             />
-            <div className="flex flex-1 space-x-2">
+            <div className={styles.buttons}>
               <Button
                 color="#fff"
+                padding="8px"
                 isPending={isPending}
                 onClick={submitComment}
               >
                 post
               </Button>
-              <Button secondary onClick={onChange}>
+              <Button padding="8px" secondary onClick={onChange}>
                 cancel
               </Button>
             </div>

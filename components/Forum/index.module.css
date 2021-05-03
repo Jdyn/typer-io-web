@@ -25,7 +25,6 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  margin: 10px 10px 0 0;
   grid-area: create;
 }
 

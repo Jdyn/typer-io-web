@@ -86,10 +86,9 @@
   height: 100%;
 }
 
-.newsWrapper > h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 10px 0px;
+.newsWrapper > h3 {
+  font-size: 20px;
+  margin: 0;
 }
 
 .newsWrapper > h2 {

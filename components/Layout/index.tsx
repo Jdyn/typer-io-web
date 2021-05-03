@@ -14,11 +14,7 @@ const Layout = (props: Props): JSX.Element => {
   const { children, striped, title } = props;
 
   useEffect(() => {
-    if (window.location.pathname === 'lobby') {
-      ReactGA.pageview(`lobby/*${window.location.search}`);
-    } else {
-      ReactGA.pageview(window.location.pathname + window.location.search);
-    }
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (

@@ -36,54 +36,6 @@
   height: 32px;
 }
 
-.button {
-  display: none;
-}
-
-.form {
-  display: inline-block;
-}
-
-.form > span {
-  display: flex;
-  width: 100%;
-  cursor: pointer;
-  justify-content: center;
-  text-align: center;
-  color: var(--grey);
-  text-decoration: underline;
-  font-size: 1rem;
-  margin-top: 15px;
-}
-
-.form > h3 {
-  text-align: center;
-  margin: 0;
-}
-
-.input {
-  outline: none;
-  border: none;
-  border-radius: 8px;
-  height: 30px;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: var(--primary-main);
-  color: var(--white);
-}
-
-.submitButton {
-  outline: none;
-  border: none;
-  border-radius: 8px;
-  background-color: var(--accent);
-  font-weight: 600;
-  color: var(--white);
-  text-transform: uppercase;
-  margin-top: 10px;
-  padding: 10px;
-}
-
 .modal {
   display: flex;
   position: fixed;
@@ -147,7 +99,7 @@
   .container {
     position: relative;
     width: 100%;
-    max-width: 250px;
+    max-width: 225px;
     display: grid;
     grid-template-rows: 75px 1fr;
     grid-template-columns: 1fr 1fr;
@@ -164,7 +116,7 @@
     display: flex !important;
     position: relative;
     grid-area: modal;
-    padding: 25px;
+    padding: 20px;
     width: 100%;
     height: auto;
     z-index: 1;

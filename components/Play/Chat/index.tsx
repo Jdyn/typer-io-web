@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Banner from '../../Shared/Banner';
+import { useSelector } from 'react-redux';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 import { sendChatMessage } from '../../../store/game/actions';
-import Adsense from '../../Shared/Adsense';
+import Paper from '../../Shared/Paper';
 
 const Chat = (): JSX.Element => {
-  const dispatch = useDispatch();
   const client = useSelector((state: AppState) => state.game.meta);
   const messages = useSelector((state: AppState) => state.game.room.messages);
 
@@ -32,32 +30,31 @@ const Chat = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
-      <Banner>
-        <h1>Chat</h1>
-      </Banner>
-      <div className={styles.container}>
-        <div id="chat" className={styles.wrapper}>
-          {messages.map((message, index) => (
-            <div className={styles.message} key={index}>
-              <span
-                style={{
-                  alignSelf:
-                    client.id === message.id ? 'flex-end' : 'flex-start'
-                }}
-              >
-                {message.username}
-              </span>
-              <div
-                style={{
-                  background: message.color,
-                  alignSelf:
-                    client.id === message.id ? 'flex-end' : 'flex-start'
-                }}
-              >
-                {message.message}
+      <Paper title="Chat">
+        <div className={styles.container}>
+          <div id="chat" className={styles.wrapper}>
+            {messages.map((message, index) => (
+              <div className={styles.message} key={index}>
+                <span
+                  style={{
+                    alignSelf:
+                      client.id === message.id ? 'flex-end' : 'flex-start'
+                  }}
+                >
+                  {message.username}
+                </span>
+                <div
+                  style={{
+                    background: message.color,
+                    alignSelf:
+                      client.id === message.id ? 'flex-end' : 'flex-start'
+                  }}
+                >
+                  {message.message}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <form className={styles.form} onSubmit={(e) => submitMessage(e)}>
           <input
@@ -69,7 +66,7 @@ const Chat = (): JSX.Element => {
             required
           />
         </form>
-      </div>
+      </Paper>
     </div>
   );
 };

@@ -13,10 +13,6 @@
   overflow: hidden;
 }
 
-.verified {
-  color: var(--accent);
-}
-
 .wrapper {
   display: grid;
   grid-auto-columns: 1fr;
@@ -24,6 +20,10 @@
   padding: 0px 0px 0px 10px;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.verified {
+  color: var(--accent);
 }
 
 .entry {

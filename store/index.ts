@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-underscore-dangle */
 import { useMemo } from 'react';
 import {
@@ -5,7 +7,8 @@ import {
   getDefaultMiddleware,
   combineReducers,
   ThunkAction,
-  Action
+  Action,
+  DeepPartial
 } from '@reduxjs/toolkit';
 
 import request from './request/reducers';
@@ -25,7 +28,7 @@ export const reducer = combineReducers({
   game
 });
 
-const initStore = (preloadedState: object = {}) =>
+const initStore = (preloadedState: Record<string, unknown> = {}) =>
   configureStore({
     reducer,
     middleware: [...getDefaultMiddleware(), socket(process.env.SOCKET_URL)],
@@ -33,8 +36,7 @@ const initStore = (preloadedState: object = {}) =>
     preloadedState
   });
 
-export type AppStore = ReturnType<typeof initStore>;
-export type AppState = ReturnType<AppStore['getState']>;
+export type AppState = ReturnType<typeof reducer>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
@@ -42,7 +44,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action
 >;
 
-export const initializeStore = (preloadedState) => {
+export const initializeStore = (preloadedState: DeepPartial<AppState> = {}) => {
   let _store = store ?? initStore(preloadedState);
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -64,7 +66,7 @@ export const initializeStore = (preloadedState) => {
   return _store;
 };
 
-export function useStore(initialState): AppStore {
+export function useStore(initialState: DeepPartial<AppState> = {}) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }

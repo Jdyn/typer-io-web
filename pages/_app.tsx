@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, Provider } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ReactGA from 'react-ga';
-import { useStore } from '../store';
+import { wrapper } from '../store';
 import '../public/static/styles/global.css';
 import { authenticate } from '../store/session/actions';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
@@ -13,7 +13,6 @@ import { ThemeProvider } from '../util/getInitialColorMode';
 
 export const App = (props): JSX.Element => {
   const { Component, pageProps, err } = props;
-
   const dispatch = useDispatch();
   const [isReady, setReady] = useState(false);
 
@@ -51,15 +50,4 @@ export const App = (props): JSX.Element => {
   ) : null;
 };
 
-const AppWrapper = (props) => {
-  const { pageProps } = props;
-  const store = useStore(pageProps.initialReduxState);
-
-  return (
-    <Provider store={store}>
-      <App {...props} />
-    </Provider>
-  );
-};
-
-export default AppWrapper;
+export default wrapper.withRedux(App);

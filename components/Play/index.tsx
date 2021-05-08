@@ -11,6 +11,7 @@ import { AppState } from '../../store';
 import styles from './index.module.css';
 import { GameboardState, SnippetState } from '../../store/game/types';
 import Adsense from '../Shared/Adsense';
+import { EditorState, GameState } from './types';
 
 interface Props {
   isSolo?: boolean;
@@ -32,7 +33,7 @@ const Play = (props: Props): JSX.Element => {
     (state: AppState) => state.game.room.isStarted
   );
 
-  const [gameState, setGameState] = useState({
+  const [gameState, setGameState] = useState<GameState>({
     currentInput: '',
     currentWord: gameboard?.words[0] || '',
     currentIndex: 0,
@@ -42,7 +43,7 @@ const Play = (props: Props): JSX.Element => {
     snippetId: snippet?.id
   });
 
-  const [editorState, setEditorState] = useState({
+  const [editorState, setEditorState] = useState<EditorState>({
     key: null,
     wrongIndex: null,
     entries: 0,

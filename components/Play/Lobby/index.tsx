@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ClientList from '../ClientList';
@@ -14,7 +14,7 @@ import Profile from '../../Home/Profile';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
-const Lobby = (_props): JSX.Element => {
+const Lobby = (): JSX.Element => {
   const router = useRouter();
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
@@ -23,8 +23,6 @@ const Lobby = (_props): JSX.Element => {
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
   );
-
-  const [hidden, setHidden] = useState(true);
 
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
@@ -38,9 +36,7 @@ const Lobby = (_props): JSX.Element => {
     silentEmit('CLIENT_SETTINGS_UPDATE', payload);
   };
 
-  const handleKick = (event, id): void => {
-    event.preventDefault();
-
+  const handleKick = (id: number): void => {
     silentEmit('KICK_PLAYER_CUSTOM_GAME', { id });
   };
 
@@ -104,7 +100,7 @@ const Lobby = (_props): JSX.Element => {
                         {client.username}
                       </span>
                       {client.id !== currrentClient.id && (
-                        <Button onClick={(e) => handleKick(e, client.id)}>
+                        <Button onClick={() => handleKick(client.id)}>
                           kick
                         </Button>
                       )}

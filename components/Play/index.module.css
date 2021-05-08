@@ -21,10 +21,26 @@
   height: 100%;
 }
 
+.soloContainer {
+  margin-top: 145px;
+  grid-template-areas:
+    'status gameboard leaderboard'
+    'clientlist gameboard leaderboard'
+    'clientlist editor leaderboard';
+}
+
 @media (max-width: 815px) {
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content;
+    grid-template-areas:
+      'status'
+      'gameboard'
+      'editor';
+  }
+
+  .soloContainer {
+    margin-top: 0px;
     grid-template-areas:
       'status'
       'gameboard'
@@ -36,7 +52,7 @@
   }
 
   .notice {
-    display: flex !important; 
+    display: flex !important;
     position: relative;
     grid-area: notice;
     padding: 10px 5px;
@@ -49,14 +65,6 @@
     margin: 15px;
     font-size: 16px;
   }
-}
-
-.soloContainer {
-  margin-top: 145px;
-  grid-template-areas:
-    'status gameboard leaderboard'
-    'clientlist gameboard leaderboard'
-    'clientlist editor leaderboard' !important;
 }
 
 .editor {

@@ -38,7 +38,7 @@ const PlayContainer = (): JSX.Element => {
 
   return (
     <Layout striped title="Solo Play | Improve on your own">
-      <Play isSolo />;
+      <Play isSolo />
     </Layout>
   );
 };

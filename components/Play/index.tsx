@@ -178,6 +178,9 @@ const Play = (props: Props): JSX.Element => {
           </section>
         )}
       </div>
+      <div className={styles.notice}>
+        Mobile functionality is limited, consider playing on your computer!
+      </div>
     </div>
   );
 };

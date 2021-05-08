@@ -38,7 +38,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h1>Improve your typing speed and race your friends!</h1>
-                <span>updated {formatTime(1619919631489)} </span>
+                <span>updated {formatTime(1620443582242)} </span>
                 <p>
                   Hello, if you have any suggestions, please let me know on the
                   forums!
@@ -51,9 +51,10 @@ const Home = (): JSX.Element => {
                 >
                   support the creator ➜
                 </a>
-                <h3>Changes (April 21th, 2021):</h3>
+                <h3>Changes (May 7th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Added limited mobile usage across the site.</li>
                     <li>
                       top matches hiscores has been added. I will add more
                       hiscores in the future.

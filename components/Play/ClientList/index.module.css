@@ -9,6 +9,12 @@
   background: transparent;
 }
 
+@media (max-width: 815px) {
+  .root {
+    display: none;
+  }
+}
+
 .soloRoot {
   margin-top: 0px;
 }

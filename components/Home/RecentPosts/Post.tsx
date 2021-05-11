@@ -9,7 +9,10 @@ const MiniListPost = (props) => {
   return (
     <div className={styles.post} key={post.id}>
       <div className={styles.content}>
-        <Link prefetch={false} href={`/forum/post/${post.id}`}>
+        <Link
+          prefetch={false}
+          href={`/forum/post/${post.id}/${post.title.split(' ').join('_')}`}
+        >
           <a className={styles.title}>{post.title}</a>
         </Link>
         <span>
@@ -20,7 +23,10 @@ const MiniListPost = (props) => {
           {post.user.isAdmin && <span className={styles.admin}>Creator</span>}
         </span>
         <p>{post.body}</p>
-        <Link prefetch={false} href={`/forum/post/${post.id}`}>
+        <Link
+          prefetch={false}
+          href={`/forum/post/${post.id}/${post.title.split(' ').join('_')}`}
+        >
           <a className={styles.comment}>
             {post.commentCount}{' '}
             {post.commentCount === 1 ? 'comment' : 'comments'}

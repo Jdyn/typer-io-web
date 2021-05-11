@@ -1,0 +1,82 @@
+.root {
+  display: flex;
+  grid-area: footer;
+  background-color: var(--primary-main);
+  bottom: 0;
+  padding: 50px 20px;
+  border-top: 2px solid var(--border);
+  color: var(--text);
+}
+
+.container {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1080px;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+}
+
+@media (min-width: 650px) {
+  .container {
+    grid-template-columns: 1.3fr 2fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.wrapper > p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.wrapper > span {
+  color: var(--grey);
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.content {
+  padding: 0px 10px;
+}
+
+.spacer {
+  height: 22px;
+  margin: 15px 0px;
+}
+
+.content > h3 {
+  color: var(--white);
+  height: 22px;
+  margin: 15px 0px;
+}
+
+.content > ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0px;
+}
+
+.content > ul > li {
+  color: var(--secondary-white);
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.content > ul > li > a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.content > ul > li > a:hover {
+  text-decoration: underline;
+}

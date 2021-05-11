@@ -4,12 +4,14 @@ import Post from '../../../components/Forum/Post';
 
 const PostPage = (): JSX.Element => {
   const router = useRouter();
-  const { postId } = router.query;
+  const postData = router.query.data;
+
+  if (typeof postData === 'undefined') return null;
 
   return (
     <>
-      <Layout striped>
-        <Post postId={postId as string} />
+      <Layout striped title={`Forum | ${postData[1] || ''}`}>
+        <Post postId={postData[0]} />
       </Layout>
     </>
   );

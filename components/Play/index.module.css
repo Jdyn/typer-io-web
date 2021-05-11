@@ -78,3 +78,13 @@
 .notice {
   display: none;
 }
+
+.tips {
+  padding: 10px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.tips > ul > li {
+  padding: 10px;
+}

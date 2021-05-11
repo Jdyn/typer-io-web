@@ -35,7 +35,7 @@ const PlayContainer = (): JSX.Element => {
         leaveRoom({ id: RoomId, errored: false });
       }
     };
-  }, [dispatch, RoomId, socket.connected, socket.pending]);
+  }, [dispatch, RoomId]);
 
   return (
     <Layout striped title="Quick Play | Race against random players">

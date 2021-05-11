@@ -98,6 +98,7 @@ const Editor = (props: Props): JSX.Element => {
           className={styles.input}
           onClick={(): void => focusInput()}
           tabIndex={0}
+          placeholder={!gameboard.isStarted && !gameboard.isOver ? "Type here when the game begins..." : ''}
           autoComplete="off"
           autoCorrect="off"
           maxLength={

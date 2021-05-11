@@ -29,8 +29,8 @@ const Play = (props: Props): JSX.Element => {
     (state: AppState) => state.game.room.snippet
   );
 
-  const isStarted: boolean = useSelector(
-    (state: AppState) => state.game.room.isStarted
+  const sessionId: string = useSelector(
+    (state: AppState) => state.game.room.sessionId || null
   );
 
   const [gameState, setGameState] = useState<GameState>({
@@ -51,39 +51,23 @@ const Play = (props: Props): JSX.Element => {
   });
 
   useEffect(() => {
-    if (!isStarted || isSolo) {
-      setGameState((prev) => ({
-        ...prev,
-        currentWord: gameboard.words[0] || '',
-        currentIndex: 0,
-        words: gameboard.words,
-        wordsRemaining: gameboard.words,
-        wordsComplete: [],
-        snippetId: snippet?.id
-      }));
-    }
-  }, [isStarted, setGameState, gameboard.words, isSolo, snippet?.id]);
+    setGameState({
+      currentInput: '',
+      currentWord: gameboard.words[0] || '',
+      currentIndex: 0,
+      words: gameboard.words,
+      wordsRemaining: gameboard.words,
+      wordsComplete: [],
+      snippetId: snippet?.id
+    });
 
-  useEffect(() => {
-    if (snippet?.id !== gameState.snippetId) {
-      setGameState({
-        currentInput: '',
-        currentWord: gameboard.words[0] || '',
-        currentIndex: 0,
-        words: gameboard.words,
-        wordsRemaining: gameboard.words,
-        wordsComplete: [],
-        snippetId: snippet?.id
-      });
-
-      setEditorState({
-        key: null,
-        wrongIndex: null,
-        entries: 0,
-        errors: 0
-      });
-    }
-  }, [gameState.snippetId, gameboard.words, snippet?.id]);
+    setEditorState({
+      key: null,
+      wrongIndex: null,
+      entries: 0,
+      errors: 0
+    });
+  }, [gameboard.words, snippet?.id, sessionId]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;
@@ -159,6 +143,46 @@ const Play = (props: Props): JSX.Element => {
               format="fluid"
             />
           </section>
+          <div className={styles.tips}>
+            <h3>Typing on Typer.io</h3>
+            <p>
+              Typing speed can make a world of difference when using computers.
+              The more comfortable you are typing, the more you can focus on
+              what you are working on. Slow typing and fixing typing errors
+              moves your attention away from what you are trying to achieve
+              (writing an email, filling in a form, etc.).
+            </p>
+            <p>
+              Practice is key to improving your typing skills. The more you
+              practice against others, the faster you will type. I believe that
+              competition is the best way to speed up the learning process even
+              further. It is in human nature to compete and through repetition
+              and the desire to win and improve, one can improve their speed in
+              typing very quickly.
+            </p>
+            <p>
+              In order to keep track of your progress, you can easily create an
+              account. Each race will be saved and you can view your progress
+              over time. Registered members are also able to post messages on
+              our forum.
+            </p>
+            <h3>Helpful Tips To Win</h3>
+            <ul>
+              <li>
+                Make sure the typing box is focused before the game starts so
+                you can begin typing right away.
+              </li>
+              <li>
+                On Typer.io, you cannot ignore errors. The game lets you keep
+                typing even after making an error, so try correct it as soon as
+                possible!
+              </li>
+              <li>
+                Many fast racers start with their fingers already on the first
+                few keys to get the greatest advantage possible.
+              </li>
+            </ul>
+          </div>
         </div>
         {!isSolo && (
           <section className={styles.left}>

@@ -59,7 +59,9 @@ const Forum = (): JSX.Element => {
               <li className={styles.feedItem} key={post.id}>
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
-                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
+                  <Link
+                    href={`/forum/post/${post.id}/${encodeURIComponent(post.title.split(' ').join('_'))}`}
+                  >
                     <a className={styles.title}>{post.title}</a>
                   </Link>
                   {session?.user?.is_admin && <span>ID: {post.id}</span>}

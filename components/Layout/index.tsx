@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Header from '../Header';
 import styles from './index.module.css';
+import Footer from '../Footer';
 
 interface Props {
   children?: ReactNode;
@@ -45,7 +46,7 @@ const Layout = (props: Props): JSX.Element => {
       <Header />
       {striped && <div className={styles.stripe} />}
       {children}
-      <footer />
+      <Footer />
     </>
   );
 };

@@ -68,13 +68,6 @@ const Home = (): JSX.Element => {
                       top matches hiscores has been added. I will add more
                       hiscores in the future.
                     </li>
-                    <li>
-                      The header has been updated and is more mobile friendly.
-                    </li>
-                    <li>
-                      The daily hiscores on the homepage refresh instantly now.
-                      You no longer need to refresh the page.
-                    </li>
                   </ul>
                 </div>
               </div>

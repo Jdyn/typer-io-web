@@ -20,7 +20,7 @@ const Comment = (props: Props): JSX.Element => {
   const [showReplyBox, set] = useState(false);
   const [newComment, setComment] = useState({ body: '', parentId: comment.id });
   const dispatch = useDispatch();
-  const { postId } = useRouter().query;
+  const postId = useRouter().query.data[0] ?? '';
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
   const isAdmin = useSelector(
     (state: AppState) => state.session?.user?.is_admin || false

@@ -60,9 +60,9 @@ const Forum = (): JSX.Element => {
                 <div className={styles.portrait} />
                 <div className={styles.feedContent}>
                   <Link
-                    href={`/forum/post/${post.id}/${post.title
-                      .split(' ')
-                      .join('_')}`}
+                    href={`/forum/post/${post.id}/${encodeURIComponent(
+                      post.title.split(' ').join('-')
+                    )}`}
                   >
                     <a className={styles.title}>{post.title}</a>
                   </Link>

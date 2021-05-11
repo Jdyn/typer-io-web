@@ -11,7 +11,9 @@ const MiniListPost = (props) => {
       <div className={styles.content}>
         <Link
           prefetch={false}
-          href={`/forum/post/${post.id}/${post.title.split(' ').join('_')}`}
+          href={`/forum/post/${post.id}/${encodeURIComponent(
+            post.title.split(' ').join('-')
+          )}`}
         >
           <a className={styles.title}>{post.title}</a>
         </Link>
@@ -25,7 +27,9 @@ const MiniListPost = (props) => {
         <p>{post.body}</p>
         <Link
           prefetch={false}
-          href={`/forum/post/${post.id}/${post.title.split(' ').join('_')}`}
+          href={`/forum/post/${post.id}/${encodeURIComponent(
+            post.title.split(' ').join('-')
+          )}`}
         >
           <a className={styles.comment}>
             {post.commentCount}{' '}

@@ -40,7 +40,8 @@ const Play = (props: Props): JSX.Element => {
     words: gameboard?.words || [],
     wordsRemaining: gameboard?.words || [],
     wordsComplete: [],
-    snippetId: snippet?.id
+    snippetId: snippet?.id,
+    sessionId: sessionId || ''
   });
 
   const [editorState, setEditorState] = useState<EditorState>({
@@ -50,24 +51,53 @@ const Play = (props: Props): JSX.Element => {
     errors: 0
   });
 
-  useEffect(() => {
-    setGameState({
-      currentInput: '',
-      currentWord: gameboard.words[0] || '',
-      currentIndex: 0,
-      words: gameboard.words,
-      wordsRemaining: gameboard.words,
-      wordsComplete: [],
-      snippetId: snippet?.id
-    });
+  const isStarted: boolean = useSelector(
+    (state: AppState) => state.game.room.isStarted
+  );
 
-    setEditorState({
-      key: null,
-      wrongIndex: null,
-      entries: 0,
-      errors: 0
-    });
-  }, [gameboard.words, snippet?.id, sessionId]);
+  useEffect(() => {
+    if (!isStarted || isSolo) {
+      setGameState((prev) => ({
+        ...prev,
+        currentWord: gameboard.words[0] || '',
+        currentIndex: 0,
+        words: gameboard.words,
+        wordsRemaining: gameboard.words,
+        wordsComplete: [],
+        snippetId: snippet?.id,
+        sessionId: sessionId || ''
+      }));
+    }
+  }, [
+    isStarted,
+    setGameState,
+    gameboard.words,
+    isSolo,
+    snippet?.id,
+    sessionId
+  ]);
+
+  useEffect(() => {
+    if (snippet?.id !== gameState.snippetId) {
+      setGameState({
+        currentInput: '',
+        currentWord: gameboard.words[0] || '',
+        currentIndex: 0,
+        words: gameboard.words,
+        wordsRemaining: gameboard.words,
+        wordsComplete: [],
+        snippetId: snippet?.id,
+        sessionId: sessionId || ''
+      });
+
+      setEditorState({
+        key: null,
+        wrongIndex: null,
+        entries: 0,
+        errors: 0
+      });
+    }
+  }, [gameState.snippetId, gameboard.words, snippet?.id, sessionId]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

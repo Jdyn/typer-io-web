@@ -29,8 +29,8 @@ const Play = (props: Props): JSX.Element => {
     (state: AppState) => state.game.room.snippet
   );
 
-  const sessionId: string = useSelector(
-    (state: AppState) => state.game.room.sessionId || null
+  const isStarted: boolean = useSelector(
+    (state: AppState) => state.game.room.isStarted
   );
 
   const [gameState, setGameState] = useState<GameState>({
@@ -40,8 +40,7 @@ const Play = (props: Props): JSX.Element => {
     words: gameboard?.words || [],
     wordsRemaining: gameboard?.words || [],
     wordsComplete: [],
-    snippetId: snippet?.id,
-    sessionId: sessionId || ''
+    snippetId: snippet?.id
   });
 
   const [editorState, setEditorState] = useState<EditorState>({
@@ -50,10 +49,6 @@ const Play = (props: Props): JSX.Element => {
     entries: 0,
     errors: 0
   });
-
-  const isStarted: boolean = useSelector(
-    (state: AppState) => state.game.room.isStarted
-  );
 
   useEffect(() => {
     if (!isStarted || isSolo) {
@@ -64,18 +59,10 @@ const Play = (props: Props): JSX.Element => {
         words: gameboard.words,
         wordsRemaining: gameboard.words,
         wordsComplete: [],
-        snippetId: snippet?.id,
-        sessionId: sessionId || ''
+        snippetId: snippet?.id
       }));
     }
-  }, [
-    isStarted,
-    setGameState,
-    gameboard.words,
-    isSolo,
-    snippet?.id,
-    sessionId
-  ]);
+  }, [isStarted, setGameState, gameboard.words, isSolo, snippet?.id]);
 
   useEffect(() => {
     if (snippet?.id !== gameState.snippetId) {
@@ -86,8 +73,7 @@ const Play = (props: Props): JSX.Element => {
         words: gameboard.words,
         wordsRemaining: gameboard.words,
         wordsComplete: [],
-        snippetId: snippet?.id,
-        sessionId: sessionId || ''
+        snippetId: snippet?.id
       });
 
       setEditorState({
@@ -97,7 +83,7 @@ const Play = (props: Props): JSX.Element => {
         errors: 0
       });
     }
-  }, [gameState.snippetId, gameboard.words, snippet?.id, sessionId]);
+  }, [gameState.snippetId, gameboard.words, snippet?.id]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

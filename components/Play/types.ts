@@ -6,7 +6,6 @@ export interface GameState {
   wordsRemaining: string[];
   wordsComplete: string[];
   snippetId?: number | null;
-  sessionId?: string | null;
 }
 
 export interface EditorState {

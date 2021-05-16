@@ -8,7 +8,7 @@ interface Props {
 
 const LoginContainer = (_props: Props): JSX.Element => {
   return (
-    <Layout striped>
+    <Layout striped title="Log In | Existing Account">
       <AccountAuth type="login" />
     </Layout>
   );

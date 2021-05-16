@@ -9,10 +9,11 @@ interface Props {
   children?: ReactNode;
   striped?: boolean;
   title?: string;
+  description?: string;
 }
 
 const Layout = (props: Props): JSX.Element => {
-  const { children, striped, title } = props;
+  const { children, striped, title, description } = props;
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -26,10 +27,7 @@ const Layout = (props: Props): JSX.Element => {
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
         />
-        <meta
-          name="description"
-          content="Online Multiplayer Typing Test - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster."
-        />
+        <meta name="description" content={description} />
         <meta
           name="keywords"
           content="typing,free typing games,typing,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test"
@@ -54,7 +52,9 @@ const Layout = (props: Props): JSX.Element => {
 Layout.defaultProps = {
   children: null,
   striped: false,
-  title: 'Typer.io | Multiplayer Typing Test - Race Your Friends'
+  title: 'Typer.io | Multiplayer Typing Test - Race Your Friends',
+  description:
+    'Online Multiplayer Typing Test - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster.'
 };
 
 export default Layout;

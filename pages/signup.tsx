@@ -8,7 +8,11 @@ interface Props {
 
 const SignupContainer = (_props: Props): JSX.Element => {
   return (
-    <Layout striped>
+    <Layout
+      striped
+      title="Sign up | New Account"
+      description="Create an account to save match history, use the forums, and watch as you quickly improve."
+    >
       <AccountAuth type="signup" />
     </Layout>
   );

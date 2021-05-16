@@ -38,7 +38,11 @@ const PlayContainer = (): JSX.Element => {
   }, [dispatch, RoomId]);
 
   return (
-    <Layout striped title="Quick Play | Race against random players">
+    <Layout
+      striped
+      title="Quick Play | Race against random players"
+      description="Very quickly match up against other players and race to be the fastest."
+    >
       <Play />
     </Layout>
   );

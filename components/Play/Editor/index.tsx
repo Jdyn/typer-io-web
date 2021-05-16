@@ -37,7 +37,7 @@ const Editor = (props: Props): JSX.Element => {
 
   useEffect(() => {
     focusInput();
-  }, []);
+  }, [gameboard.isStarted]);
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;

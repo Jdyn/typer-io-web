@@ -205,6 +205,10 @@
   width: 100%;
 }
 
+.statsContainer > h3 {
+  margin: 20px 20px 0px 20px;
+}
+
 .statsItem {
   display: flex;
   flex-direction: column;
@@ -213,7 +217,7 @@
   height: 125px;
   border: 2px solid var(--border);
   border-radius: 16px;
-  padding: 20px;
+  padding: 20px 15px;
 }
 
 .statsItem > h3 {
@@ -238,7 +242,7 @@
 
 .statItemWrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   grid-template-rows: 1fr;
   margin: 20px;

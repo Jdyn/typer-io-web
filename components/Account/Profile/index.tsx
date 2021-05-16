@@ -8,10 +8,16 @@ import formatTime from '../../../util/formatTime';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import MiniListPost from '../../Home/RecentPosts/Post';
+import Filter from '../../Shared/Filter';
 
 interface Props {
   username: string;
 }
+
+const filters = [
+  { name: 'recent', key: 'RECENT' },
+  { name: 'all time', key: 'ALL' }
+];
 
 const Profile = (props: Props): JSX.Element => {
   const { username } = props;
@@ -88,16 +94,22 @@ const Profile = (props: Props): JSX.Element => {
         <Banner>
           <h1>Overview</h1>
         </Banner>
+        <h3>All-Time Averages</h3>
         <div className={styles.statItemWrapper}>
           <div className={styles.statsItem}>
-            <h3>Total Matches</h3>
+            <h3>Matches</h3>
             <span>{user?.matchCount}</span>
             <div>Played</div>
           </div>
           <div className={styles.statsItem}>
-            <h3>Average Speed</h3>
+            <h3>Speed</h3>
             <span>{user?.averageWpm}</span>
             <div>WPM</div>
+          </div>
+          <div className={styles.statsItem}>
+            <h3>Accuracy</h3>
+            <span>{user?.averageAccuracy}</span>
+            <div>Percent</div>
           </div>
           <div className={styles.statsItem}>
             <h3>Top Speed</h3>

@@ -18,9 +18,20 @@ const filters = [
 
 const Leaderboard = (): JSX.Element => {
   const snippet = useSelector((state: AppState) => state.game.room.snippet);
+  const clients = useSelector((state: AppState) =>
+    state.game.room.clients.map((client) => ({
+      id: client.id,
+      wpm: client?.gamePiece.wpm,
+      isComplete: client.gamePiece.isComplete
+    }))
+  );
+
   const [state, set] = useState([]);
 
-  useEffect(() => {
+  //TODO: Seems like a hacky solution for updating the hiscores...
+  const [ids, setIds] = useState([]);
+
+  const fetchHiscores = () => {
     if (snippet?.id) {
       ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
         if (response.ok) {
@@ -28,17 +39,27 @@ const Leaderboard = (): JSX.Element => {
         }
       });
     }
-  }, [snippet?.id]);
-
-  const renderBadge = (user): JSX.Element => {
-    if (user) {
-      if (user.isAdmin) {
-        return <span className={styles.admin}>Creator</span>;
-      }
-    }
-
-    return null;
   };
+
+  useEffect(() => {
+    // So, every time a client finishes, we check a few things
+    // to determine if we should fetch the hiscores again for a seemingly
+    // live update.
+    clients.forEach((client) => {
+      if (
+        client.isComplete &&
+        client.wpm > state[state.length - 1].wpm &&
+        !ids.includes(client.id)
+      ) {
+        fetchHiscores();
+        setIds([...ids, client.id]);
+      }
+    });
+  }, [set, state, clients, snippet?.id, setIds, ids]);
+
+  useEffect(() => {
+    fetchHiscores();
+  }, [snippet?.id]);
 
   return (
     <div className={styles.root}>
@@ -63,6 +84,9 @@ const Leaderboard = (): JSX.Element => {
                       </Link>
                     ) : (
                       item.nickname
+                    )}
+                    {formatTime(item.created_at) === 'Just now' && (
+                      <span className={styles.newBadge}>NEW</span>
                     )}
                   </span>
                   <div className={styles.timestamp}>
@@ -92,4 +116,4 @@ const Leaderboard = (): JSX.Element => {
   );
 };
 
-export default Leaderboard;
+export default React.memo(Leaderboard);

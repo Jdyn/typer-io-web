@@ -7,6 +7,7 @@ import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 import Adsense from '../../Shared/Adsense';
+import Link from 'next/link';
 
 const filters = [
   {
@@ -48,14 +49,22 @@ const Leaderboard = (): JSX.Element => {
             {state.map((item, index) => (
               <div className={styles.entry} key={item.id}>
                 <div className={styles.count}>{index + 1}.</div>
-                {/* <div className={styles.portrait} /> */}
                 <div className={styles.content}>
-                  <div>
-                    <span className={item.user ? styles.verified : ''}>
-                      {item.user?.username ?? item.nickname ?? 'Guest'}
-                    </span>{' '}
-                    {renderBadge(item.user)}
-                  </div>
+                  <span className={item.user ? styles.verified : ''}>
+                    {item.user?.username ? (
+                      <Link href={`/u/${item.user.username}`}>
+                        <a
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className={styles.nameLink}
+                        >
+                          {item.user?.username}
+                        </a>
+                      </Link>
+                    ) : (
+                      item.nickname
+                    )}
+                  </span>
                   <div className={styles.timestamp}>
                     {formatTime(item.created_at)}
                   </div>

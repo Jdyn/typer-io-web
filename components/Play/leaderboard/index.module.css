@@ -123,3 +123,7 @@
   width: 22px;
   margin-right: 5px;
 }
+
+.nameLink {
+  color: var(--text);
+}

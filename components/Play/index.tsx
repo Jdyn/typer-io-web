@@ -160,21 +160,23 @@ const Play = (props: Props): JSX.Element => {
             />
           </section>
           <div className={styles.tips}>
-            <h3>Typing on Typer.io</h3>
+            <h2>Typing on Typer.io</h2>
+            <p>
+              Want to be apart of the community? Join the{' '}
+              <a href="https://discord.com/invite/E2Fj4h3JCa">discord</a>.
+            </p>
             <p>
               Typing speed can make a world of difference when using computers.
               The more comfortable you are typing, the more you can focus on
-              what you are working on. Slow typing and fixing typing errors
-              moves your attention away from what you are trying to achieve
-              (writing an email, filling in a form, etc.).
+              what you are working on. Slow typing and fixing errors moves your
+              attention away from what you are trying to achieve.
             </p>
             <p>
-              Practice is key to improving your typing skills. The more you
-              practice against others, the faster you will type. I believe that
-              competition is the best way to speed up the learning process even
-              further. It is in human nature to compete and through repetition
-              and the desire to win and improve, one can improve their speed in
-              typing very quickly.
+              Practice is the key to improving your typing skills. The more you
+              practice against others, the faster you will type. Competition is
+              often the best way to speed up the learning process. Through
+              repetition and the desire to win and improve, one can improve
+              their typing speed very quickly.
             </p>
             <p>
               In order to keep track of your progress, you can easily create an
@@ -182,20 +184,23 @@ const Play = (props: Props): JSX.Element => {
               over time. Registered members are also able to post messages on
               our forum.
             </p>
-            <h3>Helpful Tips To Win</h3>
+            <h3>Helpful Tips</h3>
             <ul>
               <li>
                 Make sure the typing box is focused before the game starts so
                 you can begin typing right away.
               </li>
               <li>
-                On Typer.io, you cannot ignore errors. The game lets you keep
-                typing even after making an error, so try correct it as soon as
-                possible!
+                You cannot ignore errors, so try to notice and correct them as
+                soon as possible to get back on track!
               </li>
               <li>
-                Many fast racers start with their fingers already on the first
+                Some fast racers start with their fingers already on the first
                 few keys to get the greatest advantage possible.
+              </li>
+              <li>
+                Many fast racers read the first few words before the game starts
+                to type them quicker.
               </li>
             </ul>
           </div>

@@ -88,3 +88,7 @@
 .tips > ul > li {
   padding: 10px;
 }
+
+.tips > p > a {
+  color: var(--accent);
+}

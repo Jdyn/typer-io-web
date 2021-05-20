@@ -22,7 +22,7 @@ let socket;
 
 const defaultListeners = (dispatch) => {
   if (socket) {
-    socket.on('disconnect', (reason) => {
+    socket.on('disconnect', (_reason) => {
       if (socket) {
         socket.close();
         socket = null;
@@ -44,8 +44,8 @@ const defaultListeners = (dispatch) => {
             gameTime: null
           }
         },
-        error: reason,
-        errored: true
+        error: null,
+        errored: false
       });
     });
 

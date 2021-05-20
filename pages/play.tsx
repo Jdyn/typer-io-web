@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 
 const PlayContainer = (): JSX.Element => {
   const dispatch = useDispatch();
+  const RoomId = useSelector((state: AppState) => state.game.room.id);
   const socket = useSelector((state: AppState) => state.game.socket);
 
   useEffect(() => {
@@ -28,13 +29,13 @@ const PlayContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, []);
 
-  useEffect(() => {
-    return () => {
-      leaveRoom();
+    return (): void => {
+      if (RoomId !== null) {
+        leaveRoom({ id: RoomId, errored: false });
+      }
     };
-  });
+  }, [dispatch, RoomId]);
 
   return (
     <Layout

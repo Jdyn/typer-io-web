@@ -31,9 +31,9 @@ const Leaderboard = (): JSX.Element => {
   //TODO: Seems like a hacky solution for updating the hiscores...
   const [ids, setIds] = useState([]);
 
-  const fetchHiscores = () => {
-    if (snippet?.id) {
-      ApiService.fetch(`/snippet/${snippet.id}/matches`).then((response) => {
+  const fetchHiscores = (id) => {
+    if (id) {
+      ApiService.fetch(`/snippet/${id}/matches`).then((response) => {
         if (response.ok) {
           set(response.result.matches);
         }
@@ -51,14 +51,14 @@ const Leaderboard = (): JSX.Element => {
         client.wpm > state[state.length - 1].wpm &&
         !ids.includes(client.id)
       ) {
-        fetchHiscores();
+        fetchHiscores(snippet?.id);
         setIds([...ids, client.id]);
       }
     });
   }, [set, state, clients, snippet?.id, setIds, ids]);
 
   useEffect(() => {
-    fetchHiscores();
+    fetchHiscores(snippet?.id);
   }, [snippet?.id]);
 
   return (

@@ -54,7 +54,7 @@ const Lobby = (): JSX.Element => {
         <section className={styles.aContainer2}>
           <div className={styles.settingsRoot}>
             <Banner>
-              <h1>Settings</h1>
+              <h3>Settings</h3>
             </Banner>
             <div className={styles.settingsContainer}>
               <div className={styles.setting}>
@@ -121,7 +121,7 @@ const Lobby = (): JSX.Element => {
         </section>
         <div className={styles.container}>
           <Banner>
-            <h1>Lobby</h1>
+            <h3>Lobby</h3>
           </Banner>
           <div className={styles.wrapper}>
             {socket.pending ? (

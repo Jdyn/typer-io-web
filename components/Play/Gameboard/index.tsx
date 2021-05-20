@@ -105,7 +105,7 @@ const Gameboard = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <Banner>
-        <h1>
+        <h3>
           Gameboard
           {client?.gamePiece && (
             <span className={styles.header}>
@@ -117,7 +117,7 @@ const Gameboard = (props: Props): JSX.Element => {
               />
             </span>
           )}
-        </h1>
+        </h3>
       </Banner>
       <div className={styles.container}>{wordElements}</div>
       <div className={styles.content}>

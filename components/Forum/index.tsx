@@ -40,84 +40,86 @@ const Forum = (): JSX.Element => {
           responsive="true"
         />
       </section>
-      <div className={styles.feed}>
-        <Banner>
-          <h1>Discussions</h1>
-        </Banner>
-        {session?.isLoggedIn && (
-          <div className={styles.create}>
-            <Link href="/forum/post">
-              <Button color="#fff" padding="10px" margin="10px 20px 0px 10px">
-                Create Post
-              </Button>
-            </Link>
-          </div>
-        )}
-        <div className={styles.feedContainer}>
-          <div className={styles.feedWrapper}>
-            {page.posts?.map((post) => (
-              <li className={styles.feedItem} key={post.id}>
-                <div className={styles.portrait} />
-                <div className={styles.feedContent}>
-                  <Link
-                    href={`/forum/post/${post.id}/${encodeURIComponent(
-                      post.title.split(' ').join('-')
-                    )}`}
-                  >
-                    <a className={styles.title}>{post.title}</a>
-                  </Link>
-                  {session?.user?.is_admin && <span>ID: {post.id}</span>}
-                  <span>
-                    Posted {formatTime(post.createdAt)} by{' '}
-                    <Link href={`/u/${post.user.username}`}>
-                      <a className={styles.nameLink}>{post.user?.username}</a>
-                    </Link>{' '}
-                    {post.user.isAdmin && (
-                      <span className={styles.admin}>Creator</span>
+
+      <div className={styles.main}>
+        <div className={styles.feed}>
+          <Banner>
+            <h3>
+              Discussions{' '}
+              {session?.isLoggedIn && (
+                <Link href="/forum/post">
+                  <a className={styles.create}>Create Post ➜</a>
+                </Link>
+              )}
+            </h3>
+          </Banner>
+          <div className={styles.feedContainer}>
+            <div className={styles.feedWrapper}>
+              {page.posts?.map((post) => (
+                <li className={styles.feedItem} key={post.id}>
+                  <div className={styles.portrait} />
+                  <div className={styles.feedContent}>
+                    <Link
+                      href={`/forum/post/${post.id}/${encodeURIComponent(
+                        post.title.split(' ').join('-')
+                      )}`}
+                    >
+                      <a className={styles.title}>{post.title}</a>
+                    </Link>
+                    {session?.user?.is_admin && <span>ID: {post.id}</span>}
+                    <span>
+                      Posted {formatTime(post.createdAt)} by{' '}
+                      <Link href={`/u/${post.user.username}`}>
+                        <a className={styles.nameLink}>{post.user?.username}</a>
+                      </Link>{' '}
+                      {post.user.isAdmin && (
+                        <span className={styles.admin}>Creator</span>
+                      )}
+                    </span>
+                    {post.commentCount > 0 && (
+                      <span>Last comment {formatTime(post.updatedAt)}</span>
                     )}
-                  </span>
-                  {post.commentCount > 0 && (
-                    <span>Last comment {formatTime(post.updatedAt)}</span>
-                  )}
-                  <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                    <a className={styles.comment}>
-                      {post.commentCount} comment
-                      {post.commentCount === 1 ? '' : 's'}
-                    </a>
-                  </Link>
-                </div>
-              </li>
-            ))}
+                    <Link prefetch={false} href={`/forum/post/${post.id}`}>
+                      <a className={styles.comment}>
+                        {post.commentCount} comment
+                        {post.commentCount === 1 ? '' : 's'}
+                      </a>
+                    </Link>
+                  </div>
+                </li>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={styles.pagination}>
-          <button
-            className={styles.pageButton}
-            onClick={() => setPage(1)}
-            type="button"
-          >
-            1
-          </button>
-          <button
-            className={styles.pageButton}
-            onClick={() => setPage(page?.postPage - 1)}
-            type="button"
-          >{`<`}</button>
-          <span>{page?.postPage}</span>
-          <button
-            className={styles.pageButton}
-            onClick={() => setPage(page?.postPage + 1)}
-            type="button"
-          >{`>`}</button>
-          <button
-            className={styles.pageButton}
-            onClick={() => setPage(page?.postMaxPage)}
-            type="button"
-          >
-            {page?.postMaxPage || 1}
-          </button>
+          <div className={styles.pagination}>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(1)}
+              type="button"
+            >
+              1
+            </button>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(page?.postPage - 1)}
+              type="button"
+            >{`<`}</button>
+            <span>{page?.postPage}</span>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(page?.postPage + 1)}
+              type="button"
+            >{`>`}</button>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(page?.postMaxPage)}
+              type="button"
+            >
+              {page?.postMaxPage || 1}
+            </button>
+          </div>
         </div>
       </div>
+
       <section>
         <Adsense
           client="ca-pub-3148839588626786"

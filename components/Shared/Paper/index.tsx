@@ -13,7 +13,7 @@ const Paper = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <Banner>
-        <h1>{title}</h1>
+        <h3>{title}</h3>
       </Banner>
       <div className={styles.container}>{children}</div>
     </div>

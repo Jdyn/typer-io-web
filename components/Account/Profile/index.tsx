@@ -62,7 +62,7 @@ const Profile = (props: Props): JSX.Element => {
     <div className={styles.root}>
       <div className={styles.headerContainer}>
         <Banner>
-          <h1>Profile</h1>
+          <h3>Profile</h3>
         </Banner>
         <div className={styles.profileContainer}>
           <div className={styles.wrapper}>
@@ -92,7 +92,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.statsContainer}>
         <Banner>
-          <h1>Overview</h1>
+          <h3>Overview</h3>
         </Banner>
         <h3>All-Time Averages</h3>
         <div className={styles.statItemWrapper}>
@@ -120,7 +120,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.friendsList}>
         <Banner>
-          <h1>Posts</h1>
+          <h3>Posts</h3>
         </Banner>
         <div className={styles.friendsListWrapper}>
           {user?.posts.length > 0 ? (
@@ -136,7 +136,7 @@ const Profile = (props: Props): JSX.Element => {
       </div>
       <div className={styles.historyRoot}>
         <Banner>
-          <h1>Matches</h1>
+          <h3>Matches</h3>
         </Banner>
         <div className={styles.header}>
           <div className={styles.headerItem}>Name</div>

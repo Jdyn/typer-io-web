@@ -3,14 +3,13 @@
   position: relative;
   margin: 145px auto 0px auto;
   padding: 0px 10px 30px 10px;
-  z-index: 100;
-  grid-template-columns: min-content 640px min-content;
+  grid-template-columns: min-content 650px min-content;
   grid-template-rows: minmax(450px, max-content) 1fr;
   max-width: 1250px;
   gap: 20px;
   grid-template-areas:
     '. main .'
-    '. comments .';
+    '. main .';
 }
 
 @media only screen and (max-width: 814px) {
@@ -26,13 +25,38 @@
 }
 
 .post {
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(400px, max-content) 1fr;
+  gap: 20px;
   grid-area: main;
+  width: 100%;
+  min-height: 300px;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
   border-radius: 16px;
   box-shadow: var(--shadow);
   background: var(--primary-main);
-  width: 100%;
-  min-height: 300px;
+  border-radius: 16px;
+  flex: 1;
+}
+
+.postContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.postContainer > p {
+  margin: 0px 0px 20px 0px;
 }
 
 .nameLink {
@@ -41,21 +65,10 @@
   color: var(--text);
 }
 
-.postContainer {
-  border: 2px solid var(--border);
-  padding: 20px;
-  border-radius: 16px;
-  margin: 20px;
-}
-
-.postContainer > p {
-  margin: 0px 0px 20px 0px;
-}
-
 .header {
   display: flex;
   flex-direction: column;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 .header > h1 {
@@ -93,12 +106,10 @@
 
 .comments {
   flex-grow: 1;
-  grid-area: main;
   border-radius: 16px;
   box-shadow: var(--shadow);
   background: var(--primary-main);
   width: 100%;
-  grid-area: comments;
 }
 
 .commentsContainer {

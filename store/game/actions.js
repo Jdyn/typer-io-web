@@ -11,7 +11,7 @@ export const updateClient = (payload) => {
 export const sendChatMessage = (payload) =>
   silentEmit(actions.SEND_CHAT_MESSAGE, payload);
 
-export const leaveRoom = (_payload) => silentClose();
+export const leaveRoom = () => silentClose();
 // silentEmit(types.DISCONNECT_SOCKET, payload);
 
 export const initSocket = (user, config) => {

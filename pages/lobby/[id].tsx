@@ -54,12 +54,10 @@ const LobbyContainer = (): JSX.Element => {
   // }, [roomId, router, socket.connected]);
 
   useEffect(() => {
-    return (): void => {
-      if (roomId !== null) {
-        leaveRoom({ id: roomId, errored: false });
-      }
+    return () => {
+      leaveRoom();
     };
-  }, [roomId]);
+  }, []);
 
   return isStarted ? (
     <Layout striped>

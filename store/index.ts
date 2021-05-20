@@ -38,7 +38,7 @@ const store = (preloadedState = {}): EnhancedStore =>
   configureStore({
     reducer: appReducer,
     middleware: [...getDefaultMiddleware(), socket(process.env.SOCKET_URL)],
-    devTools: process.env.NODE_ENV !== 'production',
+    devTools: true, //process.env.NODE_ENV !== 'production',
     preloadedState
   });
 

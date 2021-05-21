@@ -1,17 +1,18 @@
-import { RequestState, RequestActionTypes, requestActions } from './types';
+import { RequestState, RequestTypes } from './types';
 
 const initialState = {};
 
 const setRequest = (
   state: RequestState,
-  action: RequestActionTypes
+  action: RequestTypes
 ): RequestState => {
-  const { isPending, requestType, error, errored } = action;
+  const { isPending, requestType, error, errored, success } = action;
+
   const requestObject = {};
 
   requestObject[requestType] = {
     isPending,
-    success: !error && !isPending,
+    success,
     ...(!error ? { errored: false, error: null } : { errored, error })
   };
 
@@ -20,14 +21,13 @@ const setRequest = (
 
 const reducer = (
   state: RequestState = initialState,
-  action: RequestActionTypes
+  action: RequestTypes
 ): RequestState => {
-  switch (action.type) {
-    case requestActions.SET_REQUEST:
-      return setRequest(state, action);
-    default:
-      return state;
+  if (action.requestType) {
+    return setRequest(state, action);
   }
+
+  return state;
 };
 
 export default reducer;

@@ -263,7 +263,7 @@
 
 .friendsListWrapper {
   display: grid;
-  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;

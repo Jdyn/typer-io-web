@@ -19,7 +19,7 @@ const reducers = {
   postsFetched: (state, action) => {
     state.feed[action.payload.key] = action.payload[action.payload.key];
   },
-  postUpdated: (state, action) => {
+  updatePost: (state, action) => {
     state.post = action.payload.post;
   },
   postCreated: (state, action) => {
@@ -33,6 +33,6 @@ const forum = createSlice({
   reducers
 });
 
-export const { postsFetched, postUpdated, postCreated } = forum.actions;
+export const { postsFetched, updatePost, postCreated } = forum.actions;
 
 export default forum.reducer;

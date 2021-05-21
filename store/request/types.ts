@@ -1,13 +1,5 @@
-interface RequestActions {
-  SET_REQUEST: 'request/SET_REQUEST';
-}
-
-export const requestActions: RequestActions = {
-  SET_REQUEST: 'request/SET_REQUEST'
-};
-
 export interface Request {
-  type: typeof requestActions.SET_REQUEST;
+  type: string;
   requestType: string;
   success?: boolean;
   isPending: boolean;
@@ -16,7 +8,7 @@ export interface Request {
 }
 
 export const emptyRequest: Request = {
-  type: 'request/SET_REQUEST',
+  type: '',
   requestType: '',
   success: false,
   isPending: false,
@@ -28,4 +20,4 @@ export interface RequestState {
   [requestType: string]: Request;
 }
 
-export type RequestActionTypes = Request;
+export type RequestTypes = Request;

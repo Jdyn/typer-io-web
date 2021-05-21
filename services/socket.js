@@ -18,33 +18,35 @@ export const types = keyMirror(
   'KICKED'
 );
 
+const defaultRoom = {
+  id: null,
+  count: null,
+  roomTime: null,
+  clients: [],
+  messages: [],
+  snippet: '',
+  gameboard: {
+    words: [],
+    wordsRemaining: [],
+    wordsComplete: [],
+    isStarted: false,
+    gameTime: null
+  }
+};
+
 let socket;
 
 const defaultListeners = (dispatch) => {
   if (socket) {
-    socket.on('disconnect', (_reason) => {
+    socket.on('disconnect', (reason) => {
       if (socket) {
         socket.close();
         socket = null;
       }
       dispatch({
         type: types.DISCONNECT_SOCKET,
-        room: {
-          id: null,
-          count: null,
-          roomTime: null,
-          clients: [],
-          messages: [],
-          snippet: '',
-          gameboard: {
-            words: [],
-            wordsRemaining: [],
-            wordsComplete: [],
-            isStarted: false,
-            gameTime: null
-          }
-        },
-        error: null,
+        room: defaultRoom,
+        error: reason,
         errored: false
       });
     });
@@ -63,27 +65,13 @@ const defaultListeners = (dispatch) => {
     socket.on('KICKED', (payload) => {
       dispatch({
         type: types.DISCONNECT_SOCKET,
-        room: {
-          id: null,
-          count: null,
-          roomTime: null,
-          clients: [],
-          messages: [],
-          snippet: '',
-          gameboard: {
-            words: [],
-            wordsRemaining: [],
-            wordsComplete: [],
-            isStarted: false,
-            gameTime: null
-          }
-        },
+        room: defaultRoom,
         error: payload,
         errored: true,
         kicked: true
       });
 
-      // socket.disconnect();
+      socket.disconnect();
     });
 
     socket.on('ROOM_NOT_FOUND', (payload) => {
@@ -106,6 +94,7 @@ const defaultListeners = (dispatch) => {
           error: 'Error connecting to server.'
         }
       });
+
       if (socket) {
         socket.close();
         socket = null;

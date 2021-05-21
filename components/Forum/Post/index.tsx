@@ -10,7 +10,7 @@ import Comments from './Comments';
 import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
 import Api from '../../../services/api';
-import { postUpdated } from '../../../store/forum/reducers';
+import { updatePost } from '../../../store/forum/reducers';
 import Adsense from '../../Shared/Adsense';
 
 interface Props {
@@ -33,7 +33,7 @@ const Post = (props: Props): JSX.Element => {
 
   useEffect(() => {
     return () => {
-      dispatch(postUpdated({ post: null }));
+      dispatch(updatePost({ post: null }));
     };
   }, [dispatch]);
 

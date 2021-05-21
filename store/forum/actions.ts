@@ -4,7 +4,7 @@ import { forumRequests } from './types';
 import { emptyRequest } from '../request/types';
 import { setRequest } from '../request/actions';
 import { AppState } from '..';
-import { postsFetched, postUpdated, postCreated } from './reducers';
+import { postsFetched, updatePost, postCreated } from './reducers';
 
 export const fetchPost = (postId: string) => async (
   dispatch: Dispatch,
@@ -20,7 +20,7 @@ export const fetchPost = (postId: string) => async (
   const response = await Api.fetch(`/forum/post/${postId}`);
 
   if (response.ok) {
-    dispatch(postUpdated({ post: response.result.post }));
+    dispatch(updatePost({ post: response.result.post }));
     dispatch(setRequest(false, requestType));
   } else {
     dispatch(setRequest(false, requestType, response.error));

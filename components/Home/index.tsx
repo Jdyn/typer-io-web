@@ -62,7 +62,7 @@ const Home = (): JSX.Element => {
                 <h3>Changes (May 21th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>Lobbies links now last forever.</li>
+                    <li>Lobbies now last forever.</li>
                     <li>
                       Text hiscores now update live if you or someone in the
                       lobby gets a hiscore.

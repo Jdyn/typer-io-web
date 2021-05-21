@@ -38,7 +38,7 @@ const Home = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h1>Improve your typing speed and race your friends!</h1>
-                <span>updated {formatTime(1621364575510)} </span>
+                <span>updated {formatTime(1621622446180)} </span>
                 <p>
                   Hello, if you have any suggestions, please let me know on the
                   forums!
@@ -59,9 +59,10 @@ const Home = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (May 18th, 2021):</h3>
+                <h3>Changes (May 21th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Lobbies links now last forever.</li>
                     <li>
                       Text hiscores now update live if you or someone in the
                       lobby gets a hiscore.

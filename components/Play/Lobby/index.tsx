@@ -121,7 +121,9 @@ const Lobby = (): JSX.Element => {
         </section>
         <div className={styles.container}>
           <Banner>
-            <h3>Lobby</h3>
+            <h3>
+              Lobby ( {room.count || 0} / {room.maxSize || 0} players )
+            </h3>
           </Banner>
           <div className={styles.wrapper}>
             {socket.pending ? (

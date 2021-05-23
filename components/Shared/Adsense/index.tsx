@@ -28,48 +28,43 @@ const Adsense = (props: Props): JSX.Element => {
     wrapperStyles
   } = props;
 
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
-    } catch (e) {}
+    setTimeout(() => {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
+
+        if ((window as any).adsbygoogle.loaded) {
+          setShow(true);
+        }
+      } catch (e) {}
+    }, 2000);
   }, []);
 
-  return typeof window !== 'undefined' &&
-    typeof (window as any).adsbygoogle !== 'undefined' ? (
-    <div
-      id={slot}
-      key={path}
-      className={styles.root}
-      style={{ ...wrapperStyles }}
-    >
-      <ins
+  return (
+    show && (
+      <div
+        id={slot}
         key={path}
-        className="adsbygoogle"
-        style={{ ...style }}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-layout={layout}
-        data-ad-layout-key={layoutKey}
-        data-ad-format={format}
-        data-full-width-responsive={false}
-      />
-    </div>
-  ) : (
-    <div id={slot}>
-      <ins
-        key={path}
-        className={`adsbygoogle ${className}`}
-        style={{ ...style }}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-layout={layout}
-        data-ad-layout-key={layoutKey}
-        data-ad-format={format}
-        data-full-width-responsive={false}
-      />
-    </div>
+        className={styles.root}
+        style={{ ...wrapperStyles }}
+      >
+        <ins
+          key={path}
+          className="adsbygoogle"
+          style={{ ...style }}
+          data-ad-client={client}
+          data-ad-slot={slot}
+          data-ad-layout={layout}
+          data-ad-layout-key={layoutKey}
+          data-ad-format={format}
+          data-full-width-responsive={false}
+        />
+      </div>
+    )
   );
 };
 

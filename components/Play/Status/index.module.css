@@ -27,15 +27,16 @@
   flex-direction: row;
 }
 
+.container > h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
 .container > h3 {
   margin: 0;
   font-size: 20px;
   line-height: 25px;
   font-weight: 700;
-}
-
-.container > h2 {
-  margin: 0;
 }
 
 .green {

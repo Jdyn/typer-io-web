@@ -38,12 +38,12 @@ const Adsense = (props: Props): JSX.Element => {
 
   return typeof window !== 'undefined' &&
     typeof (window as any).adsbygoogle !== 'undefined' ? (
-    <div
-      id={slot}
-      key={path}
-      className={styles.root}
-      style={{ ...wrapperStyles }}
-    >
+    // <div
+    //   id={slot}
+    //   key={path}
+    //   className={styles.root}
+    //   style={{ ...wrapperStyles }}
+    // >
       <ins
         key={path}
         className="adsbygoogle"
@@ -55,7 +55,7 @@ const Adsense = (props: Props): JSX.Element => {
         data-ad-format={format}
         data-full-width-responsive={false}
       />
-    </div>
+    // </div>
   ) : (
     <div id={slot}>
       <ins

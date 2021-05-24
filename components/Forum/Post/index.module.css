@@ -3,7 +3,7 @@
   position: relative;
   margin: 145px auto 0px auto;
   padding: 0px 10px 30px 10px;
-  grid-template-columns: min-content 650px min-content;
+  grid-template-columns: 275px 650px 275px;
   grid-template-rows: minmax(450px, max-content) 1fr;
   max-width: 1250px;
   gap: 20px;

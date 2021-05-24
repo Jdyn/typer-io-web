@@ -24,12 +24,13 @@
 .logo {
   display: Flex;
   align-items: center;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 500;
   margin: 0 15px;
   color: white;
   text-decoration: none;
   cursor: pointer;
+  font-family: caros;
 }
 
 .nav {

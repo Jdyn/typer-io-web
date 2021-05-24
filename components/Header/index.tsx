@@ -32,7 +32,7 @@ const Header = (): JSX.Element => {
           <div className={styles.container}>
             <Link prefetch={false} href="/">
               <a href="/" className={styles.logo}>
-                typer.io
+                TYPER.IO
               </a>
             </Link>
             <nav className={styles.nav}>

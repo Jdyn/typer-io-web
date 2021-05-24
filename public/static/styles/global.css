@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'caros';
+  src: url('/static/fonts/caros.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'dinn';
   src: url('/static/fonts/dinn-700.woff') format('woff');
   font-weight: 700;

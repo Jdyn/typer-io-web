@@ -15,3 +15,7 @@
   background: var(--stripe-color);
   transform: skewY(-10deg);
 }
+
+.title {
+  font-family: 'caros';
+}

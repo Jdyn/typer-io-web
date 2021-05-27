@@ -27,7 +27,7 @@ const Leaderboard = (): JSX.Element => {
   );
 
   const [state, set] = useState([]);
-
+  const [oldSnippetId, setOldSnippetId] = useState(null);
   //TODO: Seems like a hacky solution for updating the hiscores...
   const [ids, setIds] = useState([]);
 
@@ -36,8 +36,13 @@ const Leaderboard = (): JSX.Element => {
       ApiService.fetch(`/snippet/${id}/matches`).then((response) => {
         if (response.ok) {
           set(response.result.matches);
+          setOldSnippetId(id);
         }
       });
+
+      if (id !== oldSnippetId) {
+        setIds([]);
+      }
     }
   };
 

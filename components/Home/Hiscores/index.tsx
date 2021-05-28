@@ -85,7 +85,7 @@ const Hiscores = (_props: Props): JSX.Element => {
                 <div className={styles.item}>{item.accuracy} %</div>
                 <div className={styles.item}>
                   {item.wpm}{' '}
-                  {session.user?.is_admin && <span>{`(${item.id})`}</span>}
+                  {session.user?.isAdmin && <span>{`(${item.id})`}</span>}
                 </div>
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import Lobby from '../../components/Play/Lobby';
+import Lobby from '../../components/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
 import { AppState } from '../../store';
@@ -47,12 +47,6 @@ const LobbyContainer = (): JSX.Element => {
     }
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (roomId !== router.query.id && socket.connected && roomId) {
-  //     router.replace(`/lobby/${roomId}`);
-  //   }
-  // }, [roomId, router, socket.connected]);
-
   useEffect(() => {
     return (): void => {
       if (roomId !== null) {
@@ -72,9 +66,12 @@ const LobbyContainer = (): JSX.Element => {
   );
 };
 
-export async function getServerSideProps(_context) {
+// Doing this to convert the function to a lambda so the :id
+// from the URL is available instantly on first load.
+export async function getServerSideProps() {
   return {
-    props: {} // will be passed to the page component as props
+    props: {}
   };
 }
+
 export default LobbyContainer;

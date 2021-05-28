@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import { SessionState } from './types';
 
-const initialState = {
+const initialState: SessionState = {
   isLoggedIn: false,
   nickname: null,
   user: null

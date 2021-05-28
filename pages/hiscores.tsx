@@ -1,14 +1,9 @@
-import { ReactNode } from 'react';
 import Layout from '../components/Layout';
 import Hiscores from '../components/Hiscores';
 
-interface Props {
-  children?: ReactNode;
-}
-
-const HiscoresContainer = (_props: Props): JSX.Element => {
+const HiscoresContainer = (): JSX.Element => {
   return (
-    <Layout striped title="Hiscores | Multiplayer leaderboards">
+    <Layout striped title="Hiscores | Competitive leaderboards">
       <Hiscores />
     </Layout>
   );

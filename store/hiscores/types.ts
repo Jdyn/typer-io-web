@@ -15,7 +15,16 @@ export const hiscoresRequests: {
 };
 
 export interface Match {
+  accuracy: number;
+  created_at: string;
+  errors: number;
+  formattedTime: string;
   id: number;
+  nickname: string;
+  placed: number;
+  time: number;
+  user: { id: number; isAdmin: boolean; username: string };
+  wpm: number;
 }
 
 export type HiscoreQueryTypes = 'DAY' | 'WEEK' | 'MONTH' | 'USER' | 'ALL';

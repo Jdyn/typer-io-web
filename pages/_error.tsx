@@ -1,3 +1,4 @@
+import { NextPageContext } from 'next';
 import Layout from '../components/Layout';
 
 interface Props {
@@ -23,7 +24,7 @@ const Error = ({ statusCode }: Props): JSX.Element => {
   );
 };
 
-Error.getInitialProps = ({ res, err }): object => {
+Error.getInitialProps = ({ res, err }: NextPageContext): object => {
   const statusCode = res?.statusCode ?? err?.statusCode ?? 404;
   return { statusCode };
 };

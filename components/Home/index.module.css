@@ -1,6 +1,3 @@
-.root {
-}
-
 .container {
   display: grid;
   grid-template-rows: 1fr;
@@ -22,8 +19,8 @@
 
 .rightColumn {
   display: grid;
+  grid-auto-rows: min-content;
   gap: 20px;
-  grid-template-rows: min-content min-content min-content;
   grid-template-columns: 1fr;
   grid-area: rightColumn;
 }

@@ -5,7 +5,7 @@ import styles from './index.module.css';
 import { Request } from '../../../../store/request/types';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: JSX.Element;
   session: any;
   handleAuth: (type: string, form: object) => void;
   sessionRequest: Request;

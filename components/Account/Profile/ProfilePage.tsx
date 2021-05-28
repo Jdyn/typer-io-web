@@ -8,25 +8,18 @@ import formatTime from '../../../util/formatTime';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import MiniListPost from '../../Home/RecentPosts/Post';
-import Filter from '../../Shared/Filter';
+import { ProfileUser } from '../../../store/session/types';
 
 interface Props {
   username: string;
 }
 
-const filters = [
-  { name: 'recent', key: 'RECENT' },
-  { name: 'all time', key: 'ALL' }
-];
-
-const Profile = (props: Props): JSX.Element => {
+const ProfilePage = (props: Props): JSX.Element => {
   const { username } = props;
 
-  const [user, set] = useState(null);
-  const [error, setError] = useState(null);
+  const [user, set] = useState<ProfileUser | null>(null);
+  const [error, setError] = useState<String | null>(null);
   const sessionUser = useSelector((state: AppState) => state.session.user);
-
-  useEffect(() => {});
 
   useEffect(() => {
     if (username) {
@@ -43,7 +36,12 @@ const Profile = (props: Props): JSX.Element => {
   }, [username]);
 
   const fetchMatches = (page: number): void => {
-    if (page <= user?.matchMaxPage && page >= 1 && page !== user?.matchPage) {
+    if (
+      user &&
+      page <= user.matchMaxPage &&
+      page >= 1 &&
+      page !== user.matchPage
+    ) {
       ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
         (response) => {
           if (response.ok && response.result.matches) {
@@ -123,7 +121,7 @@ const Profile = (props: Props): JSX.Element => {
           <h3>Posts</h3>
         </Banner>
         <div className={styles.friendsListWrapper}>
-          {user?.posts.length > 0 ? (
+          {user && user.posts.length > 0 ? (
             user?.posts.map((post) => (
               <MiniListPost key={post.id} post={post} />
             ))
@@ -180,18 +178,18 @@ const Profile = (props: Props): JSX.Element => {
           </button>
           <button
             className={styles.pageButton}
-            onClick={() => fetchMatches(user?.matchPage - 1)}
+            onClick={() => user && fetchMatches(user.matchPage - 1)}
             type="button"
           >{`<`}</button>
           <span>{user?.matchPage}</span>
           <button
             className={styles.pageButton}
-            onClick={() => fetchMatches(user?.matchPage + 1)}
+            onClick={() => user && fetchMatches(user.matchPage + 1)}
             type="button"
           >{`>`}</button>
           <button
             className={styles.pageButton}
-            onClick={() => fetchMatches(user?.matchMaxPage)}
+            onClick={() => user && fetchMatches(user.matchMaxPage)}
             type="button"
           >
             {user?.matchMaxPage || 1}
@@ -202,4 +200,4 @@ const Profile = (props: Props): JSX.Element => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

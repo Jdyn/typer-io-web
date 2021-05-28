@@ -1,20 +1,20 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import ClientList from '../ClientList';
-import { silentEmit } from '../../../services/socket';
-import Button from '../../Shared/Button';
-import { AppState } from '../../../store';
+import ClientList from '../Play/ClientList';
+import { silentEmit } from '../../services/socket';
+import Button from '../Shared/Button';
+import { AppState } from '../../store';
 import styles from './index.module.css';
-import Chat from '../Chat';
-import Adsense from '../../Shared/Adsense';
-import Banner from '../../Shared/Banner';
-import Loader from '../../Shared/Loader';
-import Profile from '../../Home/Profile';
+import Chat from '../Play/Chat';
+import Adsense from '../Shared/Adsense';
+import Banner from '../Shared/Banner';
+import Loader from '../Shared/Loader';
+import Profile from '../Home/Profile';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
-const Lobby = (): JSX.Element => {
+const LobbyPage = (): JSX.Element => {
   const router = useRouter();
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
@@ -183,4 +183,4 @@ const Lobby = (): JSX.Element => {
   );
 };
 
-export default Lobby;
+export default LobbyPage;

@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './index.module.css';
-import Form from '../../Shared/Form';
 import { handleAuth } from '../../../store/session/actions';
 import { AppState } from '../../../store';
+import Form from '../../Shared/Form';
+import styles from './index.module.css';
 
-const templates = {
+const { root, wrapper, error } = styles;
+
+const formTemplates = {
   signup: {
     type: 'signup',
     title: 'New Account',
@@ -26,11 +28,11 @@ const templates = {
   }
 };
 
-interface Props {
+interface IAuthPage {
   type: 'login' | 'signup';
 }
 
-const AccountAuth = (props: Props): JSX.Element => {
+const AuthPage = (props: IAuthPage): JSX.Element => {
   const { type } = props;
 
   const dispatch = useDispatch();
@@ -39,26 +41,24 @@ const AccountAuth = (props: Props): JSX.Element => {
     (state: AppState) => state.request.AUTHENTICATE
   );
 
-  const handle = (type: 'signup' | 'login' | 'logout', form): void => {
+  const onFormSubmit = (form: Record<string, unknown>): void => {
     dispatch(handleAuth(type, form, '/'));
   };
 
   return (
-    <div className={styles.root}>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <Form
-            template={templates[type]}
-            onSubmit={(_formType, form): void => handle(type, form)}
-            isPending={sessionRequest?.isPending}
-          />
-          <div className={styles.error}>
-            {sessionRequest?.errored && sessionRequest.error}
-          </div>
+    <div className={root}>
+      <div className={wrapper}>
+        <Form
+          template={formTemplates[type]}
+          onSubmit={(_, form): void => onFormSubmit(form)}
+          isPending={sessionRequest?.isPending}
+        />
+        <div className={error}>
+          {sessionRequest?.errored && sessionRequest.error}
         </div>
       </div>
     </div>
   );
 };
 
-export default AccountAuth;
+export default AuthPage;

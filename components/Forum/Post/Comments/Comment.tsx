@@ -23,7 +23,7 @@ const Comment = (props: Props): JSX.Element => {
   const postId = useRouter().query.data[0] ?? '';
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
   const isAdmin = useSelector(
-    (state: AppState) => state.session?.user?.is_admin || false
+    (state: AppState) => state.session?.user?.isAdmin || false
   );
   const [isPending, setPending] = useState(false);
   const onChange = () => {

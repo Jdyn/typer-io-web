@@ -1,15 +1,14 @@
-import { ReactNode, forwardRef, RefObject, MouseEvent } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 import Loader from '../Loader';
 
 interface Props {
   children?: ReactNode;
-  onClick?: (event: MouseEvent) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   secondary?: boolean;
   margin?: string;
   green?: boolean;
-  grey?: boolean;
   width?: string;
   maxWidth?: string;
   padding?: string;
@@ -20,7 +19,7 @@ interface Props {
 }
 
 const Button = forwardRef(
-  (props: Props, ref: RefObject<HTMLButtonElement>): JSX.Element => {
+  (props: Props, ref: React.Ref<HTMLButtonElement>): JSX.Element => {
     const {
       children,
       secondary,
@@ -33,7 +32,6 @@ const Button = forwardRef(
       large,
       href,
       green,
-      grey
     } = props;
 
     return href ? (
@@ -85,7 +83,6 @@ Button.defaultProps = {
   width: 'auto',
   padding: '0px 0',
   secondary: false,
-  onClick: null,
   large: false
 };
 

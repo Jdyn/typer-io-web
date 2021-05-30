@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from '../../../store';
-import { updateUser } from '../../../store/session/actions';
-import { requests } from '../../../store/session/types';
-import Button from '../../Shared/Button';
-import Paper from '../../Shared/Paper';
-import TextBox from '../../Shared/TextBox';
+import { updateUser } from '../../../../store/session/actions';
+import { requests } from '../../../../store/session/types';
+import TextBox from '../../../Shared/TextBox';
+import { AppState } from '../../../../store';
+import Button from '../../../Shared/Button';
+import Paper from '../../../Shared/Paper';
 import styles from './index.module.css';
+import { SettingsForm } from './types';
 
-const ProfileSettings = (): JSX.Element => {
+const ProfileSettingsPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state: AppState) => state.session.user);
@@ -16,20 +17,18 @@ const ProfileSettings = (): JSX.Element => {
     (state: AppState) => state.request[requests.UPDATE_USER]
   );
 
-  const [form, setForm] = useState({
-    bio: sessionUser?.bio || '',
+  const [form, setForm] = useState<SettingsForm>({
+    bio: sessionUser?.bio ?? '',
     username: ''
   });
 
   useEffect(() => {
-    if (sessionUser?.bio) {
+    if (sessionUser) {
       setForm((prev) => ({ ...prev, bio: sessionUser.bio }));
     }
-  }, [sessionUser?.bio]);
+  }, [sessionUser]);
 
-  const onClick = (event): void => {
-    event.preventDefault();
-
+  const onClick = (): void => {
     if (form.username === '') {
       delete form.username;
     }
@@ -57,9 +56,9 @@ const ProfileSettings = (): JSX.Element => {
                   <TextBox
                     value={form.bio}
                     height="200px"
-                    onChange={(e): void =>
-                      setForm({ ...form, bio: e.target.value })
-                    }
+                    onChange={(
+                      event: React.ChangeEvent<HTMLTextAreaElement>
+                    ): void => setForm({ ...form, bio: event.target.value })}
                     placeholder="Enter your bio..."
                   />
                 </span>
@@ -93,4 +92,4 @@ const ProfileSettings = (): JSX.Element => {
   );
 };
 
-export default ProfileSettings;
+export default ProfileSettingsPage;

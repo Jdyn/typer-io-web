@@ -1,14 +1,14 @@
 import React from 'react';
-import ProfileSettings from '../../components/Account/Settings';
+import ProfileSettingsPage from '../../components/Account/Profile/Settings';
 import Layout from '../../components/Layout';
 import PrivateRoute from '../../components/Shared/PrivateRoute';
 
-const ProfileSettingsPage = () => {
+const ProfileSettings = () => {
   return (
     <Layout>
-      <ProfileSettings />
+      <ProfileSettingsPage />
     </Layout>
   );
 };
 
-export default PrivateRoute(ProfileSettingsPage);
+export default PrivateRoute(ProfileSettings);

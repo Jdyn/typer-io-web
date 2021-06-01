@@ -29,6 +29,8 @@ const cards = [
   }
 ];
 
+const updated = formatTime(1622511317777);
+
 const HomePage = (): JSX.Element => {
   return (
     <main className={styles.root}>
@@ -38,7 +40,7 @@ const HomePage = (): JSX.Element => {
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
                 <h1>Improve your typing speed and race your friends!</h1>
-                <span>updated {formatTime(1621622446180)} </span>
+                <span>updated {updated} </span>
                 <p>
                   Hello, if you have any suggestions, please let me know on the
                   forums!

@@ -7,22 +7,18 @@ import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
 import MiniListPost from './Post';
 
-interface Props {
-  children?: ReactNode;
-}
-
 const RecentPosts = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const posts = useSelector(
-    (state: AppState) => state.forum.feed.recent.posts || []
+    (state: AppState) => state.forum.recent.data || []
   );
   const recentPostsRequest = useSelector(
     (state: AppState) => state.request.FETCH_POSTS_BY_RECENT
   );
   useEffect(() => {
     if (!recentPostsRequest) {
-      dispatch(fetchPosts('RECENT'));
+      dispatch(fetchPosts('recent'));
     }
   }, [dispatch, recentPostsRequest]);
 

@@ -1,9 +1,9 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import Api from '../../services/api';
-import { forumRequests } from './types';
+import { forumRequests, PostQueryTypes } from './types';
 import { emptyRequest } from '../request/types';
 import { setRequest } from '../request/actions';
-import { AppState } from '..';
+import { AppState, GetState } from '..';
 import { postsFetched, updatePost, postCreated } from './reducers';
 
 export const fetchPost = (postId: string) => async (
@@ -27,33 +27,30 @@ export const fetchPost = (postId: string) => async (
   }
 };
 
-export const fetchPosts = (query = '1', page?: string) => async (
+export const fetchPosts = (query: PostQueryTypes, page = '1') => async (
   dispatch: Dispatch,
-  getState: () => AppState
-): Promise<void> => {
-  const requestType =
-    forumRequests[`FETCH_POSTS_BY_${query === 'RECENT' ? 'RECENT' : 'PAGE'}`];
+  getState: GetState
+) => {
+  const requestType = forumRequests[`FETCH_POSTS_BY_${query.toUpperCase()}`];
   const request = getState().request[requestType] ?? emptyRequest;
 
   if (request.isPending) return;
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.fetch(`/forum/posts?page=${query.toLowerCase()}`);
+  const response = await Api.fetch(`/forum/posts?query=${query}&page=${page}`);
 
   if (response.ok) {
-    const key = query === 'RECENT' ? 'recent' : 'page';
-    const payload = {
-      key,
-      [key]: response.result
-    };
+    dispatch(
+      postsFetched({
+        query,
+        result: response.result
+      })
+    );
 
-    dispatch(postsFetched(payload));
     dispatch(setRequest(false, requestType));
   } else {
-    dispatch(
-      setRequest(false, requestType, response.error || 'Failed to fetch')
-    );
+    dispatch(setRequest(false, requestType, response.error));
   }
 };
 

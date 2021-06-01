@@ -1,23 +1,26 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import { ForumState } from './types';
 
-const initialState = {
+const initialState: ForumState = {
   post: null,
   feed: {
-    recent: {
-      posts: null
-    },
-    page: {
-      postPage: 1,
-      postMaxPage: 1,
-      posts: null
-    }
+    page: null,
+    total: null,
+    totalPages: null,
+    data: []
+  },
+  recent: {
+    page: null,
+    total: null,
+    totalPages: null,
+    data: []
   }
 };
 
 const reducers = {
   postsFetched: (state, action) => {
-    state.feed[action.payload.key] = action.payload[action.payload.key];
+    state[action.payload.query] = action.payload.result;
   },
   updatePost: (state, action) => {
     state.post = action.payload.post;

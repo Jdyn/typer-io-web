@@ -43,5 +43,5 @@ const store = (preloadedState = {}): EnhancedStore =>
   });
 
 export type AppState = ReturnType<typeof stateReducer>;
-
+export type GetState = () => AppState;
 export const wrapper = createWrapper(store);

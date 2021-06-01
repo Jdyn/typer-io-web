@@ -2,6 +2,8 @@ export interface GameboardState {
   gameTime: string;
   isStarted: boolean;
   isOver: boolean;
+  isSolo: boolean;
+  isCustom: boolean;
   clientsComplete: number;
   words: string[];
   text: string;

@@ -118,6 +118,10 @@ const PlayStatus = (props: Props): JSX.Element => {
         }
       }
 
+      if (room.isSolo) {
+        return { color: styles.blue, text: 'Waiting to begin...' };
+      }
+
       return { color: styles.blue, text: 'Connecting to server...' };
     };
 

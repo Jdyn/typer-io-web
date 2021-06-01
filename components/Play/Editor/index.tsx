@@ -5,6 +5,9 @@ import {
   useEffect,
   KeyboardEvent
 } from 'react';
+import { useSelector } from 'react-redux';
+import { silentEmit } from '../../../services/socket';
+import { AppState } from '../../../store';
 import { GameboardState } from '../../../store/game/types';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
@@ -39,8 +42,15 @@ const Editor = (props: Props): JSX.Element => {
     focusInput();
   }, [gameboard.isStarted]);
 
+  const isSolo = useSelector((state: AppState) => state.game.room.isSolo);
+
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
+
+    if (event.key === ' ' && !gameboard.isStarted && isSolo) {
+      console.log('starting');
+      silentEmit('SOLO_START_GAME');
+    }
 
     if (!gameboard.isStarted) {
       event.preventDefault();
@@ -77,6 +87,18 @@ const Editor = (props: Props): JSX.Element => {
     }
   };
 
+  const inputPlaceholder = (): string => {
+    if (!gameboard.isStarted && !gameboard.isOver) {
+      if (isSolo) {
+        return "Press 'Space' here to begin...";
+      } else {
+        return 'Type here when the game begins...';
+      }
+    } else {
+      return '';
+    }
+  };
+
   return (
     <div
       role="button"
@@ -98,7 +120,7 @@ const Editor = (props: Props): JSX.Element => {
           className={styles.input}
           onClick={(): void => focusInput()}
           tabIndex={0}
-          placeholder={!gameboard.isStarted && !gameboard.isOver ? "Type here when the game begins..." : ''}
+          placeholder={inputPlaceholder()}
           autoComplete="off"
           autoCorrect="off"
           maxLength={

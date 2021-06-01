@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1622511317777);
+const updated = formatTime(1622566024476);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -64,12 +64,9 @@ const HomePage = (): JSX.Element => {
                 <h3>Changes (May 21th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>Lobbies now last forever.</li>
-                    <li>
-                      Text hiscores now update live if you or someone in the
-                      lobby gets a hiscore.
-                    </li>
-                    <li>Added average accuracy to profiles</li>
+                    <li>You can no manually start solo lobbies.</li>
+                    <li>Solo lobbies start quicker.</li>
+                    <li>Custom lobbies now last forever.</li>
                   </ul>
                 </div>
               </div>

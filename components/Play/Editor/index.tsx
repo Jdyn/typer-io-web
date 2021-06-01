@@ -48,7 +48,6 @@ const Editor = (props: Props): JSX.Element => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
     if (event.key === ' ' && !gameboard.isStarted && isSolo) {
-      console.log('starting');
       silentEmit('SOLO_START_GAME');
     }
 

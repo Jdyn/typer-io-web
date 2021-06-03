@@ -52,10 +52,12 @@ const Leaderboard = (): JSX.Element => {
     // to determine if we should fetch the hiscores again for a seemingly
     // live update.
     if (clients?.length > 0) {
+      const lastEntry = state[state.length - 1] || { wpm: 0 };
+
       clients.forEach((client) => {
         if (
           client.isComplete &&
-          client.wpm > state[state.length - 1].wpm &&
+          client.wpm > lastEntry.wpm &&
           !ids.includes(client.id)
         ) {
           fetchHiscores(snippet?.id);

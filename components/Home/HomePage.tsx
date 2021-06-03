@@ -64,8 +64,8 @@ const HomePage = (): JSX.Element => {
                 <h3>Changes (May 21th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>You can no manually start solo lobbies.</li>
-                    <li>Solo lobbies start quicker.</li>
+                    <li>You now manually begin solo races.</li>
+                    <li>Solo races begin quicker.</li>
                     <li>Custom lobbies now last forever.</li>
                   </ul>
                 </div>

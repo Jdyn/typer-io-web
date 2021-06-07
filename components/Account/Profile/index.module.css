@@ -14,6 +14,18 @@
     '. history .';
 }
 
+@media only screen and (max-width: 814px) {
+  .root {
+    grid-template-rows: min-content min-content min-content min-content;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'profile'
+      'stats'
+      'friends'
+      'history';
+  }
+}
+
 .headerContainer {
   display: flex;
   flex-direction: column;
@@ -214,6 +226,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  flex: 1;
+  margin: 5px;
   height: 125px;
   border: 2px solid var(--border);
   border-radius: 16px;
@@ -241,10 +255,10 @@
 }
 
 .statItemWrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  grid-template-rows: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 20px;
 }
 

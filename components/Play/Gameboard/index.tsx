@@ -106,7 +106,7 @@ const Gameboard = (props: Props): JSX.Element => {
     <div className={styles.root}>
       <Banner>
         <h3>
-          Gameboard
+          Snippet
           {client?.gamePiece && (
             <span className={styles.header}>
               you are{' '}

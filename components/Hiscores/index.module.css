@@ -1,17 +1,17 @@
 .root {
   margin: 145px auto 125px auto;
+  padding: 0px 10px;
+  max-width: 670px;
 }
 
 .hiscores {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  padding: 0px 10px;
   z-index: 100;
-  margin: 0 auto;
+  width: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  max-width: 700px;
-  gap: 30px;
   grid-template-areas: 'main';
 }
 
@@ -30,7 +30,7 @@
   grid-area: main;
   padding-left: 10px;
   overflow-y: scroll;
-  height: 750px;
+  /* height: 750px; */
 }
 
 .nameLink {

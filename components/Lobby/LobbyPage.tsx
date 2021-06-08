@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ClientList from '../Play/ClientList';
@@ -11,6 +11,7 @@ import Adsense from '../Shared/Adsense';
 import Banner from '../Shared/Banner';
 import Loader from '../Shared/Loader';
 import Profile from '../Home/Profile';
+import copyToClipboard from '../../util/copyToClipboard';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
@@ -19,10 +20,18 @@ const LobbyPage = (): JSX.Element => {
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
   const socket = useSelector((state: AppState) => state.game.socket);
+  const [copied, setCopied] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const currrentClient = useMemo(
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
   );
+
+  useEffect(() => {
+    if (socket.kicked) {
+      router.replace('/');
+    }
+  }, [router, socket.kicked]);
 
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
@@ -39,12 +48,6 @@ const LobbyPage = (): JSX.Element => {
   const handleKick = (id: number): void => {
     silentEmit('KICK_PLAYER_CUSTOM_GAME', { id });
   };
-
-  useEffect(() => {
-    if (socket.kicked) {
-      router.replace('/');
-    }
-  }, [router, socket.kicked]);
 
   return (
     <main>
@@ -133,16 +136,23 @@ const LobbyPage = (): JSX.Element => {
             ) : null}
             {room.id && (
               <>
-                <span>Share this link to invite players.</span>
+                <span>share this link to invite players.</span>
+                <span>Click the link to copy!</span>
                 <div className={styles.linkContainer}>
-                  <div>{`${process.env.BASE_URL}/lobby/${room.id}`}</div>
-                  {/* <Button
+                  <button
+                    id="lobby-link"
+                    className={styles.lobbyLink}
+                    style={{ filter: hidden ? 'blur(4px)' : ''}}
+                    onClick={() => copyToClipboard('lobby-link', setCopied)}
+                  >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
+                  <Button
                     margin="0px"
                     padding="0px 5px"
                     onClick={() => setHidden(!hidden)}
                   >
                     {hidden ? 'show' : 'hide'}
-                  </Button> */}
+                  </Button>
+                  <span>{copied ? 'Copied!' : ''}</span>
                 </div>
                 {currrentClient.isHost ? (
                   <Button

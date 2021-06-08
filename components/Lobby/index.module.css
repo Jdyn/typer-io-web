@@ -40,10 +40,6 @@
   grid-area: rightContent;
 }
 
-.profileContainer {
-  margin-bottom: 20px;
-}
-
 .input {
   display: flex;
   border: none;
@@ -132,7 +128,13 @@
   align-items: center;
 }
 
-.linkContainer > div {
+.linkContainer > button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+  background: none;
   padding: 0px 10px;
 }
 

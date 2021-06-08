@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1622566024476);
+const updated = formatTime(1623124204096);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -61,7 +61,7 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (May 21th, 2021):</h3>
+                <h3>Changes (June 7th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
                     <li>You now manually begin solo races.</li>

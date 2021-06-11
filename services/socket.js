@@ -47,7 +47,7 @@ const defaultListeners = (dispatch) => {
         type: types.DISCONNECT_SOCKET,
         room: defaultRoom,
         error: reason,
-        errored: false
+        errored: true
       });
     });
 

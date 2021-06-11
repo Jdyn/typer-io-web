@@ -49,11 +49,9 @@ const LobbyContainer = (): JSX.Element => {
 
   useEffect(() => {
     return (): void => {
-      if (roomId !== null) {
-        leaveRoom({ id: roomId, errored: false });
-      }
+      dispatch(leaveRoom({ id: roomId, errored: false }));
     };
-  }, [roomId]);
+  }, [dispatch]);
 
   return isStarted ? (
     <Layout striped>

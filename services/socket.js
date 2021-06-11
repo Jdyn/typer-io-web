@@ -137,7 +137,14 @@ export const silentEmit = (type, payload) =>
 
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
 
-export const silentClose = () => socket && socket.close();
+export const silentClose = () => {
+  if (socket) {
+    socket.disconnect();
+    socket = null;
+  }
+
+  socket = null;
+}
 
 export const emitAction = (action) => {
   return (...args) => {

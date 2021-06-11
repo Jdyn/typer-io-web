@@ -71,6 +71,7 @@ const ProfilePage = (props: Props): JSX.Element => {
                 {user?.isAdmin && <span className={styles.admin}>Creator</span>}
               </h3>
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
+              <div>{sessionUser?.isAdmin && `ID: ${user?.id}`}</div>
             </div>
             {user && (
               <div className={styles.bio}>

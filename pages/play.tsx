@@ -29,13 +29,13 @@ const PlayContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
+  }, [dispatch]);
 
-    return (): void => {
-      if (RoomId !== null) {
-        leaveRoom({ id: RoomId, errored: false });
-      }
-    };
-  }, [dispatch, RoomId]);
+  useEffect(() => {
+    return () => {
+      dispatch(leaveRoom({ id: RoomId, errored: false }));
+    }
+  }, [dispatch])
 
   return (
     <Layout

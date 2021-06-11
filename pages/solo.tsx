@@ -28,13 +28,13 @@ const PlayContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
+  }, [dispatch, socket.connected]);
 
-    return (): void => {
-      if (RoomId !== null) {
-        leaveRoom({ id: RoomId, errored: false });
-      }
-    };
-  }, [dispatch, RoomId, socket.connected]);
+  useEffect(() => {
+    return () => {
+      dispatch(leaveRoom({ id: RoomId, errored: false }));
+    }
+  }, [dispatch])
 
   return (
     <Layout striped title="Solo Play | Improve on your own">

@@ -29,7 +29,7 @@ const PlayContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch]);
+  }, [dispatch, socket.connected]);
 
   useEffect(() => {
     return () => {

@@ -46,8 +46,11 @@ const defaultListeners = (dispatch) => {
       dispatch({
         type: types.DISCONNECT_SOCKET,
         room: defaultRoom,
-        error: reason,
-        errored: true
+        error:
+          reason !== 'io client disconnect'
+            ? ''
+            : 'failed to connect to server.',
+        errored: reason !== 'io client disconnect' ? true : false
       });
     });
 
@@ -144,7 +147,7 @@ export const silentClose = () => {
   }
 
   socket = null;
-}
+};
 
 export const emitAction = (action) => {
   return (...args) => {

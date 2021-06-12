@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
-import { silentEmit } from '../../../services/socket';
+import { silentClose, silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import { GameboardState } from '../../../store/game/types';
+import { initSocket } from '../../../store/game/actions';
 
 const states = {
   room: 'ROOM',
@@ -24,6 +25,7 @@ const PlayStatus = (props: Props): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
   const room = useSelector((state: AppState) => state.game.room);
   const [state, setState] = useState(states.room);
+  const dispatch = useDispatch();
   const [header, setHeader] = useState({
     color: '#469cd0',
     text: 'Connecting to server...'
@@ -137,7 +139,9 @@ const PlayStatus = (props: Props): JSX.Element => {
   };
 
   const handleNewPublicGame = () => {
-    silentEmit('FIND_NEW_GAME', {});
+    // TODO: Kind of weird... We put 'socket.connected' in the dispatch in the /page
+    // and then close the socket so it trips the useEffect and starts the cycle again...
+    silentClose();
   };
 
   return (

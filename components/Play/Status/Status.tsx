@@ -143,7 +143,7 @@ const PlayStatus = (props: Props): JSX.Element => {
   return (
     <>
       <div className={styles.root}>
-        {!isCustom && isSolo &&
+        {!isCustom &&
           (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) && (
             <div className={styles.buttonContainer}>
               <Button padding="8px" onClick={(): void => handleNewPublicGame()}>

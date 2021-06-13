@@ -32,7 +32,7 @@ const Comment = (props: Props): JSX.Element => {
 
   const submitComment = (): void => {
     setPending(true);
-    Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
+    Api.post(`/forum/posts/${postId}/comments`, newComment).then((response) => {
       if (response.ok) {
         dispatch(fetchPost(postId as string));
         setComment((prev) => ({ ...prev, body: '' }));

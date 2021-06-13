@@ -17,7 +17,7 @@ export const fetchPost = (postId: string) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.fetch(`/forum/post/${postId}`);
+  const response = await Api.fetch(`/forum/posts/${postId}`);
 
   if (response.ok) {
     dispatch(updatePost({ post: response.result.post }));
@@ -65,7 +65,7 @@ export const createPost = (form) => async (
 
   dispatch(setRequest(true, requestType));
 
-  const response = await Api.post(`/forum/post`, form);
+  const response = await Api.post(`/forum/posts`, form);
 
   if (response.ok) {
     dispatch(postCreated({ post: response.result.post }));

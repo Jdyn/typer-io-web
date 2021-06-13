@@ -18,7 +18,7 @@ const MiniListPost = (props) => {
           <a className={styles.title}>{post.title}</a>
         </Link>
         <span>
-          {formatTime(post.createdAt)} by{' '}
+          {`${formatTime(post.createdAt)} by `}
           <Link href={`/u/${post.user.username}`}>
             <a>{post.user.username}</a>
           </Link>

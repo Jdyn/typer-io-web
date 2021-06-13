@@ -42,7 +42,7 @@ const Post = (props: Props): JSX.Element => {
   }, [dispatch]);
 
   const submitComment = (): void => {
-    Api.post(`/forum/post/${postId}/comment`, newComment).then((response) => {
+    Api.post(`/forum/posts/${postId}/comments`, newComment).then((response) => {
       if (response.ok) {
         dispatch(fetchPost(postId));
         setComment((prev) => ({ ...prev, body: '' }));

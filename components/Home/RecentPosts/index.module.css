@@ -28,7 +28,7 @@
 .title {
   font-weight: 700;
   font-size: 1.2rem;
-  margin: 0;
+  margin: 0px;
   color: var(--text);
   text-decoration: underline;
   cursor: pointer;
@@ -68,6 +68,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   color: var(--text);
+  margin: 20px 0px;
   overflow-wrap: break-word;
   word-break: break-word;
   word-wrap: break-word;
@@ -79,7 +80,7 @@
 }
 
 .content > span > a{
-  color: var(--accent);
+  color: var(--subtext);
 }
 
 .portrait {

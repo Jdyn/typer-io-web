@@ -48,8 +48,6 @@ const Hiscores = (): JSX.Element => {
     }
   };
 
-  console.log(filters);
-
   const changePage = (query: string, key: string) => {
     router.push(`/hiscores?query=${query}&page=${1}`);
   };

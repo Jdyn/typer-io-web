@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -8,10 +8,26 @@ import { AppState } from '../../store';
 import Paper from '../Shared/Paper';
 import snakeToCamel from '../../util/snakeToCamel';
 
+const filterItems = {
+  top_matches: {
+    title: 'Top Matches',
+    color: 'var(--orange)',
+    query: 'top_matches',
+    fields: [{ name: 'Matches', key: 'matchCount' }]
+  },
+  top_speed: {
+    title: 'Top Speed',
+    color: 'var(--green)',
+    query: 'top_speed',
+    fields: [{ name: 'Top WPM', key: 'topWpm' }]
+  }
+};
+
 const Hiscores = (): JSX.Element => {
   const router = useRouter();
   const { page, query } = router.query;
   const dispatch = useDispatch();
+  const [filters, setFilters] = useState(filterItems[query as string] || {});
   const itemPage = useSelector(
     (state: AppState) => state.hiscores[snakeToCamel((query as string) || '')]
   );
@@ -21,6 +37,8 @@ const Hiscores = (): JSX.Element => {
       dispatch(
         fetchUserHiscores((query as string).toUpperCase(), page as string)
       );
+
+      setFilters(filterItems[query as string]);
     }
   }, [dispatch, page, query, router.isReady]);
 
@@ -28,6 +46,12 @@ const Hiscores = (): JSX.Element => {
     if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
       router.push(`/hiscores?query=${query}&page=${index}`);
     }
+  };
+
+  console.log(filters);
+
+  const changePage = (query: string, key: string) => {
+    router.push(`/hiscores?query=${query}&page=${1}`);
   };
 
   const renderBadge = (user): ReactNode => {
@@ -42,12 +66,39 @@ const Hiscores = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
+      <div className={styles.filter}>
+        {Object.keys(filterItems).map((key) => {
+          const item = filterItems[key];
+          return (
+            <button
+              key={item.title}
+              className={styles.filterItem}
+              onClick={() => changePage(item.query, key)}
+              style={{
+                background: item.color
+              }}
+            >
+              <div
+                style={{
+                  border: query === item.query ? '4px solid rgba(0,0,0,.5)' : '4px solid transparent'
+                }}
+              >
+                <h3>{item.title}</h3>
+              </div>
+            </button>
+          );
+        })}
+      </div>
       <section className={styles.hiscores}>
-        <Paper title="Top Matches">
+        <Paper title={filters.title}>
           <div className={styles.header}>
             <div className={`${styles.count} ${styles.headerItem}`}>#</div>
             <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
-            <div className={styles.headerItem}>Matches</div>
+            {filters?.fields?.map((field) => (
+              <div key={field.key} className={styles.headerItem}>
+                {field.name}
+              </div>
+            ))}
           </div>
           <div className={styles.container}>
             <div className={styles.wrapper}>
@@ -68,7 +119,9 @@ const Hiscores = (): JSX.Element => {
                     </span>
                     {renderBadge(item)}
                   </div>
-                  <div>{item.matchCount}</div>
+                  {filters?.fields?.map((field) => (
+                    <div key={field.key}>{item[field.key]}</div>
+                  ))}
                 </div>
               ))}
             </div>

@@ -142,3 +142,49 @@
 .pageButton:active {
   transform: translateY(2px);
 }
+
+.filter {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 20px 0px;
+  height: 125px;
+}
+
+.filterItem {
+  display: flex;
+  background: var(--primary-main);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  color: var(--white);
+  transition-duration: 0.1s;
+  z-index: 1;
+  flex: 1;
+}
+
+.filterItem:hover {
+  transform: translateY(-2px);
+}
+
+.filterItem:active {
+  transform: translateY(2px);
+}
+
+.filterItem > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition-duration: 0.1s;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.filterItem > div > h3 {
+  margin: 0;
+}

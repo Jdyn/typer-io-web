@@ -61,16 +61,14 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (June 11th, 2021):</h3>
+                <h3>Changes (June 14th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>User Top Speed has been added to the hiscores page.</li>
                     <li>
                       Fix a bug where messages would duplicate and WPM was
                       inaccurate in solo and quick play.
                     </li>
-                    <li>You now manually begin solo races.</li>
-                    <li>Solo races begin quicker.</li>
-                    <li>Custom lobbies now last forever.</li>
                   </ul>
                 </div>
               </div>

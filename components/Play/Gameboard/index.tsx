@@ -104,6 +104,15 @@ const Gameboard = (props: Props): JSX.Element => {
 
   return (
     <div className={styles.root}>
+      <div hidden id="PreMiD-WPM">
+        {client?.gamePiece?.wpm || 0}
+      </div>
+      <div hidden id="PreMiD-ACC">
+        {`${client?.gamePiece?.accuracy}%` || '100%'}
+      </div>
+      <div hidden id="PreMiD-ERR">
+        {client?.gamePiece?.errors || 0}
+      </div>
       <Banner>
         <h3>
           Snippet

@@ -214,3 +214,42 @@ export const updateUser = (payload) => async (
     dispatch(setRequest(false, requestType, error));
   }
 };
+
+export const fetchPasswordReset = (email: string) => async (
+  dispatch: Dispatch,
+  getState: () => AppState
+): Promise<void> => {
+  const requestType = requests.FETCH_ACCOUNT_PASSWORD_RESET;
+  const request = getState().request[requestType] || { isPending: false };
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  await Api.post('/password/reset', { email });
+
+  dispatch(setRequest(false, requestType));
+};
+
+export const fetchPasswordUpdate = (
+  password: string,
+  resetToken: string
+) => async (dispatch: Dispatch, getState: () => AppState): Promise<void> => {
+  const requestType = requests.FETCH_ACCOUNT_PASSWORD_UPDATE;
+  const request = getState().request[requestType] || { isPending: false };
+
+  if (request.isPending) return;
+
+  dispatch(setRequest(true, requestType));
+
+  const response = await Api.patch('/password/update', {
+    password,
+    resetToken
+  });
+
+  if (response.ok) {
+    dispatch(setRequest(false, requestType));
+  } else {
+    dispatch(setRequest(false, requestType, 'Failed to reset password.'));
+  }
+};

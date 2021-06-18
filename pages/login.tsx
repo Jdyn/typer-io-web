@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import Layout from '../components/Layout';
 import AccountAuth from '../components/Account/Auth';
 

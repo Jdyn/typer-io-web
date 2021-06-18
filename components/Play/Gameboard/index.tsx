@@ -113,6 +113,12 @@ const Gameboard = (props: Props): JSX.Element => {
       <div hidden id="PreMiD-ERR">
         {client?.gamePiece?.errors || 0}
       </div>
+      <div hidden id="PreMiD-TIME">
+        {client?.gamePiece?.time || '--:--'}
+      </div>
+      <div hidden id="PreMiD-PLACE">
+        {client?.gamePiece?.rank || '-'}
+      </div>
       <Banner>
         <h3>
           Snippet

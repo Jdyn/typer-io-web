@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
-const placements = (rank: number): string => {
+//TODO: probably use useMemo for this so its not called every render
+export const placements = (rank: number): string => {
   if (typeof rank !== 'number') return '-';
 
   let suffix = '';

@@ -8,6 +8,7 @@ import { AppState } from '../../../store';
 import styles from './index.module.css';
 import { EditorState, GameState } from '../types';
 import formatTime from '../../../util/formatTime';
+import { placements } from '../ClientList';
 
 interface Props {
   gameState: GameState;
@@ -116,8 +117,8 @@ const Gameboard = (props: Props): JSX.Element => {
       <div hidden id="PreMiD-TIME">
         {client?.gamePiece?.time || '--:--'}
       </div>
-      <div hidden id="PreMiD-PLACE">
-        {client?.gamePiece?.rank || '-'}
+      <div hidden id="PreMiD-RANK">
+        {placements(client?.gamePiece?.rank) || '-'}
       </div>
       <Banner>
         <h3>

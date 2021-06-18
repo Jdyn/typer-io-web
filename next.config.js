@@ -14,9 +14,9 @@ const DEV_BASE_URL = 'http://localhost:3000';
 module.exports = {
   productionBrowserSourceMaps: false,
   env: {
-    BASE_URL: false ? PROD_BASE_URL : DEV_BASE_URL,
-    API_URL: false ? PROD_API_URL : DEV_API_URL,
-    SOCKET_URL: false ? PROD_SOCKET_URL : DEV_SOCKET_URL
+    BASE_URL: true ? PROD_BASE_URL : DEV_BASE_URL,
+    API_URL: true ? PROD_API_URL : DEV_API_URL,
+    SOCKET_URL: true ? PROD_SOCKET_URL : DEV_SOCKET_URL
   },
   basePath
 };

@@ -207,7 +207,7 @@ const Play = (props: Props): JSX.Element => {
         </div>
         {!isSolo && (
           <section className={styles.left}>
-            <Chat />
+            <Chat isCustom={isCustom} />
             <section
               style={{
                 margin: '20px 0px',

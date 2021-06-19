@@ -14,8 +14,11 @@ import Profile from '../Home/Profile';
 import copyToClipboard from '../../util/copyToClipboard';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
-
-const LobbyPage = (): JSX.Element => {
+interface Props {
+  isCustom?: boolean;
+}
+const LobbyPage = (props: Props): JSX.Element => {
+  const { isCustom } = props;
   const router = useRouter();
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
@@ -142,7 +145,7 @@ const LobbyPage = (): JSX.Element => {
                   <button
                     id="lobby-link"
                     className={styles.lobbyLink}
-                    style={{ filter: hidden ? 'blur(4px)' : ''}}
+                    style={{ filter: hidden ? 'blur(4px)' : '' }}
                     onClick={() => copyToClipboard('lobby-link', setCopied)}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
                   <Button
@@ -171,7 +174,7 @@ const LobbyPage = (): JSX.Element => {
             {socket.errored && <div>{socket.error}</div>}
           </div>
         </div>
-        <Chat />
+        <Chat isCustom />
         <section className={styles.aContainer3}>
           <div className={styles.profileContainer}>
             <Profile

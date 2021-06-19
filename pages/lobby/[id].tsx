@@ -59,7 +59,7 @@ const LobbyContainer = (): JSX.Element => {
     </Layout>
   ) : (
     <Layout striped>
-      <Lobby />
+      <Lobby isCustom/>
     </Layout>
   );
 };

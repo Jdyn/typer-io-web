@@ -5,10 +5,15 @@ import { AppState } from '../../../store';
 import { sendChatMessage } from '../../../store/game/actions';
 import Paper from '../../Shared/Paper';
 
-const Chat = (): JSX.Element => {
+interface Props {
+  isCustom?: boolean;
+}
+
+const Chat = (props: Props): JSX.Element => {
+  const { isCustom } = props;
   const client = useSelector((state: AppState) => state.game.meta);
   const messages = useSelector((state: AppState) => state.game.room.messages);
-
+  console.log(isCustom)
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -62,7 +67,10 @@ const Chat = (): JSX.Element => {
             type="text"
             onChange={(e) => setInput(e.target.value)}
             value={input}
-            placeholder="Write a message..."
+            disabled={isCustom === true}
+            placeholder={
+              isCustom ? 'Chat is disabled for an event.' : 'Write a message...'
+            }
             required
           />
         </form>

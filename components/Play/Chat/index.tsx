@@ -13,7 +13,6 @@ const Chat = (props: Props): JSX.Element => {
   const { isCustom } = props;
   const client = useSelector((state: AppState) => state.game.meta);
   const messages = useSelector((state: AppState) => state.game.room.messages);
-  console.log(isCustom)
   const [input, setInput] = useState('');
 
   useEffect(() => {

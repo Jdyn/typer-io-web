@@ -66,10 +66,7 @@ const Chat = (props: Props): JSX.Element => {
             type="text"
             onChange={(e) => setInput(e.target.value)}
             value={input}
-            disabled={isCustom === true}
-            placeholder={
-              isCustom ? 'Chat is disabled for an event.' : 'Write a message...'
-            }
+            placeholder={'Write a message...'}
             required
           />
         </form>

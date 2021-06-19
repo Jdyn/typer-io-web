@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-spring/web": "^9.2.3",
     "@reduxjs/toolkit": "^1.5.1",
     "framer-motion": "^4.1.11",
     "js-cookie": "^2.2.1",

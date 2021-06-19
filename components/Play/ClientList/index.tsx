@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
+import { useTransition, animated, config } from '@react-spring/web';
 
 //TODO: probably use useMemo for this so its not called every render
 export const placements = (rank: number): string => {
@@ -23,26 +24,21 @@ const ClientList = (props): JSX.Element => {
   const { isSolo } = props;
   const users = useSelector((state: AppState) => state.game.room.clients);
 
-  const variants = {
-    initial: {
-      opacity: 0,
-      width: '0%',
-      y: '-100%'
-    },
-    enter: (isSolo) => {
-      return {
-        width: isSolo ? '100%' : '25%',
-        maxWidth: isSolo ? '275px' : '235px',
-        opacity: 1,
-        y: '0%'
-      };
-    },
-    exit: {
-      opacity: 0,
-      y: '-100%',
+  const transitions = useTransition(users, {
+    from: {
+      transform: 'translate3d(0, -200%, 0)',
       width: '0%'
-    }
-  };
+    },
+    enter: (_item) => async (next, _cancel) => {
+      await next({ width: '20%' });
+      await next({ transform: 'translate3d(0, 0%, 0)' });
+    },
+    leave: {
+      opacity: 0,
+      width: '0%'
+    },
+    keys: (user) => user.id
+  });
 
   return (
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
@@ -52,22 +48,11 @@ const ClientList = (props): JSX.Element => {
           style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}
         >
           {users?.length > 5 ? (
-            <AnimatePresence>
-              {users.map((item) => (
-                <motion.div
+            <div>
+              {transitions((style, item) => (
+                <animated.div
                   className={styles.card}
-                  style={{ marginBottom: '10px' }}
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  variants={variants}
-                  custom={isSolo}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 25,
-                    velocity: 2
-                  }}
+                  style={{ ...style, marginBottom: '10px' }}
                   key={item.id}
                 >
                   <div className={styles.miniCardWrapper}>
@@ -92,25 +77,15 @@ const ClientList = (props): JSX.Element => {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </animated.div>
               ))}
-            </AnimatePresence>
+            </div>
           ) : (
-            <AnimatePresence>
-              {users.map((item) => (
-                <motion.div
+            <>
+              {transitions((style, item) => (
+                <animated.div
                   className={styles.card}
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  variants={variants}
-                  custom={isSolo}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 25,
-                    velocity: 2
-                  }}
+                  style={style}
                   key={item.id}
                 >
                   <div className={styles.cardWrapper}>
@@ -149,9 +124,9 @@ const ClientList = (props): JSX.Element => {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </animated.div>
               ))}
-            </AnimatePresence>
+            </>
           )}
         </div>
       )}

@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1623716841897);
+const updated = formatTime(1625438304419);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -61,14 +61,11 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (June 14th, 2021):</h3>
+                <h3>Changes (July 4th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Added theme icons</li>
                     <li>User Top Speed has been added to the hiscores page.</li>
-                    <li>
-                      Fix a bug where messages would duplicate and WPM was
-                      inaccurate in solo and quick play.
-                    </li>
                   </ul>
                 </div>
               </div>

@@ -14,9 +14,7 @@
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -25,6 +23,7 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "jsx-a11y/anchor-is-valid": ["off"],
     "@typescript-eslint/no-use-before-define": [
       "error",
       {

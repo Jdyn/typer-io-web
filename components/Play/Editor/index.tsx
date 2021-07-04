@@ -90,12 +90,10 @@ const Editor = (props: Props): JSX.Element => {
     if (!gameboard.isStarted && !gameboard.isOver) {
       if (isSolo) {
         return "Press 'Space' here to begin...";
-      } else {
-        return 'Type here when the game begins...';
       }
-    } else {
-      return '';
+      return 'Type here when the game begins...';
     }
+    return '';
   };
 
   return (

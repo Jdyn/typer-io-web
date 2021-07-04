@@ -87,8 +87,6 @@
 .button {
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  font-weight: 700;
   color: white;
   cursor: pointer;
   background: none;
@@ -96,7 +94,7 @@
   border: none;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin: 0 15px;
+  padding: 0;
 }
 
 .button:hover {

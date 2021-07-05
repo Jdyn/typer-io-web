@@ -11,13 +11,11 @@ import snakeToCamel from '../../util/snakeToCamel';
 const filterItems = {
   top_matches: {
     title: 'Top Matches',
-    color: 'var(--orange)',
     query: 'top_matches',
     fields: [{ name: 'Matches', key: 'matchCount' }]
   },
   top_speed: {
     title: 'Top Speed',
-    color: 'var(--green)',
     query: 'top_speed',
     fields: [{ name: 'Top WPM', key: 'topWpm' }]
   }
@@ -69,20 +67,12 @@ const Hiscores = (): JSX.Element => {
           const item = filterItems[key];
           return (
             <button
+              type="button"
               key={item.title}
               className={styles.filterItem}
               onClick={() => changePage(item.query, key)}
-              style={{
-                background: item.color
-              }}
             >
-              <div
-                style={{
-                  border: query === item.query ? '4px solid rgba(0,0,0,.5)' : '4px solid transparent'
-                }}
-              >
-                <h3>{item.title}</h3>
-              </div>
+              <h3>{item.title}</h3>
             </button>
           );
         })}

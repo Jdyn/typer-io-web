@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
 import ApiService from '../../../services/api';
@@ -7,7 +8,6 @@ import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 import Adsense from '../../Shared/Adsense';
-import Link from 'next/link';
 
 const filters = [
   {

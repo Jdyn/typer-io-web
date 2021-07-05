@@ -149,12 +149,14 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   margin: 20px 0px;
-  height: 125px;
+  height: 100px;
 }
 
 .filterItem {
   display: flex;
-  background: var(--primary-main);
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
   box-shadow: var(--shadow);
   border-radius: 16px;
   outline: none;
@@ -175,16 +177,7 @@
   transform: translateY(2px);
 }
 
-.filterItem > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  transition-duration: 0.1s;
-  height: 100%;
-  border-radius: 16px;
-}
-
-.filterItem > div > h3 {
-  margin: 0;
+.filterItem > h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }

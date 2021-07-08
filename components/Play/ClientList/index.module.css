@@ -73,7 +73,7 @@
 .username {
   display: flex;
   flex-direction: row;
-  box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   font-weight: 500;
   font-size: 1rem;
   align-items: center;
@@ -90,7 +90,7 @@
 .usernameWrapper {
   display: flex;
   flex-direction: row;
-  box-shadow: 0 1px 5px rgba(158, 158, 160, 0.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   font-weight: 500;
   align-items: center;
   overflow: hidden;

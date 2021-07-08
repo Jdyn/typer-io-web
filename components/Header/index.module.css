@@ -7,7 +7,7 @@
   z-index: 5;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   background: var(--accent);
-  box-shadow: 0 5px 5px rgba(30, 30, 70, 0.3);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .container {

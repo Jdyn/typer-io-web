@@ -5,7 +5,7 @@
   padding: 0px 10px;
   max-width: 1250px;
   grid-template-columns: 275px 650px 275px;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   gap: 20px;
 }
 

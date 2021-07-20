@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1625438304419);
+const updated = formatTime(1626741854122);
 
 const HomePage = (): JSX.Element => {
   return (

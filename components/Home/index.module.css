@@ -137,6 +137,8 @@
   border: 2px solid rgba(0, 0, 0, 0.1);
   transition-duration: 0.15s;
   border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .card:hover {
@@ -152,13 +154,10 @@
   transform: translateY(2px);
 }
 
-.card > h3 {
-  margin: 10px 0px 0px 0px;
-  font-size: 1.1rem;
-}
-
-.card > p {
-  margin: 0;
+.card > span {
+  font-size: 1rem;
+  margin: 10px 0px;
+  font-weight: 500;
 }
 
 .card::before {

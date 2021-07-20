@@ -12,6 +12,7 @@ import styles from './index.module.css';
 import { GameboardState, SnippetState } from '../../store/game/types';
 import Adsense from '../Shared/Adsense';
 import { EditorState, GameState } from './types';
+// import MatchSummary from './Summary';
 
 interface Props {
   isSolo?: boolean;
@@ -129,23 +130,10 @@ const Play = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={`${styles.container} ${isSolo && styles.soloContainer}`}>
-        <ClientList isSolo={isSolo} />
+        {!isSolo && <ClientList />}
         <PlayStatus gameboard={gameboard} isCustom={isCustom} isSolo={isSolo} />
-        <Leaderboard />
-        <Gameboard
-          wrongIndex={editorState.wrongIndex}
-          gameState={gameState}
-          setEditorState={setEditorState}
-        />
-        <div className={styles.editor}>
-          <Editor
-            gameboard={gameboard}
-            gameState={gameState}
-            setEditorState={setEditorState}
-            isWrong={editorState.wrongIndex !== null}
-            inputDidUpdate={inputDidUpdate}
-            submitWord={submitWord}
-          />
+        <section className={styles.right}>
+          <Leaderboard />
           <section
             style={{
               margin: '20px 0px',
@@ -184,7 +172,59 @@ const Play = (props: Props): JSX.Element => {
               over time. Registered members are also able to post messages on
               our forum.
             </p>
-            <h3>Helpful Tips</h3>
+          </div>
+        </section>
+        <Gameboard
+          wrongIndex={editorState.wrongIndex}
+          gameState={gameState}
+          setEditorState={setEditorState}
+        />
+        <div className={styles.editor}>
+          <Editor
+            gameboard={gameboard}
+            gameState={gameState}
+            setEditorState={setEditorState}
+            isWrong={editorState.wrongIndex !== null}
+            inputDidUpdate={inputDidUpdate}
+            submitWord={submitWord}
+          />
+          <section
+            style={{
+              margin: '20px 0px',
+              maxWidth: '540px !important'
+            }}
+          >
+            <Adsense
+              client="ca-pub-3148839588626786"
+              layout="in-article"
+              slot="6958577240"
+              format="fluid"
+            />
+          </section>
+          {/* {!isSolo && (
+            <section>
+              <MatchSummary />
+            </section>
+          )} */}
+        </div>
+        <section className={styles.left}>
+          {isSolo && <ClientList isSolo={isSolo} />}
+          {!isSolo && <Chat isCustom={isCustom} />}
+          <section
+            style={{
+              margin: '20px 0px',
+              maxWidth: '540px !important'
+            }}
+          >
+            <Adsense
+              client="ca-pub-3148839588626786"
+              layout="in-article"
+              slot="6958577240"
+              format="fluid"
+            />
+          </section>
+          <div className={styles.tips}>
+            <h2>Helpful Tips</h2>
             <ul>
               <li>
                 Make sure the typing box is focused before the game starts so
@@ -204,25 +244,7 @@ const Play = (props: Props): JSX.Element => {
               </li>
             </ul>
           </div>
-        </div>
-        {!isSolo && (
-          <section className={styles.left}>
-            <Chat isCustom={isCustom} />
-            <section
-              style={{
-                margin: '20px 0px',
-                maxWidth: '540px !important'
-              }}
-            >
-              <Adsense
-                client="ca-pub-3148839588626786"
-                layout="in-article"
-                slot="6958577240"
-                format="fluid"
-              />
-            </section>
-          </section>
-        )}
+        </section>
       </div>
       <div className={styles.notice}>
         Mobile functionality is limited, consider playing on your computer!

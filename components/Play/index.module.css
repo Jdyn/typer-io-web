@@ -25,8 +25,9 @@
   margin-top: 145px;
   grid-template-areas:
     'status gameboard leaderboard'
-    'clientlist gameboard leaderboard'
-    'clientlist editor leaderboard';
+    'chat gameboard leaderboard'
+    'chat gameboard leaderboard'
+    'chat editor leaderboard';
 }
 
 @media (max-width: 815px) {
@@ -75,20 +76,38 @@
   grid-area: chat;
 }
 
+.right {
+  grid-area: leaderboard;
+}
+
 .notice {
   display: none;
 }
 
 .tips {
-  padding: 10px;
+  padding: 20px;
   border: 2px solid var(--border);
   border-radius: 16px;
+  background: var(--primary-main);
+}
+
+.tips > ul {
+  padding-left: 10px;
+  margin: 0px
 }
 
 .tips > ul > li {
-  padding: 10px;
+  padding: 10px 0px;
+  color: var(--subtext);
 }
 
 .tips > p > a {
   color: var(--accent);
+}
+.tips > p {
+  color: var(--subtext);
+}
+
+.tips > p:last-child {
+  margin: 10px 0 0 0
 }

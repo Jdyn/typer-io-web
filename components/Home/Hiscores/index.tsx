@@ -17,7 +17,7 @@ const filters = [
   { name: 'daily', key: 'DAY' },
   { name: 'weekly', key: 'WEEK' },
   { name: 'monthly', key: 'MONTH' },
-  { name: 'all time', key: 'ALL' }
+  // { name: 'all time', key: 'ALL' }
 ];
 
 const Hiscores = (_props: Props): JSX.Element => {

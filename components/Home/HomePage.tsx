@@ -35,6 +35,24 @@ const HomePage = (): JSX.Element => {
   return (
     <main className={styles.root}>
       <div className={styles.container}>
+        <section className={styles.centerColumn}>
+          <Profile />
+          <div className={styles.menu}>
+            {cards.map((card) => {
+              return (
+                <Link prefetch={false} href={card.route} key={card.route}>
+                  <a
+                    className={`${styles.card} ${styles[card.color]}`}
+                    key={card.route}
+                  >
+                    {`${card.title} ➜`} <span>{card.text}</span>
+                  </a>
+                </Link>
+              );
+            })}
+          </div>
+          <Hiscores />
+        </section>
         <section className={styles.leftColumn}>
           <Paper title="News">
             <div className={styles.newsContainer}>
@@ -80,26 +98,6 @@ const HomePage = (): JSX.Element => {
               layout="in-article"
             />
           </section>
-        </section>
-        <section className={styles.centerColumn}>
-          <Profile />
-          <div className={styles.menu}>
-            {cards.map((card) => {
-              return (
-                <Link prefetch={false} href={card.route} key={card.route}>
-                  <a
-                    type="button"
-                    className={`${styles.card} ${styles[card.color]}`}
-                    key={card.route}
-                  >
-                    <h3>{card.title} ➜</h3>
-                    <p>{card.text}</p>
-                  </a>
-                </Link>
-              );
-            })}
-          </div>
-          <Hiscores />
         </section>
         <section className={styles.rightColumn}>
           <RecentPosts />

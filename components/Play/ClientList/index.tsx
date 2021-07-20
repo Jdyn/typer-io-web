@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
-//TODO: probably use useMemo for this so its not called every render
+// TODO: probably use useMemo for this so its not called every render
 export const placements = (rank: number): string => {
   if (typeof rank !== 'number') return '-';
 
@@ -84,12 +84,13 @@ const ClientList = (props): JSX.Element => {
                           {item.gamePiece.wpm}{' '}
                           <span className={styles.statHeader}>WPM</span>
                         </div>
-                      </div>
-                      {!isSolo && (
-                        <div className={styles.placement}>
+                        <div
+                          className={styles.placement}
+                          style={{ color: item.gamePiece.color }}
+                        >
                           {placements(item.gamePiece?.rank) || '-'}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -141,12 +142,13 @@ const ClientList = (props): JSX.Element => {
                           {item.gamePiece.wpm}{' '}
                           <span className={styles.statHeader}>WPM</span>
                         </div>
-                      </div>
-                      {!isSolo && (
-                        <div className={styles.placement}>
+                        <div
+                          className={styles.placement}
+                          style={{ color: item.gamePiece.color }}
+                        >
                           {placements(item.gamePiece?.rank) || '-'}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>

@@ -109,19 +109,6 @@ const Leaderboard = (): JSX.Element => {
           </div>
         </div>
       </Paper>
-      <section
-        style={{
-          margin: '20px 0px',
-          maxWidth: '540px !important'
-        }}
-      >
-        <Adsense
-          client="ca-pub-3148839588626786"
-          layout="in-article"
-          slot="6958577240"
-          format="fluid"
-        />
-      </section>
     </div>
   );
 };

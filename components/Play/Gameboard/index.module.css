@@ -86,13 +86,9 @@
 }
 
 .gamePiece > span {
-  font-size: 7px !important;
+  font-size: 10px !important;
   border-radius: 16px;
   opacity: 1;
-}
-
-.gamePiece > span > span {
-  opacity: 0.8;
 }
 
 .word {

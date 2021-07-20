@@ -1,0 +1,133 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: inherit;
+  margin: 5px 20px 20px 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  padding-left: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.verified {
+  color: var(--accent);
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-bottom: 2px solid var(--border);
+  padding: 16px 12px;
+  color: var(--text);
+}
+
+.entry:last-child {
+  border: none;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex: 2;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.headerItem {
+  font-weight: 500;
+  color: var(--subtext);
+  font-size: 14px;
+}
+
+.timestamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: var(--subtext);
+  flex: 1.4;
+}
+
+.portrait {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  align-self: center;
+  border: 2px solid var(--border);
+  margin: -3px 10px -3px -3px;
+}
+
+.admin {
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}
+
+.nameLink {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.user {
+  padding: 4px 4px 2px 4px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  margin: 5px;
+  background: var(--accent);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  color: var(--subtext);
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex: 0.3;
+}
+
+.header {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  position: relative;
+  margin: 0 30px;
+  /* width: 480px; */
+  border-bottom: 2px solid var(--border);
+  padding: 12px 12px 12px 12px;
+  color: var(--text);
+}
+
+.notice {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  color: var(--subtext);
+  justify-content: center;
+}

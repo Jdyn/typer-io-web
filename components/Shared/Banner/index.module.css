@@ -5,11 +5,11 @@
   background: var(--accent);
   height: 55px !important;
   padding: 10px 20px;
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 16px 16px 4px 4px;
   text-align: center;
   align-items: center;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 

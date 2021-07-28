@@ -98,10 +98,10 @@ const Play = (props: Props): JSX.Element => {
     const timestamp = Date.now();
 
     const payload = {
-      entries: newEntries,
-      position: newIndex,
-      errors: editorState.errors,
-      timestamp
+      // entries: newEntries,
+      // position: newIndex,
+      errors: editorState.errors
+      // timestamp
     };
 
     silentEmit('CLIENT_UPDATE', payload);

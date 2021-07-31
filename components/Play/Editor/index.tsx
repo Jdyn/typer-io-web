@@ -72,9 +72,7 @@ const Editor = (props: Props): JSX.Element => {
     }
 
     if (event.key === ' ') {
-      if (currentInput !== currentWord) {
-        event.preventDefault();
-      } else if (currentInput.trim() === currentWord) {
+      if (currentInput.trim() === currentWord) {
         event.preventDefault();
         document.getElementById('input').innerText = '';
         if (wordsRemaining.length !== 0) {

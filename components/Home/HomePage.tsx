@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1627448121528);
+const updated = formatTime(1627771881459);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -82,9 +82,8 @@ const HomePage = (): JSX.Element => {
                 <h3>Changes (July 27th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Small fixes and improvements</li>
                     <li>Improved WPM calculation performance and accuracy</li>
-                    <li>Added theme icons</li>
-                    <li>User Top Speed has been added to the hiscores page.</li>
                   </ul>
                 </div>
               </div>

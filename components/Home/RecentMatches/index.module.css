@@ -4,6 +4,7 @@
 
 .container {
   display: flex;
+  flex: 1;
   flex-direction: column;
   overflow: hidden;
   margin: 20px;

@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            gameTime: action.payload.gameTime
+            gameTime: action.payload.gameTime || state.room.gameboard.gameTime
           },
           clients: gameboardUpdate(
             [...state.room.clients],

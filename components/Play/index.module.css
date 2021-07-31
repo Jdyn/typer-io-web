@@ -37,7 +37,9 @@
     grid-template-areas:
       'status'
       'gameboard'
-      'editor';
+      'editor'
+      'chat'
+      'leaderboard';
   }
 
   .soloContainer {
@@ -45,7 +47,9 @@
     grid-template-areas:
       'status'
       'gameboard'
-      'editor';
+      'editor'
+      'chat'
+      'leaderboard';
   }
 
   .left {

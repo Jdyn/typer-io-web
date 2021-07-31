@@ -93,18 +93,16 @@ const Play = (props: Props): JSX.Element => {
 
     // + 1 includes the space key
     const newEntries = words[currentIndex].length + 1;
-    const newIndex = currentIndex;
+    // const newIndex = currentIndex;
 
-    const timestamp = Date.now();
+    const data = JSON.stringify({
+      er: editorState.errors,
+      en: newEntries
+    });
 
-    const payload = {
-      // entries: newEntries,
-      // position: newIndex,
-      errors: editorState.errors
-      // timestamp
-    };
-
+    const payload = btoa(data);
     silentEmit('CLIENT_UPDATE', payload);
+
     setGameState((prev) => ({
       ...gameState,
       currentInput: '',

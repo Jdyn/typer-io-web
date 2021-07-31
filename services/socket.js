@@ -107,7 +107,7 @@ const defaultListeners = (dispatch) => {
 };
 
 const init = (url, dispatch, payload) => {
-  socket = io(url, { transports: ['websocket'] });
+  socket = io(url, { transports: ['websocket'], path: '/socket' });
   defaultListeners(dispatch);
   socket.emit('REGISTER', payload);
   socket.on(types.INIT_SOCKET_SUCCESS, (payload) => {

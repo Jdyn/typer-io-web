@@ -79,7 +79,7 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (July 27th, 2021):</h3>
+                <h3>Changes (July 31th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
                     <li>Small fixes and improvements</li>

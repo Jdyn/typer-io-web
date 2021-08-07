@@ -13,9 +13,7 @@ const ProfileSettingsPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state: AppState) => state.session.user);
-  const updateUserRequest = useSelector(
-    (state: AppState) => state.request[requests.UPDATE_USER]
-  );
+  const updateUserRequest = useSelector((state: AppState) => state.request[requests.UPDATE_USER]);
 
   const [form, setForm] = useState<SettingsForm>({
     bio: sessionUser?.bio ?? '',
@@ -56,9 +54,9 @@ const ProfileSettingsPage = (): JSX.Element => {
                   <TextBox
                     value={form.bio}
                     height="200px"
-                    onChange={(
-                      event: React.ChangeEvent<HTMLTextAreaElement>
-                    ): void => setForm({ ...form, bio: event.target.value })}
+                    onChange={(event: React.ChangeEvent<HTMLTextAreaElement>): void =>
+                      setForm({ ...form, bio: event.target.value })
+                    }
                     placeholder="Enter your bio..."
                   />
                 </span>
@@ -69,9 +67,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                   <input
                     className={styles.input}
                     placeholder="New Username"
-                    onChange={(e): void =>
-                      setForm({ ...form, username: e.target.value })
-                    }
+                    onChange={(e): void => setForm({ ...form, username: e.target.value })}
                   />
                 </span>
               </div>
@@ -81,9 +77,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 save
               </Button>
               {updateUserRequest?.success && <span>Saved.</span>}
-              {updateUserRequest?.errored && (
-                <span>{updateUserRequest?.error}</span>
-              )}
+              {updateUserRequest?.errored && <span>{updateUserRequest?.error}</span>}
             </div>
           </div>
         </Paper>

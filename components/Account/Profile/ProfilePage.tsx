@@ -36,23 +36,16 @@ const ProfilePage = (props: Props): JSX.Element => {
   }, [username]);
 
   const fetchMatches = (page: number): void => {
-    if (
-      user &&
-      page <= user.matchMaxPage &&
-      page >= 1 &&
-      page !== user.matchPage
-    ) {
-      ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then(
-        (response) => {
-          if (response.ok && response.result.matches) {
-            set({ ...user, ...response.result });
-            const element = document.getElementById('profile-matches-wrapper');
-            if (element) {
-              element.scrollTop = 0;
-            }
+    if (user && page <= user.matchMaxPage && page >= 1 && page !== user.matchPage) {
+      ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then((response) => {
+        if (response.ok && response.result.matches) {
+          set({ ...user, ...response.result });
+          const element = document.getElementById('profile-matches-wrapper');
+          if (element) {
+            element.scrollTop = 0;
           }
         }
-      );
+      });
     }
   };
 
@@ -67,8 +60,7 @@ const ProfilePage = (props: Props): JSX.Element => {
             <div className={styles.profilePortrait} />
             <div className={styles.content}>
               <h3>
-                {user?.username}{' '}
-                {user?.isAdmin && <span className={styles.admin}>Creator</span>}
+                {user?.username} {user?.isAdmin && <span className={styles.admin}>Creator</span>}
               </h3>
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
               <div>{sessionUser?.isAdmin && `ID: ${user?.id}`}</div>
@@ -123,13 +115,9 @@ const ProfilePage = (props: Props): JSX.Element => {
         </Banner>
         <div className={styles.friendsListWrapper}>
           {user && user.posts.length > 0 ? (
-            user?.posts.map((post) => (
-              <MiniListPost key={post.id} post={post} />
-            ))
+            user?.posts.map((post) => <MiniListPost key={post.id} post={post} />)
           ) : (
-            <>
-              {user && <span>{user?.username} has not created any posts.</span>}
-            </>
+            <>{user && <span>{user?.username} has not created any posts.</span>}</>
           )}
         </div>
       </div>
@@ -160,9 +148,7 @@ const ProfilePage = (props: Props): JSX.Element => {
                     {item.user?.username ?? item.nickname ?? 'Guest'}
                   </span>
                 </div>
-                <div className={styles.timestamp}>
-                  {formatTime(item.created_at)}
-                </div>
+                <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                 <div className={styles.item}>{item.accuracy} %</div>
                 <div className={styles.item}>{item.wpm}</div>
               </div>
@@ -170,11 +156,7 @@ const ProfilePage = (props: Props): JSX.Element => {
           </div>
         </div>
         <div className={styles.pagination}>
-          <button
-            className={styles.pageButton}
-            onClick={() => fetchMatches(1)}
-            type="button"
-          >
+          <button className={styles.pageButton} onClick={() => fetchMatches(1)} type="button">
             1
           </button>
           <button

@@ -72,9 +72,7 @@ const ForumPage = (): JSX.Element => {
                       <Link href={`/u/${post.user.username}`}>
                         <a className={styles.nameLink}>{post.user?.username}</a>
                       </Link>{' '}
-                      {post.user.isAdmin && (
-                        <span className={styles.admin}>Creator</span>
-                      )}
+                      {post.user.isAdmin && <span className={styles.admin}>Creator</span>}
                     </span>
                     {post.commentCount > 0 && (
                       <span>Last comment {formatTime(post.updatedAt)}</span>
@@ -91,11 +89,7 @@ const ForumPage = (): JSX.Element => {
             </div>
           </div>
           <div className={styles.pagination}>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(1)}
-              type="button"
-            >
+            <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
               1
             </button>
             <button

@@ -44,11 +44,7 @@ const Footer = (): JSX.Element => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://discord.gg/E2Fj4h3JCa"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="https://discord.gg/E2Fj4h3JCa" target="_blank" rel="noreferrer">
                   Discord
                 </a>
               </li>

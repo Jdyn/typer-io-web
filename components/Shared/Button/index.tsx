@@ -16,25 +16,9 @@ interface Props {
 }
 
 const Button = forwardRef((props: Props, ref: React.Ref<HTMLButtonElement>): JSX.Element => {
-  const { children, secondary, onClick, margin, padding, isPending, width, color, large, href } =
-    props;
+  const { children, secondary, onClick, margin, padding, isPending, width, color, large } = props;
 
-  return href ? (
-    <Link href={href}>
-      <button
-        type="submit"
-        ref={ref}
-        onClick={onClick}
-        disabled={isPending || false}
-        className={`
-        ${styles.button}
-        ${secondary ? styles.secondary : styles.primary}`}
-        style={{ margin, padding, width }}
-      >
-        {isPending ? <Loader width="36px" height="36px" color={color} /> : children}
-      </button>
-    </Link>
-  ) : (
+  return (
     <button
       type="submit"
       ref={ref}

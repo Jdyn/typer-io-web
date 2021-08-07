@@ -16,7 +16,7 @@
   grid-template-rows: min-content 1fr;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 640px) {
   .container {
     grid-template-columns: 1.3fr 2fr;
     grid-template-rows: 1fr;

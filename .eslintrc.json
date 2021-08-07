@@ -8,13 +8,12 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "env": {
     "browser": true,
@@ -33,20 +32,21 @@
         "typedefs": true
       }
     ],
-    "max-len": [
-      "warn",
-      {
-        "code": 80,
-        "tabWidth": 2,
-        "comments": 100,
-        "ignoreComments": false,
-        "ignoreTrailingComments": true,
-        "ignoreUrls": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true
-      }
-    ],
+    "prettier/prettier": ["error", { "printWidth": 100 }],
+    // "max-len": [
+    //   "warn",
+    //   {
+    //     "code": 100,
+    //     "tabWidth": 2,
+    //     "comments": 100,
+    //     "ignoreComments": false,
+    //     "ignoreTrailingComments": true,
+    //     "ignoreUrls": true,
+    //     "ignoreStrings": true,
+    //     "ignoreTemplateLiterals": true,
+    //     "ignoreRegExpLiterals": true
+    //   }
+    // ],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -72,7 +72,7 @@
     {
       "files": ["*.js"],
       "rules": {
-        // Allow `require()`
+        // Allow `require()` syntax
         "@typescript-eslint/no-var-requires": "off"
       }
     }

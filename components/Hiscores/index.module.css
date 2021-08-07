@@ -28,15 +28,16 @@
   display: flex;
   flex-direction: column;
   grid-area: main;
-  padding-left: 10px;
+  gap: 5px;
+  padding: 10px 0px 10px 10px;
   overflow-y: scroll;
   /* height: 750px; */
 }
 
 .nameLink {
-  text-decoration: underline;
-  cursor: pointer;
   color: var(--text);
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .entry {
@@ -45,7 +46,13 @@
   position: relative;
   border-bottom: 2px solid var(--border);
   padding: 12px 12px;
+  cursor: pointer;
+  border-radius: 6px;
   color: var(--text);
+}
+
+.entry:hover {
+  background: var(--border);
 }
 
 .entry:last-child {
@@ -56,10 +63,9 @@
   display: flex;
   position: relative;
   flex: 2;
+  margin: 0 5px;
   justify-content: flex-start;
   align-items: center;
-  font-size: 17px;
-  font-weight: 700;
 }
 
 .header {
@@ -82,14 +88,10 @@
   justify-content: flex-end;
   color: var(--subtext);
   flex-grow: 1;
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .headerItem {
-  font-weight: 500;
   color: var(--subtext);
-  font-size: 14px;
 }
 
 .count {
@@ -97,7 +99,6 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  flex: 0.3;
 }
 
 .timestamp {
@@ -125,10 +126,12 @@
 
 .pageButton {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--accent);
   border-radius: 8px;
   outline: none;
-  margin: 0px 5px;
+  margin: 5px;
   padding: 5px 10px;
   border: none;
   color: white;
@@ -178,6 +181,5 @@
 }
 
 .filterItem > h3 {
-  font-size: 1.1rem;
   text-transform: uppercase;
 }

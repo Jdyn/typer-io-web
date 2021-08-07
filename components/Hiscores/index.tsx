@@ -32,9 +32,7 @@ const Hiscores = (): JSX.Element => {
 
   useEffect(() => {
     if (router.isReady) {
-      dispatch(
-        fetchUserHiscores((query as string).toUpperCase(), page as string)
-      );
+      dispatch(fetchUserHiscores((query as string).toUpperCase(), page as string));
 
       setFilters(filterItems[query as string]);
     }
@@ -46,8 +44,8 @@ const Hiscores = (): JSX.Element => {
     }
   };
 
-  const changePage = (query: string, key: string) => {
-    router.push(`/hiscores?query=${query}&page=${1}`);
+  const changePage = (itemQuery: string) => {
+    router.push(`/hiscores?query=${itemQuery}&page=${1}`);
   };
 
   const renderBadge = (user): ReactNode => {
@@ -70,7 +68,7 @@ const Hiscores = (): JSX.Element => {
               type="button"
               key={item.title}
               className={styles.filterItem}
-              onClick={() => changePage(item.query, key)}
+              onClick={() => changePage(item.query)}
             >
               <h3>{item.title}</h3>
             </button>
@@ -91,34 +89,28 @@ const Hiscores = (): JSX.Element => {
           <div className={styles.container}>
             <div className={styles.wrapper}>
               {itemPage?.users?.map((item, index) => (
-                <div className={styles.entry} key={item.id}>
-                  <div className={styles.count}>
-                    {itemPage.page > 1 ? (
-                      <span>{50 * (itemPage?.page - 1) + index + 1}</span>
-                    ) : (
-                      <span>{index + 1}</span>
-                    )}
+                <Link href={`/u/${item.username}`}>
+                  <div className={styles.entry} key={item.id}>
+                    <div className={styles.count}>
+                      {itemPage.page > 1 ? (
+                        <span>{50 * (itemPage?.page - 1) + index + 1}</span>
+                      ) : (
+                        <span>{index + 1}</span>
+                      )}
+                    </div>
+                    <div className={styles.content}>
+                      <span className={styles.verified}>{item.username}</span>
+                      {renderBadge(item)}
+                    </div>
+                    {filters?.fields?.map((field) => (
+                      <div key={field.key}>{item[field.key]}</div>
+                    ))}
                   </div>
-                  <div className={styles.content}>
-                    <span className={styles.verified}>
-                      <Link href={`/u/${item.username}`}>
-                        <a className={styles.nameLink}>{item.username}</a>
-                      </Link>
-                    </span>
-                    {renderBadge(item)}
-                  </div>
-                  {filters?.fields?.map((field) => (
-                    <div key={field.key}>{item[field.key]}</div>
-                  ))}
-                </div>
+                </Link>
               ))}
             </div>
             <div className={styles.pagination}>
-              <button
-                className={styles.pageButton}
-                onClick={() => setPage(1)}
-                type="button"
-              >
+              <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
                 1
               </button>
               <button

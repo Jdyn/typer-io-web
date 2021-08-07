@@ -65,7 +65,7 @@ const Post = (props: Props): JSX.Element => {
         <div className={styles.postContainer}>
           <Banner>
             <h3>Discussions</h3>
-            <button className={styles.backButton} onClick={() => router.back()}>
+            <button type="button" className={styles.backButton} onClick={() => router.back()}>
               Back
             </button>
           </Banner>
@@ -79,9 +79,7 @@ const Post = (props: Props): JSX.Element => {
                     <Link href={`/u/${post.user?.username}`}>
                       <a className={styles.nameLink}>{post.user?.username}</a>
                     </Link>{' '}
-                    {post.user?.isAdmin && (
-                      <span className={styles.admin}>Creator</span>
-                    )}
+                    {post.user?.isAdmin && <span className={styles.admin}>Creator</span>}
                     {formatTime(post.createdAt)}
                   </span>
                 </div>
@@ -92,9 +90,7 @@ const Post = (props: Props): JSX.Element => {
                     <TextBox
                       placeholder="Leave a comment"
                       value={newComment.body}
-                      onChange={(e) =>
-                        setComment({ ...newComment, body: e.target.value })
-                      }
+                      onChange={(e) => setComment({ ...newComment, body: e.target.value })}
                     />
                     <div className={styles.buttons}>
                       <Button padding="6px 20px" onClick={submitComment}>
@@ -103,9 +99,7 @@ const Post = (props: Props): JSX.Element => {
                       <Button
                         padding="6px 27px"
                         secondary
-                        onClick={() =>
-                          setComment((prev) => ({ ...prev, body: '' }))
-                        }
+                        onClick={() => setComment((prev) => ({ ...prev, body: '' }))}
                       >
                         cancel
                       </Button>

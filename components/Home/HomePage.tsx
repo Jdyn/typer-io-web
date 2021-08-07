@@ -41,10 +41,7 @@ const HomePage = (): JSX.Element => {
             {cards.map((card) => {
               return (
                 <Link prefetch={false} href={card.route} key={card.route}>
-                  <a
-                    className={`${styles.card} ${styles[card.color]}`}
-                    key={card.route}
-                  >
+                  <a className={`${styles.card} ${styles[card.color]}`} key={card.route}>
                     {`${card.title} ➜`} <span>{card.text}</span>
                   </a>
                 </Link>
@@ -59,10 +56,7 @@ const HomePage = (): JSX.Element => {
               <div className={styles.newsWrapper}>
                 <h1>Improve your typing speed and race your friends!</h1>
                 <span>updated {updated} </span>
-                <p>
-                  Hello, if you have any suggestions, please let me know on the
-                  forums!
-                </p>
+                <p>Hello, if you have any suggestions, please let me know on the forums!</p>
                 <a
                   className={styles.support}
                   href="https://www.buymeacoffee.com/typer"

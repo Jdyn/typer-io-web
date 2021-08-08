@@ -1,4 +1,4 @@
-import { useEffect, useMemo, memo, Dispatch, SetStateAction } from 'react';
+import { useEffect, useMemo, memo, Dispatch, SetStateAction, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
 import Banner from '../../Shared/Banner';
@@ -47,18 +47,20 @@ const Gameboard = (props: Props): JSX.Element => {
     setEditorState((prev) => ({ ...prev, wrongIndex: null }));
   }, [currentWord, setEditorState]);
 
-  const wordElements = useMemo(
-    () =>
-      words.map((word, wordIndex) => (
-        <div key={wordIndex} className={styles.wrapper}>
+  const wordElements = useMemo(() => {
+    const currentInputArray = currentInput ? currentInput.split('') : [];
+
+    return words.map((word, wordIndex) =>
+      currentIndex === wordIndex ? (
+        <div key={wordIndex} className={styles.wrapper} id={`word-${wordIndex}`}>
           <Word
-            input={currentInput ? currentInput.split('') : []}
+            input={currentInputArray}
             currentIndex={currentIndex}
             word={word}
-            index={wordIndex}
             setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
+
           <AnimateSharedLayout>
             {clients
               .filter((object) => object.id !== clientId)
@@ -91,17 +93,77 @@ const Gameboard = (props: Props): JSX.Element => {
               })}
           </AnimateSharedLayout>
         </div>
-      )),
-    [
-      clientId,
-      clients,
-      currentIndex,
-      currentInput,
-      setEditorState,
-      words,
-      wrongIndex
-    ]
-  );
+      ) : (
+        <div key={wordIndex} className={styles.wrapper} id={`word-${wordIndex}`}>
+          <Word word={word} />
+
+          <AnimateSharedLayout>
+            {clients
+              .filter((object) => object.id !== clientId)
+              .map((client) => {
+                const { position, color } = client.gamePiece;
+
+                if (wordIndex === 0 && position === null) {
+                  return (
+                    <Piece
+                      key={client.id}
+                      id={client.id}
+                      emoji={client.emoji}
+                      color={color}
+                      position={position}
+                    />
+                  );
+                }
+
+                return (
+                  position === wordIndex && (
+                    <Piece
+                      key={client.id}
+                      id={client.id}
+                      emoji={client.emoji}
+                      color={color}
+                      position={position}
+                    />
+                  )
+                );
+              })}
+          </AnimateSharedLayout>
+        </div>
+      )
+    );
+  }, [clientId, clients, currentIndex, currentInput, setEditorState, words, wrongIndex]);
+
+  //   <AnimateSharedLayout>
+  //   {clients
+  //     .filter((object) => object.id !== clientId)
+  //     .map((client) => {
+  //       const { position, color } = client.gamePiece;
+
+  //       if (wordIndex === 0 && position === null) {
+  //         return (
+  //           <Piece
+  //             key={client.id}
+  //             id={client.id}
+  //             emoji={client.emoji}
+  //             color={color}
+  //             position={position}
+  //           />
+  //         );
+  //       }
+
+  //       return (
+  //         position === wordIndex && (
+  //           <Piece
+  //             key={client.id}
+  //             id={client.id}
+  //             emoji={client.emoji}
+  //             color={color}
+  //             position={position}
+  //           />
+  //         )
+  //       );
+  //     })}
+  // </AnimateSharedLayout>
 
   return (
     <div className={styles.root}>
@@ -141,9 +203,7 @@ const Gameboard = (props: Props): JSX.Element => {
           <>
             <h1>
               {snippet.title}
-              <span className={`${styles[snippet.difficulty]}`}>
-                {snippet.difficulty}
-              </span>
+              <span className={`${styles[snippet.difficulty]}`}>{snippet.difficulty}</span>
             </h1>
             <span>
               {snippet.author && (
@@ -158,9 +218,7 @@ const Gameboard = (props: Props): JSX.Element => {
                   </a>
                 </>
               )}
-              {snippet.createdAt && (
-                <span> • Added {formatTime(snippet.createdAt)}</span>
-              )}
+              {snippet.createdAt && <span> • Added {formatTime(snippet.createdAt)}</span>}
             </span>
           </>
         )}

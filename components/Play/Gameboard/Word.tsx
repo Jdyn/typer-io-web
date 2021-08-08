@@ -3,36 +3,28 @@ import styles from './index.module.css';
 
 interface Props {
   word: string;
-  index: number;
-  currentIndex: number;
-  input: string[];
-  wrongIndex: number;
-  setEditorState: any;
+  currentIndex?: number;
+  input?: string[];
+  wrongIndex?: number;
+  setEditorState?: any;
 }
 
 const Word = (props: Props): JSX.Element => {
-  const {
-    word,
-    index,
-    currentIndex,
-    input,
-    wrongIndex,
-    setEditorState
-  } = props;
+  const { word, currentIndex, input, wrongIndex, setEditorState } = props;
 
-  const validateLetter = (index: number): string => {
-    if (input[index]) {
-      if (input[index] === word.split('')[index]) {
+  const validateLetter = (letterIndex: number): string => {
+    if (input[letterIndex]) {
+      if (input[letterIndex] === word.split('')[letterIndex]) {
         if (wrongIndex !== null) {
-          if (wrongIndex < index) {
+          if (wrongIndex < letterIndex) {
             return styles.wrong;
           }
         }
         return styles.correct;
       }
 
-      if (index < wrongIndex || wrongIndex === null) {
-        setEditorState((prev) => ({ ...prev, wrongIndex: index }));
+      if (letterIndex < wrongIndex || wrongIndex === null) {
+        setEditorState((prev) => ({ ...prev, wrongIndex: letterIndex }));
       }
 
       return styles.wrong;
@@ -62,28 +54,22 @@ const Word = (props: Props): JSX.Element => {
     return newLeft + caret?.offsetWidth / 2 || 0;
   };
 
-  return currentIndex === index ? (
+  return currentIndex !== null ? (
     <div className={`${styles.word} ${styles.current}`}>
-      {currentIndex === index && (
-        <div
-          id="caret"
-          className={styles.caret}
-          style={{
-            left: calculateWidth()
-          }}
-        />
-      )}
+      <div
+        id="caret"
+        className={styles.caret}
+        style={{
+          left: calculateWidth()
+        }}
+      />
       {word.split('').map((letter, letterIndex) => (
         <span
           key={letterIndex}
           id={`letter-${letterIndex}`}
-          className={`${styles.letter} ${
-            currentIndex === props.index
-              ? validateLetter(letterIndex)
-              : styles.base
-          }`}
+          className={`${styles.letter} ${validateLetter(letterIndex)}`}
           style={{
-            textDecoration: currentIndex === index ? 'underline' : 'none'
+            textDecoration: 'underline'
           }}
         >
           {letter}
@@ -95,13 +81,9 @@ const Word = (props: Props): JSX.Element => {
       {word.split('').map((letter, letterIndex) => (
         <span
           key={letterIndex}
-          className={`${styles.letter} ${
-            currentIndex === props.index
-              ? validateLetter(letterIndex)
-              : styles.base
-          }`}
+          className={`${styles.letter}`}
           style={{
-            textDecoration: currentIndex === index ? 'underline' : 'none'
+            textDecoration: 'none'
           }}
         >
           {letter}
@@ -109,6 +91,13 @@ const Word = (props: Props): JSX.Element => {
       ))}
     </span>
   );
+};
+
+Word.defaultProps = {
+  currentIndex: null,
+  input: null,
+  wrongIndex: null,
+  setEditorState: null
 };
 
 export default memo(Word);

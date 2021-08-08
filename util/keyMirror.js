@@ -4,7 +4,6 @@
  *
  * @example
  * const actions = keyMirror('REQUEST', 'SUCCESS', 'FAILURE')
- * console.log(actions.REQUEST) // => 'REQUEST'
  *
  * @param {String} ...keys
  * @return {Object}

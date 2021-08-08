@@ -22,17 +22,11 @@ interface Props {
 const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
 
-  const gameboard: GameboardState = useSelector(
-    (state: AppState) => state.game.room.gameboard
-  );
+  const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);
 
-  const snippet: SnippetState = useSelector(
-    (state: AppState) => state.game.room.snippet
-  );
+  const snippet: SnippetState = useSelector((state: AppState) => state.game.room.snippet);
 
-  const isStarted: boolean = useSelector(
-    (state: AppState) => state.game.room.isStarted
-  );
+  const isStarted: boolean = useSelector((state: AppState) => state.game.room.isStarted);
 
   const [gameState, setGameState] = useState<GameState>({
     currentInput: '',
@@ -152,23 +146,20 @@ const Play = (props: Props): JSX.Element => {
               <a href="https://discord.com/invite/E2Fj4h3JCa">discord</a>.
             </p>
             <p>
-              Typing speed can make a world of difference when using computers.
-              The more comfortable you are typing, the more you can focus on
-              what you are working on. Slow typing and fixing errors moves your
-              attention away from what you are trying to achieve.
+              Typing speed can make a world of difference when using computers. The more comfortable
+              you are typing, the more you can focus on what you are working on. Slow typing and
+              fixing errors moves your attention away from what you are trying to achieve.
             </p>
             <p>
-              Practice is the key to improving your typing skills. The more you
-              practice against others, the faster you will type. Competition is
-              often the best way to speed up the learning process. Through
-              repetition and the desire to win and improve, one can improve
-              their typing speed very quickly.
+              Practice is the key to improving your typing skills. The more you practice against
+              others, the faster you will type. Competition is often the best way to speed up the
+              learning process. Through repetition and the desire to win and improve, one can
+              improve their typing speed very quickly.
             </p>
             <p>
-              In order to keep track of your progress, you can easily create an
-              account. Each race will be saved and you can view your progress
-              over time. Registered members are also able to post messages on
-              our forum.
+              In order to keep track of your progress, you can easily create an account. Each race
+              will be saved and you can view your progress over time. Registered members are also
+              able to post messages on our forum.
             </p>
           </div>
         </section>
@@ -225,20 +216,20 @@ const Play = (props: Props): JSX.Element => {
             <h2>Helpful Tips</h2>
             <ul>
               <li>
-                Make sure the typing box is focused before the game starts so
-                you can begin typing right away.
+                Make sure the typing box is focused before the game starts so you can begin typing
+                right away.
               </li>
               <li>
-                You cannot ignore errors, so try to notice and correct them as
-                soon as possible to get back on track!
+                You cannot ignore errors, so try to notice and correct them as soon as possible to
+                get back on track!
               </li>
               <li>
-                Some fast racers start with their fingers already on the first
-                few keys to get the greatest advantage possible.
+                Some fast racers start with their fingers already on the first few keys to get the
+                greatest advantage possible.
               </li>
               <li>
-                Many fast racers read the first few words before the game starts
-                to type them quicker.
+                Many fast racers read the first few words before the game starts to type them
+                quicker.
               </li>
             </ul>
           </div>

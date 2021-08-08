@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  KeyboardEvent
-} from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, KeyboardEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { silentEmit } from '../../../services/socket';
 import { AppState } from '../../../store';
@@ -29,14 +23,7 @@ interface Props {
 }
 
 const Editor = (props: Props): JSX.Element => {
-  const {
-    gameboard,
-    inputDidUpdate,
-    submitWord,
-    setEditorState,
-    gameState,
-    isWrong
-  } = props;
+  const { gameboard, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } = props;
 
   useEffect(() => {
     focusInput();
@@ -118,9 +105,7 @@ const Editor = (props: Props): JSX.Element => {
           placeholder={inputPlaceholder()}
           autoComplete="off"
           autoCorrect="off"
-          maxLength={
-            gameState.currentWord ? gameState.currentWord.length : 524288
-          }
+          maxLength={gameState.currentWord ? gameState.currentWord.length : 524288}
           autoCapitalize="off"
           spellCheck="false"
           value={gameState.currentInput}

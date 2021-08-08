@@ -60,74 +60,77 @@ const Gameboard = (props: Props): JSX.Element => {
             setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
+          {clients.length > 1 && (
+            <AnimateSharedLayout>
+              {clients
+                .filter((object) => object.id !== clientId)
+                .map((client) => {
+                  const { position, color } = client.gamePiece;
 
-          <AnimateSharedLayout>
-            {clients
-              .filter((object) => object.id !== clientId)
-              .map((client) => {
-                const { position, color } = client.gamePiece;
+                  if (wordIndex === 0 && position === null) {
+                    return (
+                      <Piece
+                        key={client.id}
+                        id={client.id}
+                        emoji={client.emoji}
+                        color={color}
+                        position={position}
+                      />
+                    );
+                  }
 
-                if (wordIndex === 0 && position === null) {
                   return (
-                    <Piece
-                      key={client.id}
-                      id={client.id}
-                      emoji={client.emoji}
-                      color={color}
-                      position={position}
-                    />
+                    position === wordIndex && (
+                      <Piece
+                        key={client.id}
+                        id={client.id}
+                        emoji={client.emoji}
+                        color={color}
+                        position={position}
+                      />
+                    )
                   );
-                }
-
-                return (
-                  position === wordIndex && (
-                    <Piece
-                      key={client.id}
-                      id={client.id}
-                      emoji={client.emoji}
-                      color={color}
-                      position={position}
-                    />
-                  )
-                );
-              })}
-          </AnimateSharedLayout>
+                })}
+            </AnimateSharedLayout>
+          )}
         </div>
       ) : (
         <div key={wordIndex} className={styles.wrapper} id={`word-${wordIndex}`}>
           <Word word={word} />
 
-          <AnimateSharedLayout>
-            {clients
-              .filter((object) => object.id !== clientId)
-              .map((client) => {
-                const { position, color } = client.gamePiece;
+          {clients.length > 1 && (
+            <AnimateSharedLayout>
+              {clients
+                .filter((object) => object.id !== clientId)
+                .map((client) => {
+                  const { position, color } = client.gamePiece;
 
-                if (wordIndex === 0 && position === null) {
+                  if (wordIndex === 0 && position === null) {
+                    return (
+                      <Piece
+                        key={client.id}
+                        id={client.id}
+                        emoji={client.emoji}
+                        color={color}
+                        position={position}
+                      />
+                    );
+                  }
+
                   return (
-                    <Piece
-                      key={client.id}
-                      id={client.id}
-                      emoji={client.emoji}
-                      color={color}
-                      position={position}
-                    />
+                    position === wordIndex && (
+                      <Piece
+                        key={client.id}
+                        id={client.id}
+                        emoji={client.emoji}
+                        color={color}
+                        position={position}
+                      />
+                    )
                   );
-                }
-
-                return (
-                  position === wordIndex && (
-                    <Piece
-                      key={client.id}
-                      id={client.id}
-                      emoji={client.emoji}
-                      color={color}
-                      position={position}
-                    />
-                  )
-                );
-              })}
-          </AnimateSharedLayout>
+                })}
+            </AnimateSharedLayout>
+          )}
         </div>
       )
     );

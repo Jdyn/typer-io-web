@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
@@ -7,7 +7,6 @@ import formatTime from '../../../util/formatTime';
 import Filter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
-import Adsense from '../../Shared/Adsense';
 
 const filters = [
   {
@@ -16,60 +15,27 @@ const filters = [
   }
 ];
 
-const Leaderboard = (): JSX.Element => {
+interface Props {
+  clientsComplete: number;
+}
+
+const Leaderboard = ({ clientsComplete }: Props): JSX.Element => {
   const snippet = useSelector((state: AppState) => state.game.room.snippet);
-  const clients = useSelector(
-    (state: AppState) =>
-      state.game.room.clients.map((client) => ({
-        id: client.id,
-        wpm: client?.gamePiece.wpm,
-        isComplete: client.gamePiece.isComplete
-      })) || []
-  );
-
   const [state, set] = useState([]);
-  const [oldSnippetId, setOldSnippetId] = useState(null);
-  //TODO: Seems like a hacky solution for updating the hiscores...
-  const [ids, setIds] = useState([]);
 
-  const fetchHiscores = (id) => {
+  const fetchHiscores = useCallback((id) => {
     if (id) {
       ApiService.fetch(`/snippet/${id}/matches`).then((response) => {
         if (response.ok) {
           set(response.result.matches);
-          setOldSnippetId(id);
-        }
-      });
-
-      if (id !== oldSnippetId) {
-        setIds([]);
-      }
-    }
-  };
-
-  useEffect(() => {
-    // So, every time a client finishes, we check a few things
-    // to determine if we should fetch the hiscores again for a seemingly
-    // live update.
-    if (clients?.length > 0) {
-      const lastEntry = state[state.length - 1] || { wpm: 0 };
-
-      clients.forEach((client) => {
-        if (
-          client.isComplete &&
-          client.wpm > lastEntry.wpm &&
-          !ids.includes(client.id)
-        ) {
-          fetchHiscores(snippet?.id);
-          setIds([...ids, client.id]);
         }
       });
     }
-  }, [set, state, clients, snippet?.id, setIds, ids]);
+  }, []);
 
   useEffect(() => {
     fetchHiscores(snippet?.id);
-  }, [snippet?.id]);
+  }, [clientsComplete, fetchHiscores, snippet?.id]);
 
   return (
     <div className={styles.root}>
@@ -84,11 +50,7 @@ const Leaderboard = (): JSX.Element => {
                   <span className={item.user ? styles.verified : ''}>
                     {item.user?.username ? (
                       <Link href={`/u/${item.user.username}`}>
-                        <a
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className={styles.nameLink}
-                        >
+                        <a target="_blank" rel="noreferrer noopener" className={styles.nameLink}>
                           {item.user?.username}
                         </a>
                       </Link>
@@ -99,9 +61,7 @@ const Leaderboard = (): JSX.Element => {
                       <span className={styles.newBadge}>NEW</span>
                     )}
                   </span>
-                  <div className={styles.timestamp}>
-                    {formatTime(item.created_at)}
-                  </div>
+                  <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                 </div>
                 <div className={styles.item}>{item.wpm} WPM</div>
               </div>

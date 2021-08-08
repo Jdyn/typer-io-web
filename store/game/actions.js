@@ -13,6 +13,7 @@ const defaultRoom = {
     wordsRemaining: [],
     wordsComplete: [],
     isStarted: false,
+    clientsComplete: 0,
     gameTime: null
   }
 };
@@ -24,8 +25,7 @@ export const updateClient = (payload) => {
   return { type: actions.CLIENT_UPDATE, payload };
 };
 
-export const sendChatMessage = (payload) =>
-  silentEmit(actions.SEND_CHAT_MESSAGE, payload);
+export const sendChatMessage = (payload) => silentEmit(actions.SEND_CHAT_MESSAGE, payload);
 
 export const leaveRoom = (_payload) => (dispatch, _getState) => {
   silentClose();
@@ -36,7 +36,7 @@ export const leaveRoom = (_payload) => (dispatch, _getState) => {
     error: '',
     errored: false
   });
-}
+};
 // silentEmit(types.DISCONNECT_SOCKET, payload);
 
 export const initSocket = (user, config) => {

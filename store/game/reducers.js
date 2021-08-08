@@ -31,6 +31,34 @@ const initialState = {
   }
 };
 
+const gameboardUpdate = (clients, gamePieces) => {
+  if (gamePieces) {
+    return clients.map((client, index) => {
+      const newPiece = gamePieces[index];
+
+      return {
+        ...client,
+        gamePiece: {
+          ...client.gamePiece,
+          ...newPiece,
+          color: client.gamePiece.color
+        }
+      };
+    });
+  }
+  return clients;
+};
+
+const updateRoomChat = (newMessage, messages) => {
+  if (Array.isArray(newMessage)) {
+    return newMessage;
+  }
+
+  const copy = [...messages];
+  copy.push(newMessage);
+  return copy;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CLIENT_UPDATE':
@@ -91,12 +119,10 @@ const reducer = (state = initialState, action) => {
           ...state.room,
           gameboard: {
             ...state.room.gameboard,
-            gameTime: action.payload.gameTime || state.room.gameboard.gameTime
+            gameTime: action.payload.gameTime || state.room.gameboard.gameTime,
+            clientsComplete: action.payload.clientsComplete || state.room.gameboard.clientsComplete
           },
-          clients: gameboardUpdate(
-            [...state.room.clients],
-            action.payload.gamePieces
-          )
+          clients: gameboardUpdate([...state.room.clients], action.payload.gamePieces)
         }
       };
 
@@ -194,34 +220,6 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
-
-const gameboardUpdate = (clients, gamePieces) => {
-  if (gamePieces) {
-    return clients.map((client, index) => {
-      const newPiece = gamePieces[index];
-
-      return {
-        ...client,
-        gamePiece: {
-          ...client.gamePiece,
-          ...newPiece,
-          color: client.gamePiece.color
-        }
-      };
-    });
-  }
-  return clients;
-};
-
-const updateRoomChat = (newMessage, messages) => {
-  if (Array.isArray(newMessage)) {
-    return newMessage;
-  }
-
-  const copy = [...messages];
-  copy.push(newMessage);
-  return copy;
 };
 
 export default reducer;

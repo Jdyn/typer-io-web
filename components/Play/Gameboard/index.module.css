@@ -113,6 +113,7 @@
   font-kerning: none;
   text-decoration: underline;
   transition: color 0.045s ease-in;
+  color: var(--text);
 }
 
 .correct {

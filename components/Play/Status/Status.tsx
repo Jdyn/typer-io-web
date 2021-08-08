@@ -53,10 +53,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       switch (currentState) {
         case states.room:
           if (roomTime) {
-            const seconds = roomTime.substring(
-              roomTime.length - 2,
-              roomTime.length
-            );
+            const seconds = roomTime.substring(roomTime.length - 2, roomTime.length);
             const time = parseInt(seconds, 10);
             if (time <= 0) {
               setState(states.game);
@@ -67,10 +64,7 @@ const PlayStatus = (props: Props): JSX.Element => {
         case states.game:
           if (gameTime) {
             const minutes = gameTime.substring(1, 2);
-            const seconds = gameTime.substring(
-              gameTime.length - 2,
-              gameTime.length
-            );
+            const seconds = gameTime.substring(gameTime.length - 2, gameTime.length);
             return parseInt(seconds, 10) + parseInt(minutes, 10) * 60;
           }
           return null;
@@ -147,21 +141,24 @@ const PlayStatus = (props: Props): JSX.Element => {
   return (
     <>
       <div className={styles.root}>
-        {!isCustom &&
-          (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) && (
-            <div className={styles.buttonContainer}>
-              <Button padding="8px" onClick={(): void => handleNewPublicGame()}>
-                new game
-              </Button>
-            </div>
-          )}
+        {!isCustom && (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) && (
+          <div className={styles.buttonContainer}>
+            <Button
+              padding="8px"
+              margin="0px 0px 5px 0px"
+              onClick={(): void => handleNewPublicGame()}
+            >
+              new game
+            </Button>
+          </div>
+        )}
 
         {isCustom && currrentClient.isHost && (
           <div className={styles.buttonContainer}>
-            <Button padding="8px" onClick={(): void => handleClick()}>
+            <Button padding="8px" margin="0px 5px 5px 0px" onClick={(): void => handleClick()}>
               lobby
             </Button>
-            <Button padding="8px" onClick={(): void => handleNewGame()}>
+            <Button padding="8px" margin="0px 0px 5px 5px" onClick={(): void => handleNewGame()}>
               new game
             </Button>
           </div>

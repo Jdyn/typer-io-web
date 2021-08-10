@@ -49,16 +49,16 @@ const Hiscores = (): JSX.Element => {
 
       setBoard(leaderboards[query as string]);
 
-      if (type === null) {
+      if (!type) {
         router.push(`/hiscores?query=${query}&page=${1}&type=all`);
       }
     }
   }, [dispatch, page, query, router, router.isReady, type]);
 
   const setPage = (index, newType?: string): void => {
-    if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
-      router.push(`/hiscores?query=${query}&page=${index}&type=${newType}`);
-    }
+    // if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
+    router.push(`/hiscores?query=${query}&page=${index}&type=${newType}`);
+    // }
   };
 
   const changePage = (itemQuery: string) => {

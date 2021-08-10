@@ -11,8 +11,8 @@ const formTemplate = {
     title: 'New Account',
     fields: [
       { name: 'email', type: 'email' },
-      { name: 'Username', type: 'username' },
-      { name: 'Password', type: 'password' }
+      { name: 'username', type: 'username' },
+      { name: 'password', type: 'password' }
     ],
     submit: 'sign up'
   },
@@ -20,8 +20,8 @@ const formTemplate = {
     type: 'login',
     title: 'Existing Account',
     fields: [
-      { name: 'Username', type: 'username', placeholder: '' },
-      { name: 'Password', type: 'password' }
+      { name: 'username', type: 'username', placeholder: '' },
+      { name: 'password', type: 'password' }
     ],
     submit: 'log in'
   }

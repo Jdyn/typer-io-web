@@ -149,13 +149,13 @@ const Hiscores = (): JSX.Element => {
                 onClick={() => setPage(itemPage?.page + 1)}
                 type="button"
               >{`>`}</button>
-              <button
+              {/* <button
                 className={styles.pageButton}
                 onClick={() => setPage(itemPage?.maxPage)}
                 type="button"
               >
                 {itemPage?.maxPage || 1}
-              </button>
+              </button> */}
             </div>
           </div>
         </Paper>

@@ -14,11 +14,8 @@ import Profile from '../Home/Profile';
 import copyToClipboard from '../../util/copyToClipboard';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
-interface Props {
-  isCustom?: boolean;
-}
-const LobbyPage = (props: Props): JSX.Element => {
-  const { isCustom } = props;
+
+const LobbyPage = (): JSX.Element => {
   const router = useRouter();
   const room = useSelector((state: AppState) => state.game.room);
   const game = useSelector((state: AppState) => state.game);
@@ -83,7 +80,7 @@ const LobbyPage = (props: Props): JSX.Element => {
               <div className={styles.setting}>
                 <h3>Maximum Players</h3>
                 <div className={styles.difficultyWrapper}>
-                  {[5, 10, 15, 20, 25, 30, 40, 50, 60].map((key) => (
+                  {[5, 10, 15, 20, 25, 30, 35].map((key) => (
                     <button
                       type="button"
                       key={key}
@@ -102,13 +99,9 @@ const LobbyPage = (props: Props): JSX.Element => {
                   <h3>Kick Players</h3>
                   {game?.room?.clients?.map((client) => (
                     <div key={client.id} className={styles.client}>
-                      <span style={{ color: client.gamePiece.color }}>
-                        {client.username}
-                      </span>
+                      <span style={{ color: client.gamePiece.color }}>{client.username}</span>
                       {client.id !== currrentClient.id && (
-                        <Button onClick={() => handleKick(client.id)}>
-                          kick
-                        </Button>
+                        <Button onClick={() => handleKick(client.id)}>kick</Button>
                       )}
                     </div>
                   ))}
@@ -143,16 +136,13 @@ const LobbyPage = (props: Props): JSX.Element => {
                 <span>Click the link to copy!</span>
                 <div className={styles.linkContainer}>
                   <button
+                    type="button"
                     id="lobby-link"
                     className={styles.lobbyLink}
                     style={{ filter: hidden ? 'blur(4px)' : '' }}
                     onClick={() => copyToClipboard('lobby-link', setCopied)}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
-                  <Button
-                    margin="0px"
-                    padding="0px 5px"
-                    onClick={() => setHidden(!hidden)}
-                  >
+                  <Button margin="0px" padding="0px 5px" onClick={() => setHidden(!hidden)}>
                     {hidden ? 'show' : 'hide'}
                   </Button>
                   <span>{copied ? 'Copied!' : ''}</span>
@@ -177,10 +167,7 @@ const LobbyPage = (props: Props): JSX.Element => {
         <Chat isCustom />
         <section className={styles.aContainer3}>
           <div className={styles.profileContainer}>
-            <Profile
-              requireSave
-              onClick={(payload) => handleUserUpdate(payload)}
-            />
+            <Profile requireSave onClick={(payload) => handleUserUpdate(payload)} />
           </div>
           <Adsense
             path={router.pathname}

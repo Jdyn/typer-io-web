@@ -31,7 +31,7 @@ export const fetchHiscores = (query: HiscoreQueryTypes) => async (
   }
 };
 
-export const fetchUserHiscores = (query, page) => async (
+export const fetchUserHiscores = (query, page, type) => async (
   dispatch,
   getState
 ): Promise<void> => {
@@ -43,7 +43,7 @@ export const fetchUserHiscores = (query, page) => async (
   dispatch(setRequest(true, requestType));
 
   const response = await Api.fetch(
-    `/leaderboards/${query.toLowerCase()}?page=${page}`
+    `/leaderboards/${query.toLowerCase()}?page=${page}${type !== undefined ? `&type=${type}` : ''}`
   );
 
   const key = snakeToCamel(query.toLowerCase());

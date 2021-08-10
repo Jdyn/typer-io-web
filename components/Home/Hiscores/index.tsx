@@ -4,23 +4,19 @@ import Link from 'next/link';
 import styles from './index.module.css';
 import Paper from '../../Shared/Paper';
 import { fetchHiscores } from '../../../store/hiscores/actions';
-import Filter from '../../Shared/Filter';
+import IFilter from '../../Shared/Filter';
 import { HiscoreQueryTypes } from '../../../store/hiscores/types';
 import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
 
-interface Props {
-  children?: ReactNode;
-}
-
 const filters = [
   { name: 'daily', key: 'DAY' },
   { name: 'weekly', key: 'WEEK' },
-  { name: 'monthly', key: 'MONTH' },
+  { name: 'monthly', key: 'MONTH' }
   // { name: 'all time', key: 'ALL' }
 ];
 
-const Hiscores = (_props: Props): JSX.Element => {
+const Hiscores = (): JSX.Element => {
   const [filterIndex, setFilterIndex] = useState(0);
   const dispatch = useDispatch();
   const request = useSelector((state: AppState) => state.request);
@@ -50,7 +46,7 @@ const Hiscores = (_props: Props): JSX.Element => {
   return (
     <section className={styles.root}>
       <Paper title="Hiscores">
-        <Filter
+        <IFilter
           onClick={(index): void => setFilterIndex(index)}
           filters={filters}
           selectedIndex={filterIndex}
@@ -79,13 +75,10 @@ const Hiscores = (_props: Props): JSX.Element => {
                   </span>
                   {renderBadge(item.user)}
                 </div>
-                <div className={styles.timestamp}>
-                  {formatTime(item.created_at)}
-                </div>
+                <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                 <div className={styles.item}>{item.accuracy} %</div>
                 <div className={styles.item}>
-                  {item.wpm}{' '}
-                  {session.user?.isAdmin && <span>{`(${item.id})`}</span>}
+                  {item.wpm} {session.user?.isAdmin && <span>{`(${item.id})`}</span>}
                 </div>
               </div>
             ))}

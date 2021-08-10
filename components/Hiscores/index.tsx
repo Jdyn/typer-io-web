@@ -7,45 +7,62 @@ import { fetchUserHiscores } from '../../store/hiscores/actions';
 import { AppState } from '../../store';
 import Paper from '../Shared/Paper';
 import snakeToCamel from '../../util/snakeToCamel';
+import IFilter from '../Shared/Filter';
 
-const filterItems = {
+const leaderboards = {
+  top_speed: {
+    title: 'Top Speed',
+    query: 'top_speed',
+    fields: [{ name: 'Top WPM', key: 'wpm' }],
+    filters: [
+      { name: 'all', key: 'all' },
+      { name: 'easy', key: 'easy' },
+      { name: 'medium', key: 'medium' },
+      { name: 'hard', key: 'hard' }
+    ]
+  },
   top_matches: {
     title: 'Top Matches',
     query: 'top_matches',
     fields: [{ name: 'Matches', key: 'matchCount' }]
-  },
-  top_speed: {
-    title: 'Top Speed',
-    query: 'top_speed',
-    fields: [{ name: 'Top WPM', key: 'topWpm' }]
+    // filters: [
+    //   { name: 'all', key: 'all' },
+    //   { name: 'easy', key: 'easy' },
+    //   { name: 'medium', key: 'medium' },
+    //   { name: 'hard', key: 'hard' }
+    // ]
   }
 };
 
 const Hiscores = (): JSX.Element => {
   const router = useRouter();
-  const { page, query } = router.query;
+  const { page, query, type } = router.query;
   const dispatch = useDispatch();
-  const [filters, setFilters] = useState(filterItems[query as string] || {});
+  const [board, setBoard] = useState(leaderboards[query as string] || {});
   const itemPage = useSelector(
     (state: AppState) => state.hiscores[snakeToCamel((query as string) || '')]
   );
 
   useEffect(() => {
     if (router.isReady) {
-      dispatch(fetchUserHiscores((query as string).toUpperCase(), page as string));
+      dispatch(fetchUserHiscores((query as string).toUpperCase(), page as string, type));
 
-      setFilters(filterItems[query as string]);
+      setBoard(leaderboards[query as string]);
+
+      if (type === null) {
+        router.push(`/hiscores?query=${query}&page=${1}&type=all`);
+      }
     }
-  }, [dispatch, page, query, router.isReady]);
+  }, [dispatch, page, query, router, router.isReady, type]);
 
-  const setPage = (index: number): void => {
+  const setPage = (index, newType?: string): void => {
     if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
-      router.push(`/hiscores?query=${query}&page=${index}`);
+      router.push(`/hiscores?query=${query}&page=${index}&type=${newType}`);
     }
   };
 
   const changePage = (itemQuery: string) => {
-    router.push(`/hiscores?query=${itemQuery}&page=${1}`);
+    router.push(`/hiscores?query=${itemQuery}&page=${1}&type=${type || 'all'}`);
   };
 
   const renderBadge = (user): ReactNode => {
@@ -61,8 +78,8 @@ const Hiscores = (): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.filter}>
-        {Object.keys(filterItems).map((key) => {
-          const item = filterItems[key];
+        {Object.keys(leaderboards).map((key) => {
+          const item = leaderboards[key];
           return (
             <button
               type="button"
@@ -76,11 +93,17 @@ const Hiscores = (): JSX.Element => {
         })}
       </div>
       <section className={styles.hiscores}>
-        <Paper title={filters.title}>
+        <Paper title={`${board.title} ${query === 'top_speed' ? `- ${type} quotes` : ''}`}>
+          {board.filters && (
+            <IFilter
+              filters={board.filters || []}
+              onClick={(_index, filter) => setPage(page, filter.name)}
+            />
+          )}
           <div className={styles.header}>
             <div className={`${styles.count} ${styles.headerItem}`}>#</div>
             <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
-            {filters?.fields?.map((field) => (
+            {board?.fields?.map((field) => (
               <div key={field.key} className={styles.headerItem}>
                 {field.name}
               </div>
@@ -88,7 +111,7 @@ const Hiscores = (): JSX.Element => {
           </div>
           <div className={styles.container}>
             <div className={styles.wrapper}>
-              {itemPage?.users?.map((item, index) => (
+              {itemPage?.data?.map((item, index) => (
                 <Link href={`/u/${item.username}`}>
                   <div className={styles.entry} key={item.id}>
                     <div className={styles.count}>
@@ -99,10 +122,12 @@ const Hiscores = (): JSX.Element => {
                       )}
                     </div>
                     <div className={styles.content}>
-                      <span className={styles.verified}>{item.username}</span>
+                      <span className={styles.verified}>
+                        {item.username || item.user?.username}
+                      </span>
                       {renderBadge(item)}
                     </div>
-                    {filters?.fields?.map((field) => (
+                    {board?.fields?.map((field) => (
                       <div key={field.key}>{item[field.key]}</div>
                     ))}
                   </div>

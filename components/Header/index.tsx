@@ -17,9 +17,7 @@ const Header = (): JSX.Element => {
   const [form, setForm] = useState({ search: '' });
 
   const session = useSelector((state: AppState) => state.session);
-  const authenticationRequest = useSelector(
-    (state: AppState) => state.request.AUTHENTICATE
-  );
+  const authenticationRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
 
   const navigate = (event): void => {
     event.preventDefault();
@@ -45,8 +43,8 @@ const Header = (): JSX.Element => {
               <Link prefetch={false} href="/forum">
                 <a href="/forum">discuss</a>
               </Link>
-              <Link prefetch={false} href="/hiscores?query=top_matches&page=1">
-                <a href="/hiscores?query=top_matches&page=1">hiscores</a>
+              <Link prefetch={false} href="/hiscores?query=top_speed&page=1&type=all">
+                <a href="/hiscores?query=top_speed&page=1&type=all">hiscores</a>
               </Link>
             </nav>
             <div className={styles.searchContainer}>
@@ -76,19 +74,9 @@ const Header = (): JSX.Element => {
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? (
-                <Image
-                  width="26px"
-                  height="26px"
-                  src={sun}
-                  alt="light-mode sun"
-                />
+                <Image width="26px" height="26px" src={sun} alt="light-mode sun" />
               ) : (
-                <Image
-                  width="26px"
-                  height="26px"
-                  src={moon}
-                  alt="dark-mode moon"
-                />
+                <Image width="26px" height="26px" src={moon} alt="dark-mode moon" />
               )}
             </button>
             <Dropdown

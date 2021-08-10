@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
 import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
-import Filter from '../../Shared/Filter';
+import IFilter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
@@ -40,7 +40,7 @@ const Leaderboard = ({ clientsComplete }: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <Paper title="Hiscores">
-        <Filter fontSize="15" filters={filters} onClick={null} />
+        <IFilter fontSize="15" filters={filters} onClick={null} />
         <div className={styles.container}>
           <div className={styles.wrapper}>
             {state.map((item, index) => (

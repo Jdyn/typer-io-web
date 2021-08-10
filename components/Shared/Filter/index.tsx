@@ -1,17 +1,17 @@
 import { useState, useEffect, memo } from 'react';
 import styles from './index.module.css';
 
-interface Filter {
+interface IFilter {
   name: string;
   key: string;
 }
 
 interface Props {
-  filters: Filter[];
+  filters: IFilter[];
   selectedIndex?: number;
   extended?: boolean;
   noSelect?: boolean;
-  onClick?: (currentIndex?: number, filter?: Filter) => void;
+  onClick?: (currentIndex?: number, filter?: IFilter) => void;
   untargetableIndices: number[];
   fontSize?: string;
 }

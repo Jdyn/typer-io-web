@@ -57,7 +57,7 @@ const Hiscores = (): JSX.Element => {
 
   const setPage = (index, newType?: string): void => {
     // if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
-    router.push(`/hiscores?query=${query}&page=${index}&type=${newType}`);
+    router.push(`/hiscores?query=${query}&page=${index}&type=${newType || type}`);
     // }
   };
 

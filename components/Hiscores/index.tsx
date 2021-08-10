@@ -112,7 +112,7 @@ const Hiscores = (): JSX.Element => {
           <div className={styles.container}>
             <div className={styles.wrapper}>
               {itemPage?.data?.map((item, index) => (
-                <Link href={`/u/${item.username}`}>
+                <Link href={`/u/${item.username || item.user?.username}`}>
                   <div className={styles.entry} key={item.id}>
                     <div className={styles.count}>
                       {itemPage.page > 1 ? (

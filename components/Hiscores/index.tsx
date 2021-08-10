@@ -116,7 +116,7 @@ const Hiscores = (): JSX.Element => {
                   <div className={styles.entry} key={item.id}>
                     <div className={styles.count}>
                       {itemPage.page > 1 ? (
-                        <span>{50 * (itemPage?.page - 1) + index + 1}</span>
+                        <span>{itemPage?.data.length * (itemPage?.page - 1) + index + 1}</span>
                       ) : (
                         <span>{index + 1}</span>
                       )}

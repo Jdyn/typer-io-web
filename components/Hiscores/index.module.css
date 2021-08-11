@@ -59,12 +59,21 @@
   border: none;
 }
 
+.name {
+  display: flex;
+  position: relative;
+  margin: 0 5px;
+  flex: 2;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .content {
   display: flex;
   position: relative;
-  flex: 2;
+  flex: 1;
   margin: 0 5px;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -75,9 +84,9 @@
   position: relative;
   margin: 0 30px;
   /* width: 480px; */
+  color: var(--subtext);
   border-bottom: 2px solid var(--border);
   padding: 12px 12px 12px 12px;
-  color: var(--text);
 }
 
 .item {

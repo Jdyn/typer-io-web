@@ -9,6 +9,7 @@ interface IFilter {
 interface Props {
   filters: IFilter[];
   selectedIndex?: number;
+  selectedFilter?: string;
   extended?: boolean;
   noSelect?: boolean;
   onClick?: (currentIndex?: number, filter?: IFilter) => void;
@@ -22,16 +23,23 @@ const Filter = (props: Props): JSX.Element => {
     selectedIndex,
     onClick,
     untargetableIndices,
+    selectedFilter,
     extended,
     noSelect,
     fontSize
   } = props;
 
-  const [state, set] = useState(selectedIndex || 0);
+  const [state, set] = useState<number | string>(selectedIndex || 0);
 
   useEffect(() => {
-    if (selectedIndex < filters.length) set(selectedIndex);
-  }, [selectedIndex, filters]);
+    if (selectedIndex) {
+      set(selectedIndex);
+    }
+
+    if (selectedFilter) {
+      set(selectedFilter);
+    }
+  }, [selectedIndex, filters, selectedFilter]);
 
   const handleClick = (index: number): void => {
     if (typeof onClick === 'function') {
@@ -44,7 +52,7 @@ const Filter = (props: Props): JSX.Element => {
     <div className={`${styles.root} ${extended ? styles.extended : ''} `}>
       {filters.map((filter, index) => {
         const disabled = untargetableIndices.includes(index);
-        const select = state === index && !noSelect;
+        const select = (state === index || state === filter.key) && !noSelect;
         return (
           <button
             key={filter.name}
@@ -67,7 +75,9 @@ const Filter = (props: Props): JSX.Element => {
 };
 
 Filter.defaultProps = {
-  untargetableIndices: []
+  untargetableIndices: [],
+  selectedFilter: null,
+  selectedIndex: null
 } as Partial<Props>;
 
 export default memo(Filter);

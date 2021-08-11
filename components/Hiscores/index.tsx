@@ -8,12 +8,16 @@ import { AppState } from '../../store';
 import Paper from '../Shared/Paper';
 import snakeToCamel from '../../util/snakeToCamel';
 import IFilter from '../Shared/Filter';
+import formatTime from '../../util/formatTime';
 
 const leaderboards = {
   top_speed: {
     title: 'Top Speed',
     query: 'top_speed',
-    fields: [{ name: 'Top WPM', key: 'wpm' }],
+    fields: [
+      { name: 'Date', key: 'createdAt' },
+      { name: 'Top WPM', key: 'wpm' }
+    ],
     filters: [
       { name: 'all', key: 'all' },
       { name: 'easy', key: 'easy' },
@@ -94,17 +98,43 @@ const Hiscores = (): JSX.Element => {
       </div>
       <section className={styles.hiscores}>
         <Paper title={`${board.title} ${query === 'top_speed' ? `- ${type} quotes` : ''}`}>
+          <div className={styles.pagination}>
+            <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
+              1
+            </button>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(itemPage?.page - 1)}
+              type="button"
+            >{`<`}</button>
+            <span>{itemPage?.page}</span>
+            <button
+              className={styles.pageButton}
+              onClick={() => setPage(itemPage?.page + 1)}
+              type="button"
+            >{`>`}</button>
+            {itemPage?.maxPage && (
+              <button
+                className={styles.pageButton}
+                onClick={() => setPage(itemPage?.maxPage)}
+                type="button"
+              >
+                {itemPage?.maxPage || 1}
+              </button>
+            )}
+          </div>
           {board.filters && (
             <IFilter
+              selectedFilter={type as string}
               filters={board.filters || []}
               onClick={(_index, filter) => setPage(page, filter.name)}
             />
           )}
           <div className={styles.header}>
             <div className={`${styles.count} ${styles.headerItem}`}>#</div>
-            <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
+            <div className={`${styles.name} ${styles.headerItem}`}>Name</div>
             {board?.fields?.map((field) => (
-              <div key={field.key} className={styles.headerItem}>
+              <div key={field.key} className={styles.content}>
                 {field.name}
               </div>
             ))}
@@ -112,8 +142,11 @@ const Hiscores = (): JSX.Element => {
           <div className={styles.container}>
             <div className={styles.wrapper}>
               {itemPage?.data?.map((item, index) => (
-                <Link href={`/u/${item.username || item.user?.username}`}>
-                  <div className={styles.entry} key={item.id}>
+                <Link
+                  key={item.username || item.user?.username}
+                  href={`/u/${item.username || item.user?.username}`}
+                >
+                  <div className={styles.entry}>
                     <div className={styles.count}>
                       {itemPage.page > 1 ? (
                         <span>{itemPage?.data.length * (itemPage?.page - 1) + index + 1}</span>
@@ -121,14 +154,16 @@ const Hiscores = (): JSX.Element => {
                         <span>{index + 1}</span>
                       )}
                     </div>
-                    <div className={styles.content}>
+                    <div className={styles.name}>
                       <span className={styles.verified}>
                         {item.username || item.user?.username}
                       </span>
                       {renderBadge(item)}
                     </div>
                     {board?.fields?.map((field) => (
-                      <div key={field.key}>{item[field.key]}</div>
+                      <div key={field.key} className={styles.content}>
+                        {field.key === 'createdAt' ? formatTime(item[field.key]) : item[field.key]}
+                      </div>
                     ))}
                   </div>
                 </Link>
@@ -149,13 +184,15 @@ const Hiscores = (): JSX.Element => {
                 onClick={() => setPage(itemPage?.page + 1)}
                 type="button"
               >{`>`}</button>
-              {/* <button
-                className={styles.pageButton}
-                onClick={() => setPage(itemPage?.maxPage)}
-                type="button"
-              >
-                {itemPage?.maxPage || 1}
-              </button> */}
+              {itemPage?.maxPage && (
+                <button
+                  className={styles.pageButton}
+                  onClick={() => setPage(itemPage?.maxPage)}
+                  type="button"
+                >
+                  {itemPage?.maxPage || 1}
+                </button>
+              )}
             </div>
           </div>
         </Paper>

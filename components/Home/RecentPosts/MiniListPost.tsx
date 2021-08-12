@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
+import { Post } from '../../../store/forum/types';
 import formatTime from '../../../util/formatTime';
 import styles from './index.module.css';
 
-const MiniListPost = (props) => {
+interface Props {
+  post: Post;
+}
+
+const MiniListPost = (props: Props): JSX.Element => {
   const { post } = props;
 
   return (

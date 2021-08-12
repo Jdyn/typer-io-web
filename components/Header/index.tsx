@@ -40,7 +40,7 @@ const Header = (): JSX.Element => {
               <Link prefetch={false} href="/">
                 <a href="/">home</a>
               </Link>
-              <Link prefetch={false} href="/forum">
+              <Link prefetch={false} href="/forum?page=1">
                 <a href="/forum">discuss</a>
               </Link>
               <Link prefetch={false} href="/hiscores?query=top_speed&page=1&type=all">

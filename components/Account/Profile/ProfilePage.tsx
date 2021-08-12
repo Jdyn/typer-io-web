@@ -7,7 +7,7 @@ import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
-import MiniListPost from '../../Home/RecentPosts/Post';
+import MiniListPost from '../../Home/RecentPosts/MiniListPost';
 import { ProfileUser } from '../../../store/session/types';
 
 interface Props {

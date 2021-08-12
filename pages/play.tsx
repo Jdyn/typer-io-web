@@ -34,8 +34,8 @@ const PlayContainer = (): JSX.Element => {
   useEffect(() => {
     return () => {
       dispatch(leaveRoom({ id: RoomId, errored: false }));
-    }
-  }, [dispatch])
+    };
+  }, [dispatch]);
 
   return (
     <Layout

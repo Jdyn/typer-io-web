@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-import { updatePost } from '../../../store/forum/reducers';
-import { fetchPost } from '../../../store/forum/actions';
 import formatTime from '../../../util/formatTime';
 import Adsense from '../../Shared/Adsense';
 import TextBox from '../../Shared/TextBox';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import Banner from '../../Shared/Banner';
-import Api from '../../../services/api';
-import Comments from './Comments';
+import PostComment from './PostComment';
+import { useAddPostCommentMutation, useGetPostQuery } from '../../../services/forum';
 
-import styles from './index.module.css';
+import styles from './PostPage.module.css';
 
 interface Props {
   postId: string;
@@ -22,33 +19,20 @@ interface Props {
 
 const Post = (props: Props): JSX.Element => {
   const { postId } = props;
-  const dispatch = useDispatch();
   const router = useRouter();
+
+  const { data: post } = useGetPostQuery(postId);
+  const [addPostComment, { status }] = useAddPostCommentMutation();
+
   const [newComment, setComment] = useState({ body: '', parentId: null });
 
-  useEffect(() => {
-    if (postId) {
-      dispatch(fetchPost(postId));
-    }
-  }, [dispatch, postId]);
-
-  const post = useSelector((state: AppState) => state.forum?.post);
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
 
   useEffect(() => {
-    return () => {
-      dispatch(updatePost({ post: null }));
-    };
-  }, [dispatch]);
-
-  const submitComment = (): void => {
-    Api.post(`/forum/posts/${postId}/comments`, newComment).then((response) => {
-      if (response.ok) {
-        dispatch(fetchPost(postId));
-        setComment((prev) => ({ ...prev, body: '' }));
-      }
-    });
-  };
+    if (status === 'fulfilled') {
+      setComment((prev) => ({ ...prev, body: '' }));
+    }
+  }, [status]);
 
   return (
     <div className={styles.root}>
@@ -56,7 +40,6 @@ const Post = (props: Props): JSX.Element => {
         <Adsense
           client="ca-pub-3148839588626786"
           slot="1319118588"
-          style={{ display: 'block' }}
           format="auto"
           responsive="true"
         />
@@ -75,7 +58,7 @@ const Post = (props: Props): JSX.Element => {
                 <div className={styles.header}>
                   <h1>{post.title}</h1>
                   <span>
-                    posted by{' '}
+                    Posted by{' '}
                     <Link href={`/u/${post.user?.username}`}>
                       <a className={styles.nameLink}>{post.user?.username}</a>
                     </Link>{' '}
@@ -93,7 +76,10 @@ const Post = (props: Props): JSX.Element => {
                       onChange={(e) => setComment({ ...newComment, body: e.target.value })}
                     />
                     <div className={styles.buttons}>
-                      <Button padding="6px 20px" onClick={submitComment}>
+                      <Button
+                        padding="6px 20px"
+                        onClick={() => addPostComment({ comment: newComment, postId })}
+                      >
                         comment
                       </Button>
                       <Button
@@ -121,7 +107,9 @@ const Post = (props: Props): JSX.Element => {
           </Banner>
           <div className={styles.commentsContainer}>
             {!isLoggedIn && <span>Log in to comment on this post</span>}
-            <Comments comments={post?.comments || []} />
+            {post?.comments?.map((comment) => (
+              <PostComment key={comment.id} comment={comment} postId={postId} />
+            ))}
           </div>
         </div>
       </div>

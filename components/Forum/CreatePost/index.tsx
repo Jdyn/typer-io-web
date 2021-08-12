@@ -1,45 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import Banner from '../../Shared/Banner';
 import TextBox from '../../Shared/TextBox';
 import Button from '../../Shared/Button';
-import { createPost } from '../../../store/forum/actions';
-import { AppState } from '../../../store';
+import { useAddPostMutation } from '../../../services/forum';
 
 const CreatePost = (): JSX.Element => {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const createPostRequest = useSelector(
-    (state: AppState) =>
-      state.request.CREATE_NEW_POST || {
-        success: false,
-        errored: false,
-        isPending: false,
-        error: null
-      }
-  );
+  const [addPost, { data: post, status, isLoading, isError, error }] = useAddPostMutation();
 
-  const newPostId = useSelector(
-    (state: AppState) => state.forum.post?.id || null
-  );
   const [form, setForm] = useState({
     title: '',
     body: ''
   });
 
   useEffect(() => {
-    if (createPostRequest.success && newPostId) {
-      router.push(`/forum/post/${newPostId}`);
+    if (status === 'fulfilled') {
+      router.push(`/forum/post/${post.id}`);
     }
-  }, [createPostRequest, newPostId, router]);
+  }, [post, router, status]);
 
-  const handleClick = (event): void => {
-    event.preventDefault();
-
-    dispatch(createPost(form));
+  const parseErrors = () => {
+    const { errors } = error.data;
+    return (
+      <>
+        {Object.keys(errors).map((key) => (
+          <div>{`${key} ${errors[key][0]}`}</div>
+        ))}
+      </>
+    );
   };
 
   return (
@@ -49,7 +40,6 @@ const CreatePost = (): JSX.Element => {
           <h3>Create Post</h3>
         </Banner>
         <div className={styles.wrapper}>
-          {createPostRequest.errored && <span>{createPostRequest.error}</span>}
           <TextBox
             className={styles.text}
             maxLength="100"
@@ -65,13 +55,9 @@ const CreatePost = (): JSX.Element => {
             onChange={(e): void => setForm({ ...form, body: e.target.value })}
             placeholder="The contents of your post."
           />
+          {isError && <div className={styles.errors}>{parseErrors()}</div>}
           <div className={styles.buttonContainer}>
-            <Button
-              color="#fff"
-              padding="10px"
-              isPending={createPostRequest?.isPending || false}
-              onClick={handleClick}
-            >
+            <Button color="#fff" padding="10px" isPending={isLoading} onClick={() => addPost(form)}>
               create post
             </Button>
             <Link href="/forum">

@@ -1,3 +1,5 @@
+import { User } from "../session/types";
+
 export const forumRequests: {
   FETCH_POSTS_BY_RECENT: 'FETCH_POSTS_BY_RECENT';
   FETCH_POSTS_BY_FEED: 'FETCH_POSTS_BY_FEED';
@@ -49,6 +51,7 @@ export interface Comment {
   body: string;
   comments: Comment[];
   createdAt: string;
+  user: User;
   depth: number;
   id: number;
   replyable: boolean;

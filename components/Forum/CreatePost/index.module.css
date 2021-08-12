@@ -19,12 +19,22 @@
 }
 
 .buttonContainer {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
+  gap: 10px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   padding: 20px;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--red);
 }

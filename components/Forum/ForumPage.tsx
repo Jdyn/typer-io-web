@@ -1,28 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-import { fetchPosts } from '../../store/forum/actions';
 import formatTime from '../../util/formatTime';
 import Adsense from '../Shared/Adsense';
 import { AppState } from '../../store';
 import Banner from '../Shared/Banner';
+import { useGetPostsQuery } from '../../services/forum';
+import useNextQueryParams from '../../util/useNextQueryParam';
 
-import styles from './index.module.css';
+import styles from './ForumPage.module.css';
 
 const ForumPage = (): JSX.Element => {
+  const { page } = useNextQueryParams();
   const router = useRouter();
-  const dispatch = useDispatch();
-  const feed = useSelector((state: AppState) => state.forum.feed);
-  const session = useSelector((state: AppState) => state.session);
-  const { page } = router.query;
+  const { data: feed } = useGetPostsQuery({ query: 'feed', page });
 
-  useEffect(() => {
-    if (router.isReady) {
-      dispatch(fetchPosts('feed', page as string));
-    }
-  }, [dispatch, page, router.isReady]);
+  const session = useSelector((state: AppState) => state.session);
 
   const setPage = (index) => {
     if (index <= feed?.totalPages && index >= 1 && index !== feed?.page) {
@@ -55,7 +49,7 @@ const ForumPage = (): JSX.Element => {
           </Banner>
           <div className={styles.feedContainer}>
             <div className={styles.feedWrapper}>
-              {feed.data?.map((post) => (
+              {feed?.data?.map((post) => (
                 <li className={styles.feedItem} key={post.id}>
                   <div className={styles.portrait} />
                   <div className={styles.feedContent}>

@@ -46,11 +46,8 @@ const defaultListeners = (dispatch) => {
       dispatch({
         type: types.DISCONNECT_SOCKET,
         room: defaultRoom,
-        error:
-          reason !== 'io client disconnect'
-            ? ''
-            : 'failed to connect to server.',
-        errored: reason !== 'io client disconnect' ? true : false
+        error: reason !== 'io client disconnect' ? '' : 'failed to connect to server.',
+        errored: reason !== 'io client disconnect'
       });
     });
 
@@ -135,8 +132,7 @@ const middleware = (url) => {
   };
 };
 
-export const silentEmit = (type, payload) =>
-  socket && socket.emit(type, payload);
+export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
 
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
 

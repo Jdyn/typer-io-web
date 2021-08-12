@@ -66,10 +66,9 @@
 }
 
 .buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  height: 50px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .statusBar {

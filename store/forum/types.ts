@@ -14,12 +14,6 @@ export const forumRequests: {
 
 export type PostQueryTypes = 'recent' | 'feed';
 
-export interface ForumState {
-  post: Post;
-  feed: ListResponse<MiniPost>;
-  recent: ListResponse<MiniPost>;
-}
-
 export interface MiniPost {
   body: string;
   commentCount: number;
@@ -44,7 +38,7 @@ export interface Post {
   upvotes: number;
   user: { isAdmin: boolean; insertedAt: string; username: string };
   visitCount: string;
-  comments: Comment[];
+  comments?: Comment[];
 }
 
 export interface Comment {

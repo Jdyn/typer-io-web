@@ -1,6 +1,5 @@
-import { useEffect, useMemo, memo, Dispatch, SetStateAction, useCallback } from 'react';
+import { useEffect, useMemo, memo, Dispatch, SetStateAction } from 'react';
 import { useSelector } from 'react-redux';
-import { AnimateSharedLayout } from 'framer-motion';
 import Banner from '../../Shared/Banner';
 import Word from './Word';
 import Piece from './Piece';
@@ -61,7 +60,7 @@ const Gameboard = (props: Props): JSX.Element => {
             wrongIndex={wrongIndex}
           />
           {clients.length > 1 && (
-            <AnimateSharedLayout>
+            <>
               {clients
                 .filter((object) => object.id !== clientId)
                 .map((client) => {
@@ -91,7 +90,7 @@ const Gameboard = (props: Props): JSX.Element => {
                     )
                   );
                 })}
-            </AnimateSharedLayout>
+            </>
           )}
         </div>
       ) : (
@@ -99,7 +98,7 @@ const Gameboard = (props: Props): JSX.Element => {
           <Word word={word} />
 
           {clients.length > 1 && (
-            <AnimateSharedLayout>
+            <>
               {clients
                 .filter((object) => object.id !== clientId)
                 .map((client) => {
@@ -129,7 +128,7 @@ const Gameboard = (props: Props): JSX.Element => {
                     )
                   );
                 })}
-            </AnimateSharedLayout>
+            </>
           )}
         </div>
       )

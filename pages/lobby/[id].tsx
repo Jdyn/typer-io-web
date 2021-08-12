@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { LazyMotion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Lobby from '../../components/Lobby';
 import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
 import { AppState } from '../../store';
 import Layout from '../../components/Layout';
+
+const loadFeatures = () => import('../../util/framerfeatures').then((res) => res.default);
 
 const LobbyContainer = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -55,11 +58,15 @@ const LobbyContainer = (): JSX.Element => {
 
   return isStarted ? (
     <Layout striped>
-      <Play isCustom />
+      <LazyMotion features={loadFeatures} strict>
+        <Play isCustom />
+      </LazyMotion>
     </Layout>
   ) : (
     <Layout striped>
-      <Lobby />
+      <LazyMotion features={loadFeatures} strict>
+        <Lobby />
+      </LazyMotion>
     </Layout>
   );
 };

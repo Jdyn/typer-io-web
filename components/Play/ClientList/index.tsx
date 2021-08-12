@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
@@ -54,7 +54,7 @@ const ClientList = (props): JSX.Element => {
           {users?.length > 5 ? (
             <AnimatePresence>
               {users.map((item) => (
-                <motion.div
+                <m.div
                   className={styles.card}
                   style={{ marginBottom: '10px' }}
                   initial="initial"
@@ -81,25 +81,21 @@ const ClientList = (props): JSX.Element => {
                           {item.username}
                         </span>
                         <div className={styles.wpm}>
-                          {item.gamePiece.wpm}{' '}
-                          <span className={styles.statHeader}>WPM</span>
+                          {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
                         </div>
-                        <div
-                          className={styles.placement}
-                          style={{ color: item.gamePiece.color }}
-                        >
+                        <div className={styles.placement} style={{ color: item.gamePiece.color }}>
                           {placements(item.gamePiece?.rank) || '-'}
                         </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </AnimatePresence>
           ) : (
             <AnimatePresence>
               {users.map((item) => (
-                <motion.div
+                <m.div
                   className={styles.card}
                   initial="initial"
                   animate="enter"
@@ -139,19 +135,15 @@ const ClientList = (props): JSX.Element => {
                           {item.username}
                         </span>
                         <div className={styles.wpm}>
-                          {item.gamePiece.wpm}{' '}
-                          <span className={styles.statHeader}>WPM</span>
+                          {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
                         </div>
-                        <div
-                          className={styles.placement}
-                          style={{ color: item.gamePiece.color }}
-                        >
+                        <div className={styles.placement} style={{ color: item.gamePiece.color }}>
                           {placements(item.gamePiece?.rank) || '-'}
                         </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </AnimatePresence>
           )}

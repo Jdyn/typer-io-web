@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { LazyMotion } from 'framer-motion';
 import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';
 import { AppState } from '../store';
 import Layout from '../components/Layout';
+
+const loadFeatures = () => import('../util/framerfeatures').then((res) => res.default);
 
 const PlayContainer = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -33,12 +36,14 @@ const PlayContainer = (): JSX.Element => {
   useEffect(() => {
     return () => {
       dispatch(leaveRoom({ id: RoomId, errored: false }));
-    }
-  }, [dispatch])
+    };
+  }, [dispatch]);
 
   return (
     <Layout striped title="Solo Play | Improve on your own">
-      <Play isSolo />
+      <LazyMotion features={loadFeatures} strict>
+        <Play isSolo />
+      </LazyMotion>
     </Layout>
   );
 };

@@ -74,9 +74,9 @@ const Header = (): JSX.Element => {
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? (
-                <Image width="26px" height="26px" src={sun} alt="light-mode sun" />
+                <Image quality="45" width="26px" height="26px" src={sun} alt="light-mode sun" />
               ) : (
-                <Image width="26px" height="26px" src={moon} alt="dark-mode moon" />
+                <Image quality="45" width="26px" height="26px" src={moon} alt="dark-mode moon" />
               )}
             </button>
             <Dropdown

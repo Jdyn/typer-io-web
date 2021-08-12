@@ -4,7 +4,6 @@ import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import request from './request/reducers';
 import session from './session/reducers';
 import hiscores from './hiscores/reducers';
-import forum from './forum/reducers';
 import game from './game/reducers';
 import socket from '../services/socket';
 

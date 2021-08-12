@@ -34,12 +34,12 @@ const Footer = (): JSX.Element => {
             <h3>Forums</h3>
             <ul>
               <li>
-                <Link href="/forum">
+                <Link prefetch={false} href="/forum">
                   <a>Posts</a>
                 </Link>
               </li>
               <li>
-                <Link href="/forum/post">
+                <Link prefetch={false} href="/forum/post">
                   <a>Create Post</a>
                 </Link>
               </li>

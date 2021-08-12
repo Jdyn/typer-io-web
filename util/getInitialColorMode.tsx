@@ -3,10 +3,7 @@ import { createContext, useState, ReactNode, useEffect } from 'react';
 export default function getInitialTheme() {
   const persistedColorPreference = window.localStorage.getItem('theme');
 
-  if (
-    persistedColorPreference === 'light' ||
-    persistedColorPreference === 'dark'
-  ) {
+  if (persistedColorPreference === 'light' || persistedColorPreference === 'dark') {
     return persistedColorPreference;
   }
 
@@ -38,9 +35,5 @@ export const ThemeProvider = ({ children }: Props): JSX.Element => {
     document.body.className = theme;
   }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };

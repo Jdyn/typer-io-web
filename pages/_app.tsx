@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import ReactGA from 'react-ga';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
 import { ThemeProvider } from '../util/getInitialColorMode';
 import { authenticate } from '../store/session/actions';
@@ -8,12 +8,14 @@ import { wrapper } from '../store';
 
 import '../public/static/styles/global.css';
 
-// ((): void => {
-//   ReactGA.initialize('UA-135635293-4', {});
-// })();
+((): void => {
+  ReactGA.initialize('UA-135635293-4', {
+    gaOptions: { siteSpeedSampleRate: 100 }
+  });
+})();
 
 interface IApp {
-  Component: React.FC<{err: string}>;
+  Component: React.FC<{ err: string }>;
   pageProps: Record<string, unknown>;
   err: string;
 }

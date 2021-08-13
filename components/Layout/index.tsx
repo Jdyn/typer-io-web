@@ -1,5 +1,6 @@
 import { useEffect, ReactNode } from 'react';
 import Head from 'next/head';
+import ReactGA from 'react-ga';
 import Header from '../Header';
 import styles from './index.module.css';
 import Footer from '../Footer';
@@ -13,6 +14,10 @@ interface Props {
 
 const Layout = (props: Props): JSX.Element => {
   const { children, striped, title, description } = props;
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, [children]);
 
   return (
     <>

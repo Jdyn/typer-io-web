@@ -81,13 +81,56 @@ const ProfilePage = (props: Props): JSX.Element => {
           <div>{error && error}</div>
         </div>
       </div>
-      <div className={styles.statsContainer}>
+      <div className={styles.statsRoot}>
+        <div className={styles.avgContainer}>
+          <Banner>
+            <h3>Averages</h3>
+          </Banner>
+          <div className={styles.overviewRoot}>
+            <div className={styles.statItemContainer}>
+              <div className={styles.statItem}>
+                <div>WPM</div>
+                <span>{user?.averageWpm}</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Accuracy</div>
+                <span>{user?.averageAccuracy}%</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Errors Per Game</div>
+                <span>{user?.averageErrors}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.statsContainer}>
+          <Banner>
+            <h3>Stats</h3>
+          </Banner>
+          <div className={styles.overviewRoot}>
+            <div className={styles.statItemContainer}>
+              <div className={styles.statItem}>
+                <div>Highest WPM</div>
+                <span>{user?.topWpm}</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Games Won</div>
+                <span>{user?.totalWins}</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Games Played</div>
+                <span>{user?.matchCount}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.about}>
         <Banner>
-          <h3>Overview</h3>
+          <h3>About</h3>
         </Banner>
         <div className={styles.overviewRoot}>
           <div className={styles.statItemContainer}>
-            <h3>About</h3>
             <div className={styles.statItem}>
               <div>Country</div>
               <span>{user?.country || 'Not set'}</span>
@@ -99,36 +142,6 @@ const ProfilePage = (props: Props): JSX.Element => {
             <div className={styles.statItem}>
               <div>Gender</div>
               <span>{user?.gender || 'Not set'}</span>
-            </div>
-          </div>
-          <div className={styles.statItemContainer}>
-            <h3>Averages</h3>
-            <div className={styles.statItem}>
-              <div>WPM</div>
-              <span>{user?.averageWpm}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Accuracy</div>
-              <span>{user?.averageAccuracy}%</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Errors Per Game</div>
-              <span>{user?.averageErrors}</span>
-            </div>
-          </div>
-          <div className={styles.statItemContainer}>
-            <h3>Stats</h3>
-            <div className={styles.statItem}>
-              <div>Highest WPM</div>
-              <span>{user?.topWpm}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Games Won</div>
-              <span>{user?.totalWins}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Games Played</div>
-              <span>{user?.matchCount}</span>
             </div>
           </div>
         </div>

@@ -50,6 +50,8 @@ export interface ProfileUser {
   topWpm: number;
   bio: string;
   id: number;
+  age?: number;
+  gender?: string;
   insertedAt: string;
   isAdmin: boolean;
   matchCount: number;
@@ -57,6 +59,7 @@ export interface ProfileUser {
   averageErrors: number;
   matchMaxPage: number;
   matchPage: number;
+  country?: string;
   matches: Match[];
   posts: MiniPost[];
   username: string;

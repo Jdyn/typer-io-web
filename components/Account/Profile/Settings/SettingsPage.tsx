@@ -76,7 +76,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                       {countries.map((country) => (
                         <DropdownMenu.Item
                           key={country.text}
-                          onSelect={(e): void =>
+                          onSelect={(e: any): void =>
                             setForm({
                               ...form,
                               country: country.text === 'Not set' ? null : e.target.innerText
@@ -113,7 +113,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                       {['Not set', 'Male', 'Female', 'Other'].map((gender) => (
                         <DropdownMenu.Item
                           key={gender}
-                          onSelect={(e): void =>
+                          onSelect={(e: any): void =>
                             setForm({
                               ...form,
                               gender: gender === 'Not set' ? null : e.target.innerText

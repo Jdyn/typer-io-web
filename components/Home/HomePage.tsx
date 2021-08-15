@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1628704714483);
+const updated = formatTime(1629002045834);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -76,9 +76,9 @@ const HomePage = (): JSX.Element => {
                 <h3>Changes (August 10th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Added more profile stats and customizations</li>
                     <li>Added top speed per quote difficulty leaderboards</li>
                     <li>Large gameplay performance improvements</li>
-                    <li>Small fixes and improvements</li>
                   </ul>
                 </div>
               </div>

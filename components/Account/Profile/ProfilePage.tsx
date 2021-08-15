@@ -18,7 +18,7 @@ const ProfilePage = (props: Props): JSX.Element => {
   const { username } = props;
 
   const [user, set] = useState<ProfileUser | null>(null);
-  const [error, setError] = useState<String | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const sessionUser = useSelector((state: AppState) => state.session.user);
 
   useEffect(() => {
@@ -85,27 +85,51 @@ const ProfilePage = (props: Props): JSX.Element => {
         <Banner>
           <h3>Overview</h3>
         </Banner>
-        <h3>All-Time Averages</h3>
-        <div className={styles.statItemWrapper}>
-          <div className={styles.statsItem}>
-            <h3>Matches</h3>
-            <span>{user?.matchCount}</span>
-            <div>Played</div>
+        <div className={styles.overviewRoot}>
+          <div className={styles.statItemContainer}>
+            <h3>About</h3>
+            <div className={styles.statItem}>
+              <div>Country</div>
+              <span>{user?.country || 'Not set'}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Age</div>
+              <span>{user?.age || 'Not set'}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Gender</div>
+              <span>{user?.gender || 'Not set'}</span>
+            </div>
           </div>
-          <div className={styles.statsItem}>
-            <h3>Speed</h3>
-            <span>{user?.averageWpm}</span>
-            <div>WPM</div>
+          <div className={styles.statItemContainer}>
+            <h3>Averages</h3>
+            <div className={styles.statItem}>
+              <div>WPM</div>
+              <span>{user?.averageWpm}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Accuracy</div>
+              <span>{user?.averageAccuracy}%</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Errors</div>
+              <span>{user?.averageErrors}</span>
+            </div>
           </div>
-          <div className={styles.statsItem}>
-            <h3>Accuracy</h3>
-            <span>{user?.averageAccuracy}</span>
-            <div>Percent</div>
-          </div>
-          <div className={styles.statsItem}>
-            <h3>Top Speed</h3>
-            <span>{user?.topWpm}</span>
-            <div>WPM</div>
+          <div className={styles.statItemContainer}>
+            <h3>Stats</h3>
+            <div className={styles.statItem}>
+              <div>Highest WPM</div>
+              <span>{user?.topWpm}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Games Won</div>
+              <span>{user?.totalWins}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Games Played</div>
+              <span>{user?.matchCount}</span>
+            </div>
           </div>
         </div>
       </div>

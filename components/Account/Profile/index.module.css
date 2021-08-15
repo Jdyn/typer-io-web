@@ -4,14 +4,13 @@
   margin: 145px auto 125px auto;
   padding: 0px 10px;
   grid-template-columns: 1.2fr 2fr 1.2fr;
-  grid-template-rows: min-content 1fr 100px 1fr;
+  grid-template-rows: min-content min-content 1fr;
   max-width: 1250px;
   gap: 20px;
   grid-template-areas:
-    'profile stats friends'
+    'profile stats stats'
     'profile history friends'
-    '. history friends'
-    '. history .';
+    '. history friends';
 }
 
 @media only screen and (max-width: 814px) {
@@ -62,6 +61,7 @@
   justify-content: center;
   align-items: center;
   height: min-content;
+  min-height: 300px;
   width: 100%;
   flex-direction: column;
   margin-bottom: 20px;
@@ -209,6 +209,12 @@
   flex: 0.3;
 }
 
+.overviewRoot {
+  display: flex;
+  flex: row;
+  margin: 20px;
+}
+
 .statsContainer {
   background: var(--primary-main);
   box-shadow: var(--shadow);
@@ -221,45 +227,49 @@
   margin: 20px 20px 0px 20px;
 }
 
-.statsItem {
+.statItem {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
   flex: 1;
-  margin: 5px;
-  height: 125px;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 15px;
+  margin-bottom: 10px;
 }
 
-.statsItem > h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.statsItem > span {
+.statItem > span {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 14px;
   flex: 1;
 }
 
-.statsItem > div {
+.statItem > div {
   color: var(--subtext);
 }
 
-.statItemWrapper {
+.statItemContainer {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 15px;
+}
+
+.statItemContainer:nth-child(2) {
+  margin: 0px 20px;
+}
+
+.statItemContainer > h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: 100%;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 .friendsList {

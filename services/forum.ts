@@ -3,6 +3,7 @@ import { ListResponse, Post } from '../store/forum/types';
 
 const forumApi = createApi({
   reducerPath: 'forum',
+  keepUnusedDataFor: 300,
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.API_URL,
     prepareHeaders: (headers) => {

@@ -17,7 +17,6 @@
 .container {
   margin: 20px;
   border: 2px solid var(--border);
-  height: 535px;
   padding: 20px;
   overflow: hidden;
   border-radius: 16px;
@@ -57,4 +56,55 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.success {
+  margin: 15px 0px;
+  padding: 15px;
+  background: var(--green);
+  border-radius: 6px;
+  width: 100%;
+}
+
+.error {
+  margin: 15px 0px;
+  padding: 15px;
+  background: var(--red);
+  border-radius: 6px;
+  width: 100%;
+}
+
+.dropdown {
+  display: flex;
+  width: 100%;
+  background: var(--secondary-main);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.dropdownList {
+  max-height: 50vh;
+  overflow-y: scroll;
+  background: var(--primary-main);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: 15px 10px;
+}
+
+.dropdownList > div {
+  padding: 5px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+
+.dropdownList > div:hover {
+  cursor: pointer;
+  background: var(--secondary-main);
+  border: 2px solid var(--border);
+}
+
+.dropdownList > span {
+  fill: var(--primary-main);
 }

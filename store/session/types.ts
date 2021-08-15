@@ -53,6 +53,8 @@ export interface ProfileUser {
   insertedAt: string;
   isAdmin: boolean;
   matchCount: number;
+  totalWins: number;
+  averageErrors: number;
   matchMaxPage: number;
   matchPage: number;
   matches: Match[];

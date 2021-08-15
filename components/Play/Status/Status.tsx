@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
 import { silentClose, silentEmit } from '../../../services/socket';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import { GameboardState } from '../../../store/game/types';
-import { initSocket } from '../../../store/game/actions';
 
 const states = {
   room: 'ROOM',
@@ -20,22 +19,50 @@ interface Props {
   gameboard: GameboardState;
 }
 
+const keys = { Control: false };
+
 const PlayStatus = (props: Props): JSX.Element => {
   const { gameboard, isCustom, isSolo } = props;
   const socket = useSelector((state: AppState) => state.game.socket);
   const room = useSelector((state: AppState) => state.game.room);
   const [state, setState] = useState(states.room);
-  const dispatch = useDispatch();
   const [header, setHeader] = useState({
     color: '#469cd0',
     text: 'Connecting to server...'
   });
 
-  const game = useSelector((state: AppState) => state.game);
+  const game = useSelector((appState: AppState) => appState.game);
   const currrentClient = useMemo(
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
   );
+
+  useEffect(() => {
+    const keyDown = (event) => {
+      if (event.key === 'Control') {
+        keys[event.key] = true;
+      }
+      if (keys.Control && event.key === 'a') {
+        if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
+          silentClose();
+        }
+      }
+    };
+
+    const keyUp = (event) => {
+      if (event.key === 'Control') {
+        keys[event.key] = false;
+      }
+    };
+
+    document.addEventListener('keyup', keyUp);
+    document.addEventListener('keydown', keyDown);
+
+    return () => {
+      document.removeEventListener('keydown', keyDown);
+      document.removeEventListener('keyup', keyUp);
+    };
+  }, [currrentClient?.gamePiece?.isComplete, room.gameboard.isOver]);
 
   useEffect(() => {
     if (game.room.gameboard.gameTime === '') {

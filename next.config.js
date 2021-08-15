@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-param-reassign */
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const basePath = '';
 
@@ -19,21 +19,21 @@ module.exports = {
     ignoreDuringBuilds: true
   },
   env: {
-    BASE_URL: true ? PROD_BASE_URL : DEV_BASE_URL,
-    API_URL: true ? PROD_API_URL : DEV_API_URL,
-    SOCKET_URL: true ? PROD_SOCKET_URL : DEV_SOCKET_URL
+    BASE_URL: false ? PROD_BASE_URL : DEV_BASE_URL,
+    API_URL: false ? PROD_API_URL : DEV_API_URL,
+    SOCKET_URL: false ? PROD_SOCKET_URL : DEV_SOCKET_URL
   },
-  basePath,
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    if (true) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
-          analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true
-        })
-      );
-    }
-    return config;
-  }
+  basePath
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   if (true) {
+  //     config.plugins.push(
+  //       new BundleAnalyzerPlugin({
+  //         analyzerMode: 'server',
+  //         analyzerPort: isServer ? 8888 : 8889,
+  //         openAnalyzer: true
+  //       })
+  //     );
+  //   }
+  //   return config;
+  // }
 };

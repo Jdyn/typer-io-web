@@ -112,7 +112,7 @@ const ProfilePage = (props: Props): JSX.Element => {
               <span>{user?.averageAccuracy}%</span>
             </div>
             <div className={styles.statItem}>
-              <div>Errors</div>
+              <div>Errors Per Game</div>
               <span>{user?.averageErrors}</span>
             </div>
           </div>

@@ -1,38 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FixedSizeList as List } from 'react-window';
 import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import Paper from '../../Shared/Paper';
+import emojiList from '../../../lib/emojis';
 
 interface Props {
   requireSave?: boolean;
   onClick?: (object) => void | null;
 }
 
-const emojiList = [
-  '🦍',
-  '🦧',
-  '💩',
-  '🐀',
-  '🍆',
-  '⛷️',
-  '🐌',
-  '🐔',
-  '🍌',
-  '🌵',
-  '🐍',
-  '🦽'
-];
-
 const Profile = (props: Props): JSX.Element => {
   const { requireSave, onClick } = props;
 
   const nickname = useSelector((state: AppState) => state.session.nickname);
-  const sessionName = useSelector(
-    (state: AppState) => state.session.user?.username
-  );
+  const sessionName = useSelector((state: AppState) => state.session.user?.username);
 
   const dispatch = useDispatch();
 
@@ -72,35 +57,61 @@ const Profile = (props: Props): JSX.Element => {
     }
   };
 
+  const Row = ({
+    index,
+    style
+  }: {
+    index: number;
+    style: Record<string | number, string & Record<string, unknown>>;
+  }) => {
+    const items = [];
+    const fromIndex = index * 4;
+    const toIndex = Math.min(fromIndex + 4, emojiList.length);
+
+    for (let i = fromIndex; i < toIndex; i += 1) {
+      items.push(
+        <button
+          type="button"
+          key={emojiList[i]}
+          onClick={(): void => handleEmojiPick(emojiList[i])}
+          className={`${styles.emoji} ${currentEmoji === emojiList[i] ? styles.selected : ''}`}
+        >
+          {emojiList[i]}
+        </button>
+      );
+    }
+
+    return (
+      <div className={styles.row} style={style}>
+        {items}
+      </div>
+    );
+  };
+
   return (
     <Paper title="You">
       <div className={styles.wrapper}>
+        <div className={styles.header}>
+          <div className={styles.portrait}>{currentEmoji}</div>
+          <input
+            id="nicknameInput"
+            className={styles.input}
+            value={nickname || ''}
+            maxLength={21}
+            placeholder="Enter nickname"
+            onChange={didChange}
+          />
+        </div>
         <div className={styles.content}>
-          <div className={styles.header}>
-            <div className={styles.portrait}>{currentEmoji}</div>
-            <input
-              id="nicknameInput"
-              className={styles.input}
-              value={nickname || ''}
-              maxLength={21}
-              placeholder="Enter nickname"
-              onChange={didChange}
-            />
-          </div>
-          <div className={styles.emojis}>
-            {emojiList.map((item) => (
-              <button
-                type="button"
-                key={item}
-                onClick={(): void => handleEmojiPick(item)}
-                className={`${styles.emoji} ${
-                  currentEmoji === item ? styles.selected : ''
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+          <List
+            className={styles.emojis}
+            itemCount={emojiList.length / 4}
+            itemSize={42}
+            height={1500}
+            width={195}
+          >
+            {Row}
+          </List>
           {requireSave && (
             <div className={styles.buttonWrapper}>
               <Button padding="8px" onClick={(): void => handleUpdate()}>

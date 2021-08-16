@@ -22,7 +22,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 0px 20px 20px 20px;
+  padding: 10px;
   overflow: auto;
 }
 
@@ -85,7 +85,9 @@
   flex-wrap: wrap;
   max-height: 175px;
   justify-content: center;
-  padding: 10px 0px;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .emoji {
@@ -94,14 +96,21 @@
   border-radius: 50%;
   background: var(--secondary-main);
   padding: 5px;
+  width: 36px;
+  height: 36px;
   font-size: 16px;
-  margin: 3px;
+  margin: 3px 4px;
   cursor: pointer;
 }
 
 .emoji:hover {
   border-color: var(--accent);
   transition-duration: 0.15s;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }
 
 .selected {

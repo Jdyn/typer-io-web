@@ -65,9 +65,31 @@ const ProfilePage = (props: Props): JSX.Element => {
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
               <div>{sessionUser?.isAdmin && `ID: ${user?.id}`}</div>
             </div>
+            <div className={styles.aboutContainer}>
+              <h3>About</h3>
+              {user?.country && (
+                <div className={styles.statItem}>
+                  <div>Country</div>
+                  <span>{user?.country || 'Not set'}</span>
+                </div>
+              )}
+              {user?.age && (
+                <div className={styles.statItem}>
+                  <div>Age</div>
+                  <span>{user?.age || 'Not set'}</span>
+                </div>
+              )}
+              {user?.gender && (
+                <div className={styles.statItem}>
+                  <div>Gender</div>
+                  <span>{user?.gender || 'Not set'}</span>
+                </div>
+              )}
+            </div>
+
             {user && (
               <div className={styles.bio}>
-                {user.bio || "We don't know much about this person yet."}
+                {user?.bio || "We don't know much about this person yet."}
               </div>
             )}
           </div>
@@ -87,21 +109,6 @@ const ProfilePage = (props: Props): JSX.Element => {
         </Banner>
         <div className={styles.overviewRoot}>
           <div className={styles.statItemContainer}>
-            <h3>About</h3>
-            <div className={styles.statItem}>
-              <div>Country</div>
-              <span>{user?.country || 'Not set'}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Age</div>
-              <span>{user?.age || 'Not set'}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Gender</div>
-              <span>{user?.gender || 'Not set'}</span>
-            </div>
-          </div>
-          <div className={styles.statItemContainer}>
             <h3>Averages</h3>
             <div className={styles.statItem}>
               <div>WPM</div>
@@ -117,7 +124,7 @@ const ProfilePage = (props: Props): JSX.Element => {
             </div>
           </div>
           <div className={styles.statItemContainer}>
-            <h3>Stats</h3>
+            <h3>Records</h3>
             <div className={styles.statItem}>
               <div>Highest WPM</div>
               <span>{user?.topWpm}</span>

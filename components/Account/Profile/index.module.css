@@ -8,7 +8,7 @@
   max-width: 1250px;
   gap: 20px;
   grid-template-areas:
-    'profile stats stats'
+    'profile stats friends'
     'profile history friends'
     '. history friends';
 }
@@ -46,6 +46,26 @@
   flex-grow: 1;
 }
 
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+  padding: 20px 15px;
+}
+
+.aboutContainer > h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: 100%;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
 .profileContainer {
   display: flex;
   flex-direction: column;
@@ -64,7 +84,6 @@
   min-height: 300px;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 .content {
@@ -258,8 +277,8 @@
   padding: 15px;
 }
 
-.statItemContainer:nth-child(2) {
-  margin: 0px 20px;
+.statItemContainer:last-child {
+  margin-left: 20px;
 }
 
 .statItemContainer > h3 {

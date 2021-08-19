@@ -112,14 +112,14 @@ const Profile = (props: Props): JSX.Element => {
           >
             {Row}
           </List>
-          {requireSave && (
-            <div className={styles.buttonWrapper}>
-              <Button padding="8px" onClick={(): void => handleUpdate()}>
-                save
-              </Button>
-            </div>
-          )}
         </div>
+        {requireSave && (
+          <div className={styles.buttonWrapper}>
+            <Button padding="8px" margin="10px" onClick={(): void => handleUpdate()}>
+              save
+            </Button>
+          </div>
+        )}
       </div>
     </Paper>
   );

@@ -69,13 +69,11 @@ const Profile = (props: Props): JSX.Element => {
       username = sessionName;
     }
 
-    if (typeof onClick === 'function') {
-      onClick({
-        emoji: currentEmoji,
-        username
-      });
-    }
-  }, [currentEmoji, onClick, sessionName]);
+    handleUserUpdate({
+      emoji: currentEmoji,
+      username
+    });
+  }, [currentEmoji, handleUserUpdate, sessionName]);
 
   return (
     <Paper title="You">
@@ -96,7 +94,7 @@ const Profile = (props: Props): JSX.Element => {
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>
-            <Button padding="8px" margin="10px" onClick={handleUserUpdate}>
+            <Button padding="8px" margin="10px" onClick={handleUpdate}>
               save
             </Button>
           </div>

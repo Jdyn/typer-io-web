@@ -17,7 +17,7 @@ export const stateReducer = combineReducers({
   [forumApi.reducerPath]: forumApi.reducer
 });
 
-const appReducer = (state, action) => {
+const appReducer = (state, action): ReturnType<typeof stateReducer> => {
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload };
@@ -35,7 +35,7 @@ const makeStore = () =>
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
-export type AppState = ReturnType<AppStore['getState']>;
+export type AppState = ReturnType<typeof stateReducer>;
 export type AppDispatch = ReturnType<AppStore['dispatch']>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action>;
 

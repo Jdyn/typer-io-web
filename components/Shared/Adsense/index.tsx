@@ -30,38 +30,35 @@ const Adsense = (props: Props): JSX.Element => {
 
   useEffect(() => {
     try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
     } catch (e) {}
   }, []);
 
-  return typeof window !== 'undefined' &&
-    typeof (window as any).adsbygoogle !== 'undefined' ? (
+  return typeof window !== 'undefined' && typeof (window as any).adsbygoogle !== 'undefined' ? (
     // <div
     //   id={slot}
     //   key={path}
     //   className={styles.root}
     //   style={{ ...wrapperStyles }}
     // >
-      <ins
-        key={path}
-        className="adsbygoogle"
-        style={{ ...style }}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-layout={layout}
-        data-ad-layout-key={layoutKey}
-        data-ad-format={format}
-        data-full-width-responsive={false}
-      />
-    // </div>
+    <ins
+      key={path}
+      className="adsbygoogle"
+      style={style}
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-layout={layout}
+      data-ad-layout-key={layoutKey}
+      data-ad-format={format}
+      data-full-width-responsive={false}
+    />
   ) : (
+    // </div>
     <div id={slot}>
       <ins
         key={path}
         className={`adsbygoogle ${className}`}
-        style={{ ...style }}
+        style={style}
         data-ad-client={client}
         data-ad-slot={slot}
         data-ad-layout={layout}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ClientList from './ClientList';
 import Gameboard from './Gameboard';
@@ -247,4 +247,4 @@ Play.defaultProps = {
   isCustom: false
 };
 
-export default Play;
+export default React.memo(Play);

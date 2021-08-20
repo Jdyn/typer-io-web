@@ -15,25 +15,27 @@ interface Props {
   color?: string;
 }
 
-const Button = forwardRef((props: Props, ref: React.Ref<HTMLButtonElement>): JSX.Element => {
-  const { children, secondary, onClick, margin, padding, isPending, width, color, large } = props;
+const Button = forwardRef(
+  (props: Props, ref: React.Ref<HTMLButtonElement>): JSX.Element => {
+    const { children, secondary, onClick, margin, padding, isPending, width, color, large } = props;
 
-  return (
-    <button
-      type="submit"
-      ref={ref}
-      onClick={onClick}
-      disabled={isPending || false}
-      className={`
+    return (
+      <button
+        type="submit"
+        ref={ref}
+        onClick={onClick}
+        disabled={isPending || false}
+        className={`
         ${styles.button}
         ${secondary ? styles.secondary : styles.primary}
         ${large ? styles.large : ''}`}
-      style={{ margin, padding, width }}
-    >
-      {isPending ? <Loader width="20px" height="20px" color={color} /> : children}
-    </button>
-  );
-});
+        style={{ margin, padding, width }}
+      >
+        {isPending ? <Loader width="20px" height="20px" color={color} /> : children}
+      </button>
+    );
+  }
+);
 
 Button.defaultProps = {
   margin: '0px',

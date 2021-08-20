@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
@@ -7,6 +7,7 @@ import Paper from '../../Shared/Paper';
 import emojiList from '../../../lib/emojis';
 
 import styles from './index.module.css';
+import { silentEmit } from '../../../services/socket';
 
 interface Props {
   requireSave?: boolean;
@@ -40,7 +41,26 @@ const Profile = (props: Props): JSX.Element => {
     setEmoji(emoji);
   };
 
-  const handleUpdate = () => {
+  const handleUserUpdate = (payload) => {
+    silentEmit('CLIENT_SETTINGS_UPDATE', payload);
+  };
+
+  const emojis = useMemo(
+    () =>
+      emojiList.map((item) => (
+        <button
+          type="button"
+          key={item}
+          onClick={(): void => handleEmojiPick(item)}
+          className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
+        >
+          {item}
+        </button>
+      )),
+    [currentEmoji]
+  );
+
+  const handleUpdate = useCallback(() => {
     let username = localStorage?.getItem('nickname');
 
     // Necessary comparison operator
@@ -55,7 +75,7 @@ const Profile = (props: Props): JSX.Element => {
         username
       });
     }
-  };
+  }, [currentEmoji, onClick, sessionName]);
 
   return (
     <Paper title="You">
@@ -72,22 +92,11 @@ const Profile = (props: Props): JSX.Element => {
           />
         </div>
         <div className={styles.content}>
-          <div className={styles.emojis}>
-            {emojiList.map((item) => (
-              <button
-                type="button"
-                key={item}
-                onClick={(): void => handleEmojiPick(item)}
-                className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+          <div className={styles.emojis}>{emojis}</div>
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>
-            <Button padding="8px" margin="10px" onClick={(): void => handleUpdate()}>
+            <Button padding="8px" margin="10px" onClick={handleUserUpdate}>
               save
             </Button>
           </div>
@@ -102,4 +111,4 @@ Profile.defaultProps = {
   onClick: null
 };
 
-export default Profile;
+export default React.memo(Profile);

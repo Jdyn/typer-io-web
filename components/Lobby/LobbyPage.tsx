@@ -41,10 +41,6 @@ const LobbyPage = (): JSX.Element => {
     silentEmit('UPDATE_CUSTOM_GAME', payload);
   };
 
-  const handleUserUpdate = (payload) => {
-    silentEmit('CLIENT_SETTINGS_UPDATE', payload);
-  };
-
   const handleKick = (id: number): void => {
     silentEmit('KICK_PLAYER_CUSTOM_GAME', { id });
   };
@@ -113,7 +109,6 @@ const LobbyPage = (): JSX.Element => {
             path={router.pathname}
             client="ca-pub-3148839588626786"
             slot="7384036938"
-            style={{ display: 'block', textAlign: 'center' }}
             format="fluid"
             layout="in-article"
           />
@@ -167,13 +162,12 @@ const LobbyPage = (): JSX.Element => {
         <Chat isCustom />
         <section className={styles.aContainer3}>
           <div className={styles.profileContainer}>
-            <Profile requireSave onClick={(payload) => handleUserUpdate(payload)} />
+            <Profile requireSave />
           </div>
           <Adsense
             path={router.pathname}
             client="ca-pub-3148839588626786"
             slot="6675614018"
-            style={{ display: 'block', textAlign: 'center' }}
             format="fluid"
             layout="in-article"
           />

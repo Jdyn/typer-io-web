@@ -11,8 +11,8 @@ interface Props {
 
 const Chat = (props: Props): JSX.Element => {
   const { isCustom } = props;
-  const client = useSelector((state: AppState) => state.game.meta);
-  const messages = useSelector((state: AppState) => state.game.room.messages);
+  const client = {}; // useSelector((state: AppState) => state.game.meta);
+  const messages = []; // useSelector((state: AppState) => state.game.room.messages);
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -41,8 +41,7 @@ const Chat = (props: Props): JSX.Element => {
               <div className={styles.message} key={index}>
                 <span
                   style={{
-                    alignSelf:
-                      client.id === message.id ? 'flex-end' : 'flex-start'
+                    alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
                   }}
                 >
                   {message.username}
@@ -50,8 +49,7 @@ const Chat = (props: Props): JSX.Element => {
                 <div
                   style={{
                     background: message.color,
-                    alignSelf:
-                      client.id === message.id ? 'flex-end' : 'flex-start'
+                    alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
                   }}
                 >
                   {message.message}
@@ -75,4 +73,4 @@ const Chat = (props: Props): JSX.Element => {
   );
 };
 
-export default Chat;
+export default React.memo(Chat);

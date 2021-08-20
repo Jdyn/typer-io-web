@@ -41,7 +41,7 @@ const Word = (props: Props): JSX.Element => {
     for (let i = 0; i < word.length; i += 1) {
       if (i < currentLetter) {
         const element = document.getElementById(`letter-${i}`);
-        newLeft += element.getBoundingClientRect().width;
+        newLeft += element.offsetWidth;
       }
     }
 

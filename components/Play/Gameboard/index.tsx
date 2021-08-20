@@ -23,10 +23,10 @@ const Gameboard = (props: Props): JSX.Element => {
   const clients = useSelector((state: AppState) => state.game.room.clients);
   const snippet = useSelector((state: AppState) => state.game.room.snippet);
 
-  const client = useMemo(
-    () => clients?.filter((client) => client.id === clientId)[0],
-    [clientId, clients]
-  );
+  const client = useMemo(() => clients?.filter((item) => item.id === clientId)[0], [
+    clientId,
+    clients
+  ]);
 
   useEffect(() => {
     if (wrongIndex !== null) {
@@ -63,15 +63,15 @@ const Gameboard = (props: Props): JSX.Element => {
             <>
               {clients
                 .filter((object) => object.id !== clientId)
-                .map((client) => {
-                  const { position, color } = client.gamePiece;
+                .map((item) => {
+                  const { position, color } = item.gamePiece;
 
                   if (wordIndex === 0 && position === null) {
                     return (
                       <Piece
-                        key={client.id}
-                        id={client.id}
-                        emoji={client.emoji}
+                        key={item.id}
+                        id={item.id}
+                        emoji={item.emoji}
                         color={color}
                         position={position}
                       />
@@ -81,9 +81,9 @@ const Gameboard = (props: Props): JSX.Element => {
                   return (
                     position === wordIndex && (
                       <Piece
-                        key={client.id}
-                        id={client.id}
-                        emoji={client.emoji}
+                        key={item.id}
+                        id={item.id}
+                        emoji={item.emoji}
                         color={color}
                         position={position}
                       />
@@ -101,15 +101,15 @@ const Gameboard = (props: Props): JSX.Element => {
             <>
               {clients
                 .filter((object) => object.id !== clientId)
-                .map((client) => {
-                  const { position, color } = client.gamePiece;
+                .map((item) => {
+                  const { position, color } = item.gamePiece;
 
                   if (wordIndex === 0 && position === null) {
                     return (
                       <Piece
-                        key={client.id}
-                        id={client.id}
-                        emoji={client.emoji}
+                        key={item.id}
+                        id={item.id}
+                        emoji={item.emoji}
                         color={color}
                         position={position}
                       />
@@ -119,9 +119,9 @@ const Gameboard = (props: Props): JSX.Element => {
                   return (
                     position === wordIndex && (
                       <Piece
-                        key={client.id}
-                        id={client.id}
-                        emoji={client.emoji}
+                        key={item.id}
+                        id={item.id}
+                        emoji={item.emoji}
                         color={color}
                         position={position}
                       />
@@ -134,38 +134,6 @@ const Gameboard = (props: Props): JSX.Element => {
       )
     );
   }, [clientId, clients, currentIndex, currentInput, setEditorState, words, wrongIndex]);
-
-  //   <AnimateSharedLayout>
-  //   {clients
-  //     .filter((object) => object.id !== clientId)
-  //     .map((client) => {
-  //       const { position, color } = client.gamePiece;
-
-  //       if (wordIndex === 0 && position === null) {
-  //         return (
-  //           <Piece
-  //             key={client.id}
-  //             id={client.id}
-  //             emoji={client.emoji}
-  //             color={color}
-  //             position={position}
-  //           />
-  //         );
-  //       }
-
-  //       return (
-  //         position === wordIndex && (
-  //           <Piece
-  //             key={client.id}
-  //             id={client.id}
-  //             emoji={client.emoji}
-  //             color={color}
-  //             position={position}
-  //           />
-  //         )
-  //       );
-  //     })}
-  // </AnimateSharedLayout>
 
   return (
     <div className={styles.root}>

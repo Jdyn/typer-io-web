@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FixedSizeList as List } from 'react-window';
-import styles from './index.module.css';
 import { nicknameChanged } from '../../../store/session/reducers';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import Paper from '../../Shared/Paper';
 import emojiList from '../../../lib/emojis';
+
+import styles from './index.module.css';
 
 interface Props {
   requireSave?: boolean;
@@ -44,7 +44,7 @@ const Profile = (props: Props): JSX.Element => {
     let username = localStorage?.getItem('nickname');
 
     // Necessary comparison operator
-    // eslint-disable-next-line eqeqeq
+    // eslint-disable-next-line
     if (username == '' || !username) {
       username = sessionName;
     }
@@ -55,37 +55,6 @@ const Profile = (props: Props): JSX.Element => {
         username
       });
     }
-  };
-
-  const Row = ({
-    index,
-    style
-  }: {
-    index: number;
-    style: Record<string | number, string & Record<string, unknown>>;
-  }) => {
-    const items = [];
-    const fromIndex = index * 4;
-    const toIndex = Math.min(fromIndex + 4, emojiList.length);
-
-    for (let i = fromIndex; i < toIndex; i += 1) {
-      items.push(
-        <button
-          type="button"
-          key={emojiList[i]}
-          onClick={(): void => handleEmojiPick(emojiList[i])}
-          className={`${styles.emoji} ${currentEmoji === emojiList[i] ? styles.selected : ''}`}
-        >
-          {emojiList[i]}
-        </button>
-      );
-    }
-
-    return (
-      <div className={styles.row} style={style}>
-        {items}
-      </div>
-    );
   };
 
   return (
@@ -103,15 +72,18 @@ const Profile = (props: Props): JSX.Element => {
           />
         </div>
         <div className={styles.content}>
-          <List
-            className={styles.emojis}
-            itemCount={emojiList.length / 4}
-            itemSize={42}
-            height={1500}
-            width={195}
-          >
-            {Row}
-          </List>
+          <div className={styles.emojis}>
+            {emojiList.map((item) => (
+              <button
+                type="button"
+                key={item}
+                onClick={(): void => handleEmojiPick(item)}
+                className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>

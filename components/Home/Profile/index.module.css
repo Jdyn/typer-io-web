@@ -24,7 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0px;
   overflow: auto;
 }
 
@@ -97,11 +97,11 @@
   border: 2px solid transparent;
   border-radius: 50%;
   background: var(--secondary-main);
-  padding: 5px;
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  margin: 3px 4px;
+  padding: 0px;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  margin: 3px;
   cursor: pointer;
 }
 

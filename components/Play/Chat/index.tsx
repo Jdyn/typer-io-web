@@ -5,14 +5,9 @@ import { AppState } from '../../../store';
 import { sendChatMessage } from '../../../store/game/actions';
 import Paper from '../../Shared/Paper';
 
-interface Props {
-  isCustom?: boolean;
-}
-
-const Chat = (props: Props): JSX.Element => {
-  const { isCustom } = props;
-  const client = {}; // useSelector((state: AppState) => state.game.meta);
-  const messages = []; // useSelector((state: AppState) => state.game.room.messages);
+const Chat = (): JSX.Element => {
+  const client = useSelector((state: AppState) => state.game.meta);
+  const messages = useSelector((state: AppState) => state.game.room.messages);
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -64,7 +59,7 @@ const Chat = (props: Props): JSX.Element => {
             type="text"
             onChange={(e) => setInput(e.target.value)}
             value={input}
-            placeholder={'Write a message...'}
+            placeholder="Write a message..."
             required
           />
         </form>

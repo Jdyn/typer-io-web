@@ -22,7 +22,7 @@ const MiniListPost = (props: Props): JSX.Element => {
         </Link>
         <span>
           {`${formatTime(post.createdAt)} by `}
-          <Link href={`/u/${post.user.username}`}>
+          <Link prefetch={false} href={`/u/${post.user.username}`}>
             <a>{post.user.username}</a>
           </Link>
           {post.user.isAdmin && <span className={styles.admin}>Creator</span>}

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -6,11 +6,10 @@ interface Props {
   currentIndex?: number;
   input?: string[];
   wrongIndex?: number;
-  setEditorState?: any;
 }
 
 const Word = (props: Props): JSX.Element => {
-  const { word, currentIndex, input, wrongIndex, setEditorState } = props;
+  const { word, currentIndex, input, wrongIndex } = props;
 
   const validateLetter = (letterIndex: number): string => {
     if (input[letterIndex]) {
@@ -22,37 +21,24 @@ const Word = (props: Props): JSX.Element => {
         }
         return styles.correct;
       }
-
-      if (letterIndex < wrongIndex || wrongIndex === null) {
-        setEditorState((prev) => ({ ...prev, wrongIndex: letterIndex }));
-      }
-
       return styles.wrong;
     }
-
     return styles.base;
   };
 
-  const calculateWidth = (): number => {
-    let newLeft = 1;
-
-    const currentLetter = input.length;
+  const calculateWidth = useCallback(() => {
+    let newLeft = 0;
+    const currentLength = input.length;
 
     for (let i = 0; i < word.length; i += 1) {
-      if (i < currentLetter) {
+      if (i < currentLength) {
         const element = document.getElementById(`letter-${i}`);
         newLeft += element.offsetWidth;
       }
     }
 
-    const caret = document.getElementById('caret');
-
-    // if (currentLetter === word.length && wrongIndex === null) {
-    //   return newLeft + 8 + caret?.offsetWidth / 2 || 0;
-    // }
-
-    return newLeft + caret?.offsetWidth / 2 || 0;
-  };
+    return newLeft - 2;
+  }, [input.length, word.length]);
 
   return currentIndex !== null ? (
     <div className={`${styles.word} ${styles.current}`}>
@@ -95,9 +81,8 @@ const Word = (props: Props): JSX.Element => {
 
 Word.defaultProps = {
   currentIndex: null,
-  input: null,
-  wrongIndex: null,
-  setEditorState: null
+  input: [],
+  wrongIndex: null
 };
 
 export default memo(Word);

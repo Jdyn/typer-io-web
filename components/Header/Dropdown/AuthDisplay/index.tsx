@@ -1,27 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import AuthProfile from '../AuthProfile';
 import AuthMenu from '../AuthMenu';
-import styles from './index.module.css';
-import { Request } from '../../../../store/request/types';
+import { ModalTypes } from '../types';
+import { AppState } from '../../../../store';
 
-interface Props {
-  children?: JSX.Element;
-  session: any;
-  handleAuth: (type: string, form: object) => void;
-  sessionRequest: Request;
-}
-
-export type Types = 'login' | 'signup' | 'profile' | 'menu' | '';
-
-const AuthDisplay: React.FC<Props> = (props: Props) => {
-  const { session, sessionRequest } = props;
-
-  const [type, setType] = useState<Types>('');
+const AuthDisplay = (): JSX.Element => {
+  const [type, setType] = useState<ModalTypes>('');
   const [isOpen, setOpen] = useState(false);
+
+  const session = useSelector((state: AppState) => state.session);
 
   const modalRef: React.RefObject<HTMLDivElement> = useRef();
 
-  const updateModal = (newType: Types): void => {
+  const updateModal = (newType: ModalTypes): void => {
     if (isOpen) {
       if (newType === type) {
         setOpen(false);
@@ -70,43 +62,17 @@ const AuthDisplay: React.FC<Props> = (props: Props) => {
     };
   }, [isOpen, session]);
 
-  useEffect(() => {
-    if (sessionRequest?.success) {
-      setOpen(false);
-      setType('');
-    }
-  }, [sessionRequest]);
-
-  const renderContent = (isLoggedIn: boolean | null): JSX.Element => {
-    switch (isLoggedIn) {
-      case true:
-        return (
-          <AuthProfile
-            modalRef={modalRef}
-            isOpen={isOpen}
-            updateModal={updateModal}
-            session={session}
-            type={type}
-          />
-        );
-
-      case false:
-        return (
-          <AuthMenu
-            modalRef={modalRef}
-            isOpen={isOpen}
-            updateModal={updateModal}
-            sessionRequest={sessionRequest}
-            type={type}
-          />
-        );
-
-      default:
-        return <div className={styles.loading} />;
-    }
-  };
-
-  return renderContent(session.isLoggedIn);
+  return session.isLoggedIn ? (
+    <AuthProfile
+      modalRef={modalRef}
+      isOpen={isOpen}
+      updateModal={updateModal}
+      session={session}
+      type={type}
+    />
+  ) : (
+    <AuthMenu modalRef={modalRef} isOpen={isOpen} updateModal={updateModal} type={type} />
+  );
 };
 
 export default AuthDisplay;

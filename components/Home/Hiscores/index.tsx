@@ -66,7 +66,7 @@ const Hiscores = (): JSX.Element => {
                 <div className={styles.content}>
                   <span className={item.user ? styles.verified : ''}>
                     {item.user?.username ? (
-                      <Link href={`/u/${item.user.username}`}>
+                      <Link prefetch={false} href={`/u/${item.user.username}`}>
                         <a className={styles.nameLink}>{item.user?.username}</a>
                       </Link>
                     ) : (

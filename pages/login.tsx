@@ -4,7 +4,7 @@ import AccountAuth from '../components/Account/Auth';
 const LoginContainer = (): JSX.Element => {
   return (
     <Layout striped title="Log In | Existing Account">
-      <AccountAuth type="login" />
+      <AccountAuth type="signin" />
     </Layout>
   );
 };

@@ -21,6 +21,7 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
+    "react/no-array-index-key": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "jsx-a11y/anchor-is-valid": ["off"],
     "@typescript-eslint/no-use-before-define": [
@@ -33,20 +34,6 @@
       }
     ],
     "prettier/prettier": ["error", { "printWidth": 100 }],
-    // "max-len": [
-    //   "warn",
-    //   {
-    //     "code": 100,
-    //     "tabWidth": 2,
-    //     "comments": 100,
-    //     "ignoreComments": false,
-    //     "ignoreTrailingComments": true,
-    //     "ignoreUrls": true,
-    //     "ignoreStrings": true,
-    //     "ignoreTemplateLiterals": true,
-    //     "ignoreRegExpLiterals": true
-    //   }
-    // ],
     "import/extensions": [
       "error",
       "ignorePackages",

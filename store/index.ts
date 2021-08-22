@@ -8,13 +8,15 @@ import game from './game/reducers';
 import socket from '../services/socket';
 
 import forumApi from '../services/forum';
+import accountApi from '../services/account';
 
 export const stateReducer = combineReducers({
   request,
   session,
   hiscores,
   game,
-  [forumApi.reducerPath]: forumApi.reducer
+  [forumApi.reducerPath]: forumApi.reducer,
+  [accountApi.reducerPath]: accountApi.reducer
 });
 
 const appReducer = (state, action): ReturnType<typeof stateReducer> => {
@@ -30,7 +32,10 @@ const makeStore = () =>
   configureStore({
     reducer: appReducer,
     middleware: (defaultMiddleware) =>
-      defaultMiddleware().concat(socket(process.env.SOCKET_URL)).concat(forumApi.middleware),
+      defaultMiddleware()
+        .concat(socket(process.env.SOCKET_URL))
+        .concat(forumApi.middleware)
+        .concat(accountApi.middleware),
     devTools: process.env.NODE_ENV !== 'production'
   });
 

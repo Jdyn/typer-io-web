@@ -159,7 +159,7 @@ const LobbyPage = (): JSX.Element => {
             {socket.errored && <div>{socket.error}</div>}
           </div>
         </div>
-        <Chat isCustom />
+        <Chat />
         <section className={styles.aContainer3}>
           <div className={styles.profileContainer}>
             <Profile requireSave />

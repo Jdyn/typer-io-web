@@ -1,6 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { handleAuth } from '../../../store/session/actions';
-import { AppState } from '../../../store';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useAuthenticateMutation } from '../../../services/account';
+import { ApiErrorResponse } from '../../../services/types';
 import Form from '../../Shared/Form';
 
 import styles from './index.module.css';
@@ -16,8 +17,8 @@ const formTemplate = {
     ],
     submit: 'sign up'
   },
-  login: {
-    type: 'login',
+  signin: {
+    type: 'signin',
     title: 'Existing Account',
     fields: [
       { name: 'username', type: 'username', placeholder: '' },
@@ -28,27 +29,28 @@ const formTemplate = {
 };
 
 interface Props {
-  type: 'login' | 'signup';
+  type: 'signin' | 'signup';
 }
 
 const AuthPage = ({ type }: Props): JSX.Element => {
-  const dispatch = useDispatch();
+  const [authenticate, { data, isSuccess, isLoading, isError, error }] = useAuthenticateMutation();
+  const router = useRouter();
 
-  const sessionRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
-
-  const onSubmit = (form: Record<string, unknown>): void => {
-    dispatch(handleAuth(type, form, '/'));
-  };
+  useEffect(() => {
+    if (isSuccess && data?.ok) {
+      router.push('/');
+    }
+  }, [data, isSuccess, router]);
 
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <Form
           template={formTemplate[type]}
-          onSubmit={(_, form): void => onSubmit(form)}
-          isPending={sessionRequest?.isPending}
+          onSubmit={(_, form) => authenticate({ type, form })}
+          isPending={isLoading}
         />
-        {sessionRequest?.errored && <div className={styles.error}>{sessionRequest.error}</div>}
+        {isError && <div className={styles.error}>{(error as ApiErrorResponse).data.error}</div>}
       </div>
     </div>
   );

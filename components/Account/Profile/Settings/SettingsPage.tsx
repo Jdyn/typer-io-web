@@ -45,7 +45,6 @@ const ProfileSettingsPage = (): JSX.Element => {
       }
     });
 
-    console.log(form);
     dispatch(updateUser(form));
   };
 
@@ -64,8 +63,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 <span className={styles.content}>{sessionUser?.email}</span>
               </div>
               <div className={styles.item}>
-                <div className={styles.label}>Change Country:</div>
-
+                <div className={styles.label}>Country:</div>
                 <span className={styles.content}>
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger className={styles.dropdown}>
@@ -91,7 +89,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 </span>
               </div>
               <div className={styles.item}>
-                <div className={styles.label}>Change Age:</div>
+                <div className={styles.label}>Age:</div>
                 <span className={styles.content}>
                   <input
                     className={styles.input}
@@ -102,7 +100,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 </span>
               </div>
               <div className={styles.item}>
-                <div className={styles.label}>Change Gender:</div>
+                <div className={styles.label}>Gender:</div>
                 <span className={styles.content}>
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger className={styles.dropdown}>

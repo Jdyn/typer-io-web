@@ -1,12 +1,11 @@
-import Router from 'next/router';
 import cookies from 'js-cookie';
 import { AppDispatch, AppState } from '..';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { requests } from './types';
-import { userLoggedIn, userSignedUp, userLoggedOut, userRefreshed, userUpdated } from './reducers';
+import { userRefreshed, userUpdated } from './reducers';
 
-const setCurrentSession = (user): void => {
+export const setCurrentSession = (user): void => {
   if (user.token) {
     const jsonToken = user.token;
     localStorage.setItem('token', jsonToken);
@@ -15,129 +14,8 @@ const setCurrentSession = (user): void => {
   }
 };
 
-const login =
-  (form, redirect?: string): ((dispatch, getState: () => AppState) => void) =>
-  (dispatch, getState): void => {
-    const requestType = requests.AUTHENTICATE;
-    const request = getState().request[requestType] || { isPending: false };
-
-    if (request.isPending) return;
-
-    dispatch(setRequest(true, requestType));
-
-    Api.post('/signin', form)
-      .then((response): void => {
-        const { ok, result } = response;
-
-        if (ok) {
-          const { user } = result;
-          setCurrentSession(user);
-          dispatch(userLoggedIn({ user }));
-          dispatch(setRequest(false, requestType));
-          if (redirect) {
-            Router.push(redirect);
-          }
-        } else {
-          const error = 'An Error has occurred logging in. Please try again.';
-          const message = response.error || error;
-          dispatch(setRequest(false, requestType, message));
-        }
-      })
-      .catch((): void => {
-        dispatch(setRequest(false, requestType, 'Error connecting to the server.'));
-      });
-  };
-
-const logout =
-  (): ((dispatch, getState: () => AppState) => void) =>
-  (dispatch, getState): void => {
-    const requestType = requests.AUTHENTICATE;
-    const request = getState().request[requestType] || { isPending: false };
-
-    if (request.isPending) return;
-
-    dispatch(setRequest(true, requestType));
-
-    Api.delete('/logout')
-      .then((): void => {
-        dispatch(setRequest(false, requestType));
-        dispatch(userLoggedOut({}));
-        localStorage.removeItem('token');
-        cookies.remove('token');
-        window.localStorage.setItem('logout', JSON.stringify(Date.now()));
-        window.localStorage.removeItem('username');
-        Router.push('/');
-      })
-      .catch((): void => {
-        dispatch(setRequest(false, requestType, ''));
-        dispatch(userLoggedOut({}));
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        cookies.remove('token');
-        window.localStorage.setItem('logout', JSON.stringify(Date.now()));
-        Router.push('/');
-      });
-  };
-
-const signup =
-  (form, redirect?: string): ((dispatch, getState: () => AppState) => void) =>
-  (dispatch, getState): void => {
-    const requestType = requests.AUTHENTICATE;
-    const request = getState().request[requestType] || { isPending: false };
-
-    if (request.isPending) return;
-
-    dispatch(setRequest(true, requestType));
-
-    Api.post('/signup', form)
-      .then((response): void => {
-        const { ok, result } = response;
-
-        if (ok) {
-          const { user } = result;
-          setCurrentSession(user);
-          dispatch(userSignedUp({ user }));
-          dispatch(setRequest(false, requestType));
-          if (redirect) {
-            Router.push(redirect);
-          }
-        } else {
-          const { errors } = response;
-          if (Object.keys(errors).length > 0) {
-            const firstKey = Object.keys(errors)[0];
-            dispatch(setRequest(false, requestType, `${firstKey} ${errors[firstKey][0]}`));
-          }
-        }
-      })
-      .catch((): void => {
-        dispatch(setRequest(false, requestType, 'An error has occurred. Try again later.'));
-      });
-  };
-
-export const handleAuth =
-  (
-    type: 'login' | 'logout' | 'signup',
-    form: Record<string, unknown>,
-    redirect?: string
-  ): ((dispatch) => void) =>
-  (dispatch): void => {
-    switch (type) {
-      case 'login':
-        dispatch(login(form, redirect));
-        break;
-      case 'logout':
-        dispatch(logout());
-        break;
-      case 'signup':
-        dispatch(signup(form, redirect));
-        break;
-      default:
-        break;
-    }
-  };
-
 export const authenticate =
-  (): ((dispatch: any, getState: () => AppState) => void) =>
+  (): ((dispatch, getState: () => AppState) => void) =>
   (dispatch, getState): void => {
     const requestType = requests.AUTHENTICATE;
     const request = getState().request[requestType] || { isPending: false };

@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ClientList from './ClientList';
@@ -59,6 +60,9 @@ const Play = (props: Props): JSX.Element => {
     }
   }, [isStarted, setGameState, gameboard.words, isSolo, snippet?.id]);
 
+  // For implementating game with trailing spaces...
+  // console.log(test.split(/(?:[^\s"]+)+ /));
+
   useEffect(() => {
     if (snippet?.id !== gameState.snippetId) {
       setGameState({
@@ -107,8 +111,34 @@ const Play = (props: Props): JSX.Element => {
     }));
   };
 
+  function calculateWrongIndex(target: string) {
+    const { currentWord } = gameState;
+    const { wrongIndex } = editorState;
+
+    const input = target.split('');
+    const word = currentWord.split('');
+
+    for (let i = 0; i < currentWord.length; i += 1) {
+      if (input[i]) {
+        if (!(input[i] === word[i] || (wrongIndex !== null && wrongIndex < i))) {
+          if (i < wrongIndex || wrongIndex === null) {
+            return i;
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
   const inputDidUpdate = (event): void => {
     setGameState({ ...gameState, currentInput: event.target.value });
+
+    const wrongIndex = calculateWrongIndex(event.target.value);
+
+    if (wrongIndex !== null) {
+      setEditorState((prev) => ({ ...prev, wrongIndex }));
+    }
 
     if (gameState.wordsRemaining.length === 1) {
       if (event.target.value.trim() === gameState.currentWord) {
@@ -198,7 +228,7 @@ const Play = (props: Props): JSX.Element => {
         </div>
         <section className={styles.left}>
           {isSolo && <ClientList isSolo={isSolo} />}
-          {!isSolo && <Chat isCustom={isCustom} />}
+          {!isSolo && <Chat />}
           <section
             style={{
               margin: '20px 0px',

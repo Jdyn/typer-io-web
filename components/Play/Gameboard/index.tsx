@@ -23,10 +23,10 @@ const Gameboard = (props: Props): JSX.Element => {
   const clients = useSelector((state: AppState) => state.game.room.clients);
   const snippet = useSelector((state: AppState) => state.game.room.snippet);
 
-  const client = useMemo(() => clients?.filter((item) => item.id === clientId)[0], [
-    clientId,
-    clients
-  ]);
+  const client = useMemo(
+    () => clients?.filter((item) => item.id === clientId)[0],
+    [clientId, clients]
+  );
 
   useEffect(() => {
     if (wrongIndex !== null) {
@@ -56,7 +56,6 @@ const Gameboard = (props: Props): JSX.Element => {
             input={currentInputArray}
             currentIndex={currentIndex}
             word={word}
-            setEditorState={setEditorState}
             wrongIndex={wrongIndex}
           />
           {clients.length > 1 && (
@@ -133,7 +132,7 @@ const Gameboard = (props: Props): JSX.Element => {
         </div>
       )
     );
-  }, [clientId, clients, currentIndex, currentInput, setEditorState, words, wrongIndex]);
+  }, [clientId, clients, currentIndex, currentInput, words, wrongIndex]);
 
   return (
     <div className={styles.root}>

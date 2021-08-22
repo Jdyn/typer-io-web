@@ -3,10 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
 import styles from './index.module.css';
-import { AppState } from '../../store';
-import { handleAuth } from '../../store/session/actions';
 import { ThemeContext } from '../../util/getInitialColorMode';
 import Dropdown from './Dropdown/AuthDisplay';
 import sun from '../../public/static/images/sun.svg';
@@ -15,9 +12,6 @@ import moon from '../../public/static/images/moon.svg';
 const Header = (): JSX.Element => {
   const router = useRouter();
   const [form, setForm] = useState({ search: '' });
-
-  const session = useSelector((state: AppState) => state.session);
-  const authenticationRequest = useSelector((state: AppState) => state.request.AUTHENTICATE);
 
   const navigate = (event): void => {
     event.preventDefault();
@@ -79,11 +73,7 @@ const Header = (): JSX.Element => {
                 <Image quality="45" width="26px" height="26px" src={moon} alt="dark-mode moon" />
               )}
             </button>
-            <Dropdown
-              handleAuth={handleAuth}
-              session={session}
-              sessionRequest={authenticationRequest}
-            />
+            <Dropdown />
           </div>
         </header>
       )}

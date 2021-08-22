@@ -17,15 +17,15 @@ export interface FormTemplate {
 }
 
 interface Props {
-  onSubmit: (type: string, form: Record<string, string | number>) => void;
+  onSubmit: (type: string, form: Record<string, unknown>) => void;
   isPending?: boolean;
   template: FormTemplate;
 }
 
-const Form = (props: Props): JSX.Element=> {
+const Form = (props: Props): JSX.Element => {
   const { onSubmit, template, isPending } = props;
 
-  const [form, setForm]: [Record<string, string | number>, any] = useState({});
+  const [form, setForm] = useState({});
 
   const submitForm = (event: FormEvent): void => {
     event.preventDefault();
@@ -53,11 +53,15 @@ const Form = (props: Props): JSX.Element=> {
           />
         </div>
       ))}
-      <Button color="#fff" padding="8px">
+      <Button color="#fff" padding="8px" isPending={isPending}>
         {template.submit}
       </Button>
     </form>
   );
+};
+
+Form.defaultProps = {
+  isPending: false
 };
 
 export default Form;

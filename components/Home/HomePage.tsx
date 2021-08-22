@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1629449933118);
+const updated = formatTime(1629622963265);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -73,12 +73,11 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (August 10th, 2021):</h3>
+                <h3>Changes (August 22th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Performance improvements</li>
                     <li>Added more profile stats and customizations</li>
-                    <li>Added top speed per quote difficulty leaderboards</li>
-                    <li>Large gameplay performance improvements</li>
                   </ul>
                 </div>
               </div>

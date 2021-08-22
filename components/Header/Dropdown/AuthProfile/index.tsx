@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Button from '../../../Shared/Button';
 import styles from './index.module.css';
-import { handleAuth } from '../../../../store/session/actions';
 import { ThemeContext } from '../../../../util/getInitialColorMode';
+import { useAuthenticateMutation } from '../../../../services/account';
+import { ModalTypes } from '../types';
+import { SessionState } from '../../../../store/session/types';
 
 interface Props {
   modalRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
-  updateModal: (type: string) => void;
-  session: any;
-  type: string;
+  updateModal(type: ModalTypes): void;
+  session: SessionState;
+  type: ModalTypes;
 }
 
 const menu = {
@@ -26,8 +27,8 @@ const menu = {
 
 const AuthProfile = (props: Props): JSX.Element => {
   const { modalRef, updateModal, session, isOpen, type } = props;
+  const [authenticate] = useAuthenticateMutation();
 
-  const dispatch = useDispatch();
   const [templates, setTemplates] = useState({
     profile: {
       type: 'profile',
@@ -61,7 +62,8 @@ const AuthProfile = (props: Props): JSX.Element => {
   }, [session.user.username]);
 
   const logout = (): void => {
-    dispatch(handleAuth('logout', {}));
+    authenticate({ type: 'signout', form: {} });
+    updateModal('profile');
   };
 
   return (
@@ -89,9 +91,7 @@ const AuthProfile = (props: Props): JSX.Element => {
                     <li className={styles.modalListItem}>
                       <button
                         type="button"
-                        onClick={() =>
-                          setTheme(theme === 'dark' ? 'light' : 'dark')
-                        }
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                       >
                         Change Theme
                       </button>

@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
 import Form from '../../../Shared/Form';
-import { Request } from '../../../../store/request/types';
 import styles from './index.module.css';
-import { handleAuth } from '../../../../store/session/actions';
 import { ThemeContext } from '../../../../util/getInitialColorMode';
+import { AuthTypes, useAuthenticateMutation } from '../../../../services/account';
+import { ModalTypes } from '../types';
+import { ApiErrorResponse } from '../../../../services/types';
 
 const templates = {
   signup: {
@@ -18,8 +18,8 @@ const templates = {
     ],
     submit: 'sign up'
   },
-  login: {
-    type: 'login',
+  signin: {
+    type: 'signin',
     title: 'Existing Account',
     fields: [
       { name: 'Username', key: 'username' },
@@ -40,23 +40,16 @@ const templates = {
   }
 };
 
-export type Types = 'login' | 'signup' | 'profile' | 'menu' | '';
-
 interface Props {
   modalRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
-  type: Types;
-  updateModal: (newType: Types) => void;
-  sessionRequest: Request;
+  type: ModalTypes;
+  updateModal: (newType: ModalTypes) => void;
 }
 
 const AuthMenu = (props: Props): JSX.Element => {
-  const { modalRef, updateModal, isOpen, type, sessionRequest } = props;
-  const dispatch = useDispatch();
-
-  const authenticate = (formType, form) => {
-    dispatch(handleAuth(formType, form, '/'));
-  };
+  const { modalRef, updateModal, isOpen, type } = props;
+  const [authenticate, { isLoading, isError, error }] = useAuthenticateMutation();
 
   return (
     <ThemeContext.Consumer>
@@ -81,7 +74,7 @@ const AuthMenu = (props: Props): JSX.Element => {
             type="button"
             className={styles.button}
             style={{ gridArea: 'login' }}
-            onClick={(): void => updateModal('login')}
+            onClick={(): void => updateModal('signin')}
           >
             log in
           </button>
@@ -101,9 +94,7 @@ const AuthMenu = (props: Props): JSX.Element => {
                       <li className={styles.modalListItem}>
                         <button
                           type="button"
-                          onClick={() =>
-                            setTheme(theme === 'dark' ? 'light' : 'dark')
-                          }
+                          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                         >
                           Change Theme
                         </button>
@@ -112,15 +103,17 @@ const AuthMenu = (props: Props): JSX.Element => {
                   ) : (
                     <Form
                       template={templates[type]}
-                      onSubmit={(formType, form) =>
-                        authenticate(formType, form)
+                      onSubmit={(formType: AuthTypes, form) =>
+                        authenticate({ type: formType, form })
                       }
-                      isPending={sessionRequest?.isPending}
+                      isPending={isLoading}
                     />
                   )}
                   <div className={styles.error}>
-                    {sessionRequest?.errored && (
-                      <span>{sessionRequest?.error}</span>
+                    {isError && (
+                      <span>
+                        {(error as ApiErrorResponse).data.error || 'Failed to connect to server.'}
+                      </span>
                     )}
                   </div>
                 </div>

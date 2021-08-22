@@ -38,10 +38,8 @@ const RecentMatches = (): JSX.Element => {
                   <div>
                     <span className={item.user ? styles.verified : ''}>
                       {item.user?.username ? (
-                        <Link href={`/u/${item.user.username}`}>
-                          <a className={styles.nameLink}>
-                            {item.user?.username}
-                          </a>
+                        <Link prefetch={false} href={`/u/${item.user.username}`}>
+                          <a className={styles.nameLink}>{item.user?.username}</a>
                         </Link>
                       ) : (
                         item.nickname
@@ -49,9 +47,7 @@ const RecentMatches = (): JSX.Element => {
                     </span>
                     {renderBadge(item.user)}
                   </div>
-                  <div className={styles.timestamp}>
-                    {formatTime(item.created_at)}
-                  </div>
+                  <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                 </div>
                 <div className={styles.item}>{item.wpm} WPM</div>
               </div>

@@ -32,7 +32,7 @@ export const actions: SessionActions = {
 export interface SessionState {
   isLoggedIn: boolean;
   nickname: string | null;
-  user: User | null;
+  user: SessionUser | null;
 }
 
 export interface User {
@@ -42,6 +42,24 @@ export interface User {
   isAdmin: string;
   email: string;
   bio: string;
+}
+
+export type SessionUser = User & {
+  token: string;
+  country?: string;
+  age?: string;
+  gender?: string;
+};
+
+export interface SignupPayload {
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface SigninPayload {
+  username: string;
+  password: string;
 }
 
 export interface ProfileUser {

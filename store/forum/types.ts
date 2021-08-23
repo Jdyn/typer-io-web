@@ -1,17 +1,5 @@
 import { User } from "../session/types";
 
-export const forumRequests: {
-  FETCH_POSTS_BY_RECENT: 'FETCH_POSTS_BY_RECENT';
-  FETCH_POSTS_BY_FEED: 'FETCH_POSTS_BY_FEED';
-  FETCH_POST_BY_ID: 'FETCH_POST_BY_ID';
-  CREATE_NEW_POST: 'CREATE_NEW_POST';
-} = {
-  FETCH_POSTS_BY_RECENT: 'FETCH_POSTS_BY_RECENT',
-  FETCH_POSTS_BY_FEED: 'FETCH_POSTS_BY_FEED',
-  FETCH_POST_BY_ID: 'FETCH_POST_BY_ID',
-  CREATE_NEW_POST: 'CREATE_NEW_POST'
-};
-
 export type PostQueryTypes = 'recent' | 'feed';
 
 export interface MiniPost {
@@ -52,8 +40,8 @@ export interface Comment {
 }
 
 export interface ListResponse<T> {
-  page: number;
-  total: number;
-  totalPages: number;
   data: T[];
+  page: number;
+  count: number;
+  totalPages: number;
 }

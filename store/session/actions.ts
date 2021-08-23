@@ -3,7 +3,7 @@ import { AppDispatch, AppState } from '..';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { requests } from './types';
-import { userRefreshed, userUpdated } from './reducers';
+import { userRefreshed } from './reducers';
 
 export const setCurrentSession = (user): void => {
   if (user.token) {
@@ -39,32 +39,6 @@ export const authenticate =
         }
       })
       .catch((): void => {});
-  };
-
-export const updateUser =
-  (payload) =>
-  async (dispatch: AppDispatch, getState: () => AppState): Promise<void> => {
-    const requestType = requests.UPDATE_USER;
-    const request = getState().request[requestType] || { isPending: false };
-
-    if (request.isPending) return;
-
-    dispatch(setRequest(true, requestType));
-
-    const response = await Api.post('/user', payload);
-
-    if (response.ok) {
-      dispatch(userUpdated({ user: response.result.user }));
-      dispatch(setRequest(false, requestType));
-    } else {
-      const error = response?.errors
-        ? `${Object.keys(response?.errors)[0] || ''} ${
-            response?.errors[Object.keys(response?.errors)[0]][0]
-          }`
-        : 'Failed to save.';
-
-      dispatch(setRequest(false, requestType, error));
-    }
   };
 
 export const fetchPasswordReset =

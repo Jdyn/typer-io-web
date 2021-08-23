@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Banner from '../../Shared/Banner';
 import styles from './index.module.css';
-import ApiService from '../../../services/api';
 import formatTime from '../../../util/formatTime';
 import Button from '../../Shared/Button';
 import { AppState } from '../../../store';
 import MiniListPost from '../../Home/RecentPosts/MiniListPost';
-import { ProfileUser } from '../../../store/session/types';
+import { useGetMatchesQuery, useGetUserQuery } from '../../../services/account';
+import { ApiErrorResponse } from '../../../services/types';
 
 interface Props {
   username: string;
@@ -16,35 +16,18 @@ interface Props {
 
 const ProfilePage = (props: Props): JSX.Element => {
   const { username } = props;
+  const router = useRouter();
+  const { matchPage } = router.query;
 
-  const [user, set] = useState<ProfileUser | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { data: user, isError, error } = useGetUserQuery(username);
+  const { data: matches } = useGetMatchesQuery({ username, matchPage: matchPage || '1' });
+
   const sessionUser = useSelector((state: AppState) => state.session.user);
 
-  useEffect(() => {
-    if (username) {
-      setError(null);
-      ApiService.fetch(`/user/${username}`).then((response) => {
-        if (response.ok) {
-          set(response?.result?.user);
-        } else {
-          set(null);
-          setError('This player does not exist.');
-        }
-      });
-    }
-  }, [username]);
-
   const fetchMatches = (page: number): void => {
-    if (user && page <= user.matchMaxPage && page >= 1 && page !== user.matchPage) {
-      ApiService.fetch(`/user/${username}/matches?matchPage=${page}`).then((response) => {
-        if (response.ok && response.result.matches) {
-          set({ ...user, ...response.result });
-          const element = document.getElementById('profile-matches-wrapper');
-          if (element) {
-            element.scrollTop = 0;
-          }
-        }
+    if (matches && page <= matches.totalPages && page >= 1 && page !== matches.page) {
+      router.push(`/u/${user.username}?matchPage=${page}`, null, {
+        scroll: false
       });
     }
   };
@@ -100,7 +83,7 @@ const ProfilePage = (props: Props): JSX.Element => {
               </Link>
             </div>
           )}
-          <div>{error && error}</div>
+          <div>{isError && (error as ApiErrorResponse).data.error}</div>
         </div>
       </div>
       <div className={styles.statsContainer}>
@@ -164,11 +147,11 @@ const ProfilePage = (props: Props): JSX.Element => {
         </div>
         <div className={styles.historyContainer}>
           <div id="profile-matches-wrapper" className={styles.historyWrapper}>
-            {user?.matches?.map((item, index) => (
+            {matches?.data?.map((item, index) => (
               <div className={styles.entry} key={item.id}>
                 <div className={styles.count}>
-                  {user?.matchPage > 1 ? (
-                    <span>{25 * (user?.matchPage - 1) + index + 1}</span>
+                  {matches?.page > 1 ? (
+                    <span>{25 * (matches?.page - 1) + index + 1}</span>
                   ) : (
                     <span>{index + 1}</span>
                   )}
@@ -187,26 +170,30 @@ const ProfilePage = (props: Props): JSX.Element => {
           </div>
         </div>
         <div className={styles.pagination}>
-          <button className={styles.pageButton} onClick={() => fetchMatches(1)} type="button">
+          <button
+            className={styles.pageButton}
+            onClick={() => matches && fetchMatches(1)}
+            type="button"
+          >
             1
           </button>
           <button
             className={styles.pageButton}
-            onClick={() => user && fetchMatches(user.matchPage - 1)}
+            onClick={() => matches && fetchMatches(matches.page - 1)}
             type="button"
           >{`<`}</button>
-          <span>{user?.matchPage}</span>
+          <span>{matches?.page}</span>
           <button
             className={styles.pageButton}
-            onClick={() => user && fetchMatches(user.matchPage + 1)}
+            onClick={() => matches && fetchMatches(matches.page + 1)}
             type="button"
           >{`>`}</button>
           <button
             className={styles.pageButton}
-            onClick={() => user && fetchMatches(user.matchMaxPage)}
+            onClick={() => matches && fetchMatches(matches.totalPages)}
             type="button"
           >
-            {user?.matchMaxPage || 1}
+            {matches?.totalPages || 1}
           </button>
         </div>
       </div>

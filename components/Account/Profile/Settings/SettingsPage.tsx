@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { updateUser } from '../../../../store/session/actions';
-import { requests } from '../../../../store/session/types';
 import TextBox from '../../../Shared/TextBox';
 import { AppState } from '../../../../store';
 import Button from '../../../Shared/Button';
@@ -10,12 +8,12 @@ import Paper from '../../../Shared/Paper';
 import styles from './index.module.css';
 import { SettingsForm } from './types';
 import countries from '../../../../lib/countries';
+import { useUpdateAccountMutation } from '../../../../services/account';
+import { ApiErrorResponse } from '../../../../services/types';
 
 const ProfileSettingsPage = (): JSX.Element => {
-  const dispatch = useDispatch();
-
   const sessionUser = useSelector((state: AppState) => state.session.user);
-  const updateUserRequest = useSelector((state: AppState) => state.request[requests.UPDATE_USER]);
+  const [updateAccount, { isSuccess, isError, error }] = useUpdateAccountMutation();
 
   const [form, setForm] = useState<SettingsForm>({
     bio: sessionUser?.bio ?? '',
@@ -45,7 +43,7 @@ const ProfileSettingsPage = (): JSX.Element => {
       }
     });
 
-    dispatch(updateUser(form));
+    updateAccount(form);
   };
 
   return (
@@ -153,9 +151,9 @@ const ProfileSettingsPage = (): JSX.Element => {
               <Button padding="5px 20px" onClick={onClick}>
                 save
               </Button>
-              {updateUserRequest?.success && <span className={styles.success}>Saved.</span>}
-              {updateUserRequest?.errored && (
-                <span className={styles.error}>{updateUserRequest?.error}</span>
+              {isSuccess && <span className={styles.success}>Saved.</span>}
+              {isError && (
+                <span className={styles.error}>{(error as ApiErrorResponse).data.error}</span>
               )}
             </div>
           </div>

@@ -4,7 +4,10 @@ import Profile from '../../components/Account/Profile';
 import Layout from '../../components/Layout';
 
 const ProfileContainer = () => {
-  const { username } = useRouter().query;
+  const router = useRouter();
+  const { username } = router.query;
+
+  if (typeof username === 'undefined') return null;
 
   return (
     <Layout striped title={`Profile - ${username as string}`}>

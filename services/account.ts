@@ -1,8 +1,11 @@
-import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import cookies from 'js-cookie';
-import { SessionUser, SigninPayload, SignupPayload } from '../store/session/types';
-import { userLoggedIn, userLoggedOut } from '../store/session/reducers';
+import { ProfileUser, SessionUser, SigninPayload, SignupPayload } from '../store/session/types';
+import { userLoggedIn, userLoggedOut, userUpdated } from '../store/session/reducers';
 import { ApiErrorResponse } from './types';
+import { SettingsForm } from '../components/Account/Profile/Settings/types';
+import { Match } from '../store/hiscores/types';
+import { ListResponse } from '../store/forum/types';
 
 export type AuthTypes = 'signup' | 'signin' | 'signout';
 
@@ -35,12 +38,28 @@ const accountApi = createApi({
 
       return headers;
     }
-  }) as BaseQueryFn<string | FetchArgs, unknown, ApiErrorResponse, {}>,
-  tagTypes: [],
+  }) as BaseQueryFn<string | FetchArgs, unknown, ApiErrorResponse, Record<string, unknown>>,
+  tagTypes: ['User'],
   endpoints: (builder) => ({
+    getUser: builder.query<ProfileUser, string>({
+      query: (username) => `/user/${username}`,
+      transformResponse: (raw: { result: { user: ProfileUser } }) => raw.result.user,
+      providesTags: (user) => [{ type: 'User', id: user.username }]
+    }),
+    getMatches: builder.query<
+      ListResponse<Match>,
+      { username: string; matchPage: string | string[] }
+    >({
+      query: ({ username, matchPage }) => ({
+        url: `/user/${username}/matches`,
+        method: 'GET',
+        params: { matchPage }
+      }),
+      transformResponse: (raw: { result: ListResponse<Match> }) => raw.result
+    }),
     authenticate: builder.mutation<
-      any,
-      { type: AuthTypes; form: SigninPayload | SignupPayload | {} }
+      { ok: boolean; result: { user?: SessionUser } },
+      { type: AuthTypes; form: SigninPayload | SignupPayload | Record<string, unknown> }
     >({
       query: (payload) => ({
         url: `/${payload.type}`,
@@ -68,10 +87,27 @@ const accountApi = createApi({
           // Hmm?
         }
       }
+    }),
+    updateAccount: builder.mutation<{ result: { user: SessionUser } }, SettingsForm>({
+      query: (form) => ({
+        url: '/user',
+        method: 'POST',
+        body: form
+      }),
+      invalidatesTags: (data) => [{ type: 'User', id: data.result.user.username }],
+      async onQueryStarted(_payload, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(userUpdated({ user: data.result.user }));
+      }
     })
   })
 });
 
-export const { useAuthenticateMutation } = accountApi;
+export const {
+  useAuthenticateMutation,
+  useUpdateAccountMutation,
+  useGetUserQuery,
+  useGetMatchesQuery
+} = accountApi;
 
 export default accountApi;

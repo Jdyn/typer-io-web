@@ -14,10 +14,6 @@ const reducers = {
     state.isLoggedIn = true;
     state.user = action.payload.user;
   },
-  userSignedUp: (state, action) => {
-    state.isLoggedIn = true;
-    state.user = action.payload.user;
-  },
   userRefreshed: (state, action) => {
     state.isLoggedIn = action.payload.isLoggedIn;
     state.user = action.payload.user;
@@ -40,13 +36,7 @@ const session = createSlice({
   reducers
 });
 
-export const {
-  nicknameChanged,
-  userLoggedIn,
-  userSignedUp,
-  userLoggedOut,
-  userRefreshed,
-  userUpdated
-} = session.actions;
+export const { nicknameChanged, userLoggedIn, userLoggedOut, userRefreshed, userUpdated } =
+  session.actions;
 
 export default session.reducer;

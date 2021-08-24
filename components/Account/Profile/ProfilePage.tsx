@@ -21,7 +21,6 @@ const ProfilePage = (props: Props): JSX.Element => {
 
   const { data: user, isError, error } = useGetUserQuery(username);
   const { data: matches } = useGetMatchesQuery({ username, matchPage: matchPage || '1' });
-
   const sessionUser = useSelector((state: AppState) => state.session.user);
 
   const fetchMatches = (page: number): void => {
@@ -47,6 +46,7 @@ const ProfilePage = (props: Props): JSX.Element => {
               </h3>
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
               <div>{sessionUser?.isAdmin && `ID: ${user?.id}`}</div>
+              <div>{isError && (error as ApiErrorResponse).data.error}</div>
             </div>
             <div className={styles.aboutContainer}>
               <h3>About</h3>
@@ -83,7 +83,6 @@ const ProfilePage = (props: Props): JSX.Element => {
               </Link>
             </div>
           )}
-          <div>{isError && (error as ApiErrorResponse).data.error}</div>
         </div>
       </div>
       <div className={styles.statsContainer}>
@@ -99,7 +98,7 @@ const ProfilePage = (props: Props): JSX.Element => {
             </div>
             <div className={styles.statItem}>
               <div>Accuracy</div>
-              <span>{user?.averageAccuracy}%</span>
+              <span>{user?.averageAccuracy && `${user?.averageAccuracy}%`}</span>
             </div>
             <div className={styles.statItem}>
               <div>Errors Per Game</div>

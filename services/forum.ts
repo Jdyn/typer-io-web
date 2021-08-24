@@ -20,7 +20,7 @@ const forumApi = createApi({
     getPost: builder.query<Post, string>({
       query: (id) => `/forum/posts/${id}`,
       transformResponse: (raw: { result: { post: Post } }) => raw.result.post,
-      providesTags: (result) => [{ type: 'Post', id: result.id }]
+      providesTags: (result) => [{ type: 'Post', id: result?.id }]
     }),
     getPosts: builder.query<ListResponse<Post>, { page?: string; query?: string }>({
       query: (params?) => ({

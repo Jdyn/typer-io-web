@@ -44,7 +44,7 @@ const accountApi = createApi({
     getUser: builder.query<ProfileUser, string>({
       query: (username) => `/user/${username}`,
       transformResponse: (raw: { result: { user: ProfileUser } }) => raw.result.user,
-      providesTags: (user) => [{ type: 'User', id: user.username }]
+      providesTags: (user) => [{ type: 'User', id: user?.username }]
     }),
     getMatches: builder.query<
       ListResponse<Match>,

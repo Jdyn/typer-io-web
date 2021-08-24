@@ -46,6 +46,17 @@ const ProfileSettingsPage = (): JSX.Element => {
     updateAccount(form);
   };
 
+  const parseErrors = () => {
+    const { errors } = (error as ApiErrorResponse).data;
+    return (
+      <>
+        {Object.keys(errors).map((key) => (
+          <div key={key}>{`${key} ${errors[key][0]}`}</div>
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className={styles.root}>
       <section className={styles.settings}>
@@ -152,9 +163,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 save
               </Button>
               {isSuccess && <span className={styles.success}>Saved.</span>}
-              {isError && (
-                <span className={styles.error}>{(error as ApiErrorResponse).data.error}</span>
-              )}
+              {isError && <span className={styles.error}>{parseErrors()}</span>}
             </div>
           </div>
         </Paper>

@@ -63,7 +63,7 @@ const LobbyContainer = (): JSX.Element => {
       </LazyMotion>
     </Layout>
   ) : (
-    <Layout striped>
+    <Layout striped title="Private Lobby">
       <LazyMotion features={loadFeatures} strict>
         <Lobby />
       </LazyMotion>

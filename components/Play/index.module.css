@@ -5,7 +5,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 325px 540px 325px;
+  grid-template-columns: 1fr 1.6615fr 1fr;
   grid-template-rows: min-content min-content min-content 1fr min-content;
   grid-template-areas:
     'clientlist clientlist clientlist'
@@ -77,10 +77,12 @@
 }
 
 .left {
+  min-width: 275px;
   grid-area: chat;
 }
 
 .right {
+  min-width: 275px;
   grid-area: leaderboard;
 }
 

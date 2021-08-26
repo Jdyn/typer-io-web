@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, memo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -81,4 +81,4 @@ const Header = (): JSX.Element => {
   );
 };
 
-export default Header;
+export default memo(Header);

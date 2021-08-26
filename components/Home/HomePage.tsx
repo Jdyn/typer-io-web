@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1629680061803);
+const updated = formatTime(1630020708044);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -73,7 +73,7 @@ const HomePage = (): JSX.Element => {
                 >
                   Join the discord ➜
                 </a>
-                <h3>Changes (August 22nd, 2021):</h3>
+                <h3>Changes (August 26th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
                     <li>Performance improvements</li>

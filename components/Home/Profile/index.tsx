@@ -11,11 +11,10 @@ import { silentEmit } from '../../../services/socket';
 
 interface Props {
   requireSave?: boolean;
-  onClick?: (object) => void | null;
 }
 
 const Profile = (props: Props): JSX.Element => {
-  const { requireSave, onClick } = props;
+  const { requireSave } = props;
 
   const nickname = useSelector((state: AppState) => state.session.nickname);
   const sessionName = useSelector((state: AppState) => state.session.user?.username);
@@ -23,6 +22,7 @@ const Profile = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
 
   const [currentEmoji, setEmoji] = useState('');
+  const [emojiPage, setEmojiPage] = useState(0);
 
   const didChange = (event): void => {
     event.preventDefault();
@@ -41,24 +41,27 @@ const Profile = (props: Props): JSX.Element => {
     setEmoji(emoji);
   };
 
-  const handleUserUpdate = (payload) => {
-    silentEmit('CLIENT_SETTINGS_UPDATE', payload);
-  };
+  const emojis = useMemo(() => {
+    const test = emojiList?.slice(emojiPage * 16, emojiPage * 16 + 16);
 
-  const emojis = useMemo(
-    () =>
-      emojiList.map((item) => (
-        <button
-          type="button"
-          key={item}
-          onClick={(): void => handleEmojiPick(item)}
-          className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
-        >
-          {item}
-        </button>
-      )),
-    [currentEmoji]
-  );
+    return test.map((item) => (
+      <button
+        type="button"
+        key={item}
+        onClick={(): void => handleEmojiPick(item)}
+        className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
+      >
+        {item}
+      </button>
+    ));
+  }, [currentEmoji, emojiPage]);
+
+  const handlePage = (page) => {
+    const totalPages = Math.floor(emojiList.length / 16);
+    if (page <= totalPages && page >= 1 && page !== emojiPage) {
+      setEmojiPage(page);
+    }
+  };
 
   const handleUpdate = useCallback(() => {
     let username = localStorage?.getItem('nickname');
@@ -69,11 +72,11 @@ const Profile = (props: Props): JSX.Element => {
       username = sessionName;
     }
 
-    handleUserUpdate({
+    silentEmit('CLIENT_SETTINGS_UPDATE', {
       emoji: currentEmoji,
       username
     });
-  }, [currentEmoji, handleUserUpdate, sessionName]);
+  }, [currentEmoji, sessionName]);
 
   return (
     <Paper title="You">
@@ -91,6 +94,29 @@ const Profile = (props: Props): JSX.Element => {
         </div>
         <div className={styles.content}>
           <div className={styles.emojis}>{emojis}</div>
+          <div className={styles.pagination}>
+            <button className={styles.pageButton} onClick={() => setEmojiPage(0)} type="button">
+              1
+            </button>
+            <button
+              className={styles.pageButton}
+              onClick={() => handlePage(emojiPage - 1)}
+              type="button"
+            >{`<`}</button>
+            <span>{emojiPage + 1}</span>
+            <button
+              className={styles.pageButton}
+              onClick={() => handlePage(emojiPage + 1)}
+              type="button"
+            >{`>`}</button>
+            <button
+              className={styles.pageButton}
+              onClick={() => handlePage(Math.floor(emojiList.length / 16))}
+              type="button"
+            >
+              {Math.floor(emojiList.length / 16) + 1}
+            </button>
+          </div>
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>
@@ -105,8 +131,7 @@ const Profile = (props: Props): JSX.Element => {
 };
 
 Profile.defaultProps = {
-  requireSave: false,
-  onClick: null
+  requireSave: false
 };
 
 export default React.memo(Profile);

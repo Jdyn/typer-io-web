@@ -29,16 +29,16 @@ const Gameboard = (props: Props): JSX.Element => {
   );
 
   useEffect(() => {
-    if (wrongIndex !== null) {
-      if (currentWord) {
-        if (currentInput === currentWord.substring(0, currentInput?.length)) {
-          setEditorState((prev) => ({
-            ...prev,
-            wrongIndex: null,
-            errors: prev.errors + 1
-          }));
-        }
-      }
+    if (
+      wrongIndex !== null &&
+      currentWord &&
+      currentInput === currentWord.substring(0, currentInput?.length)
+    ) {
+      setEditorState((prev) => ({
+        ...prev,
+        wrongIndex: null,
+        errors: prev.errors + 1
+      }));
     }
   }, [wrongIndex, setEditorState, currentWord, currentInput]);
 
@@ -46,93 +46,34 @@ const Gameboard = (props: Props): JSX.Element => {
     setEditorState((prev) => ({ ...prev, wrongIndex: null }));
   }, [currentWord, setEditorState]);
 
-  const wordElements = useMemo(() => {
-    const currentInputArray = currentInput ? currentInput.split('') : [];
-
-    return words.map((word, wordIndex) =>
-      currentIndex === wordIndex ? (
+  const wordElements = useMemo(
+    () =>
+      words.map((word, wordIndex) => (
         <div key={wordIndex} className={styles.wrapper} id={`word-${wordIndex}`}>
-          <Word
-            input={currentInputArray}
-            currentIndex={currentIndex}
-            word={word}
-            wrongIndex={wrongIndex}
-          />
-          {clients.length > 1 && (
-            <>
-              {clients
-                .filter((object) => object.id !== clientId)
-                .map((item) => {
-                  const { position, color } = item.gamePiece;
-
-                  if (wordIndex === 0 && position === null) {
-                    return (
-                      <Piece
-                        key={item.id}
-                        id={item.id}
-                        emoji={item.emoji}
-                        color={color}
-                        position={position}
-                      />
-                    );
-                  }
-
-                  return (
-                    position === wordIndex && (
-                      <Piece
-                        key={item.id}
-                        id={item.id}
-                        emoji={item.emoji}
-                        color={color}
-                        position={position}
-                      />
-                    )
-                  );
-                })}
-            </>
+          {currentIndex === wordIndex ? (
+            <Word
+              input={currentInput ? currentInput.split('') : []}
+              currentIndex={currentIndex}
+              word={word}
+              wrongIndex={wrongIndex}
+            />
+          ) : (
+            <Word word={word} />
           )}
+          {clients.length > 1 &&
+            clients
+              .filter((object) => object.id !== clientId)
+              .map((item) => {
+                const { position, color } = item.gamePiece;
+                const { id, emoji } = item;
+                return (wordIndex === 0 && position === null) || position === wordIndex ? (
+                  <Piece key={id} id={id} emoji={emoji} color={color} position={position} />
+                ) : null;
+              })}
         </div>
-      ) : (
-        <div key={wordIndex} className={styles.wrapper} id={`word-${wordIndex}`}>
-          <Word word={word} />
-
-          {clients.length > 1 && (
-            <>
-              {clients
-                .filter((object) => object.id !== clientId)
-                .map((item) => {
-                  const { position, color } = item.gamePiece;
-
-                  if (wordIndex === 0 && position === null) {
-                    return (
-                      <Piece
-                        key={item.id}
-                        id={item.id}
-                        emoji={item.emoji}
-                        color={color}
-                        position={position}
-                      />
-                    );
-                  }
-
-                  return (
-                    position === wordIndex && (
-                      <Piece
-                        key={item.id}
-                        id={item.id}
-                        emoji={item.emoji}
-                        color={color}
-                        position={position}
-                      />
-                    )
-                  );
-                })}
-            </>
-          )}
-        </div>
-      )
-    );
-  }, [clientId, clients, currentIndex, currentInput, words, wrongIndex]);
+      )),
+    [clientId, clients, currentIndex, currentInput, words, wrongIndex]
+  );
 
   return (
     <div className={styles.root}>

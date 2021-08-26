@@ -1,8 +1,7 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, KeyboardEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, KeyboardEvent, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { silentEmit } from '../../../services/socket';
 import { AppState } from '../../../store';
-import { GameboardState } from '../../../store/game/types';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
 
@@ -14,7 +13,8 @@ const focusInput = (): void => {
 };
 
 interface Props {
-  gameboard: GameboardState;
+  isStarted: boolean;
+  isOver: boolean;
   gameState: GameState;
   setEditorState: Dispatch<SetStateAction<EditorState>>;
   submitWord: () => void;
@@ -23,26 +23,27 @@ interface Props {
 }
 
 const Editor = (props: Props): JSX.Element => {
-  const { gameboard, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } = props;
+  const { isStarted, isOver, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } =
+    props;
 
   useEffect(() => {
     focusInput();
-  }, [gameboard.isStarted]);
+  }, [isStarted]);
 
   const isSolo = useSelector((state: AppState) => state.game.room.isSolo);
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
-    if (event.key === ' ' && !gameboard.isStarted && isSolo) {
+    if (event.key === ' ' && !isStarted && isSolo) {
       silentEmit('SOLO_START_GAME');
     }
 
-    if (!gameboard.isStarted) {
+    if (!isStarted) {
       event.preventDefault();
     }
 
-    if (gameboard.isOver) {
+    if (isOver) {
       event.preventDefault();
       return;
     }
@@ -72,7 +73,7 @@ const Editor = (props: Props): JSX.Element => {
   };
 
   const inputPlaceholder = (): string => {
-    if (!gameboard.isStarted && !gameboard.isOver) {
+    if (!isStarted && !isOver) {
       if (isSolo) {
         return "Press 'Space' here to begin...";
       }
@@ -117,4 +118,4 @@ const Editor = (props: Props): JSX.Element => {
   );
 };
 
-export default Editor;
+export default memo(Editor);

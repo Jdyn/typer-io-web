@@ -1,5 +1,5 @@
 /* eslint-disable no-continue */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import ClientList from './ClientList';
 import Gameboard from './Gameboard';
@@ -13,7 +13,6 @@ import styles from './index.module.css';
 import { GameboardState, SnippetState } from '../../store/game/types';
 import Adsense from '../Shared/Adsense';
 import { EditorState, GameState } from './types';
-// import MatchSummary from './Summary';
 
 interface Props {
   isSolo?: boolean;
@@ -24,9 +23,7 @@ const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
 
   const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);
-
   const snippet: SnippetState = useSelector((state: AppState) => state.game.room.snippet);
-
   const isStarted: boolean = useSelector((state: AppState) => state.game.room.isStarted);
 
   const [gameState, setGameState] = useState<GameState>({
@@ -200,7 +197,8 @@ const Play = (props: Props): JSX.Element => {
         />
         <div className={styles.editor}>
           <Editor
-            gameboard={gameboard}
+            isStarted={gameboard.isStarted}
+            isOver={gameboard.isOver}
             gameState={gameState}
             setEditorState={setEditorState}
             isWrong={editorState.wrongIndex !== null}
@@ -277,4 +275,4 @@ Play.defaultProps = {
   isCustom: false
 };
 
-export default React.memo(Play);
+export default memo(Play);

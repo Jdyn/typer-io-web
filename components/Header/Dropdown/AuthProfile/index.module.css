@@ -14,7 +14,7 @@
   justify-content: center;
   border: none;
   outline: none;
-  background-color: transparent;
+  background: transparent;
   cursor: pointer;
   height: 75px;
   max-width: 250px;
@@ -63,7 +63,7 @@
 .modalList {
   display: flex;
   flex-direction: column;
-  background-color: var(--secondary-grey);
+  background: var(--secondary-grey);
   padding: 20px;
   margin: 0;
   border-radius: 12px;
@@ -73,7 +73,7 @@
 .menuList {
   display: flex;
   flex-direction: column;
-  background-color: var(--secondary-grey);
+  background: var(--secondary-grey);
   padding: 20px;
   margin: 0;
   border-radius: 12px;
@@ -83,7 +83,7 @@
 .modalListItem {
   display: flex;
   padding: 10px 12px;
-  background-color: var(--primary-main);
+  background: var(--primary-main);
   border-radius: 8px;
   border: 2px solid var(--border);
   margin-bottom: 10px;

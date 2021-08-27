@@ -17,7 +17,7 @@ const variants = {
   enter: {
     left: '0%'
   },
-  center: (position: number): object => {
+  center: (position: number) => {
     return {
       left: position === null ? '0%' : '100%'
     };

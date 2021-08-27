@@ -22,10 +22,10 @@
 
 .container {
   display: flex;
+  gap: 10px;
   flex-direction: row;
   width: 100%;
   justify-content: center;
-  margin: 0;
   border-radius: 16px;
 }
 
@@ -34,7 +34,6 @@
   width: 100%;
   flex: 1;
   position: relative;
-  margin: 0;
   padding: 5px;
   height: 100%;
   overflow: hidden;
@@ -45,21 +44,16 @@
   position: relative;
   background: var(--primary-main);
   max-height: 105px;
-  margin-right: 10px;
+  width: 235px;
   border-radius: 16px;
   box-shadow: var(--shadow);
-}
-
-.card:last-child {
-  margin-right: 0px;
 }
 
 .cardWrapper {
   display: grid;
   position: relative;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr;
-  margin: 0;
   padding: 5px;
   height: 100%;
   overflow: hidden;
@@ -69,54 +63,38 @@
 .stats {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-.username {
+.display {
   display: flex;
   flex-direction: row;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   font-weight: 500;
-  font-size: 1rem;
   align-items: center;
-  overflow: hidden;
-  align-self: flex-end;
   border-radius: 12px;
-  color: white;
-  height: 100%;
-  width: 100%;
-  grid-row: 2 / 3;
-  grid-column: 1 / 4;
-}
-
-.usernameWrapper {
-  display: flex;
-  flex-direction: row;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  font-weight: 500;
-  align-items: center;
-  overflow: hidden;
+  height: 48px;
   align-self: flex-end;
   color: white;
   height: 100%;
+  overflow: hidden;
   width: 100%;
-  text-overflow: ellipsis;
   padding: 5px 5px;
 }
 
-.usernameWrapper > span {
+.display > span {
   display: flex;
   align-items: center;
   overflow: hidden;
+  height: 100%;
   font-size: 16px;
   margin-right: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   margin-right: 5px;
   flex: 3;
 }
 
-.usernameWrapper > span > span {
-  font-size: 20px;
+.display > span > span {
+  font-size: 24px;
   margin-right: 6px;
 }
 
@@ -124,6 +102,8 @@
   display: flex;
   flex-direction: column;
   font-size: 15px;
+  height: 100%;
+  justify-content: center;
   line-height: 12px;
   text-align: center;
   color: white;

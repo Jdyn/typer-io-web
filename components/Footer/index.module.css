@@ -1,7 +1,7 @@
 .root {
   display: flex;
   grid-area: footer;
-  background-color: var(--primary-main);
+  background: var(--primary-main);
   bottom: 0;
   padding: 50px 20px;
   border-top: 2px solid var(--border);

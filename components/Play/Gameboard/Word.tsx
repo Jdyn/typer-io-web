@@ -37,7 +37,7 @@ const Word = (props: Props): JSX.Element => {
       }
     }
 
-    return newLeft - 2;
+    return newLeft - 2.5;
   }, [input.length, word.length]);
 
   return currentIndex !== null ? (

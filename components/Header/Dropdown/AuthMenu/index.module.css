@@ -5,7 +5,7 @@
   width: 64px;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background: transparent;
   z-index: 50;
 }
 
@@ -16,7 +16,7 @@
   justify-content: center;
   border: none;
   outline: none;
-  background-color: transparent;
+  background: transparent;
   border-bottom: 1px solid var(--banner-accent);
   cursor: pointer;
   height: 75px;
@@ -72,7 +72,7 @@
 .modalListItem {
   display: flex;
   padding: 10px 12px;
-  background-color: var(--primary-main);
+  background: var(--primary-main);
   border-radius: 8px;
   border: 2px solid var(--border);
   margin-bottom: 10px;
@@ -129,7 +129,6 @@
     border-radius: 0px 0px 12px 12px;
     flex-direction: column;
     background: var(--primary-main);
-    transition-duration: 0.2s;
   }
 
   .form {
@@ -154,6 +153,5 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     color: var(--white);
     background: var(--accent);
-    transition-duration: 0.2s;
   }
 }

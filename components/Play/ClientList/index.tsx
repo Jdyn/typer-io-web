@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { m, AnimatePresence } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
@@ -19,30 +18,88 @@ export const placements = (rank: number): string => {
   return `${rank}${suffix}`;
 };
 
-const ClientList = (props): JSX.Element => {
+interface Props {
+  isSolo?: boolean;
+}
+
+const ClientList = (props: Props): JSX.Element => {
   const { isSolo } = props;
   const users = useSelector((state: AppState) => state.game.room.clients);
 
-  const variants = {
-    initial: {
-      opacity: 0,
-      width: '0%',
-      y: '-100%'
-    },
-    enter: (isSolo) => {
-      return {
-        width: isSolo ? '100%' : '25%',
-        maxWidth: isSolo ? '275px' : '235px',
-        opacity: 1,
-        y: '0%'
-      };
-    },
-    exit: {
-      opacity: 0,
-      y: '-100%',
-      width: '0%'
-    }
-  };
+  const variants = useMemo(
+    () => ({
+      initial: {
+        opacity: 0,
+        width: '0%',
+        y: '-100%'
+      },
+      enter: (solo) => {
+        return {
+          width: solo ? '100%' : '25%',
+          maxWidth: solo ? '275px' : '235px',
+          opacity: 1,
+          y: '0%'
+        };
+      },
+      exit: {
+        opacity: 0,
+        y: '-100%',
+        width: '0%'
+      }
+    }),
+    []
+  );
+
+  const clients = useMemo(
+    () =>
+      users.map((item) => (
+        <m.div
+          className={styles.card}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+          custom={isSolo}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 25,
+            velocity: 2
+          }}
+          key={item.id}
+        >
+          <div className={users?.length > 5 ? styles.miniCardWrapper : styles.cardWrapper}>
+            <div className={styles.stats} style={{ display: users?.length > 5 ? 'none' : 'flex' }}>
+              <span className={styles.stat}>
+                <span className={styles.statHeader}>ERRORS</span>
+                {item.gamePiece.errors}
+              </span>
+              <span className={styles.stat}>
+                <span className={styles.statHeader}>ACCURACY</span>
+                {item.gamePiece.accuracy}%
+              </span>
+              <span className={styles.stat}>
+                <span className={styles.statHeader}>TIME</span>
+                {item.gamePiece.time}
+              </span>
+            </div>
+            <div className={styles.display} style={{ background: item.gamePiece.color }}>
+              <span>
+                <span>{item.emoji}</span>
+                {item.username}
+              </span>
+              <div className={styles.wpm}>
+                {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
+              </div>
+              <div className={styles.placement} style={{ color: item.gamePiece.color }}>
+                {placements(item.gamePiece?.rank) || '-'}
+              </div>
+            </div>
+          </div>
+        </m.div>
+      )),
+    [isSolo, users, variants]
+  );
 
   return (
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
@@ -51,106 +108,15 @@ const ClientList = (props): JSX.Element => {
           className={styles.container}
           style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}
         >
-          {users?.length > 5 ? (
-            <AnimatePresence>
-              {users.map((item) => (
-                <m.div
-                  className={styles.card}
-                  style={{ marginBottom: '10px' }}
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  variants={variants}
-                  custom={isSolo}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 25,
-                    velocity: 2
-                  }}
-                  key={item.id}
-                >
-                  <div className={styles.miniCardWrapper}>
-                    <div className={styles.username}>
-                      <div
-                        className={styles.usernameWrapper}
-                        style={{ background: item.gamePiece.color }}
-                      >
-                        <span>
-                          <span>{item.emoji}</span>
-                          {item.username}
-                        </span>
-                        <div className={styles.wpm}>
-                          {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
-                        </div>
-                        <div className={styles.placement} style={{ color: item.gamePiece.color }}>
-                          {placements(item.gamePiece?.rank) || '-'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </m.div>
-              ))}
-            </AnimatePresence>
-          ) : (
-            <AnimatePresence>
-              {users.map((item) => (
-                <m.div
-                  className={styles.card}
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  variants={variants}
-                  custom={isSolo}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 25,
-                    velocity: 2
-                  }}
-                  key={item.id}
-                >
-                  <div className={styles.cardWrapper}>
-                    <div className={styles.stats}>
-                      <span className={styles.stat}>
-                        <span className={styles.statHeader}>ERRORS</span>
-                        {item.gamePiece.errors}
-                      </span>
-                      <span className={styles.stat}>
-                        <span className={styles.statHeader}>ACCURACY</span>
-                        {item.gamePiece.accuracy}%
-                      </span>
-                      <span className={styles.stat}>
-                        <span className={styles.statHeader}>TIME</span>
-                        {item.gamePiece.time}
-                      </span>
-                    </div>
-                    <div className={styles.username}>
-                      <div
-                        className={styles.usernameWrapper}
-                        style={{ background: item.gamePiece.color }}
-                      >
-                        <span>
-                          <span>{item.emoji}</span>
-                          {item.username}
-                        </span>
-                        <div className={styles.wpm}>
-                          {item.gamePiece.wpm} <span className={styles.statHeader}>WPM</span>
-                        </div>
-                        <div className={styles.placement} style={{ color: item.gamePiece.color }}>
-                          {placements(item.gamePiece?.rank) || '-'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </m.div>
-              ))}
-            </AnimatePresence>
-          )}
+          {clients}
         </div>
       )}
     </div>
   );
+};
+
+ClientList.defaultProps = {
+  isSolo: false
 };
 
 export default memo(ClientList);

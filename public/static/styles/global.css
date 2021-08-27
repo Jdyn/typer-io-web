@@ -108,7 +108,7 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--border);
+    background: var(--border);
     box-shadow: none;
   }
 

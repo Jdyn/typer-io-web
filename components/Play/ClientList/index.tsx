@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { m } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
 
@@ -108,7 +108,7 @@ const ClientList = (props: Props): JSX.Element => {
           className={styles.container}
           style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}
         >
-          {clients}
+          <AnimatePresence>{clients}</AnimatePresence>
         </div>
       )}
     </div>

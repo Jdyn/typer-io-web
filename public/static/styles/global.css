@@ -7,28 +7,28 @@
 }
 
 @font-face {
-  font-family: 'dinn';
-  src: url('/static/fonts/din-round-700.woff') format('woff');
-  font-weight: 700;
   font-display: swap;
+  font-family: 'dinn';
+  src: url('/static/fonts/dinn-700.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'dinn';
-  src: url('/static/fonts/din-round-500.woff') format('woff');
-  font-weight: 500;
   font-display: swap;
+  font-family: 'dinn';
+  src: url('/static/fonts/dinn-500.woff') format('woff');
+  font-weight: 500;
   font-style: normal;
 }
 
-/* @font-face {
+@font-face {
+  font-display: swap;
   font-family: 'dinn';
   src: url('/static/fonts/dinn-300.woff') format('woff');
   font-weight: 300;
-  font-display: swap;
   font-style: normal;
-} */
+}
 
 *,
 *::before,
@@ -75,7 +75,7 @@
   --border-fill: #f7f7f7;
   --red: #d73c42;
   --subwhite: #eef2f7;
-  --white: #fff;
+  --white: #eef2f7;
   --black: #4c4c4c;
   --shadow: 0 10px 10px rgba(0, 0, 0, 0.25), 0 10px 50px rgba(0, 0, 0, 0.25);
   --stripe-color: #202020;

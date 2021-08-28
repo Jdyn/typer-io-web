@@ -8,6 +8,9 @@ import { ThemeContext } from '../../util/getInitialColorMode';
 import Dropdown from './Dropdown/AuthDisplay';
 import sun from '../../public/static/images/sun.svg';
 import moon from '../../public/static/images/moon.svg';
+import home from '../../public/static/images/home.svg';
+import chatBubble from '../../public/static/images/chat-bubble.svg';
+import rocket from '../../public/static/images/rocket.svg';
 
 const Header = (): JSX.Element => {
   const router = useRouter();
@@ -32,13 +35,43 @@ const Header = (): JSX.Element => {
             </Link>
             <nav className={styles.nav}>
               <Link prefetch={false} href="/">
-                <a href="/">home</a>
+                <div className={styles.navItem}>
+                  <Image
+                    className={styles.navImage}
+                    src={home}
+                    width="26px"
+                    height="26px"
+                    layout="fixed"
+                    priority
+                  />
+                  <a href="/">home</a>
+                </div>
               </Link>
               <Link prefetch={false} href="/forum?page=1">
-                <a href="/forum">discuss</a>
+                <div className={styles.navItem}>
+                  <Image
+                    className={styles.navImage}
+                    src={chatBubble}
+                    width="26px"
+                    height="26px"
+                    layout="fixed"
+                    priority
+                  />
+                  <a href="/forum">discuss</a>
+                </div>
               </Link>
               <Link prefetch={false} href="/hiscores?query=top_speed&page=1&type=all">
-                <a href="/hiscores?query=top_speed&page=1&type=all">hiscores</a>
+                <div className={styles.navItem}>
+                  <Image
+                    className={styles.navImage}
+                    src={rocket}
+                    width="26px"
+                    height="26px"
+                    layout="fixed"
+                    priority
+                  />
+                  <a href="/hiscores?query=top_speed&page=1&type=all">hiscores</a>
+                </div>
               </Link>
             </nav>
             <div className={styles.searchContainer}>
@@ -68,9 +101,23 @@ const Header = (): JSX.Element => {
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? (
-                <Image quality="45" width="26px" height="26px" src={sun} alt="light-mode sun" />
+                <Image
+                  priority
+                  quality="45"
+                  width="24px"
+                  height="24px"
+                  src={sun}
+                  alt="light-mode sun"
+                />
               ) : (
-                <Image quality="45" width="26px" height="26px" src={moon} alt="dark-mode moon" />
+                <Image
+                  priority
+                  quality="45"
+                  width="24px"
+                  height="24px"
+                  src={moon}
+                  alt="dark-mode moon"
+                />
               )}
             </button>
             <Dropdown />

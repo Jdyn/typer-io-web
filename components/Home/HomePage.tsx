@@ -54,7 +54,7 @@ const HomePage = (): JSX.Element => {
           <Paper title="News">
             <div className={styles.newsContainer}>
               <div className={styles.newsWrapper}>
-                <h1>Improve your typing speed and race your friends!</h1>
+                <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {updated} </span>
                 <p>Hello, if you have any suggestions, please let me know on the forums!</p>
                 <a

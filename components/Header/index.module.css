@@ -43,8 +43,9 @@
   list-style: none;
 }
 
-.nav > a {
+.navItem {
   display: flex;
+  flex-direction: row;
   align-items: center;
   font-size: 1rem;
   text-decoration: none;
@@ -56,8 +57,18 @@
   margin: 0 15px;
 }
 
-.nav > a:hover {
+.navItem:hover {
   text-decoration: underline;
+}
+
+.navImage {
+  fill: #fff !important;
+}
+
+.navItem > a {
+  text-decoration: none;
+  margin-left: 10px;
+  color: #fff !important
 }
 
 .authContainer {

@@ -25,7 +25,7 @@ const variants = {
 };
 
 const Piece = (props: Props): JSX.Element => {
-  const { position, color, emoji, id } = props;
+  const { position, emoji, id } = props;
 
   return (
     <m.div
@@ -38,7 +38,7 @@ const Piece = (props: Props): JSX.Element => {
       animate="center"
       className={styles.gamePiece}
     >
-      <span style={{ background: color }} role="img" aria-label="sheep">
+      <span role="img" aria-label="sheep">
         <span>{emoji}</span>
       </span>
     </m.div>

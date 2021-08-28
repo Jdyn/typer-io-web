@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'dinn';
-  src: url('/static/fonts/dinn-700.woff') format('woff');
+  src: url('/static/fonts/din-round-700.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
@@ -16,19 +16,19 @@
 
 @font-face {
   font-family: 'dinn';
-  src: url('/static/fonts/dinn-500.woff') format('woff');
+  src: url('/static/fonts/din-round-500.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'dinn';
   src: url('/static/fonts/dinn-300.woff') format('woff');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
-}
+} */
 
 *,
 *::before,
@@ -87,6 +87,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   font-size: 1rem;
+  line-height: 1.15;
   font-family: 'dinn';
 }
 
@@ -97,7 +98,7 @@ body {
   font-size: 100%;
   background: var(--primary-main);
   color: var(--text);
-  font-weight: normal;
+  font-weight: 500;
   font-style: normal;
   text-rendering: optimizeLegibility;
 }

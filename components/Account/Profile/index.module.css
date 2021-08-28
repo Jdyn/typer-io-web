@@ -123,6 +123,7 @@
 .historyContent {
   display: flex;
   flex: 1;
+  font-weight: 700;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;

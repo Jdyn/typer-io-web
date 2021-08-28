@@ -47,10 +47,10 @@ const Leaderboard = ({ clientsComplete }: Props): JSX.Element => {
               <div className={styles.entry} key={item.id}>
                 <div className={styles.count}>{index + 1}.</div>
                 <div className={styles.content}>
-                  <span className={item.user ? styles.verified : ''}>
+                  <span className={styles.nameLink}>
                     {item.user?.username ? (
                       <Link href={`/u/${item.user.username}`}>
-                        <a target="_blank" rel="noreferrer noopener" className={styles.nameLink}>
+                        <a target="_blank" rel="noreferrer noopener">
                           {item.user?.username}
                         </a>
                       </Link>

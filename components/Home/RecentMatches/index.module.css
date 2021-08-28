@@ -44,6 +44,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -55,9 +56,9 @@
   align-items: flex-start;
 }
 
-.content > div {
+.content > span {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   margin: 5px 0px;
   position: relative;
   justify-self: flex-start;

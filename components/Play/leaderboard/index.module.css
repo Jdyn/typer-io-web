@@ -27,10 +27,6 @@
   overflow-y: auto;
 }
 
-.verified {
-  color: var(--accent);
-}
-
 .entry {
   display: flex;
   flex-direction: row;
@@ -54,13 +50,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-
-.content > div {
   font-size: 1rem;
   font-weight: 500;
   margin: 5px 0px;
   position: relative;
+  color: var(--text);
   justify-self: flex-start;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -123,6 +117,18 @@
 }
 
 .nameLink {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 5px 0px;
+  position: relative;
+  justify-self: flex-start;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.nameLink > a {
   color: var(--text);
 }
 

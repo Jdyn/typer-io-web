@@ -41,7 +41,7 @@
 .nameLink {
   text-decoration: underline;
   cursor: pointer;
-  color: var(--text);
+  color: var(--subtext);
 }
 
 .feed {

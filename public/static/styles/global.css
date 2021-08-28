@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'dinn';
-  src: url('/static/fonts/din-round-700.woff2') format('woff2');
+  src: url('/static/fonts/din-round-700.woff') format('woff');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'dinn';
-  src: url('/static/fonts/din-round-500.woff2') format('woff2');
+  src: url('/static/fonts/din-round-500.woff') format('woff');
   font-weight: 500;
   font-display: swap;
   font-style: normal;

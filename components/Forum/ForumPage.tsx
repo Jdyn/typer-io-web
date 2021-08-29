@@ -32,7 +32,6 @@ const ForumPage = (): JSX.Element => {
           slot="1319118588"
           style={{ display: 'block' }}
           format="auto"
-          responsive="true"
         />
       </section>
       <div className={styles.main}>
@@ -113,7 +112,6 @@ const ForumPage = (): JSX.Element => {
           slot="4985533875"
           style={{ display: 'block' }}
           format="auto"
-          responsive="true"
         />
       </section>
     </div>

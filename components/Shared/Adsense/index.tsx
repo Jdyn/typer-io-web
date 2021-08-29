@@ -10,10 +10,11 @@ interface Props {
   layoutKey?: string;
   format?: string;
   path?: string;
+  responsive?: boolean;
 }
 
 const Adsense = (props: Props): JSX.Element => {
-  const { className, style, client, slot, layout, layoutKey, format, path } = props;
+  const { className, style, client, slot, layout, layoutKey, format, path, responsive } = props;
 
   const [isAds, setAds] = useState(false);
 
@@ -56,7 +57,8 @@ Adsense.defaultProps = {
   format: 'auto',
   layout: '',
   layoutKey: '',
-  path: ''
+  path: '',
+  responsive: true
 };
 
 export default memo(Adsense);

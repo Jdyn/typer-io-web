@@ -41,7 +41,6 @@ const Post = (props: Props): JSX.Element => {
           client="ca-pub-3148839588626786"
           slot="1319118588"
           format="auto"
-          responsive="true"
         />
       </section>
       <div className={styles.post}>
@@ -119,7 +118,6 @@ const Post = (props: Props): JSX.Element => {
           slot="1319118588"
           style={{ display: 'block' }}
           format="auto"
-          responsive="true"
         />
       </section>
     </div>

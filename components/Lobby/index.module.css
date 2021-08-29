@@ -40,6 +40,10 @@
   grid-area: rightContent;
 }
 
+.profileContainer {
+  margin-bottom: 20px;
+}
+
 .input {
   display: flex;
   border: none;

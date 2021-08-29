@@ -95,25 +95,21 @@ const HomePage = (): JSX.Element => {
         </section>
         <section className={styles.rightColumn}>
           <RecentPosts />
-          <section>
-            <Adsense
-              client="ca-pub-3148839588626786"
-              slot="8439040257"
-              style={{ display: 'block', textAlign: 'center' }}
-              format="fluid"
-              layout="in-article"
-            />
-          </section>
+          <Adsense
+            client="ca-pub-3148839588626786"
+            slot="8439040257"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
+          />
           <RecentMatches />
-          <section>
-            <Adsense
-              client="ca-pub-3148839588626786"
-              slot="7114370741"
-              style={{ display: 'block', textAlign: 'center' }}
-              format="fluid"
-              layout="in-article"
-            />
-          </section>
+          <Adsense
+            client="ca-pub-3148839588626786"
+            slot="7114370741"
+            style={{ display: 'block', textAlign: 'center' }}
+            format="fluid"
+            layout="in-article"
+          />
         </section>
       </div>
       <section

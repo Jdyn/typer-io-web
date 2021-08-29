@@ -10,54 +10,34 @@ interface Props {
   layoutKey?: string;
   format?: string;
   path?: string;
-  wrapperStyles?: object;
-  responsive?: 'true' | 'false';
 }
 
 const Adsense = (props: Props): JSX.Element => {
-  const {
-    className,
-    style,
-    client,
-    slot,
-    layout,
-    layoutKey,
-    format,
-    responsive,
-    path,
-    wrapperStyles
-  } = props;
+  const { className, style, client, slot, layout, layoutKey, format, path } = props;
+
+  const [isAds, setAds] = useState(false);
 
   useEffect(() => {
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-    } catch (e) {}
+
+      if (Array.isArray((window as any).adsbygoogle)) {
+        setAds(false);
+      } else if (typeof (window as any).adsbygoogle === 'object') {
+        setAds(true);
+      }
+    } catch (e) {
+      // catch
+    }
   }, []);
 
-  return typeof window !== 'undefined' && typeof (window as any).adsbygoogle !== 'undefined' ? (
-    // <div
-    //   id={slot}
-    //   key={path}
-    //   className={styles.root}
-    //   style={{ ...wrapperStyles }}
-    // >
-    <ins
-      key={path}
-      className="adsbygoogle"
-      style={style}
-      data-ad-client={client}
-      data-ad-slot={slot}
-      data-ad-layout={layout}
-      data-ad-layout-key={layoutKey}
-      data-ad-format={format}
-      data-full-width-responsive={false}
-    />
-  ) : (
-    // </div>
-    <div id={slot}>
+  console.log(isAds);
+
+  return isAds ? (
+    <div id={slot} key={path} className={`${styles.root} ${className}`}>
       <ins
         key={path}
-        className={`adsbygoogle ${className}`}
+        className="adsbygoogle"
         style={style}
         data-ad-client={client}
         data-ad-slot={slot}
@@ -67,18 +47,16 @@ const Adsense = (props: Props): JSX.Element => {
         data-full-width-responsive={false}
       />
     </div>
-  );
+  ) : null;
 };
 
 Adsense.defaultProps = {
   className: '',
   style: { display: 'block' },
-  wrapperStyles: {},
   format: 'auto',
   layout: '',
   layoutKey: '',
-  path: '',
-  responsive: 'false'
+  path: ''
 };
 
 export default memo(Adsense);

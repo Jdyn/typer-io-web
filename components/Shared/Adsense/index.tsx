@@ -21,14 +21,16 @@ const Adsense = (props: Props): JSX.Element => {
   useEffect(() => {
     try {
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-
-      if (Array.isArray((window as any).adsbygoogle)) {
-        setAds(false);
-      } else if (typeof (window as any).adsbygoogle === 'object') {
-        setAds(true);
-      }
     } catch (e) {
       // catch
+    }
+
+    if (Array.isArray((window as any).adsbygoogle)) {
+      setAds(false);
+    }
+
+    if (typeof (window as any).adsbygoogle === 'object') {
+      setAds(true);
     }
   }, []);
 

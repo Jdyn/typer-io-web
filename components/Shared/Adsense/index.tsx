@@ -25,7 +25,10 @@ const Adsense = (props: Props): JSX.Element => {
       // catch
     }
 
-    if (Array.isArray((window as any).adsbygoogle)) {
+    if (
+      (Array.isArray((window as any).adsbygoogle) && !(window as any).adsbygoogle?.loaded) ||
+      false
+    ) {
       setAds(false);
     } else if (typeof (window as any).adsbygoogle === 'object') {
       setAds(true);

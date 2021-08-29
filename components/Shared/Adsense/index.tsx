@@ -16,7 +16,7 @@ interface Props {
 const Adsense = (props: Props): JSX.Element => {
   const { className, style, client, slot, layout, layoutKey, format, path, responsive } = props;
 
-  const [isAds, setAds] = useState(false);
+  const [isAds, setAds] = useState(true);
 
   useEffect(() => {
     try {

@@ -97,7 +97,7 @@ const Hiscores = (): JSX.Element => {
         })}
       </div>
       <section className={styles.hiscores}>
-        <Paper title={`${board.title} ${query === 'top_speed' ? `- ${type} quotes` : ''}`}>
+        <Paper title={`${board.title} ${`- ${type} quotes`}`}>
           <div className={styles.pagination}>
             <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
               1

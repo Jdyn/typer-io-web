@@ -30,7 +30,7 @@ const Layout = (props: Props): JSX.Element => {
         <meta name="description" content={description} />
         <meta
           name="keywords"
-          content="typing,free typing games,typing,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test"
+          content="typer,typing,free typing games,typing,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test"
         />
         <meta
           name="google-site-verification"
@@ -52,9 +52,9 @@ const Layout = (props: Props): JSX.Element => {
 Layout.defaultProps = {
   children: null,
   striped: false,
-  title: 'Typer.io | Multiplayer Typing Test - Race Your Friends',
+  title: 'Typer | Multiplayer Typing Test - Race Your Friends',
   description:
-    'Online Multiplayer Typing Test - Improve your typing speed and race your friends. Practice on different texts and learn how to type faster.'
+    'The Online Multiplayer Typing Test - Improve your speed and race your friends. Practice on different texts and learn how to type faster.'
 };
 
 export default Layout;

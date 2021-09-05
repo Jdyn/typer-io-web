@@ -28,13 +28,13 @@ const leaderboards = {
   top_matches: {
     title: 'Top Matches',
     query: 'top_matches',
-    fields: [{ name: 'Matches', key: 'matchCount' }]
-    // filters: [
-    //   { name: 'all', key: 'all' },
-    //   { name: 'easy', key: 'easy' },
-    //   { name: 'medium', key: 'medium' },
-    //   { name: 'hard', key: 'hard' }
-    // ]
+    fields: [{ name: 'Matches', key: 'matchCount' }],
+    filters: [
+      { name: 'all', key: 'all' },
+      { name: 'easy', key: 'easy' },
+      { name: 'medium', key: 'medium' },
+      { name: 'hard', key: 'hard' }
+    ]
   }
 };
 

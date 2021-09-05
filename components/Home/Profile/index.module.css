@@ -89,6 +89,9 @@
 }
 
 .emoji {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
   outline: none;
   border: 2px solid transparent;
   border-radius: 50%;

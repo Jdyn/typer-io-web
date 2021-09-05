@@ -35,8 +35,6 @@ const Adsense = (props: Props): JSX.Element => {
     }
   }, []);
 
-  console.log(isAds);
-
   return isAds ? (
     <div id={slot} key={path} className={`${styles.root} ${className}`}>
       <ins

@@ -82,7 +82,7 @@ const PostComment = (props: Props): JSX.Element => {
                 color="#fff"
                 padding="8px"
                 isPending={isLoading}
-                onClick={() => addPostComment({ comment: newComment, postId })}
+                onClick={() => !isLoading && addPostComment({ comment: newComment, postId })}
               >
                 post
               </Button>

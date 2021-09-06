@@ -22,6 +22,10 @@ class MyDocument extends Document {
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
+          <script
+            src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body id="body">
           <Main />

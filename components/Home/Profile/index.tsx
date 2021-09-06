@@ -8,6 +8,7 @@ import emojiList from '../../../lib/emojis';
 
 import styles from './index.module.css';
 import { silentEmit } from '../../../services/socket';
+import Twemoji from '../../Shared/Twemoji';
 
 interface Props {
   requireSave?: boolean;
@@ -51,7 +52,7 @@ const Profile = (props: Props): JSX.Element => {
         onClick={(): void => handleEmojiPick(item)}
         className={`${styles.emoji} ${currentEmoji === item ? styles.selected : ''}`}
       >
-        {item}
+        <Twemoji emoji={item} />
       </button>
     ));
   }, [currentEmoji, emojiPage]);
@@ -82,7 +83,9 @@ const Profile = (props: Props): JSX.Element => {
     <Paper title="You">
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <div className={styles.portrait}>{currentEmoji}</div>
+          <div className={styles.portrait}>
+            <Twemoji emoji={currentEmoji} />
+          </div>
           <input
             id="nicknameInput"
             className={styles.input}

@@ -1,5 +1,6 @@
 import { m } from 'framer-motion';
 import { memo } from 'react';
+import Twemoji from '../../Shared/Twemoji';
 import styles from './index.module.css';
 
 interface Props {
@@ -38,9 +39,7 @@ const Piece = (props: Props): JSX.Element => {
       animate="center"
       className={styles.gamePiece}
     >
-      <span role="img" aria-label="sheep">
-        <span>{emoji}</span>
-      </span>
+      <Twemoji emoji={emoji} />
     </m.div>
   );
 };

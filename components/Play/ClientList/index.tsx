@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { AnimatePresence, m } from 'framer-motion';
 import styles from './index.module.css';
 import { AppState } from '../../../store';
+import Twemoji from '../../Shared/Twemoji';
 
 // TODO: probably use useMemo for this so its not called every render
 export const placements = (rank: number): string => {
@@ -85,7 +86,7 @@ const ClientList = (props: Props): JSX.Element => {
             </div>
             <div className={styles.display} style={{ background: item.gamePiece.color }}>
               <span>
-                <span>{item.emoji}</span>
+                <Twemoji emoji={item.emoji} />
                 {item.username}
               </span>
               <div className={styles.wpm}>

@@ -56,22 +56,25 @@ const HomePage = (): JSX.Element => {
               <div className={styles.newsWrapper}>
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {updated} </span>
-                <p>Hello, if you have any suggestions, please let me know on the forums!</p>
-                <a
-                  className={styles.support}
-                  href="https://www.buymeacoffee.com/typer"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  support the creator ➜
-                </a>
+                <p>
+                  Note: If you want to have a very large match, let me know on discord below,
+                  otherwise servers may not handle it!
+                </p>
                 <a
                   className={styles.support}
                   href="https://discord.gg/E2Fj4h3JCa"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Join the discord ➜
+                  Join the Discord ➜
+                </a>
+                <a
+                  className={styles.support}
+                  href="https://www.buymeacoffee.com/typer"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Support the Creator ➜
                 </a>
                 <h3>Changes (September 4th, 2021):</h3>
                 <div className={styles.list}>

@@ -57,8 +57,8 @@ const HomePage = (): JSX.Element => {
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {updated} </span>
                 <p>
-                  Note: If you want to have a very large match, let me know on discord below,
-                  otherwise servers may not handle it!
+                  If you have a large group, let me know on discord below, otherwise servers may not
+                  be able to handle it!
                 </p>
                 <a
                   className={styles.support}

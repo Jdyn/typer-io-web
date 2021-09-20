@@ -42,7 +42,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       if (event.key === 'Control') {
         keys[event.key] = true;
       }
-      if (keys.Control && event.key === 'a') {
+      if (keys.Control && event.key === 'Enter') {
         if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
           silentClose();
         }
@@ -175,7 +175,7 @@ const PlayStatus = (props: Props): JSX.Element => {
               margin="0px 0px 5px 0px"
               onClick={(): void => handleNewPublicGame()}
             >
-              new game
+              new game (Ctrl + Enter)
             </Button>
           </div>
         )}

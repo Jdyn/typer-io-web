@@ -58,7 +58,7 @@ const Profile = (props: Props): JSX.Element => {
 
   const handlePage = (page) => {
     const totalPages = Math.floor(emojiList.length / 16);
-    if (page <= totalPages && page >= 1 && page !== emojiPage) {
+    if (page <= totalPages && page >= 0 && page !== emojiPage) {
       setEmojiPage(page);
     }
   };

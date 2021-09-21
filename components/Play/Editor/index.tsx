@@ -23,15 +23,8 @@ interface Props {
 }
 
 const Editor = (props: Props): JSX.Element => {
-  const {
-    isStarted,
-    isOver,
-    inputDidUpdate,
-    submitWord,
-    setEditorState,
-    gameState,
-    isWrong
-  } = props;
+  const { isStarted, isOver, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } =
+    props;
 
   useEffect(() => {
     focusInput();
@@ -111,7 +104,7 @@ const Editor = (props: Props): JSX.Element => {
           onClick={(): void => focusInput()}
           tabIndex={0}
           placeholder={inputPlaceholder()}
-          autoComplete="false"
+          autoComplete="off"
           autoCorrect="off"
           maxLength={gameState.currentWord ? gameState.currentWord.length : 524288}
           autoCapitalize="off"

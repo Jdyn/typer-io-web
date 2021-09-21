@@ -100,11 +100,12 @@ const Editor = (props: Props): JSX.Element => {
       >
         <input
           id="input"
+          type="search"
           className={styles.input}
           onClick={(): void => focusInput()}
           tabIndex={0}
           placeholder={inputPlaceholder()}
-          autoComplete="off"
+          autoComplete="IHateBrowsers"
           autoCorrect="off"
           maxLength={gameState.currentWord ? gameState.currentWord.length : 524288}
           autoCapitalize="off"

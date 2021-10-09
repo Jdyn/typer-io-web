@@ -147,7 +147,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                   />
                 </span>
               </div>
-              <div className={styles.item}>
+              {/* <div className={styles.item}>
                 <div className={styles.label}>Change Username:</div>
                 <span className={styles.content}>
                   <input
@@ -156,7 +156,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                     onChange={(e): void => setForm({ ...form, username: e.target.value })}
                   />
                 </span>
-              </div>
+              </div> */}
             </div>
             <div className={styles.save}>
               <Button padding="5px 20px" onClick={onClick}>

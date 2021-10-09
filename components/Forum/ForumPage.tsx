@@ -50,7 +50,7 @@ const ForumPage = (): JSX.Element => {
             <div className={styles.feedWrapper}>
               {feed?.data?.map((post) => (
                 <li className={styles.feedItem} key={post.id}>
-                  <div className={styles.portrait} />
+                  {/* <div className={styles.portrait} /> */}
                   <div className={styles.feedContent}>
                     <Link
                       href={`/forum/post/${post.id}/${encodeURIComponent(

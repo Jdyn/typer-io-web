@@ -21,12 +21,18 @@ const Post = (props: Props): JSX.Element => {
   const { postId } = props;
   const router = useRouter();
 
-  const { data: post } = useGetPostQuery(postId);
+  const { data: post, isLoading } = useGetPostQuery(postId);
   const [addPostComment, { status }] = useAddPostCommentMutation();
 
   const [newComment, setComment] = useState({ body: '', parentId: null });
 
   const isLoggedIn = useSelector((state: AppState) => state.session.isLoggedIn);
+
+  const createComment = () => {
+    if (newComment.body !== '' && !isLoading) {
+      addPostComment({ comment: newComment, postId });
+    }
+  };
 
   useEffect(() => {
     if (status === 'fulfilled') {
@@ -37,11 +43,7 @@ const Post = (props: Props): JSX.Element => {
   return (
     <div className={styles.root}>
       <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="1319118588"
-          format="auto"
-        />
+        <Adsense client="ca-pub-3148839588626786" slot="1319118588" format="auto" />
       </section>
       <div className={styles.post}>
         <div className={styles.postContainer}>
@@ -75,14 +77,11 @@ const Post = (props: Props): JSX.Element => {
                       onChange={(e) => setComment({ ...newComment, body: e.target.value })}
                     />
                     <div className={styles.buttons}>
-                      <Button
-                        padding="6px 20px"
-                        onClick={() => addPostComment({ comment: newComment, postId })}
-                      >
+                      <Button padding="8px" isPending={isLoading} onClick={createComment}>
                         comment
                       </Button>
                       <Button
-                        padding="6px 27px"
+                        padding="8px"
                         secondary
                         onClick={() => setComment((prev) => ({ ...prev, body: '' }))}
                       >

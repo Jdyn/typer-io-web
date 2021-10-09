@@ -68,7 +68,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   color: var(--text);
-  margin: 20px 0px;
+  margin: 10px 0px;
   overflow-wrap: break-word;
   word-break: break-word;
   word-wrap: break-word;
@@ -79,7 +79,11 @@
   color: var(--subtext);
 }
 
-.content > span > a{
+.updatedAt {
+  margin-bottom: 10px;
+}
+
+.content > span > a {
   color: var(--subtext);
 }
 

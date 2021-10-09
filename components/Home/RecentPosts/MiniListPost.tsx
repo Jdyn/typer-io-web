@@ -28,6 +28,9 @@ const MiniListPost = (props: Props): JSX.Element => {
           {post.user.isAdmin && <span className={styles.admin}>Creator</span>}
         </span>
         <p>{post.body}</p>
+        {post.commentCount > 0 && (
+          <span className={styles.updatedAt}>Last comment {formatTime(post.updatedAt)}</span>
+        )}
         <Link
           prefetch={false}
           href={`/forum/post/${post.id}/${encodeURIComponent(post.title.split(' ').join('-'))}`}

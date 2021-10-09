@@ -61,7 +61,9 @@ const Hiscores = (): JSX.Element => {
 
   const setPage = (index, newType?: string): void => {
     // if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
-    router.push(`/hiscores?query=${query}&page=${index}&type=${newType || type}`);
+    router.push(`/hiscores?query=${query}&page=${index}&type=${newType || type}`, null, {
+      scroll: false
+    });
     // }
   };
 
@@ -113,7 +115,7 @@ const Hiscores = (): JSX.Element => {
               onClick={() => setPage(itemPage?.page + 1)}
               type="button"
             >{`>`}</button>
-            {itemPage?.maxPage && (
+            {itemPage?.maxPage ? (
               <button
                 className={styles.pageButton}
                 onClick={() => setPage(itemPage?.maxPage)}
@@ -121,6 +123,8 @@ const Hiscores = (): JSX.Element => {
               >
                 {itemPage?.maxPage || 1}
               </button>
+            ) : (
+              <div style={{ width: '27.35px' }} />
             )}
           </div>
           {board.filters && (
@@ -184,7 +188,7 @@ const Hiscores = (): JSX.Element => {
                 onClick={() => setPage(itemPage?.page + 1)}
                 type="button"
               >{`>`}</button>
-              {itemPage?.maxPage && (
+              {itemPage?.maxPage ? (
                 <button
                   className={styles.pageButton}
                   onClick={() => setPage(itemPage?.maxPage)}
@@ -192,6 +196,8 @@ const Hiscores = (): JSX.Element => {
                 >
                   {itemPage?.maxPage || 1}
                 </button>
+              ) : (
+                <div style={{ width: '27.33px' }} />
               )}
             </div>
           </div>

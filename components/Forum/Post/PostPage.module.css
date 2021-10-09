@@ -119,14 +119,9 @@
 }
 
 .buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.buttons > div {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
 }
 
 

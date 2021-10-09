@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1630811164560);
+const updated = formatTime(1633819560445);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -57,8 +57,8 @@ const HomePage = (): JSX.Element => {
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {updated} </span>
                 <p>
-                  If you have a large group, let me know on discord below, otherwise servers may not
-                  be able to handle it!
+                  Hello, thank you for visiting the website. Contact me on Discord to host 500+
+                  player custom matches.
                 </p>
                 <a
                   className={styles.support}
@@ -76,11 +76,11 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>Changes (September 4th, 2021):</h3>
+                <h3>Changes (October 9th, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>Added per quote difficulty top matches to leaderboards</li>
-                    <li>Performance improvements</li>
+                    <li>Removed name changes</li>
+                    <li>Fixed a few forum issues</li>
                   </ul>
                 </div>
               </div>

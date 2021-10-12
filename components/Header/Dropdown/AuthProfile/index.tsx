@@ -20,6 +20,7 @@ const menu = {
   title: 'Menu',
   items: [
     { title: 'Home', link: '/' },
+    { title: 'Hiscores', link: '/hiscores?query=top_speed&page=1&type=all' },
     { title: 'Discuss', link: '/forum' }
   ],
   submit: 'ok'

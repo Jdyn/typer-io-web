@@ -33,6 +33,7 @@ const templates = {
     fields: [
       { title: 'Home', link: '/' },
       { title: 'Discuss', link: '/forum' },
+      { title: 'Hiscores', link: '/hiscores?query=top_speed&page=1&type=all' },
       { title: 'Log In', link: '/login' },
       { title: 'Sign Up', link: '/signup' }
     ],

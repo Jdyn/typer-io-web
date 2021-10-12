@@ -1,18 +1,29 @@
 .root {
   display: grid;
-  grid-template-columns: 1fr 640px 1fr;
-  grid-template-rows: 1fr;
-  gap: 20px;
+  position: relative;
   margin: 145px auto 125px auto;
   padding: 0px 10px;
   max-width: 1250px;
+  grid-template-columns: 1fr 640px 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 814px) {
+  .root {
+    grid-template-rows: min-content min-content min-content;
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    display: none;
+  }
 }
 
 .hiscores {
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 100;
   width: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

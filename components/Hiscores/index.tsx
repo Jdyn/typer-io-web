@@ -9,6 +9,7 @@ import Paper from '../Shared/Paper';
 import snakeToCamel from '../../util/snakeToCamel';
 import IFilter from '../Shared/Filter';
 import formatTime from '../../util/formatTime';
+import Adsense from '../Shared/Adsense';
 
 const leaderboards = {
   top_speed: {
@@ -83,22 +84,30 @@ const Hiscores = (): JSX.Element => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.filter}>
-        {Object.keys(leaderboards).map((key) => {
-          const item = leaderboards[key];
-          return (
-            <button
-              type="button"
-              key={item.title}
-              className={styles.filterItem}
-              onClick={() => changePage(item.query)}
-            >
-              <h3>{item.title}</h3>
-            </button>
-          );
-        })}
-      </div>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="1319118588"
+          style={{ display: 'block' }}
+          format="auto"
+        />
+      </section>
       <section className={styles.hiscores}>
+        <div className={styles.filter}>
+          {Object.keys(leaderboards).map((key) => {
+            const item = leaderboards[key];
+            return (
+              <button
+                type="button"
+                key={item.title}
+                className={styles.filterItem}
+                onClick={() => changePage(item.query)}
+              >
+                <h3>{item.title}</h3>
+              </button>
+            );
+          })}
+        </div>
         <Paper title={`${board.title} ${`- ${type} quotes`}`}>
           <div className={styles.pagination}>
             <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
@@ -202,6 +211,14 @@ const Hiscores = (): JSX.Element => {
             </div>
           </div>
         </Paper>
+      </section>
+      <section>
+        <Adsense
+          client="ca-pub-3148839588626786"
+          slot="1319118588"
+          style={{ display: 'block' }}
+          format="auto"
+        />
       </section>
     </div>
   );

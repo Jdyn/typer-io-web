@@ -35,7 +35,7 @@ const Adsense = (props: Props): JSX.Element => {
     }
   }, []);
 
-  return isAds ? (
+  return (
     <div id={slot} key={path} className={`${styles.root} ${className}`}>
       <ins
         key={path}
@@ -49,7 +49,7 @@ const Adsense = (props: Props): JSX.Element => {
         data-full-width-responsive={false}
       />
     </div>
-  ) : null;
+  );
 };
 
 Adsense.defaultProps = {

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-param-reassign */
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const basePath = '';
 

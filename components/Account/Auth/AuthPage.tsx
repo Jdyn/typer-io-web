@@ -42,6 +42,17 @@ const AuthPage = ({ type }: Props): JSX.Element => {
     }
   }, [data, isSuccess, router]);
 
+  const parseErrors = () => {
+    const { errors } = (error as ApiErrorResponse).data;
+    return (
+      <>
+        {Object.keys(errors).map((key) => (
+          <div key={key}>{`${key} ${errors[key][0]}`}</div>
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
@@ -50,7 +61,12 @@ const AuthPage = ({ type }: Props): JSX.Element => {
           onSubmit={(_, form) => authenticate({ type, form })}
           isPending={isLoading}
         />
-        {isError && <div className={styles.error}>{(error as ApiErrorResponse).data.error}</div>}
+        {isError && (
+          <div className={styles.error}>
+            {(error as ApiErrorResponse).data.error}
+            {(error as ApiErrorResponse).data.errors && parseErrors()}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -52,6 +52,17 @@ const AuthMenu = (props: Props): JSX.Element => {
   const { modalRef, updateModal, isOpen, type } = props;
   const [authenticate, { isLoading, isError, error }] = useAuthenticateMutation();
 
+  const parseErrors = () => {
+    const { errors } = (error as ApiErrorResponse).data;
+    return (
+      <>
+        {Object.keys(errors).map((key) => (
+          <div key={key}>{`${key} ${errors[key][0]}`}</div>
+        ))}
+      </>
+    );
+  };
+
   return (
     <ThemeContext.Consumer>
       {({ theme, setTheme }) => (
@@ -112,9 +123,10 @@ const AuthMenu = (props: Props): JSX.Element => {
                   )}
                   <div className={styles.error}>
                     {isError && (
-                      <span>
-                        {(error as ApiErrorResponse).data.error || 'Failed to connect to server.'}
-                      </span>
+                      <>
+                        {(error as ApiErrorResponse).data.error}
+                        {(error as ApiErrorResponse).data.errors && parseErrors()}
+                      </>
                     )}
                   </div>
                 </div>

@@ -231,8 +231,9 @@
 
 .overviewRoot {
   display: flex;
-  flex: row;
+  flex-wrap: wrap;
   margin: 20px;
+  gap: 15px;
 }
 
 .statsContainer {
@@ -273,13 +274,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex: 1;
+  min-width: 225px;
   border: 2px solid var(--border);
   border-radius: 16px;
   padding: 15px;
-}
-
-.statItemContainer:last-child {
-  margin-left: 20px;
 }
 
 .statItemContainer > h3 {

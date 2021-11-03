@@ -65,6 +65,10 @@ export interface SigninPayload {
 export interface ProfileUser {
   averageAccuracy: number;
   averageWpm: number;
+  averageErrors: number;
+  recentAverageAccuracy: number;
+  recentAverageWpm: number;
+  recentAverageErrors: number;
   topWpm: number;
   bio: string;
   id: number;
@@ -74,7 +78,6 @@ export interface ProfileUser {
   isAdmin: boolean;
   matchCount: number;
   totalWins: number;
-  averageErrors: number;
   matchMaxPage: number;
   matchPage: number;
   country?: string;

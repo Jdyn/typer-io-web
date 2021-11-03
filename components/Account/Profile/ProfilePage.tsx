@@ -90,8 +90,23 @@ const ProfilePage = (props: Props): JSX.Element => {
           <h3>Overview</h3>
         </Banner>
         <div className={styles.overviewRoot}>
-          <div className={styles.statItemContainer}>
-            <h3>Averages</h3>
+          <div className={styles.statItemContainer} style={{ flex: 1 }}>
+            <h3>Averages (Recent 25)</h3>
+            <div className={styles.statItem}>
+              <div>WPM</div>
+              <span>{user?.recentAverageWpm}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Accuracy</div>
+              <span>{user?.recentAverageAccuracy && `${user?.recentAverageAccuracy}%`}</span>
+            </div>
+            <div className={styles.statItem}>
+              <div>Errors Per Game</div>
+              <span>{user?.recentAverageErrors}</span>
+            </div>
+          </div>
+          <div className={styles.statItemContainer} style={{ flex: 1 }}>
+            <h3>Averages (all time)</h3>
             <div className={styles.statItem}>
               <div>WPM</div>
               <span>{user?.averageWpm}</span>

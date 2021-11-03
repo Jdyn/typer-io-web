@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1633819560445);
+const updated = formatTime(1635968432601);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -76,11 +76,10 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>Changes (October 9th, 2021):</h3>
+                <h3>Changes (Nov. 3rd, 2021):</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>Removed name changes</li>
-                    <li>Fixed a few forum issues</li>
+                    <li>Added recent stats to profile page</li>
                   </ul>
                 </div>
               </div>

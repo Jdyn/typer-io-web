@@ -21,8 +21,8 @@ const Post = (props: Props): JSX.Element => {
   const { postId } = props;
   const router = useRouter();
 
-  const { data: post, isLoading } = useGetPostQuery(postId);
-  const [addPostComment, { status }] = useAddPostCommentMutation();
+  const { data: post } = useGetPostQuery(postId);
+  const [addPostComment, { status, isLoading }] = useAddPostCommentMutation();
 
   const [newComment, setComment] = useState({ body: '', parentId: null });
 

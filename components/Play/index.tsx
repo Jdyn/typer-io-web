@@ -1,4 +1,3 @@
-/* eslint-disable no-continue */
 import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import ClientList from './ClientList';

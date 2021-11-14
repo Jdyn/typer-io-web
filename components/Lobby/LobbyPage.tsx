@@ -76,7 +76,7 @@ const LobbyPage = (): JSX.Element => {
               <div className={styles.setting}>
                 <h3>Maximum Players</h3>
                 <div className={styles.difficultyWrapper}>
-                  {[5, 10, 15, 20, 25, 30, 35].map((key) => (
+                  {[5, 10, 15, 20, 25, 30, 35, 75].map((key) => (
                     <button
                       type="button"
                       key={key}

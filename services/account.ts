@@ -2,10 +2,8 @@ import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/tool
 import cookies from 'js-cookie';
 import { ProfileUser, SessionUser, SigninPayload, SignupPayload } from '../store/session/types';
 import { userLoggedIn, userLoggedOut, userUpdated } from '../store/session/reducers';
-import { ApiErrorResponse } from './types';
 import { SettingsForm } from '../components/Account/Profile/Settings/types';
-import { Match } from '../store/hiscores/types';
-import { ListResponse } from '../store/forum/types';
+import { ListResponse, ApiErrorResponse, Match } from './types';
 
 export type AuthTypes = 'signup' | 'signin' | 'signout';
 

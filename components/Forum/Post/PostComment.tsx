@@ -6,7 +6,7 @@ import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import TextBox from '../../Shared/TextBox';
 import { useAddPostCommentMutation } from '../../../services/forum';
-import { Comment } from '../../../store/forum/types';
+import { Comment } from '../../../services/types';
 
 import styles from './PostComment.module.css';
 

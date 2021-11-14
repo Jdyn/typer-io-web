@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ListResponse, Post } from '../store/forum/types';
+import { ListResponse, Post } from './types';
 
 const forumApi = createApi({
   reducerPath: 'forum',

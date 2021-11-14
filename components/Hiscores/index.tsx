@@ -1,15 +1,12 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
-import { fetchUserHiscores } from '../../store/hiscores/actions';
-import { AppState } from '../../store';
 import Paper from '../Shared/Paper';
-import snakeToCamel from '../../util/snakeToCamel';
 import IFilter from '../Shared/Filter';
 import formatTime from '../../util/formatTime';
 import Adsense from '../Shared/Adsense';
+import { useGetUserHiscoresQuery } from '../../services/hiscores';
 
 const leaderboards = {
   top_speed: {
@@ -41,31 +38,25 @@ const leaderboards = {
 
 const Hiscores = (): JSX.Element => {
   const router = useRouter();
-  const { page, query, type } = router.query;
-  const dispatch = useDispatch();
+  const { page, query, type } = router.query as Record<string, string>;
   const [board, setBoard] = useState(leaderboards[query as string] || {});
-  const itemPage = useSelector(
-    (state: AppState) => state.hiscores[snakeToCamel((query as string) || '')]
-  );
+
+  const { data: itemPage } = useGetUserHiscoresQuery({ query, page, type });
 
   useEffect(() => {
     if (router.isReady) {
-      dispatch(fetchUserHiscores((query as string).toUpperCase(), page as string, type));
-
       setBoard(leaderboards[query as string]);
 
       if (!type) {
         router.push(`/hiscores?query=${query}&page=${1}&type=all`);
       }
     }
-  }, [dispatch, page, query, router, router.isReady, type]);
+  }, [page, query, router, type]);
 
   const setPage = (index, newType?: string): void => {
-    // if (index <= itemPage?.maxPage && index >= 1 && index !== itemPage?.page) {
     router.push(`/hiscores?query=${query}&page=${index}&type=${newType || type}`, null, {
       scroll: false
     });
-    // }
   };
 
   const changePage = (itemQuery: string) => {
@@ -108,6 +99,7 @@ const Hiscores = (): JSX.Element => {
             );
           })}
         </div>
+
         <Paper title={`${board.title} ${`- ${type} quotes`}`}>
           <div className={styles.pagination}>
             <button className={styles.pageButton} onClick={() => setPage(1)} type="button">

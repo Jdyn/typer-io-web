@@ -3,20 +3,20 @@ import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 
 import request from './request/reducers';
 import session from './session/reducers';
-import hiscores from './hiscores/reducers';
 import game from './game/reducers';
 import socket from '../services/socket';
 
 import forumApi from '../services/forum';
 import accountApi from '../services/account';
+import hiscoresApi from '../services/hiscores';
 
 export const stateReducer = combineReducers({
   request,
   session,
-  hiscores,
   game,
   [forumApi.reducerPath]: forumApi.reducer,
-  [accountApi.reducerPath]: accountApi.reducer
+  [accountApi.reducerPath]: accountApi.reducer,
+  [hiscoresApi.reducerPath]: hiscoresApi.reducer
 });
 
 const appReducer = (state, action): ReturnType<typeof stateReducer> => {
@@ -35,7 +35,8 @@ const makeStore = () =>
       defaultMiddleware()
         .concat(socket(process.env.SOCKET_URL))
         .concat(forumApi.middleware)
-        .concat(accountApi.middleware),
+        .concat(accountApi.middleware)
+        .concat(hiscoresApi.middleware),
     devTools: process.env.NODE_ENV !== 'production'
   });
 

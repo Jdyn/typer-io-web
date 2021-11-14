@@ -1,5 +1,4 @@
-import { MiniPost } from '../forum/types';
-import { Match } from '../hiscores/types';
+import { MiniPost, Match } from '../../services/types';
 
 export interface SessionRequests {
   AUTHENTICATE: 'AUTHENTICATE';

@@ -35,6 +35,7 @@
   flex-direction: column;
   overflow: hidden;
   margin: 20px;
+  min-height: 450px;
   border: 2px solid var(--border);
   border-radius: 16px;
 }

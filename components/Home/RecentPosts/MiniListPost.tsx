@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { Post } from '../../../store/forum/types';
+import { Post } from '../../../services/types';
 import formatTime from '../../../util/formatTime';
 import styles from './index.module.css';
 

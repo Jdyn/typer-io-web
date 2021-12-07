@@ -37,13 +37,29 @@ const PlayStatus = (props: Props): JSX.Element => {
     [room.clients, game.meta]
   );
 
+  const handleClick = () => {
+    silentEmit('RESET_CUSTOM_GAME', {});
+  };
+
+  const handleNewGame = () => {
+    silentEmit('START_CUSTOM_GAME', {});
+  };
+
+  const handleNewPublicGame = () => {
+    // TODO: Kind of weird... We put 'socket.connected' in the dispatch in the /page
+    // and then close the socket so it trips the useEffect and starts the cycle again...
+    silentClose();
+  };
+
   useEffect(() => {
     const keyDown = (event) => {
       if (event.key === 'Control') {
         keys[event.key] = true;
       }
       if (keys.Control && event.key === 'Enter') {
-        if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
+        if (isCustom) {
+          silentEmit('START_CUSTOM_GAME', {});
+        } else if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
           silentClose();
         }
       }
@@ -62,7 +78,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       document.removeEventListener('keydown', keyDown);
       document.removeEventListener('keyup', keyUp);
     };
-  }, [currrentClient?.gamePiece?.isComplete, room.gameboard.isOver]);
+  }, [currrentClient?.gamePiece?.isComplete, isCustom, room.gameboard.isOver]);
 
   useEffect(() => {
     if (game.room.gameboard.gameTime === '') {
@@ -150,20 +166,6 @@ const PlayStatus = (props: Props): JSX.Element => {
 
     setHeader(updateHeader());
   }, [gameboard, state, socket, room, setHeader, isCustom, isSolo]);
-
-  const handleClick = () => {
-    silentEmit('RESET_CUSTOM_GAME', {});
-  };
-
-  const handleNewGame = () => {
-    silentEmit('START_CUSTOM_GAME', {});
-  };
-
-  const handleNewPublicGame = () => {
-    // TODO: Kind of weird... We put 'socket.connected' in the dispatch in the /page
-    // and then close the socket so it trips the useEffect and starts the cycle again...
-    silentClose();
-  };
 
   return (
     <>

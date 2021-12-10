@@ -151,7 +151,7 @@ const Play = (props: Props): JSX.Element => {
         {!isSolo && <ClientList />}
         <PlayStatus gameboard={gameboard} isCustom={isCustom} isSolo={isSolo} />
         <section className={styles.right}>
-          <Leaderboard clientsComplete={gameboard.clientsComplete} />
+          <Leaderboard clientsComplete={gameboard.clientsComplete} snippetId={snippet.id} />
           <section
             style={{
               margin: '20px 0px',

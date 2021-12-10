@@ -1,12 +1,10 @@
 import { memo, useEffect } from 'react';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import Paper from '../../Shared/Paper';
 import formatTime from '../../../util/formatTime';
 import IFilter from '../../Shared/Filter';
 import styles from './index.module.css';
-import { AppState } from '../../../store';
-import { useGetQuoteHiscoresQuery } from '../../../services/hiscores';
+import { useLazyGetQuoteHiscoresQuery } from '../../../services/hiscores';
 
 const filters = [
   {
@@ -17,16 +15,17 @@ const filters = [
 
 interface Props {
   clientsComplete: number;
+  snippetId: number;
 }
 
-const Leaderboard = ({ clientsComplete }: Props): JSX.Element => {
-  const snippet = useSelector((state: AppState) => state.game.room.snippet);
-
-  const { data: matches, refetch } = useGetQuoteHiscoresQuery(snippet.id);
+const Leaderboard = ({ clientsComplete, snippetId }: Props): JSX.Element => {
+  const [trigger, { data: matches }] = useLazyGetQuoteHiscoresQuery();
 
   useEffect(() => {
-    refetch();
-  }, [clientsComplete, refetch]);
+    if (snippetId) {
+      trigger(snippetId);
+    }
+  }, [clientsComplete, snippetId, trigger]);
 
   return (
     <div className={styles.root}>

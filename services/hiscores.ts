@@ -17,7 +17,7 @@ const hiscoresApi = createApi({
   }),
   tagTypes: [],
   endpoints: (builder) => ({
-    getQuoteHiscores: builder.query<Match[], string>({
+    getQuoteHiscores: builder.query<Match[], number>({
       query: (id) => `/snippet/${id}/matches/`,
       transformResponse: (raw: { result: { matches: Match[] } }) => raw.result.matches
     }),
@@ -36,7 +36,7 @@ const hiscoresApi = createApi({
   })
 });
 
-export const { useGetQuoteHiscoresQuery, useGetHiscoresQuery, useGetUserHiscoresQuery } =
+export const { useLazyGetQuoteHiscoresQuery, useGetHiscoresQuery, useGetUserHiscoresQuery } =
   hiscoresApi;
 
 export default hiscoresApi;

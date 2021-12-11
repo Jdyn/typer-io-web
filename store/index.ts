@@ -42,7 +42,6 @@ const makeStore = () =>
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<typeof stateReducer>;
-export type AppDispatch = ReturnType<AppStore['dispatch']>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action>;
 
 export type GetState = () => AppState;

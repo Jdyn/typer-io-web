@@ -1,5 +1,5 @@
 import cookies from 'js-cookie';
-import { AppDispatch, AppState } from '..';
+import { AppState } from '..';
 import Api from '../../services/api';
 import { setRequest } from '../request/actions';
 import { requests } from './types';
@@ -43,7 +43,7 @@ export const authenticate =
 
 export const fetchPasswordReset =
   (email: string) =>
-  async (dispatch: AppDispatch, getState: () => AppState): Promise<void> => {
+  async (dispatch, getState: () => AppState): Promise<void> => {
     const requestType = requests.FETCH_ACCOUNT_PASSWORD_RESET;
     const request = getState().request[requestType] || { isPending: false };
 
@@ -58,7 +58,7 @@ export const fetchPasswordReset =
 
 export const fetchPasswordUpdate =
   (password: string, resetToken: string) =>
-  async (dispatch: AppDispatch, getState: () => AppState): Promise<void> => {
+  async (dispatch, getState: () => AppState): Promise<void> => {
     const requestType = requests.FETCH_ACCOUNT_PASSWORD_UPDATE;
     const request = getState().request[requestType] || { isPending: false };
 

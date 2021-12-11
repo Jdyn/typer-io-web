@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1635968432601);
+const updated = formatTime(1639263848385);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -57,8 +57,8 @@ const HomePage = (): JSX.Element => {
                 <h2>Improve your typing speed and race your friends!</h2>
                 <span>updated {updated} </span>
                 <p>
-                  Hello, thank you for visiting the website. Contact me on Discord to host 500+
-                  player custom matches.
+                  Hello, thank you for visiting the website. Join the Discord to arrange very large
+                  lobbies!
                 </p>
                 <a
                   className={styles.support}
@@ -76,10 +76,10 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>Changes (Nov. 3rd, 2021):</h3>
+                <h3>(Dec. 11th, 2021) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
-                    <li>Added recent stats to profile page</li>
+                    <li>Minor bug fixes</li>
                   </ul>
                 </div>
               </div>

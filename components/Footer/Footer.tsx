@@ -7,7 +7,10 @@ const Footer = (): JSX.Element => {
     <footer className={styles.root}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <span>© 2021 Typer.io | All Rights Reserved</span>
+          <span>© 2021 Typer.io</span>
+          <div>
+            created by <a href="https://github.com/jdyn">Jaden</a>
+          </div>
         </div>
         <div className={styles.list}>
           <div className={styles.content}>

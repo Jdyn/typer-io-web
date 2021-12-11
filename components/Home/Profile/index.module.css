@@ -82,6 +82,7 @@
 .emojis {
   display: flex;
   flex-direction: row;
+  overflow-y: auto;
   flex-wrap: wrap;
   max-height: 175px;
   justify-content: center;
@@ -100,7 +101,7 @@
   width: 34px;
   height: 34px;
   font-size: 20px;
-  margin: 4px;
+  margin: 3px;
   cursor: pointer;
 }
 
@@ -127,6 +128,7 @@
 .pagination {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 5px 0px;
   line-height: 15px;
   justify-content: center;
@@ -145,7 +147,7 @@
   border-radius: 8px;
   outline: none;
   border: none;
-  margin: 0px 5px;
+  margin: 5px;
   padding: 5px 10px;
   color: white;
   cursor: pointer;

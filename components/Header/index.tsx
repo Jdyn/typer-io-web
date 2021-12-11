@@ -97,7 +97,6 @@ const Header = (): JSX.Element => {
             <button
               type="button"
               className={styles.button}
-              style={{ width: 'auto' }}
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? (
@@ -106,6 +105,7 @@ const Header = (): JSX.Element => {
                   quality="45"
                   width="24px"
                   height="24px"
+                  layout="fixed"
                   src={sun}
                   alt="light-mode sun"
                 />
@@ -115,6 +115,7 @@ const Header = (): JSX.Element => {
                   quality="45"
                   width="24px"
                   height="24px"
+                  layout="fixed"
                   src={moon}
                   alt="dark-mode moon"
                 />

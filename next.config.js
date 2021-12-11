@@ -23,16 +23,4 @@ module.exports = {
     SOCKET_URL: true ? PROD_SOCKET_URL : DEV_SOCKET_URL
   },
   basePath
-  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-  //   if (true) {
-  //     config.plugins.push(
-  //       new BundleAnalyzerPlugin({
-  //         analyzerMode: 'server',
-  //         analyzerPort: isServer ? 8888 : 8889,
-  //         openAnalyzer: true
-  //       })
-  //     );
-  //   }
-  //   return config;
-  // }
 };

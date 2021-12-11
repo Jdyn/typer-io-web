@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ReactGA from 'react-ga';
-import { IdProvider } from '@radix-ui/react-id';
 import { userRefreshed, nicknameChanged } from '../store/session/reducers';
 import { ThemeProvider } from '../util/getInitialColorMode';
 import { authenticate } from '../store/session/actions';
@@ -54,11 +53,9 @@ export const App = (props: IApp) => {
   }, [dispatch]);
 
   return isReady ? (
-    <IdProvider>
-      <ThemeProvider>
-        <Component {...pageProps} err={err} />
-      </ThemeProvider>
-    </IdProvider>
+    <ThemeProvider>
+      <Component {...pageProps} err={err} />
+    </ThemeProvider>
   ) : null;
 };
 

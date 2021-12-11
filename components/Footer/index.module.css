@@ -11,14 +11,15 @@
 .container {
   display: grid;
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 500px;
+  width: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
 }
 
 @media (min-width: 640px) {
   .container {
-    grid-template-columns: 1.3fr 2fr;
+    grid-template-columns: 0.5fr 1fr;
     grid-template-rows: 1fr;
   }
 }
@@ -36,12 +37,23 @@
 }
 
 .wrapper > span {
+  text-align: center;
   color: var(--grey);
+}
+
+.wrapper > div {
+  text-align: center;
+  color: var(--subtext) !important;
+}
+
+.wrapper > div > a {
+  color: var(--subtext);
 }
 
 .list {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

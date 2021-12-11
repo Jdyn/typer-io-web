@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LazyMotion } from 'framer-motion';
-import Play from '../components/Play';
 import { initSocket, leaveRoom } from '../store/game/actions';
 import { AppState } from '../store';
 import Layout from '../components/Layout';
+import Play from '../components/Play';
 
 const loadFeatures = () => import('../util/framerfeatures').then((res) => res.default);
 

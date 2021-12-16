@@ -66,6 +66,11 @@ const Footer = (): JSX.Element => {
                   <a>Sign Up</a>
                 </Link>
               </li>
+              <li>
+                <Link prefetch={false} href="/u/reset">
+                  <a>Recover</a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

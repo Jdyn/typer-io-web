@@ -106,4 +106,8 @@ const ForgotAuth = (props: Props): JSX.Element => {
   );
 };
 
+ForgotAuth.defaultProps = {
+  resetToken: null
+};
+
 export default ForgotAuth;

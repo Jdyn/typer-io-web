@@ -124,7 +124,6 @@
   grid-template-columns: 1fr 1fr;
 }
 
-
 .backButton {
   outline: none;
   background: none;
@@ -134,4 +133,42 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.delete {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.overlay {
+  position: fixed;
+}
+
+.dialog {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.dialog > div {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 16px;
+  outline: 2px solid var(--border);
+  max-width: 500px;
+  margin: 10px;
+  flex-direction: column;
+  opacity: 1;
+  background: var(--primary-main);
 }

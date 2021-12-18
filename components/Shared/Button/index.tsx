@@ -1,5 +1,4 @@
 import { ReactNode, forwardRef } from 'react';
-import Link from 'next/link';
 import styles from './index.module.css';
 import Loader from '../Loader';
 

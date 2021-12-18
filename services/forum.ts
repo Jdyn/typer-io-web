@@ -49,11 +49,23 @@ const forumApi = createApi({
         body: payload.comment
       }),
       invalidatesTags: (_result, _error, arg) => [{ type: 'Post', id: arg.postId }]
+    }),
+    deletePost: builder.mutation<void, { postId: string }>({
+      query: (payload) => ({
+        url: `/forum/posts/${payload.postId}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: (_result, _error, arg) => [{ type: 'Post', id: arg.postId }]
     })
   })
 });
 
-export const { useGetPostQuery, useGetPostsQuery, useAddPostMutation, useAddPostCommentMutation } =
-  forumApi;
+export const {
+  useDeletePostMutation,
+  useGetPostQuery,
+  useGetPostsQuery,
+  useAddPostMutation,
+  useAddPostCommentMutation
+} = forumApi;
 
 export default forumApi;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import formatTime from '../../../util/formatTime';
 import Adsense from '../../Shared/Adsense';
 import TextBox from '../../Shared/TextBox';
@@ -9,7 +10,11 @@ import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import Banner from '../../Shared/Banner';
 import PostComment from './PostComment';
-import { useAddPostCommentMutation, useGetPostQuery } from '../../../services/forum';
+import {
+  useAddPostCommentMutation,
+  useDeletePostMutation,
+  useGetPostQuery
+} from '../../../services/forum';
 
 import styles from './PostPage.module.css';
 
@@ -21,8 +26,11 @@ const Post = (props: Props): JSX.Element => {
   const { postId } = props;
   const router = useRouter();
 
-  const { data: post } = useGetPostQuery(postId);
+  const currentUser = useSelector((state: AppState) => state.session.user);
+
+  const { data: post, isError, error } = useGetPostQuery(postId);
   const [addPostComment, { status, isLoading }] = useAddPostCommentMutation();
+  const [deletePost] = useDeletePostMutation();
 
   const [newComment, setComment] = useState({ body: '', parentId: null });
 
@@ -54,8 +62,43 @@ const Post = (props: Props): JSX.Element => {
             </button>
           </Banner>
           <div className={styles.postContent}>
-            {post && (
+            {post ? (
               <>
+                {currentUser.id === post.user.id && (
+                  <div className={styles.delete}>
+                    <AlertDialog.Root>
+                      <AlertDialog.Trigger asChild>
+                        <Button secondary padding="5px" width="100px">
+                          delete post
+                        </Button>
+                      </AlertDialog.Trigger>
+                      <AlertDialog.Portal>
+                        <AlertDialog.Overlay className={styles.overlay} />
+                        <AlertDialog.Content className={styles.dialog}>
+                          <div>
+                            <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
+                            <AlertDialog.Description>
+                              This action cannot be undone. This will permanently delete your post
+                              and all associated comments.
+                            </AlertDialog.Description>
+                            <div className={styles.buttons}>
+                              <AlertDialog.Action asChild>
+                                <Button padding="5px" onClick={() => deletePost({ postId })}>
+                                  Yes, delete post.
+                                </Button>
+                              </AlertDialog.Action>
+                              <AlertDialog.Cancel asChild>
+                                <Button secondary padding="5px">
+                                  cancel
+                                </Button>
+                              </AlertDialog.Cancel>
+                            </div>
+                          </div>
+                        </AlertDialog.Content>
+                      </AlertDialog.Portal>
+                    </AlertDialog.Root>
+                  </div>
+                )}
                 <div className={styles.header}>
                   <h1>{post.title}</h1>
                   <span>
@@ -93,6 +136,8 @@ const Post = (props: Props): JSX.Element => {
                   <div>Log in to comment on this post.</div>
                 )}
               </>
+            ) : (
+              isError && <div>{(error as any).data.error}</div>
             )}
           </div>
         </div>

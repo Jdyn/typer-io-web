@@ -53,7 +53,7 @@ export interface Post {
   title: string;
   updatedAt: string;
   upvotes: number;
-  user: { isAdmin: boolean; insertedAt: string; username: string };
+  user: { isAdmin: boolean; insertedAt: string; username: string; id?: number };
   visitCount: string;
   comments?: Comment[];
 }

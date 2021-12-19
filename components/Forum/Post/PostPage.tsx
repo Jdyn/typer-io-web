@@ -26,7 +26,7 @@ const Post = (props: Props): JSX.Element => {
   const { postId } = props;
   const router = useRouter();
 
-  const currentUser = useSelector((state: AppState) => state.session.user);
+  const currentUser = useSelector((state: AppState) => state.session?.user);
 
   const { data: post, isError, error } = useGetPostQuery(postId);
   const [addPostComment, { status, isLoading }] = useAddPostCommentMutation();
@@ -64,7 +64,7 @@ const Post = (props: Props): JSX.Element => {
           <div className={styles.postContent}>
             {post ? (
               <>
-                {currentUser.id === post.user.id && (
+                {currentUser?.id === post?.user?.id && (
                   <div className={styles.delete}>
                     <AlertDialog.Root>
                       <AlertDialog.Trigger asChild>
@@ -137,7 +137,7 @@ const Post = (props: Props): JSX.Element => {
                 )}
               </>
             ) : (
-              isError && <div>{(error as any).data.error}</div>
+              isError && <div>{(error as any)?.data?.error}</div>
             )}
           </div>
         </div>

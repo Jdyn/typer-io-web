@@ -46,7 +46,7 @@ const ProfilePage = (props: Props): JSX.Element => {
               </h3>
               <span>{user && `Joined ${formatTime(user?.insertedAt)}`}</span>
               <div>{sessionUser?.isAdmin && `ID: ${user?.id}`}</div>
-              <div>{isError && (error as ApiErrorResponse).data.error}</div>
+              <div>{isError && (error as ApiErrorResponse)?.data?.error}</div>
             </div>
             <div className={styles.aboutContainer}>
               <h3>About</h3>

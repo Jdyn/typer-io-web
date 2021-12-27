@@ -12,6 +12,7 @@ const Error = ({ statusCode }: Props): JSX.Element => {
         style={{
           display: 'flex',
           margin: '145px 0 0 0',
+          height: '100vh',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center'
@@ -24,7 +25,7 @@ const Error = ({ statusCode }: Props): JSX.Element => {
   );
 };
 
-Error.getInitialProps = ({ res, err }: NextPageContext): object => {
+Error.getInitialProps = ({ res, err }: NextPageContext) => {
   const statusCode = res?.statusCode ?? err?.statusCode ?? 404;
   return { statusCode };
 };

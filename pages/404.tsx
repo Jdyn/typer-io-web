@@ -6,7 +6,7 @@ const Error404 = () => {
       <main
         style={{
           display: 'flex',
-          height: '90vh',
+          height: '100vh',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center'

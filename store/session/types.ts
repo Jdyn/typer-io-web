@@ -40,6 +40,8 @@ export interface User {
   username: string;
   isAdmin: string;
   email: string;
+  country: string;
+  insertedAt: string;
   bio: string;
 }
 

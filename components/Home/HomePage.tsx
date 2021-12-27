@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1639865928326);
+const updated = formatTime(1640584898856);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -76,9 +76,10 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>(Dec. 18th, 2021) Updates :</h3>
+                <h3>(Dec. 26th, 2021) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Greatly improved searching for users</li>
                     <li>You can now delete your own posts.</li>
                   </ul>
                 </div>
@@ -89,7 +90,6 @@ const HomePage = (): JSX.Element => {
             <Adsense
               client="ca-pub-3148839588626786"
               slot="7924266447"
-              style={{ display: 'block', textAlign: 'center' }}
               format="fluid"
               layout="in-article"
             />
@@ -100,7 +100,6 @@ const HomePage = (): JSX.Element => {
           <Adsense
             client="ca-pub-3148839588626786"
             slot="8439040257"
-            style={{ display: 'block', textAlign: 'center' }}
             format="fluid"
             layout="in-article"
           />
@@ -108,7 +107,6 @@ const HomePage = (): JSX.Element => {
           <Adsense
             client="ca-pub-3148839588626786"
             slot="7114370741"
-            style={{ display: 'block', textAlign: 'center' }}
             format="fluid"
             layout="in-article"
           />
@@ -124,7 +122,6 @@ const HomePage = (): JSX.Element => {
         <Adsense
           client="ca-pub-3148839588626786"
           slot="7924266447"
-          style={{ display: 'block', width: '100%' }}
           format="fluid"
           layout="in-article"
         />

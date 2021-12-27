@@ -1,6 +1,12 @@
 import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import cookies from 'js-cookie';
-import { ProfileUser, SessionUser, SigninPayload, SignupPayload } from '../store/session/types';
+import {
+  ProfileUser,
+  SessionUser,
+  SigninPayload,
+  SignupPayload,
+  User
+} from '../store/session/types';
 import { userLoggedIn, userLoggedOut, userUpdated } from '../store/session/reducers';
 import { SettingsForm } from '../components/Account/Profile/Settings/types';
 import { ListResponse, ApiErrorResponse, Match } from './types';
@@ -55,6 +61,14 @@ const accountApi = createApi({
       }),
       transformResponse: (raw: { result: ListResponse<Match> }) => raw.result
     }),
+    searchUser: builder.query<ListResponse<User>, { username: string; page?: string }>({
+      query: ({ username, page }) => ({
+        url: `/users/search`,
+        method: 'GET',
+        params: { user: username, page }
+      }),
+      transformResponse: (raw: { result: ListResponse<User> }) => raw.result
+    }),
     authenticate: builder.mutation<
       { ok: boolean; result: { user?: SessionUser } },
       { type: AuthTypes; form: SigninPayload | SignupPayload | Record<string, unknown> }
@@ -104,6 +118,7 @@ const accountApi = createApi({
 export const {
   useAuthenticateMutation,
   useUpdateAccountMutation,
+  useSearchUserQuery,
   useGetUserQuery,
   useGetMatchesQuery
 } = accountApi;

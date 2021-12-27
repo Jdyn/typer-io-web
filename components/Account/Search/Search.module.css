@@ -1,0 +1,115 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  width: 100%;
+  margin: 100px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 20px;
+  min-height: 450px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  grid-area: main;
+  gap: 5px;
+  padding: 10px 0px 10px 10px;
+  overflow-y: scroll;
+  /* height: 750px; */
+}
+
+.nameLink {
+  color: var(--text);
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.admin {
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 1rem;
+  text-decoration: none !important;
+  background: var(--red);
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-bottom: 2px solid var(--border);
+  padding: 12px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--text);
+}
+
+.entry > div {
+  margin: 5px 0px;
+}
+
+.entry > span {
+  color: var(--subtext);
+}
+
+.entry > p {
+  font-size: 17px;
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  color: var(--subtext);
+}
+
+.entry:hover {
+  background: var(--border);
+}
+
+.entry:last-child {
+  border: none;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px 10px 0px;
+  justify-content: center;
+}
+
+.pagination > span {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageButton {
+  display: flex;
+  background: var(--accent);
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  margin: 0px 5px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  transition-duration: 0.15s;
+}
+
+.pageButton:hover {
+  transform: translateY(-2px);
+}
+
+.pageButton:active {
+  transform: translateY(2px);
+}

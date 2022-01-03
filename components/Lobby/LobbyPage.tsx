@@ -12,6 +12,7 @@ import Banner from '../Shared/Banner';
 import Loader from '../Shared/Loader';
 import Profile from '../Home/Profile';
 import copyToClipboard from '../../util/copyToClipboard';
+import TextBox from '../Shared/TextBox';
 
 const difficulties = ['easy', 'medium', 'hard', 'random'];
 
@@ -22,6 +23,7 @@ const LobbyPage = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
   const [copied, setCopied] = useState(false);
   const [hidden, setHidden] = useState(true);
+  const [customText, setText] = useState('');
   const currrentClient = useMemo(
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
@@ -91,17 +93,47 @@ const LobbyPage = (): JSX.Element => {
                 </div>
               </div>
               {currrentClient.isHost && (
-                <div className={styles.setting}>
-                  <h3>Kick Players</h3>
-                  {game?.room?.clients?.map((client) => (
-                    <div key={client.id} className={styles.client}>
-                      <span style={{ color: client.gamePiece.color }}>{client.username}</span>
-                      {client.id !== currrentClient.id && (
-                        <Button onClick={() => handleKick(client.id)}>kick</Button>
+                <>
+                  <div className={styles.setting}>
+                    <h3>Text Type</h3>
+                    <div className={styles.difficultyWrapper}>
+                      {['random', 'custom'].map((key) => (
+                        <button
+                          type="button"
+                          key={key}
+                          className={`${styles.difficultyButton} ${
+                            room.textType === key ? styles.selected : ''
+                          }`}
+                          onClick={() => handleSettingsUpdate({ textType: key })}
+                        >
+                          {key}
+                        </button>
+                      ))}
+                      {room.textType === 'custom' && (
+                        <>
+                          <TextBox value={customText} onChange={(e) => setText(e.target.value)} />
+                          <Button
+                            padding="5px"
+                            onClick={() => handleSettingsUpdate({ customText })}
+                          >
+                            save text
+                          </Button>
+                        </>
                       )}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                  <div className={styles.setting}>
+                    <h3>Kick Players</h3>
+                    {game?.room?.clients?.map((client) => (
+                      <div key={client.id} className={styles.client}>
+                        <span style={{ color: client.gamePiece.color }}>{client.username}</span>
+                        {client.id !== currrentClient.id && (
+                          <Button onClick={() => handleKick(client.id)}>kick</Button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
           </div>

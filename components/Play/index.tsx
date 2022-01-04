@@ -24,6 +24,7 @@ const Play = (props: Props): JSX.Element => {
   const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);
   const snippet: SnippetState = useSelector((state: AppState) => state.game.room.snippet);
   const isStarted: boolean = useSelector((state: AppState) => state.game.room.isStarted);
+  const textType: string = useSelector((state: AppState) => state.game.room.textType);
 
   const [gameState, setGameState] = useState<GameState>({
     currentInput: '',
@@ -43,7 +44,7 @@ const Play = (props: Props): JSX.Element => {
   });
 
   useEffect(() => {
-    if (!isStarted || isSolo) {
+    if (!isStarted || isSolo || textType === 'custom') {
       setGameState((prev) => ({
         ...prev,
         currentWord: gameboard.words[0] || '',
@@ -54,13 +55,13 @@ const Play = (props: Props): JSX.Element => {
         snippetId: snippet?.id
       }));
     }
-  }, [isStarted, setGameState, gameboard.words, isSolo, snippet?.id]);
+  }, [isStarted, setGameState, gameboard.words, isSolo, snippet?.id, isCustom, textType]);
 
   // For implementating game with trailing spaces...
   // console.log(test.split(/(?:[^\s"]+)+ /));
 
   useEffect(() => {
-    if (snippet?.id !== gameState.snippetId) {
+    if (snippet?.id !== gameState.snippetId || textType === 'custom') {
       setGameState({
         currentInput: '',
         currentWord: gameboard.words[0] || '',
@@ -78,7 +79,7 @@ const Play = (props: Props): JSX.Element => {
         errors: 0
       });
     }
-  }, [gameState.snippetId, gameboard.words, snippet?.id]);
+  }, [gameState.snippetId, gameboard.words, snippet?.id, textType]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

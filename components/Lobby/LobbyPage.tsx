@@ -35,6 +35,10 @@ const LobbyPage = (): JSX.Element => {
     }
   }, [router, socket.kicked]);
 
+  useEffect(() => {
+    setText(room.customText);
+  }, [room.customText]);
+
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
   };

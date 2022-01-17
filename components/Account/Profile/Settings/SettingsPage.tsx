@@ -8,12 +8,16 @@ import Paper from '../../../Shared/Paper';
 import styles from './index.module.css';
 import { SettingsForm } from './types';
 import countries from '../../../../lib/countries';
-import { useUpdateAccountMutation } from '../../../../services/account';
+import {
+  useUpdateAccountMutation,
+  useLazySendValidateEmailQuery
+} from '../../../../services/account';
 import { ApiErrorResponse } from '../../../../services/types';
 
 const ProfileSettingsPage = (): JSX.Element => {
-  const sessionUser = useSelector((state: AppState) => state.session.user);
+  const sessionUser = useSelector((state: AppState) => state.session.user) || null;
   const [updateAccount, { isSuccess, isError, error }] = useUpdateAccountMutation();
+  const [triggerEmail, { isSuccess: EmailSent }] = useLazySendValidateEmailQuery();
 
   const [form, setForm] = useState<SettingsForm>({
     bio: sessionUser?.bio ?? '',
@@ -70,6 +74,9 @@ const ProfileSettingsPage = (): JSX.Element => {
               <div className={styles.item}>
                 <div className={styles.label}>Email:</div>
                 <span className={styles.content}>{sessionUser?.email}</span>
+                {sessionUser?.emailVerified === false && !EmailSent && (
+                  <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
+                )}
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Country:</div>

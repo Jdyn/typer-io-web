@@ -165,3 +165,12 @@
 .pageButton:active {
   transform: translateY(2px);
 }
+
+.notice {
+  padding: 6px;
+  border-radius: 8px;
+  color: white;
+  margin: 5px;
+  font-size: 0.9rem;
+  background: var(--red);
+}

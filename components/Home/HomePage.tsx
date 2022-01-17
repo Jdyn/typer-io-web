@@ -29,7 +29,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1641191228939);
+const updated = formatTime(1642381993840);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -79,9 +79,8 @@ const HomePage = (): JSX.Element => {
                 <h3>(Jan. 2nd, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Added email validation</li>
                     <li>You can now use custom text in private lobbies</li>
-                    <li>Greatly improved searching for users</li>
-                    <li>You can now delete your own posts.</li>
                   </ul>
                 </div>
               </div>

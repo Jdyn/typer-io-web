@@ -35,6 +35,9 @@ const ForumPage = (): JSX.Element => {
         />
       </section>
       <div className={styles.main}>
+        {session?.user?.emailVerified === false && (
+          <div className={styles.notice}>Please verify your email to use the forums.</div>
+        )}
         <div className={styles.feed}>
           <Banner>
             <h3>

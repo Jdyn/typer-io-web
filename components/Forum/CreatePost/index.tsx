@@ -23,7 +23,10 @@ const CreatePost = (): JSX.Element => {
   }, [post, router, status]);
 
   const parseErrors = () => {
-    const { errors } = (error as any).data;
+    if ((error as any)?.data?.error) return (error as any).data.error;
+
+    const { errors } = (error as any)?.data;
+
     return (
       <>
         {Object.keys(errors).map((key) => (

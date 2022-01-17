@@ -111,6 +111,18 @@ const accountApi = createApi({
         const { data } = await queryFulfilled;
         dispatch(userUpdated({ user: data.result.user }));
       }
+    }),
+    sendValidateEmail: builder.query<{ ok: boolean }, null>({
+      query: () => ({
+        url: `/validate_email`,
+        method: 'GET'
+      })
+    }),
+    validateEmail: builder.query<{ ok: boolean }, string>({
+      query: (token) => ({
+        url: `/validate_email/${token}`,
+        method: 'POST'
+      })
     })
   })
 });
@@ -120,7 +132,9 @@ export const {
   useUpdateAccountMutation,
   useSearchUserQuery,
   useGetUserQuery,
-  useGetMatchesQuery
+  useGetMatchesQuery,
+  useLazySendValidateEmailQuery,
+  useValidateEmailQuery
 } = accountApi;
 
 export default accountApi;

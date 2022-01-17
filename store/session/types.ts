@@ -50,6 +50,7 @@ export type SessionUser = User & {
   country?: string;
   age?: string;
   gender?: string;
+  emailVerified: boolean;
 };
 
 export interface SignupPayload {

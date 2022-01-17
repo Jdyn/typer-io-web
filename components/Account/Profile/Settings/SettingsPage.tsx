@@ -20,6 +20,7 @@ const ProfileSettingsPage = (): JSX.Element => {
   const [triggerEmail, { isSuccess: EmailSent }] = useLazySendValidateEmailQuery();
 
   const [form, setForm] = useState<SettingsForm>({
+    email: sessionUser?.email ?? '',
     bio: sessionUser?.bio ?? '',
     country: sessionUser?.country ?? '',
     age: sessionUser?.age ?? '',
@@ -30,6 +31,7 @@ const ProfileSettingsPage = (): JSX.Element => {
     if (sessionUser) {
       setForm((prev) => ({
         ...prev,
+        email: sessionUser.email,
         bio: sessionUser.bio,
         country: sessionUser.country,
         age: sessionUser.age,
@@ -73,7 +75,14 @@ const ProfileSettingsPage = (): JSX.Element => {
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Email:</div>
-                <span className={styles.content}>{sessionUser?.email}</span>
+                <div className={styles.content}>
+                  <input
+                    className={styles.input}
+                    placeholder="42"
+                    value={form.email}
+                    onChange={(e): void => setForm({ ...form, email: e.target.value })}
+                  />
+                </div>
                 {sessionUser?.emailVerified === false && !EmailSent && (
                   <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
                 )}

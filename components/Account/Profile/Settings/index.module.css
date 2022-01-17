@@ -88,14 +88,15 @@
   max-height: 50vh;
   overflow-y: scroll;
   background: var(--primary-main);
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
+  border: 2px solid var(--border);
   padding: 15px 10px;
 }
 
 .dropdownList > div {
   padding: 5px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 2px solid transparent;
 }
 

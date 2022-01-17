@@ -78,7 +78,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                 <div className={styles.content}>
                   <input
                     className={styles.input}
-                    placeholder="42"
+                    placeholder="email"
                     value={form.email}
                     onChange={(e): void => setForm({ ...form, email: e.target.value })}
                   />
@@ -89,7 +89,7 @@ const ProfileSettingsPage = (): JSX.Element => {
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Country:</div>
-                <span className={styles.content}>
+                <div className={styles.content}>
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger className={styles.dropdown}>
                       {form.country || 'Not set'}
@@ -111,7 +111,7 @@ const ProfileSettingsPage = (): JSX.Element => {
                       ))}
                     </DropdownMenu.Content>
                   </DropdownMenu.Root>
-                </span>
+                </div>
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Age:</div>

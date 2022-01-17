@@ -83,8 +83,10 @@ const ProfileSettingsPage = (): JSX.Element => {
                     onChange={(e): void => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
-                {sessionUser?.emailVerified === false && !EmailSent && (
+                {sessionUser?.emailVerified === false && !EmailSent ? (
                   <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
+                ) : (
+                  <div>Your email is verified ✅</div>
                 )}
               </div>
               <div className={styles.item}>

@@ -10,23 +10,9 @@ const initialState: SessionState = {
 };
 
 const reducers = {
-  userLoggedIn: (state, action) => {
-    state.isLoggedIn = true;
-    state.user = action.payload.user;
-  },
   userRefreshed: (state, action) => {
     state.isLoggedIn = action.payload.isLoggedIn;
     state.user = action.payload.user;
-  },
-  nicknameChanged: (state, action) => {
-    state.nickname = action.payload;
-  },
-  userLoggedOut: (state, _action) => {
-    state.user = null;
-    state.isLoggedIn = false;
-  },
-  userUpdated: (state, action) => {
-    state.user = { ...state.user, ...action.payload.user };
   }
 };
 
@@ -36,7 +22,6 @@ const session = createSlice({
   reducers
 });
 
-export const { nicknameChanged, userLoggedIn, userLoggedOut, userRefreshed, userUpdated } =
-  session.actions;
+export const { userRefreshed } = session.actions;
 
 export default session.reducer;

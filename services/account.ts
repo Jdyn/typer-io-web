@@ -112,6 +112,20 @@ const accountApi = createApi({
         dispatch(userUpdated({ user: data.result.user }));
       }
     }),
+    sendPasswordResetEmail: builder.query<{ ok: boolean }, string>({
+      query: (email) => ({
+        url: `/password/reset`,
+        method: 'POST',
+        body: { email }
+      })
+    }),
+    resetPassword: builder.query<{ ok: boolean }, { password: string; resetToken: string }>({
+      query: (body) => ({
+        url: `/password/update`,
+        method: 'PATCH',
+        body
+      })
+    }),
     sendValidateEmail: builder.query<{ ok: boolean }, null>({
       query: () => ({
         url: `/validate_email`,
@@ -134,7 +148,9 @@ export const {
   useGetUserQuery,
   useGetMatchesQuery,
   useLazySendValidateEmailQuery,
-  useValidateEmailQuery
+  useValidateEmailQuery,
+  useLazySendPasswordResetEmailQuery,
+  useLazyResetPasswordQuery
 } = accountApi;
 
 export default accountApi;

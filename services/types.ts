@@ -5,14 +5,15 @@ export interface ApiResponse {
   result: Record<string, any>;
 }
 
-export type ApiErrorResponse = {
+export interface ApiErrorResponse {
+  status: number;
   data: {
     ok: boolean;
-    result: Record<string, never>;
+    result: Record<string, any>;
     error?: string;
     errors?: Record<string, any>[];
   };
-};
+}
 
 export type PostQueryTypes = 'recent' | 'feed';
 

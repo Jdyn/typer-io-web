@@ -1,16 +1,17 @@
-import { useEffect, useState, memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ClientList from './ClientList';
-import Gameboard from './Gameboard';
-import Chat from './Chat';
+
 import { silentEmit } from '../../services/socket';
-import PlayStatus from './Status/Status';
-import Leaderboard from './leaderboard';
-import Editor from './Editor';
 import { AppState } from '../../store';
-import styles from './index.module.css';
 import { GameboardState, SnippetState } from '../../store/game/types';
 import Adsense from '../Shared/Adsense';
+import Chat from './Chat';
+import ClientList from './ClientList';
+import Editor from './Editor';
+import Gameboard from './Gameboard';
+import styles from './index.module.css';
+import Leaderboard from './leaderboard';
+import PlayStatus from './Status/Status';
 import { EditorState, GameState } from './types';
 
 interface Props {
@@ -24,7 +25,7 @@ const Play = (props: Props): JSX.Element => {
   const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);
   const snippet: SnippetState = useSelector((state: AppState) => state.game.room.snippet);
   const isStarted: boolean = useSelector((state: AppState) => state.game.room.isStarted);
-  const textType: string = useSelector((state: AppState) => state.game.room.textType);
+  const textDifficulty: string = useSelector((state: AppState) => state.game.room.textDifficulty);
 
   const [gameState, setGameState] = useState<GameState>({
     currentInput: '',
@@ -65,7 +66,7 @@ const Play = (props: Props): JSX.Element => {
         errors: 0
       });
     }
-  }, [gameState.snippetId, gameboard.words, isSolo, isStarted, snippet?.id, textType]);
+  }, [gameState.snippetId, gameboard.words, isSolo, isStarted, snippet?.id, textDifficulty]);
 
   const submitWord = (): void => {
     const { wordsRemaining, words, currentIndex } = gameState;

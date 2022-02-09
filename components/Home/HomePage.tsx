@@ -1,12 +1,13 @@
 import Link from 'next/link';
+
+import formatTime from '../../util/formatTime';
 import Adsense from '../Shared/Adsense';
-import styles from './index.module.css';
 import Paper from '../Shared/Paper';
 import Hiscores from './Hiscores';
-import formatTime from '../../util/formatTime';
-import RecentPosts from './RecentPosts';
+import styles from './index.module.css';
 import Profile from './Profile';
 import RecentMatches from './RecentMatches';
+import RecentPosts from './RecentPosts';
 
 const cards = [
   {
@@ -29,7 +30,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1642381993840);
+const updated = formatTime(1644442228401);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -76,9 +77,10 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>(Jan. 2nd, 2022) Updates :</h3>
+                <h3>(Feb. 9th, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>improved custom quote UI</li>
                     <li>Added email validation</li>
                     <li>You can now use custom text in private lobbies</li>
                   </ul>

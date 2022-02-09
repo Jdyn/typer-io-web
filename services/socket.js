@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+
 import keyMirror from '../util/keyMirror';
 
 export const types = keyMirror(
@@ -15,7 +16,8 @@ export const types = keyMirror(
   'ROOM_NOT_FOUND',
   'STARTING_CUSTOM_GAME',
   'RESETTING_GAME',
-  'KICKED'
+  'KICKED',
+  'ROOM_ERROR'
 );
 
 const defaultRoom = {

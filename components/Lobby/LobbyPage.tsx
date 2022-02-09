@@ -1,20 +1,21 @@
+import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
-import ClientList from '../Play/ClientList';
+
 import { silentEmit } from '../../services/socket';
-import Button from '../Shared/Button';
 import { AppState } from '../../store';
-import styles from './index.module.css';
+import copyToClipboard from '../../util/copyToClipboard';
+import Profile from '../Home/Profile';
 import Chat from '../Play/Chat';
+import ClientList from '../Play/ClientList';
 import Adsense from '../Shared/Adsense';
 import Banner from '../Shared/Banner';
+import Button from '../Shared/Button';
 import Loader from '../Shared/Loader';
-import Profile from '../Home/Profile';
-import copyToClipboard from '../../util/copyToClipboard';
 import TextBox from '../Shared/TextBox';
+import styles from './index.module.css';
 
-const difficulties = ['easy', 'medium', 'hard', 'random'];
+const difficulties = ['easy', 'medium', 'hard', 'random', 'custom'];
 
 const LobbyPage = (): JSX.Element => {
   const router = useRouter();
@@ -23,7 +24,6 @@ const LobbyPage = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
   const [copied, setCopied] = useState(false);
   const [hidden, setHidden] = useState(true);
-  const [customText, setText] = useState('');
   const currrentClient = useMemo(
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
     [room.clients, game.meta]
@@ -35,15 +35,27 @@ const LobbyPage = (): JSX.Element => {
     }
   }, [router, socket.kicked]);
 
-  useEffect(() => {
-    setText(room.customText);
-  }, [room.customText]);
-
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
   };
 
+  useEffect(() => {
+    if (game.room?.difficulty === 'custom' && game.room?.customText) {
+      const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
+      customText.value = game.room.customText;
+    }
+  }, [game.room]);
+
   const handleSettingsUpdate = (payload) => {
+    if (payload.customText) {
+      const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
+      if (customText !== null) {
+        // eslint-disable-next-line no-param-reassign
+        silentEmit('UPDATE_CUSTOM_GAME', { customText: customText.value });
+        return;
+      }
+    }
+
     silentEmit('UPDATE_CUSTOM_GAME', payload);
   };
 
@@ -77,6 +89,23 @@ const LobbyPage = (): JSX.Element => {
                       {key}
                     </button>
                   ))}
+                  {room.difficulty === 'custom' && (
+                    <>
+                      <TextBox
+                        id="lobby-custom-text"
+                        disabled={!currrentClient.isHost}
+                        maxLength={650}
+                      />
+                      {currrentClient.isHost && (
+                        <Button
+                          padding="5px"
+                          onClick={() => handleSettingsUpdate({ customText: true })}
+                        >
+                          save text
+                        </Button>
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
               <div className={styles.setting}>
@@ -98,34 +127,6 @@ const LobbyPage = (): JSX.Element => {
               </div>
               {currrentClient.isHost && (
                 <>
-                  <div className={styles.setting}>
-                    <h3>Text Type</h3>
-                    <div className={styles.difficultyWrapper}>
-                      {['random', 'custom'].map((key) => (
-                        <button
-                          type="button"
-                          key={key}
-                          className={`${styles.difficultyButton} ${
-                            room.textType === key ? styles.selected : ''
-                          }`}
-                          onClick={() => handleSettingsUpdate({ textType: key })}
-                        >
-                          {key}
-                        </button>
-                      ))}
-                      {room.textType === 'custom' && (
-                        <>
-                          <TextBox value={customText} onChange={(e) => setText(e.target.value)} />
-                          <Button
-                            padding="5px"
-                            onClick={() => handleSettingsUpdate({ customText })}
-                          >
-                            save text
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                  </div>
                   <div className={styles.setting}>
                     <h3>Kick Players</h3>
                     {game?.room?.clients?.map((client) => (

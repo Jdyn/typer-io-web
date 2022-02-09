@@ -76,6 +76,11 @@ const reducer = (state = initialState, action) => {
         room: {
           ...state.room,
           ...action.payload
+        },
+        socket: {
+          ...state.socket,
+          error: null,
+          errored: false
         }
       };
 
@@ -214,6 +219,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         socket: {
           ...action.payload,
+          errored: true
+        }
+      };
+    case types.ROOM_ERROR:
+      return {
+        ...state,
+        socket: {
+          ...state.socket,
+          error: action.payload,
           errored: true
         }
       };

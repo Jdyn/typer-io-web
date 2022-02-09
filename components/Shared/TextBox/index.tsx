@@ -1,9 +1,16 @@
+import React from 'react';
+
 import styles from './index.module.css';
 
 interface TextBoxProps {
   id?: string;
   disabled?: boolean;
   maxLength?: number;
+  value?: string;
+  placeholder?: string;
+  onClick?: (event?: React.MouseEvent<HTMLTextAreaElement>) => void;
+  onChange?: (event?: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  height?: string;
 }
 
 const TextBox = (props: TextBoxProps): JSX.Element => {
@@ -26,7 +33,12 @@ const TextBox = (props: TextBoxProps): JSX.Element => {
 
 TextBox.defaultProps = {
   disabled: false,
+  placeholder: null,
+  onClick: null,
+  onChange: null,
+  value: null,
   id: null,
+  height: '75px',
   maxLength: null
 };
 

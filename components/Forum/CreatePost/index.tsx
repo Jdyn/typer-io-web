@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './index.module.css';
-import Banner from '../../Shared/Banner';
-import TextBox from '../../Shared/TextBox';
-import Button from '../../Shared/Button';
+import React, { useEffect, useState } from 'react';
+
 import { useAddPostMutation } from '../../../services/forum';
+import Banner from '../../Shared/Banner';
+import Button from '../../Shared/Button';
+import TextBox from '../../Shared/TextBox';
+import styles from './index.module.css';
 
 const CreatePost = (): JSX.Element => {
   const router = useRouter();
@@ -44,15 +45,13 @@ const CreatePost = (): JSX.Element => {
         </Banner>
         <div className={styles.wrapper}>
           <TextBox
-            className={styles.text}
-            maxLength="100"
+            maxLength={100}
             value={form.title}
             height="75px"
             onChange={(e): void => setForm({ ...form, title: e.target.value })}
             placeholder="The title of your post."
           />
           <TextBox
-            className={styles.text}
             value={form.body}
             height="400px"
             onChange={(e): void => setForm({ ...form, body: e.target.value })}

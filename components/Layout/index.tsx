@@ -1,9 +1,10 @@
-import { useEffect, ReactNode } from 'react';
 import Head from 'next/head';
+import { ReactNode, useEffect } from 'react';
 import ReactGA from 'react-ga';
+
+import Footer from '../Footer';
 import Header from '../Header';
 import styles from './index.module.css';
-import Footer from '../Footer';
 
 interface Props {
   children?: ReactNode;
@@ -22,12 +23,19 @@ const Layout = (props: Props): JSX.Element => {
   return (
     <>
       <Head>
-        <title>{title} | Typer.io</title>
+        <title>{title || 'Typer | The Modern Multiplayer Typing Race'}</title>
         <link
           rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
         />
-        <meta name="description" content={description} />
+        <meta
+          name="description"
+          content={
+            description ||
+            'Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches with a few clicks.'
+          }
+        />
+
         <meta
           name="keywords"
           content="typer,typing,free typing games,typing,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test"

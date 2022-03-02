@@ -26,6 +26,7 @@ export interface Match {
   nickname: string;
   placed: number;
   time: number;
+  difficulty: string;
   user: { id: number; isAdmin: boolean; username: string };
   wpm: number;
 }

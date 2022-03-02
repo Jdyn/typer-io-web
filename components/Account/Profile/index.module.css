@@ -411,9 +411,12 @@
   color: var(--white);
   justify-content: center;
   align-items: center;
-  padding: 5px 0px;
+  padding: 4px 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
   line-height: 10px;
-  height: 20px;
   border-radius: 16px;
 }
 

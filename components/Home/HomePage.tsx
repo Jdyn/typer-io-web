@@ -30,7 +30,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1644442228401);
+const updated = formatTime(1646260354061);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -77,9 +77,10 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>(Feb. 9th, 2022) Updates :</h3>
+                <h3>(Mar. 2nd, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Updated hiscores interface</li>
                     <li>improved custom quote UI</li>
                     <li>Added email validation</li>
                     <li>You can now use custom text in private lobbies</li>

@@ -1,12 +1,13 @@
-import { useState, ReactNode } from 'react';
-import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import styles from './index.module.css';
-import Paper from '../../Shared/Paper';
-import IFilter from '../../Shared/Filter';
-import formatTime from '../../../util/formatTime';
-import { AppState } from '../../../store';
+import { ReactNode, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { useGetHiscoresQuery } from '../../../services/hiscores';
+import { AppState } from '../../../store';
+import formatTime from '../../../util/formatTime';
+import IFilter from '../../Shared/Filter';
+import Paper from '../../Shared/Paper';
+import styles from './index.module.css';
 
 const filters = [
   { name: 'daily', key: 'DAY' },
@@ -42,7 +43,7 @@ const Hiscores = (): JSX.Element => {
         <div className={styles.header}>
           <div className={`${styles.count} ${styles.headerItem}`}>#</div>
           <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
-          <div className={styles.timestamp}>Date</div>
+          <div className={`${styles.content} ${styles.item}`}>Difficulty</div>
           <div className={styles.item}>Accuracy</div>
           <div className={styles.item}>WPM</div>
         </div>
@@ -53,19 +54,20 @@ const Hiscores = (): JSX.Element => {
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
                   <div className={styles.content}>
-                    <span className={item.user ? styles.verified : ''}>
-                      {item.user?.username ? (
-                        <Link prefetch={false} href={`/u/${item.user.username}`}>
-                          <a className={styles.nameLink}>{item.user?.username}</a>
-                        </Link>
-                      ) : (
-                        item.nickname
-                      )}
-                    </span>
+                    {item.user?.username ? (
+                      <Link prefetch={false} href={`/u/${item.user.username}`}>
+                        <a className={styles.nameLink}>{item.user?.username}</a>
+                      </Link>
+                    ) : (
+                      item.nickname
+                    )}
+                    <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                     {renderBadge(item.user)}
                   </div>
-                  <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
-                  <div className={styles.item}>{item.accuracy} %</div>
+                  <div className={`${styles.item} ${styles.difficulty} ${styles[item.difficulty]}`}>
+                    {item.difficulty}
+                  </div>
+                  <div className={styles.item}>{item.accuracy}%</div>
                   <div className={styles.item}>
                     {item.wpm} {session.user?.isAdmin && <span>{`(${item.id})`}</span>}
                   </div>

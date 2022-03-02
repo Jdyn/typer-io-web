@@ -9,6 +9,7 @@ import { AppState } from '../../../store';
 import MiniListPost from '../../Home/RecentPosts/MiniListPost';
 import { useGetMatchesQuery, useGetUserQuery } from '../../../services/account';
 import { ApiErrorResponse } from '../../../services/types';
+import Paper from '../../Shared/Paper';
 
 interface Props {
   username: string;
@@ -149,68 +150,67 @@ const ProfilePage = (props: Props): JSX.Element => {
           )}
         </div>
       </div>
-      <div className={styles.historyRoot}>
-        <Banner>
-          <h3>Matches</h3>
-        </Banner>
-        <div className={styles.header}>
-          <div className={styles.headerItem}>Name</div>
-          <div className={styles.headerItem}>Date</div>
-          <div className={styles.headerItem}>Accuracy</div>
-          <div className={styles.headerItem}>WPM</div>
-        </div>
-        <div className={styles.historyContainer}>
-          <div id="profile-matches-wrapper" className={styles.historyWrapper}>
-            {matches?.data?.map((item, index) => (
-              <div className={styles.entry} key={item.id}>
-                <div className={styles.count}>
-                  {matches?.page > 1 ? (
-                    <span>{25 * (matches?.page - 1) + index + 1}</span>
-                  ) : (
-                    <span>{index + 1}</span>
-                  )}
-                  .
-                </div>
-                <div className={styles.historyContent}>
-                  <span className={item.user ? styles.verified : ''}>
-                    {item.user?.username ?? item.nickname ?? 'Guest'}
-                  </span>
-                </div>
-                <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
-                <div className={styles.item}>{item.accuracy} %</div>
-                <div className={styles.item}>{item.wpm}</div>
-              </div>
-            ))}
+      <section className={styles.matchRoot}>
+        <Paper title="Matches">
+          <div className={styles.matchHeader}>
+            <div className={`${styles.count} ${styles.matchHeaderItem}`}>#</div>
+            <div className={`${styles.matchContent} ${styles.matchHeaderItem}`}>Name</div>
+            <div className={`${styles.matchContent} ${styles.matchItem}`}>Difficulty</div>
+            <div className={styles.matchItem}>Accuracy</div>
+            <div className={styles.matchItem}>WPM</div>
           </div>
-        </div>
-        <div className={styles.pagination}>
-          <button
-            className={styles.pageButton}
-            onClick={() => matches && fetchMatches(1)}
-            type="button"
-          >
-            1
-          </button>
-          <button
-            className={styles.pageButton}
-            onClick={() => matches && fetchMatches(matches.page - 1)}
-            type="button"
-          >{`<`}</button>
-          <span>{matches?.page}</span>
-          <button
-            className={styles.pageButton}
-            onClick={() => matches && fetchMatches(matches.page + 1)}
-            type="button"
-          >{`>`}</button>
-          <button
-            className={styles.pageButton}
-            onClick={() => matches && fetchMatches(matches.totalPages)}
-            type="button"
-          >
-            {matches?.totalPages || 1}
-          </button>
-        </div>
-      </div>
+          <div className={styles.matchContainer}>
+            <div className={styles.matchWrapper}>
+              {matches &&
+                matches.data.map((item, index) => (
+                  <div className={styles.matchEntry} key={item.id}>
+                    <div className={styles.count}>{index + 1}.</div>
+                    <div className={styles.matchContent}>
+                      {item.user.username}
+                      <div className={styles.matchTimestamp}>{formatTime(item.created_at)}</div>
+                    </div>
+                    <div
+                      className={`${styles.matchItem} ${styles.difficulty} ${
+                        styles[item.difficulty]
+                      }`}
+                    >
+                      {item.difficulty}
+                    </div>
+                    <div className={styles.matchItem}>{item.accuracy}%</div>
+                    <div className={styles.matchItem}>{item.wpm}</div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div className={styles.pagination}>
+            <button
+              className={styles.pageButton}
+              onClick={() => matches && fetchMatches(1)}
+              type="button"
+            >
+              1
+            </button>
+            <button
+              className={styles.pageButton}
+              onClick={() => matches && fetchMatches(matches.page - 1)}
+              type="button"
+            >{`<`}</button>
+            <span>{matches?.page}</span>
+            <button
+              className={styles.pageButton}
+              onClick={() => matches && fetchMatches(matches.page + 1)}
+              type="button"
+            >{`>`}</button>
+            <button
+              className={styles.pageButton}
+              onClick={() => matches && fetchMatches(matches.totalPages)}
+              type="button"
+            >
+              {matches?.totalPages || 1}
+            </button>
+          </div>
+        </Paper>
+      </section>
     </div>
   );
 };

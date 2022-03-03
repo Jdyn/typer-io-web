@@ -3,19 +3,25 @@ import styles from './index.module.css';
 
 interface Props {
   className?: string;
-  style?: object;
+  style?: Record<string, unknown>;
   client: string;
   slot: string;
   layout?: string;
   layoutKey?: string;
   format?: string;
   path?: string;
-  responsive?: boolean;
 }
 
-const Adsense = (props: Props): JSX.Element => {
-  const { className, style, client, slot, layout, layoutKey, format, path, responsive } = props;
-
+const Adsense = ({
+  className,
+  style,
+  client,
+  slot,
+  layout,
+  layoutKey,
+  format,
+  path
+}: Props): JSX.Element => {
   const [isAds, setAds] = useState(true);
 
   useEffect(() => {
@@ -36,30 +42,31 @@ const Adsense = (props: Props): JSX.Element => {
   }, []);
 
   return (
-    <div id={slot} key={path} className={`${styles.root} ${className}`}>
-      <ins
-        key={path}
-        className="adsbygoogle"
-        style={style}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-layout={layout}
-        data-ad-layout-key={layoutKey}
-        data-ad-format={format}
-        data-full-width-responsive={false}
-      />
-    </div>
+    <section className={className}>
+      <div id={slot} key={path} className={styles.root}>
+        <ins
+          key={path}
+          className="adsbygoogle"
+          style={style}
+          data-ad-client={client}
+          data-ad-slot={slot}
+          data-ad-layout={layout}
+          data-ad-layout-key={layoutKey}
+          data-ad-format={format}
+          data-full-width-responsive={false}
+        />
+      </div>
+    </section>
   );
 };
 
 Adsense.defaultProps = {
   className: '',
   style: { display: 'block' },
-  format: 'auto',
-  layout: '',
+  format: 'fluid',
+  layout: 'in-article',
   layoutKey: '',
-  path: '',
-  responsive: true
+  path: ''
 };
 
 export default memo(Adsense);

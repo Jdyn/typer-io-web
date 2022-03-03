@@ -1,18 +1,16 @@
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import TextBox from '../../../Shared/TextBox';
+
+import countries from '../../../../lib/countries';
+import { useLazySendValidateEmailQuery, useUpdateAccountMutation } from '../../../../services/account';
+import { ApiErrorResponse } from '../../../../services/types';
 import { AppState } from '../../../../store';
 import Button from '../../../Shared/Button';
 import Paper from '../../../Shared/Paper';
+import TextBox from '../../../Shared/TextBox';
 import styles from './index.module.css';
 import { SettingsForm } from './types';
-import countries from '../../../../lib/countries';
-import {
-  useUpdateAccountMutation,
-  useLazySendValidateEmailQuery
-} from '../../../../services/account';
-import { ApiErrorResponse } from '../../../../services/types';
 
 const ProfileSettingsPage = (): JSX.Element => {
   const sessionUser = useSelector((state: AppState) => state.session.user) || null;
@@ -92,14 +90,13 @@ const ProfileSettingsPage = (): JSX.Element => {
               <div className={styles.item}>
                 <div className={styles.label}>Country:</div>
                 <div className={styles.content}>
-                  <DropdownMenu.Root>
-                    <DropdownMenu.Trigger className={styles.dropdown}>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className={styles.dropdown}>
                       {form.country || 'Not set'}
-                    </DropdownMenu.Trigger>
-                    <DropdownMenu.Content className={styles.dropdownList}>
-                      <DropdownMenu.Arrow />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className={styles.dropdownList}>
                       {countries.map((country) => (
-                        <DropdownMenu.Item
+                        <DropdownMenuItem
                           key={country.text}
                           onSelect={(e: any): void =>
                             setForm({
@@ -109,10 +106,10 @@ const ProfileSettingsPage = (): JSX.Element => {
                           }
                         >
                           {country.text}
-                        </DropdownMenu.Item>
+                        </DropdownMenuItem>
                       ))}
-                    </DropdownMenu.Content>
-                  </DropdownMenu.Root>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               </div>
               <div className={styles.item}>
@@ -129,14 +126,13 @@ const ProfileSettingsPage = (): JSX.Element => {
               <div className={styles.item}>
                 <div className={styles.label}>Gender:</div>
                 <span className={styles.content}>
-                  <DropdownMenu.Root>
-                    <DropdownMenu.Trigger className={styles.dropdown}>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className={styles.dropdown}>
                       {form.gender || 'Not set'}
-                    </DropdownMenu.Trigger>
-                    <DropdownMenu.Content className={styles.dropdownList}>
-                      <DropdownMenu.Arrow />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className={styles.dropdownList}>
                       {['Not set', 'Male', 'Female', 'Other'].map((gender) => (
-                        <DropdownMenu.Item
+                        <DropdownMenuItem
                           key={gender}
                           onSelect={(e: any): void =>
                             setForm({
@@ -146,10 +142,10 @@ const ProfileSettingsPage = (): JSX.Element => {
                           }
                         >
                           {gender}
-                        </DropdownMenu.Item>
+                        </DropdownMenuItem>
                       ))}
-                    </DropdownMenu.Content>
-                  </DropdownMenu.Root>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </span>
               </div>
               <div className={styles.item}>
@@ -165,16 +161,6 @@ const ProfileSettingsPage = (): JSX.Element => {
                   />
                 </span>
               </div>
-              {/* <div className={styles.item}>
-                <div className={styles.label}>Change Username:</div>
-                <span className={styles.content}>
-                  <input
-                    className={styles.input}
-                    placeholder="New Username"
-                    onChange={(e): void => setForm({ ...form, username: e.target.value })}
-                  />
-                </span>
-              </div> */}
             </div>
             <div className={styles.save}>
               <Button padding="5px 20px" onClick={onClick}>

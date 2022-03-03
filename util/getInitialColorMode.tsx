@@ -1,16 +1,18 @@
-import { createContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 export default function getInitialTheme() {
-  const persistedColorPreference = window.localStorage.getItem('theme');
+  if (typeof window !== 'undefined') {
+    const persistedColorPreference = window.localStorage.getItem('theme');
 
-  if (persistedColorPreference === 'light' || persistedColorPreference === 'dark') {
-    return persistedColorPreference;
-  }
+    if (persistedColorPreference === 'light' || persistedColorPreference === 'dark') {
+      return persistedColorPreference;
+    }
 
-  const mql = window.matchMedia('(prefers-color-scheme: dark)');
-  const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-  if (hasMediaQueryPreference) {
-    return mql.matches ? 'dark' : 'light';
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+    if (hasMediaQueryPreference) {
+      return mql.matches ? 'dark' : 'light';
+    }
   }
 
   return 'dark';
@@ -28,7 +30,9 @@ export const ThemeProvider = ({ children }: Props): JSX.Element => {
   const setTheme = (newTheme: string): void => {
     rawSetTheme(newTheme);
 
-    window.localStorage.setItem('theme', newTheme);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('theme', newTheme);
+    }
   };
 
   useEffect(() => {

@@ -183,6 +183,12 @@
   box-shadow: var(--shadow);
 }
 
+.lower {
+  max-width: 780px;
+  margin: 20px auto;
+  padding: 0px 10px;
+}
+
 .support {
   background: var(--primary-main);
   border-radius: 16px;

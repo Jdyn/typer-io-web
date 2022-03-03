@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import Head from 'next/head';
+import { useEffect } from 'react';
 import ReactGA from 'react-ga';
-import { userRefreshed, nicknameChanged } from '../store/session/reducers';
-import { ThemeProvider } from '../util/getInitialColorMode';
-import { authenticate } from '../store/session/actions';
+import { useDispatch } from 'react-redux';
+
 import { wrapper } from '../store';
+import { authenticate } from '../store/session/actions';
+import { nicknameChanged, userRefreshed } from '../store/session/reducers';
+import { ThemeProvider } from '../util/getInitialColorMode';
 
 import '../public/static/styles/global.css';
 
@@ -20,10 +22,9 @@ interface IApp {
   err: string;
 }
 
-export const App = (props: IApp) => {
+export const App = (props: IApp): JSX.Element => {
   const { Component, pageProps, err } = props;
   const dispatch = useDispatch();
-  const [isReady, setReady] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -45,18 +46,20 @@ export const App = (props: IApp) => {
     }
 
     const nickname = localStorage.getItem('nickname');
-    if (nickname) {
-      dispatch(nicknameChanged(nickname));
-    }
-
-    setReady(true);
+    if (nickname) dispatch(nicknameChanged(nickname));
   }, [dispatch]);
 
-  return isReady ? (
+  return (
     <ThemeProvider>
+      <Head>
+        <meta
+          name="description"
+          content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."
+        />
+      </Head>
       <Component {...pageProps} err={err} />
     </ThemeProvider>
-  ) : null;
+  );
 };
 
 export default wrapper.withRedux(App);

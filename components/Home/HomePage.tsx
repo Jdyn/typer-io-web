@@ -4,10 +4,11 @@ import formatTime from '../../util/formatTime';
 import Adsense from '../Shared/Adsense';
 import Paper from '../Shared/Paper';
 import Hiscores from './Hiscores';
-import styles from './index.module.css';
 import Profile from './Profile';
 import RecentMatches from './RecentMatches';
 import RecentPosts from './RecentPosts';
+
+import styles from './index.module.css';
 
 const cards = [
   {
@@ -39,15 +40,13 @@ const HomePage = (): JSX.Element => {
         <section className={styles.centerColumn}>
           <Profile />
           <div className={styles.menu}>
-            {cards.map((card) => {
-              return (
-                <Link prefetch={false} href={card.route} key={card.route}>
-                  <a className={`${styles.card} ${styles[card.color]}`} key={card.route}>
-                    {`${card.title} ➜`} <span>{card.text}</span>
-                  </a>
-                </Link>
-              );
-            })}
+            {cards.map((card) => (
+              <Link prefetch={false} href={card.route} key={card.route}>
+                <a className={`${styles.card} ${styles[card.color]}`} key={card.route}>
+                  {`${card.title} ➜`} <span>{card.text}</span>
+                </a>
+              </Link>
+            ))}
           </div>
           <Hiscores />
         </section>
@@ -89,46 +88,16 @@ const HomePage = (): JSX.Element => {
               </div>
             </div>
           </Paper>
-          <section>
-            <Adsense
-              client="ca-pub-3148839588626786"
-              slot="7924266447"
-              format="fluid"
-              layout="in-article"
-            />
-          </section>
+          <Adsense client="ca-pub-3148839588626786" slot="7924266447" />
         </section>
         <section className={styles.rightColumn}>
           <RecentPosts />
-          <Adsense
-            client="ca-pub-3148839588626786"
-            slot="8439040257"
-            format="fluid"
-            layout="in-article"
-          />
+          <Adsense client="ca-pub-3148839588626786" slot="8439040257" />
           <RecentMatches />
-          <Adsense
-            client="ca-pub-3148839588626786"
-            slot="7114370741"
-            format="fluid"
-            layout="in-article"
-          />
+          <Adsense client="ca-pub-3148839588626786" slot="7114370741" />
         </section>
       </div>
-      <section
-        style={{
-          maxWidth: '780px',
-          margin: '20px auto',
-          padding: '0px 10px'
-        }}
-      >
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="7924266447"
-          format="fluid"
-          layout="in-article"
-        />
-      </section>
+      <Adsense className={styles.lower} client="ca-pub-3148839588626786" slot="7924266447" />
     </main>
   );
 };

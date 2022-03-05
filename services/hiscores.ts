@@ -32,11 +32,22 @@ const hiscoresApi = createApi({
         params: { page, type }
       }),
       transformResponse: (raw: { result }) => raw.result
+    }),
+    getUserRecords: builder.query<Match[], { username: string }>({
+      query: ({ username }) => ({
+        url: `/user/${username}/matches/records`,
+        method: 'GET'
+      }),
+      transformResponse: (raw: { result }) => raw.result.matches
     })
   })
 });
 
-export const { useLazyGetQuoteHiscoresQuery, useGetHiscoresQuery, useGetUserHiscoresQuery } =
-  hiscoresApi;
+export const {
+  useLazyGetQuoteHiscoresQuery,
+  useGetHiscoresQuery,
+  useGetUserHiscoresQuery,
+  useGetUserRecordsQuery
+} = hiscoresApi;
 
 export default hiscoresApi;

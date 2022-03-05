@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
 import { useGetMatchesQuery, useGetUserQuery } from '../../../services/account';
+import { useGetUserRecordsQuery } from '../../../services/hiscores';
 import { ApiErrorResponse } from '../../../services/types';
 import { AppState } from '../../../store';
 import formatTime from '../../../util/formatTime';
@@ -23,6 +24,7 @@ const ProfilePage = (props: Props): JSX.Element => {
 
   const { data: user, isError, error } = useGetUserQuery(username);
   const { data: matches } = useGetMatchesQuery({ username, matchPage: matchPage || '1' });
+  const { data: records } = useGetUserRecordsQuery({ username });
   const sessionUser = useSelector((state: AppState) => state.session.user);
 
   const fetchMatches = (page: number): void => {
@@ -139,24 +141,48 @@ const ProfilePage = (props: Props): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className={styles.friendsList}>
-        <Banner>
-          <h3>Posts</h3>
-        </Banner>
-        <div className={styles.friendsListWrapper}>
-          {user && user.posts.length > 0 ? (
-            user?.posts.map((post) => <MiniListPost key={post.id} post={post} />)
-          ) : (
-            <>{user && <span>{user?.username} has not created any posts.</span>}</>
-          )}
+      <section className={styles.right}>
+        <div className={styles.friendsList}>
+          <Banner>
+            <h3>Posts</h3>
+          </Banner>
+          <div className={styles.friendsListWrapper}>
+            {user && user.posts.length > 0 ? (
+              user?.posts.map((post) => <MiniListPost key={post.id} post={post} />)
+            ) : (
+              <>{user && <span>{user?.username} has not created any posts.</span>}</>
+            )}
+          </div>
         </div>
-      </div>
+        <Paper title="Best Matches">
+          <div className={styles.recordsContainer}>
+            <div className={styles.recordsWrapper}>
+              {records &&
+                records.map((record, index) => (
+                  <div className={styles.matchEntry} key={record.id}>
+                    <div className={styles.count}>{index + 1}.</div>
+                    <div className={styles.matchContent} style={{ flex: '4' }}>
+                      <div>{record.snippetTitle}</div>
+                      <div className={styles.matchTimestamp}>
+                        {' '}
+                        <span className={`${styles[record.difficulty]}`}>
+                          {record.difficulty}
+                        </span>, {formatTime(record.created_at)}
+                      </div>
+                    </div>
+                    <div className={styles.matchItem}>{record.wpm} WPM</div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </Paper>
+      </section>
+
       <section className={styles.matchRoot}>
         <Paper title="Matches">
           <div className={styles.matchHeader}>
             <div className={`${styles.count} ${styles.matchHeaderItem}`}>#</div>
             <div className={`${styles.matchContent} ${styles.matchHeaderItem}`}>Name</div>
-            <div className={`${styles.matchContent} ${styles.matchItem}`}>Difficulty</div>
             <div className={styles.matchItem}>Accuracy</div>
             <div className={styles.matchItem}>WPM</div>
           </div>
@@ -174,15 +200,13 @@ const ProfilePage = (props: Props): JSX.Element => {
                       .
                     </div>
                     <div className={styles.matchContent}>
-                      {item.user.username}
-                      <div className={styles.matchTimestamp}>{formatTime(item.created_at)}</div>
-                    </div>
-                    <div
-                      className={`${styles.matchItem} ${styles.difficulty} ${
-                        styles[item.difficulty]
-                      }`}
-                    >
-                      {item.difficulty}
+                      <div>{item.snippetTitle}</div>
+                      <div className={styles.matchTimestamp}>
+                        {' '}
+                        <span className={`${styles[item.difficulty]}`}>
+                          {item.difficulty}
+                        </span>, {formatTime(item.created_at)}
+                      </div>
                     </div>
                     <div className={styles.matchItem}>{item.accuracy}%</div>
                     <div className={styles.matchItem}>{item.wpm}</div>

@@ -150,13 +150,13 @@
 }
 
 .easy {
-  background: var(--green);
+  color: var(--green);
 }
 
 .medium {
-  background: var(--orange);
+  color: var(--orange);
 }
 
 .hard {
-  background: var(--red);
+  color: var(--red);
 }

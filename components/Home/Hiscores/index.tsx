@@ -61,11 +61,12 @@ const Hiscores = (): JSX.Element => {
                     ) : (
                       item.nickname
                     )}
-                    <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
+                    <div className={styles.timestamp}>
+                      {' '}
+                      <span className={`${styles[item.difficulty]}`}>{item.difficulty}</span>,{' '}
+                      {formatTime(item.created_at)}
+                    </div>
                     {renderBadge(item.user)}
-                  </div>
-                  <div className={`${styles.item} ${styles.difficulty} ${styles[item.difficulty]}`}>
-                    {item.difficulty}
                   </div>
                   <div className={styles.item}>{item.accuracy}%</div>
                   <div className={styles.item}>

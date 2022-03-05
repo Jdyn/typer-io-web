@@ -126,17 +126,19 @@ const ProfilePage = (props: Props): JSX.Element => {
           </div>
           <div className={styles.statItemContainer}>
             <h3>Records</h3>
-            <div className={styles.statItem}>
-              <div>Highest WPM</div>
-              <span>{user?.topWpm}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Games Won</div>
-              <span>{user?.totalWins}</span>
-            </div>
-            <div className={styles.statItem}>
-              <div>Games Played</div>
-              <span>{user?.matchCount}</span>
+            <div className={styles.statItemWrapper}>
+              <div className={styles.statItem}>
+                <div>Highest WPM</div>
+                <span>{user?.topWpm}</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Games Won</div>
+                <span>{user?.totalWins}</span>
+              </div>
+              <div className={styles.statItem}>
+                <div>Games Played</div>
+                <span>{user?.matchCount}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +156,7 @@ const ProfilePage = (props: Props): JSX.Element => {
             )}
           </div>
         </div>
-        <Paper title="Best Matches">
+        <Paper title="Top Matches">
           <div className={styles.recordsContainer}>
             <div className={styles.recordsWrapper}>
               {records &&

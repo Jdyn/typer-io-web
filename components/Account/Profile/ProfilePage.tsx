@@ -177,7 +177,6 @@ const ProfilePage = (props: Props): JSX.Element => {
           </div>
         </Paper>
       </section>
-
       <section className={styles.matchRoot}>
         <Paper title="Matches">
           <div className={styles.matchHeader}>

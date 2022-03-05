@@ -25,6 +25,7 @@ export interface Match {
   id: number;
   nickname: string;
   placed: number;
+  snippetTitle: string;
   time: number;
   difficulty: string;
   user: { id: number; isAdmin: boolean; username: string };

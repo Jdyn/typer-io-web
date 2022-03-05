@@ -43,7 +43,6 @@ const Hiscores = (): JSX.Element => {
         <div className={styles.header}>
           <div className={`${styles.count} ${styles.headerItem}`}>#</div>
           <div className={`${styles.content} ${styles.headerItem}`}>Name</div>
-          <div className={`${styles.content} ${styles.item}`}>Difficulty</div>
           <div className={styles.item}>Accuracy</div>
           <div className={styles.item}>WPM</div>
         </div>

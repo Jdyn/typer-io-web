@@ -1,15 +1,16 @@
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Banner from '../../Shared/Banner';
-import styles from './index.module.css';
-import formatTime from '../../../util/formatTime';
-import Button from '../../Shared/Button';
-import { AppState } from '../../../store';
-import MiniListPost from '../../Home/RecentPosts/MiniListPost';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+
 import { useGetMatchesQuery, useGetUserQuery } from '../../../services/account';
 import { ApiErrorResponse } from '../../../services/types';
+import { AppState } from '../../../store';
+import formatTime from '../../../util/formatTime';
+import MiniListPost from '../../Home/RecentPosts/MiniListPost';
+import Banner from '../../Shared/Banner';
+import Button from '../../Shared/Button';
 import Paper from '../../Shared/Paper';
+import styles from './index.module.css';
 
 interface Props {
   username: string;
@@ -164,7 +165,14 @@ const ProfilePage = (props: Props): JSX.Element => {
               {matches &&
                 matches.data.map((item, index) => (
                   <div className={styles.matchEntry} key={item.id}>
-                    <div className={styles.count}>{index + 1}.</div>
+                    <div className={styles.count}>
+                      {matches?.page > 1 ? (
+                        <span>{25 * (matches?.page - 1) + index + 1}</span>
+                      ) : (
+                        <span>{index + 1}</span>
+                      )}
+                      .
+                    </div>
                     <div className={styles.matchContent}>
                       {item.user.username}
                       <div className={styles.matchTimestamp}>{formatTime(item.created_at)}</div>

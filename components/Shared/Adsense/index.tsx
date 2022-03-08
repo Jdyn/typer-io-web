@@ -1,4 +1,5 @@
-import { useEffect, memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
+
 import styles from './index.module.css';
 
 interface Props {
@@ -25,27 +26,20 @@ const Adsense = ({
   const [isAds, setAds] = useState(true);
 
   useEffect(() => {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-    } catch (e) {
-      // catch
-    }
-
-    if (
-      (Array.isArray((window as any).adsbygoogle) && !(window as any).adsbygoogle?.loaded) ||
-      false
-    ) {
-      setAds(false);
-    } else if (typeof (window as any).adsbygoogle === 'object') {
+    const ins = document.getElementById('gad');
+    if (ins && ins.hasChildNodes()) {
       setAds(true);
+    } else {
+      setAds(false);
     }
   }, []);
 
-  return (
+  return isAds ? (
     <section className={className}>
       <div id={slot} key={path} className={styles.root}>
         <ins
           key={path}
+          id="gad"
           className="adsbygoogle"
           style={style}
           data-ad-client={client}
@@ -57,7 +51,7 @@ const Adsense = ({
         />
       </div>
     </section>
-  );
+  ) : null;
 };
 
 Adsense.defaultProps = {

@@ -165,7 +165,7 @@ const LobbyPage = (): JSX.Element => {
             {room.id && (
               <>
                 <span>share this link to invite players.</span>
-                <span>Click the link to copy!</span>
+                <span>{copied ? 'Copied!' : 'Click the link to copy!'}</span>
                 <div className={styles.linkContainer}>
                   <button
                     type="button"
@@ -174,10 +174,16 @@ const LobbyPage = (): JSX.Element => {
                     style={{ filter: hidden ? 'blur(4px)' : '' }}
                     onClick={() => copyToClipboard('lobby-link', setCopied)}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
-                  <Button margin="0px" padding="0px 5px" onClick={() => setHidden(!hidden)}>
+                  <Button
+                    margin="0px"
+                    padding="0px 5px"
+                    onClick={() => {
+                      setHidden(!hidden);
+                      setCopied(false);
+                    }}
+                  >
                     {hidden ? 'show' : 'hide'}
                   </Button>
-                  <span>{copied ? 'Copied!' : ''}</span>
                 </div>
                 {currrentClient.isHost ? (
                   <Button

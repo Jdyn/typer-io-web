@@ -116,7 +116,7 @@
 
 .menu {
   display: grid;
-  gap: 10px;
+  gap: 15px;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr;
 }
@@ -145,8 +145,7 @@
 }
 
 .card:hover::before {
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4),
-    0 18px 36px -18px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--hover-shadow)
 }
 
 .card:active {

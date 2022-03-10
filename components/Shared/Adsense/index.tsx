@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import styles from './index.module.css';
 
 interface Props {
@@ -21,6 +23,14 @@ const Adsense = ({
   format,
   path
 }: Props): JSX.Element => {
+  useEffect(() => {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (e) {
+      // catch
+    }
+  }, []);
+
   return (
     <section className={className}>
       <div id={slot} key={path} className={styles.root}>

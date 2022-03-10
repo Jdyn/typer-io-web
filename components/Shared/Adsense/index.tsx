@@ -1,5 +1,3 @@
-import { memo, useEffect, useState } from 'react';
-
 import styles from './index.module.css';
 
 interface Props {
@@ -23,18 +21,7 @@ const Adsense = ({
   format,
   path
 }: Props): JSX.Element => {
-  const [isAds, setAds] = useState(true);
-
-  useEffect(() => {
-    const ins = document.getElementById('gad');
-    if (ins && ins.hasChildNodes()) {
-      setAds(true);
-    } else {
-      setAds(false);
-    }
-  }, []);
-
-  return isAds ? (
+  return (
     <section className={className}>
       <div id={slot} key={path} className={styles.root}>
         <ins
@@ -51,7 +38,7 @@ const Adsense = ({
         />
       </div>
     </section>
-  ) : null;
+  );
 };
 
 Adsense.defaultProps = {
@@ -63,4 +50,4 @@ Adsense.defaultProps = {
   path: ''
 };
 
-export default memo(Adsense);
+export default Adsense;

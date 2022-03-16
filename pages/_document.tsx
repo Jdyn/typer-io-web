@@ -1,11 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentInitialProps,
-  DocumentContext
-} from 'next/document';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -17,11 +10,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
+          {/* <script
             data-ad-client="ca-pub-3148839588626786"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          />
+          /> */}
         </Head>
         <body id="body">
           <Main />

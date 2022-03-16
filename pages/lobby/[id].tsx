@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { LazyMotion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import Layout from '../../components/Layout';
 import Lobby from '../../components/Lobby';
-import { initSocket, leaveRoom } from '../../store/game/actions';
 import Play from '../../components/Play';
 import { AppState } from '../../store';
-import Layout from '../../components/Layout';
+import { initSocket, leaveRoom } from '../../store/game/actions';
 
 const loadFeatures = () => import('../../util/framerfeatures').then((res) => res.default);
 
@@ -63,7 +64,12 @@ const LobbyContainer = (): JSX.Element => {
       </LazyMotion>
     </Layout>
   ) : (
-    <Layout striped title="Private Lobby">
+    <Layout
+      striped
+      title="Private Lobby"
+      description="Multiplayer Private Lobby"
+      ogTitle="You have been invited to a typing race"
+    >
       <LazyMotion features={loadFeatures} strict>
         <Lobby />
       </LazyMotion>

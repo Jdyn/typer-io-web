@@ -52,6 +52,7 @@ export const App = (props: IApp): JSX.Element => {
   return (
     <ThemeProvider>
       <Head>
+        <title>Typer - Large multiplayer typing races with your friends</title>
         <meta
           name="description"
           content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."

@@ -210,7 +210,9 @@ const ProfilePage = (props: Props): JSX.Element => {
                       </div>
                     </div>
                     <div className={styles.matchItem}>{item.accuracy}%</div>
-                    <div className={styles.matchItem}>{item.wpm}</div>
+                    <div className={styles.matchItem}>
+                      {item.wpm} {sessionUser?.isAdmin && <div>{item.id}</div>}
+                    </div>
                   </div>
                 ))}
             </div>

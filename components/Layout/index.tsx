@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ReactNode, useEffect } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 import Footer from '../Footer';
 import Header from '../Header';
@@ -18,7 +18,7 @@ const Layout = (props: Props): JSX.Element => {
   const { children, striped, title, description, ogTitle } = props;
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send('pageview');
   }, [children]);
 
   return (

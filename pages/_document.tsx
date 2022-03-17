@@ -1,11 +1,4 @@
-import Document, {
-  DocumentContext,
-  DocumentInitialProps,
-  Head,
-  Html,
-  Main,
-  NextScript
-} from 'next/document';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -30,10 +23,6 @@ class MyDocument extends Document {
           <meta
             name="google-site-verification"
             content="Pww56fm4UvyzFeLppncS1u27xlhznlaFsSzwpVrtbqE"
-          />
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
           />
           <meta
             property="og:description"

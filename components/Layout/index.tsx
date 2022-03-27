@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ReactNode, useEffect } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 import Footer from '../Footer';
 import Header from '../Header';
@@ -18,7 +18,7 @@ const Layout = (props: Props): JSX.Element => {
   const { children, striped, title, description, ogTitle } = props;
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send('pageview');
   }, [children]);
 
   return (
@@ -35,6 +35,10 @@ const Layout = (props: Props): JSX.Element => {
             description ||
             'Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches with a few clicks.'
           }
+        />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
         />
         <meta
           name="og:description"

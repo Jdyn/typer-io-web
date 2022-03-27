@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { useDispatch } from 'react-redux';
 
 import { wrapper } from '../store';
@@ -11,9 +11,7 @@ import { ThemeProvider } from '../util/getInitialColorMode';
 import '../public/static/styles/global.css';
 
 ((): void => {
-  ReactGA.initialize('UA-135635293-4', {
-    gaOptions: { siteSpeedSampleRate: 100 }
-  });
+  ReactGA.initialize('G-9DWL368WZS');
 })();
 
 interface IApp {

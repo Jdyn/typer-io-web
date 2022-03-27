@@ -7,12 +7,6 @@ export default function getInitialTheme() {
     if (persistedColorPreference === 'light' || persistedColorPreference === 'dark') {
       return persistedColorPreference;
     }
-
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-    if (hasMediaQueryPreference) {
-      return mql.matches ? 'dark' : 'light';
-    }
   }
 
   return 'dark';

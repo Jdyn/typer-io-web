@@ -6,21 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../components/Layout';
 import Lobby from '../../components/Lobby';
 import Play from '../../components/Play';
+import { silentClose } from '../../services/socket';
 import { AppState } from '../../store';
-import { initSocket, leaveRoom } from '../../store/game/actions';
+import { initSocket } from '../../store/game/actions';
 
 const loadFeatures = () => import('../../util/framerfeatures').then((res) => res.default);
 
 const LobbyContainer = (): JSX.Element => {
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { id } = useRouter().query;
   const socket = useSelector((state: AppState) => state.game.socket);
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
-  const roomId = useSelector((state: AppState) => state.game.room.id);
 
   useEffect(() => {
     if (!socket.connected && !socket.pending) {
-      const { id } = router.query;
       const token = localStorage.getItem('token') || '';
 
       let config;
@@ -49,11 +48,11 @@ const LobbyContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch]);
+  }, [dispatch, id, socket.connected, socket.pending]);
 
   useEffect(() => {
     return (): void => {
-      dispatch(leaveRoom({ id: roomId, errored: false }));
+      silentClose();
     };
   }, [dispatch]);
 

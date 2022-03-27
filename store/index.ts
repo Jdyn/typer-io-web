@@ -1,5 +1,6 @@
 import { configureStore, combineReducers, ThunkAction, Action } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 import request from './request/reducers';
 import session from './session/reducers';
@@ -45,5 +46,6 @@ export type AppState = ReturnType<typeof stateReducer>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action>;
 
 export type GetState = () => AppState;
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 
 export const wrapper = createWrapper<AppStore>(makeStore);

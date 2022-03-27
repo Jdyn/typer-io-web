@@ -5,6 +5,7 @@ import formatTime from '../../../util/formatTime';
 import IFilter from '../../Shared/Filter';
 import styles from './index.module.css';
 import { useLazyGetQuoteHiscoresQuery } from '../../../services/hiscores';
+import { useAppSelector } from '../../../store';
 
 const filters = [
   {
@@ -19,21 +20,14 @@ interface Props {
 }
 
 const Leaderboard = ({ clientsComplete, snippetId }: Props): JSX.Element => {
-  const [trigger, { data: matches }] = useLazyGetQuoteHiscoresQuery();
-
-  useEffect(() => {
-    if (snippetId) {
-      trigger(snippetId);
-    }
-  }, [clientsComplete, snippetId, trigger]);
-
+  const matches = useAppSelector((state) => state.game.room.leaderboard);
   return (
     <div className={styles.root}>
       <Paper title="Hiscores">
         <IFilter fontSize="15" filters={filters} onClick={null} />
         <div className={styles.container}>
           <div className={styles.wrapper}>
-            {matches &&
+            {matches?.length > 0 &&
               matches.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>

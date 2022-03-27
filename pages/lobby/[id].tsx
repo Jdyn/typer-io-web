@@ -19,7 +19,7 @@ const LobbyContainer = (): JSX.Element => {
   const isStarted = useSelector((state: AppState) => state.game.room.isStarted);
 
   useEffect(() => {
-    if (!socket.connected && !socket.pending) {
+    if (!socket.connected && !socket.pending && !socket.errored) {
       const token = localStorage.getItem('token') || '';
 
       let config;
@@ -48,7 +48,7 @@ const LobbyContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch, id, socket.connected, socket.pending]);
+  }, [dispatch, id, socket.connected, socket.errored, socket.pending]);
 
   useEffect(() => {
     return (): void => {

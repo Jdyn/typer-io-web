@@ -156,7 +156,7 @@ const ProfilePage = (props: Props): JSX.Element => {
             )}
           </div>
         </div>
-        <Paper title="Top Matches">
+        <Paper title="Records">
           <div className={styles.recordsContainer}>
             <div className={styles.recordsWrapper}>
               {records &&

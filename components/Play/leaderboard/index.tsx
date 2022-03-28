@@ -23,7 +23,7 @@ const Leaderboard = ({ clientsComplete, snippetId }: Props): JSX.Element => {
   const matches = useAppSelector((state) => state.game.room.leaderboard);
   return (
     <div className={styles.root}>
-      <Paper title="Hiscores">
+      <Paper title="Snippet Hiscores">
         <IFilter fontSize="15" filters={filters} onClick={null} />
         <div className={styles.container}>
           <div className={styles.wrapper}>

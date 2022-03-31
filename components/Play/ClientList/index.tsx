@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { AnimatePresence, m } from 'framer-motion';
+import { AppState, useAppSelector } from 'store';
+
 import styles from './index.module.css';
-import { AppState } from '../../../store';
 
 // TODO: probably use useMemo for this so its not called every render
 export const placements = (rank: number): string => {
@@ -22,33 +22,29 @@ interface Props {
   isSolo?: boolean;
 }
 
-const ClientList = (props: Props): JSX.Element => {
-  const { isSolo } = props;
-  const users = useSelector((state: AppState) => state.game.room.clients);
+const variants = {
+  initial: {
+    opacity: 0,
+    width: '0%',
+    y: '-100%'
+  },
+  enter: (solo) => {
+    return {
+      width: solo ? '100%' : '25%',
+      maxWidth: solo ? '275px' : '235px',
+      opacity: 1,
+      y: '0%'
+    };
+  },
+  exit: {
+    opacity: 0,
+    y: '-100%',
+    width: '0%'
+  }
+};
 
-  const variants = useMemo(
-    () => ({
-      initial: {
-        opacity: 0,
-        width: '0%',
-        y: '-100%'
-      },
-      enter: (solo) => {
-        return {
-          width: solo ? '100%' : '25%',
-          maxWidth: solo ? '275px' : '235px',
-          opacity: 1,
-          y: '0%'
-        };
-      },
-      exit: {
-        opacity: 0,
-        y: '-100%',
-        width: '0%'
-      }
-    }),
-    []
-  );
+const ClientList = ({ isSolo }: Props): JSX.Element => {
+  const users = useAppSelector(({ game }) => game.room.clients);
 
   const clients = useMemo(
     () =>
@@ -98,19 +94,14 @@ const ClientList = (props: Props): JSX.Element => {
           </div>
         </m.div>
       )),
-    [isSolo, users, variants]
+    [isSolo, users]
   );
 
   return (
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
-      {users.length > 0 && (
-        <div
-          className={styles.container}
-          style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}
-        >
-          <AnimatePresence>{clients}</AnimatePresence>
-        </div>
-      )}
+      <div className={styles.container} style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}>
+        <AnimatePresence>{clients}</AnimatePresence>
+      </div>
     </div>
   );
 };

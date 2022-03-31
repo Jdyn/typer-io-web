@@ -7,7 +7,7 @@ import { useGetUserRecordsQuery } from '../../../services/hiscores';
 import { ApiErrorResponse } from '../../../services/types';
 import { AppState } from '../../../store';
 import formatTime from '../../../util/formatTime';
-import MiniListPost from '../../Home/RecentPosts/MiniListPost';
+import MiniListPost from '../../../app/Home/RecentPost';
 import Banner from '../../Shared/Banner';
 import Button from '../../Shared/Button';
 import Paper from '../../Shared/Paper';

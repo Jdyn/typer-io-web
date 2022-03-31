@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
-import { Post } from '../../../services/types';
-import formatTime from '../../../util/formatTime';
-import styles from './index.module.css';
+import { Post } from 'services/types';
+import formatTime from 'util/formatTime';
+
+import styles from './RecentPosts.module.css';
 
 interface Props {
   post: Post;
 }
 
-const MiniListPost = (props: Props): JSX.Element => {
+const RecentPost = (props: Props): JSX.Element => {
   const { post } = props;
 
   return (
@@ -44,4 +45,4 @@ const MiniListPost = (props: Props): JSX.Element => {
   );
 };
 
-export default MiniListPost;
+export default RecentPost;

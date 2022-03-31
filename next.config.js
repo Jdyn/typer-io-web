@@ -17,6 +17,10 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  paths: {
+    '@/components/*': ['components/*'],
+    '@/app/*': ['app/*']
+  },
   env: {
     BASE_URL: true ? PROD_BASE_URL : DEV_BASE_URL,
     API_URL: true ? PROD_API_URL : DEV_API_URL,

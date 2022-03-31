@@ -2,24 +2,6 @@
   height: 535px;
 }
 
-.container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  overflow: hidden;
-  margin: 20px;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  padding-left: 10px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
 .verified {
   color: var(--accent);
 }

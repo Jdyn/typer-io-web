@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { silentEmit } from '../../services/socket';
 import { AppState } from '../../store';
 import copyToClipboard from '../../util/copyToClipboard';
-import Profile from '../Home/Profile';
+import Profile from '../../app/Home/Profile';
 import Chat from '../Play/Chat';
 import ClientList from '../Play/ClientList';
 import Adsense from '../Shared/Adsense';

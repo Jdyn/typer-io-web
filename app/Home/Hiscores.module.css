@@ -3,24 +3,6 @@
   height: 660px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: inherit;
-  margin: 5px 20px 20px 20px;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  padding-left: 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 .verified {
   color: var(--accent);
 }

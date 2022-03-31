@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { nicknameChanged } from '../../../store/session/reducers';
-import { AppState } from '../../../store';
-import Button from '../../Shared/Button';
-import Paper from '../../Shared/Paper';
-import emojiList from '../../../lib/emojis';
+import { useDispatch } from 'react-redux';
+import { nicknameChanged } from 'store/session/reducers';
+import { useAppSelector } from 'store';
+import Button from 'components/Shared/Button';
+import Paper from 'components/Shared/Paper';
+import emojiList from 'lib/emojis';
+import { silentEmit } from 'services/socket';
+import View from 'components/Shared/View';
 
-import styles from './index.module.css';
-import { silentEmit } from '../../../services/socket';
+import styles from './Profile.module.css';
 
 interface Props {
   requireSave?: boolean;
@@ -16,8 +17,7 @@ interface Props {
 const Profile = (props: Props): JSX.Element => {
   const { requireSave } = props;
 
-  const nickname = useSelector((state: AppState) => state.session.nickname);
-  const sessionName = useSelector((state: AppState) => state.session.user?.username);
+  const name = useAppSelector(({ session }) => session?.nickname || session?.user?.username);
 
   const dispatch = useDispatch();
 
@@ -64,29 +64,21 @@ const Profile = (props: Props): JSX.Element => {
   };
 
   const handleUpdate = useCallback(() => {
-    let username = localStorage?.getItem('nickname');
-
-    // Necessary comparison operator
-    // eslint-disable-next-line
-    if (username == '' || !username) {
-      username = sessionName;
-    }
-
     silentEmit('CLIENT_SETTINGS_UPDATE', {
       emoji: currentEmoji,
-      username
+      nickname: name
     });
-  }, [currentEmoji, sessionName]);
+  }, [currentEmoji, name]);
 
   return (
     <Paper title="You">
-      <div className={styles.wrapper}>
+      <View>
         <div className={styles.header}>
           <div className={styles.portrait}>{currentEmoji}</div>
           <input
             id="nicknameInput"
             className={styles.input}
-            value={nickname || ''}
+            value={name || ''}
             maxLength={20}
             placeholder="Enter nickname"
             onChange={didChange}
@@ -125,7 +117,7 @@ const Profile = (props: Props): JSX.Element => {
             </Button>
           </div>
         )}
-      </div>
+      </View>
     </Paper>
   );
 };

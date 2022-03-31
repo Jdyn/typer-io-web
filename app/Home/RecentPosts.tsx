@@ -1,9 +1,9 @@
-import MiniListPost from './MiniListPost';
-import Paper from '../../Shared/Paper';
-import Loader from '../../Shared/Loader';
-import { useGetPostsQuery } from '../../../services/forum';
+import RecentPost from './RecentPost';
+import Paper from '../../components/Shared/Paper';
+import Loader from '../../components/Shared/Loader';
+import { useGetPostsQuery } from '../../services/forum';
 
-import styles from './index.module.css';
+import styles from './RecentPosts.module.css';
 
 const RecentPosts = (): JSX.Element => {
   const { data: feed, isFetching, isError } = useGetPostsQuery({ query: 'recent' });
@@ -14,7 +14,7 @@ const RecentPosts = (): JSX.Element => {
         {feed?.data && (
           <div className={styles.container}>
             {feed.data.map((post) => (
-              <MiniListPost key={post.id} post={post} />
+              <RecentPost key={post.id} post={post} />
             ))}
           </div>
         )}

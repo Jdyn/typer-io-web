@@ -8,18 +8,6 @@
   box-shadow: var(--shadow);
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 20px;
-  overflow: hidden;
-  padding: 10px;
-  border: 2px solid var(--border);
-  justify-content: center;
-  border-radius: 16px;
-}
-
 .content {
   display: flex;
   flex-direction: column;

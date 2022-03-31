@@ -10,6 +10,6 @@
   flex-direction: column;
   padding: 20px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: overlay;
   height: 100%;
 }

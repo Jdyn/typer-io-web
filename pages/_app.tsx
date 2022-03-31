@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import Head from 'next/head';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga4';
@@ -9,6 +10,7 @@ import { nicknameChanged, userRefreshed } from '../store/session/reducers';
 import { ThemeProvider } from '../util/getInitialColorMode';
 
 import '../public/static/styles/global.css';
+import Layout from '../components/Layout';
 
 ((): void => {
   ReactGA.initialize('G-9DWL368WZS');
@@ -56,7 +58,9 @@ export const App = (props: IApp): JSX.Element => {
           content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."
         />
       </Head>
-      <Component {...pageProps} err={err} />
+      <Layout striped>
+        <Component {...pageProps} err={err} />
+      </Layout>
     </ThemeProvider>
   );
 };

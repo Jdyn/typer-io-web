@@ -1,0 +1,15 @@
+.root {
+  margin: 20px;
+  border: 2px solid var(--border);
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+}

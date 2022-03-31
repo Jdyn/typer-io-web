@@ -1,35 +1,36 @@
-.container {
+.root {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1.2fr 2fr 1.2fr;
-  grid-template-areas: 'leftColumn centerColumn rightColumn';
+  grid-template-areas: 'left-col center-col right-col';
   gap: 20px;
   max-width: 1250px;
   margin: 145px auto 20px auto;
   padding: 0px 10px;
 }
 
-.leftColumn {
+.left {
   display: grid;
   gap: 20px;
   grid-template-rows: min-content min-content;
   grid-template-columns: 1fr;
-  grid-area: leftColumn;
+  grid-area: left-col;
 }
 
-.rightColumn {
+.right {
   display: grid;
   grid-auto-rows: min-content;
   gap: 20px;
   grid-template-columns: 1fr;
-  grid-area: rightColumn;
+  grid-area: right-col;
 }
 
-.centerColumn {
+.center {
   display: grid;
   gap: 20px;
   grid-template-rows: min-content min-content;
   grid-template-columns: 1fr 1fr;
+  grid-area: center-col;
   grid-template-areas:
     'profile menu'
     'scores scores';
@@ -56,43 +57,22 @@
   }
 }
 
-.ad {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  grid-area: ad;
-}
-
 .news {
+  display: flex;
+  flex-direction: column;
   padding: 0;
 }
 
-.newsContainer {
-  margin: 20px;
-  border: 2px solid var(--border);
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.newsWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100%;
-}
-
-.newsWrapper > h3 {
+.news > h3 {
   font-size: 20px;
   margin: 0;
 }
 
-.newsWrapper > h2 {
+.news > h2 {
   margin: 0;
 }
 
-.newsWrapper > span {
+.news > span {
   color: var(--subtext);
 }
 
@@ -100,15 +80,12 @@
   color: var(--text);
   position: relative;
   max-width: 100%;
-}
-
-.list > ul {
-  padding-left: 25px;
+  padding-left: 10px;
   margin: 0;
   margin-bottom: 10px;
 }
 
-.list > ul > li {
+.list > li {
   margin: 0;
   margin: 10px 0px;
   padding: 2px;
@@ -145,7 +122,7 @@
 }
 
 .card:hover::before {
-  box-shadow: var(--hover-shadow)
+  box-shadow: var(--hover-shadow);
 }
 
 .card:active {
@@ -168,17 +145,6 @@
   height: 100%;
   border-radius: 16px;
   transition-duration: 0.15s;
-  box-shadow: var(--shadow);
-}
-
-.posts {
-  background: var(--primary-main);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
-  height: 500px;
-  border-radius: 16px;
   box-shadow: var(--shadow);
 }
 

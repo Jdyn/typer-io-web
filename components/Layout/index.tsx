@@ -1,5 +1,4 @@
-import Head from 'next/head';
-import { ReactNode, useEffect } from 'react';
+import { memo, ReactNode, useEffect } from 'react';
 import ReactGA from 'react-ga4';
 
 import Footer from '../Footer';
@@ -33,4 +32,4 @@ Layout.defaultProps = {
   striped: false
 };
 
-export default Layout;
+export default memo(Layout);

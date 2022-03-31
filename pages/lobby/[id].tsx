@@ -10,7 +10,6 @@ import { initSocket } from 'store/game/actions';
 import useClient from 'Hooks/useClient';
 import { useDispatch } from 'react-redux';
 import Adsense from 'components/Shared/Adsense';
-import Banner from 'components/Shared/Banner';
 import Loader from 'components/Shared/Loader';
 
 import styles from 'styles/Lobby.module.css';
@@ -20,6 +19,8 @@ import copyToClipboard from 'util/copyToClipboard';
 import Profile from 'app/Home/Profile';
 import Chat from 'components/Play/Chat';
 import ClientList from 'components/Play/ClientList';
+import Paper from 'components/Shared/Paper';
+import View from 'components/Shared/View';
 
 const loadFeatures = () => import('../../util/framerfeatures').then((res) => res.default);
 
@@ -125,155 +126,143 @@ function LobbyPage(): JSX.Element {
         description="Multiplayer Private Lobby"
         ogTitle="You have been invited to a typing race"
       />
-      <main>
-        <div className={styles.root}>
-          <ClientList />
-          <section className={styles.aContainer2}>
-            <div className={styles.settingsRoot}>
-              <Banner title="Settings" />
-              <div className={styles.settingsContainer}>
-                <div className={styles.setting}>
-                  <h3>Difficulty</h3>
-                  <div className={styles.difficultyWrapper}>
-                    {difficulties.map((key) => (
-                      <button
-                        type="button"
-                        key={key}
-                        className={`${styles.difficultyButton} ${
-                          room.difficulty === key ? styles.selected : ''
-                        }`}
-                        onClick={() => handleSettingsUpdate({ difficulty: key })}
-                      >
-                        {key}
-                      </button>
-                    ))}
-                    {room.difficulty === 'custom' && (
-                      <>
-                        <TextBox
-                          id="lobby-custom-text"
-                          disabled={!currrentClient.isHost}
-                          maxLength={650}
-                        />
-                        {currrentClient.isHost && (
-                          <Button
-                            padding="5px"
-                            onClick={() => handleSettingsUpdate({ customText: true })}
-                          >
-                            save text
-                          </Button>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </div>
-                <div className={styles.setting}>
-                  <h3>Maximum Players</h3>
-                  <div className={styles.difficultyWrapper}>
-                    {[5, 10, 15, 20, 25, 30, 35, 75].map((key) => (
-                      <button
-                        type="button"
-                        key={key}
-                        className={`${styles.difficultyButton} ${
-                          room.maxSize === key ? styles.selected : ''
-                        }`}
-                        onClick={() => handleSettingsUpdate({ maxSize: key })}
-                      >
-                        {key}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                {currrentClient.isHost && (
-                  <>
-                    <div className={styles.setting}>
-                      <h3>Kick Players</h3>
-                      {room?.clients?.map((client) => (
-                        <div key={client.id} className={styles.client}>
-                          <span style={{ color: client.gamePiece.color }}>{client.username}</span>
-                          {client.id !== currrentClient.id && (
-                            <Button onClick={() => handleKick(client.id)}>kick</Button>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-            <Adsense
-              path={router.pathname}
-              client="ca-pub-3148839588626786"
-              slot="7384036938"
-              format="fluid"
-              layout="in-article"
-            />
-          </section>
-          <div className={styles.container}>
-            <Banner>
-              <h3>
-                Lobby ( {room.count || 0} / {room.maxSize || 0} players )
-              </h3>
-            </Banner>
-            <div className={styles.wrapper}>
-              {socket.pending ? (
-                <div>
-                  <Loader width="36px" height="36px" color="#6772e5" />
-                </div>
-              ) : null}
-              {room.id && (
-                <>
-                  <span>share this link to invite players.</span>
-                  <span>{copied ? 'Copied!' : 'Click the link to copy!'}</span>
-                  <div className={styles.linkContainer}>
+      <main className={styles.root}>
+        <ClientList />
+        <section className={styles.left}>
+          <Paper title="Settings">
+            <View>
+              <div className={styles.setting}>
+                <h3>Difficulty</h3>
+                <div className={styles.difficultyWrapper}>
+                  {difficulties.map((key) => (
                     <button
                       type="button"
-                      id="lobby-link"
-                      className={styles.lobbyLink}
-                      style={{ filter: hidden ? 'blur(4px)' : '' }}
-                      onClick={() => copyToClipboard('lobby-link', setCopied)}
-                    >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
-                    <Button
-                      margin="0px"
-                      padding="0px 5px"
-                      onClick={() => {
-                        setHidden(!hidden);
-                        setCopied(false);
-                      }}
+                      key={key}
+                      className={`${styles.difficultyButton} ${
+                        room.difficulty === key ? styles.selected : ''
+                      }`}
+                      onClick={() => handleSettingsUpdate({ difficulty: key })}
                     >
-                      {hidden ? 'show' : 'hide'}
-                    </Button>
-                  </div>
-                  {currrentClient.isHost ? (
-                    <Button
-                      padding="8px"
-                      margin="10px 0px"
-                      width="125px"
-                      onClick={(): void => handleStart()}
-                    >
-                      Start Game
-                    </Button>
-                  ) : (
-                    <span>Waiting for the host to start the game.</span>
+                      {key}
+                    </button>
+                  ))}
+                  {room.difficulty === 'custom' && (
+                    <>
+                      <TextBox
+                        id="lobby-custom-text"
+                        disabled={!currrentClient.isHost}
+                        maxLength={650}
+                      />
+                      {currrentClient.isHost && (
+                        <Button
+                          padding="5px"
+                          onClick={() => handleSettingsUpdate({ customText: true })}
+                        >
+                          save text
+                        </Button>
+                      )}
+                    </>
                   )}
-                </>
+                </div>
+              </div>
+              <div className={styles.setting}>
+                <h3>Maximum Players</h3>
+                <div className={styles.difficultyWrapper}>
+                  {[5, 10, 15, 20, 25, 30, 35, 75].map((key) => (
+                    <button
+                      type="button"
+                      key={key}
+                      className={`${styles.difficultyButton} ${
+                        room.maxSize === key ? styles.selected : ''
+                      }`}
+                      onClick={() => handleSettingsUpdate({ maxSize: key })}
+                    >
+                      {key}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {currrentClient.isHost && (
+                <div className={styles.setting}>
+                  <h3>Kick Players</h3>
+                  {room?.clients?.map((client) => (
+                    <div key={client.id} className={styles.client}>
+                      <span style={{ color: client.gamePiece.color }}>{client.username}</span>
+                      {client.id !== currrentClient.id && (
+                        <Button onClick={() => handleKick(client.id)}>kick</Button>
+                      )}
+                    </div>
+                  ))}
+                </div>
               )}
-              {socket.errored && <div>{socket.error}</div>}
-            </div>
-          </div>
-          <Chat />
-          <section className={styles.aContainer3}>
-            <div className={styles.profileContainer}>
-              <Profile />
-            </div>
-            <Adsense
-              path={router.pathname}
-              client="ca-pub-3148839588626786"
-              slot="6675614018"
-              format="fluid"
-              layout="in-article"
-            />
-          </section>
-        </div>
+            </View>
+          </Paper>
+          <Adsense
+            path={router.pathname}
+            client="ca-pub-3148839588626786"
+            slot="7384036938"
+            format="fluid"
+            layout="in-article"
+          />
+        </section>
+        <Paper title={`Lobby ( ${room.count || 0} / ${room.maxSize || 0} players )`}>
+          <View>
+            {socket.pending && (
+              <div>
+                <Loader width="36px" height="36px" color="#6772e5" />
+              </div>
+            )}
+            {room.id && (
+              <>
+                <span>share this link to invite players.</span>
+                <span>{copied ? 'Copied!' : 'Click the link to copy!'}</span>
+                <div className={styles.linkContainer}>
+                  <button
+                    type="button"
+                    id="lobby-link"
+                    className={styles.lobbyLink}
+                    style={{ filter: hidden ? 'blur(4px)' : '' }}
+                    onClick={() => copyToClipboard('lobby-link', setCopied)}
+                  >{`${process.env.BASE_URL}/lobby/${room.id}`}</button>
+                  <Button
+                    margin="0px"
+                    padding="0px 5px"
+                    onClick={() => {
+                      setHidden(!hidden);
+                      setCopied(false);
+                    }}
+                  >
+                    {hidden ? 'show' : 'hide'}
+                  </Button>
+                </div>
+                {currrentClient.isHost ? (
+                  <Button
+                    padding="8px"
+                    margin="10px 0px"
+                    width="125px"
+                    onClick={(): void => handleStart()}
+                  >
+                    Start Game
+                  </Button>
+                ) : (
+                  <span>Waiting for the host to start the game.</span>
+                )}
+              </>
+            )}
+            {socket.errored && <div>{socket.error}</div>}
+          </View>
+        </Paper>
+        <Chat />
+        <section className={styles.right}>
+          <Profile />
+          <Adsense
+            path={router.pathname}
+            client="ca-pub-3148839588626786"
+            slot="6675614018"
+            format="fluid"
+            layout="in-article"
+          />
+        </section>
       </main>
     </LazyMotion>
   );

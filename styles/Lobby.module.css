@@ -4,8 +4,8 @@
   grid-template-columns: 325px 540px 325px;
   grid-template-areas:
     'clientlist clientlist clientlist'
-    'leftContent main rightContent'
-    'leftContent chat rightContent';
+    'left-col main right-col'
+    'left-col chat right-col';
   grid-gap: 20px;
   padding: 0px 10px;
   max-width: 1250px;
@@ -18,9 +18,9 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       'main'
-      'leftContent'
+      'left-col'
       'chat'
-      'rightContent';
+      'right-col';
   }
 }
 
@@ -32,12 +32,13 @@
   box-shadow: var(--shadow);
 }
 
-.aContainer2 {
-  grid-area: leftContent;
+.left {
+  grid-area: left-col;
 }
 
-.aContainer3 {
-  grid-area: rightContent;
+.right {
+  grid-area: right-col;
+  gap: 20px;
 }
 
 .profileContainer {

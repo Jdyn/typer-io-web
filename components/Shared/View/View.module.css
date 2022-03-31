@@ -3,6 +3,7 @@
   border: 2px solid var(--border);
   overflow: hidden;
   border-radius: 16px;
+  height: 100%;
 }
 
 .wrapper {

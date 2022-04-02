@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 import { useAddPostMutation } from '../../../services/forum';
-import Banner from '../../Shared/Banner';
-import Button from '../../Shared/Button';
-import TextBox from '../../Shared/TextBox';
+import Banner from '../../../components/Shared/Banner';
+import Button from '../../../components/Shared/Button';
+import TextBox from '../../../components/Shared/TextBox';
 import styles from './index.module.css';
 
 const CreatePost = (): JSX.Element => {

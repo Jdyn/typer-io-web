@@ -12,6 +12,8 @@ const DEV_SOCKET_URL = 'localhost:8000';
 const PROD_BASE_URL = 'https://typer.io';
 const DEV_BASE_URL = 'http://localhost:3000';
 
+const prod = true;
+
 module.exports = {
   productionBrowserSourceMaps: false,
   eslint: {
@@ -22,9 +24,9 @@ module.exports = {
     '@/app/*': ['app/*']
   },
   env: {
-    BASE_URL: false ? PROD_BASE_URL : DEV_BASE_URL,
-    API_URL: false ? PROD_API_URL : DEV_API_URL,
-    SOCKET_URL: false ? PROD_SOCKET_URL : DEV_SOCKET_URL
+    BASE_URL: prod ? PROD_BASE_URL : DEV_BASE_URL,
+    API_URL: prod ? PROD_API_URL : DEV_API_URL,
+    SOCKET_URL: prod ? PROD_SOCKET_URL : DEV_SOCKET_URL
   },
   basePath
 };

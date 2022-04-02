@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
-import Button from '../../Shared/Button';
-import TextBox from '../../Shared/TextBox';
+import Button from '../../../components/Shared/Button';
+import TextBox from '../../../components/Shared/TextBox';
 import { useAddPostCommentMutation } from '../../../services/forum';
 import { Comment } from '../../../services/types';
 

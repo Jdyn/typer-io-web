@@ -37,17 +37,17 @@
 }
 
 @media only screen and (max-width: 814px) {
-  .container {
+  .root {
     grid-template-rows: min-content min-content min-content min-content;
     grid-template-columns: 1fr;
     grid-template-areas:
-      'leftColumn'
-      'centerColumn'
-      'rightColumn'
+      'left-col'
+      'center-col'
+      'right-col'
       'ad';
   }
 
-  .centerColumn {
+  .center {
     grid-template-rows: min-content min-content min-content;
     grid-template-columns: 1fr;
     grid-template-areas:

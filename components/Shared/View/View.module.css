@@ -9,7 +9,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   overflow-x: hidden;
   overflow-y: overlay;
   height: 100%;

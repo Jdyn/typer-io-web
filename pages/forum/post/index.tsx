@@ -1,5 +1,5 @@
 import Layout from '../../../components/Layout';
-import CreatePost from '../../../components/Forum/CreatePost';
+import CreatePost from '../../../app/Forum/CreatePost';
 
 const CreatePostPage = (): JSX.Element => {
   return (

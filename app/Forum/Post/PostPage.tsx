@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import formatTime from '../../../util/formatTime';
-import Adsense from '../../Shared/Adsense';
-import TextBox from '../../Shared/TextBox';
+import Adsense from '../../../components/Shared/Adsense';
+import TextBox from '../../../components/Shared/TextBox';
 import { AppState } from '../../../store';
-import Button from '../../Shared/Button';
-import Banner from '../../Shared/Banner';
+import Button from '../../../components/Shared/Button';
+import Banner from '../../../components/Shared/Banner';
 import PostComment from './PostComment';
 import {
   useAddPostCommentMutation,

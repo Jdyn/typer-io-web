@@ -134,7 +134,7 @@ const middleware = (url) => {
   };
 };
 
-export const silentEmit = (type, payload) => socket && socket.emit(type, payload);
+export const emit = (type, payload = {}) => socket && socket.emit(type, payload);
 
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
 

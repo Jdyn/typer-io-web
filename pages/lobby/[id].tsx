@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Meta from 'components/Shared/Meta';
 import Play from 'components/Play';
-import { silentClose, silentEmit } from 'services/socket';
+import { silentClose, emit } from 'services/socket';
 import { useAppSelector } from 'store';
 import { initSocket } from 'store/game/actions';
 import useClient from 'Hooks/useClient';
@@ -77,10 +77,6 @@ function LobbyPage(): JSX.Element {
     }
   }, [router, socket.kicked]);
 
-  const handleStart = (): void => {
-    silentEmit('START_CUSTOM_GAME', {});
-  };
-
   useEffect(() => {
     if (room?.difficulty === 'custom' && room?.customText) {
       const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
@@ -99,16 +95,16 @@ function LobbyPage(): JSX.Element {
       const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
       if (customText !== null) {
         // eslint-disable-next-line no-param-reassign
-        silentEmit('UPDATE_CUSTOM_GAME', { customText: customText.value });
+        emit('UPDATE_CUSTOM_GAME', { customText: customText.value });
         return;
       }
     }
 
-    silentEmit('UPDATE_CUSTOM_GAME', payload);
+    emit('UPDATE_CUSTOM_GAME', payload);
   };
 
   const handleKick = (clientId: number): void => {
-    silentEmit('KICK_PLAYER_CUSTOM_GAME', { id: clientId });
+    emit('KICK_PLAYER_CUSTOM_GAME', { id: clientId });
   };
 
   if (room.isStarted) {
@@ -240,7 +236,7 @@ function LobbyPage(): JSX.Element {
                     padding="8px"
                     margin="10px 0px"
                     width="125px"
-                    onClick={(): void => handleStart()}
+                    onClick={() => emit('START_CUSTOM_GAME')}
                   >
                     Start Game
                   </Button>

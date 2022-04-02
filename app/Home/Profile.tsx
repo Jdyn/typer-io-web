@@ -5,7 +5,7 @@ import { useAppSelector } from 'store';
 import Button from 'components/Shared/Button';
 import Paper from 'components/Shared/Paper';
 import emojiList from 'lib/emojis';
-import { silentEmit } from 'services/socket';
+import { emit } from 'services/socket';
 import View from 'components/Shared/View';
 
 import styles from './Profile.module.css';
@@ -64,7 +64,7 @@ const Profile = (props: Props): JSX.Element => {
   };
 
   const handleUpdate = useCallback(() => {
-    silentEmit('CLIENT_SETTINGS_UPDATE', {
+    emit('CLIENT_SETTINGS_UPDATE', {
       emoji: currentEmoji,
       nickname: name
     });

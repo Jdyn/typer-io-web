@@ -1,4 +1,4 @@
-import { silentClose, silentEmit, types } from '../../services/socket';
+import { silentClose, emit, types } from '../../services/socket';
 import keyMirror from '../../util/keyMirror';
 
 const defaultRoom = {
@@ -25,7 +25,7 @@ export const updateClient = (payload) => {
   return { type: actions.CLIENT_UPDATE, payload };
 };
 
-export const sendChatMessage = (payload) => silentEmit(actions.SEND_CHAT_MESSAGE, payload);
+export const sendChatMessage = (payload) => emit(actions.SEND_CHAT_MESSAGE, payload);
 
 export const initSocket = (user, config) => {
   return {

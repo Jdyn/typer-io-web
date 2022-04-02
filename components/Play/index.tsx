@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { silentEmit } from '../../services/socket';
+import { emit } from '../../services/socket';
 import { AppState } from '../../store';
 import { GameboardState, SnippetState } from '../../store/game/types';
 import Adsense from '../Shared/Adsense';
@@ -83,7 +83,7 @@ const Play = (props: Props): JSX.Element => {
     });
 
     const payload = btoa(data);
-    silentEmit('CLIENT_UPDATE', payload);
+    emit('CLIENT_UPDATE', payload);
 
     setGameState((prev) => ({
       ...gameState,

@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, KeyboardEvent, memo } from 'react';
 import { useSelector } from 'react-redux';
-import { silentEmit } from '../../../services/socket';
+import { emit } from '../../../services/socket';
 import { AppState } from '../../../store';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
@@ -36,7 +36,7 @@ const Editor = (props: Props): JSX.Element => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
     if (event.key === ' ' && !isStarted && isSolo) {
-      silentEmit('SOLO_START_GAME');
+      emit('SOLO_START_GAME');
     }
 
     if (!isStarted) {

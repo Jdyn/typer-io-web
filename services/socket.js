@@ -148,8 +148,6 @@ export const silentClose = () => {
     socket.disconnect();
     socket = null;
   }
-
-  socket = null;
 };
 
 export const emitAction = (action) => {

@@ -38,7 +38,7 @@ const makeStore = () =>
         .concat(forumApi.middleware)
         .concat(accountApi.middleware)
         .concat(hiscoresApi.middleware),
-    devTools: process.env.NODE_ENV !== 'production'
+    devTools: true
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

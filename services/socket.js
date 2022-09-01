@@ -38,67 +38,67 @@ const defaultRoom = {
 
 let socket;
 
-const defaultListeners = (dispatch) => {
-  if (socket) {
-    socket.on('disconnect', (reason) => {
-      dispatch({
-        type: types.DISCONNECT_SOCKET,
-        room: defaultRoom,
-        error: reason !== 'io client disconnect' ? '' : 'failed to connect to server.',
-        errored: reason !== 'io client disconnect'
-      });
+const defaultListeners = (newSocket, dispatch) => {
+  newSocket.on('disconnect', (reason) => {
+    dispatch({
+      type: types.DISCONNECT_SOCKET,
+      room: defaultRoom,
+      error: reason !== 'io client disconnect' ? '' : 'failed to connect to server.',
+      errored: reason !== 'io client disconnect'
     });
 
-    socket.on('INIT_SOCKET_FAILURE', (payload) => {
-      dispatch({
-        type: types.INIT_SOCKET_FAILURE,
-        payload: {
-          errored: true,
-          pending: false,
-          error: payload.error || 'Error connecting to server'
-        }
-      });
-    });
+    socket = null;
+  });
 
-    socket.on('KICKED', (payload) => {
-      dispatch({
-        type: types.DISCONNECT_SOCKET,
-        room: defaultRoom,
-        error: payload,
+  newSocket.on('INIT_SOCKET_FAILURE', (payload) => {
+    dispatch({
+      type: types.INIT_SOCKET_FAILURE,
+      payload: {
         errored: true,
-        kicked: true
-      });
+        pending: false,
+        error: payload.error || 'Error connecting to server'
+      }
+    });
+  });
 
-      socket.disconnect();
+  newSocket.on('KICKED', (payload) => {
+    dispatch({
+      type: types.DISCONNECT_SOCKET,
+      room: defaultRoom,
+      error: payload,
+      errored: true,
+      kicked: true
     });
 
-    socket.on('ROOM_NOT_FOUND', (payload) => {
-      dispatch({
-        type: types.ROOM_NOT_FOUND,
-        payload: {
-          errored: true,
-          pending: false,
-          error: payload
-        }
-      });
-    });
+    newSocket.disconnect();
+  });
 
-    socket.on('connect_error', () => {
-      dispatch({
-        type: types.INIT_SOCKET_FAILURE,
-        payload: {
-          errored: true,
-          pending: false,
-          error: 'Error connecting to server.'
-        }
-      });
+  newSocket.on('ROOM_NOT_FOUND', (payload) => {
+    dispatch({
+      type: types.ROOM_NOT_FOUND,
+      payload: {
+        errored: true,
+        pending: false,
+        error: payload
+      }
     });
-  }
+  });
+
+  newSocket.on('connect_error', () => {
+    dispatch({
+      type: types.INIT_SOCKET_FAILURE,
+      payload: {
+        errored: true,
+        pending: false,
+        error: 'Error connecting to server.'
+      }
+    });
+  });
 };
 
 const init = (url, dispatch, payload) => {
   const newSocket = io(url, { transports: ['websocket'], path: '/socket' });
-  defaultListeners(dispatch);
+  defaultListeners(newSocket, dispatch);
   newSocket.emit('REGISTER', payload);
   newSocket.on(types.INIT_SOCKET_SUCCESS, (payload) => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });

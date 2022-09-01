@@ -41,10 +41,6 @@ let socket;
 const defaultListeners = (dispatch) => {
   if (socket) {
     socket.on('disconnect', (reason) => {
-      if (socket) {
-        socket.close();
-        socket = null;
-      }
       dispatch({
         type: types.DISCONNECT_SOCKET,
         room: defaultRoom,
@@ -96,27 +92,24 @@ const defaultListeners = (dispatch) => {
           error: 'Error connecting to server.'
         }
       });
-
-      if (socket) {
-        socket.close();
-        socket = null;
-      }
     });
   }
 };
 
 const init = (url, dispatch, payload) => {
-  socket = io(url, { transports: ['websocket'], path: '/socket' });
+  const newSocket = io(url, { transports: ['websocket'], path: '/socket' });
   defaultListeners(dispatch);
-  socket.emit('REGISTER', payload);
-  socket.on(types.INIT_SOCKET_SUCCESS, (payload) => {
+  newSocket.emit('REGISTER', payload);
+  newSocket.on(types.INIT_SOCKET_SUCCESS, (payload) => {
     dispatch({ type: types.INIT_SOCKET_SUCCESS, payload });
     Object.keys(types).forEach((key) =>
-      socket.on(key, (payload) => {
+      newSocket.on(key, (payload) => {
         dispatch({ type: key, payload });
       })
     );
   });
+  console.log('reading socket', socket);
+  socket = newSocket;
 };
 
 const middleware = (url) => {
@@ -145,8 +138,8 @@ export const silentOn = (type, payload) => socket && socket.on(type, payload);
 
 export const silentClose = () => {
   if (socket) {
+    console.log('closing socket', socket);
     socket.disconnect();
-    socket = null;
   }
 };
 

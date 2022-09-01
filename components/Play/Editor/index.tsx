@@ -34,9 +34,7 @@ const Editor = (props: Props): JSX.Element => {
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
-    console.log('good');
     if (event.key === ' ' && !isStarted && isSolo) {
-      console.log('in');
       silentEmit('SOLO_START_GAME');
     }
 

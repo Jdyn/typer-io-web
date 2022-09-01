@@ -106,7 +106,6 @@ const init = (url, dispatch, payload) => {
       })
     );
   });
-  console.log('reading socket', newSocket, socket);
   socket = newSocket;
 };
 
@@ -129,14 +128,12 @@ export const silentEmit = (type, payload) => {
   if (socket) {
     socket.emit(type, payload);
   }
-  console.log(socket);
 };
 
 export const silentOn = (type, payload) => socket && socket.on(type, payload);
 
 export const silentClose = () => {
   if (socket) {
-    console.log('closing socket', socket);
     socket.disconnect();
   }
 };

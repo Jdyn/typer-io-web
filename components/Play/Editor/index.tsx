@@ -34,8 +34,9 @@ const Editor = (props: Props): JSX.Element => {
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
-
+    console.log('good');
     if (event.key === ' ' && !isStarted && isSolo) {
+      console.log('in');
       silentEmit('SOLO_START_GAME');
     }
 
@@ -111,11 +112,11 @@ const Editor = (props: Props): JSX.Element => {
           spellCheck="false"
           value={gameState.currentInput}
           onChange={inputDidUpdate}
-          onKeyDown={keydown}
+          onKeyDown={(e) => keydown(e)}
         />
       </div>
     </div>
   );
 };
 
-export default memo(Editor);
+export default Editor;

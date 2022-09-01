@@ -46,8 +46,6 @@ const defaultListeners = (newSocket, dispatch) => {
       error: reason !== 'io client disconnect' ? '' : 'failed to connect to server.',
       errored: reason !== 'io client disconnect'
     });
-
-    socket = null;
   });
 
   newSocket.on('INIT_SOCKET_FAILURE', (payload) => {
@@ -108,7 +106,7 @@ const init = (url, dispatch, payload) => {
       })
     );
   });
-  console.log('reading socket', socket);
+  console.log('reading socket', newSocket, socket);
   socket = newSocket;
 };
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './index.module.css';
 import Loader from '../../Shared/Loader';
 import { silentClose, silentEmit } from '../../../services/socket';
@@ -30,7 +30,7 @@ const PlayStatus = (props: Props): JSX.Element => {
     color: '#469cd0',
     text: 'Connecting to server...'
   });
-
+  const dispatch = useDispatch();
   const game = useSelector((appState: AppState) => appState.game);
   const currrentClient = useMemo(
     () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
@@ -49,6 +49,7 @@ const PlayStatus = (props: Props): JSX.Element => {
     // TODO: Kind of weird... We put 'socket.connected' in the dispatch in the /page
     // and then close the socket so it trips the useEffect and starts the cycle again...
     silentClose();
+    dispatch({ type: 'RESTART' });
   };
 
   useEffect(() => {
@@ -61,6 +62,7 @@ const PlayStatus = (props: Props): JSX.Element => {
           silentEmit('START_CUSTOM_GAME', {});
         } else if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
           silentClose();
+          dispatch({ type: 'RESTART' });
         }
       }
     };

@@ -41,10 +41,9 @@ let socket;
 const defaultListeners = (newSocket, dispatch) => {
   newSocket.on('disconnect', (reason) => {
     dispatch({
-      type: types.DISCONNECT_SOCKET,
-      room: defaultRoom,
-      error: reason !== 'io client disconnect' ? '' : 'failed to connect to server.',
-      errored: reason !== 'io client disconnect'
+      type: 'CONNECTION_ERROR',
+      error: 'Lost connection to the server.',
+      errored: true
     });
   });
 
@@ -62,7 +61,6 @@ const defaultListeners = (newSocket, dispatch) => {
   newSocket.on('KICKED', (payload) => {
     dispatch({
       type: types.DISCONNECT_SOCKET,
-      room: defaultRoom,
       error: payload,
       errored: true,
       kicked: true

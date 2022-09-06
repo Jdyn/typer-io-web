@@ -31,6 +31,22 @@ const initialState = {
   }
 };
 
+const defaultRoom = {
+  id: null,
+  count: null,
+  roomTime: null,
+  clients: [],
+  messages: [],
+  snippet: '',
+  gameboard: {
+    words: [],
+    wordsRemaining: [],
+    wordsComplete: [],
+    isStarted: false,
+    gameTime: null
+  }
+};
+
 const gameboardUpdate = (clients, gamePieces) => {
   if (gamePieces) {
     return clients.map((client, index) => {
@@ -196,7 +212,7 @@ const reducer = (state = initialState, action) => {
     case types.DISCONNECT_SOCKET:
       return {
         ...state,
-        room: action.room,
+        room: defaultRoom,
         socket: {
           ...state.socket,
           pending: false,
@@ -204,6 +220,25 @@ const reducer = (state = initialState, action) => {
           error: action.error ? action.error : state.socket.error,
           errored: action.errored,
           kicked: action.kicked || false
+        }
+      };
+    case types.CONNECTION_ERROR:
+      return {
+        ...state,
+        socket: {
+          ...state.socket,
+          pending: false,
+          connected: false,
+          error: action.error,
+          errored: action.errored
+        }
+      };
+    case 'RESTART':
+      return {
+        ...state,
+        socket: {
+          ...state.socket,
+          connected: !state.socket.connected
         }
       };
     case types.RECIEVE_CHAT_MESSAGE:

@@ -37,6 +37,7 @@ const PlayContainer = (): JSX.Element => {
   useEffect(() => {
     return () => {
       silentClose();
+      dispatch({ type: 'DISCONNECT_SOCKET' });
     };
   }, [dispatch]);
 

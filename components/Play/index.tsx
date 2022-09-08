@@ -23,7 +23,7 @@ const Play = (props: Props): JSX.Element => {
   const { isSolo, isCustom } = props;
 
   const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);
-  const snippet: SnippetState = useSelector((state: AppState) => state.game.room.snippet);
+  const snippet: SnippetState = useSelector((state: AppState) => state.game.room?.snippet || null);
   const isStarted: boolean = useSelector((state: AppState) => state.game.room.isStarted);
   const textDifficulty: string = useSelector((state: AppState) => state.game.room.textDifficulty);
 
@@ -139,7 +139,7 @@ const Play = (props: Props): JSX.Element => {
         {!isSolo && <ClientList />}
         <PlayStatus gameboard={gameboard} isCustom={isCustom} isSolo={isSolo} />
         <section className={styles.right}>
-          <Leaderboard clientsComplete={gameboard.clientsComplete} snippetId={snippet.id} />
+          <Leaderboard />
           <section
             style={{
               margin: '20px 0px',

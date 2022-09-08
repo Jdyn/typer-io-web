@@ -53,6 +53,7 @@ const LobbyContainer = (): JSX.Element => {
   useEffect(() => {
     return (): void => {
       silentClose();
+      dispatch({ type: 'DISCONNECT_SOCKET' });
     };
   }, [dispatch]);
 

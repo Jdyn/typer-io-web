@@ -1,10 +1,9 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import Link from 'next/link';
 import Paper from '../../Shared/Paper';
 import formatTime from '../../../util/formatTime';
 import IFilter from '../../Shared/Filter';
 import styles from './index.module.css';
-import { useLazyGetQuoteHiscoresQuery } from '../../../services/hiscores';
 import { useAppSelector } from '../../../store';
 
 const filters = [
@@ -14,12 +13,7 @@ const filters = [
   }
 ];
 
-interface Props {
-  clientsComplete: number;
-  snippetId: number;
-}
-
-const Leaderboard = ({ clientsComplete, snippetId }: Props): JSX.Element => {
+const Leaderboard = (): JSX.Element => {
   const matches = useAppSelector((state) => state.game.room.leaderboard);
   return (
     <div className={styles.root}>

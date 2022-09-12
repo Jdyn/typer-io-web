@@ -49,7 +49,8 @@ const PlayStatus = (props: Props): JSX.Element => {
     // TODO: Kind of weird... We put 'socket.connected' in the dispatch in the /page
     // and then close the socket so it trips the useEffect and starts the cycle again...
     silentClose();
-    dispatch({ type: 'RESTART' });
+    // dispatch({ type: 'RESTART' });
+    dispatch({ type: 'DISCONNECT_SOCKET' });
   };
 
   useEffect(() => {
@@ -60,9 +61,10 @@ const PlayStatus = (props: Props): JSX.Element => {
       if (keys.Control && event.key === 'Enter') {
         if (isCustom) {
           silentEmit('START_CUSTOM_GAME', {});
-        } else if (currrentClient?.gamePiece?.isComplete || room.gameboard.isOver) {
+        } else {
           silentClose();
-          dispatch({ type: 'RESTART' });
+          // dispatch({ type: 'RESTART' });
+          dispatch({ type: 'DISCONNECT_SOCKET' });
         }
       }
     };
@@ -80,7 +82,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       document.removeEventListener('keydown', keyDown);
       document.removeEventListener('keyup', keyUp);
     };
-  }, [currrentClient?.gamePiece?.isComplete, isCustom, room.gameboard.isOver]);
+  }, [currrentClient?.gamePiece?.isComplete, dispatch, isCustom, room.gameboard.isOver]);
 
   useEffect(() => {
     if (game.room.gameboard.gameTime === '') {

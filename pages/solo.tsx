@@ -1,4 +1,5 @@
 import { LazyMotion } from 'framer-motion';
+import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,14 +19,20 @@ const PlayContainer = (): JSX.Element => {
     if (!socket.connected) {
       const emoji = localStorage.getItem('emoji') || '🐌';
       const token = localStorage.getItem('token') || '';
+      let id: string | null = localStorage.getItem('id') || null;
 
+      if (!id) {
+        localStorage.setItem('id', nanoid(6));
+        id = localStorage.getItem('id');
+      }
       const nickname = localStorage.getItem('nickname') || null;
       const username = nickname || localStorage.getItem('username') || nickname;
 
       const payload = {
         emoji,
         username,
-        token
+        token,
+        id
       };
 
       const config = { roomType: 'SOLO' };

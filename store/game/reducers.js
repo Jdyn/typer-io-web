@@ -1,3 +1,4 @@
+import { Arrow } from '@radix-ui/react-dropdown-menu';
 import { types } from '../../services/socket';
 
 const initialState = {
@@ -91,7 +92,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         room: {
           ...state.room,
-          ...action.payload
+          ...action.payload,
+          clients: (action.payload.clients || []).map((client, i) => {
+            return { ...state.room.clients[i], ...client };
+          }),
+          messages: (action.payload.messages || []).map((message, i) => {
+            return { ...state.room.messages[i], ...message };
+          })
         },
         socket: {
           ...state.socket,
@@ -222,14 +229,14 @@ const reducer = (state = initialState, action) => {
           kicked: action.kicked || false
         }
       };
-    case types.CONNECTION_ERROR:
+    case 'CONNECTION_ERROR':
       return {
         ...state,
         socket: {
           ...state.socket,
           pending: false,
           connected: false,
-          error: action.error,
+          error: state.socket?.error ? state.socket.error : action?.error,
           errored: action.errored
         }
       };

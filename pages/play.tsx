@@ -1,4 +1,5 @@
 import { LazyMotion } from 'framer-motion';
+import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,8 +16,14 @@ const PlayContainer = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
 
   useEffect(() => {
-    if (!socket.connected && !socket.pending) {
-      const token = localStorage.getItem('token') || '';
+    if (!socket.connected && !socket.pending && !socket.errored) {
+      const token: string | null = localStorage.getItem('token') || null;
+      let id: string | null = localStorage.getItem('id') || null;
+
+      if (!id) {
+        localStorage.setItem('id', nanoid(6));
+        id = localStorage.getItem('id');
+      }
 
       const nickname = localStorage.getItem('nickname') || null;
       const username = nickname || localStorage.getItem('username') || nickname;
@@ -26,14 +33,15 @@ const PlayContainer = (): JSX.Element => {
       const payload = {
         emoji,
         username,
-        token
+        token,
+        id
       };
 
       const config = { roomType: 'MULTIPLAYER' };
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch, socket.connected, socket.pending]);
+  }, [dispatch, socket.connected, socket.errored, socket.pending]);
 
   useEffect(() => {
     return () => {

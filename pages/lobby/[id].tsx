@@ -1,4 +1,5 @@
 import { LazyMotion } from 'framer-motion';
+import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,11 +40,18 @@ const LobbyContainer = (): JSX.Element => {
       const username = nickname || localStorage.getItem('username') || nickname;
 
       const emoji = localStorage.getItem('emoji') || '🐌';
+      let userId: string | null = localStorage.getItem('id') || null;
+
+      if (!userId) {
+        localStorage.setItem('id', nanoid(6));
+        userId = localStorage.getItem('id');
+      }
 
       const payload = {
         username,
         token,
-        emoji
+        emoji,
+        id: userId
       };
 
       dispatch(initSocket(payload, config));

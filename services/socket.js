@@ -69,6 +69,16 @@ const defaultListeners = (newSocket, dispatch) => {
     newSocket.disconnect();
   });
 
+  newSocket.on('ERROR_MESSAGE', (payload) => {
+    dispatch({
+      type: types.DISCONNECT_SOCKET,
+      error: payload,
+      errored: true
+    });
+
+    newSocket.disconnect();
+  });
+
   newSocket.on('ROOM_NOT_FOUND', (payload) => {
     dispatch({
       type: types.ROOM_NOT_FOUND,

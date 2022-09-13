@@ -124,7 +124,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       const time = getTime(state);
       const { connected, errored, error } = socket;
 
-      if (errored) {
+      if (errored && !isOver) {
         return {
           color: styles.red,
           text: error || 'Connection error occured'

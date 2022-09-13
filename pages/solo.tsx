@@ -16,7 +16,7 @@ const PlayContainer = (): JSX.Element => {
   const socket = useSelector((state: AppState) => state.game.socket);
 
   useEffect(() => {
-    if (!socket.connected) {
+    if (!socket.connected && !socket.pending && !socket.errored) {
       const emoji = localStorage.getItem('emoji') || '🐌';
       const token = localStorage.getItem('token') || '';
       let id: string | null = localStorage.getItem('id') || null;
@@ -39,7 +39,7 @@ const PlayContainer = (): JSX.Element => {
 
       dispatch(initSocket(payload, config));
     }
-  }, [dispatch, socket.connected]);
+  }, [dispatch, socket.connected, socket.errored, socket.pending]);
 
   useEffect(() => {
     return () => {

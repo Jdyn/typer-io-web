@@ -93,12 +93,15 @@ const reducer = (state = initialState, action) => {
         room: {
           ...state.room,
           ...action.payload,
-          clients: (action.payload.clients || []).map((client, i) => {
-            return { ...state.room.clients[i], ...client };
-          }),
-          messages: (action.payload.messages || []).map((message, i) => {
-            return { ...state.room.messages[i], ...message };
-          })
+          clients: action.payload?.clients
+            ? action.payload.clients.map((client, i) => ({ ...state.room.clients[i], ...client }))
+            : state.room.clients,
+          messages: action.payload?.messages
+            ? action.payload.messages.map((message, i) => ({
+                ...state.room.messages[i],
+                ...message
+              }))
+            : state.room.messages
         },
         socket: {
           ...state.socket,

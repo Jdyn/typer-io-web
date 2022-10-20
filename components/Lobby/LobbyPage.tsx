@@ -19,55 +19,47 @@ const difficulties = ['easy', 'medium', 'hard', 'random', 'custom'];
 
 const LobbyPage = (): JSX.Element => {
   const router = useRouter();
-  const room = useSelector((state: AppState) => state.game.room);
-  const game = useSelector((state: AppState) => state.game);
-  const socket = useSelector((state: AppState) => state.game.socket);
+  const { room, meta, socket } = useSelector((state: AppState) => state.game);
   const [copied, setCopied] = useState(false);
   const [hidden, setHidden] = useState(true);
+
   const currrentClient = useMemo(
-    () => room.clients.filter((item) => item.id === game.meta?.id)[0] || {},
-    [room.clients, game.meta]
+    () => room.clients.filter((item) => item.id === meta.id)[0] || {},
+    [room, meta]
   );
 
   useEffect(() => {
     if (socket.kicked) {
       router.replace('/');
     }
-  }, [router, socket.kicked]);
+  }, [router, socket]);
 
   const handleStart = (): void => {
     silentEmit('START_CUSTOM_GAME', {});
   };
 
   useEffect(() => {
-    if (game.room?.difficulty === 'custom' && game.room?.customText) {
-      const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
-      customText.value = game.room.customText;
+    if (room.difficulty === 'custom' && room.customText) {
+      const textElement = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
+      textElement.value = room.customText;
     }
-  }, [game.room]);
+  }, [room.difficulty, room.customText]);
 
   const handleSettingsUpdate = (payload) => {
     if (payload.customText) {
-      const customText = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
-      if (customText !== null) {
-        // eslint-disable-next-line no-param-reassign
-        silentEmit('UPDATE_CUSTOM_GAME', { customText: customText.value });
-        return;
+      const textElement = document.getElementById('lobby-custom-text') as HTMLTextAreaElement;
+      if (textElement !== null) {
+        silentEmit('UPDATE_CUSTOM_GAME', { customText: textElement.value });
       }
+    } else {
+      silentEmit('UPDATE_CUSTOM_GAME', payload);
     }
-
-    silentEmit('UPDATE_CUSTOM_GAME', payload);
-  };
-
-  const handleKick = (id: number): void => {
-    silentEmit('KICK_PLAYER_CUSTOM_GAME', { id });
   };
 
   return (
     <main>
       <div className={styles.root}>
         <ClientList isSolo={false} />
-
         <section className={styles.aContainer2}>
           <div className={styles.settingsRoot}>
             <Banner>
@@ -129,11 +121,15 @@ const LobbyPage = (): JSX.Element => {
                 <>
                   <div className={styles.setting}>
                     <h3>Kick Players</h3>
-                    {game?.room?.clients?.map((client) => (
+                    {room?.clients?.map((client) => (
                       <div key={client.id} className={styles.client}>
                         <span style={{ color: client.gamePiece.color }}>{client.username}</span>
                         {client.id !== currrentClient.id && (
-                          <Button onClick={() => handleKick(client.id)}>kick</Button>
+                          <Button
+                            onClick={() => silentEmit('KICK_PLAYER_CUSTOM_GAME', { id: client.id })}
+                          >
+                            kick
+                          </Button>
                         )}
                       </div>
                     ))}

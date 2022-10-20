@@ -103,14 +103,9 @@ const ClientList = (props: Props): JSX.Element => {
 
   return (
     <div className={`${styles.root} ${isSolo && styles.soloRoot}`}>
-      {users.length > 0 && (
-        <div
-          className={styles.container}
-          style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}
-        >
-          <AnimatePresence>{clients}</AnimatePresence>
-        </div>
-      )}
+      <div className={styles.container} style={{ flexWrap: users?.length > 5 ? 'wrap' : 'nowrap' }}>
+        <AnimatePresence>{clients}</AnimatePresence>
+      </div>
     </div>
   );
 };

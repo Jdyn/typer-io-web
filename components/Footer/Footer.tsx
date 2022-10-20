@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './index.module.css';
 
 const Footer = (): JSX.Element => {
@@ -80,4 +80,4 @@ const Footer = (): JSX.Element => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

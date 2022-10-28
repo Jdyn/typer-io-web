@@ -54,8 +54,12 @@ const Hiscores = (): JSX.Element => {
                   <div className={styles.count}>{index + 1}.</div>
                   <div className={styles.content}>
                     {item.user?.username ? (
-                      <Link prefetch={false} href={`/u/${item.user.username}`}>
-                        <a className={styles.nameLink}>{item.user?.username}</a>
+                      <Link
+                        prefetch={false}
+                        className={styles.nameLink}
+                        href={`/u/${item.user.username}`}
+                      >
+                        {item.user?.username}
                       </Link>
                     ) : (
                       item.nickname

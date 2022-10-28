@@ -44,7 +44,7 @@ const ForumPage = (): JSX.Element => {
               Discussions{' '}
               {session?.isLoggedIn && (
                 <Link href="/forum/post">
-                  <a className={styles.create}>Create Post ➜</a>
+                  <span className={styles.create}>Create Post ➜</span>
                 </Link>
               )}
             </h3>
@@ -60,24 +60,26 @@ const ForumPage = (): JSX.Element => {
                         post.title.split(' ').join('-')
                       )}`}
                     >
-                      <a className={styles.title}>{post.title}</a>
+                      <span className={styles.title}>{post.title}</span>
                     </Link>
                     {session?.user?.isAdmin && <span>ID: {post.id}</span>}
                     <span>
                       Posted {formatTime(post.createdAt)} by{' '}
                       <Link href={`/u/${post.user.username}`}>
-                        <a className={styles.nameLink}>{post.user?.username}</a>
+                        <span className={styles.nameLink}>{post.user?.username}</span>
                       </Link>{' '}
                       {post.user.isAdmin && <span className={styles.admin}>Creator</span>}
                     </span>
                     {post.commentCount > 0 && (
                       <span>Last comment {formatTime(post.updatedAt)}</span>
                     )}
-                    <Link prefetch={false} href={`/forum/post/${post.id}`}>
-                      <a className={styles.comment}>
-                        {post.commentCount} comment
-                        {post.commentCount === 1 ? '' : 's'}
-                      </a>
+                    <Link
+                      className={styles.comment}
+                      prefetch={false}
+                      href={`/forum/post/${post.id}`}
+                    >
+                      {post.commentCount} comment
+                      {post.commentCount === 1 ? '' : 's'}
                     </Link>
                   </div>
                 </li>

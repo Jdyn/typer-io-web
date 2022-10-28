@@ -28,50 +28,46 @@ const Header = (): JSX.Element => {
       {({ theme, setTheme }) => (
         <header className={styles.root}>
           <div className={styles.container}>
-            <Link prefetch={false} href="/">
-              <a href="/" className={styles.logo}>
-                TYPER.IO
-              </a>
+            <Link prefetch={false} href="/" className={styles.logo}>
+              TYPER.IO
             </Link>
             <nav className={styles.nav}>
-              <Link prefetch={false} href="/">
-                <div className={styles.navItem}>
-                  <Image
-                    className={styles.navImage}
-                    src={home}
-                    width="26px"
-                    height="26px"
-                    layout="fixed"
-                    priority
-                  />
-                  <a href="/">home</a>
-                </div>
+              <Link className={styles.navItem} prefetch={false} href="/">
+                <Image
+                  alt="Home"
+                  className={styles.navImage}
+                  src={home}
+                  width="26"
+                  height="26"
+                  priority
+                />
+                <span>Home</span>
               </Link>
-              <Link prefetch={false} href="/forum?page=1">
-                <div className={styles.navItem}>
-                  <Image
-                    className={styles.navImage}
-                    src={chatBubble}
-                    width="26px"
-                    height="26px"
-                    layout="fixed"
-                    priority
-                  />
-                  <a href="/forum">discuss</a>
-                </div>
+              <Link prefetch={false} className={styles.navItem} href="/forum?page=1">
+                <Image
+                  className={styles.navImage}
+                  src={chatBubble}
+                  width="26"
+                  height="26"
+                  alt="Discuss"
+                  priority
+                />
+                <span>Discuss</span>
               </Link>
-              <Link prefetch={false} href="/hiscores?query=top_speed&page=1&type=all">
-                <div className={styles.navItem}>
-                  <Image
-                    className={styles.navImage}
-                    src={rocket}
-                    width="26px"
-                    height="26px"
-                    layout="fixed"
-                    priority
-                  />
-                  <a href="/hiscores?query=top_speed&page=1&type=all">hiscores</a>
-                </div>
+              <Link
+                className={styles.navItem}
+                prefetch={false}
+                href="/hiscores?query=top_speed&page=1&type=all"
+              >
+                <Image
+                  className={styles.navImage}
+                  src={rocket}
+                  width="26"
+                  height="26"
+                  alt="Hiscores"
+                  priority
+                />
+                <span>Hiscores</span>
               </Link>
             </nav>
             <div className={styles.searchContainer}>
@@ -103,9 +99,8 @@ const Header = (): JSX.Element => {
                 <Image
                   priority
                   quality="45"
-                  width="24px"
-                  height="24px"
-                  layout="fixed"
+                  width="24"
+                  height="24"
                   src={sun}
                   alt="light-mode sun"
                 />
@@ -113,9 +108,8 @@ const Header = (): JSX.Element => {
                 <Image
                   priority
                   quality="45"
-                  width="24px"
-                  height="24px"
-                  layout="fixed"
+                  width="24"
+                  height="24"
                   src={moon}
                   alt="dark-mode moon"
                 />

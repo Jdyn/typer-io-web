@@ -41,10 +41,13 @@ const HomePage = (): JSX.Element => {
           <Profile />
           <div className={styles.menu}>
             {cards.map((card) => (
-              <Link prefetch={false} href={card.route} key={card.route}>
-                <a className={`${styles.card} ${styles[card.color]}`} key={card.route}>
-                  {`${card.title} ➜`} <span>{card.text}</span>
-                </a>
+              <Link
+                prefetch={false}
+                className={`${styles.card} ${styles[card.color]}`}
+                href={card.route}
+                key={card.route}
+              >
+                {`${card.title} ➜`} <span>{card.text}</span>
               </Link>
             ))}
           </div>

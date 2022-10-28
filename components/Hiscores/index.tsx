@@ -148,29 +148,26 @@ const Hiscores = (): JSX.Element => {
             <div className={styles.wrapper}>
               {itemPage?.data?.map((item, index) => (
                 <Link
+                  className={styles.entry}
                   key={item.username || item.user?.username}
                   href={`/u/${item.username || item.user?.username}`}
                 >
-                  <div className={styles.entry}>
-                    <div className={styles.count}>
-                      {itemPage.page > 1 ? (
-                        <span>{itemPage?.data.length * (itemPage?.page - 1) + index + 1}</span>
-                      ) : (
-                        <span>{index + 1}</span>
-                      )}
-                    </div>
-                    <div className={styles.name}>
-                      <span className={styles.verified}>
-                        {item.username || item.user?.username}
-                      </span>
-                      {renderBadge(item)}
-                    </div>
-                    {board?.fields?.map((field) => (
-                      <div key={field.key} className={styles.content}>
-                        {field.key === 'createdAt' ? formatTime(item[field.key]) : item[field.key]}
-                      </div>
-                    ))}
+                  <div className={styles.count}>
+                    {itemPage.page > 1 ? (
+                      <span>{itemPage?.data.length * (itemPage?.page - 1) + index + 1}</span>
+                    ) : (
+                      <span>{index + 1}</span>
+                    )}
                   </div>
+                  <div className={styles.name}>
+                    {item.username || item.user?.username}
+                    {renderBadge(item)}
+                  </div>
+                  {board?.fields?.map((field) => (
+                    <div key={field.key} className={styles.content}>
+                      {field.key === 'createdAt' ? formatTime(item[field.key]) : item[field.key]}
+                    </div>
+                  ))}
                 </Link>
               ))}
             </div>

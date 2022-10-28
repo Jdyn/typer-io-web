@@ -98,9 +98,7 @@ const AuthMenu = (props: Props): JSX.Element => {
                     <ul className={styles.modalList}>
                       {templates[type].fields.map((item) => (
                         <Link key={item.title} href={item.link}>
-                          <li className={styles.modalListItem}>
-                            <a href={item.link}>{item.title}</a>
-                          </li>
+                          <li className={styles.modalListItem}>{item.title}</li>
                         </Link>
                       ))}
                       <li className={styles.modalListItem}>

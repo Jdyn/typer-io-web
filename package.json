@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://typer.io/",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -15,11 +15,11 @@
     "framer-motion": "^6.2.8",
     "js-cookie": "^2.2.1",
     "nanoid": "^4.0.0",
-    "next": "^12.1.2",
+    "next": "^13.0.0",
     "next-cookies": "^2.0.3",
     "next-redux-wrapper": "^7.0.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-ga4": "^1.4.1",
     "react-redux": "^7.2.6",
     "socket.io-client": "^3.1.2"

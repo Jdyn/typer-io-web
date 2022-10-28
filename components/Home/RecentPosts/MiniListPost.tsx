@@ -16,14 +16,15 @@ const MiniListPost = (props: Props): JSX.Element => {
       <div className={styles.content}>
         <Link
           prefetch={false}
+          className={styles.title}
           href={`/forum/post/${post.id}/${encodeURIComponent(post.title.split(' ').join('-'))}`}
         >
-          <a className={styles.title}>{post.title}</a>
+          {post.title}
         </Link>
         <span>
           {`${formatTime(post.createdAt)} by `}
           <Link prefetch={false} href={`/u/${post.user.username}`}>
-            <a>{post.user.username}</a>
+            {post.user.username}
           </Link>
           {post.user.isAdmin && <span className={styles.admin}>Creator</span>}
         </span>
@@ -33,11 +34,10 @@ const MiniListPost = (props: Props): JSX.Element => {
         )}
         <Link
           prefetch={false}
+          className={styles.comment}
           href={`/forum/post/${post.id}/${encodeURIComponent(post.title.split(' ').join('-'))}`}
         >
-          <a className={styles.comment}>
-            {post.commentCount} {post.commentCount === 1 ? 'comment' : 'comments'}
-          </a>
+          {post.commentCount} {post.commentCount === 1 ? 'comment' : 'comments'}
         </Link>
       </div>
     </div>

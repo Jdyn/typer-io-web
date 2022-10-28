@@ -30,8 +30,12 @@ const RecentMatches = (): JSX.Element => {
                     <>
                       <span className={item.user ? styles.verified : ''}>
                         {item.user?.username ? (
-                          <Link prefetch={false} href={`/u/${item.user.username}`}>
-                            <a className={styles.nameLink}>{item.user?.username}</a>
+                          <Link
+                            className={styles.nameLink}
+                            prefetch={false}
+                            href={`/u/${item.user.username}`}
+                          >
+                            {item.user?.username}
                           </Link>
                         ) : (
                           item.nickname

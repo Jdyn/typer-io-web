@@ -18,17 +18,17 @@ const Footer = (): JSX.Element => {
             <ul>
               <li>
                 <Link prefetch={false} href="/play">
-                  <a>Quick Play</a>
+                  Quick Play
                 </Link>
               </li>
               <li>
                 <Link prefetch={false} href="/solo">
-                  <a>Solo Play</a>
+                  Solo Play
                 </Link>
               </li>
               <li>
                 <Link prefetch={false} href="/lobby">
-                  <a>Custom Play</a>
+                  Custom Play
                 </Link>
               </li>
             </ul>
@@ -38,12 +38,12 @@ const Footer = (): JSX.Element => {
             <ul>
               <li>
                 <Link prefetch={false} href="/forum">
-                  <a>Posts</a>
+                  Posts
                 </Link>
               </li>
               <li>
                 <Link prefetch={false} href="/forum/post">
-                  <a>Create Post</a>
+                  Create Post
                 </Link>
               </li>
               <li>
@@ -58,17 +58,17 @@ const Footer = (): JSX.Element => {
             <ul>
               <li>
                 <Link prefetch={false} href="/login">
-                  <a>Log In</a>
+                  Log In
                 </Link>
               </li>
               <li>
                 <Link prefetch={false} href="/signup">
-                  <a>Sign Up</a>
+                  Sign Up
                 </Link>
               </li>
               <li>
                 <Link prefetch={false} href="/u/reset">
-                  <a>Recover</a>
+                  Recover
                 </Link>
               </li>
             </ul>

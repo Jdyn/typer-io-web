@@ -26,6 +26,7 @@
     "next-env.d.ts",
     "next.config.js",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ]
 }

@@ -28,10 +28,12 @@ const Leaderboard = (): JSX.Element => {
                   <div className={styles.content}>
                     <span className={styles.nameLink}>
                       {item.user?.username ? (
-                        <Link href={`/u/${item.user.username}`}>
-                          <a target="_blank" rel="noreferrer noopener">
-                            {item.user?.username}
-                          </a>
+                        <Link
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          href={`/u/${item.user.username}`}
+                        >
+                          {item.user?.username}
                         </Link>
                       ) : (
                         item.nickname

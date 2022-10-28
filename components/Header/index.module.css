@@ -65,7 +65,7 @@
   fill: #fff !important;
 }
 
-.navItem > a {
+.navItem > span {
   text-decoration: none;
   margin-left: 10px;
   color: #fff !important

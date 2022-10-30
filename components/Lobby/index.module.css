@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-rows: min-content min-content 1fr;
-  grid-template-columns: 325px 540px 325px;
+  grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-areas:
     'clientlist clientlist clientlist'
     'leftContent main rightContent'
@@ -24,24 +24,18 @@
   }
 }
 
-.container {
-  margin: 0;
-  grid-area: main;
-  border-radius: 16px;
-  background: var(--primary-main);
-  box-shadow: var(--shadow);
-}
-
-.aContainer2 {
+.settings {
+  display: flex;
+  flex-direction: column;
   grid-area: leftContent;
+  gap: 20px;
 }
 
-.aContainer3 {
+.profile {
+  display: flex;
+  flex-direction: column;
   grid-area: rightContent;
-}
-
-.profileContainer {
-  margin-bottom: 20px;
+  gap: 20px;
 }
 
 .input {
@@ -69,13 +63,6 @@
   justify-content: center;
   border-radius: 16px;
   position: relative;
-}
-
-.wrapper > div {
-  padding: 10px;
-  text-align: center;
-  border: 2px solid var(--border);
-  border-radius: 16px;
 }
 
 .wrapper > span {
@@ -127,35 +114,39 @@
 
 .linkContainer {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.linkContainer > span {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
   flex-direction: row;
-  margin: 10px 0px;
-  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex: 1;
 }
 
-.linkContainer > button {
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--text);
-  background: none;
-  padding: 0px 10px;
-}
-
-.difficultyWrapper {
+.settingWrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 10px;
   justify-content: flex-start;
 }
 
-.difficultyButton {
+.settingButton {
   display: flex;
   background: var(--primary-main);
   border-radius: 8px;
   outline: none;
   border: 3px solid var(--border);
-  margin: 5px;
   padding: 5px 10px;
   color: var(--text);
   cursor: pointer;

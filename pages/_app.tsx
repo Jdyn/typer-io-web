@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import Head from 'next/head';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga4';
-import { useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import { wrapper } from '../store';
 import { authenticate } from '../store/session/actions';
@@ -14,15 +15,16 @@ import '../public/static/styles/global.css';
   ReactGA.initialize('G-9DWL368WZS');
 })();
 
-interface IApp {
+interface Props {
   Component: React.FC<{ err: string }>;
   pageProps: Record<string, unknown>;
   err: string;
 }
 
-export const App = (props: IApp): JSX.Element => {
-  const { Component, pageProps, err } = props;
-  const dispatch = useDispatch();
+export const App = ({ Component, ...rest }: Props): JSX.Element => {
+  const { store, props } = wrapper.useWrappedStore(rest);
+
+  const { dispatch } = store;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -48,17 +50,19 @@ export const App = (props: IApp): JSX.Element => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider>
-      <Head>
-        <title>Typer - Large multiplayer typing races with your friends</title>
-        <meta
-          name="description"
-          content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."
-        />
-      </Head>
-      <Component {...pageProps} err={err} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <Head>
+          <title>Typer - Large multiplayer typing races with your friends</title>
+          <meta
+            name="description"
+            content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."
+          />
+        </Head>
+        <Component {...props} err={props.err} />
+      </ThemeProvider>
+    </Provider>
   );
 };
 
-export default wrapper.withRedux(App);
+export default App;

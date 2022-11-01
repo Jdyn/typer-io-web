@@ -148,12 +148,12 @@ const LobbyPage = (): JSX.Element => {
                 <div className={styles.linkContainer}>
                   <span
                     role="button"
+                    id="lobby-link"
                     style={{ filter: hidden ? 'blur(3px)' : '' }}
                     onClick={() => copyToClipboard('lobby-link', setCopied)}
                   >{`${process.env.BASE_URL}/lobby/${room.id}`}</span>
                   <div className={styles.buttons}>
                     <Button
-                      id="lobby-link"
                       margin="0px"
                       padding="0px 5px"
                       onClick={() => copyToClipboard('lobby-link', setCopied)}

@@ -1,5 +1,3 @@
-const { API_URL } = process.env;
-
 function headers() {
   const token = localStorage.getItem('token') || '';
 
@@ -23,7 +21,7 @@ function queryString(params) {
 
 export default {
   fetch(url, _opts = {}, params = {}) {
-    return fetch(`${API_URL}${url}${queryString(params)}`, {
+    return fetch(`${process.env.API_URL}${url}${queryString(params)}`, {
       method: 'GET',
       headers: { ...headers() }
     })

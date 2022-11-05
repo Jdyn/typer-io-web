@@ -22,6 +22,8 @@ interface Props {
   inputDidUpdate: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
+const keys = { Control: false };
+
 const Editor = (props: Props): JSX.Element => {
   const { isStarted, isOver, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } =
     props;
@@ -34,6 +36,15 @@ const Editor = (props: Props): JSX.Element => {
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
+
+    if (event.key === 'Control') {
+      keys[event.key] = true;
+    }
+
+    if (keys.Control) {
+      return;
+    }
+
     if (event.key === ' ' && !isStarted && isSolo) {
       silentEmit('SOLO_START_GAME');
     }
@@ -111,6 +122,11 @@ const Editor = (props: Props): JSX.Element => {
           value={gameState.currentInput}
           onChange={inputDidUpdate}
           onKeyDown={(e) => keydown(e)}
+          onKeyUp={(event) => {
+            if (event.key === 'Control') {
+              keys[event.key] = false;
+            }
+          }}
         />
       </div>
     </div>

@@ -112,10 +112,10 @@ const LobbyPage = (): JSX.Element => {
                   <h3>Kick Players</h3>
                   {room?.clients?.map((player) => (
                     <div key={player.id} className={styles.client}>
-                      <span style={{ color: client.gamePiece.color }}>{client.username}</span>
+                      <span style={{ color: client.gamePiece.color }}>{player.username}</span>
                       {player.id !== client.id && (
                         <Button
-                          onClick={() => silentEmit('KICK_PLAYER_CUSTOM_GAME', { id: client.id })}
+                          onClick={() => silentEmit('KICK_PLAYER_CUSTOM_GAME', { id: player.id })}
                         >
                           kick
                         </Button>

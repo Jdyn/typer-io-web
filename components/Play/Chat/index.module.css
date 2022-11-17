@@ -29,7 +29,7 @@
   display: grid;
   grid-auto-columns: 1fr;
   margin: 0px 0px;
-  padding: 0px 0px 0px 10px;
+  padding: 10px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -38,12 +38,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 0px 5px 0px 0px;
-  padding: 10px 0px;
+  padding-bottom: 10px;
   border-radius: 16px;
 }
 
-.message > div {
+.messageContainer {
   position: relative;
   padding: 10px;
   font-size: 16px;
@@ -51,6 +50,10 @@
   color: white;
   max-width: 100%;
   border-radius: 8px;
+}
+
+.messageSystem {
+  color: var(--subtext);
 }
 
 .form {

@@ -41,14 +41,19 @@ const Chat = (): JSX.Element => {
                 >
                   {message.username}
                 </span>
-                <div
-                  style={{
-                    background: message.color,
-                    alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
-                  }}
-                >
-                  {message.message}
-                </div>
+                {message.id === 'system' ? (
+                  <div className={styles.messageSystem}>{message.message}</div>
+                ) : (
+                  <div
+                    className={styles.messageContainer}
+                    style={{
+                      background: message.color,
+                      alignSelf: client.id === message.id ? 'flex-end' : 'flex-start'
+                    }}
+                  >
+                    {message.message}
+                  </div>
+                )}
               </div>
             ))}
           </div>

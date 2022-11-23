@@ -79,7 +79,7 @@ const HomePage = (): JSX.Element => {
                 >
                   Support the Creator ➜
                 </a>
-                <h3>(Sep. 6th, 2022) Updates :</h3>
+                <h3>(Nov. 22nd, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
                     <li>Added daily match goal</li>

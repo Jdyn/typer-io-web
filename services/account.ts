@@ -61,6 +61,13 @@ const accountApi = createApi({
       }),
       transformResponse: (raw: { result: ListResponse<Match> }) => raw.result
     }),
+    getUserGoal: builder.query<{ result: { goal: number } }, null>({
+      query: () => ({
+        url: `/goal`,
+        method: 'GET'
+      }),
+      transformResponse: (raw: any) => raw.result.progress
+    }),
     searchUser: builder.query<ListResponse<User>, { username: string; page?: string }>({
       query: ({ username, page }) => ({
         url: `/users/search`,
@@ -150,7 +157,8 @@ export const {
   useLazySendValidateEmailQuery,
   useValidateEmailQuery,
   useLazySendPasswordResetEmailQuery,
-  useLazyResetPasswordQuery
+  useLazyResetPasswordQuery,
+  useGetUserGoalQuery
 } = accountApi;
 
 export default accountApi;

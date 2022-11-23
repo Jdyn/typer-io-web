@@ -49,6 +49,7 @@ export type SessionUser = User & {
   token: string;
   country?: string;
   age?: string;
+  goal?: number;
   gender?: string;
   emailVerified: boolean;
 };

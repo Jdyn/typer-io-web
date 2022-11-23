@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Button from '../../../Shared/Button';
 import styles from './index.module.css';
 import { ThemeContext } from '../../../../util/getInitialColorMode';
-import { useAuthenticateMutation } from '../../../../services/account';
+import { useAuthenticateMutation, useGetUserGoalQuery } from '../../../../services/account';
 import { ModalTypes } from '../types';
 import { SessionState } from '../../../../store/session/types';
 
@@ -29,6 +29,7 @@ const menu = {
 const AuthProfile = (props: Props): JSX.Element => {
   const { modalRef, updateModal, session, isOpen, type } = props;
   const [authenticate] = useAuthenticateMutation();
+  const { data: progress } = useGetUserGoalQuery(null);
 
   const [templates, setTemplates] = useState({
     profile: {
@@ -76,7 +77,12 @@ const AuthProfile = (props: Props): JSX.Element => {
             type="button"
             onClick={(): void => updateModal('profile')}
           >
-            <div className={styles.wrapper}>{session.user.username}</div>
+            <div className={styles.wrapper}>
+              {session.user.username}
+              {progress !== undefined && (
+                <span>{`Daily Goal: ${progress} / ${session.user.goal}`}</span>
+              )}
+            </div>
             <div className={styles.portrait} />
           </button>
           {isOpen ? (

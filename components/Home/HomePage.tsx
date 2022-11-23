@@ -31,7 +31,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1662490855161);
+const updated = formatTime(1669171241995);
 
 const HomePage = (): JSX.Element => {
   return (
@@ -82,11 +82,8 @@ const HomePage = (): JSX.Element => {
                 <h3>(Sep. 6th, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Added daily match goal</li>
                     <li>Updated match connectivity</li>
-                    <li>Added best matches to profile page</li>
-                    <li>Updated hiscores interface</li>
-                    <li>improved custom quote UI</li>
-                    <li>Added email validation</li>
                     <li>You can now use custom text in private lobbies</li>
                   </ul>
                 </div>

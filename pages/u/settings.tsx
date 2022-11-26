@@ -5,7 +5,7 @@ import PrivateRoute from '../../components/Shared/PrivateRoute';
 
 const ProfileSettings = () => {
   return (
-    <Layout>
+    <Layout striped>
       <ProfileSettingsPage />
     </Layout>
   );

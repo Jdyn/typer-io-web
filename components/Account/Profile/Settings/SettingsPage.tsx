@@ -31,7 +31,7 @@ const ProfileSettingsPage = (): JSX.Element => {
     country: sessionUser?.country ?? '',
     age: sessionUser?.age ?? '',
     gender: sessionUser?.gender ?? '',
-    goal: sessionUser?.goal
+    goal: sessionUser?.goal?.toString()
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const ProfileSettingsPage = (): JSX.Element => {
         country: sessionUser.country,
         age: sessionUser.age,
         gender: sessionUser.gender,
-        goal: sessionUser.goal.toString()
+        goal: sessionUser.goal?.toString()
       }));
     }
   }, [sessionUser]);

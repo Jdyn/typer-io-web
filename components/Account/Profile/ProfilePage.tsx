@@ -81,11 +81,9 @@ const ProfilePage = (props: Props): JSX.Element => {
             )}
           </div>
           {user && user.id === sessionUser?.id && (
-            <div className={styles.settings}>
-              <Link href="/u/settings">
-                <Button padding="6px 20px">Edit Profile</Button>
-              </Link>
-            </div>
+            <Link href="/u/settings" className={styles.settings}>
+              <Button padding="6px 20px">Edit Profile</Button>
+            </Link>
           )}
         </div>
       </div>

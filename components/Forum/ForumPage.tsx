@@ -40,11 +40,11 @@ const ForumPage = (): JSX.Element => {
         )}
         <div className={styles.feed}>
           <Banner>
-            <h3>
+            <h3 className={styles.feedHeader}>
               Discussions{' '}
               {session?.isLoggedIn && (
-                <Link href="/forum/post">
-                  <span className={styles.create}>Create Post ➜</span>
+                <Link href="/forum/post" className={styles.create}>
+                  <span>Create Post ➜</span>
                 </Link>
               )}
             </h3>

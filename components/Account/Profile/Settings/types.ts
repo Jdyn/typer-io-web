@@ -5,4 +5,5 @@ export interface SettingsForm {
   age?: string;
   country?: string;
   gender?: string;
+  goal?: string;
 }

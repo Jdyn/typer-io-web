@@ -1,9 +1,17 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from '@radix-ui/react-dropdown-menu';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import countries from '../../../../lib/countries';
-import { useLazySendValidateEmailQuery, useUpdateAccountMutation } from '../../../../services/account';
+import {
+  useLazySendValidateEmailQuery,
+  useUpdateAccountMutation
+} from '../../../../services/account';
 import { ApiErrorResponse } from '../../../../services/types';
 import { AppState } from '../../../../store';
 import Button from '../../../Shared/Button';
@@ -22,7 +30,8 @@ const ProfileSettingsPage = (): JSX.Element => {
     bio: sessionUser?.bio ?? '',
     country: sessionUser?.country ?? '',
     age: sessionUser?.age ?? '',
-    gender: sessionUser?.gender ?? ''
+    gender: sessionUser?.gender ?? '',
+    goal: sessionUser?.goal
   });
 
   useEffect(() => {
@@ -33,7 +42,8 @@ const ProfileSettingsPage = (): JSX.Element => {
         bio: sessionUser.bio,
         country: sessionUser.country,
         age: sessionUser.age,
-        gender: sessionUser.gender
+        gender: sessionUser.gender,
+        goal: sessionUser.goal.toString()
       }));
     }
   }, [sessionUser]);
@@ -72,7 +82,25 @@ const ProfileSettingsPage = (): JSX.Element => {
                 <span className={styles.content}>{sessionUser?.username}</span>
               </div>
               <div className={styles.item}>
-                <div className={styles.label}>Email:</div>
+                <div className={styles.label}>Daily Goal:</div>
+                <span className={styles.content}>
+                  <input
+                    className={styles.input}
+                    placeholder="5"
+                    value={form.goal}
+                    onChange={(e): void => setForm({ ...form, goal: e.target.value })}
+                  />
+                </span>
+              </div>
+              <div className={styles.item}>
+                <div className={styles.label}>
+                  Email:
+                  {sessionUser?.emailVerified === false && !EmailSent ? (
+                    <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
+                  ) : (
+                    <span>(verified ✅)</span>
+                  )}
+                </div>
                 <div className={styles.content}>
                   <input
                     className={styles.input}
@@ -81,11 +109,6 @@ const ProfileSettingsPage = (): JSX.Element => {
                     onChange={(e): void => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
-                {sessionUser?.emailVerified === false && !EmailSent ? (
-                  <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
-                ) : (
-                  <div>Your email is verified ✅</div>
-                )}
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>Country:</div>

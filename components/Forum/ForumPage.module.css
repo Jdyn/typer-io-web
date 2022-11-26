@@ -53,6 +53,11 @@
   flex: 1;
 }
 
+.feedHeader {
+  display: flex;
+  justify-content: space-between !important;
+}
+
 .feedContainer {
   margin: 20px;
   border: 2px solid var(--border);

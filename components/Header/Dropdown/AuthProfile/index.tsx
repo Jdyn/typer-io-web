@@ -106,11 +106,9 @@ const AuthProfile = (props: Props): JSX.Element => {
                   </ul>
                   <ul className={styles.modalList}>
                     {templates[type].items.map((item) => (
-                      <li className={styles.modalListItem}>
-                        <Link key={item.title} href={item.link}>
-                          {item.title}
-                        </Link>
-                      </li>
+                      <Link key={item.title} href={item.link} className={styles.modalListItem}>
+                        <li>{item.title}</li>
+                      </Link>
                     ))}
                     <Button padding="5px" onClick={(): void => logout()}>
                       {templates[type].logout}

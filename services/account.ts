@@ -7,7 +7,7 @@ import {
   SignupPayload,
   User
 } from '../store/session/types';
-import { userLoggedIn, userLoggedOut, userUpdated } from '../store/session/reducers';
+import { userRefreshed, userLoggedOut, userUpdated } from '../store/session/reducers';
 import { SettingsForm } from '../components/Account/Profile/Settings/types';
 import { ListResponse, ApiErrorResponse, Match } from './types';
 
@@ -93,11 +93,11 @@ const accountApi = createApi({
             case 'signup':
             case 'signin':
               setCurrentSession(data.result.user);
-              dispatch(userLoggedIn({ user: data.result.user }));
+              dispatch(userRefreshed({ isLoggedIn: true, user: data.result.user }));
               break;
             case 'signout':
               setCurrentSession(null, 'delete');
-              dispatch(userLoggedOut({}));
+              dispatch(userLoggedOut());
               break;
             default:
               break;
@@ -116,7 +116,7 @@ const accountApi = createApi({
       invalidatesTags: (data) => [{ type: 'User', id: data.result.user.username }],
       async onQueryStarted(_payload, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
-        dispatch(userUpdated({ user: data.result.user }));
+        dispatch(userUpdated(data.result.user));
       }
     }),
     sendPasswordResetEmail: builder.query<{ ok: boolean }, string>({

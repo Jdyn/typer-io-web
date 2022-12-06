@@ -27,31 +27,5 @@ export default {
     })
       .then(parseResponse)
       .catch((error) => error);
-  },
-
-  post(url, data) {
-    const body = JSON.stringify(data);
-    return fetch(`${API_URL}${url}`, {
-      method: 'POST',
-      headers: headers(),
-      body
-    }).then(parseResponse);
-  },
-
-  patch(url, data) {
-    const body = JSON.stringify(data);
-
-    return fetch(`${API_URL}${url}`, {
-      method: 'PATCH',
-      headers: headers(),
-      body
-    }).then(parseResponse);
-  },
-
-  delete(url) {
-    return fetch(`${API_URL}${url}`, {
-      method: 'DELETE',
-      headers: headers()
-    }).then(parseResponse);
   }
 };

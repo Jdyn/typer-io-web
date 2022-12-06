@@ -93,6 +93,7 @@
   box-shadow: var(--shadow);
   border: 2px solid var(--border);
   padding: 15px 10px;
+  z-index: 100;
 }
 
 .dropdownList > div {

@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
-import { SessionState } from './types';
+import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SessionState, SessionUser } from './types';
 
 const initialState: SessionState = {
   isLoggedIn: false,
@@ -9,34 +10,43 @@ const initialState: SessionState = {
   user: null
 };
 
+const userRefreshedAction: CaseReducer<SessionState, PayloadAction<SessionState>> = (
+  state,
+  action
+): void => {
+  state.isLoggedIn = action.payload.isLoggedIn;
+  state.user = action.payload.user;
+};
+
+const userLoggedOutAction: CaseReducer<SessionState, PayloadAction<void>> = (state): void => {
+  state.user = null;
+  state.isLoggedIn = false;
+};
+
+const userUpdatedAction: CaseReducer<SessionState, PayloadAction<SessionUser>> = (
+  state,
+  action
+): void => {
+  state.user = { ...state.user, ...action.payload };
+};
+
 const reducers = {
-  userLoggedIn: (state, action) => {
-    state.isLoggedIn = true;
-    state.user = action.payload.user;
-  },
-  userRefreshed: (state, action) => {
-    state.isLoggedIn = action.payload.isLoggedIn;
-    state.user = action.payload.user;
-  },
   nicknameChanged: (state, action) => {
     state.nickname = action.payload;
-  },
-  userLoggedOut: (state, _action) => {
-    state.user = null;
-    state.isLoggedIn = false;
-  },
-  userUpdated: (state, action) => {
-    state.user = { ...state.user, ...action.payload.user };
   }
 };
 
 const session = createSlice({
   name: 'session',
   initialState,
-  reducers
+  reducers: {
+    ...reducers,
+    userRefreshed: userRefreshedAction,
+    userLoggedOut: userLoggedOutAction,
+    userUpdated: userUpdatedAction
+  }
 });
 
-export const { nicknameChanged, userLoggedIn, userLoggedOut, userRefreshed, userUpdated } =
-  session.actions;
+export const { nicknameChanged, userLoggedOut, userRefreshed, userUpdated } = session.actions;
 
 export default session.reducer;

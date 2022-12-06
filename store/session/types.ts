@@ -30,7 +30,7 @@ export const actions: SessionActions = {
 
 export interface SessionState {
   isLoggedIn: boolean;
-  nickname: string | null;
+  nickname?: string | null;
   user: SessionUser | null;
 }
 

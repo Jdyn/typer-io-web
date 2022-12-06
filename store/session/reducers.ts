@@ -10,12 +10,12 @@ const initialState: SessionState = {
   user: null
 };
 
-const userRefreshedAction: CaseReducer<SessionState, PayloadAction<SessionState>> = (
-  state,
-  action
-): void => {
+const userRefreshedAction: CaseReducer<
+  SessionState,
+  PayloadAction<{ isLoggedIn: boolean; user: Partial<SessionUser> }>
+> = (state, action): void => {
   state.isLoggedIn = action.payload.isLoggedIn;
-  state.user = action.payload.user;
+  state.user = { ...state.user, ...action.payload.user };
 };
 
 const userLoggedOutAction: CaseReducer<SessionState, PayloadAction<void>> = (state): void => {
@@ -30,17 +30,18 @@ const userUpdatedAction: CaseReducer<SessionState, PayloadAction<SessionUser>> =
   state.user = { ...state.user, ...action.payload };
 };
 
-const reducers = {
-  nicknameChanged: (state, action) => {
-    state.nickname = action.payload;
-  }
+const nicknameChangedAction: CaseReducer<SessionState, PayloadAction<string>> = (
+  state,
+  action
+): void => {
+  state.nickname = action.payload;
 };
 
 const session = createSlice({
   name: 'session',
   initialState,
   reducers: {
-    ...reducers,
+    nicknameChanged: nicknameChangedAction,
     userRefreshed: userRefreshedAction,
     userLoggedOut: userLoggedOutAction,
     userUpdated: userUpdatedAction

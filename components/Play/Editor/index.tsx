@@ -51,6 +51,7 @@ const Editor = (props: Props): JSX.Element => {
 
     if (!isStarted) {
       event.preventDefault();
+      return;
     }
 
     if (isOver) {

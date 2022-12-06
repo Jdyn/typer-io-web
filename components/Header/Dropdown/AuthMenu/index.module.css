@@ -100,6 +100,11 @@
   margin-bottom: 0px;
 }
 
+.link {
+  text-align: center;
+  color: var(--subtext);
+}
+
 @media (min-width: 815px) {
   .container {
     position: relative;

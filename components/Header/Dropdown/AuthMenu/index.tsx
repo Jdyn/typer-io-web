@@ -128,6 +128,9 @@ const AuthMenu = (props: Props): JSX.Element => {
                     )}
                   </div>
                 </div>
+                <Link className={styles.link} href="u/reset">
+                  Forgot Password
+                </Link>
               </div>
             </>
           ) : null}

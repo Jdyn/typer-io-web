@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -9,12 +10,15 @@ import copyToClipboard from '../../util/copyToClipboard';
 import Profile from '../Home/Profile';
 import Chat from '../Play/Chat';
 import ClientList from '../Play/ClientList';
-import Adsense from '../Shared/Adsense';
 import Button from '../Shared/Button';
 import Loader from '../Shared/Loader';
 import Paper from '../Shared/Paper';
 import TextBox from '../Shared/TextBox';
 import styles from './index.module.css';
+
+const Adsense = dynamic(() => import('../Shared/Adsense'), {
+  ssr: false
+});
 
 const difficulties = ['easy', 'medium', 'hard', 'random', 'custom'];
 

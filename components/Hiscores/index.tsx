@@ -1,12 +1,16 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
 import IFilter from '../Shared/Filter';
 import formatTime from '../../util/formatTime';
-import Adsense from '../Shared/Adsense';
 import { useGetUserHiscoresQuery } from '../../services/hiscores';
+
+const Adsense = dynamic(() => import('../Shared/Adsense'), {
+  ssr: false
+});
 
 const leaderboards = {
   top_speed: {

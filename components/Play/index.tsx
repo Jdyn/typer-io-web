@@ -1,10 +1,10 @@
+import dynamic from 'next/dynamic';
 import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { silentEmit } from '../../services/socket';
 import { AppState } from '../../store';
 import { GameboardState, SnippetState } from '../../store/game/types';
-import Adsense from '../Shared/Adsense';
 import Chat from './Chat';
 import ClientList from './ClientList';
 import Editor from './Editor';
@@ -13,6 +13,10 @@ import styles from './index.module.css';
 import Leaderboard from './leaderboard';
 import PlayStatus from './Status/Status';
 import { EditorState, GameState } from './types';
+
+const Adsense = dynamic(() => import('../Shared/Adsense'), {
+  ssr: false
+});
 
 interface Props {
   isSolo?: boolean;
@@ -116,6 +120,7 @@ const Play = (props: Props): JSX.Element => {
   }
 
   const inputDidUpdate = (event): void => {
+    // console.log(`DidUpdate: ${event.target.value}`);
     setGameState({ ...gameState, currentInput: event.target.value });
 
     const wrongIndex = calculateWrongIndex(event.target.value);

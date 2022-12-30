@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import formatTime from '../../util/formatTime';
-import Adsense from '../Shared/Adsense';
 import Paper from '../Shared/Paper';
 import Hiscores from './Hiscores';
 import Profile from './Profile';
@@ -9,6 +9,10 @@ import RecentMatches from './RecentMatches';
 import RecentPosts from './RecentPosts';
 
 import styles from './index.module.css';
+
+const Adsense = dynamic(() => import('../Shared/Adsense'), {
+  ssr: false
+});
 
 const cards = [
   {

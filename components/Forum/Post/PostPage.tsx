@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import formatTime from '../../../util/formatTime';
-import Adsense from '../../Shared/Adsense';
 import TextBox from '../../Shared/TextBox';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
@@ -17,6 +17,10 @@ import {
 } from '../../../services/forum';
 
 import styles from './PostPage.module.css';
+
+const Adsense = dynamic(() => import('../../Shared/Adsense'), {
+  ssr: false
+});
 
 interface Props {
   postId: string;

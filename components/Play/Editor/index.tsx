@@ -1,16 +1,20 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, KeyboardEvent, memo } from 'react';
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  KeyboardEvent,
+  useMemo,
+  useRef,
+  useCallback
+} from 'react';
 import { useSelector } from 'react-redux';
 import { silentEmit } from '../../../services/socket';
 import { AppState } from '../../../store';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
-
-const focusInput = (): void => {
-  const editor = document.getElementById('input');
-  if (editor) {
-    editor.focus();
-  }
-};
 
 interface Props {
   isStarted: boolean;
@@ -28,20 +32,22 @@ const Editor = (props: Props): JSX.Element => {
   const { isStarted, isOver, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } =
     props;
 
+  const isSolo = useSelector((state: AppState) => state.game.room.isSolo);
+
+  const inputElement = useRef<HTMLInputElement>(null);
+
+  const focusInput = useCallback((): void => {
+    inputElement.current.focus();
+  }, []);
+
   useEffect(() => {
     focusInput();
-  }, [isStarted]);
-
-  const isSolo = useSelector((state: AppState) => state.game.room.isSolo);
+  }, [focusInput, isStarted]);
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;
 
     if (event.key === 'Control') {
-      keys[event.key] = true;
-    }
-
-    if (keys.Control) {
       return;
     }
 
@@ -49,17 +55,7 @@ const Editor = (props: Props): JSX.Element => {
       silentEmit('SOLO_START_GAME');
     }
 
-    if (!isStarted) {
-      event.preventDefault();
-      return;
-    }
-
-    if (isOver) {
-      event.preventDefault();
-      return;
-    }
-
-    if (wordsRemaining.length === 0) {
+    if (!isStarted || isOver || wordsRemaining.length === 0) {
       event.preventDefault();
       return;
     }
@@ -73,17 +69,15 @@ const Editor = (props: Props): JSX.Element => {
     if (event.key === ' ') {
       if (currentInput.trim() === currentWord) {
         event.preventDefault();
-        document.getElementById('input').innerText = '';
+        inputElement.current.innerText = '';
         if (wordsRemaining.length !== 0) {
           submitWord();
         }
       }
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
     }
   };
 
-  const inputPlaceholder = (): string => {
+  const inputPlaceholder = useMemo((): string => {
     if (!isStarted && !isOver) {
       if (isSolo) {
         return "Press 'Space' here to begin...";
@@ -91,43 +85,31 @@ const Editor = (props: Props): JSX.Element => {
       return 'Type here when the game begins...';
     }
     return '';
-  };
+  }, [isStarted, isOver, isSolo]);
 
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      className={styles.root}
-      onClick={focusInput}
-      onKeyUp={focusInput}
-    >
+    <div role="button" className={styles.root} onClick={focusInput}>
       <div
         role="button"
-        tabIndex={0}
         className={styles.container}
         style={{ background: isWrong ? '#f4433666' : 'transparent' }}
         onClick={focusInput}
-        onKeyUp={focusInput}
       >
         <input
           id="input"
+          ref={inputElement}
           className={styles.input}
-          onClick={(): void => focusInput()}
+          onClick={focusInput}
           tabIndex={0}
-          placeholder={inputPlaceholder()}
+          placeholder={inputPlaceholder}
           autoComplete="off"
           autoCorrect="off"
           maxLength={gameState.currentWord ? gameState.currentWord.length : 524288}
-          autoCapitalize="off"
+          autoCapitalize="none"
           spellCheck="false"
           value={gameState.currentInput}
           onChange={inputDidUpdate}
-          onKeyDown={(e) => keydown(e)}
-          onKeyUp={(event) => {
-            if (event.key === 'Control') {
-              keys[event.key] = false;
-            }
-          }}
+          onKeyDown={keydown}
         />
       </div>
     </div>

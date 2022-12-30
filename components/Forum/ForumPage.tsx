@@ -1,15 +1,18 @@
-import React from 'react';
+import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import formatTime from '../../util/formatTime';
-import Adsense from '../Shared/Adsense';
 import { AppState } from '../../store';
 import Banner from '../Shared/Banner';
 import { useGetPostsQuery } from '../../services/forum';
 import useNextQueryParams from '../../util/useNextQueryParam';
 
 import styles from './ForumPage.module.css';
+
+const Adsense = dynamic(() => import('../Shared/Adsense'), {
+  ssr: false
+});
 
 const ForumPage = (): JSX.Element => {
   const { page } = useNextQueryParams();

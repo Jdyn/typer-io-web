@@ -26,7 +26,7 @@ interface Props {
   postId: string;
 }
 
-const Post = (props: Props): JSX.Element => {
+const Post = (props: Props) => {
   const { postId } = props;
   const router = useRouter();
 

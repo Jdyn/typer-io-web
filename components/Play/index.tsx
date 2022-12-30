@@ -23,7 +23,7 @@ interface Props {
   isCustom?: boolean;
 }
 
-const Play = (props: Props): JSX.Element => {
+const Play = (props: Props) => {
   const { isSolo, isCustom } = props;
 
   const gameboard: GameboardState = useSelector((state: AppState) => state.game.room.gameboard);

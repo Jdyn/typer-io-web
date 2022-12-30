@@ -37,7 +37,7 @@ const cards = [
 
 const updated = formatTime(1669171241995);
 
-const HomePage = (): JSX.Element => {
+const HomePage = () => {
   return (
     <main className={styles.root}>
       <div className={styles.container}>

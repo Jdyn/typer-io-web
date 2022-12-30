@@ -40,7 +40,7 @@ const leaderboards = {
   }
 };
 
-const Hiscores = (): JSX.Element => {
+const Hiscores = () => {
   const router = useRouter();
   const { page, query, type } = router.query as Record<string, string>;
   const [board, setBoard] = useState(leaderboards[query as string] || {});

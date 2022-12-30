@@ -14,7 +14,7 @@ const Adsense = dynamic(() => import('../Shared/Adsense'), {
   ssr: false
 });
 
-const ForumPage = (): JSX.Element => {
+const ForumPage = () => {
   const { page } = useNextQueryParams();
   const router = useRouter();
   const { data: feed } = useGetPostsQuery({ query: 'feed', page });

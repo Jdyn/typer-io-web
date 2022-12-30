@@ -22,7 +22,7 @@ const Adsense = dynamic(() => import('../Shared/Adsense'), {
 
 const difficulties = ['easy', 'medium', 'hard', 'random', 'custom'];
 
-const LobbyPage = (): JSX.Element => {
+const LobbyPage = () => {
   const router = useRouter();
   const { room, meta, socket } = useSelector((state: AppState) => state.game);
   const [copied, setCopied] = useState(false);

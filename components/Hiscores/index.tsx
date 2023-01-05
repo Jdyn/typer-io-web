@@ -7,6 +7,8 @@ import Paper from '../Shared/Paper';
 import IFilter from '../Shared/Filter';
 import formatTime from '../../util/formatTime';
 import { useGetUserHiscoresQuery } from '../../services/hiscores';
+import Paginate from '../Shared/Paginate';
+import useNextQueryParams from '../../util/useNextQueryParam';
 
 const Adsense = dynamic(() => import('../Shared/Adsense'), {
   ssr: false
@@ -42,7 +44,7 @@ const leaderboards = {
 
 const Hiscores = () => {
   const router = useRouter();
-  const { page, query, type } = router.query as Record<string, string>;
+  const { page, query, type } = useNextQueryParams();
   const [board, setBoard] = useState(leaderboards[query as string] || {});
 
   const { data: itemPage } = useGetUserHiscoresQuery({ query, page, type });
@@ -79,14 +81,12 @@ const Hiscores = () => {
 
   return (
     <div className={styles.root}>
-      <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="1319118588"
-          style={{ display: 'block' }}
-          format="auto"
-        />
-      </section>
+      <Adsense
+        client="ca-pub-3148839588626786"
+        slot="1319118588"
+        style={{ display: 'block' }}
+        format="auto"
+      />
       <section className={styles.hiscores}>
         <div className={styles.filter}>
           {Object.keys(leaderboards).map((key) => {
@@ -105,33 +105,7 @@ const Hiscores = () => {
         </div>
 
         <Paper title={`${board.title} ${`- ${type} quotes`}`}>
-          <div className={styles.pagination}>
-            <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
-              1
-            </button>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(itemPage?.page - 1)}
-              type="button"
-            >{`<`}</button>
-            <span>{itemPage?.page}</span>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(itemPage?.page + 1)}
-              type="button"
-            >{`>`}</button>
-            {itemPage?.maxPage ? (
-              <button
-                className={styles.pageButton}
-                onClick={() => setPage(itemPage?.maxPage)}
-                type="button"
-              >
-                {itemPage?.maxPage || 1}
-              </button>
-            ) : (
-              <div style={{ width: '27.35px' }} />
-            )}
-          </div>
+          <Paginate defaultPage={parseInt(page, 10)} pageUpdated={setPage} />
           {board.filters && (
             <IFilter
               selectedFilter={type as string}
@@ -175,44 +149,16 @@ const Hiscores = () => {
                 </Link>
               ))}
             </div>
-            <div className={styles.pagination}>
-              <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
-                1
-              </button>
-              <button
-                className={styles.pageButton}
-                onClick={() => setPage(itemPage?.page - 1)}
-                type="button"
-              >{`<`}</button>
-              <span>{itemPage?.page}</span>
-              <button
-                className={styles.pageButton}
-                onClick={() => setPage(itemPage?.page + 1)}
-                type="button"
-              >{`>`}</button>
-              {itemPage?.maxPage ? (
-                <button
-                  className={styles.pageButton}
-                  onClick={() => setPage(itemPage?.maxPage)}
-                  type="button"
-                >
-                  {itemPage?.maxPage || 1}
-                </button>
-              ) : (
-                <div style={{ width: '27.33px' }} />
-              )}
-            </div>
+            <Paginate defaultPage={parseInt(page, 10)} pageUpdated={setPage} />
           </div>
         </Paper>
       </section>
-      <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="1319118588"
-          style={{ display: 'block' }}
-          format="auto"
-        />
-      </section>
+      <Adsense
+        client="ca-pub-3148839588626786"
+        slot="1319118588"
+        style={{ display: 'block' }}
+        format="auto"
+      />
     </div>
   );
 };

@@ -9,48 +9,41 @@ import { useGetPostsQuery } from '../../services/forum';
 import useNextQueryParams from '../../util/useNextQueryParam';
 
 import styles from './ForumPage.module.css';
+import Paginate from '../Shared/Paginate';
 
 const Adsense = dynamic(() => import('../Shared/Adsense'), {
   ssr: false
 });
 
-const ForumPage = () => {
+const ForumPage = (): JSX.Element => {
   const { page } = useNextQueryParams();
-  const router = useRouter();
   const { data: feed } = useGetPostsQuery({ query: 'feed', page });
+
+  const router = useRouter();
 
   const session = useSelector((state: AppState) => state.session);
 
-  const setPage = (index) => {
-    if (index <= feed?.totalPages && index >= 1 && index !== feed?.page) {
-      router.push(`/forum?page=${index}`);
-    }
-  };
-
   return (
     <div className={styles.root}>
-      <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="1319118588"
-          style={{ display: 'block' }}
-          format="auto"
-        />
-      </section>
+      <Adsense
+        client="ca-pub-3148839588626786"
+        slot="1319118588"
+        style={{ display: 'block' }}
+        format="auto"
+      />
       <div className={styles.main}>
         {session?.user?.emailVerified === false && (
-          <div className={styles.notice}>Please verify your email to use the forums.</div>
+          <div className={styles.notice}>Please verify your email to post post the forums.</div>
         )}
         <div className={styles.feed}>
-          <Banner>
-            <h3 className={styles.feedHeader}>
-              Discussions{' '}
+          <Banner title="Discussions">
+            <div>
               {session?.isLoggedIn && (
                 <Link href="/forum/post" className={styles.create}>
-                  <span>Create Post ➜</span>
+                  Create Post ➜
                 </Link>
               )}
-            </h3>
+            </div>
           </Banner>
           <div className={styles.feedContainer}>
             <div className={styles.feedWrapper}>
@@ -62,8 +55,9 @@ const ForumPage = () => {
                       href={`/forum/post/${post.id}/${encodeURIComponent(
                         post.title.split(' ').join('-')
                       )}`}
+                      className={styles.title}
                     >
-                      <span className={styles.title}>{post.title}</span>
+                      {post.title}
                     </Link>
                     {session?.user?.isAdmin && <span>ID: {post.id}</span>}
                     <span>
@@ -89,39 +83,19 @@ const ForumPage = () => {
               ))}
             </div>
           </div>
-          <div className={styles.pagination}>
-            <button className={styles.pageButton} onClick={() => setPage(1)} type="button">
-              1
-            </button>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(feed?.page - 1)}
-              type="button"
-            >{`<`}</button>
-            <span>{feed?.page}</span>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(feed?.page + 1)}
-              type="button"
-            >{`>`}</button>
-            <button
-              className={styles.pageButton}
-              onClick={() => setPage(feed?.totalPages)}
-              type="button"
-            >
-              {feed?.totalPages || 1}
-            </button>
-          </div>
+          <Paginate
+            defaultPage={parseInt(page, 10)}
+            totalPages={feed?.totalPages}
+            pageUpdated={(newPage) => router.push(`/forum?page=${newPage}`)}
+          />
         </div>
       </div>
-      <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="4985533875"
-          style={{ display: 'block' }}
-          format="auto"
-        />
-      </section>
+      <Adsense
+        client="ca-pub-3148839588626786"
+        slot="4985533875"
+        style={{ display: 'block' }}
+        format="auto"
+      />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { useSearchUserQuery } from '../../../services/account';
 
 import styles from './Search.module.css';
 import formatTime from '../../../util/formatTime';
+import Paginate from '../../Shared/Paginate';
 
 const SearchPage = (): JSX.Element => {
   const router = useRouter();
@@ -14,10 +15,6 @@ const SearchPage = (): JSX.Element => {
     username: user as string,
     page: page as string
   });
-
-  const updatePage = (newPage) => {
-    router.push(`/search/${user}?page=${newPage}`);
-  };
 
   return (
     <main className={styles.root}>
@@ -47,33 +44,10 @@ const SearchPage = (): JSX.Element => {
             </div>
           )}
         </div>
-        <div className={styles.pagination}>
-          <button
-            className={styles.pageButton}
-            onClick={() => userPage && updatePage(1)}
-            type="button"
-          >
-            1
-          </button>
-          <button
-            className={styles.pageButton}
-            onClick={() => userPage && updatePage(userPage.page - 1)}
-            type="button"
-          >{`<`}</button>
-          <span>{userPage?.page}</span>
-          <button
-            className={styles.pageButton}
-            onClick={() => userPage && updatePage(userPage.page + 1)}
-            type="button"
-          >{`>`}</button>
-          <button
-            className={styles.pageButton}
-            onClick={() => userPage && updatePage(userPage.totalPages)}
-            type="button"
-          >
-            {userPage?.totalPages || 1}
-          </button>
-        </div>
+        <Paginate
+          pageUpdated={(newPage) => router.push(`/search/${user}?page=${newPage}`)}
+          totalPages={userPage.totalPages}
+        />
       </Paper>
     </main>
   );

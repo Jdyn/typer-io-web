@@ -14,12 +14,17 @@
 }
 
 .root > h3 {
-  display: Flex;
+  display: flex;
   font-weight: 700;
   font-size: 1.2rem;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   height: 100%;
   margin: 0;
+}
+
+.root > div {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
 }

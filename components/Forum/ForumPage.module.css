@@ -53,11 +53,6 @@
   flex: 1;
 }
 
-.feedHeader {
-  display: flex;
-  justify-content: space-between !important;
-}
-
 .feedContainer {
   margin: 20px;
   border: 2px solid var(--border);
@@ -135,40 +130,6 @@
 
 .rules {
   grid-area: notice;
-}
-
-.pagination {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0px 10px 0px;
-  justify-content: center;
-}
-
-.pagination > span {
-  display: flex;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-}
-
-.pageButton {
-  display: flex;
-  background: var(--accent);
-  border-radius: 8px;
-  outline: none;
-  margin: 0px 5px;
-  padding: 5px 10px;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.pageButton:hover {
-  transform: translateY(-2px);
-}
-
-.pageButton:active {
-  transform: translateY(2px);
 }
 
 .notice {

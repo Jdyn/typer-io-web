@@ -10,6 +10,7 @@ import formatTime from '../../../util/formatTime';
 import MiniListPost from '../../Home/RecentPosts/MiniListPost';
 import Banner from '../../Shared/Banner';
 import Button from '../../Shared/Button';
+import Paginate from '../../Shared/Paginate';
 import Paper from '../../Shared/Paper';
 import styles from './index.module.css';
 
@@ -26,14 +27,6 @@ const ProfilePage = (props: Props): JSX.Element => {
   const { data: matches } = useGetMatchesQuery({ username, matchPage: matchPage || '1' });
   const { data: records } = useGetUserRecordsQuery({ username });
   const sessionUser = useSelector((state: AppState) => state.session.user);
-
-  const fetchMatches = (page: number): void => {
-    if (matches && page <= matches.totalPages && page >= 1 && page !== matches.page) {
-      router.push(`/u/${user.username}?matchPage=${page}`, null, {
-        scroll: false
-      });
-    }
-  };
 
   return (
     <div className={styles.root}>
@@ -215,33 +208,14 @@ const ProfilePage = (props: Props): JSX.Element => {
                 ))}
             </div>
           </div>
-          <div className={styles.pagination}>
-            <button
-              className={styles.pageButton}
-              onClick={() => matches && fetchMatches(1)}
-              type="button"
-            >
-              1
-            </button>
-            <button
-              className={styles.pageButton}
-              onClick={() => matches && fetchMatches(matches.page - 1)}
-              type="button"
-            >{`<`}</button>
-            <span>{matches?.page}</span>
-            <button
-              className={styles.pageButton}
-              onClick={() => matches && fetchMatches(matches.page + 1)}
-              type="button"
-            >{`>`}</button>
-            <button
-              className={styles.pageButton}
-              onClick={() => matches && fetchMatches(matches.totalPages)}
-              type="button"
-            >
-              {matches?.totalPages || 1}
-            </button>
-          </div>
+          <Paginate
+            pageUpdated={(newPage) =>
+              router.push(`/u/${user.username}?matchPage=${newPage}`, null, {
+                scroll: false
+              })
+            }
+            totalPages={matches?.totalPages}
+          />
         </Paper>
       </section>
     </div>

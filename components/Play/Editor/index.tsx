@@ -10,9 +10,8 @@ import {
   useRef,
   useCallback
 } from 'react';
-import { useSelector } from 'react-redux';
 import { silentEmit } from '../../../services/socket';
-import { AppState } from '../../../store';
+import { useAppSelector } from '../../../store';
 import { EditorState, GameState } from '../types';
 import styles from './index.module.css';
 
@@ -26,13 +25,12 @@ interface Props {
   inputDidUpdate: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const keys = { Control: false };
-
 const Editor = (props: Props): JSX.Element => {
   const { isStarted, isOver, inputDidUpdate, submitWord, setEditorState, gameState, isWrong } =
     props;
 
-  const isSolo = useSelector((state: AppState) => state.game.room.isSolo);
+  const isSolo = useAppSelector((state) => state.game.room.isSolo);
+  const isConnected = useAppSelector((state) => state.game.socket.connected || false);
 
   const inputElement = useRef<HTMLInputElement>(null);
 
@@ -42,7 +40,7 @@ const Editor = (props: Props): JSX.Element => {
 
   useEffect(() => {
     focusInput();
-  }, [focusInput, isStarted]);
+  }, [focusInput, isConnected, isStarted]);
 
   const keydown = (event: KeyboardEvent): void => {
     const { currentInput, currentWord, wordsRemaining } = gameState;

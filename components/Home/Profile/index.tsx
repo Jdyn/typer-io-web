@@ -8,6 +8,7 @@ import emojiList from '../../../lib/emojis';
 
 import styles from './index.module.css';
 import { silentEmit } from '../../../services/socket';
+import Paginate from '../../Shared/Paginate';
 
 interface Props {
   requireSave?: boolean;
@@ -56,13 +57,6 @@ const Profile = (props: Props): JSX.Element => {
     ));
   }, [currentEmoji, emojiPage]);
 
-  const handlePage = (page) => {
-    const totalPages = Math.floor(emojiList.length / 16);
-    if (page <= totalPages && page >= 0 && page !== emojiPage) {
-      setEmojiPage(page);
-    }
-  };
-
   const handleUpdate = useCallback(() => {
     let username = localStorage?.getItem('nickname');
 
@@ -94,29 +88,11 @@ const Profile = (props: Props): JSX.Element => {
         </div>
         <div className={styles.content}>
           <div className={styles.emojis}>{emojis}</div>
-          <div className={styles.pagination}>
-            <button className={styles.pageButton} onClick={() => setEmojiPage(0)} type="button">
-              1
-            </button>
-            <button
-              className={styles.pageButton}
-              onClick={() => handlePage(emojiPage - 1)}
-              type="button"
-            >{`<`}</button>
-            <span>{emojiPage + 1}</span>
-            <button
-              className={styles.pageButton}
-              onClick={() => handlePage(emojiPage + 1)}
-              type="button"
-            >{`>`}</button>
-            <button
-              className={styles.pageButton}
-              onClick={() => handlePage(Math.floor(emojiList.length / 16))}
-              type="button"
-            >
-              {Math.floor(emojiList.length / 16) + 1}
-            </button>
-          </div>
+          <Paginate
+            defaultPage={1}
+            totalPages={Math.floor(emojiList.length / 16) + 1}
+            pageUpdated={(newPage) => setEmojiPage(newPage)}
+          />
         </div>
         {requireSave && (
           <div className={styles.buttonWrapper}>

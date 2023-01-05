@@ -3,16 +3,21 @@ import styles from './index.module.css';
 
 interface Props {
   children?: ReactNode;
+  title?: string;
 }
 
-const Banner = (props: Props): JSX.Element => {
-  const { children } = props;
-
-  return <div className={styles.root}>{children}</div>;
+const Banner = ({ children, title }: Props): JSX.Element => {
+  return (
+    <div className={styles.root}>
+      {title && <h3>{title}</h3>}
+      {children}
+    </div>
+  );
 };
 
 Banner.defaultProps = {
-  children: null
+  children: null,
+  title: null
 };
 
 export default Banner;

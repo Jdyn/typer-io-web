@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import Head from 'next/head';
 import { useEffect } from 'react';
-import ReactGA from 'react-ga4';
 import { Provider } from 'react-redux';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 import { wrapper } from '../store';
 import { authenticate } from '../store/session/actions';
@@ -10,10 +10,6 @@ import { nicknameChanged, userRefreshed } from '../store/session/reducers';
 import { ThemeProvider } from '../util/getInitialColorMode';
 
 import '../public/static/styles/global.css';
-
-((): void => {
-  ReactGA.initialize('G-9DWL368WZS');
-})();
 
 interface Props {
   Component: React.FC<{ err: string }>;
@@ -59,6 +55,7 @@ export const App = ({ Component, ...rest }: Props): JSX.Element => {
             content="Typer is a fast and modern multiplayer typing competition. Type against your friends in large 50+ player matches within a few clicks."
           />
         </Head>
+        <GoogleAnalytics trackPageViews gaMeasurementId="G-9DWL368WZS" />
         <Component {...props} err={props.err} />
       </ThemeProvider>
     </Provider>

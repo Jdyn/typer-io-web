@@ -6,10 +6,11 @@ import { useSearchUserQuery } from '../../../services/account';
 import styles from './Search.module.css';
 import formatTime from '../../../util/formatTime';
 import Paginate from '../../Shared/Paginate';
+import useNextQueryParams from '../../../util/useNextQueryParam';
 
 const SearchPage = (): JSX.Element => {
   const router = useRouter();
-  const { user, page } = router.query;
+  const { user, page } = useNextQueryParams();
 
   const { data: userPage, isSuccess } = useSearchUserQuery({
     username: user as string,
@@ -46,7 +47,7 @@ const SearchPage = (): JSX.Element => {
         </div>
         <Paginate
           pageUpdated={(newPage) => router.push(`/search/${user}?page=${newPage}`)}
-          totalPages={userPage.totalPages}
+          totalPages={userPage?.totalPages}
         />
       </Paper>
     </main>

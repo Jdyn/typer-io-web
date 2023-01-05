@@ -92,12 +92,11 @@ const Gameboard = (props: Props): JSX.Element => {
       <div hidden id="PreMiD-RANK">
         {placements(client?.gamePiece?.rank) || '-'}
       </div>
-      <Banner>
-        <h3>
-          Snippet
+      <Banner title="Snippet">
+        <div>
           {client?.gamePiece && (
             <span className={styles.header}>
-              you are{' '}
+              you are
               <div
                 style={{
                   background: client?.gamePiece?.color || 'transparent'
@@ -105,7 +104,7 @@ const Gameboard = (props: Props): JSX.Element => {
               />
             </span>
           )}
-        </h3>
+        </div>
       </Banner>
       <div className={styles.container}>{wordElements}</div>
       <div className={styles.content}>

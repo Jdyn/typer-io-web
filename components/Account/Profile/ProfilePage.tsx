@@ -24,7 +24,7 @@ const ProfilePage = (props: Props): JSX.Element => {
   const { matchPage } = router.query;
 
   const { data: user, isError, error } = useGetUserQuery(username);
-  const { data: matches } = useGetMatchesQuery({ username, matchPage: matchPage || '1' });
+  const { data: matches } = useGetMatchesQuery({ userId: user?.id, matchPage: matchPage || '1' });
   const { data: records } = useGetUserRecordsQuery({ username });
   const sessionUser = useSelector((state: AppState) => state.session.user);
 

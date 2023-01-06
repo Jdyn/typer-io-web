@@ -52,10 +52,10 @@ const accountApi = createApi({
     }),
     getMatches: builder.query<
       ListResponse<Match>,
-      { username: string; matchPage: string | string[] }
+      { userId: number; matchPage: string | string[] }
     >({
-      query: ({ username, matchPage }) => ({
-        url: `/user/${username}/matches`,
+      query: ({ userId, matchPage }) => ({
+        url: `/user/${userId}/matches`,
         method: 'GET',
         params: { matchPage }
       }),

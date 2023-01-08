@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useGetMatchesQuery, useGetUserQuery } from '../../../services/account';
@@ -22,11 +23,21 @@ const ProfilePage = (props: Props): JSX.Element => {
   const { username } = props;
   const router = useRouter();
   const { matchPage } = router.query;
-
+  const [skip, setSkip] = useState(true);
   const { data: user, isError, error } = useGetUserQuery(username);
-  const { data: matches } = useGetMatchesQuery({ userId: user?.id, matchPage: matchPage || '1' });
+  const { data: matches } = useGetMatchesQuery(
+    { userId: user?.id, matchPage: matchPage || '1' },
+    { skip }
+  );
+
   const { data: records } = useGetUserRecordsQuery({ username });
   const sessionUser = useSelector((state: AppState) => state.session.user);
+
+  useEffect(() => {
+    if (user) {
+      setSkip(false);
+    }
+  }, [setSkip, user]);
 
   return (
     <div className={styles.root}>
@@ -214,6 +225,7 @@ const ProfilePage = (props: Props): JSX.Element => {
                 scroll: false
               })
             }
+            defaultPage={1}
             totalPages={matches?.totalPages}
           />
         </Paper>

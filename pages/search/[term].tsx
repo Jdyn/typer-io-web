@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import Search from '../../components/Account/Search';
 import Layout from '../../components/Layout';
-import useNextQueryParams from '../../util/useNextQueryParam';
 
 const SearchContainer = (): JSX.Element => {
   const { term, page } = useRouter().query;

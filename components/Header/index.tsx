@@ -20,7 +20,9 @@ const Header = (): JSX.Element => {
     event.preventDefault();
 
     setForm({ ...form, search: '' });
-    router.push(`/search/${form.search}`);
+    if (form.search) {
+      router.push(`/search/${form.search}`);
+    }
   };
 
   return (

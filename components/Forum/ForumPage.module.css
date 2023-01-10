@@ -4,13 +4,12 @@
   margin: 145px auto 125px auto;
   padding: 0px 10px;
   max-width: 1250px;
-  justify-content: center;
   grid-template-rows: min-content 1fr min-content;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1250px) {
   .root {
     grid-template-rows: 1fr;
     grid-template-columns: min-content 640px min-content;

@@ -1,5 +1,4 @@
 .root {
-  display: flex !important;
   padding: 10px;
   border: 2px solid var(--border);
   background: var(--seconary-main);
@@ -10,7 +9,7 @@
 
 @media (min-width: 815px) {
   .root {
-    flex-basis: 275px !important;
+    min-width: 275px !important;
     max-width: none !important;
   }
 }

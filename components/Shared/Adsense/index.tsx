@@ -32,7 +32,7 @@ const Adsense = ({
   }, []);
 
   return (
-    <section className={className}>
+    <section className={className} style={{ display: 'flex', justifyContent: 'center' }}>
       <div id={slot} key={path} className={styles.root}>
         <ins
           key={path}

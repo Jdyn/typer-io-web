@@ -21,7 +21,7 @@
   flex-direction: column;
   grid-area: main;
   gap: 5px;
-  padding: 10px 0px 10px 10px;
+  padding: 10px;
   overflow-y: scroll;
   /* height: 750px; */
 }
@@ -51,6 +51,7 @@
   padding: 12px 12px;
   cursor: pointer;
   border-radius: 6px;
+  text-decoration: none;
   color: var(--text);
 }
 

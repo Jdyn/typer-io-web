@@ -196,7 +196,7 @@ const ProfilePage = (props: Props): JSX.Element => {
                   <div className={styles.matchEntry} key={item.id}>
                     <div className={styles.count}>
                       {matches?.page > 1 ? (
-                        <span>{25 * (matches?.page - 1) + index + 1}</span>
+                        <span>{matches.data.length * (matches?.page - 1) + index + 1}</span>
                       ) : (
                         <span>{index + 1}</span>
                       )}

@@ -76,4 +76,5 @@ export interface ListResponse<T> {
   page: number;
   count: number;
   totalPages: number;
+  pageSize?: number;
 }

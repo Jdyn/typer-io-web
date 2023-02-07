@@ -141,6 +141,26 @@
   justify-content: flex-start;
 }
 
+.settingWrapper > p {
+  margin: 0;
+  color: var(--subtext)
+}
+
+.input {
+  display: flex;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin: 10px 0;
+  text-align: left;
+  overflow: hidden;
+  background: var(--primary-main);
+  color: var(--text);
+  transition: all 0.2s ease;
+  border: 2px solid var(--border);
+}
+
 .settingButton {
   display: flex;
   background: var(--primary-main);

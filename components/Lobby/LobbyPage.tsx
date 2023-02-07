@@ -111,6 +111,15 @@ const LobbyPage = () => {
                   </button>
                 ))}
               </div>
+              <h3>Start Time</h3>
+              <div className={styles.settingWrapper}>
+                <p>The amount of seconds until the match starts (Default: 10 seconds)</p>
+                <input
+                  type="number"
+                  className={styles.input}
+                  onChange={(e) => handleSettingsUpdate({ roomTime: e.target.value })}
+                />
+              </div>
               {client.isHost && (
                 <>
                   <h3>Kick Players</h3>

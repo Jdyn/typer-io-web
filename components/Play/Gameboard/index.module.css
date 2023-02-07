@@ -96,7 +96,7 @@
 .word {
   margin-right: 4px;
   font-family: 'dinn' !important;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 500;
   z-index: 10;
   letter-spacing: 0.025rem;

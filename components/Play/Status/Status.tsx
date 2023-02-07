@@ -139,6 +139,10 @@ const PlayStatus = (props: Props): JSX.Element => {
         return { color: styles.blue, text: 'Connecting to server...' };
       }
 
+      if (currrentClient?.gamePiece?.isComplete) {
+        return { color: styles.blue, text: 'Complete!' };
+      }
+
       if (isStarted) {
         return { color: styles.green, text: 'GO!' };
       }
@@ -169,7 +173,16 @@ const PlayStatus = (props: Props): JSX.Element => {
     };
 
     setHeader(updateHeader());
-  }, [gameboard, state, socket, room, setHeader, isCustom, isSolo]);
+  }, [
+    gameboard,
+    state,
+    socket,
+    room,
+    setHeader,
+    isCustom,
+    isSolo,
+    currrentClient?.gamePiece?.isComplete
+  ]);
 
   return (
     <>

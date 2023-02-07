@@ -144,7 +144,7 @@ const PlayStatus = (props: Props): JSX.Element => {
       }
 
       if (!isOver && connected) {
-        if (time > 10) {
+        if (time > 10 && !isCustom) {
           return { color: styles.blue, text: 'Looking for Players...' };
         }
 

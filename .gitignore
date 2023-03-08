@@ -1,9 +1,9 @@
 /node_modules
 /coverage
 /build
-/.next
-/.vscode
-
+.next
+.vscode
+.idea
 .DS_Store
 .env.local
 

@@ -17,8 +17,8 @@ const PlayContainer = (): JSX.Element => {
 
   useEffect(() => {
     if (!socket.connected && !socket.pending && !socket.errored) {
-      const token: string | null = localStorage.getItem('token') || null;
-      let id: string | null = localStorage.getItem('id') || null;
+      const token = localStorage.getItem('token');
+      let id = localStorage.getItem('id') ?? null;
 
       if (!id) {
         localStorage.setItem('id', nanoid(6));

@@ -21,10 +21,7 @@ const Layout = (props: Props): JSX.Element => {
     <>
       <Head>
         <title>{`Typer - ${title}` || 'Typer - The Modern Multiplayer Typing Race'}</title>
-        <link
-          rel="icon"
-          href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/racing-car_1f3ce.png"
-        />
+        <link rel="icon" href="https://emojigraph.org/media/microsoft/racing-car_1f3ce-fe0f.png" />
         <meta
           name="description"
           content={

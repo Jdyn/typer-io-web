@@ -1,16 +1,16 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
-export default function getInitialTheme() {
-  if (typeof window !== 'undefined') {
-    const persistedColorPreference = window.localStorage.getItem('theme');
+const getInitialTheme = () => {
+  const persistedColorPreference = window.localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (persistedColorPreference === 'light' || persistedColorPreference === 'dark') {
-      return persistedColorPreference;
-    }
-  }
+  if (persistedColorPreference === 'light' || persistedColorPreference === 'dark')
+    return persistedColorPreference;
 
-  return 'dark';
-}
+  if (systemPrefersDark.matches) return 'dark';
+
+  return 'light';
+};
 
 export const ThemeContext = createContext(null);
 
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props): JSX.Element => {
-  const [theme, rawSetTheme] = useState(getInitialTheme);
+  const [theme, rawSetTheme] = useState(null);
 
   const setTheme = (newTheme: string): void => {
     rawSetTheme(newTheme);
@@ -28,6 +28,10 @@ export const ThemeProvider = ({ children }: Props): JSX.Element => {
       window.localStorage.setItem('theme', newTheme);
     }
   };
+
+  useEffect(() => {
+    rawSetTheme(getInitialTheme());
+  }, []);
 
   useEffect(() => {
     document.body.className = theme;

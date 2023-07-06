@@ -4,8 +4,9 @@
   margin: 145px auto 125px auto;
   padding: 0px 10px;
   max-width: 1250px;
-  grid-template-columns: 1fr 640px 1fr;
-  grid-template-rows: 1fr;
+  /* grid-template-columns: 1fr 640px 1fr;
+  grid-template-rows: 1fr; */
+	grid-template-areas: '. main .';
   gap: 20px;
 }
 
@@ -25,6 +26,7 @@
   flex-direction: column;
   position: relative;
   width: 100%;
+	grid-area: main;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: 'main';

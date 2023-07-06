@@ -35,7 +35,7 @@ const cards = [
   }
 ];
 
-const updated = formatTime(1669171241995);
+const updated = formatTime(1688674908738);
 
 const HomePage = () => {
   return (
@@ -75,14 +75,14 @@ const HomePage = () => {
                 >
                   Join the Discord ➜
                 </a>
-                <a
+                {/* <a
                   className={styles.support}
                   href="https://www.buymeacoffee.com/typer"
                   target="_blank"
                   rel="noreferrer"
                 >
                   Support the Creator ➜
-                </a>
+                </a> */}
                 <h3>(Nov. 22nd, 2022) Updates :</h3>
                 <div className={styles.list}>
                   <ul>

@@ -54,16 +54,16 @@ const Post = (props: Props) => {
 
   return (
     <div className={styles.root}>
-      <section>
-        <Adsense client="ca-pub-3148839588626786" slot="1319118588" format="auto" />
-      </section>
+      <Adsense client="ca-pub-3148839588626786" slot="1319118588" format="auto" />
       <div className={styles.post}>
         <div className={styles.postContainer}>
           <Banner>
             <h3>Discussions</h3>
-            <button type="button" className={styles.backButton} onClick={() => router.back()}>
-              Back
-            </button>
+            <div>
+              <button type="button" className={styles.backButton} onClick={() => router.back()}>
+                Back
+              </button>
+            </div>
           </Banner>
           <div className={styles.postContent}>
             {post ? (
@@ -160,14 +160,12 @@ const Post = (props: Props) => {
           </div>
         </div>
       </div>
-      <section>
-        <Adsense
-          client="ca-pub-3148839588626786"
-          slot="1319118588"
-          style={{ display: 'block' }}
-          format="auto"
-        />
-      </section>
+      <Adsense
+        client="ca-pub-3148839588626786"
+        slot="1319118588"
+        style={{ display: 'block' }}
+        format="auto"
+      />
     </div>
   );
 };

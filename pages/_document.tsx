@@ -17,11 +17,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
+          {/* <script
             data-ad-client="ca-pub-3148839588626786"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          />
+          /> */}
           <meta
             name="keywords"
             content="typer,typing,typerio,race with friends,free typing games,typing,typing test,wpm,typing software,typing game,typing practice,free typing program,best typing game,typing skills,free typing test"

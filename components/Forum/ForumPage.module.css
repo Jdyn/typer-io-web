@@ -1,16 +1,14 @@
 .root {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
   margin: 145px auto 125px auto;
   padding: 0px 10px;
-  max-width: 1250px;
-  gap: 20px;
+  max-width: 660px;
+  gap: 12px;
 }
 
 @media (min-width: 1250px) {
-  .root {
-    grid-template-areas: '. main .';
-  }
 
   .portrait {
     display: none;
@@ -131,10 +129,11 @@
 }
 
 .notice {
-  padding: 6px;
+  display: flex;
+  text-align: center;
+  padding: 12px;
   border-radius: 8px;
   color: white;
-  margin: 5px;
   font-size: 0.9rem;
   background: var(--red);
 }

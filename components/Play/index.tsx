@@ -158,7 +158,7 @@ const Play = (props: Props) => {
               format="fluid"
             />
           </section>
-          <div className={styles.tips}>
+          {/* <div className={styles.tips}>
             <h2>Typing on Typer.io</h2>
             <p>
               Want to be apart of the community? Join the{' '}
@@ -180,7 +180,7 @@ const Play = (props: Props) => {
               will be saved and you can view your progress over time. Registered members are also
               able to post messages on our forum.
             </p>
-          </div>
+          </div> */}
         </section>
         <Gameboard
           wrongIndex={editorState.wrongIndex}
@@ -232,7 +232,7 @@ const Play = (props: Props) => {
               format="fluid"
             />
           </section>
-          <div className={styles.tips}>
+          {/* <div className={styles.tips}>
             <h2>Helpful Tips</h2>
             <ul>
               <li>
@@ -252,7 +252,7 @@ const Play = (props: Props) => {
                 quicker.
               </li>
             </ul>
-          </div>
+          </div> */}
         </section>
       </div>
       <div className={styles.notice}>

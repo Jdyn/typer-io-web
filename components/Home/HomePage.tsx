@@ -34,8 +34,8 @@ const cards = [
     route: '/lobby'
   }
 ];
-
-const updated = formatTime(1688674908738);
+// Prev: 1688674908738
+const updated = formatTime(1764053700841);
 
 const HomePage = () => {
   return (
@@ -83,11 +83,11 @@ const HomePage = () => {
                 >
                   Support the Creator ➜
                 </a> */}
-                <h3>(Nov. 22nd, 2022) Updates :</h3>
+                <h3>(Nov. 24nd, 2025) Updates :</h3>
                 <div className={styles.list}>
                   <ul>
+                    <li>Improved email verification</li>
                     <li>Added daily match goal</li>
-                    <li>Updated match connectivity</li>
                     <li>You can now use custom text in private lobbies</li>
                   </ul>
                 </div>

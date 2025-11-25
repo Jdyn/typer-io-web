@@ -1,16 +1,45 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Layout from '../../../components/Layout';
 import PrivateRoute from '../../../components/Shared/PrivateRoute';
 import { useValidateEmailQuery } from '../../../services/account';
+import { authenticate } from '../../../store/session/actions';
 
 const SendAccountEmailValidation = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { token } = router.query;
 
-  const { data } = useValidateEmailQuery(token as string);
+  const { data, isSuccess, isLoading } = useValidateEmailQuery(token as string, {
+    skip: !token
+  });
 
-  if (typeof token === 'undefined') return null;
+  useEffect(() => {
+    // When email validation is successful, refresh the user data
+    if (isSuccess && data?.ok) {
+      dispatch(authenticate() as any);
+    }
+  }, [isSuccess, data?.ok, dispatch]);
+
+  if (typeof token === 'undefined' || isLoading) {
+    return (
+      <Layout>
+        <main
+          style={{
+            display: 'flex',
+            height: '100vh',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <h1>Email Verification</h1>
+          <p>Verifying your email...</p>
+        </main>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

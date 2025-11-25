@@ -61,7 +61,10 @@ const ProfileSettingsPage = (): JSX.Element => {
   };
 
   const parseErrors = () => {
+    if (!error) return null;
+
     const { errors } = (error as ApiErrorResponse).data;
+
     return (
       <>
         {Object.keys(errors).map((key) => (
@@ -94,7 +97,7 @@ const ProfileSettingsPage = (): JSX.Element => {
               </div>
               <div className={styles.item}>
                 <div className={styles.label}>
-                  Email:
+                  <span>Email:</span>
                   {sessionUser?.emailVerified === false && !EmailSent ? (
                     <Button onClick={() => triggerEmail(null)}>Validate Email</Button>
                   ) : (

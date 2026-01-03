@@ -3,7 +3,7 @@ import { ReactNode, forwardRef } from 'react';
 import styles from './index.module.css';
 import Loader from '../Loader';
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   secondary?: boolean;
@@ -17,15 +17,26 @@ interface Props {
 }
 
 const Button = forwardRef((props: Props, ref: React.Ref<HTMLButtonElement>): JSX.Element => {
-  const { children, secondary, onClick, margin, padding, isPending, width, color, large, ...rest } =
-    props;
+  const {
+    children,
+    secondary,
+    onClick,
+    margin,
+    padding,
+    isPending,
+    width,
+    color,
+    large,
+    disabled,
+    ...rest
+  } = props;
 
   return (
     <button
       type="submit"
       ref={ref}
       onClick={onClick}
-      disabled={isPending || false}
+      disabled={isPending || disabled}
       className={`
         ${styles.button}
         ${secondary ? styles.secondary : styles.primary}

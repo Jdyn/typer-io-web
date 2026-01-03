@@ -26,6 +26,15 @@ const RecentMatches = (): JSX.Element => {
               matches.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
+                  <div className={styles.portrait}>
+                    {item.user?.avatarUrl && (
+                      <img
+                        src={item.user.avatarUrl}
+                        alt={`${item.user.username}'s avatar`}
+                        className={styles.avatarImage}
+                      />
+                    )}
+                  </div>
                   <div className={styles.content}>
                     <>
                       <span className={item.user ? styles.verified : ''}>
@@ -36,12 +45,12 @@ const RecentMatches = (): JSX.Element => {
                             href={`/u/${item.user.username}`}
                           >
                             {item.user?.username}
+                            {renderBadge(item.user)}
                           </Link>
                         ) : (
                           item.nickname
                         )}
                       </span>
-                      {renderBadge(item.user)}
                     </>
                     <div className={styles.timestamp}>{formatTime(item.created_at)}</div>
                   </div>

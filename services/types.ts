@@ -21,14 +21,19 @@ export interface Match {
   accuracy: number;
   created_at: string;
   errors: number;
-  formattedTime: string;
+  formattedTime?: string;
   id: number;
   nickname: string;
-  placed: number;
-  snippetTitle: string;
-  time: number;
+  placed?: number;
+  snippetTitle?: string;
+  time?: number;
   difficulty: string;
-  user: { id: number; isAdmin: boolean; username: string };
+  user?: {
+    id: number;
+    isAdmin: boolean;
+    username: string;
+    avatarUrl?: string | null;
+  };
   wpm: number;
 }
 

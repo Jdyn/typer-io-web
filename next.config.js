@@ -12,7 +12,7 @@ const DEV_SOCKET_URL = 'localhost:8000';
 const PROD_BASE_URL = 'https://typer.io';
 const DEV_BASE_URL = 'http://localhost:3000';
 
-const DEV_SERVERS = false;
+const DEV_SERVERS = true;
 
 module.exports = {
   productionBrowserSourceMaps: false,

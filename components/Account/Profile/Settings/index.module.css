@@ -113,3 +113,58 @@
 .dropdownList > span {
   fill: var(--primary-main);
 }
+
+.avatarSection {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+
+.avatarSection > h3 {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.avatarPreview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-main);
+}
+
+.avatarPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  color: var(--subtext);
+  font-size: 14px;
+  text-align: center;
+}
+
+.avatarActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.avatarInfo {
+  color: var(--subtext);
+  font-size: 12px;
+}

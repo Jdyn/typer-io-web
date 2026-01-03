@@ -23,7 +23,7 @@ const userLoggedOutAction: CaseReducer<SessionState, PayloadAction<void>> = (sta
   state.isLoggedIn = false;
 };
 
-const userUpdatedAction: CaseReducer<SessionState, PayloadAction<SessionUser>> = (
+const userUpdatedAction: CaseReducer<SessionState, PayloadAction<Partial<SessionUser>>> = (
   state,
   action
 ): void => {

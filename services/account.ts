@@ -144,6 +144,44 @@ const accountApi = createApi({
         url: `/validate_email/${token}`,
         method: 'POST'
       })
+    }),
+    uploadAvatar: builder.mutation<{ ok: boolean; result: { avatarUrl: string } }, FormData>({
+      query: (formData) => ({
+        url: '/account/avatar',
+        method: 'PUT',
+        body: formData,
+        prepareHeaders: (headers) => {
+          // Remove Content-Type to let browser set it with boundary for multipart/form-data
+          headers.delete('content-type');
+          return headers;
+        }
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'User' }],
+      async onQueryStarted(_payload, { dispatch, queryFulfilled, getState }) {
+        try {
+          const { data } = await queryFulfilled;
+          // Update session user with new avatar URL
+          dispatch(userUpdated({ avatarUrl: data.result.avatarUrl }));
+        } catch (error) {
+          // Error handled by component
+        }
+      }
+    }),
+    deleteAvatar: builder.mutation<void, void>({
+      query: () => ({
+        url: '/account/avatar',
+        method: 'DELETE'
+      }),
+      invalidatesTags: [{ type: 'User' }],
+      async onQueryStarted(_payload, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          // Update session user to remove avatar URL
+          dispatch(userUpdated({ avatarUrl: null }));
+        } catch (error) {
+          // Error handled by component
+        }
+      }
     })
   })
 });
@@ -158,7 +196,9 @@ export const {
   useValidateEmailQuery,
   useLazySendPasswordResetEmailQuery,
   useLazyResetPasswordQuery,
-  useGetUserGoalQuery
+  useGetUserGoalQuery,
+  useUploadAvatarMutation,
+  useDeleteAvatarMutation
 } = accountApi;
 
 export default accountApi;

@@ -43,6 +43,7 @@ export interface User {
   country: string;
   insertedAt: string;
   bio: string;
+  avatarUrl?: string | null;
 }
 
 export type SessionUser = User & {
@@ -52,6 +53,7 @@ export type SessionUser = User & {
   goal?: number;
   gender?: string;
   emailVerified: boolean;
+  avatarUrl?: string | null;
 };
 
 export interface SignupPayload {
@@ -87,4 +89,5 @@ export interface ProfileUser {
   matches: Match[];
   posts: MiniPost[];
   username: string;
+  avatarUrl?: string | null;
 }

@@ -83,7 +83,15 @@ const AuthProfile = (props: Props): JSX.Element => {
                 <span>{`Daily Goal: ${progress} / ${session.user.goal}`}</span>
               )}
             </div>
-            <div className={styles.portrait} />
+            <div className={styles.portrait}>
+              {session.user.avatarUrl && (
+                <img
+                  src={session.user.avatarUrl}
+                  alt={`${session.user.username}'s avatar`}
+                  className={styles.avatarImage}
+                />
+              )}
+            </div>
           </button>
           {isOpen ? (
             <div className={styles.modal}>

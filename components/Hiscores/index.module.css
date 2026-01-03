@@ -10,6 +10,25 @@
   gap: 20px;
 }
 
+.portrait {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 @media only screen and (max-width: 814px) {
   .root {
     grid-template-rows: min-content min-content min-content;

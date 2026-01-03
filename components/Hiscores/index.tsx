@@ -137,6 +137,15 @@ const Hiscores = (): JSX.Element => {
                       <span>{index + 1}</span>
                     )}
                   </div>
+                  <div className={styles.portrait}>
+                    {(item.user?.avatarUrl) && (
+                      <img
+                        src={item.user?.avatarUrl}
+                        alt={`${item.username || item.user?.username}'s avatar`}
+                        className={styles.avatarImage}
+                      />
+                    )}
+                  </div>
                   <div className={styles.name}>
                     {item.username || item.user?.username}
                     {renderBadge(item)}

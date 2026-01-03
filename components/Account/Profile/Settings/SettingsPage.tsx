@@ -10,7 +10,9 @@ import { useSelector } from 'react-redux';
 import countries from '../../../../lib/countries';
 import {
   useLazySendValidateEmailQuery,
-  useUpdateAccountMutation
+  useUpdateAccountMutation,
+  useUploadAvatarMutation,
+  useDeleteAvatarMutation
 } from '../../../../services/account';
 import { ApiErrorResponse } from '../../../../services/types';
 import { AppState } from '../../../../store';
@@ -24,6 +26,11 @@ const ProfileSettingsPage = (): JSX.Element => {
   const sessionUser = useSelector((state: AppState) => state.session.user) || null;
   const [updateAccount, { isSuccess, isError, error }] = useUpdateAccountMutation();
   const [triggerEmail, { isSuccess: EmailSent }] = useLazySendValidateEmailQuery();
+  const [uploadAvatar, { isLoading: isUploading, error: uploadError }] = useUploadAvatarMutation();
+  const [deleteAvatar, { isLoading: isDeleting, error: deleteError }] = useDeleteAvatarMutation();
+
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
   const [form, setForm] = useState<SettingsForm>({
     email: sessionUser?.email ?? '',
@@ -74,12 +81,137 @@ const ProfileSettingsPage = (): JSX.Element => {
     );
   };
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (!validTypes.includes(file.type)) {
+      alert('Please upload a JPG or PNG image');
+      return;
+    }
+
+    // Validate file size (2MB)
+    const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+    if (file.size > maxSize) {
+      alert('Image is too large. Please choose an image under 2MB');
+      return;
+    }
+
+    setAvatarFile(file);
+
+    // Create preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setAvatarPreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleUpload = async () => {
+    if (!avatarFile) return;
+
+    const formData = new FormData();
+    formData.append('avatar', avatarFile);
+
+    try {
+      await uploadAvatar(formData).unwrap();
+      setAvatarFile(null);
+      setAvatarPreview(null);
+    } catch (err) {
+      // Error handled by RTK Query and displayed in UI
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to remove your avatar?')) return;
+
+    try {
+      await deleteAvatar().unwrap();
+      setAvatarPreview(null);
+    } catch (err) {
+      // Error handled by RTK Query and displayed in UI
+    }
+  };
+
+  const handleChooseFile = () => {
+    document.getElementById('avatar-upload')?.click();
+  };
+
   return (
     <div className={styles.root}>
       <section className={styles.settings}>
         <Paper title="Account Settings">
           <div className={styles.container}>
             <div className={styles.wrapper}>
+              {sessionUser?.isAdmin && (
+                <div className={styles.avatarSection}>
+                  <h3>Profile Avatar</h3>
+                  <div className={styles.avatarContainer}>
+                    <div className={styles.avatarPreview}>
+                      {avatarPreview || sessionUser?.avatarUrl ? (
+                        <img src={avatarPreview || sessionUser?.avatarUrl} alt="Avatar preview" />
+                      ) : (
+                        <div className={styles.avatarPlaceholder}>No Avatar</div>
+                      )}
+                    </div>
+
+                    <div className={styles.avatarActions}>
+                      <input
+                        type="file"
+                        id="avatar-upload"
+                        accept="image/jpeg,image/jpg,image/png"
+                        onChange={handleFileChange}
+                        style={{ display: 'none' }}
+                      />
+
+                      <Button
+                        padding="5px 20px"
+                        onClick={handleChooseFile}
+                        isPending={isUploading || isDeleting}
+                      >
+                        Choose File
+                      </Button>
+
+                      {avatarFile && (
+                        <Button
+                          padding="5px 20px"
+                          onClick={handleUpload}
+                          disabled={isUploading || isDeleting}
+                        >
+                          {isUploading ? 'Uploading...' : 'Upload'}
+                        </Button>
+                      )}
+
+                      {sessionUser?.avatarUrl && !avatarFile && (
+                        <Button
+                          padding="5px 20px"
+                          onClick={handleDelete}
+                          disabled={isUploading || isDeleting}
+                        >
+                          {isDeleting ? 'Removing...' : 'Remove Avatar'}
+                        </Button>
+                      )}
+                    </div>
+
+                    {uploadError && (
+                      <div className={styles.error}>
+                        {(uploadError as any)?.data?.error || 'Failed to upload avatar'}
+                      </div>
+                    )}
+
+                    {deleteError && <div className={styles.error}>Failed to remove avatar</div>}
+
+                    <div className={styles.avatarInfo}>
+                      <small>
+                        JPG or PNG only. Max size: 2MB. Image will be resized to 256x256.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div className={styles.item}>
                 <div className={styles.label}>Username:</div>
                 <span className={styles.content}>{sessionUser?.username}</span>

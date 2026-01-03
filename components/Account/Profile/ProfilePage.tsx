@@ -47,7 +47,15 @@ const ProfilePage = (props: Props): JSX.Element => {
         </Banner>
         <div className={styles.profileContainer}>
           <div className={styles.wrapper}>
-            <div className={styles.profilePortrait} />
+            <div className={styles.profilePortrait}>
+              {user?.avatarUrl && (
+                <img
+                  src={user.avatarUrl}
+                  alt={`${user.username}'s avatar`}
+                  className={styles.profilePortraitImage}
+                />
+              )}
+            </div>
             <div className={styles.content}>
               <h3>
                 {user?.username} {user?.isAdmin && <span className={styles.admin}>Creator</span>}

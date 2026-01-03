@@ -52,6 +52,15 @@ const Hiscores = (): JSX.Element => {
               hiscores.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
+                  <div className={styles.portrait}>
+                    {item.user?.avatarUrl && (
+                      <img
+                        src={item.user?.avatarUrl}
+                        alt={`${item.user?.username}'s avatar`}
+                        className={styles.avatarImage}
+                      />
+                    )}
+                  </div>
                   <div className={styles.content}>
                     {item.user?.username ? (
                       <Link
@@ -60,6 +69,7 @@ const Hiscores = (): JSX.Element => {
                         href={`/u/${item.user.username}`}
                       >
                         {item.user?.username}
+                        {renderBadge(item.user)}
                       </Link>
                     ) : (
                       item.nickname
@@ -69,7 +79,6 @@ const Hiscores = (): JSX.Element => {
                       <span className={`${styles[item.difficulty]}`}>{item.difficulty}</span>,{' '}
                       {formatTime(item.created_at)}
                     </div>
-                    {renderBadge(item.user)}
                   </div>
                   <div className={styles.item}>{item.accuracy}%</div>
                   <div className={styles.item}>

@@ -48,7 +48,7 @@ export interface MiniPost {
   title: string;
   updatedAt: string;
   upvotes: number;
-  user: { isAdmin: boolean; insertedAt: string; username: string };
+  user: { isAdmin: boolean; insertedAt: string; username: string; avatarUrl?: string | null };
   visitCount: string;
 }
 
@@ -61,7 +61,7 @@ export interface Post {
   title: string;
   updatedAt: string;
   upvotes: number;
-  user: { isAdmin: boolean; insertedAt: string; username: string; id?: number };
+  user: { isAdmin: boolean; insertedAt: string; username: string; id?: number; avatarUrl?: string | null };
   visitCount: string;
   comments?: Comment[];
 }

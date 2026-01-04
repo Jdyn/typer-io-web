@@ -3,7 +3,7 @@
   flex-direction: column;
   position: relative;
   border-top: 2px solid var(--border);
-  padding: 20px 0 10px 60px;
+  padding: 20px 0 10px 48px;
   min-height: 125px;
 }
 
@@ -11,7 +11,7 @@
   .container {
     padding-left: 10px !important;
   }
-  
+
   .portrait {
     display: none;
   }
@@ -102,12 +102,10 @@
   padding: 0 8px;
 }
 
-.portrait {
+.avatar {
   position: absolute;
   top: 15px;
   left: 0;
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
-  border: 3px solid var(--border);
+  border: 2px solid var(--border);
 }

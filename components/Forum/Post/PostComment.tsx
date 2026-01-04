@@ -5,6 +5,7 @@ import formatTime from '../../../util/formatTime';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
 import TextBox from '../../Shared/TextBox';
+import Avatar from '../../Shared/Avatar';
 import { useAddPostCommentMutation } from '../../../services/forum';
 import { Comment } from '../../../services/types';
 
@@ -37,7 +38,13 @@ const PostComment = (props: Props): JSX.Element => {
     <>
       <div className={styles.container} style={{ marginLeft: `${4 * comment.depth}vw` }}>
         <div className={styles.wrapper}>
-          <div className={styles.portrait} />
+          <Avatar
+            size={48}
+            marginRight={0}
+            src={comment.user?.avatarUrl}
+            alt={`${comment.user?.username}'s avatar`}
+            className={styles.avatar}
+          />
 
           <div className={styles.content}>
             <h3 className={styles.username}>

@@ -9,6 +9,7 @@ import { ApiErrorResponse } from '../../../services/types';
 import { AppState } from '../../../store';
 import formatTime from '../../../util/formatTime';
 import MiniListPost from '../../Home/RecentPosts/MiniListPost';
+import Avatar from '../../Shared/Avatar';
 import Banner from '../../Shared/Banner';
 import Button from '../../Shared/Button';
 import Paginate from '../../Shared/Paginate';
@@ -47,15 +48,7 @@ const ProfilePage = (props: Props): JSX.Element => {
         </Banner>
         <div className={styles.profileContainer}>
           <div className={styles.wrapper}>
-            <div className={styles.profilePortrait}>
-              {user?.avatarUrl && (
-                <img
-                  src={user.avatarUrl}
-                  alt={`${user.username}'s avatar`}
-                  className={styles.profilePortraitImage}
-                />
-              )}
-            </div>
+            <Avatar src={user?.avatarUrl} alt={`${user?.username}'s avatar`} size={100} />
             <div className={styles.content}>
               <h3>
                 {user?.username} {user?.isAdmin && <span className={styles.admin}>Creator</span>}

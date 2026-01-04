@@ -37,7 +37,6 @@
 .postContainer {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   box-shadow: var(--shadow);
   background: var(--primary-main);
   border-radius: 16px;
@@ -71,7 +70,21 @@
   padding: 10px 0px;
 }
 
-.header > h1 {
+.headerWithAvatar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header > h1,
+.headerContent > h1 {
   margin: 0;
   font-size: 1.6rem;
   overflow-wrap: break-word;
@@ -79,8 +92,28 @@
   word-wrap: break-word;
 }
 
-.header > span {
+.header > span,
+.headerContent > span {
   color: var(--subtext);
+}
+
+.portrait {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .rating {

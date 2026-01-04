@@ -16,7 +16,7 @@ const formatTime = (date: string | number): string => {
   let diff = Math.round((now.valueOf() - newDate.valueOf()) / 1000) as number;
 
   for (let t = 0; t < times.length; t += 1) {
-    if (diff < times[t][1]) {
+    if (diff < (times[t][1] as number)) {
       if (t === 1 || t === 0) {
         return 'Just now';
       }
@@ -27,7 +27,7 @@ const formatTime = (date: string | number): string => {
     }
 
     // If time is greater than a year...
-    if (diff > times[6][1]) {
+    if (diff > (times[6][1] as number)) {
       const time = times[6][1] as number;
       diff = Math.round(diff / time);
       return `${diff}  ${times[6][0]}${diff === 1 ? ' ago' : 's ago'}`;

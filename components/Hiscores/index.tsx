@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import Paper from '../Shared/Paper';
+import Avatar from '../Shared/Avatar';
 import IFilter from '../Shared/Filter';
 import formatTime from '../../util/formatTime';
 import { useGetUserHiscoresQuery } from '../../services/hiscores';
@@ -137,15 +138,7 @@ const Hiscores = (): JSX.Element => {
                       <span>{index + 1}</span>
                     )}
                   </div>
-                  <div className={styles.portrait}>
-                    {(item.user?.avatarUrl) && (
-                      <img
-                        src={item.user?.avatarUrl}
-                        alt={`${item.username || item.user?.username}'s avatar`}
-                        className={styles.avatarImage}
-                      />
-                    )}
-                  </div>
+                  <Avatar src={item.user?.avatarUrl} alt={`${item.username || item.user?.username}'s avatar`} />
                   <div className={styles.name}>
                     {item.username || item.user?.username}
                     {renderBadge(item)}

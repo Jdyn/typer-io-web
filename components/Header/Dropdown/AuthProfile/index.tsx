@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from '../../../Shared/Button';
+import Avatar from '../../../Shared/Avatar';
 import styles from './index.module.css';
 import { ThemeContext } from '../../../../util/getInitialColorMode';
 import { useAuthenticateMutation, useGetUserGoalQuery } from '../../../../services/account';
@@ -83,15 +84,12 @@ const AuthProfile = (props: Props): JSX.Element => {
                 <span>{`Daily Goal: ${progress} / ${session.user.goal}`}</span>
               )}
             </div>
-            <div className={styles.portrait}>
-              {session.user.avatarUrl && (
-                <img
-                  src={session.user.avatarUrl}
-                  alt={`${session.user.username}'s avatar`}
-                  className={styles.avatarImage}
-                />
-              )}
-            </div>
+            <Avatar
+              src={session.user.avatarUrl}
+              alt={`${session.user.username}'s avatar`}
+              size={40}
+              className={styles.avatar}
+            />
           </button>
           {isOpen ? (
             <div className={styles.modal}>

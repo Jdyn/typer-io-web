@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useGetHiscoresQuery } from '../../../services/hiscores';
 import { AppState } from '../../../store';
 import formatTime from '../../../util/formatTime';
+import Avatar from '../../Shared/Avatar';
 import IFilter from '../../Shared/Filter';
 import Paper from '../../Shared/Paper';
 import styles from './index.module.css';
@@ -52,15 +53,7 @@ const Hiscores = (): JSX.Element => {
               hiscores.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
-                  <div className={styles.portrait}>
-                    {item.user?.avatarUrl && (
-                      <img
-                        src={item.user?.avatarUrl}
-                        alt={`${item.user?.username}'s avatar`}
-                        className={styles.avatarImage}
-                      />
-                    )}
-                  </div>
+                  <Avatar src={item.user?.avatarUrl} alt={`${item.user?.username}'s avatar`} />
                   <div className={styles.content}>
                     {item.user?.username ? (
                       <Link

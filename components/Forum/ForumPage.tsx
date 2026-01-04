@@ -8,8 +8,9 @@ import Banner from '../Shared/Banner';
 import { useGetPostsQuery } from '../../services/forum';
 import useNextQueryParams from '../../util/useNextQueryParam';
 
-import styles from './ForumPage.module.css';
+import Avatar from '../Shared/Avatar';
 import Paginate from '../Shared/Paginate';
+import styles from './ForumPage.module.css';
 
 const Adsense = dynamic(() => import('../Shared/Adsense'), {
   ssr: false
@@ -48,7 +49,12 @@ const ForumPage = (): JSX.Element => {
           <div className={styles.feedWrapper}>
             {feed?.data?.map((post) => (
               <li className={styles.feedItem} key={post.id}>
-                {/* <div className={styles.portrait} /> */}
+                <Avatar
+                  size={48}
+                  src={post.user?.avatarUrl}
+                  alt={`${post.user?.username}'s avatar`}
+                  marginRight={0}
+                />
                 <div className={styles.feedContent}>
                   <Link
                     href={`/forum/post/${post.id}/${encodeURIComponent(

@@ -8,6 +8,7 @@ import formatTime from '../../../util/formatTime';
 import TextBox from '../../Shared/TextBox';
 import { AppState } from '../../../store';
 import Button from '../../Shared/Button';
+import Avatar from '../../Shared/Avatar';
 import Banner from '../../Shared/Banner';
 import PostComment from './PostComment';
 import {
@@ -65,6 +66,7 @@ const Post = (props: Props) => {
               </button>
             </div>
           </Banner>
+
           <div className={styles.postContent}>
             {post ? (
               <>
@@ -76,6 +78,7 @@ const Post = (props: Props) => {
                           delete post
                         </Button>
                       </AlertDialog.Trigger>
+
                       <AlertDialog.Portal>
                         <AlertDialog.Overlay className={styles.overlay} />
                         <AlertDialog.Content className={styles.dialog}>
@@ -103,16 +106,27 @@ const Post = (props: Props) => {
                     </AlertDialog.Root>
                   </div>
                 )}
+
                 <div className={styles.header}>
-                  <h1>{post.title}</h1>
-                  <span>
-                    Posted by{' '}
-                    <Link href={`/u/${post.user?.username}`}>
-                      <span className={styles.nameLink}>{post.user?.username}</span>
-                    </Link>{' '}
-                    {post.user?.isAdmin && <span className={styles.admin}>Creator</span>}
-                    {formatTime(post.createdAt)}
-                  </span>
+                  <div className={styles.headerWithAvatar}>
+                    <Avatar
+                      size={48}
+                      marginRight={0}
+                      src={post.user?.avatarUrl}
+                      alt={`${post.user?.username}'s avatar`}
+                    />
+                    <div className={styles.headerContent}>
+                      <h1>{post.title}</h1>
+                      <span>
+                        Posted by{' '}
+                        <Link href={`/u/${post.user?.username}`}>
+                          <span className={styles.nameLink}>{post.user?.username}</span>
+                        </Link>{' '}
+                        {post.user?.isAdmin && <span className={styles.admin}>Creator</span>}
+                        {formatTime(post.createdAt)}
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <p className={styles.body}>{post.body}</p>
                 <div className={styles.rating} />

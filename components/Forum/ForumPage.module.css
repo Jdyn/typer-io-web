@@ -9,7 +9,6 @@
 }
 
 @media (min-width: 1250px) {
-
   .portrait {
     display: none;
   }
@@ -42,7 +41,7 @@
 .feed {
   display: flex;
   flex-direction: column;
-	grid-area: main;
+  grid-area: main;
   border-radius: 16px;
   box-shadow: var(--shadow);
   background: var(--primary-main);
@@ -82,12 +81,20 @@
 
 .portrait {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   align-self: center;
   border: 2px solid var(--border);
   margin: -3px 10px -3px -3px;
+  overflow: hidden;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .title {

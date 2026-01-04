@@ -14,15 +14,59 @@
 
 .post {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
-  align-content: center;
+  align-items: flex-start;
   background: var(--primary-main);
-  justify-content: center;
   border: 2px solid var(--border);
   border-radius: 16px;
   padding: 12px 12px 12px 12px;
   margin-bottom: 15px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.headerContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.headerContent > h3 {
+  color: var(--subtext);
+  margin: 0;
+  margin-top: 10px;
+  font-weight: 300;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.headerContent > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  color: var(--text);
+  margin: 10px 0px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.headerContent > span {
+  color: var(--subtext);
+}
+
+.headerContent > span > a {
+  color: var(--subtext);
 }
 
 .title {
@@ -49,52 +93,23 @@
   font-weight: 300;
 }
 
-.content > h3 {
-  color: var(--subtext);
-  margin: 0;
-  margin-top: 10px;
-  font-weight: 300;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
 .empty {
   text-align: center;
-}
-
-.content > p {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  color: var(--text);
-  margin: 10px 0px;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  word-wrap: break-word;
-  overflow: hidden;
-}
-
-.content > span {
-  color: var(--subtext);
 }
 
 .updatedAt {
   margin-bottom: 10px;
 }
 
-.content > span > a {
-  color: var(--subtext);
-}
-
 .portrait {
   position: relative;
-  width: 46px;
-  height: 46px;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  align-self: center;
   border: 2px solid var(--border);
   margin: -3px 10px -3px -3px;
+  overflow: hidden;
 }
 
 .loader {

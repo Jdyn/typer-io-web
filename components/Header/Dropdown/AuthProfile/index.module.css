@@ -40,21 +40,14 @@
   background: var(--banner-accent);
 }
 
-.portrait {
+.avatar {
   position: relative;
-  width: 55px;
-  height: 55px;
+  width: 55px !important;
+  height: 55px !important;
   border: 4px solid var(--banner-accent);
   border-radius: 50%;
   background: var(--accent);
   overflow: hidden;
-}
-
-.avatarImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .modal {

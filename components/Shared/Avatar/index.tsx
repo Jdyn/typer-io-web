@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './index.module.css';
 
 interface Props {
@@ -15,17 +16,28 @@ const Avatar = ({
   className,
   marginRight = 10
 }: Props): JSX.Element | null => {
+  const [failed, setFailed] = useState(false);
+
+  const handleLoad = () => {
+    setFailed(false);
+  };
+
+  const handleError = () => {
+    setFailed(true);
+  };
+
   return (
     <div
       className={`${styles.portrait} ${className || ''}`}
       style={{ width: size, height: size, minWidth: size, minHeight: size, marginRight }}
     >
-      {src && (
+      {src && !failed && (
         <img
           src={src}
           alt={alt}
           className={styles.image}
-          onError={(e) => (e.currentTarget.style.display = 'none')}
+          onLoad={handleLoad}
+          onError={handleError}
         />
       )}
     </div>

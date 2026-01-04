@@ -28,6 +28,7 @@ const RecentMatches = (): JSX.Element => {
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
                   <Avatar
+                    size={32}
                     src={item.user?.avatarUrl}
                     alt={`${item.user?.username}'s avatar`}
                     className={styles.avatar}

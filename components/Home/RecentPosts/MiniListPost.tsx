@@ -15,7 +15,7 @@ const MiniListPost = (props: Props): JSX.Element => {
   return (
     <div className={styles.post} key={post.id}>
       <div className={styles.header}>
-        <Avatar size={36} src={post.user?.avatarUrl} alt={`${post.user?.username}'s avatar`} />
+        <Avatar size={38} src={post.user?.avatarUrl} alt={`${post.user?.username}'s avatar`} />
 
         <div className={styles.headerContent}>
           <Link

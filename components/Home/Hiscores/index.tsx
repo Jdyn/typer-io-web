@@ -53,7 +53,7 @@ const Hiscores = (): JSX.Element => {
               hiscores.map((item, index) => (
                 <div className={styles.entry} key={item.id}>
                   <div className={styles.count}>{index + 1}.</div>
-                  <Avatar src={item.user?.avatarUrl} alt={`${item.user?.username}'s avatar`} />
+                  <Avatar size={32} src={item.user?.avatarUrl} alt={`${item.user?.username}'s avatar`} />
                   <div className={styles.content}>
                     {item.user?.username ? (
                       <Link

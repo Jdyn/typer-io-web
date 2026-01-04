@@ -20,12 +20,14 @@ const Avatar = ({
       className={`${styles.portrait} ${className || ''}`}
       style={{ width: size, height: size, minWidth: size, minHeight: size, marginRight }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className={styles.image}
-        onError={(e) => (e.currentTarget.style.display = 'none')}
-      />
+      {src && (
+        <img
+          src={src}
+          alt={alt}
+          className={styles.image}
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
+      )}
     </div>
   );
 };

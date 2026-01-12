@@ -15,16 +15,16 @@ export const setCurrentSession = (user): void => {
 };
 
 export const authenticate =
-  (): ((dispatch, getState: () => AppState) => void) =>
-  (dispatch, getState): void => {
+  (): ((dispatch, getState: () => AppState) => Promise<void>) =>
+  (dispatch, getState): Promise<void> => {
     const requestType = requests.AUTHENTICATE;
     const request = getState().request[requestType] || { isPending: false };
 
-    if (request.isPending) return;
+    if (request.isPending) return Promise.resolve();
 
     dispatch(setRequest(true, requestType));
 
-    Api.fetch('/refresh')
+    return Api.fetch('/refresh')
       .then((response): void => {
         if (response.ok) {
           const { user } = response.result;
@@ -38,5 +38,8 @@ export const authenticate =
           dispatch(setRequest(false, requestType));
         }
       })
-      .catch((): void => {});
+      .catch((error): void => {
+        dispatch(setRequest(false, requestType));
+        throw error;
+      });
   };

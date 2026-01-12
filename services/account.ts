@@ -145,27 +145,11 @@ const accountApi = createApi({
         method: 'POST'
       })
     }),
-    uploadAvatar: builder.mutation<{ ok: boolean; result: { avatarUrl: string } }, FormData>({
-      query: (formData) => ({
+    uploadAvatar: builder.mutation<{ ok: boolean; result: { uploadUrl: string } }, null>({
+      query: () => ({
         url: '/account/avatar',
-        method: 'PUT',
-        body: formData,
-        prepareHeaders: (headers) => {
-          // Remove Content-Type to let browser set it with boundary for multipart/form-data
-          headers.delete('content-type');
-          return headers;
-        }
-      }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User' }],
-      async onQueryStarted(_payload, { dispatch, queryFulfilled, getState }) {
-        try {
-          const { data } = await queryFulfilled;
-          // Update session user with new avatar URL
-          dispatch(userUpdated({ avatarUrl: data.result.avatarUrl }));
-        } catch (error) {
-          // Error handled by component
-        }
-      }
+        method: 'POST'
+      })
     }),
     deleteAvatar: builder.mutation<void, void>({
       query: () => ({

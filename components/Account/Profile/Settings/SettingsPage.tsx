@@ -21,13 +21,17 @@ import Paper from '../../../Shared/Paper';
 import TextBox from '../../../Shared/TextBox';
 import styles from './index.module.css';
 import { SettingsForm } from './types';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../../../store/session/actions';
 
 const ProfileSettingsPage = (): JSX.Element => {
   const sessionUser = useSelector((state: AppState) => state.session.user) || null;
   const [updateAccount, { isSuccess, isError, error }] = useUpdateAccountMutation();
   const [triggerEmail, { isSuccess: EmailSent }] = useLazySendValidateEmailQuery();
-  const [uploadAvatar, { isLoading: isUploading, error: uploadError }] = useUploadAvatarMutation();
+  const [uploadAvatar, { error: uploadError }] = useUploadAvatarMutation();
   const [deleteAvatar, { isLoading: isDeleting, error: deleteError }] = useDeleteAvatarMutation();
+  const dispatch = useDispatch();
+  const [isUploading, setIsUploading] = useState(false);
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -101,26 +105,45 @@ const ProfileSettingsPage = (): JSX.Element => {
 
     setAvatarFile(file);
 
-    // Create preview
     const reader = new FileReader();
+
     reader.onloadend = () => {
       setAvatarPreview(reader.result as string);
     };
+
     reader.readAsDataURL(file);
   };
 
   const handleUpload = async () => {
     if (!avatarFile) return;
 
-    const formData = new FormData();
-    formData.append('avatar', avatarFile);
-
     try {
-      await uploadAvatar(formData).unwrap();
+      setIsUploading(true);
+      const { result } = await uploadAvatar(null).unwrap();
+
+      const formData = new FormData();
+
+      formData.append('images[]', avatarFile);
+      formData.append('sync', 'true');
+
+      const uploadResponse = await fetch(result.uploadUrl, {
+        method: 'POST',
+        body: formData,
+        headers: {}
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error('Failed to upload file to storage');
+      }
+
       setAvatarFile(null);
       setAvatarPreview(null);
+
+      await dispatch(authenticate() as any);
     } catch (err) {
-      // Error handled by RTK Query and displayed in UI
+      console.error('Upload failed:', err);
+    } finally {
+      setIsUploading(false);
     }
   };
 

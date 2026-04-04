@@ -1,4 +1,6 @@
 {
-	"setup": "ln -s \"$CONDUCTOR_ROOT_PATH/.env\" && .env pnpm i",
-	"start": "pnpm run dev"
+  "scripts": {
+    "setup": "ln -s \"$CONDUCTOR_ROOT_PATH/.env\" && .env pnpm i",
+    "start": "pnpm run dev"
+  }
 }

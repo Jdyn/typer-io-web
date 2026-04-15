@@ -65,6 +65,7 @@ const Chat = (): JSX.Element => {
             onChange={(e) => setInput(e.target.value)}
             value={input}
             placeholder="Write a message..."
+            maxLength={250}
             required
           />
         </form>
